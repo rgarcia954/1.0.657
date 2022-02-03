@@ -1,0 +1,4 @@
+<map id="Flash_EraseFlashBank" name="Flash_EraseFlashBank">
+<area shape="rect" id="node1" title="Erase a single flash bank." alt="" coords="175,5,332,32"/>
+<area shape="rect" id="node2" href="$group__flashapi.html#gae2fa05f0b4c82c366cf85a15c444618c" title="Erase all data and code flash." alt="" coords="5,5,127,32"/>
+</map>

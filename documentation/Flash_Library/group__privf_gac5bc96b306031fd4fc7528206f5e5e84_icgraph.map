@@ -1,0 +1,4 @@
+<map id="Sys_Flash_EraseSectorEND" name="Sys_Flash_EraseSectorEND">
+<area shape="rect" id="node1" title="Erase a sector of flash in endurance mode An increased level of voltage is applied for erase through ..." alt="" coords="187,5,377,32"/>
+<area shape="rect" id="node2" href="$group__flashapi.html#ga7fc60948265ff6089e113c5033573acf" title="Erase a sector flash." alt="" coords="5,5,139,32"/>
+</map>

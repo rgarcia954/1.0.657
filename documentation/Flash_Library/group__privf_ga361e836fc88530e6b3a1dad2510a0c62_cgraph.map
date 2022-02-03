@@ -1,0 +1,11 @@
+<map id="Sys_Flash_ReadDouble" name="Sys_Flash_ReadDouble">
+<area shape="rect" id="node1" title="Read a 38&#45;bit word to flash." alt="" coords="5,56,167,83"/>
+<area shape="rect" id="node2" href="$group__privf.html#gaa7289b4a88de769c7e93f1491865974f" title="Apply register value to flash control register." alt="" coords="225,5,391,32"/>
+<area shape="rect" id="node5" href="$group__execcf.html#ga17532839c0b3fb548a2e4e760b7cfcd9" title="Execute a command on the flash interface This function checks if the interface is free before initiat..." alt="" coords="459,61,657,88"/>
+<area shape="rect" id="node6" href="$group__precondf.html#gae5ff2b73462baba82572f70a371b6b14" title="Apply precondition before executing CMD_READ command." alt="" coords="215,107,401,149"/>
+<area shape="rect" id="node3" href="$group__pollf.html#ga74bcedef9a6bba38e87187da599287c8" title="Wait while the busy flag is set on the flash interface." alt="" coords="723,61,889,88"/>
+<area shape="rect" id="node4" href="$group__pollf.html#gaf2a18b8049493dc9087ea63c082a73ea" title="Read if busy flag is set on the flash interface." alt="" coords="953,61,1123,88"/>
+<area shape="rect" id="node7" href="$group__execcf.html#ga397ed5a44d671094de5266f531fc6d94" title="End ongoing flash command operation if interface is busy or sequential write operation is active &#160;and..." alt="" coords="449,113,667,140"/>
+<area shape="rect" id="node8" href="$group__pollf.html#ga201b9bd727c4423c4c83d831fa87a5db" title="Wait until the interface is requesting new data when the interface is in sequential programming mode." alt="" coords="715,113,897,140"/>
+<area shape="rect" id="node9" href="$group__pollf.html#ga578ecbd757bfeac48a3d19c3252c2332" title="Read if interface is requesting for new data in sequential programming mode." alt="" coords="945,113,1131,140"/>
+</map>

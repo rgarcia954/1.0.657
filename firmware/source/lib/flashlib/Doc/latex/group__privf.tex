@@ -1,0 +1,736 @@
+\hypertarget{group__privf}{}\doxysection{Flash library private functions}
+\label{group__privf}\index{Flash library private functions@{Flash library private functions}}
+
+
+Flash library private function not exposed by the programming interface.  
+
+
+Collaboration diagram for Flash library private functions\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{group__privf}
+\end{center}
+\end{figure}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__pollf}{Poll status}}
+\begin{DoxyCompactList}\small\item\em Group of commands to poll and or wait for status of flash status. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__execcf}{Run Operation}}
+\begin{DoxyCompactList}\small\item\em Execute a command using flash interface. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__cmdcondf}{Flash Mode}}
+\begin{DoxyCompactList}\small\item\em Group of functions atomically change the state of flash interface V\+R\+E\+A\+D1,R\+E\+C\+A\+LL and L\+O\+W\+\_\+\+P\+O\+W\+ER bits of the flash interface are mutually exclusive~\newline
+ Hence only one bit will be changed at a time. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__precondf}{Command precondition}}
+\begin{DoxyCompactList}\small\item\em Group of functions to apply correct state to the flash interface before performing a specific operation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__accessf}{Lock-\/\+Unlock}}
+\begin{DoxyCompactList}\small\item\em Group of Lock/\+Unlock functions that are populated in info structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__privf_gadd84630f178d1f604819b53c7a7fb19e}{Sys\+\_\+\+Flash\+\_\+\+Apply\+I\+F\+C\+T\+RL}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t regval)
+\begin{DoxyCompactList}\small\item\em Apply register value to flash control register. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__privf_ga14c96419dd3b2f7512496a8eb2633726}{Sys\+\_\+\+Flash\+\_\+\+Apply\+Retry\+Level}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t val)
+\begin{DoxyCompactList}\small\item\em Apply retry level to flash interface register. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__privf_ga1d2ce818d22d7545e684bfb3f9c9777c}{Sys\+\_\+\+Flash\+\_\+\+Write\+Word\+Operation}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t data\+\_\+word, uint32\+\_\+t cmd\+\_\+prg\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Write a word to flash. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__privf_gafd503bd363f40278e3cb073100fa244b}{Sys\+\_\+\+Flash\+\_\+\+Write\+Double\+Operation}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t $\ast$data\+\_\+word, uint32\+\_\+t cmd\+\_\+prg\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Write a 38-\/ bit word to flash. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__privf_ga29bf484f2b3bcafb37fe28d9f71aaaf3}{Sys\+\_\+\+Flash\+\_\+\+Read\+Word}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr)
+\begin{DoxyCompactList}\small\item\em Read a word to flash. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__privf_ga361e836fc88530e6b3a1dad2510a0c62}{Sys\+\_\+\+Flash\+\_\+\+Read\+Double}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t $\ast$data)
+\begin{DoxyCompactList}\small\item\em Read a 38-\/bit word to flash. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__privf_gafdb8d4f2ff75a01dac77a401b298a270}{Sys\+\_\+\+Flash\+\_\+\+Write\+Sequential\+Data}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, const uint32\+\_\+t $\ast$data\+\_\+words, unsigned data\+\_\+word\+\_\+len, unsigned row\+\_\+word\+\_\+len, uint32\+\_\+t cmd\+\_\+prg\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Execute a sequential write to flash. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__privf_ga84241b14ebf6525f1f2e9de18673d879}{Sys\+\_\+\+Flash\+\_\+\+Erase\+Mass}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Erase all main region of flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_gac5bc96b306031fd4fc7528206f5e5e84}{Sys\+\_\+\+Flash\+\_\+\+Erase\+Sector\+E\+ND}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t words)
+\begin{DoxyCompactList}\small\item\em Erase a sector of flash in endurance mode An increased level of voltage is applied for erase through retry mechanism~\newline
+ A verification is performed at each stage to check if erase is successful. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_ga2e5694e91c44d56a19002f5808d4e7ab}{Sys\+\_\+\+Flash\+\_\+\+Erase\+Sector\+N\+O\+N\+E\+ND}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t words)
+\begin{DoxyCompactList}\small\item\em Erase a sector of flash without endurance mode. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_ga58aeb5c972b5279ff28d3b5a2f2aec3e}{Sys\+\_\+\+Flash\+\_\+\+Write\+Word}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t word, bool enb\+\_\+endurance)
+\begin{DoxyCompactList}\small\item\em Write a word to flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_ga7673b198a9d8c0ef2522738394227168}{Sys\+\_\+\+Flash\+\_\+\+Write\+Word\+Seqential\+E\+ND}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, const uint32\+\_\+t $\ast$data\+\_\+words, uint32\+\_\+t data\+\_\+word\+\_\+length, uint32\+\_\+t row\+\_\+word\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Perform a sequential write operation in endurance mode A two stage programming sequence is applied. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_ga3785882851a1d52457fbd8d6df067ceb}{Sys\+\_\+\+Flash\+\_\+\+Write\+Word\+Seqential\+N\+O\+N\+E\+ND}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, const uint32\+\_\+t $\ast$data\+\_\+words, uint32\+\_\+t data\+\_\+word\+\_\+length, uint32\+\_\+t row\+\_\+word\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Perform a sequential write operation in non endurance mode. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_ga74182ec1d79513de3008e504a456df38}{Sys\+\_\+\+Flash\+\_\+\+Write\+Word\+Seqential}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, const uint32\+\_\+t $\ast$data\+\_\+words, uint32\+\_\+t data\+\_\+word\+\_\+length, uint32\+\_\+t row\+\_\+word\+\_\+length, bool enb\+\_\+endurance)
+\begin{DoxyCompactList}\small\item\em Perform a sequential write operation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_gad135879979235dd76a213e192023a340}{Sys\+\_\+\+Flash\+\_\+\+Verify\+Data\+Words}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t $\ast$addr, const uint32\+\_\+t $\ast$data\+\_\+words, unsigned data\+\_\+word\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Verify contents of flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_gae425fa861d140dd1cc9ed61e0340dd84}{Sys\+\_\+\+Flash\+\_\+\+Copier\+\_\+\+Verify\+Empty}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, unsigned word\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Verify if flash is empty. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_gac282eb275e52efa8a0ab8d08641446d1}{Sys\+\_\+\+Flash\+\_\+\+Copier\+\_\+\+Copy}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t src\+\_\+addr, uint32\+\_\+t dest\+\_\+addr, uint32\+\_\+t wrd\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Copy contents of flash using flash copier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_ga8388670e15b9053056d00ff37d84a04e}{Sys\+\_\+\+Flash\+\_\+\+Write\+Double}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t $\ast$word, bool enb\+\_\+endurance)
+\begin{DoxyCompactList}\small\item\em Write a 38-\/bit word to a flash instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_ga6b599378efa93769079bfa1cd36d436a}{Flash\+\_\+\+Calculate\+Enable\+Regions}} (struct \mbox{\hyperlink{structregion__descriptor}{region\+\_\+descriptor}} $\ast$region, uint32\+\_\+t addr, uint32\+\_\+t words\+\_\+no, uint32\+\_\+t $\ast$mask)
+\begin{DoxyCompactList}\small\item\em Calculate unlock regions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_ga9195bdd1093acd89377107416d89e827}{Flash\+\_\+\+Get\+Addr\+Info}} (uint32\+\_\+t addr, struct \mbox{\hyperlink{structinfo}{info}} $\ast$\mbox{\hyperlink{structinfo}{info}})
+\begin{DoxyCompactList}\small\item\em Get information for the flash address provided. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Flash library private function not exposed by the programming interface. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__privf_ga6b599378efa93769079bfa1cd36d436a}\label{group__privf_ga6b599378efa93769079bfa1cd36d436a}} 
+\index{Flash library private functions@{Flash library private functions}!Flash\_CalculateEnableRegions@{Flash\_CalculateEnableRegions}}
+\index{Flash\_CalculateEnableRegions@{Flash\_CalculateEnableRegions}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Flash\_CalculateEnableRegions()}{Flash\_CalculateEnableRegions()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Flash\+\_\+\+Calculate\+Enable\+Regions (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structregion__descriptor}{region\+\_\+descriptor}} $\ast$}]{region,  }\item[{uint32\+\_\+t}]{addr,  }\item[{uint32\+\_\+t}]{words\+\_\+no,  }\item[{uint32\+\_\+t $\ast$}]{mask }\end{DoxyParamCaption})}
+
+
+
+Calculate unlock regions. 
+
+This function calculates unlock regions required to perform a write to a given area in flash
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em region} & region descriptor that was populated earlier in info data structure ~\newline
+ by calling Flash\+\_\+\+Get\+Addr\+Info. This region correlated to flash address being used \\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & first word location of flash \\
+\hline
+\mbox{\texttt{ in}}  & {\em words\+\_\+no} & total number of words to be written \\
+\hline
+\mbox{\texttt{ out}}  & {\em mask} & calculated unlock region mask \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Flash A\+PI status code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+Application should check the return value before using mask variable 
+\end{DoxyNote}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_ga6b599378efa93769079bfa1cd36d436a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_ga9195bdd1093acd89377107416d89e827}\label{group__privf_ga9195bdd1093acd89377107416d89e827}} 
+\index{Flash library private functions@{Flash library private functions}!Flash\_GetAddrInfo@{Flash\_GetAddrInfo}}
+\index{Flash\_GetAddrInfo@{Flash\_GetAddrInfo}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Flash\_GetAddrInfo()}{Flash\_GetAddrInfo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Flash\+\_\+\+Get\+Addr\+Info (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr,  }\item[{struct \mbox{\hyperlink{structinfo}{info}} $\ast$}]{info }\end{DoxyParamCaption})}
+
+
+
+Get information for the flash address provided. 
+
+This function populates info data structure with flash information that is utilized by private functions to perform a read and write
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em addr} & flash address of which information is requested~\newline
+ \\
+\hline
+\mbox{\texttt{ out}}  & {\em info} & C pointer to info data type where information can be copied~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Flash A\+PI status code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} 
+\end{DoxySeeAlso}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{group__privf_ga9195bdd1093acd89377107416d89e827_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_gadd84630f178d1f604819b53c7a7fb19e}\label{group__privf_gadd84630f178d1f604819b53c7a7fb19e}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_ApplyIFCTRL@{Sys\_Flash\_ApplyIFCTRL}}
+\index{Sys\_Flash\_ApplyIFCTRL@{Sys\_Flash\_ApplyIFCTRL}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ApplyIFCTRL()}{Sys\_Flash\_ApplyIFCTRL()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Apply\+I\+F\+C\+T\+RL (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{regval }\end{DoxyParamCaption})}
+
+
+
+Apply register value to flash control register. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em regval} & value to write to flash\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Changing V\+R\+E\+A\+D1\+\_\+\+M\+O\+DE, R\+E\+C\+A\+LL or L\+P\+\_\+\+M\+O\+DE issues a command to the flash interface. As these bits are mutually exclusive and only one command can be executed at time, this function applies the register values three time to ensure all bit changes are applied. 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_gadd84630f178d1f604819b53c7a7fb19e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_gadd84630f178d1f604819b53c7a7fb19e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_ga14c96419dd3b2f7512496a8eb2633726}\label{group__privf_ga14c96419dd3b2f7512496a8eb2633726}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_ApplyRetryLevel@{Sys\_Flash\_ApplyRetryLevel}}
+\index{Sys\_Flash\_ApplyRetryLevel@{Sys\_Flash\_ApplyRetryLevel}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ApplyRetryLevel()}{Sys\_Flash\_ApplyRetryLevel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Apply\+Retry\+Level (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{val }\end{DoxyParamCaption})}
+
+
+
+Apply retry level to flash interface register. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em val} & value to apply\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Applying retry setting does not initiate a flash command and application is not required to poll the busy flag 
+\end{DoxyNote}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_ga14c96419dd3b2f7512496a8eb2633726_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_gac282eb275e52efa8a0ab8d08641446d1}\label{group__privf_gac282eb275e52efa8a0ab8d08641446d1}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_Copier\_Copy@{Sys\_Flash\_Copier\_Copy}}
+\index{Sys\_Flash\_Copier\_Copy@{Sys\_Flash\_Copier\_Copy}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_Copier\_Copy()}{Sys\_Flash\_Copier\_Copy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Sys\+\_\+\+Flash\+\_\+\+Copier\+\_\+\+Copy (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{src\+\_\+addr,  }\item[{uint32\+\_\+t}]{dest\+\_\+addr,  }\item[{uint32\+\_\+t}]{wrd\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Copy contents of flash using flash copier. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em src\+\_\+addr} & word address belonging to the flash instance\\
+\hline
+\mbox{\texttt{ in}}  & {\em dest\+\_\+addr} & word address belonging to static memory\\
+\hline
+\mbox{\texttt{ in}}  & {\em wrd\+\_\+len} & total number of words to be copied \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{group__privf_gac282eb275e52efa8a0ab8d08641446d1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_gae425fa861d140dd1cc9ed61e0340dd84}\label{group__privf_gae425fa861d140dd1cc9ed61e0340dd84}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_Copier\_VerifyEmpty@{Sys\_Flash\_Copier\_VerifyEmpty}}
+\index{Sys\_Flash\_Copier\_VerifyEmpty@{Sys\_Flash\_Copier\_VerifyEmpty}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_Copier\_VerifyEmpty()}{Sys\_Flash\_Copier\_VerifyEmpty()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Sys\+\_\+\+Flash\+\_\+\+Copier\+\_\+\+Verify\+Empty (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{addr,  }\item[{unsigned}]{word\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Verify if flash is empty. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & word address belonging to the flash instance\\
+\hline
+\mbox{\texttt{ in}}  & {\em word\+\_\+length} & total number of words to be verified \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_gae425fa861d140dd1cc9ed61e0340dd84_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_gae425fa861d140dd1cc9ed61e0340dd84_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_ga84241b14ebf6525f1f2e9de18673d879}\label{group__privf_ga84241b14ebf6525f1f2e9de18673d879}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_EraseMass@{Sys\_Flash\_EraseMass}}
+\index{Sys\_Flash\_EraseMass@{Sys\_Flash\_EraseMass}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_EraseMass()}{Sys\_Flash\_EraseMass()}}
+{\footnotesize\ttfamily void Sys\+\_\+\+Flash\+\_\+\+Erase\+Mass (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Erase all main region of flash. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+A verification of mass erase is not performed in this function 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_ga84241b14ebf6525f1f2e9de18673d879_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_gac5bc96b306031fd4fc7528206f5e5e84}\label{group__privf_gac5bc96b306031fd4fc7528206f5e5e84}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_EraseSectorEND@{Sys\_Flash\_EraseSectorEND}}
+\index{Sys\_Flash\_EraseSectorEND@{Sys\_Flash\_EraseSectorEND}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_EraseSectorEND()}{Sys\_Flash\_EraseSectorEND()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Sys\+\_\+\+Flash\+\_\+\+Erase\+Sector\+E\+ND (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{addr,  }\item[{uint32\+\_\+t}]{words }\end{DoxyParamCaption})}
+
+
+
+Erase a sector of flash in endurance mode An increased level of voltage is applied for erase through retry mechanism~\newline
+ A verification is performed at each stage to check if erase is successful. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & sector address belonging to the flash instance\\
+\hline
+\mbox{\texttt{ in}}  & {\em words} & total number of words in this sector \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_gac5bc96b306031fd4fc7528206f5e5e84_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_gac5bc96b306031fd4fc7528206f5e5e84_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_ga2e5694e91c44d56a19002f5808d4e7ab}\label{group__privf_ga2e5694e91c44d56a19002f5808d4e7ab}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_EraseSectorNONEND@{Sys\_Flash\_EraseSectorNONEND}}
+\index{Sys\_Flash\_EraseSectorNONEND@{Sys\_Flash\_EraseSectorNONEND}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_EraseSectorNONEND()}{Sys\_Flash\_EraseSectorNONEND()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Sys\+\_\+\+Flash\+\_\+\+Erase\+Sector\+N\+O\+N\+E\+ND (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{addr,  }\item[{uint32\+\_\+t}]{words }\end{DoxyParamCaption})}
+
+
+
+Erase a sector of flash without endurance mode. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & sector address belonging to the flash instance\\
+\hline
+\mbox{\texttt{ in}}  & {\em words} & total number of words in this sector \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_ga2e5694e91c44d56a19002f5808d4e7ab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_ga2e5694e91c44d56a19002f5808d4e7ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_ga361e836fc88530e6b3a1dad2510a0c62}\label{group__privf_ga361e836fc88530e6b3a1dad2510a0c62}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_ReadDouble@{Sys\_Flash\_ReadDouble}}
+\index{Sys\_Flash\_ReadDouble@{Sys\_Flash\_ReadDouble}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ReadDouble()}{Sys\_Flash\_ReadDouble()}}
+{\footnotesize\ttfamily void Sys\+\_\+\+Flash\+\_\+\+Read\+Double (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{addr,  }\item[{uint32\+\_\+t $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Read a 38-\/bit word to flash. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & word address belonging to the flash instance\\
+\hline
+\mbox{\texttt{ out}}  & {\em data} & pointer to the word to be copied, that was read \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_ga361e836fc88530e6b3a1dad2510a0c62_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_ga361e836fc88530e6b3a1dad2510a0c62_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_ga29bf484f2b3bcafb37fe28d9f71aaaf3}\label{group__privf_ga29bf484f2b3bcafb37fe28d9f71aaaf3}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_ReadWord@{Sys\_Flash\_ReadWord}}
+\index{Sys\_Flash\_ReadWord@{Sys\_Flash\_ReadWord}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ReadWord()}{Sys\_Flash\_ReadWord()}}
+{\footnotesize\ttfamily uint32\+\_\+t Sys\+\_\+\+Flash\+\_\+\+Read\+Word (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+
+
+Read a word to flash. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & word address belonging to the flash instance\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+word read from flash 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_ga29bf484f2b3bcafb37fe28d9f71aaaf3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{group__privf_ga29bf484f2b3bcafb37fe28d9f71aaaf3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_gad135879979235dd76a213e192023a340}\label{group__privf_gad135879979235dd76a213e192023a340}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_VerifyDataWords@{Sys\_Flash\_VerifyDataWords}}
+\index{Sys\_Flash\_VerifyDataWords@{Sys\_Flash\_VerifyDataWords}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_VerifyDataWords()}{Sys\_Flash\_VerifyDataWords()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Sys\+\_\+\+Flash\+\_\+\+Verify\+Data\+Words (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t $\ast$}]{addr,  }\item[{const uint32\+\_\+t $\ast$}]{data\+\_\+words,  }\item[{unsigned}]{data\+\_\+word\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Verify contents of flash. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & pointer to the word address belonging to the flash instance\\
+\hline
+\mbox{\texttt{ in}}  & {\em data\+\_\+words} & pointer to words address in memory region\\
+\hline
+\mbox{\texttt{ in}}  & {\em data\+\_\+word\+\_\+length} & total number of words to be verified\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+C\+PU C\+B\+US is used to read and verify contents of flash for faster access 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_gad135879979235dd76a213e192023a340_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_gad135879979235dd76a213e192023a340_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_ga8388670e15b9053056d00ff37d84a04e}\label{group__privf_ga8388670e15b9053056d00ff37d84a04e}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_WriteDouble@{Sys\_Flash\_WriteDouble}}
+\index{Sys\_Flash\_WriteDouble@{Sys\_Flash\_WriteDouble}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_WriteDouble()}{Sys\_Flash\_WriteDouble()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Sys\+\_\+\+Flash\+\_\+\+Write\+Double (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{addr,  }\item[{uint32\+\_\+t $\ast$}]{word,  }\item[{bool}]{enb\+\_\+endurance }\end{DoxyParamCaption})}
+
+
+
+Write a 38-\/bit word to a flash instance. 
+
+This function writes a 38-\/bit word to a flash instance
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance to be used~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & address to be written belonging to the flash instance provided~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em word} & 32-\/bit C pointer to the word to be stored in flash,~\newline
+ word\mbox{[}0\mbox{]} \mbox{[}0\+:31\mbox{]} bits consist of first lower 32-\/bits~\newline
+ word\mbox{[}1\mbox{]} \mbox{[}0\+:6\mbox{]} bits consist of the remaining higher 6-\/bits~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em enb\+\_\+endurance} & set to 0 for default flash endurance~\newline
+ set to 1 to enable two stage programming for higher endurance of data programmed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Flash A\+PI status code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+System clock frequency should not be changed when flash is being programmed~\newline
+ 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_ga8388670e15b9053056d00ff37d84a04e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_gafd503bd363f40278e3cb073100fa244b}\label{group__privf_gafd503bd363f40278e3cb073100fa244b}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_WriteDoubleOperation@{Sys\_Flash\_WriteDoubleOperation}}
+\index{Sys\_Flash\_WriteDoubleOperation@{Sys\_Flash\_WriteDoubleOperation}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_WriteDoubleOperation()}{Sys\_Flash\_WriteDoubleOperation()}}
+{\footnotesize\ttfamily void Sys\+\_\+\+Flash\+\_\+\+Write\+Double\+Operation (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{addr,  }\item[{uint32\+\_\+t $\ast$}]{data\+\_\+word,  }\item[{uint32\+\_\+t}]{cmd\+\_\+prg\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+Write a 38-\/ bit word to flash. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & word address belonging to the flash instance\\
+\hline
+\mbox{\texttt{ in}}  & {\em data\+\_\+word} & pointer to the word to be written\\
+\hline
+\mbox{\texttt{ in}}  & {\em cmd\+\_\+prg\+\_\+type} & type of flash operation; C\+M\+D\+\_\+\+P\+R\+E\+\_\+\+P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+O\+S\+EQ or C\+M\+D\+\_\+\+P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+O\+S\+EQ \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_gafd503bd363f40278e3cb073100fa244b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_gafd503bd363f40278e3cb073100fa244b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_gafdb8d4f2ff75a01dac77a401b298a270}\label{group__privf_gafdb8d4f2ff75a01dac77a401b298a270}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_WriteSequentialData@{Sys\_Flash\_WriteSequentialData}}
+\index{Sys\_Flash\_WriteSequentialData@{Sys\_Flash\_WriteSequentialData}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_WriteSequentialData()}{Sys\_Flash\_WriteSequentialData()}}
+{\footnotesize\ttfamily void Sys\+\_\+\+Flash\+\_\+\+Write\+Sequential\+Data (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{addr,  }\item[{const uint32\+\_\+t $\ast$}]{data\+\_\+words,  }\item[{unsigned}]{data\+\_\+word\+\_\+len,  }\item[{unsigned}]{row\+\_\+word\+\_\+len,  }\item[{uint32\+\_\+t}]{cmd\+\_\+prg\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+Execute a sequential write to flash. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & word address belonging to the flash instance\\
+\hline
+\mbox{\texttt{ in}}  & {\em data\+\_\+words} & total number of data words to be written to flash\\
+\hline
+\mbox{\texttt{ in}}  & {\em data\+\_\+word\+\_\+len} & total number of data words to be written to flash\\
+\hline
+\mbox{\texttt{ in}}  & {\em row\+\_\+word\+\_\+len} & total number of words that can be written in a single sequence\\
+\hline
+\mbox{\texttt{ in}}  & {\em cmd\+\_\+prg\+\_\+type} & type of flash operation; C\+M\+D\+\_\+\+P\+R\+E\+\_\+\+P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+O\+S\+EQ or C\+M\+D\+\_\+\+P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+O\+S\+EQ \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_gafdb8d4f2ff75a01dac77a401b298a270_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_gafdb8d4f2ff75a01dac77a401b298a270_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_ga58aeb5c972b5279ff28d3b5a2f2aec3e}\label{group__privf_ga58aeb5c972b5279ff28d3b5a2f2aec3e}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_WriteWord@{Sys\_Flash\_WriteWord}}
+\index{Sys\_Flash\_WriteWord@{Sys\_Flash\_WriteWord}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_WriteWord()}{Sys\_Flash\_WriteWord()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Sys\+\_\+\+Flash\+\_\+\+Write\+Word (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{addr,  }\item[{uint32\+\_\+t}]{word,  }\item[{bool}]{enb\+\_\+endurance }\end{DoxyParamCaption})}
+
+
+
+Write a word to flash. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & word address belonging to the flash instance\\
+\hline
+\mbox{\texttt{ in}}  & {\em word} & word to be written to flash\\
+\hline
+\mbox{\texttt{ in}}  & {\em enb\+\_\+endurance} & set to 0 for default flash endurance~\newline
+ set to 1 to enable two stage programming for higher endurance of data programmed \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_ga58aeb5c972b5279ff28d3b5a2f2aec3e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_ga1d2ce818d22d7545e684bfb3f9c9777c}\label{group__privf_ga1d2ce818d22d7545e684bfb3f9c9777c}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_WriteWordOperation@{Sys\_Flash\_WriteWordOperation}}
+\index{Sys\_Flash\_WriteWordOperation@{Sys\_Flash\_WriteWordOperation}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_WriteWordOperation()}{Sys\_Flash\_WriteWordOperation()}}
+{\footnotesize\ttfamily void Sys\+\_\+\+Flash\+\_\+\+Write\+Word\+Operation (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{addr,  }\item[{uint32\+\_\+t}]{data\+\_\+word,  }\item[{uint32\+\_\+t}]{cmd\+\_\+prg\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+Write a word to flash. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & word address belonging to the flash instance\\
+\hline
+\mbox{\texttt{ in}}  & {\em data\+\_\+word} & word to be written\\
+\hline
+\mbox{\texttt{ in}}  & {\em cmd\+\_\+prg\+\_\+type} & type of flash operation; C\+M\+D\+\_\+\+P\+R\+E\+\_\+\+P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+O\+S\+EQ or C\+M\+D\+\_\+\+P\+R\+O\+G\+R\+A\+M\+\_\+\+N\+O\+S\+EQ \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_ga1d2ce818d22d7545e684bfb3f9c9777c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_ga1d2ce818d22d7545e684bfb3f9c9777c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_ga74182ec1d79513de3008e504a456df38}\label{group__privf_ga74182ec1d79513de3008e504a456df38}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_WriteWordSeqential@{Sys\_Flash\_WriteWordSeqential}}
+\index{Sys\_Flash\_WriteWordSeqential@{Sys\_Flash\_WriteWordSeqential}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_WriteWordSeqential()}{Sys\_Flash\_WriteWordSeqential()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Sys\+\_\+\+Flash\+\_\+\+Write\+Word\+Seqential (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{addr,  }\item[{const uint32\+\_\+t $\ast$}]{data\+\_\+words,  }\item[{uint32\+\_\+t}]{data\+\_\+word\+\_\+length,  }\item[{uint32\+\_\+t}]{row\+\_\+word\+\_\+length,  }\item[{bool}]{enb\+\_\+endurance }\end{DoxyParamCaption})}
+
+
+
+Perform a sequential write operation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & word address belonging to the flash instance\\
+\hline
+\mbox{\texttt{ in}}  & {\em data\+\_\+words} & pointer to words to be written to flash\\
+\hline
+\mbox{\texttt{ in}}  & {\em data\+\_\+word\+\_\+length} & total number of words to be written\\
+\hline
+\mbox{\texttt{ in}}  & {\em row\+\_\+word\+\_\+length} & Maximum number of words that can be written in a sequence within this region\\
+\hline
+\mbox{\texttt{ in}}  & {\em enb\+\_\+endurance} & set to 0 for default flash endurance~\newline
+ set to 1 to enable two stage programming for higher endurance of data programmed \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__privf_ga74182ec1d79513de3008e504a456df38_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__privf_ga7673b198a9d8c0ef2522738394227168}\label{group__privf_ga7673b198a9d8c0ef2522738394227168}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_WriteWordSeqentialEND@{Sys\_Flash\_WriteWordSeqentialEND}}
+\index{Sys\_Flash\_WriteWordSeqentialEND@{Sys\_Flash\_WriteWordSeqentialEND}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_WriteWordSeqentialEND()}{Sys\_Flash\_WriteWordSeqentialEND()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Sys\+\_\+\+Flash\+\_\+\+Write\+Word\+Seqential\+E\+ND (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{addr,  }\item[{const uint32\+\_\+t $\ast$}]{data\+\_\+words,  }\item[{uint32\+\_\+t}]{data\+\_\+word\+\_\+length,  }\item[{uint32\+\_\+t}]{row\+\_\+word\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Perform a sequential write operation in endurance mode A two stage programming sequence is applied. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & word address belonging to the flash instance\\
+\hline
+\mbox{\texttt{ in}}  & {\em data\+\_\+words} & pointer to words to be written to flash\\
+\hline
+\mbox{\texttt{ in}}  & {\em data\+\_\+word\+\_\+length} & total number of words to be written\\
+\hline
+\mbox{\texttt{ in}}  & {\em row\+\_\+word\+\_\+length} & Maximum number of words that can be written in a sequence within this region \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__privf_ga3785882851a1d52457fbd8d6df067ceb}\label{group__privf_ga3785882851a1d52457fbd8d6df067ceb}} 
+\index{Flash library private functions@{Flash library private functions}!Sys\_Flash\_WriteWordSeqentialNONEND@{Sys\_Flash\_WriteWordSeqentialNONEND}}
+\index{Sys\_Flash\_WriteWordSeqentialNONEND@{Sys\_Flash\_WriteWordSeqentialNONEND}!Flash library private functions@{Flash library private functions}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_WriteWordSeqentialNONEND()}{Sys\_Flash\_WriteWordSeqentialNONEND()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Sys\+\_\+\+Flash\+\_\+\+Write\+Word\+Seqential\+N\+O\+N\+E\+ND (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{addr,  }\item[{const uint32\+\_\+t $\ast$}]{data\+\_\+words,  }\item[{uint32\+\_\+t}]{data\+\_\+word\+\_\+length,  }\item[{uint32\+\_\+t}]{row\+\_\+word\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Perform a sequential write operation in non endurance mode. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used\\
+\hline
+\mbox{\texttt{ in}}  & {\em addr} & word address belonging to the flash instance\\
+\hline
+\mbox{\texttt{ in}}  & {\em data\+\_\+words} & pointer to words to be written to flash\\
+\hline
+\mbox{\texttt{ in}}  & {\em data\+\_\+word\+\_\+length} & total number of words to be written\\
+\hline
+\mbox{\texttt{ in}}  & {\em row\+\_\+word\+\_\+length} & Maximum number of words that can be written in a sequence within this region \\
+\hline
+\end{DoxyParams}

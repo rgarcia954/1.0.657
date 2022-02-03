@@ -1,0 +1,1002 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.3" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>ONSemiconductor</vendor>
+  <name>Montana</name>
+  <description>ON Semiconductor Montana Device Pack</description>
+  <url>www.onsemi.com</url>
+  <supportContact>www.onsemi.com/PowerSolutions/content.do?id=1017</supportContact>
+  <releases>
+    <release version="1.0.657">
+        ON Semiconductor Montana CMSIS Pack
+    </release>
+  </releases>
+  <keywords>
+    <keyword>ON Semiconductor</keyword>
+    <keyword>Montana</keyword>
+  </keywords>
+  <devices>
+    <family Dfamily="Montana Series" Dvendor="ONSemiconductor:141">
+      <!-- *************************  Device 'Montana'  ***************************** -->
+      <book name="documentation/Getting_Started_Guide/onsemi IDE Getting Started Guide.pdf" title="Getting Started with Montana"/>
+      <book name="documentation/Arm_documentation/trustzone_cc312_cryptocell_software_developers_manual_100777_0000_02_en.pdf" title="Arm Trustzone CryptoCell-312 Software Developers Manual"/>
+      <book name="documentation/Arm_documentation/trustzone_cc312_cryptocell_software_integrators_manual_100776_0000_02_en.pdf" title="Arm Trustzone CryptoCell-312 Software Integrators Manual"/>
+      <book name="documentation/Montana_documentation/firmware_reference_montana.pdf" title="Montana Firmware Reference"/>
+      <book name="documentation/Montana_documentation/hardware_reference_montana/hardware_reference_montana.htm" title="Montana Hardware Reference"/>
+      <book name="documentation/NFC/iso14443_Firmware_Specification.pdf" title="NFC firmware Specification"/>
+      <book name="documentation/ceva/RW-BLE-GAP-IS.pdf" title="GAP Interface Specification"/>
+      <book name="documentation/ceva/RW-BLE-GATT-IS.pdf" title="GATT Interface Specification"/>
+      <book name="documentation/ceva/RW-BLE-L2C-IS.pdf" title="L2C Interface Specification"/>
+      <book name="documentation/ceva/RW-BLE-PRF-CGMP-IS.pdf" title="RW BLE Continuous Glucose Monitoring Profile Interface Specification"/>
+      <book name="documentation/ceva/RW-BLE-PRF-BAS-IS.pdf" title="RW BLE Battery Service Interface Specification"/>
+	  <book name="documentation/ceva/RW-BLE-PRF-DIS-IS.pdf" title="RW BLE Device Information Service Interface Specification"/>
+      <device Dname="Montana">
+        <processor Dclock="48000000" Dcore="Cortex-M33" DcoreVersion="r0p4" Dendian="Little-endian" Dfpu="SP_FPU" Dmpu="MPU"/>
+        <description>
+                    Montana is an ultra-low-power ASIC designed for Dexcom’s continuous blood glucose monitoring applications.
+        </description>
+        <compile header="firmware/include/montana.h"/>
+        <debug svd="svd/montana.svd"/>
+        <algorithm name="JLink/Devices/ONSemiconductor/Montana/ONSemiconductor_Montana_Code_Flash.elf" size="0xB0000" start="0x00100000"/>
+        <algorithm name="JLink/Devices/ONSemiconductor/Montana/ONSemiconductor_Montana_Data_Flash.elf" size="0x50000" start="0x001B0000"/>
+        <algorithm name="JLink/Devices/ONSemiconductor/Montana/ONSemiconductor_Montana_NVR_Flash0.elf" size="0x300" start="0x00080000"/>
+        <algorithm name="JLink/Devices/ONSemiconductor/Montana/ONSemiconductor_Montana_NVR_Flash1.elf" size="0x800" start="0x00081000"/>
+        <memory access="r" default="1" name="ROM" size="0x8000" start="0x00000000" startup="1"/>
+        <memory access="rwx" default="1" name="DRAM" size="0x10000" start="0x20000000"/>
+      </device>
+    </family>
+  </devices>
+  <boards>
+    <board name="Montana Evaluation Board" revision="1.0" vendor="ONSemiconductor">
+      <description>ON Semiconductor Montana Evaluation Board</description>
+      <mountedDevice Dname="Montana" Dvendor="ONSemiconductor:141" deviceIndex="0"/>
+    </board>
+  </boards>
+  <examples>
+    <example doc="readme_ble_peripheral_server.md" folder="firmware/source/samples/gcc/ble_peripheral_server" name="ble_peripheral_server">
+      <description>BLE Peripheral Server Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Bluetooth Core" Csub="BLE Stack" Cvariant="release"/>
+        <component Cclass="Device" Cgroup="Bluetooth Core" Csub="BLE Abstraction" Cvariant="release"/>
+        <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="BASS" Cvariant="release"/>
+      </attributes>
+    </example>
+    <example doc="readme_ble_peripheral_cntl_priv.md" folder="firmware/source/samples/gcc/ble_peripheral_cntl_priv" name="ble_peripheral_cntl_priv">
+      <description>BLE Peripheral Server with Controller-Based Privacy Feature</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Bluetooth Core" Csub="BLE Stack" Cvariant="release"/>
+        <component Cclass="Device" Cgroup="Bluetooth Core" Csub="BLE Abstraction" Cvariant="release"/>
+      </attributes>
+    </example>
+    <example doc="readme_ble_peripheral_server_sleep.md" folder="firmware/source/samples/gcc/ble_peripheral_server_sleep" name="ble_peripheral_server_sleep">
+      <description>BLE Peripheral Server Sleep Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="Calibrate" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Bluetooth Core" Csub="BLE Stack" Cvariant="release"/>
+        <component Cclass="Device" Cgroup="Bluetooth Core" Csub="BLE Abstraction" Cvariant="release"/>
+        <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="BASS" Cvariant="release"/>
+      </attributes>
+    </example>
+    <example doc="readme_ble_central_client.md" folder="firmware/source/samples/gcc/ble_central_client" name="ble_central_client">
+      <description>BLE Central Client Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Bluetooth Core" Csub="BLE Stack" Cvariant="release"/>
+        <component Cclass="Device" Cgroup="Bluetooth Core" Csub="BLE Abstraction" Cvariant="release"/>
+        <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="BASC" Cvariant="release"/>
+      </attributes>
+    </example>
+    <example doc="readme_hci.md" folder="firmware/source/samples/gcc/hci" name="hci">
+      <description>BLE HCI Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="GPIO" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Bluetooth Core" Csub="BLE Stack" Cvariant="release_hci"/>
+        <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="BASC" Cvariant="release_hci"/>
+        <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="BASS" Cvariant="release_hci"/>
+      </attributes>
+    </example>
+    <example doc="readme_flash.md" folder="firmware/source/samples/gcc/flash" name="flash">
+      <description>flash Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_calibration.md" folder="firmware/source/samples/gcc/calibration" name="calibration">
+      <description>Calibratelib Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="Calibrate" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_i2c_cmsis.md" folder="firmware/source/samples/gcc/i2c_cmsis" name="i2c_cmsis">
+      <description>I2C CMSIS-Driver Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="CMSIS Driver" Cgroup="I2C" Csub="I2C" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_lsad.md" folder="firmware/source/samples/gcc/lsad" name="lsad">
+      <description>LSAD Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_sleep_mode.md" folder="firmware/source/samples/gcc/sleep_mode" name="sleep_mode">
+      <description>Sleep Mode Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_nfc.md" folder="firmware/source/samples/gcc/nfc" name="nfc">
+      <description>nfc Sample Code Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_trustzone_non_secure.md" folder="firmware/source/samples/gcc/trustzone_non_secure" name="trustzone_non_secure">
+      <description>Trustzone non-secure Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="trustzone_secure_gateway_veneer" Cvariant="release"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_blinky.md" folder="firmware/source/samples/gcc/blinky" name="blinky">
+      <description>Blinky Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="GPIO" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_bootloader.md" folder="firmware/source/samples/gcc/bootloader" name="bootloader">
+      <description>Bootloader Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+      </attributes>
+    </example>
+    <example doc="readme_trustzone_secure.md" folder="firmware/source/samples/gcc/trustzone_secure" name="trustzone_secure">
+      <description>Trustzone secure Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_spi_master_cmsis.md" folder="firmware/source/samples/gcc/spi_master_cmsis" name="spi_master_cmsis">
+      <description>SPI CMSIS-Driver Master Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="CMSIS Driver" Cgroup="SPI" Csub="SPI" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="DMA" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_spi_slave_cmsis.md" folder="firmware/source/samples/gcc/spi_slave_cmsis" name="spi_slave_cmsis">
+      <description>SPI CMSIS-Driver Slave Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="CMSIS Driver" Cgroup="SPI" Csub="SPI" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="DMA" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_swmTrace_logger.md" folder="firmware/source/samples/gcc/swmTrace_logger" name="swmTrace_logger">
+      <description>SwmTrace Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+      </attributes>
+    </example>
+    <example doc="readme_uart.md" folder="firmware/source/samples/gcc/uart" name="uart">
+      <description>UART Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_uart_cmsis.md" folder="firmware/source/samples/gcc/uart_cmsis" name="uart_cmsis">
+      <description>UART CMSIS-Driver Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="CMSIS Driver" Cgroup="UART" Csub="UART" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="GPIO" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_CC312_AES.md" folder="firmware/source/samples/gcc/CC312_AES" name="CC312_AES">
+      <description>AES Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedcrypto" Cvariant="Debug_mbedcrypto"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedtls" Cvariant="Debug_mbedtls"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedx509" Cvariant="Debug_mbedx509"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="sw-cc312" Cvariant="Debug_sw-cc312"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="pal_no_os" Cvariant="Debug_pal_no_os"/>
+      </attributes>
+    </example>
+    <example doc="readme_CC312_AES_256_CTR.md" folder="firmware/source/samples/gcc/CC312_AES_256_CTR" name="CC312_AES_256_CTR">
+      <description>AES-CTR Profiling Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedcrypto" Cvariant="Debug_mbedcrypto"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedtls" Cvariant="Debug_mbedtls"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedx509" Cvariant="Debug_mbedx509"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="sw-cc312" Cvariant="Debug_sw-cc312"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="pal_no_os" Cvariant="Debug_pal_no_os"/>
+      </attributes>
+    </example>
+    <example doc="readme_CC312_CCM.md" folder="firmware/source/samples/gcc/CC312_CCM" name="CC312_CCM">
+      <description>CCM Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedcrypto" Cvariant="Debug_mbedcrypto"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedtls" Cvariant="Debug_mbedtls"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedx509" Cvariant="Debug_mbedx509"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="sw-cc312" Cvariant="Debug_sw-cc312"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="pal_no_os" Cvariant="Debug_pal_no_os"/>
+      </attributes>
+    </example>
+    <example doc="readme_CC312_CMAC.md" folder="firmware/source/samples/gcc/CC312_CMAC" name="CC312_CMAC">
+      <description>CMAC Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedcrypto" Cvariant="Debug_mbedcrypto"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedtls" Cvariant="Debug_mbedtls"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedx509" Cvariant="Debug_mbedx509"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="sw-cc312" Cvariant="Debug_sw-cc312"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="pal_no_os" Cvariant="Debug_pal_no_os"/>
+      </attributes>
+    </example>
+    <example doc="readme_CC312_ECDH.md" folder="firmware/source/samples/gcc/CC312_ECDH" name="CC312_ECDH">
+      <description>ECDH Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedcrypto" Cvariant="Debug_mbedcrypto"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedtls" Cvariant="Debug_mbedtls"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedx509" Cvariant="Debug_mbedx509"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="sw-cc312" Cvariant="Debug_sw-cc312"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="pal_no_os" Cvariant="Debug_pal_no_os"/>
+      </attributes>
+    </example>
+    <example doc="readme_CC312_ECDSA.md" folder="firmware/source/samples/gcc/CC312_ECDSA" name="CC312_ECDSA">
+      <description>ECDSA Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedcrypto" Cvariant="Debug_mbedcrypto"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedtls" Cvariant="Debug_mbedtls"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedx509" Cvariant="Debug_mbedx509"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="sw-cc312" Cvariant="Debug_sw-cc312"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="pal_no_os" Cvariant="Debug_pal_no_os"/>
+      </attributes>
+    </example>
+    <example doc="readme_CC312_HMAC.md" folder="firmware/source/samples/gcc/CC312_HMAC" name="CC312_HMAC">
+      <description>HMAC Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedcrypto" Cvariant="Debug_mbedcrypto"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedtls" Cvariant="Debug_mbedtls"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedx509" Cvariant="Debug_mbedx509"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="sw-cc312" Cvariant="Debug_sw-cc312"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="pal_no_os" Cvariant="Debug_pal_no_os"/>
+      </attributes>
+    </example>
+    <example doc="readme_CC312_HMAC_Interleaved.md" folder="firmware/source/samples/gcc/CC312_HMAC_Interleaved" name="CC312_HMAC_Interleaved">
+      <description>HMAC Interleaved Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedcrypto" Cvariant="Debug_mbedcrypto"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedtls" Cvariant="Debug_mbedtls"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedx509" Cvariant="Debug_mbedx509"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="sw-cc312" Cvariant="Debug_sw-cc312"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="pal_no_os" Cvariant="Debug_pal_no_os"/>
+      </attributes>
+    </example>
+    <example doc="readme_CC312_QuickStart.md" folder="firmware/source/samples/gcc/CC312_QuickStart" name="CC312_QuickStart">
+      <description>Crypto Quick Start Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedcrypto" Cvariant="Debug_mbedcrypto"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedtls" Cvariant="Debug_mbedtls"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedx509" Cvariant="Debug_mbedx509"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="sw-cc312" Cvariant="Debug_sw-cc312"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="pal_no_os" Cvariant="Debug_pal_no_os"/>
+      </attributes>
+    </example>
+    <example doc="readme_CC312_RSA.md" folder="firmware/source/samples/gcc/CC312_RSA" name="CC312_RSA">
+      <description>RSA Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedcrypto" Cvariant="Debug_mbedcrypto"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedtls" Cvariant="Debug_mbedtls"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedx509" Cvariant="Debug_mbedx509"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="sw-cc312" Cvariant="Debug_sw-cc312"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="pal_no_os" Cvariant="Debug_pal_no_os"/>
+      </attributes>
+    </example>
+    <example doc="readme_CC312_SHA.md" folder="firmware/source/samples/gcc/CC312_SHA" name="CC312_SHA">
+      <description>SHA Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedcrypto" Cvariant="Debug_mbedcrypto"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedtls" Cvariant="Debug_mbedtls"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedx509" Cvariant="Debug_mbedx509"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="sw-cc312" Cvariant="Debug_sw-cc312"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="pal_no_os" Cvariant="Debug_pal_no_os"/>
+      </attributes>
+    </example>
+    <example doc="readme_CC312_TRNG.md" folder="firmware/source/samples/gcc/CC312_TRNG" name="CC312_TRNG">
+      <description>TRNG Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedcrypto" Cvariant="Debug_mbedcrypto"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedtls" Cvariant="Debug_mbedtls"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedx509" Cvariant="Debug_mbedx509"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="sw-cc312" Cvariant="Debug_sw-cc312"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="pal_no_os" Cvariant="Debug_pal_no_os"/>
+      </attributes>
+    </example>
+    <example doc="readme_CC312_TRNG_Self_Test.md" folder="firmware/source/samples/gcc/CC312_TRNG_Self_Test" name="CC312_TRNG_Self_Test">
+      <description>TRNG Self Test Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedcrypto" Cvariant="Debug_mbedcrypto"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedtls" Cvariant="Debug_mbedtls"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="mbedx509" Cvariant="Debug_mbedx509"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="sw-cc312" Cvariant="Debug_sw-cc312"/>
+        <component Cclass="Device" Cgroup="cc312" Csub="pal_no_os" Cvariant="Debug_pal_no_os"/>
+      </attributes>
+    </example>
+    <example doc="readme_print_device_info.md" folder="firmware/source/samples/gcc/print_device_info" name="print_device_info">
+      <description>Print Device info</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+      </attributes>
+    </example>    
+    <example doc="readme_hardfault_handler.md" folder="firmware/source/samples/gcc/hardfault_handler" name="hardfault_handler">
+      <description>HardFault Handler Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_timers.md" folder="firmware/source/samples/gcc/timers" name="timers">
+      <description>Timer Driver Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="GPIO" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="Timer" Cvariant="source"/>
+      </attributes>
+    </example>
+    <example doc="readme_dma.md" folder="firmware/source/samples/gcc/dma" name="dma">
+      <description>DMA Driver Sample Code</description>
+      <board name="Montana Evaluation Board" vendor="ONSemiconductor"/>
+      <project>
+        <environment load=".project" name="RefClient"/>
+      </project>
+      <attributes>
+        <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="GPIO" Cvariant="source"/>
+        <component Cclass="Device" Cgroup="Libraries" Csub="DMA" Cvariant="source"/>
+      </attributes>
+    </example>
+  </examples>
+  <apis>
+    <api Capiversion="1.0.0" Cclass="Device" Cgroup="Bluetooth Core" condition="GCC_Condition" exclusive="0">
+      <description>BLE Core implementation</description>
+      <files>
+        <file category="include" name="firmware/include/ble/"/>
+        <file category="include" name="firmware/include/ble/profiles/"/>
+      </files>
+    </api>
+  </apis>
+  <conditions>
+    <condition id="Montana_Condition">
+      <description>ON Semiconductor Montana</description>
+      <require Dname="Montana" Dvendor="ONSemiconductor:141"/>
+    </condition>
+    <condition id="GCC_Condition">
+      <description>Condition for GCC Compiler</description>
+      <require Tcompiler="GCC"/>
+      <require condition="Montana_Condition"/>
+    </condition>
+    <condition id="CMSIS_Startup_Condition">
+      <description>CMSIS Startup library for GCC</description>
+      <require condition="GCC_Condition"/>
+      <require Cclass="Device" Cgroup="Startup"/>
+    </condition>
+    <condition id="HAL_Condition">
+      <description>System Library</description>
+      <require condition="CMSIS_Startup_Condition"/>
+      <require Cclass="Device" Cgroup="Libraries" Csub="HAL"/>
+    </condition>
+    <condition id="BLE_Condition">
+      <description>BLE Library</description>
+      <require condition="HAL_Condition"/>
+      <require Cclass="Device" Cgroup="Bluetooth Core" Csub="BLE Stack"/>
+    </condition>
+      <condition id="BASS_Profile_Condition">
+      <description>BASS_Profile Library</description>
+      <require Cclass="Device" Cgroup="Bluetooth Profiles" Csub="BASS"/>
+  </condition>
+  <condition id="BASC_Profile_Condition">
+      <description>BASC_Profile Library</description>
+      <require Cclass="Device" Cgroup="Bluetooth Profiles" Csub="BASC"/>
+  </condition>
+  <condition id="DISS_Profile_Condition">
+      <description>DISS_Profile Library</description>
+      <require Cclass="Device" Cgroup="Bluetooth Profiles" Csub="DISS"/>
+  </condition>
+  </conditions>
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Csub="Startup" Cvariant="source" Cversion="1.0.657" condition="Montana_Condition">
+      <description>System Startup for ON Semiconductor Montana</description>
+      <files>
+        <file category="include" name="firmware/include/"/>
+        <file category="source" condition="GCC_Condition" name="firmware/source/lib/cmsis/source/sbrk.c"/>
+        <file category="source" condition="GCC_Condition" name="firmware/source/lib/cmsis/source/start.c"/>
+        <file attr="config" category="source" name="firmware/source/lib/cmsis/source/system_montana.c" version="1.0.0"/>
+        <file attr="config" category="source" condition="GCC_Condition" name="firmware/source/lib/cmsis/source/GCC/startup.S" version="1.0.0"/>
+        <file attr="config" category="linkerScript" condition="GCC_Condition" name="firmware/configuration/GCC/sections.ld" version="1.0.0"/>
+        <file attr="config" category="header" name="firmware/source/lib/drivers/RTE_config/RTE_Device.h" version="1.0.0"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Libraries" Csub="HAL" Cvariant="source" Cversion="1.0.657" condition="CMSIS_Startup_Condition">
+      <description>HAL Source</description>
+      <files>
+        <file category="include" name="firmware/source/lib/HAL/include/"/>
+        <file category="source" name="firmware/source/lib/HAL/source/clock.c"/>
+        <file category="source" name="firmware/source/lib/HAL/source/flash_copier.c"/>
+        <file category="source" name="firmware/source/lib/HAL/source/sassert.c"/>
+        <file category="source" name="firmware/source/lib/HAL/source/trim.c"/>
+        <file category="source" name="firmware/source/lib/HAL/source/uart.c"/>
+        <file category="source" name="firmware/source/lib/HAL/source/lsad.c"/>
+        <file category="source" name="firmware/source/lib/HAL/source/rffe.c"/>
+        <file category="source" name="firmware/source/lib/HAL/source/trim_vddif.c"/>
+        <file category="source" name="firmware/source/lib/HAL/source/power_modes.c"/>       
+        <file category="source" name="firmware/source/lib/HAL/source/go_to_sleep_asm.S"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Libraries" Csub="Calibrate" Cvariant="source" Cversion="1.0.657" condition="GCC_Condition">
+      <description>Calibrate Source</description>
+      <files>
+        <file category="source" name="firmware/source/lib/calibratelib/code/calibrate.c"/>
+        <file category="source" name="firmware/source/lib/calibratelib/code/calibrate_clock.c"/>
+        <file category="source" name="firmware/source/lib/calibratelib/code/calibrate_power.c"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Libraries" Csub="Flash" Cvariant="source" Cversion="1.0.657" condition="GCC_Condition">
+      <description>Flash Source</description>
+      <files>
+        <file category="source" name="firmware/source/lib/flashlib/flash.c"/>
+        <file category="source" name="firmware/source/lib/flashlib/flash_montana.c"/>
+        <file category="header" name="firmware/include/flash.h"/>
+        <file category="header" name="firmware/include/flash_rom.h"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_B_Source" Cversion="1.0.657" condition="HAL_Condition">
+      <description>SwmTrace RTT Blocking Source (libswmTrace)</description>
+      <RTE_Components_h>
+       #define SWMTRACE_ENABLEMENT SWMTRACE_ENABLED
+       #define SEGGER_RTT_MODE_DEFAULT SEGGER_RTT_MODE_BLOCK_IF_FIFO_FULL 
+       #define SWM_TRACE_TYPE SWM_TRACE_SEGGER_RTT_BLOCKING           
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="firmware/source/lib/swmTrace/source/segger/SEGGER_RTT.c"/>
+        <file category="source" name="firmware/source/lib/swmTrace/source/segger/SEGGER_RTT_ASM_ARMv7M.S"/>
+        <file category="source" name="firmware/source/lib/swmTrace/source/segger/SEGGER_RTT_printf.c"/>
+        <file category="source" name="firmware/source/lib/swmTrace/source/swmTrace.c"/>
+        <file category="source" name="firmware/source/lib/swmTrace/source/segger/swmTrace_wrapper.c"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_api.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_int.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_options.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/segger/SEGGER_RTT.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/segger/SEGGER_RTT_Conf.h"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_RTT_NB_Source" Cversion="1.0.657" condition="HAL_Condition">
+      <description>SwmTrace RTT Non-Blocking Source (libswmTrace)</description>
+      <RTE_Components_h>
+       #define SWMTRACE_ENABLEMENT SWMTRACE_ENABLED
+       #define SWM_TRACE_TYPE SWM_TRACE_SEGGER_RTT_NON_BLOCKING  
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="firmware/source/lib/swmTrace/source/segger/SEGGER_RTT.c"/>
+        <file category="source" name="firmware/source/lib/swmTrace/source/segger/SEGGER_RTT_ASM_ARMv7M.S"/>
+        <file category="source" name="firmware/source/lib/swmTrace/source/segger/SEGGER_RTT_printf.c"/>
+        <file category="source" name="firmware/source/lib/swmTrace/source/swmTrace.c"/>
+        <file category="source" name="firmware/source/lib/swmTrace/source/segger/swmTrace_wrapper.c"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_api.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_int.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_options.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/segger/SEGGER_RTT.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/segger/SEGGER_RTT_Conf.h"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_SemiHost_Source" Cversion="1.0.657" condition="HAL_Condition">
+      <description>SwmTrace SemiHost Source (libswmTrace)</description>
+      <RTE_Components_h>
+       #define SWMTRACE_ENABLEMENT SWMTRACE_ENABLED
+       #define SWM_TRACE_TYPE SWM_TRACE_SEMIHOST_BLOCKING 
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="firmware/source/lib/swmTrace/source/swmTrace.c"/>
+        <file category="source" name="firmware/source/lib/swmTrace/source/semihost/swmTrace_wrapper.c"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_api.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_int.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_options.h"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_UART_DMA_NB_Source" Cversion="1.0.657" condition="HAL_Condition">
+      <description>SwmTrace UART DMA Non-Blocking Source (libswmTrace)</description>
+      <RTE_Components_h>
+       #define SWMTRACE_ENABLEMENT SWMTRACE_ENABLED
+       #define SWM_TRACE_TYPE SWM_TRACE_UART_DMA_NON_BLOCKING 
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="firmware/source/lib/swmTrace/source/swmTrace.c"/>
+        <file category="source" name="firmware/source/lib/swmTrace/source/uart_common/uart_common.c"/>
+        <file category="source" name="firmware/source/lib/swmTrace/source/uart_dma/swmTrace_wrapper.c"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/uart_common/uart_common.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_api.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_int.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_options.h"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Libraries" Csub="SwmTrace" Cvariant="swmTrace_UART_NB_Source" Cversion="1.0.657" condition="HAL_Condition">
+      <description>SwmTrace UART Non-Blocking Source (libswmTrace)</description>
+      <RTE_Components_h>
+       #define SWMTRACE_ENABLEMENT SWMTRACE_ENABLED
+       #define SWM_TRACE_TYPE SWM_TRACE_UART_NON_BLOCKING
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="firmware/source/lib/swmTrace/source/swmTrace.c"/>
+        <file category="source" name="firmware/source/lib/swmTrace/source/uart_common/uart_common.c"/>
+        <file category="source" name="firmware/source/lib/swmTrace/source/uart/swmTrace_wrapper.c"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/uart_common/uart_common.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_api.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_int.h"/>
+        <file category="header" name="firmware/source/lib/swmTrace/include/swmTrace_options.h"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Libraries" Csub="trustzone_secure_gateway_veneer" Cvariant="release" Cversion="1.0.657" condition="HAL_Condition">
+      <description>Trustzone Secure Gateway Veneer Library (libsecure_gateway_veneer)</description>
+      <files>
+        <file category="library" name="lib/Release/libsecure_gateway_veneer.lib"/>
+        <file category="header" name="firmware/source/samples/gcc/trustzone_secure/include/app.h"/>
+        <file category="header" name="firmware/source/samples/gcc/trustzone_secure/include/secure_api.h"/>
+      </files>
+    </component>
+    <component Capiversion="1.0.0" Cclass="Device" Cgroup="Bluetooth Core" Csub="BLE Stack" Cvariant="release" Cversion="1.0.657" condition="HAL_Condition">
+      <description>Bluetooth Stack (libblelib)</description>
+      <files>
+        <file category="library" name="lib/ble_core/Release/libblelib.a"/>
+      </files>
+    </component>
+    <component Capiversion="1.0.0" Cclass="Device" Cgroup="Bluetooth Core" Csub="BLE Stack" Cvariant="release_hci" Cversion="1.0.657" condition="HAL_Condition">
+      <description>Bluetooth Stack (libblelib)</description>
+      <files>
+        <file category="library" name="lib/ble_core/Release_HCI/libblelib.a"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Bluetooth Core" Csub="BLE Abstraction" Cversion="1.0.657" Capiversion="1.0.0" condition="BLE_Condition">
+        <description>BLE Abstraction</description>
+        <RTE_Components_h>
+#define RTE_ADDED_BLE_ABSTRACTION
+        </RTE_Components_h>
+        <files>
+            <file category="header" name="firmware/source/ble_abstraction/ble_common/include/ble_abstraction.h" version="1.0.0"/>
+            <file category="header" name="firmware/source/ble_abstraction/ble_common/include/ble_gap.h" version="1.0.0"/>
+            <file category="header" name="firmware/source/ble_abstraction/ble_common/include/ble_gatt.h" version="1.0.0"/>
+            <file category="header" name="firmware/source/ble_abstraction/ble_common/include/msg_handler.h" version="1.0.0"/>
+            <file category="header" name="firmware/source/ble_abstraction/ble_common/include/bondlist.h" version="1.0.0"/>
+            <file category="header" condition="BASS_Profile_Condition" name="firmware/source/ble_abstraction/ble_profiles/include/ble_bass.h" version="1.0.0"/>
+            <file category="header" condition="BASC_Profile_Condition" name="firmware/source/ble_abstraction/ble_profiles/include/ble_basc.h" version="1.0.0"/>
+	    <file category="header" condition="DISS_Profile_Condition" name="firmware/source/ble_abstraction/ble_profiles/include/ble_diss.h" version="1.0.0"/>
+            <file category="source" name="firmware/source/ble_abstraction/ble_common/source/stubprf.c"/>
+            <file category="source" name="firmware/source/ble_abstraction/ble_common/source/ble_gap.c" version="1.0.0"/>
+            <file category="source" name="firmware/source/ble_abstraction/ble_common/source/ble_gatt.c" version="1.0.0"/>
+            <file category="source" name="firmware/source/ble_abstraction/ble_common/source/msg_handler.c" version="1.0.0"/>
+			<file category="source" name="firmware/source/ble_abstraction/ble_common/source/ble_protocol_support.c" version="1.0.0"/>
+            <file category="source" name="firmware/source/ble_abstraction/ble_common/source/bondlist.c" version="1.0.0"/>
+            <file category="source" condition="BASS_Profile_Condition" name="firmware/source/ble_abstraction/ble_profiles/source/ble_bass.c" version="1.0.0"/>
+            <file category="source" condition="BASC_Profile_Condition" name="firmware/source/ble_abstraction/ble_profiles/source/ble_basc.c" version="1.0.0"/>
+	    <file category="source" condition="DISS_Profile_Condition" name="firmware/source/ble_abstraction/ble_profiles/source/ble_diss.c" version="1.0.0"/>
+        </files>
+    </component>
+    <component Cclass="CMSIS Driver" Cgroup="I2C" Csub="I2C" Cvariant="source" Cversion="1.0.657" condition="HAL_Condition">
+      <description>I2C Driver for Montana</description>
+      <files>
+        <file category="header" name="firmware/source/lib/drivers/Driver_Common.h" version="1.0.0"/>
+        <file category="header" name="firmware/source/lib/drivers/i2c_driver/include/i2c_driver.h" version="1.0.0"/>
+        <file category="header" name="firmware/source/lib/drivers/i2c_driver/include/Driver_I2C.h" version="1.0.0"/>
+        <file category="source" name="firmware/source/lib/drivers/i2c_driver/code/i2c_driver.c" version="1.0.0"/>
+      </files>
+    </component>
+    <component Cclass="CMSIS Driver" Cgroup="SPI" Csub="SPI" Cvariant="source" Cversion="1.0.657" condition="HAL_Condition">
+      <description>SPI Driver for Montana</description>
+      <files>
+        <file category="header" name="firmware/source/lib/drivers/Driver_Common.h" version="1.0.0"/>
+        <file category="header" name="firmware/source/lib/drivers/spi_driver/include/spi_driver.h" version="1.0.0"/>
+        <file category="header" name="firmware/source/lib/drivers/spi_driver/include/Driver_SPI.h" version="1.0.0"/>
+        <file category="source" name="firmware/source/lib/drivers/spi_driver/code/spi_driver.c" version="1.0.0"/>
+      </files>
+    </component>
+    <component Cclass="CMSIS Driver" Cgroup="USART" Csub="USART" Cvariant="source" Cversion="1.0.657" condition="HAL_Condition">
+      <description>USART Driver for Montana</description>
+      <files>
+        <file category="header" name="firmware/source/lib/drivers/Driver_Common.h" version="1.0.0"/>
+        <file category="header" name="firmware/source/lib/drivers/usart_driver/include/uart_driver.h" version="1.0.0"/>
+        <file category="header" name="firmware/source/lib/drivers/usart_driver/include/Driver_USART.h" version="1.0.0"/>
+        <file category="source" name="firmware/source/lib/drivers/usart_driver/code/uart_driver.c" version="1.0.0"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Libraries" Csub="GPIO" Cvariant="source" Cversion="1.0.657" condition="HAL_Condition">
+      <description>GPIO Driver for Montana</description>
+      <files>
+        <file category="header" name="firmware/source/lib/drivers/Driver_Common.h" version="1.0.0"/>
+        <file category="header" name="firmware/source/lib/drivers/gpio_driver/include/gpio_driver.h" version="1.0.0"/>
+        <file category="header" name="firmware/source/lib/drivers/gpio_driver/include/Driver_GPIO.h" version="1.0.0"/>
+        <file category="source" name="firmware/source/lib/drivers/gpio_driver/code/gpio_driver.c" version="1.0.0"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Libraries" Csub="Timer" Cvariant="source" Cversion="1.0.657" condition="HAL_Condition">
+      <description>Timer Driver for Montana</description>
+      <files>
+        <file category="header" name="firmware/source/lib/drivers/Driver_Common.h" version="1.0.0"/>
+        <file category="header" name="firmware/source/lib/drivers/timer_driver/include/Driver_TIMER.h" version="1.0.0"/>
+        <file category="header" name="firmware/source/lib/drivers/timer_driver/include/timer_driver.h" version="1.0.0"/>
+        <file category="source" name="firmware/source/lib/drivers/timer_driver/code/timer_driver.c" version="1.0.0"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Libraries" Csub="DMA" Cvariant="source" Cversion="1.0.657" condition="HAL_Condition">
+      <description>DMA Driver for Montana</description>
+      <files>
+        <file attr="config" category="header" name="firmware/source/lib/drivers/Driver_Common.h" version="1.0.0"/>
+        <file attr="config" category="header" name="firmware/source/lib/drivers/dma_driver/include/Driver_DMA.h" version="1.0.0"/>
+        <file attr="config" category="header" name="firmware/source/lib/drivers/dma_driver/include/dma_driver.h" version="1.0.0"/>
+        <file attr="config" category="source" name="firmware/source/lib/drivers/dma_driver/code/dma_driver.c" version="1.0.0"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="cc312" Csub="mbedcrypto" Cvariant="Debug_mbedcrypto" Cversion="1.0.657" condition="HAL_Condition">
+      <description>Mbed Crypto Library</description>
+      <files>
+        <file category="include" name="firmware/include/cc312/"/>
+        <file category="include" name="firmware/include/cc312/mbedtls/"/>
+        <file category="library" name="lib/cc312/Debug_mbedcrypto/libmbedcrypto.a"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="cc312" Csub="mbedtls" Cvariant="Debug_mbedtls" Cversion="1.0.657" condition="HAL_Condition">
+      <description>Mbedtls Library</description>
+      <files>
+        <file category="include" name="firmware/include/cc312/"/>
+        <file category="include" name="firmware/include/cc312/mbedtls/"/>
+        <file category="library" name="lib/cc312/Debug_mbedtls/libmbedtls.a"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="cc312" Csub="mbedx509" Cvariant="Debug_mbedx509" Cversion="1.0.657" condition="HAL_Condition">
+      <description>Mbed x509 Library</description>
+      <files>
+        <file category="include" name="firmware/include/cc312/"/>
+        <file category="include" name="firmware/include/cc312/mbedtls/"/>
+        <file category="library" name="lib/cc312/Debug_mbedx509/libmbedx509.a"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="cc312" Csub="sw-cc312" Cvariant="Debug_sw-cc312" Cversion="1.0.657" condition="HAL_Condition">
+      <description>Sw-cc312 Library</description>
+      <files>
+        <file category="include" name="firmware/include/cc312/"/>
+        <file category="include" name="firmware/include/cc312/mbedtls/"/>
+        <file category="include" name="firmware/include/cc312/sw-cc312/"/>
+        <file category="include" name="firmware/include/cc312/sw-cc312-sbrom/"/>    
+        <file category="library" name="lib/cc312/Debug_sw-cc312/libsw-cc312.a"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="cc312" Csub="pal_no_os" Cvariant="Debug_pal_no_os" Cversion="1.0.657" condition="HAL_Condition">
+      <description>Sw-cc312 pal_no_os Library</description>
+      <files>
+        <file category="include" name="firmware/include/cc312/"/>
+        <file category="include" name="firmware/include/cc312/mbedtls/"/>
+        <file category="include" name="firmware/include/cc312/sw-cc312/"/>
+        <file category="include" name="firmware/include/cc312/sw-cc312-sbrom/"/>    
+        <file category="library" name="lib/cc312/Debug_pal_no_os/libpal_no_os.a"/>
+      </files>
+    </component>
+
+    <!-- Bluetooth Profiles  -->
+
+    <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="BASC" Cvariant="release" Cversion="1.0.657" condition="BLE_Condition">
+      <description>Battery Service - Client Role</description>
+      <RTE_Components_h>
+#define RTE_ADDED_PRF_BASC               
+      </RTE_Components_h>
+      <files>
+        <file category="doc" name="documentation/ceva/RW-BLE-PRF-BAS-IS.pdf"/>
+        <file category="library" name="lib/ble_profiles/Release/libbasc.a"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="BASC" Cvariant="release_hci" Cversion="1.0.657" condition="BLE_Condition">
+      <description>Battery Service - Client Role</description>
+      <RTE_Components_h>
+#define RTE_ADDED_PRF_BASC               
+      </RTE_Components_h>
+      <files>
+        <file category="doc" name="documentation/ceva/RW-BLE-PRF-BAS-IS.pdf"/>
+        <file category="library" name="lib/ble_profiles/Release_HCI/libbasc.a"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="BASS" Cvariant="release" Cversion="1.0.657" condition="BLE_Condition">
+      <description>Battery Service Server Role</description>
+      <RTE_Components_h>
+#define RTE_ADDED_PRF_BASS               
+      </RTE_Components_h>
+      <files>
+        <file category="doc" name="documentation/ceva/RW-BLE-PRF-BAS-IS.pdf"/>
+        <file category="library" name="lib/ble_profiles/Release/libbass.a"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="BASS" Cvariant="release_hci" Cversion="1.0.657" condition="BLE_Condition">
+      <description>Battery Service Server Role</description>
+      <RTE_Components_h>
+#define RTE_ADDED_PRF_BASS               
+      </RTE_Components_h>
+      <files>
+        <file category="doc" name="documentation/ceva/RW-BLE-PRF-BAS-IS.pdf"/>
+        <file category="library" name="lib/ble_profiles/Release_HCI/libbass.a"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="CGMS" Cvariant="release" Cversion="1.0.657" condition="BLE_Condition">
+      <description>Continuous Glucose Monitoring (CGM) Profile - Server Role</description>
+      <RTE_Components_h>
+#define RTE_ADDED_PRF_CGMS               
+      </RTE_Components_h>
+      <files>
+	    <file category="doc" name="documentation/ceva/RW-BLE-PRF-CGMP-IS.pdf"/>
+        <file category="library" name="lib/ble_profiles/Release/libcgms.a"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="CGMS" Cvariant="release_hci" Cversion="1.0.657" condition="BLE_Condition">
+      <description>Continuous Glucose Monitoring (CGM) Profile - Server Role</description>
+      <RTE_Components_h>
+#define RTE_ADDED_PRF_CGMS               
+      </RTE_Components_h>
+      <files>
+	    <file category="doc" name="documentation/ceva/RW-BLE-PRF-CGMP-IS.pdf"/>
+        <file category="library" name="lib/ble_profiles/Release_HCI/libcgms.a"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="DISC" Cvariant="release" Cversion="1.0.657" condition="BLE_Condition">
+      <description>Device Information Service - Client Role</description>
+      <RTE_Components_h>
+#define RTE_ADDED_PRF_DISC               
+      </RTE_Components_h>
+      <files>
+        <file category="doc" name="documentation/ceva/RW-BLE-PRF-DIS-IS.pdf"/>
+        <file category="library" name="lib/ble_profiles/Release/libdisc.a"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="DISC" Cvariant="release_hci" Cversion="1.0.657" condition="BLE_Condition">
+      <description>Device Information Service - Client Role</description>
+      <RTE_Components_h>
+#define RTE_ADDED_PRF_DISC               
+      </RTE_Components_h>
+      <files>
+        <file category="doc" name="documentation/ceva/RW-BLE-PRF-DIS-IS.pdf"/>
+        <file category="library" name="lib/ble_profiles/Release_HCI/libdisc.a"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="DISS" Cvariant="release" Cversion="1.0.657" condition="BLE_Condition">
+      <description>Device Information Service Server</description>
+      <RTE_Components_h>
+#define RTE_ADDED_PRF_DISS               
+      </RTE_Components_h>
+      <files>
+        <file category="doc" name="documentation/ceva/RW-BLE-PRF-DIS-IS.pdf"/>
+        <file category="library" name="lib/ble_profiles/Release/libdiss.a"/>
+      </files>
+    </component>
+    <component Cclass="Device" Cgroup="Bluetooth Profiles" Csub="DISS" Cvariant="release_hci" Cversion="1.0.657" condition="BLE_Condition">
+      <description>Device Information Service Server</description>
+      <RTE_Components_h>
+#define RTE_ADDED_PRF_DISS               
+      </RTE_Components_h>
+      <files>
+        <file category="doc" name="documentation/ceva/RW-BLE-PRF-DIS-IS.pdf"/>
+        <file category="library" name="lib/ble_profiles/Release_HCI/libdiss.a"/>
+      </files>
+    </component>
+  </components>
+</package>

@@ -1,0 +1,6 @@
+/*! \mainpage Flash library interface
+ *
+ * These function help to enable flash programming and other operations.
+ * - \ref flashapi "Flash library Application Programming Interface"
+ *
+ */

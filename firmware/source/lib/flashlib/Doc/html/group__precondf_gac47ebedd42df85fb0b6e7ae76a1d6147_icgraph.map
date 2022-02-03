@@ -1,0 +1,6 @@
+<map id="Sys_Flash_ExecutePrecondFlashMassErase" name="Sys_Flash_ExecutePrecondFlashMassErase">
+<area shape="rect" id="node1" title="Apply precondition before executing CMD_MASS_ERASE command." alt="" coords="585,5,772,47"/>
+<area shape="rect" id="node2" href="$group__privf.html#ga84241b14ebf6525f1f2e9de18673d879" title="Erase all code and data regions of flash." alt="" coords="380,13,537,39"/>
+<area shape="rect" id="node3" href="$group__flashapi.html#ga00b2a19b39b51084eb1d697635ee08e3" title="Erase a single flash bank." alt="" coords="175,13,332,39"/>
+<area shape="rect" id="node4" href="$group__flashapi.html#gae2fa05f0b4c82c366cf85a15c444618c" title="Erase all data and code flash." alt="" coords="5,13,127,39"/>
+</map>

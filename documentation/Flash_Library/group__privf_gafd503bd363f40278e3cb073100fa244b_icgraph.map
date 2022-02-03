@@ -1,0 +1,4 @@
+<map id="Sys_Flash_WriteDoubleOperation" name="Sys_Flash_WriteDoubleOperation">
+<area shape="rect" id="node1" title="Write a 38&#45; bit word to flash." alt="" coords="216,5,435,32"/>
+<area shape="rect" id="node2" href="$group__privf.html#ga8388670e15b9053056d00ff37d84a04e" title="Write a 38&#45;bit word to a flash instance." alt="" coords="5,5,168,32"/>
+</map>

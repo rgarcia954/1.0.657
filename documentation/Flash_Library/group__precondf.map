@@ -1,0 +1,4 @@
+<map id="Command precondition" name="Command precondition">
+<area shape="rect" id="node1" title="Group of functions to apply correct state to the flash interface before performing a specific operati..." alt="" coords="188,13,343,38"/>
+<area shape="rect" id="node2" href="$group__privf.html" title="Flash library private functions which are not exposed by the programming interface." alt="" coords="5,5,140,45"/>
+</map>

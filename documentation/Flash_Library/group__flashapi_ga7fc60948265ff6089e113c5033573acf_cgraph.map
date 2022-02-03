@@ -1,0 +1,27 @@
+<map id="Flash_EraseSector" name="Flash_EraseSector">
+<area shape="rect" id="node1" title="Erase a sector flash." alt="" coords="5,264,139,291"/>
+<area shape="rect" id="node2" href="$group__sanityf.html#ga73fed24f874cd69c2e461e1e0fb5bf85" title="Check sanity of flash hardware interface Check that the flash hardware interface is powered up and co..." alt="" coords="219,147,373,173"/>
+<area shape="rect" id="node3" href="$group__privf.html#ga1e44dec267ce921d62cda60348da131e" title="Calculate unlock regions." alt="" coords="203,198,389,239"/>
+<area shape="rect" id="node4" href="$group__privf.html#ga04cebc2001a4494369f0540225b0d637" title="Erase a sector of flash in endurance mode Four identical voltages is applied for erase through retry ..." alt="" coords="201,264,391,291"/>
+<area shape="rect" id="node20" href="$group__privf.html#ga6d8824b8a4969c5334c9428c6d49135e" title="Erase a sector of flash without endurance mode A verification is performed to check if erase was succ..." alt="" coords="187,315,405,341"/>
+<area shape="rect" id="node24" href="$group__privf.html#gaa25febfacd0653c3f4f8ee6c7200f587" title="Get information for the flash address provided." alt="" coords="217,391,375,417"/>
+<area shape="rect" id="node5" href="$group__privf.html#ga8bfe7db7d6b4d66fcc72acd0cba1abdc" title="Verify if flash is empty." alt="" coords="459,264,666,291"/>
+<area shape="rect" id="node17" href="$group__privf.html#ga5b1bb4553858e3bb254fc1cf64faeadb" title="Erase a flash sector." alt="" coords="453,136,672,163"/>
+<area shape="rect" id="node6" href="$group__privf.html#gaa7289b4a88de769c7e93f1491865974f" title="Apply register value to flash control register." alt="" coords="742,107,909,133"/>
+<area shape="rect" id="node9" href="$group__pollf.html#gad76ddfd3c2f099ea1b90cb2d805249cc" title="Wait while the flash copier is busy." alt="" coords="729,355,921,381"/>
+<area shape="rect" id="node11" href="$group__precondf.html#gae5ff2b73462baba82572f70a371b6b14" title="Apply precondition before executing CMD_READ command." alt="" coords="732,289,919,330"/>
+<area shape="rect" id="node16" href="$group__precondf.html#ga21fc580e17445ecca5467902d72ed930" title="Apply precondition before using flash copier to read flash." alt="" coords="732,223,919,265"/>
+<area shape="rect" id="node7" href="$group__pollf.html#ga74bcedef9a6bba38e87187da599287c8" title="Wait while the busy flag is set on the flash interface." alt="" coords="1252,180,1419,207"/>
+<area shape="rect" id="node8" href="$group__pollf.html#gaf2a18b8049493dc9087ea63c082a73ea" title="Read if busy flag is set on the flash interface." alt="" coords="1483,180,1652,207"/>
+<area shape="rect" id="node10" href="$group__pollf.html#ga968042e85aa7aa8da6028048bc1412a0" title="Read if flash copier is busy." alt="" coords="990,355,1185,381"/>
+<area shape="rect" id="node12" href="$group__execcf.html#ga397ed5a44d671094de5266f531fc6d94" title="End ongoing flash command operation if interface is busy or sequential write operation is active &#160;and..." alt="" coords="979,231,1196,257"/>
+<area shape="rect" id="node15" href="$group__execcf.html#ga17532839c0b3fb548a2e4e760b7cfcd9" title="Execute a command on the flash interface This function checks if the interface is free before initiat..." alt="" coords="988,180,1187,207"/>
+<area shape="rect" id="node13" href="$group__pollf.html#ga201b9bd727c4423c4c83d831fa87a5db" title="Wait until the interface is requesting new data when the interface is in sequential programming mode." alt="" coords="1244,231,1427,257"/>
+<area shape="rect" id="node14" href="$group__pollf.html#ga578ecbd757bfeac48a3d19c3252c2332" title="Read if interface is requesting for new data in sequential programming mode." alt="" coords="1475,231,1660,257"/>
+<area shape="rect" id="node18" href="$group__privf.html#ga14c96419dd3b2f7512496a8eb2633726" title="Apply retry level to flash interface register." alt="" coords="733,5,917,32"/>
+<area shape="rect" id="node19" href="$group__precondf.html#gab935c4b19bb62254e4058945d11e9531" title="Apply precondition before executing CMD_SECTOR_ERASE command." alt="" coords="732,158,919,199"/>
+<area shape="rect" id="node21" href="$group__privf.html#ga73f716288fda7c028029943a61f4a4b0" title="Read delay control register no 3." alt="" coords="455,315,671,341"/>
+<area shape="rect" id="node23" href="$group__privf.html#ga29f8ae1d9c718bbb9b7e740f3154d9af" title="Write delay control register no 3." alt="" coords="454,365,671,392"/>
+<area shape="rect" id="node22" href="$group__privf.html#gaef34f4cd0c9af127f99e61a02b06cd10" title="Get delay register 3 address pointer." alt="" coords="720,405,931,432"/>
+<area shape="rect" id="node25" href="$group__sanityf.html#ga36dcbec083179c459532766f7421954f" title="Check sanity of flash address." alt="" coords="465,416,660,443"/>
+</map>

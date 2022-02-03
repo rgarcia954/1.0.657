@@ -1,0 +1,4 @@
+<map id="Poll status" name="Poll status">
+<area shape="rect" id="node1" title="Group of commands to poll and or wait for status of flash status." alt="" coords="188,13,272,38"/>
+<area shape="rect" id="node2" href="$group__privf.html" title="Flash library private functions which are not exposed by the programming interface." alt="" coords="5,5,140,45"/>
+</map>

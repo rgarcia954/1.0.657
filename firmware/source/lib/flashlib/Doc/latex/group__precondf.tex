@@ -1,0 +1,201 @@
+\hypertarget{group__precondf}{}\doxysection{Command precondition}
+\label{group__precondf}\index{Command precondition@{Command precondition}}
+
+
+Group of functions to apply correct state to the flash interface before performing a specific operation.  
+
+
+Collaboration diagram for Command precondition\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{group__precondf}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__precondf_ga2f7fef5d20f39f37f07aa7b096c267e5}{Sys\+\_\+\+Flash\+\_\+\+Execute\+Precond\+Flash\+Command}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Apply precondition before executing any command operation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__precondf_gadaaeab5f501fa352d9c43045e687d617}{Sys\+\_\+\+Flash\+\_\+\+Execute\+Precond\+Flash\+Write}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Apply precondition before executing C\+M\+D\+\_\+\+W\+R\+I\+TE command. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__precondf_gae5ff2b73462baba82572f70a371b6b14}{Sys\+\_\+\+Flash\+\_\+\+Execute\+Precond\+Flash\+Read}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Apply precondition before executing C\+M\+D\+\_\+\+R\+E\+AD command. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__precondf_gac47ebedd42df85fb0b6e7ae76a1d6147}{Sys\+\_\+\+Flash\+\_\+\+Execute\+Precond\+Flash\+Mass\+Erase}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Apply precondition before executing C\+M\+D\+\_\+\+E\+R\+A\+S\+E\+\_\+\+M\+A\+SS command. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__precondf_gab935c4b19bb62254e4058945d11e9531}{Sys\+\_\+\+Flash\+\_\+\+Execute\+Precond\+Flash\+Sector\+Erase}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Apply precondition before executing C\+M\+D\+\_\+\+E\+R\+A\+SE command. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__precondf_ga98f94e778e93dab3a9fb0c84216bdc99}{Sys\+\_\+\+Flash\+\_\+\+Execute\+Precond\+Flash\+Verify\+Empty}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Apply precondition before using the flash copier to read from flash. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Group of functions to apply correct state to the flash interface before performing a specific operation. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__precondf_ga2f7fef5d20f39f37f07aa7b096c267e5}\label{group__precondf_ga2f7fef5d20f39f37f07aa7b096c267e5}} 
+\index{Command precondition@{Command precondition}!Sys\_Flash\_ExecutePrecondFlashCommand@{Sys\_Flash\_ExecutePrecondFlashCommand}}
+\index{Sys\_Flash\_ExecutePrecondFlashCommand@{Sys\_Flash\_ExecutePrecondFlashCommand}!Command precondition@{Command precondition}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ExecutePrecondFlashCommand()}{Sys\_Flash\_ExecutePrecondFlashCommand()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Execute\+Precond\+Flash\+Command (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Apply precondition before executing any command operation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__precondf_ga2f7fef5d20f39f37f07aa7b096c267e5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__precondf_ga2f7fef5d20f39f37f07aa7b096c267e5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__precondf_gac47ebedd42df85fb0b6e7ae76a1d6147}\label{group__precondf_gac47ebedd42df85fb0b6e7ae76a1d6147}} 
+\index{Command precondition@{Command precondition}!Sys\_Flash\_ExecutePrecondFlashMassErase@{Sys\_Flash\_ExecutePrecondFlashMassErase}}
+\index{Sys\_Flash\_ExecutePrecondFlashMassErase@{Sys\_Flash\_ExecutePrecondFlashMassErase}!Command precondition@{Command precondition}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ExecutePrecondFlashMassErase()}{Sys\_Flash\_ExecutePrecondFlashMassErase()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Execute\+Precond\+Flash\+Mass\+Erase (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Apply precondition before executing C\+M\+D\+\_\+\+E\+R\+A\+S\+E\+\_\+\+M\+A\+SS command. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Preconditions to write for flash read operation\+: V\+R\+E\+A\+D1 = X, R\+E\+C\+A\+LL = X, L\+P\+\_\+\+M\+O\+DE = XHere is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__precondf_gac47ebedd42df85fb0b6e7ae76a1d6147_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__precondf_gac47ebedd42df85fb0b6e7ae76a1d6147_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__precondf_gae5ff2b73462baba82572f70a371b6b14}\label{group__precondf_gae5ff2b73462baba82572f70a371b6b14}} 
+\index{Command precondition@{Command precondition}!Sys\_Flash\_ExecutePrecondFlashRead@{Sys\_Flash\_ExecutePrecondFlashRead}}
+\index{Sys\_Flash\_ExecutePrecondFlashRead@{Sys\_Flash\_ExecutePrecondFlashRead}!Command precondition@{Command precondition}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ExecutePrecondFlashRead()}{Sys\_Flash\_ExecutePrecondFlashRead()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Execute\+Precond\+Flash\+Read (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Apply precondition before executing C\+M\+D\+\_\+\+R\+E\+AD command. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Preconditions to write for flash read operation\+: V\+R\+E\+A\+D1 = 0, R\+E\+C\+A\+LL = 0, L\+P\+\_\+\+M\+O\+DE = XHere is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__precondf_gae5ff2b73462baba82572f70a371b6b14_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__precondf_gae5ff2b73462baba82572f70a371b6b14_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__precondf_gab935c4b19bb62254e4058945d11e9531}\label{group__precondf_gab935c4b19bb62254e4058945d11e9531}} 
+\index{Command precondition@{Command precondition}!Sys\_Flash\_ExecutePrecondFlashSectorErase@{Sys\_Flash\_ExecutePrecondFlashSectorErase}}
+\index{Sys\_Flash\_ExecutePrecondFlashSectorErase@{Sys\_Flash\_ExecutePrecondFlashSectorErase}!Command precondition@{Command precondition}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ExecutePrecondFlashSectorErase()}{Sys\_Flash\_ExecutePrecondFlashSectorErase()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Execute\+Precond\+Flash\+Sector\+Erase (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Apply precondition before executing C\+M\+D\+\_\+\+E\+R\+A\+SE command. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Preconditions to write for flash read operation\+: V\+R\+E\+A\+D1 = X, R\+E\+C\+A\+LL = X, L\+P\+\_\+\+M\+O\+DE = XHere is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__precondf_gab935c4b19bb62254e4058945d11e9531_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__precondf_ga98f94e778e93dab3a9fb0c84216bdc99}\label{group__precondf_ga98f94e778e93dab3a9fb0c84216bdc99}} 
+\index{Command precondition@{Command precondition}!Sys\_Flash\_ExecutePrecondFlashVerifyEmpty@{Sys\_Flash\_ExecutePrecondFlashVerifyEmpty}}
+\index{Sys\_Flash\_ExecutePrecondFlashVerifyEmpty@{Sys\_Flash\_ExecutePrecondFlashVerifyEmpty}!Command precondition@{Command precondition}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ExecutePrecondFlashVerifyEmpty()}{Sys\_Flash\_ExecutePrecondFlashVerifyEmpty()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Execute\+Precond\+Flash\+Verify\+Empty (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Apply precondition before using the flash copier to read from flash. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Pre-\/requisites for flash verification
+
+Stop any ongoing F\+L\+A\+SH copier activity and wait for flash copier to be free
+
+Wait until flash copier is idleHere is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__precondf_ga98f94e778e93dab3a9fb0c84216bdc99_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__precondf_ga98f94e778e93dab3a9fb0c84216bdc99_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__precondf_gadaaeab5f501fa352d9c43045e687d617}\label{group__precondf_gadaaeab5f501fa352d9c43045e687d617}} 
+\index{Command precondition@{Command precondition}!Sys\_Flash\_ExecutePrecondFlashWrite@{Sys\_Flash\_ExecutePrecondFlashWrite}}
+\index{Sys\_Flash\_ExecutePrecondFlashWrite@{Sys\_Flash\_ExecutePrecondFlashWrite}!Command precondition@{Command precondition}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ExecutePrecondFlashWrite()}{Sys\_Flash\_ExecutePrecondFlashWrite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Execute\+Precond\+Flash\+Write (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Apply precondition before executing C\+M\+D\+\_\+\+W\+R\+I\+TE command. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Preconditions to write\+: V\+R\+E\+A\+D1 = X, R\+E\+C\+A\+LL = X, L\+P\+\_\+\+M\+O\+DE = XHere is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__precondf_gadaaeab5f501fa352d9c43045e687d617_icgraph}
+\end{center}
+\end{figure}

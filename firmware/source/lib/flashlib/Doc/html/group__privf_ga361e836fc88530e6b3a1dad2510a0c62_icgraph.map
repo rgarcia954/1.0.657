@@ -1,0 +1,6 @@
+<map id="Sys_Flash_ReadDouble" name="Sys_Flash_ReadDouble">
+<area shape="rect" id="node1" title="Read a 38&#45;bit word to flash." alt="" coords="396,31,557,57"/>
+<area shape="rect" id="node2" href="$group__flashapi.html#ga870bb031834a703c0f2f0b28b3b8d848" title="Read a 38&#45;bit word from flash." alt="" coords="201,5,332,32"/>
+<area shape="rect" id="node3" href="$group__privf.html#ga8388670e15b9053056d00ff37d84a04e" title="Write a 38&#45;bit word to a flash instance." alt="" coords="185,56,348,83"/>
+<area shape="rect" id="node4" href="$group__flashapi.html#gab0305beaf50489800b9b16a2464f1254" title="Write a 38&#45;bit word to flash." alt="" coords="5,56,137,83"/>
+</map>

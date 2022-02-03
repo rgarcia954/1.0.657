@@ -1,0 +1,7 @@
+<map id="Sys_Flash_ReadMainAccessConfig" name="Sys_Flash_ReadMainAccessConfig">
+<area shape="rect" id="node1" title="Read main access configuration." alt="" coords="419,57,612,98"/>
+<area shape="rect" id="node2" href="$group__flashapi.html#ga00b2a19b39b51084eb1d697635ee08e3" title="Erase a single flash bank." alt="" coords="194,5,351,32"/>
+<area shape="rect" id="node4" href="$group__accessf.html#ga80b46a97f784c3685c0ab1921be12431" title="Write code access configuration." alt="" coords="175,57,371,98"/>
+<area shape="rect" id="node5" href="$group__accessf.html#ga17d84afe198f1014b51a3c16d5d16d2a" title="Write data access configuration." alt="" coords="176,122,369,163"/>
+<area shape="rect" id="node3" href="$group__flashapi.html#gae2fa05f0b4c82c366cf85a15c444618c" title="Erase all data and code flash." alt="" coords="5,5,127,32"/>
+</map>

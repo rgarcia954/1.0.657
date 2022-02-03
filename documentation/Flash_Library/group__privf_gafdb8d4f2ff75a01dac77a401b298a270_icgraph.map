@@ -1,0 +1,4 @@
+<map id="Sys_Flash_WriteSequentialData" name="Sys_Flash_WriteSequentialData">
+<area shape="rect" id="node1" title="Execute a sequential write to flash." alt="" coords="260,5,471,32"/>
+<area shape="rect" id="node2" href="$group__privf.html#ga74182ec1d79513de3008e504a456df38" title="Perform a sequential write operation." alt="" coords="5,5,212,32"/>
+</map>

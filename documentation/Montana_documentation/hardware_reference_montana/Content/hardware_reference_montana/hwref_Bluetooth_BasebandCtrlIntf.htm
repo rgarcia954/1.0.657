@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" class="_Skins_HTML5___Side_Navigation" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="hardware_reference_montana.xml" data-mc-path-to-help-system="../../" data-mc-has-content-body="True" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="Web" data-mc-toc-path="[%=System.LinkedTitle%]|Bluetooth Low Energy Baseband Controller">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" /><title>Baseband Controller Interface</title>
+        <link href="../Resources/TableStyles/RegisterDetailSecond.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link href="../Resources/TableStyles/RegisterDetailFirst.css" rel="stylesheet" data-mc-stylesheet-type="table" />
+        <link href="../Resources/Stylesheets/SWM_user_manual_styles.css" rel="stylesheet" type="text/css" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="navigation" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" role="banner" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="only screen and (max-width: 1279px)" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="https://www.onsemi.com/" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" role="navigation" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div id="mc-main-content" role="main" data-mc-content-body="True">
+                                    <div class="NewContent">
+                                        <h1 class="Heading1"><a name="Baseband_Controller_Interface" data-mc-generated-bookmark="TOC"></a>Baseband Controller Interface</h1>
+                                        <h2 class="Heading2"><a name="Baseband_Controller_Clock" data-mc-generated-bookmark="TOC"></a>Baseband Controller Clock</h2>
+                                        <p class="Body">The BB&#160;controller master clock is a scaled-down version of the system clock, configured through the <span class="Register">CLK_DIV_CFG0_</span><span class="Register">BBCLK_PRESCALE</span> field of the <span class="Register">CLK_DIV_CFG0</span> register, and must fulfill these requirements:</p>
+                                        <ul>
+                                            <li>The ratio between the system clock and the BB&#160;controller master clock frequencies must be an integer.</li>
+                                            <li>The BB&#160;controller master clock frequency must be an integer multiple of 1 MHz, from 6 MHz up to 16 MHz.</li>
+                                        </ul>
+                                        <p class="Body">The internal baseband controller clock divider must be set according to the BB controller master clock frequency, to generate a 1 MHz reference clock. It can be configured in the <span class="Register">BBIF_CTRL_</span><span class="Register">CLK_SEL</span> field of the <span class="Register">BBIF_CTRL</span> register with an integer value from 6 up to 24.</p>
+                                        <p class="Body">The <span class="Register">CLK_ENABLE</span> bit controls the external gating of the different baseband controller clocks. If the baseband controller is not used, we recommend that you disable the clocks and power down the baseband controller via the <span class="Register">SYSCTRL_RF_POWER</span><span class="Register">_CFG</span> register. We also recommend that you power up the baseband controller using the following sequence:</p>
+                                        <div class="CodeBorder">
+                                            <p class="Code"><span class="ForestGreen">/* Enable RF power switches */</span>
+                                            </p>
+                                            <p class="Code" xml:space="preserve">SYSCTRL-&gt;RF_POWER_CFG |= BB_POWER_ENABLE;</p>
+                                            <p class="Code" xml:space="preserve">&#160;</p>
+                                            <p class="Code"><span class="ForestGreen">/* Remove RF isolation */</span>
+                                            </p>
+                                            <p class="CodeLast">SYSCTRL-&gt;RF_ACCESS_CFG |= BB_ACCESS_ENABLE;</p>
+                                            <p class="Code"><span class="ForestGreen">/* Disable and Enable BB access to allow RF to work properly */</span>
+                                            </p>
+                                            <p class="Code" xml:space="preserve">SYSCTRL-&gt;RF_ACCESS_CFG &amp;= (~(BB_ACCESS_ENABLE));</p>
+                                            <p class="Code" xml:space="preserve">SYSCTRL-&gt;RF_ACCESS_CFG |= BB_ACCESS_ENABLE;</p>
+                                        </div>
+                                        <p class="Note" data-mc-autonum="&lt;i&gt;NOTE: &lt;/i&gt;"><span class="autonumber"><span><i>NOTE: </i></span></span>By default, the Bluetooth Low Energy initialization function (BLE_KE_Init) assumes that application has enabled the BB controller master clocks and provides a master clock of 8 MHz. Although configuring 16 MHz works, full functionality is not guaranteed, and this setting is not recommended.</p>
+                                    </div>
+                                    <h1 class="Heading1"><a name="WLAN_Coexistence" data-mc-generated-bookmark="TOC"></a>WLAN Coexistence</h1>
+                                    <p class="Body"><span class="mc-variable hardware_reference_montana.Product_Name variable">Montana</span>  can be collocated with another 2.4 GHz radio technology such as another Bluetooth device or WiFi chip; this is referred to as WLAN coexistence. For example, they may share the same antenna, but the electromagnetic interference might impact the performance and/or functionality of both systems. The coexistence functionality can be used when, for example, an external amplifier is required, where it needs to be activated before a TX activity. For this purpose the BB controller can provide some signals to an external device indicating its radio (Bluetooth Low Energy) activity, and it can accept the other device’s indication as an input signal that is called a WLAN signal. The BB controller includes the following provisions for Coexistence with WLAN devices: </p>
+                                    <ul>
+                                        <li>Ability to report real time Bluetooth Low Energy TX and RX activity to a collocated WLAN device</li>
+                                        <li>Ability to abort Bluetooth Low Energy TX and/or RX activity when real time WLAN RX activity is reported</li>
+                                        <li>Ability to abort Bluetooth Low Energy TX and/or RX activity when real time WLAN TX activity is reported</li>
+                                        <li>A Bluetooth Low Energy real time synchronization signal</li>
+                                    </ul>
+                                    <p class="Body">As output signals, the following signals can be routed through any configured GPIO to report Bluetooth Low Energy activities through configuring the <span class="Register">GPIO_CFG</span><span class="Register">*</span> registers:</p>
+                                    <ul>
+                                        <li>WLAN coex sync signal that is generated synchronously with internal 625 μs timing reference</li>
+                                        <li>WLAN coex in a process signal that is raised when any TX or RX is ongoing</li>
+                                        <li>WLAN coex TX signal that is generated when a TX activity is happening</li>
+                                        <li>WLAN coex RX signal that is generated during any RX activity</li>
+                                        <li>WLAN coex PTI signal (4 bits) that indicates the priority value of the ongoing activity</li>
+                                    </ul>
+                                    <p class="Body">The Bluetooth Low Energy activity signals (ble_rx and ble_tx) can be generated before the actual time when are scheduled for in advanced by a maximum of 16 μs through the <span class="Register">BB_COEXIFCNTL2_</span><span class="Register">RX_ANT_DELAY</span> and <span class="Register">BB_COEXIFCNTL2_</span><span class="Register">TX_ANT_DELAY</span> fields of the <span class="Register">BB_COEXIFCNTL2</span> register. By default, this time is set to zero.</p>
+                                    <p class="Body">A Bluetooth Low Energy activity (RF activity) can be aborted if the relevant external WLAN signal is set (providing it is routed through a GPIO), or when the software sets the <span class="Register">BBIF_COEX_CTRL_TX</span> or <span class="Register">BBIF_COEX_CTRL_RX</span> field of the <span class="Register">BBIF_COEX_CTRL</span> register. The abort mechanism can be enabled or disabled through the <span class="Register">BB_COEXIFCNTL0_</span><span class="Register">WLANTXMSK</span> and <span class="Register">BB_COEXIFCNTL0_</span><span class="Register">WLANRXMSK</span> fields of the <span class="Register">BB_COEXIFCNTL0</span> register.</p>
+                                    <p class="Body">As input, WLAN TX and WLAN RX external activities can be routed from any GPIO to baseband controller input signals wlan_tx and wlan_rx, by configuring the desired GPIO as input and selecting  accordingly via the <span class="Register">GPIO_SRC_BB_COEX</span> register. (See Chapter 1 "General Purpose Input/Output" on page 1for more information.)</p>
+                                    <p class="Body">The <a href="#WLAN" class="FigureHTML MCXref xref xrefFigureHTML">"WLAN Coexistence Timing When WLC&lt;TX/RX&gt;PRIOMODE = “00”" figure</a> and the <a href="#WLAN2" class="FigureHTML MCXref xref xrefFigureHTML">"WLAN Coexistence Timing When WLC&lt;TX/RX&gt;PRIOMODE = “01”" figure</a> show two WLAN coexistence interface timing diagrams, including TX/RX power-up delay for two modes, when the <span class="Register">BB_COEXIFCNTL0_</span><span class="Register">WLCRXPRIOMODE</span> and <span class="Register">BB_COEXIFCNTL0_</span><span class="Register">WLCTXPRIOMODE</span> fields in the <span class="Register">BB_COEXIFCNTL0</span> register are set to 0 or 1 to include or exclude TX and RX power-up delays (see Section&#160;1.0.1 “BB_COEXIFCNTL0” on page&#160;1 for&#160;field descriptions):</p>
+                                    <p>
+                                        <img src="wlan_coex_timing_priomode00.PNG" />
+                                    </p>
+                                    <p class="Figure_title" data-mc-autonum="Figure: "><span class="autonumber"><span>Figure: </span></span><a name="WLAN"></a>WLAN Coexistence Timing When WLC&lt;TX/RX&gt;PRIOMODE = “00”</p>
+                                    <p>
+                                        <img src="wlan_coex_timing_priomode01.PNG" />
+                                    </p>
+                                    <p class="Figure_title" data-mc-autonum="Figure: "><span class="autonumber"><span>Figure: </span></span><a name="WLAN2"></a>WLAN Coexistence Timing When WLC&lt;TX/RX&gt;PRIOMODE = “01”</p>
+                                    <p class="Body">The status of Bluetooth Low Energy activities can be read at any time through register <span class="Register">BBIF_STATUS</span>. The <span class="Register">BBIF_STATUS_</span><span class="Register">CLK_STATUS</span> field in this register is low when it is in Active Clock Mode, and is high when it switches to the Low Power Clock Mode that is called Bluetooth Low Energy deep sleep mode. The <span class="Register">BBIF_STATUS_</span><span class="Register">LINK_FORMAT</span> field in this register indicates the type of activity that is ongoing, while <span class="Register">BBIF_STATUS_</span><span class="Register">LINK_LABEL</span> shows the Bluetooth Low Energy activity index that the application is informed of through GAP APIs when activity is created. The <span class="Register">BBIF_STATUS_</span><span class="Register">LINK_FORMAT</span> values are as listed below (in the binary format found in the field):</p>
+                                    <ul>
+                                        <li>00010: Master Connect</li>
+                                        <li>00011: Slave Connect</li>
+                                        <li>00100: Low Duty Cycle Advertiser</li>
+                                        <li>00101: High Duty Cycle Advertiser</li>
+                                        <li>00110: Extended Advertiser</li>
+                                        <li>01000: Passive Scanner</li>
+                                        <li>01001: Active Scanner</li>
+                                        <li>01010: Extended Passive Scanner</li>
+                                        <li>01011: Extended Active Scanner</li>
+                                        <li>01110: Initiator</li>
+                                        <li>01111: Extended Initiator</li>
+                                        <li>11100: TX Test Mode</li>
+                                        <li>11101: RX Test Mode</li>
+                                        <li>11110: TX/RX Test Mode</li>
+                                    </ul>
+                                    <p class="Body">The status of Bluetooth Low Energy coexistence signals can be read through register <span class="Register">BBIF_COEX_STATUS</span>. In addition, BBIF allows coexistence signals to generate a desired interrupt when any TX or RX activity starts or finishes. The desired interrupt is enabled by setting the fields of register <span class="Register">BBIF_COEX_INT_CFG</span>. Interrupts can be configured for either rising edge or falling edge, or any edge of the <span class="Register">BBIF_COEX_STATUS</span>_<span class="Register">BLE_TX</span> and <span class="Register">BBIF_COEX_STATUS</span>_<span class="Register">BLE_RX</span> signals. The signal bit <span class="Register">BBIF_COEX_STATUS</span>_<span class="Register">BLE_IN_PROCESS</span> in the <span class="Register">BBIF_COEX_STATUS</span> register is set when any of radio bits <span class="Register">BBIF_COEX_STATUS</span>_<span class="Register">BLE_RX</span> or <span class="Register">BBIF_COEX_STATUS</span>_<span class="Register">BLE_TX</span> are set and goes back to low when the radio activities finish.</p>
+                                    <p class="Body">The <span class="Register">BBIF_COEX_STATUS</span>_<span class="Register">EVENT_IN_PROCESS</span> signal is raised when the baseband controller schedules an event, not when radio activity (including TX, RX, and IFS) is ongoing, and it is different with <span class="Register">BBIF_COEX_STATUS</span>_<span class="Register">BLE_IN_PROCESS</span>. The <span class="Register">BBIF_COEX_STATUS_EVENT_IN_PROCESS</span> signal is shown in <a href="#WLAN" class="FigureHTML MCXref xref xrefFigureHTML">"WLAN Coexistence Timing When WLC&lt;TX/RX&gt;PRIOMODE = “00”" figure</a> and <a href="#WLAN2" class="FigureHTML MCXref xref xrefFigureHTML">"WLAN Coexistence Timing When WLC&lt;TX/RX&gt;PRIOMODE = “01”" figure</a>.</p>
+                                    <h1 class="Heading1"><a name="BB_Controller_Interrupts" data-mc-generated-bookmark="TOC"></a>BB Controller Interrupts</h1>
+                                    <p class="Body">The baseband controller interrupt generator creates the following interrupts:</p>
+                                    <ul>
+                                        <li><span class="Code">BLE_ERROR_IRQ</span>: Error interrupt, generated when undesired behavior or bad programming occurs in the RW-Bluetooth Low Energy Core. Error status is reported in <span class="Register">BB_ERRORTYPESTAT</span> register.</li>
+                                        <li><span class="Code">BLE_HSLOT_IRQ</span>: 312.5 μs half slot interrupt, available in active mode. This interrupt can be partially masked using sub-rating patterns.</li>
+                                        <li><span class="Code">BLE_SLP_IRQ</span>: End of Sleep mode interrupt</li>
+                                        <li><span class="Code">BLE_CRYPT_IRQ</span>: Encryption engine interrupt, generated when SW-driven AES-128 ciphering/deciphering process is finished</li>
+                                        <li><span class="Code">BLE_FINETGT_IRQ</span>: Fine Target Timer interrupt generated when Fine Target timer expires. Timer resolution is 312.5 μs.</li>
+                                        <li><span class="Code">BLE_TIMESTAP_TGT1</span> and <span class="Code">BLE_TIMESTAP_TGT2</span>: Time Stamp Target interrupts generated when reaching a desired CLKN and fine counter value. Instant precision of 0.5 μs.</li>
+                                        <li><span class="Code">BLE_SW_IRQ</span>: SW triggered interrupt generated on SW request through register access (the <span class="Register">BB_BLECNTL_SWINT_REQ</span> of the <span class="Register">BB_BLECNTL</span> register)</li>
+                                        <li><span class="Code">BLE_FIFO_IRQ</span>: Activity FIFO interrupt, generated each time any of the following internal events is generated:<ul style="list-style-type: circle;"><li> Start of events internal interrupt. Generated on any event starting instant.</li><li>End of events internal interrupt. Generated on normal termination, or on anticipated pre-fetch mechanism request.</li><li>Skipping of events internal interrupt. Generated when an event is not processed for priority management reasons.</li><li>End of transmitted and acknowledged packet, or when number of transmitted packets equals a threshold set by the Bluetooth Low Energy stack</li><li> End of received packets, or when number of received packets equals a threshold set by the Bluetooth Low Energy stack</li></ul></li>
+                                    </ul>
+                                    <p class="Body">Each interrupt can be masked using the <span class="Register">BB_INTCNTL*</span> registers. Each interrupt status is provided in the <span class="Register">BB_INTSTAT*</span> registers. Each interrupt is acknowledged by writing to the corresponding <span class="Register">BB_INTACK*</span> registers. Each interrupt has its own output to the Arm Cortex-M33 processor interrupt controller. </p>
+                                    <p class="Body">The <span class="Register">BB_ACTFIFOSTAT</span> register provides internal details about real time Bluetooth Low Energy event operations, which are stored in the FIFO IRQ, including separated fields for skipped events and the current event exchange table entry index.</p>
+                                    <p class="Body">The FIFO has an interrupt depth of 16, and generates an interrupt each time it is loaded by any internal interrupt while empty. FIFO interrupt status is kept high until all the entries are read by the RW-Bluetooth Low Energy software. The access to the next element of the FIFO is performed by acknowledging the FIFO interrupt. The basic procedure to read the FIFO IRQ is the following:</p>
+                                    <ol>
+                                        <li value="1">RW-Bluetooth Low Energy software waits for a <span class="Code">BLE_FIFO_IRQ</span> to be generated.</li>
+                                        <li value="2"><span class="Code">BLE_FIFO_IRQ</span> is generated, and RW-Bluetooth Low Energy software enters its FIFO interrupt management routine.</li>
+                                        <li value="3">RW-Bluetooth Low Energy software reads the value in the <span class="Register">BB_</span><span class="Register">ACTFIFOSTAT</span> register, and processes the reported pending interrupt(s).</li>
+                                        <li value="4">RW-Bluetooth Low Energy software acknowledges the FIFO interrupt, asking the FIFO interrupt to provide next elements (if any).</li>
+                                        <li value="5">RW-Bluetooth Low Energy software reads the <span class="Register">BB_INTSTAT1_</span><span class="Register">FIFOINTSTAT</span> field of the <span class="Register">BB_INTSTAT1</span> register to determine whether FIFO is empty.</li>
+                                        <li value="6">If the FIFO is not empty, loop to step 3.</li>
+                                        <li value="7">If the FIFO is empty, loop to step 1.</li>
+                                    </ol>
+                                    <p class="Body">When the Bluetooth Low Energy software stack is used, all Bluetooth Low Energy interrupts are handled by the Bluetooth Low Energy software stack, and interrupt software routines are not exposed to the application.</p>
+                                    <h1 class="Heading1"><a name="Baseband_Counters_and_Timers" data-mc-generated-bookmark="TOC"></a>Baseband Counters and Timers</h1>
+                                    <p class="Body">The BB controller can be put in two modes: </p>
+                                    <ul>
+                                        <li>Active Mode </li>
+                                        <li>Low Power Mode (Bluetooth Low Energy sleep mode)</li>
+                                    </ul>
+                                    <h2 class="Heading2"><a name="Active_Mode" data-mc-generated-bookmark="TOC"></a>Active Mode </h2>
+                                    <p class="Body">In Active Mode, which is the normal mode in which Bluetooth Low Energy events are processed, there are some counters and timers that are used by the Bluetooth Low Energy software stack. Counters are available to the applications, though timers are not. If an application does not use the Bluetooth Low Energy stack, the application can use these counters as general purpose timers. There are three of these counters, as follows:</p>
+                                    <ul>
+                                        <li>CLKN: A 28-bit counter with a 312.5 μs precision, which wraps after approximately 23.3 hours</li>
+                                        <li>FINECNT: A 10-bit fine counter with 0.5 us precision, which wraps every 625 increments to zero, meaning that it counts up to 624 μs</li>
+                                        <li>BB low power clock timer: A 32-bit wakeup counter that counts the number of low power clk clock cycles (used only in Low Power Mode)</li>
+                                    </ul>
+                                    <p class="Body">The CLKN and FINECNT are clocked synchronously. The value of the BB_SLOTCLK and FINETIMECNT counters can be read at any time by the software or the Bluetooth Low Energy stack, using the following mechanism: </p>
+                                    <ul>
+                                        <li>Set the field <span class="Register">BB_SLOTCLK_</span><span class="Register">SAMP</span> field of the <span class="Register">BB_SLOTCLK</span> register to get the current samples of counters.</li>
+                                        <li>Wait until it is reset, and then read the saved sample of the counters from the <span class="Register">BB_CLKN_SCLK</span> field of the  of the <span class="Register">BB_CLKN</span> register (28 bits) and the <span class="Register">BB_FINETIMECNT</span><span class="Register">_FINECNT</span> field of the <span class="Register">BB_FINETIMECNT</span> register (10 bits).</li>
+                                    </ul>
+                                    <p class="Body">We recommend that you disable interrupts before reading the value of counters, and enable the interrupts again once the counters have been read. The combination of these counters can be used by software at any time, as general real time timer.</p>
+                                    <p class="Body">In the Bluetooth Low Energy stack, these counters are used by HW to capture the times at which any activity or event has happened in shared memory, so that later on the Bluetooth Low Energy stack can read them and find out the real time value associated with any event or packet.</p>
+                                    <p class="Body">There are three timers that can generate interrupts when they are configured to be used by software for a desired period of time. When the Bluetooth Low Energy stack is used, these timers are not available to applications, as the Bluetooth Low Energy stack uses them for its own internal protocol timers and kernel timer:</p>
+                                    <ul>
+                                        <li>Fine Timer Target: A 28-bit timer with 312.5 μs precision</li>
+                                        <li>Timestatmp Target 1: with 0.5 μs precision</li>
+                                        <li>Timestamp Target 2: with 0.5 μs precision</li>
+                                    </ul>
+                                    <p class="Body">These timers can be configured by setting the desired target values and enabling the appropriate interrupt bit in the <span class="Register">BB_INTCNTL0</span> register. Refer to Section&#160;1.1 “Baseband Registers” on page&#160;1 for descriptions of these registers/fields: the <span class="Register">BB_FINETIMTGT_</span><span class="Register">BB_FINETARGET</span> field of the <span class="Register">BB_FINETIMTGT</span> register, the <span class="Register">BB_HMICROSECTGT1</span><span class="Register">_HMICROSECTGT1</span> field of the <span class="Register">BB_HMICROSECTGT1</span> register, the <span class="Register">BB_CLKNTGT1</span><span class="Register">_CLKNTGT1</span> field of the <span class="Register">BB_CLKNTGT1</span> register, the <span class="Register">BB_HMICROSECTGT2</span><span class="Register">_HMICROSECTGT2</span> field of the <span class="Register">BB_HMICROSECTGT2</span> register, and the <span class="Register">BB_CLKNTGT2</span><span class="Register">_CLKNTGT2</span> field of the <span class="Register">BB_CLKNTGT2</span> register. These timers use the counters and target value registers to generate an interrupt when the counters reach to the configured target values.</p>
+                                    <p class="Body">The Bluetooth Low Energy software stack configures Timestamp Target2 with resolution 1 ms for kernel timer purposes when required, which means that the kernel timer has resolution 1 ms.</p>
+                                    <h2 class="Heading2"><a name="Low_Power_Mode" data-mc-generated-bookmark="TOC"></a>Low Power Mode </h2>
+                                    <p class="Body">In <span class="mc-variable hardware_reference_montana.Product_Name variable">Montana</span>, when the Bluetooth Low Energy controller is put in Low Power Mode (deep sleep mode), the low power timer counts the number of low power clock cycles when all clocks are disabled and/or BB controller is powered off, to wake up the BB controller at the right time so that it can continue processing the scheduled activities programmed by the Bluetooth Low Energy software stack. The low power timer is sourced from an RTC clock that can be any one of the following options:</p>
+                                    <ul>
+                                        <li>Crystal 32768 Hz (XTAL 32K)</li>
+                                        <li>RC 32 kHz oscillator</li>
+                                        <li>One of GPIOs 0 to 3</li>
+                                    </ul>
+                                    <p class="Body">By default, the timings for sleep duration are calculated assuming a 32768 low power clock frequency. However, any desired frequency (for example, between 10 to 100 kHz) can be provided externally through GPIOs, and therefore the Bluetooth Low Energy stack needs to be informed of the frequency for its own calculations through the API <span class="Function">LPCLK_PeriodValue_Set(average_period)</span> where an application has to call it, at least in PARAM_ID_LPCLK_NO_XTAL32K in the function <span class="Function">uint8_t Device_BLE_Param_Get(uint8_t param_id, uint8_t *lengthPtr, uint8_t *buf)</span>. The value of the <span class="Code">average_period</span> argument needs to be provided in the application. For example, the code below shows how a 40 kHz clock can be used as the source of the low power clock:</p>
+                                    <div class="CodeBorder">
+                                        <p class="CodeLast">...</p>
+                                        <p class="Code">#define LPCLK_PERIOD_VALUE             (float)(1000000.0 / 40000)</p>
+                                        <p class="Code">case PARAM_ID_LPCLK_NO_XTAL32K:</p>
+                                        <p class="Code">buf[0] = true;</p>
+                                        <p class="Code">LPCLK_PeriodValue_Set(LPCLK_PERIOD_VALUE);</p>
+                                        <p class="CodeLast">break;</p>
+                                        <p class="Code">...</p>
+                                    </div>
+                                    <p class="Body">The accuracy of the low power clock must be better than 500 ppm to be able to keep the Bluetooth Low Energy connection stable, to send periodic advertisements, or to synchronize with a peer device’s periodic advertisements. However, a mechanism has been implemented that allows acceptance of any desired clock accuracy through <span class="Code">PARAM_ID_LPCLK_DRIFT</span> in the<span class="Function"> Device_BLE_Param_Get()</span> function. When low power clock accuracy varies (for example, because of fast temperature changes for the 32 kHz crystal oscillator), this mechanism allows the application to provide greater than 500 ppm accuracy, while still maintaining the Bluetooth Low Energy link with a central device. Accepting clock accuracies higher than 500 ppm is allowed only for devices in the peripheral role, according to the Bluetooth Low Energy core specification.</p>
+                                    <p class="Body">Please refer to the <span class="Filename">ble_peripheral_server_sleep</span> sample application to see how an application can configure the clock accuracy.</p>
+                                    <p class="Body">To keep the baseband low power timer active when the device is in Sleep Power Mode (with VDDC retention regulator disabled), the following procedure needs to be applied:</p>
+                                    <ol>
+                                        <li value="1">Enable the <span class="Register">ACS_VDDRET_CTRL_VDDTRET_EN</span> bit <span class="Register"></span>in the <span class="Register">ACS_VDDRET_CTRL</span> register to keep the baseband low power timer powered.</li>
+                                        <li value="2">Configure the baseband controller register <span class="Register">BB_DEEPSLWKUP</span> to determine the time in low power clock cycles before waking up the device.</li>
+                                        <li value="3">In the baseband controller register <span class="Register">BB_ENBPRESET</span>, configure these fields:<ol><li value="1"><span class="Register">BB_ENBPRESET_</span><span class="Register">TWOSC</span>, defining the time in low power clock cycles allowed for stabilization of the high frequency oscillator. The <span class="Register">BB_ENBPRESET_</span><span class="Register">TWOSC</span> field controls the signal osc_en that is internally used to wake up the ACS and bring back the system from Sleep Mode to Run  Mode.</li><li value="2"><span class="Register">BB_ENBPRESET_</span><span class="Register">TWRM</span>, defining the time in low power clock cycles allowed for the radio module to leave Low Power Mode. The <span class="Register">BB_ENBPRESET_</span><span class="Register">TWRM</span> field controls the signal radio_en that is internally used to manage the isolation of the baseband low power timer when the device is powered down. Only the baseband low power timer input signals are isolated (except the external wakeup request available through the <span class="Register">BBIF_CTRL_</span><span class="Register">WAKEUP_REQ</span> field of the <span class="Register">BBIF_CTRL</span> register). The output signals remain available.</li></ol></li>
+                                        <li value="4">Make sure that the following conditions are fulfilled:<ol><li value="1">The sleep time defined in the register <span class="Register">BB_DEEPSLWKUP</span> is larger than the value of the <span class="Register">BB_ENBPRESET_</span><span class="Register">TWOSC</span> field in the <span class="Register">BB_ENBPRESET</span> register.</li><li value="2">The <span class="Register">BB_ENBPRESET_</span><span class="Register">TWOSC</span> value is large enough that the system has time to go back to Run Mode and be ready to catch the baseband wakeup interrupt BLE_SLP_IRQ.</li><li value="3">The <span class="Register">BB_ENBPRESET_</span><span class="Register">TWOSC</span> value is larger than the value of the <span class="Register">BB_ENBPRESET_</span><span class="Register">TWRM</span> field in the same register (at least two low power clock cycles), so that the system has time to go back to Run Mode before the baseband low power timer isolation is removed.</li></ol></li>
+                                        <li value="5">Request the baseband low power timer to go into Deep Sleep Mode by setting the three bits <span class="Register">BB_DEEPSLCNTL_</span><span class="Register">DEEP_SLEEP_ON</span>, <span class="Register">BB_DEEPSLCNTL_</span><span class="Register">RADIO_SLEEP_EN</span>, and <span class="Register">BB_DEEPSLCNTL_</span><span class="Register">OSC_SLEEP_EN</span> of the <span class="Register">BB_DEEPSLCNTL</span> register.</li>
+                                        <li value="6">Wait until the status bits <span class="Register">BBIF_STATUS_</span><span class="Register">OSC_EN</span> and <span class="Register">BBIF_STATUS_</span><span class="Register">RADIO_EN</span> of the <span class="Register">BBIF_STATUS</span> register are reset, indicating that the baseband low power timer is in Deep Sleep Mode and properly isolated.</li>
+                                        <li value="7">Set the system in Sleep Power Mode.</li>
+                                    </ol>
+                                    <p class="Body">When coming back from Sleep Mode to Run Mode, we recommend that you use the following procedure:</p>
+                                    <ol>
+                                        <li value="1">The <span class="Code">OSC_EN</span> signal is set by the baseband low power timer, and automatically wakes up the ACS, which brings back the system from Sleep Mode to Run Mode.</li>
+                                        <li value="2">The <span class="Code">RADIO_EN</span> signal is set by the baseband low power timer and the isolation is automatically removed.</li>
+                                        <li value="3">Power up the baseband controller by setting consecutively the <span class="Register">SYSCTRL_RF_POWER_</span><span class="Register">BB_STARTUP</span> bit and, at least 2 μs later, the <span class="Register">SYSCTRL_RF_POWER_</span><span class="Register">BB_ENABLE</span> bit of the <span class="Register">SYSCTRL_RF_POWER</span> register.</li>
+                                        <li value="4">Remove the baseband controller isolation by setting the <span class="Register">SYSCTRL_RF_ACCESS_</span><span class="Register">BB_ACCESS</span> bit of the <span class="Register">SYSCTRL_RF_ACCESS</span> register.</li>
+                                        <li value="5">Enable the baseband controller clocks by setting the <span class="Register">BBIF_CTRL_</span><span class="Register">CLK_ENABLE</span> bit of the <span class="Register">BBIF_CTRL</span> register.</li>
+                                        <li value="6">Wait for the baseband wakeup interrupt BLE_SLP_IRQ, which is generated once the baseband low power timer sleep timer has expired.</li>
+                                    </ol>
+                                    <p class="Body">In addition to the baseband low power timer, it is possible to wake up the baseband controller by setting the <span class="Register">BBIF_CTRL_WAKEUP_REQ</span> bit of the <span class="Register">BBIF_CTRL</span>&#160;register. Since no external signal is routed to the baseband controller from a GPIO,  it is the responsibility of the application (software) to control this bit, for example, when <span class="mc-variable hardware_reference_montana.Product_Name variable">Montana</span> is wakened up by an external wakeup source.</p>
+                                    <p class="Body">The <a href="#Active" class="FigureHTML MCXref xref xrefFigureHTML">"Active Mode to Low Power Mode Timing Diagram" figure</a>, the <a href="#Deep" class="FigureHTML MCXref xref xrefFigureHTML">"Deep Sleep Mode – Standard Termination by Baseband Low Power Timer" figure</a>, and the <a href="#Deep2" class="FigureHTML MCXref xref xrefFigureHTML">"Deep Sleep Mode – Aborted by Wakeup Request" figure</a> show the timing when the baseband controller is in Deep Sleep Mode (low power clock mode) and when it is awakened by the baseband low power timer or by an external wakeup request:</p>
+                                    <p>
+                                        <img src="active_mode_to_low_pwr_timing_856x443.png" style="width: 856;height: 443;" />
+                                    </p>
+                                    <p class="Figure_title" data-mc-autonum="Figure: "><span class="autonumber"><span>Figure: </span></span><a name="Active"></a>Active Mode to Low Power Mode Timing Diagram</p>
+                                    <p>
+                                        <img src="deep_sleep_mode_bb_low_pwr_timer_976x397.png" style="width: 976;height: 397;" />
+                                    </p>
+                                    <p class="Figure_title" data-mc-autonum="Figure: "><span class="autonumber"><span>Figure: </span></span><a name="Deep"></a>Deep Sleep Mode – Standard Termination by Baseband Low Power Timer</p>
+                                    <p>
+                                        <img src="deep_sleep_aborted_wakeup.png" />
+                                    </p>
+                                    <p class="Figure_title" data-mc-autonum="Figure: "><span class="autonumber"><span>Figure: </span></span><a name="Deep2"></a>Deep Sleep Mode – Aborted by Wakeup Request</p>
+                                    <p class="Body">An external wakeup request can be filtered when the <span class="Register">BB_DEEPSLCNTL</span><span class="Register">_EXTWKUPDSB</span> field in the <span class="Register">EXTWKUPDSB</span> register is set. The wakeup_request must be maintained high for at least two low power clock cycles to be taken into account correctly. Although the <span class="Register">BB_ENBPRESET_TWOSC</span>, <span class="Register">BB_ENBPRESET_</span><span class="Register">TWRM</span>, and <span class="Register">BB_ENBPRESET_</span><span class="Register">TWEXT</span> fields in the <span class="Register">BB_ENBPRESET</span> register can be set by the application, we suggest that the <span class="Register">BB_ENBPRESET_TWOSC</span> parameters only be adjusted when the Bluetooth Low Energy stack is used. After wakeup, the value of <span class="Register">BB_ENBPRESET_TWOSC</span> is the time that the system needs to power on the BB controller (if it is off), enable RFCLK (if it is off), and restore the BB controller registers and RFFE register contents (if BB and RFFE have been off during sleep). As can be seen, before going to BB deep sleep, if the baseband and RFFE are powered off, the contents of their registers need to be saved in DRAM, and maintained by enabling VDDM for the appropriate DRAM instance(s). The application needs  to make sure that after wakeup, the BB controller and the RFFE can resume their own activities — for example, to maintain a Bluetooth Low Energy connection.</p>
+                                    <p class="Body">At the end of each low power time, the time duration is written to the <span class="Register">BB_DEEPSLSTAT_DEEPSLDUR</span>  field of the <span class="Register">BB_DEEPSLSTAT</span> register. Then the software must apply CLKN counter and Fine counter correction to restore the 312.5 μs CLKN reference alignment. This correction mechanism can be achieved using the <span class="Register">BB_CLKNCNTCORR</span> and <span class="Register">BB_FINECNTCORR</span> registers. This mechanism is mandatory, since the CLKN counter is running onto the master clock that is gated during Deep Sleep Mode, freezing both counters, and letting the system run onto the low power clock. The correction is achieved by updating both the 10-bit Fine counter values and the 28-bit CLKN counter value, i.e., correcting respectively the fractional part and the integer part of the phase error of the 312.5 μs reference timing event internal counter.</p>
+                                    <p class="Body">After termination of the Deep Sleep period, the 312.5 μs reference timing event generator has to be corrected based on the actual time spent in the Low Power Mode mSleep (@T-osc) reported in the <span class="Register">BB_</span><span class="Register">DEEPSLSTAT_</span><span class="Register">DEEPSLDUR</span> field of the <span class="Register">BB_DEEPSLSTAT</span> register.</p>
+                                    <p class="Body">mSleep = T-osc * DEEPSLDUR</p>
+                                    <p class="Body">The integer part of the 312.5 μs reference timing, K, covers an entire CLKN Counter range (i.e. between 0 and 228-1), and has to be written in the <span class="Register">CLKNCNTCORR</span> register. K corresponds to the CLKN Counter correction value to apply after Deep Sleep duration, assuming that a 32 kHz clock has been used. So this formula hereafter applies.</p>
+                                    <p class="Body">K = floor(mSleep / 312.5 μs)</p>
+                                    <p class="Body">The fractional part of the 312.5 μs reference counter, R, has to be written in the <span class="Register">FINECNTCORR</span> register. R covers an entire 312.5 μs Fine Counter range (i.e., between 0 and 624 with 0.5 μs precision). As the 10-bit Fine Counter is a downward counter, this R formula hereafter applies.</p>
+                                    <p class="Body">R = 2 * (312.5 - integer(mSleep - K * 312.5)) where the integer function provides the integer part of a number.</p>
+                                    <p class="Body">In any case of Deep Sleep termination, the RW-Bluetooth Low Energy software must compensate both CLKN counter and the FINECNT counter using (respectively) the <span class="Register">CLKNCNTCORR</span> and <span class="Register">FINECNTCORR</span> registers. Those values are calculated by the software, and applied by the BB controller as described here:</p>
+                                    <ul>
+                                        <li>On Deep Sleep termination, the software reads the <span class="Register">DEEPSLSTAT</span> value.</li>
+                                        <li>The software determines the <span class="Register">CLKNCNTCORR</span> and <span class="Register">FINECNTCORR</span> values and stores them in the appropriate registers.</li>
+                                        <li>The software signals the correction to be applied, writing a 1 to the <span class="Register">BB_DEEPSLCNTL_</span><span class="Register">DEEP_SLEEP_CORR_EN</span> field of the <span class="Register">BB_DEEPSLCNTL</span> register</li>
+                                    </ul>
+                                    <p class="Body">CLKN Counter and Fine Counter correction is applied when Fine Counter equals zero. CLKN Counter is corrected applying the following formula:</p>
+                                    <p class="Body">new CLKNCNT = current CLKNCNT + 1+ CLKNCNTCORR</p>
+                                    <p class="Body">Fine Counter correction is done by directly loading FINECNTCORR when Fine Counter equals zero. The <a href="#CLKN" class="FigureHTML MCXref xref xrefFigureHTML">"CLKN Counter Correction Mechanism" figure</a> shows the CLKN counter correction mechanism:</p>
+                                    <p>
+                                        <img src="clkn_counter_correc_mechanism_860x363.png" style="width: 860;height: 363;" />
+                                    </p>
+                                    <p class="Figure_title" data-mc-autonum="Figure: "><span class="autonumber"><span>Figure: </span></span><a name="CLKN"></a>CLKN Counter Correction Mechanism</p>
+                                    <p class="Body">The following sequence of events occur for counter correction:</p>
+                                    <ol>
+                                        <li value="1">The software stack requires the system to go in Deep Sleep. </li>
+                                        <li value="2">The software stack goes to Deep Sleep Mode, and freezes CLKN Counter to T, and Fine Counter to 625-δ.</li>
+                                        <li value="3">When the number of low power clock cycles equals the value of <span class="Register">BB_DEEPSLSTAT_</span><span class="Register">DEEPSLDUR</span>, or after a wakeup request, the RW-Bluetooth Low Energy Core wakes up, and Fine Counter resumes.</li>
+                                        <li value="4"><span class="Code">BLE_SLP_IRQ</span> is generated once the master clock is enabled, and the RW-Bluetooth Low Energy software reads the value of the <span class="Register">BB_DEEPSLWKUP_DEEPSLTIME</span> field in the <span class="Register">BB_DEEPSLWKUP</span> register and calculates the K and R values.</li>
+                                        <li value="5">The software stack programs CLKNCNTCORR = K and FINECNTCORR = R, and the requirements for compensation.</li>
+                                        <li value="6">Once Fine Counter equals zero, CLKN Counter and Fine Counter are updated.</li>
+                                        <li value="7">The 312.5 μs half slot timing reference is corrected and realigned.</li>
+                                    </ol>
+                                    <h1 class="Heading1"><a name="Bluetooth_Low_Energy_Stack_Deep_Sleep_Mode" data-mc-generated-bookmark="TOC"></a>Bluetooth Low Energy Stack Deep Sleep Mode</h1>
+                                    <p class="Body">The functionality provided by the baseband controller is used by the Bluetooth Low Energy software stack to put the Bluetooth Low Energy stack into Sleep Mode, and allow it to resume its normal functionality after wakeup. this section describes how the Bluetooth Low Energy stack works for switching between Deep Sleep Mode and Active Mode, and how it interacts with a user application.</p>
+                                    <p class="Body">When sending the Bluetooth Low Energy stack into Sleep&#160;Mode, a user application needs to call the function (API) <span class="Register">BLE_KE_Sleep(&amp;ble_sleep_api_param)</span>. This API checks whether it is the right time for the Bluetooth Low Energy stack  to go to sleep or not; if the return value is <span class="Code">RWIP_DEEP_SLEEP</span>, then the BB controller is already in sleep and the BB timer has been started by the low power clock. Hence, the application does not need to configure the BB controller registers and baseband low power clock. However, the rest of system must be put into the desired power mode, such as Sleep Mode or Standby Mode. The user application is responsible for configuring the ACS, VDDC and VDDM retention regulators, to decide whether to power off BB, RFFE, and RFCLK or not, or any other step that is related to power modes. From the BB controller’s point of view, it is in low power clock mode. Therefore, for cases when the <span class="Function">BLE_KE_Sleep(</span><span class="Function">)</span>function returns <span class="Code">RWIP_DEEP_SLEEP</span>, the <span class="Function">BB_Sleep()</span> function has been developed and provided in the <span class="mc-variable hardware_reference_montana.Product_Name variable">Montana</span> Bluetooth Low Energy sample applications for Low Power Modes as example showing how put <span class="mc-variable hardware_reference_montana.Product_Name variable">Montana</span> into a Low Power Mode. In the <span class="Function">BB_Seleep()</span> function, the BB controller and RFFE registers are saved in DRAM to be restored later at wakeup time (if the BB controller and the RFFE are powered off).</p>
+                                    <p class="Body"> The structure of <span class="Filename">ble_sleep_api_param</span> returns the actual sleep duration that <span class="Function">BLE_KE_Sleep()</span> has programmed in register <span class="Register">BB-DEEPSLWKUP</span>, in the calculated_sleep_duration field of the low power clock unit (for example 1/32768 s).</p>
+                                    <p>These other fields are input for this function:</p>
+                                    <ul>
+                                        <li>app_sleep_request = 1, means it goes to sleep; otherwise if is zero, it returns without checking or going to sleep.</li>
+                                        <li>max_sleep_duration is the maximum sleep duration that the application would like to be in sleep for, in 312.5 μs.</li>
+                                        <li>min_sleep_duration is the minimum sleep duration that the application asks for from the stack, in μs</li>
+                                    </ul>
+                                    <p class="Body">The sleep duration is calculated based on the next immediate Bluetooth Low Energy event or the earliest kernel timer expiry time (whichever happens sooner), minus a processing delay of approximately 500 μs. The BB low power timer expires at the amount of time equal to the <span class="Register">BB_ENBPRESET_TWOSC</span> value sooner than the value that is programmed in the BB timer. The <a href="#BLE_KE_S" class="FigureHTML MCXref xref xrefFigureHTML">"BLE_KE_Sleep() Function Logical Flowchart for Checking and Going to Deep Sleep" figure</a> shows how the Bluetooth Low Energy stack checks if it is right time to go to sleep, and then calculates the sleep duration. At the end of function <span class="Function">BLE_KE_Sleep()</span>, a flag is reset to indicate that the BB controller is in deep sleep to be used by software (application); this can be checked by calling API <span class="Function">BLE_Is_Awake()</span>. If the return value of this API is false, <span class="Function">Kernel_Schedule()</span> and <span class="Function">BLE_KE_Sleep()</span> do not need to be called again.</p>
+                                    <p>
+                                        <img src="ble_ke_sleep_logical_flowchart_853x771.png" style="width: 853;height: 771;" />
+                                    </p>
+                                    <p class="Figure_title" data-mc-autonum="Figure: "><span class="autonumber"><span>Figure: </span></span><a name="BLE_KE_S"></a>BLE_KE_Sleep() Function Logical Flowchart for Checking and Going to Deep Sleep</p>
+                                    <p class="Body">When the BB timer expires, generating a wakeup signal for the ACS block at a time equal to the value of <span class="Register">BB_ENBPRESET_TWOSC</span> sooner than the programmed sleep duration, <span class="Register">BLE_SLP_IRQ</span> is generated. In Bluetooth Low Energy SLP ISR, a mechanism called clock compensation is enabled and waits for a <span class="Code">BLE_HSLOT_IRQ</span>. At <span class="Code">BLE_SLP_IRQ</span>, the Bluetooth Low Energy stack corrects the value of the Bluetooth Low Energy clock according to the sleep duration, and waits for a <span class="Code">BLE_HSLOT_IRQ</span> when the clock correction is applied by the Bluetooth Low Energy HW. It sets back the <span class="Code">BLE_Is_Awake</span> flag to enable the Bluetooth Low Energy application to continue its normal Bluetooth Low Energy functionality in active mode. All clock correction and compensations are handled by the Bluetooth Low Energy stack; user applications only need to make sure that at wakeup they prepare the required <span class="mc-variable hardware_reference_montana.Product_Name variable">Montana</span> HW blocks in terms of the RFCLK, the RFFE and BB power, and enabling the BB clock If the wakeup source is not the BB timer, then the application needs to wake up the BB controller by setting the <span class="Register">BBIF_CTRL_WAKEUP_REQ</span> bit in the <span class="Register">BBIF_CTRL</span> register.</p>
+                                    <p class="Body">If the Bluetooth Low Energy stack is not used, the clock correction must be handles by the user application.</p>
+                                    <h2 class="Heading2"><a name="Bluetooth_Low_Energy_Stack_Deep_Sleep_Mode_Registers" data-mc-generated-bookmark="TOC"></a>Bluetooth Low Energy Stack Deep Sleep Mode Registers</h2>
+                                    <table style="width: 100%;caption-side: top;mc-caption-repeat: true;mc-table-style: url('../Resources/TableStyles/RegisterDetailFirst.css');margin-left: 0;margin-right: auto;" class="TableStyle-RegisterDetailFirst" cellspacing="0">
+                                        <col class="TableStyle-RegisterDetailFirst-Column-Column1" />
+                                        <col class="TableStyle-RegisterDetailFirst-Column-Column2" />
+                                        <col class="TableStyle-RegisterDetailFirst-Column-Column3" />
+                                        <col class="TableStyle-RegisterDetailFirst-Column-Column4" />
+                                        <thead>
+                                            <tr class="TableStyle-RegisterDetailFirst-Head-Header1">
+                                                <th class="TableStyle-RegisterDetailFirst-HeadE-Column1-Header1">
+                                                    <p>Bit Field</p>
+                                                </th>
+                                                <th class="TableStyle-RegisterDetailFirst-HeadE-Column2-Header1">
+                                                    <p>Read/Write</p>
+                                                </th>
+                                                <th class="TableStyle-RegisterDetailFirst-HeadE-Column3-Header1">
+                                                    <p>Field Name</p>
+                                                </th>
+                                                <th class="TableStyle-RegisterDetailFirst-HeadD-Column4-Header1">
+                                                    <p>Description</p>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="TableStyle-RegisterDetailFirst-Body-Body1">
+                                                <td class="TableStyle-RegisterDetailFirst-BodyE-Column1-Body1">
+                                                    <p>9:4</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailFirst-BodyE-Column2-Body1">
+                                                    <p>RW</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailFirst-BodyE-Column3-Body1">
+                                                    <p>CLK_SEL</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailFirst-BodyD-Column4-Body1">
+                                                    <p>Configure the internal baseband controller clock divider in order to provide a 1MHz reference clock </p>
+                                                </td>
+                                            </tr>
+                                            <tr class="TableStyle-RegisterDetailFirst-Body-Body1">
+                                                <td class="TableStyle-RegisterDetailFirst-BodyE-Column1-Body1">
+                                                    <p>1</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailFirst-BodyE-Column2-Body1">
+                                                    <p>RW</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailFirst-BodyE-Column3-Body1">
+                                                    <p>WAKEUP_REQ</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailFirst-BodyD-Column4-Body1">
+                                                    <p>External wake up request used to sort-out sleep modes </p>
+                                                </td>
+                                            </tr>
+                                            <tr class="TableStyle-RegisterDetailFirst-Body-Body1">
+                                                <td class="TableStyle-RegisterDetailFirst-BodyB-Column1-Body1">
+                                                    <p>0</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailFirst-BodyB-Column2-Body1">
+                                                    <p>RW</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailFirst-BodyB-Column3-Body1">
+                                                    <p>CLK_ENABLE</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailFirst-BodyA-Column4-Body1">
+                                                    <p>Enable the baseband controller clocks generation </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table style="width: 100%;caption-side: top;mc-caption-repeat: true;mc-table-style: url('../Resources/TableStyles/RegisterDetailSecond.css');margin-left: 0;margin-right: auto;" class="TableStyle-RegisterDetailSecond" cellspacing="0">
+                                        <col class="TableStyle-RegisterDetailSecond-Column-Column1" />
+                                        <col class="TableStyle-RegisterDetailSecond-Column-Column5" />
+                                        <col class="TableStyle-RegisterDetailSecond-Column-Column2" />
+                                        <col class="TableStyle-RegisterDetailSecond-Column-Column3" />
+                                        <thead>
+                                            <tr class="TableStyle-RegisterDetailSecond-Head-Header1">
+                                                <th class="TableStyle-RegisterDetailSecond-HeadE-Column1-Header1">
+                                                    <p>Field Name</p>
+                                                </th>
+                                                <th class="TableStyle-RegisterDetailSecond-HeadE-Column5-Header1">
+                                                    <p>Value Symbol</p>
+                                                </th>
+                                                <th class="TableStyle-RegisterDetailSecond-HeadE-Column2-Header1">
+                                                    <p>Value Description</p>
+                                                </th>
+                                                <th class="TableStyle-RegisterDetailSecond-HeadD-Column3-Header1">
+                                                    <p>Hex Value</p>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="TableStyle-RegisterDetailSecond-Body-Body1">
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column1-Body1">
+                                                    <p>CLK_SEL</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column5-Body1">
+                                                    <p>BBCLK_DIVIDER_6</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column2-Body1">
+                                                    <p>Divide the BBCLK by 6 (minimum authorized value) </p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyD-Column3-Body1">
+                                                    <p>0x6</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="TableStyle-RegisterDetailSecond-Body-Body1">
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column1-Body1">
+                                                    <p />
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column5-Body1">
+                                                    <p>BBCLK_DIVIDER_8</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column2-Body1">
+                                                    <p>Divide the BBCLK by 8 </p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyD-Column3-Body1">
+                                                    <p>0x8*</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="TableStyle-RegisterDetailSecond-Body-Body1">
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column1-Body1">
+                                                    <p />
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column5-Body1">
+                                                    <p>BBCLK_DIVIDER_12</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column2-Body1">
+                                                    <p>Divide the BBCLK by 12 </p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyD-Column3-Body1">
+                                                    <p>0xC</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="TableStyle-RegisterDetailSecond-Body-Body1">
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column1-Body1">
+                                                    <p />
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column5-Body1">
+                                                    <p>BBCLK_DIVIDER_16</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column2-Body1">
+                                                    <p>Divide the BBCLK by 16 </p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyD-Column3-Body1">
+                                                    <p>0x10</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="TableStyle-RegisterDetailSecond-Body-Body1">
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column1-Body1">
+                                                    <p />
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column5-Body1">
+                                                    <p>BBCLK_DIVIDER_24</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column2-Body1">
+                                                    <p>Divide the BBCLK by 24 (maximum authorized value) </p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyD-Column3-Body1">
+                                                    <p>0x18</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="TableStyle-RegisterDetailSecond-Body-Body1">
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column1-Body1">
+                                                    <p>WAKEUP_REQ</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column5-Body1">
+                                                    <p>BB_DEEP_SLEEP</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column2-Body1">
+                                                    <p>Keep the baseband controller in deep sleep mode </p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyD-Column3-Body1">
+                                                    <p>0x0*</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="TableStyle-RegisterDetailSecond-Body-Body1">
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column1-Body1">
+                                                    <p />
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column5-Body1">
+                                                    <p>BB_WAKEUP</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column2-Body1">
+                                                    <p>Wake up the baseband controller and keep it active </p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyD-Column3-Body1">
+                                                    <p>0x1</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="TableStyle-RegisterDetailSecond-Body-Body1">
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column1-Body1">
+                                                    <p>CLK_ENABLE</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column5-Body1">
+                                                    <p>BB_CLK_DISABLE</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyE-Column2-Body1">
+                                                    <p>Baseband controller clocks are gated </p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyD-Column3-Body1">
+                                                    <p>0x0*</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="TableStyle-RegisterDetailSecond-Body-Body1">
+                                                <td class="TableStyle-RegisterDetailSecond-BodyB-Column1-Body1">
+                                                    <p />
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyB-Column5-Body1">
+                                                    <p>BB_CLK_ENABLE</p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyB-Column2-Body1">
+                                                    <p>Baseband controller clocks are generated </p>
+                                                </td>
+                                                <td class="TableStyle-RegisterDetailSecond-BodyA-Column3-Body1">
+                                                    <p>0x1</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

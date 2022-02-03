@@ -1,0 +1,554 @@
+\hypertarget{group__flashapi}{}\doxysection{Flash in-\/application programming interface}
+\label{group__flashapi}\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}}
+
+
+Flash functions to enable programming of flash.  
+
+
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \{ \newline
+\mbox{\hyperlink{group__flashapi_gga5ec21aa8c792373a03892457a0663412a900c38d77265fb9590bbadaee406e2d5}{F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+N\+O\+NE}} = 0x0, 
+\mbox{\hyperlink{group__flashapi_gga5ec21aa8c792373a03892457a0663412a094b3200523afe07fdabbadcf6699999}{F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+A\+D\+D\+R\+E\+SS}} = 0x1, 
+\mbox{\hyperlink{group__flashapi_gga5ec21aa8c792373a03892457a0663412a95e500ee4baf926782c830ae938b5c49}{F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+L\+E\+N\+G\+TH}} = 0x2, 
+\mbox{\hyperlink{group__flashapi_gga5ec21aa8c792373a03892457a0663412ad1c44cb174306d601485bc22652ec046}{F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+I\+N\+A\+C\+C\+E\+S\+S\+I\+B\+LE}} = 0x3, 
+\newline
+\mbox{\hyperlink{group__flashapi_gga5ec21aa8c792373a03892457a0663412a583492437a36e55c8541a5be9b616a08}{F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+MS}} = 0x4, 
+\mbox{\hyperlink{group__flashapi_gga5ec21aa8c792373a03892457a0663412a4fcba6c2f049ea288a751054c1ff73c8}{F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+N\+U\+L\+L\+\_\+\+P\+A\+R\+AM}} = 0x5, 
+\mbox{\hyperlink{group__flashapi_gga5ec21aa8c792373a03892457a0663412a354a103a2c1781547708a99d35ede29b}{F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+W\+O\+R\+D\+\_\+\+A\+L\+I\+GN}} = 0x6, 
+\mbox{\hyperlink{group__flashapi_gga5ec21aa8c792373a03892457a0663412ac649dfb22e564895232a6585d0debb47}{F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+Z\+E\+R\+O\+\_\+\+L\+EN}} = 0x7, 
+\newline
+\mbox{\hyperlink{group__flashapi_gga5ec21aa8c792373a03892457a0663412af3a401eefb57d45f8a9c922df2b614c5}{F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+U\+N\+K\+N\+O\+WN}} = 0x8
+ \}
+\begin{DoxyCompactList}\small\item\em Flash library return codes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga7958c062e0c51a8be4ae3eedbf8eb391}{Flash\+\_\+\+Initialize}} (unsigned no, unsigned core\+\_\+clk)
+\begin{DoxyCompactList}\small\item\em Initialize clock and access to flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga7c9c4e4353b55bf0237349e2e6dcc612}{Flash\+\_\+\+Write\+Word}} (uint32\+\_\+t addr, uint32\+\_\+t word, bool enb\+\_\+endurance)
+\begin{DoxyCompactList}\small\item\em Write a word to a flash address. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga3e5df8ab8e2e411e307f36cc1e8d1994}{Flash\+\_\+\+Write\+Buffer}} (uint32\+\_\+t addr, uint32\+\_\+t word\+\_\+length, uint32\+\_\+t $\ast$words, bool enb\+\_\+endurance)
+\begin{DoxyCompactList}\small\item\em Write contents of a static memory buffer to flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga5fa09d931987d06b4c43a2a46f8622b4}{Flash\+\_\+\+Read\+Buffer}} (uint32\+\_\+t flash\+\_\+address, uint32\+\_\+t dram\+\_\+address, unsigned word\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Read contents of flash into a static memory buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga00b2a19b39b51084eb1d697635ee08e3}{Flash\+\_\+\+Erase\+Flash\+Bank}} (uint32\+\_\+t no)
+\begin{DoxyCompactList}\small\item\em Erase a single flash bank. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_gae2fa05f0b4c82c366cf85a15c444618c}{Flash\+\_\+\+Erase\+Chip}} (void)
+\begin{DoxyCompactList}\small\item\em Erase all data and code flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga7fc60948265ff6089e113c5033573acf}{Flash\+\_\+\+Erase\+Sector}} (uint32\+\_\+t addr, bool enb\+\_\+endurance)
+\begin{DoxyCompactList}\small\item\em Erase a sector flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga51aa73e01de7e87a03e711e699088c11}{Flash\+\_\+\+Blank\+Check}} (uint32\+\_\+t addr, unsigned word\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Check if flash region is blank. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_gaaad4ba09bcebc548441f5a6dc96f4813}{Flash\+\_\+\+Read\+Word}} (uint32\+\_\+t addr, uint32\+\_\+t $\ast$word)
+\begin{DoxyCompactList}\small\item\em Read a 32-\/bit word from flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga870bb031834a703c0f2f0b28b3b8d848}{Flash\+\_\+\+Read\+Double}} (uint32\+\_\+t addr, uint32\+\_\+t $\ast$word)
+\begin{DoxyCompactList}\small\item\em Read a 38-\/bit word from flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_gab0305beaf50489800b9b16a2464f1254}{Flash\+\_\+\+Write\+Double}} (uint32\+\_\+t addr, uint32\+\_\+t $\ast$word, bool enb\+\_\+endurance)
+\begin{DoxyCompactList}\small\item\em Write a 38-\/bit word to flash. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Flash functions to enable programming of flash. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{group__flashapi_ga5ec21aa8c792373a03892457a0663412}\label{group__flashapi_ga5ec21aa8c792373a03892457a0663412}} 
+\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!FlashStatus\_t@{FlashStatus\_t}}
+\index{FlashStatus\_t@{FlashStatus\_t}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}
+\doxysubsubsection{\texorpdfstring{FlashStatus\_t}{FlashStatus\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}}}
+
+
+
+Flash library return codes. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLASH\_ERR\_NONE@{FLASH\_ERR\_NONE}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!FLASH\_ERR\_NONE@{FLASH\_ERR\_NONE}}}\mbox{\Hypertarget{group__flashapi_gga5ec21aa8c792373a03892457a0663412a900c38d77265fb9590bbadaee406e2d5}\label{group__flashapi_gga5ec21aa8c792373a03892457a0663412a900c38d77265fb9590bbadaee406e2d5}} 
+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+N\+O\+NE&Flash no error~\newline
+ \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLASH\_ERR\_BAD\_ADDRESS@{FLASH\_ERR\_BAD\_ADDRESS}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!FLASH\_ERR\_BAD\_ADDRESS@{FLASH\_ERR\_BAD\_ADDRESS}}}\mbox{\Hypertarget{group__flashapi_gga5ec21aa8c792373a03892457a0663412a094b3200523afe07fdabbadcf6699999}\label{group__flashapi_gga5ec21aa8c792373a03892457a0663412a094b3200523afe07fdabbadcf6699999}} 
+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+A\+D\+D\+R\+E\+SS&Flash error invalid address parameter \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLASH\_ERR\_BAD\_LENGTH@{FLASH\_ERR\_BAD\_LENGTH}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!FLASH\_ERR\_BAD\_LENGTH@{FLASH\_ERR\_BAD\_LENGTH}}}\mbox{\Hypertarget{group__flashapi_gga5ec21aa8c792373a03892457a0663412a95e500ee4baf926782c830ae938b5c49}\label{group__flashapi_gga5ec21aa8c792373a03892457a0663412a95e500ee4baf926782c830ae938b5c49}} 
+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+B\+A\+D\+\_\+\+L\+E\+N\+G\+TH&Flash error invalid word length parameter \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLASH\_ERR\_INACCESSIBLE@{FLASH\_ERR\_INACCESSIBLE}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!FLASH\_ERR\_INACCESSIBLE@{FLASH\_ERR\_INACCESSIBLE}}}\mbox{\Hypertarget{group__flashapi_gga5ec21aa8c792373a03892457a0663412ad1c44cb174306d601485bc22652ec046}\label{group__flashapi_gga5ec21aa8c792373a03892457a0663412ad1c44cb174306d601485bc22652ec046}} 
+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+I\+N\+A\+C\+C\+E\+S\+S\+I\+B\+LE&Flash error flash is inaccessible \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLASH\_ERR\_INVALID\_PARAMS@{FLASH\_ERR\_INVALID\_PARAMS}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!FLASH\_ERR\_INVALID\_PARAMS@{FLASH\_ERR\_INVALID\_PARAMS}}}\mbox{\Hypertarget{group__flashapi_gga5ec21aa8c792373a03892457a0663412a583492437a36e55c8541a5be9b616a08}\label{group__flashapi_gga5ec21aa8c792373a03892457a0663412a583492437a36e55c8541a5be9b616a08}} 
+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+MS&Flash error invalid function parameter \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLASH\_ERR\_NULL\_PARAM@{FLASH\_ERR\_NULL\_PARAM}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!FLASH\_ERR\_NULL\_PARAM@{FLASH\_ERR\_NULL\_PARAM}}}\mbox{\Hypertarget{group__flashapi_gga5ec21aa8c792373a03892457a0663412a4fcba6c2f049ea288a751054c1ff73c8}\label{group__flashapi_gga5ec21aa8c792373a03892457a0663412a4fcba6c2f049ea288a751054c1ff73c8}} 
+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+N\+U\+L\+L\+\_\+\+P\+A\+R\+AM&Flash error null pointer used \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLASH\_ERR\_ADDRESS\_WORD\_ALIGN@{FLASH\_ERR\_ADDRESS\_WORD\_ALIGN}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!FLASH\_ERR\_ADDRESS\_WORD\_ALIGN@{FLASH\_ERR\_ADDRESS\_WORD\_ALIGN}}}\mbox{\Hypertarget{group__flashapi_gga5ec21aa8c792373a03892457a0663412a354a103a2c1781547708a99d35ede29b}\label{group__flashapi_gga5ec21aa8c792373a03892457a0663412a354a103a2c1781547708a99d35ede29b}} 
+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+W\+O\+R\+D\+\_\+\+A\+L\+I\+GN&Flash error address is not word align \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLASH\_ERR\_ZERO\_LEN@{FLASH\_ERR\_ZERO\_LEN}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!FLASH\_ERR\_ZERO\_LEN@{FLASH\_ERR\_ZERO\_LEN}}}\mbox{\Hypertarget{group__flashapi_gga5ec21aa8c792373a03892457a0663412ac649dfb22e564895232a6585d0debb47}\label{group__flashapi_gga5ec21aa8c792373a03892457a0663412ac649dfb22e564895232a6585d0debb47}} 
+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+Z\+E\+R\+O\+\_\+\+L\+EN&Flash error zero length parameter passed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLASH\_ERR\_UNKNOWN@{FLASH\_ERR\_UNKNOWN}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!FLASH\_ERR\_UNKNOWN@{FLASH\_ERR\_UNKNOWN}}}\mbox{\Hypertarget{group__flashapi_gga5ec21aa8c792373a03892457a0663412af3a401eefb57d45f8a9c922df2b614c5}\label{group__flashapi_gga5ec21aa8c792373a03892457a0663412af3a401eefb57d45f8a9c922df2b614c5}} 
+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+\_\+\+U\+N\+K\+N\+O\+WN&Flash error undefined \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__flashapi_ga51aa73e01de7e87a03e711e699088c11}\label{group__flashapi_ga51aa73e01de7e87a03e711e699088c11}} 
+\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!Flash\_BlankCheck@{Flash\_BlankCheck}}
+\index{Flash\_BlankCheck@{Flash\_BlankCheck}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}
+\doxysubsubsection{\texorpdfstring{Flash\_BlankCheck()}{Flash\_BlankCheck()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Flash\+\_\+\+Blank\+Check (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr,  }\item[{unsigned}]{word\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Check if flash region is blank. 
+
+This function uses the flash copier in comparator mode to check if memory contents are empty i.\+e containing the value 0x\+F\+F\+F\+F\+F\+F\+FF
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em addr} & first word address of flash \\
+\hline
+\mbox{\texttt{ in}}  & {\em word\+\_\+length} & total number of words to be verified empty \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Flash A\+PI status code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+Interrupts are not disabled and priority arbitration with C\+PU is done based on system configuration 
+
+flash\+\_\+address should be word aligned 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__flashapi_ga51aa73e01de7e87a03e711e699088c11_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__flashapi_gae2fa05f0b4c82c366cf85a15c444618c}\label{group__flashapi_gae2fa05f0b4c82c366cf85a15c444618c}} 
+\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!Flash\_EraseChip@{Flash\_EraseChip}}
+\index{Flash\_EraseChip@{Flash\_EraseChip}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}
+\doxysubsubsection{\texorpdfstring{Flash\_EraseChip()}{Flash\_EraseChip()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Flash\+\_\+\+Erase\+Chip (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Erase all data and code flash. 
+
+This function erases all code and data regions of flash \begin{DoxyReturn}{Returns}
+Flash A\+PI status code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+a blank check is not performed to ensure flash is successfully erased,~\newline
+ user should use Flash\+\_\+\+Blank\+Check to verify if chip erase was successful 
+
+N\+VR regions are not erased 
+
+Interrupts are not disabled and C\+PU read request of flash over C\+B\+US is wait stated~\newline
+ 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{group__flashapi_gae2fa05f0b4c82c366cf85a15c444618c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__flashapi_ga00b2a19b39b51084eb1d697635ee08e3}\label{group__flashapi_ga00b2a19b39b51084eb1d697635ee08e3}} 
+\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!Flash\_EraseFlashBank@{Flash\_EraseFlashBank}}
+\index{Flash\_EraseFlashBank@{Flash\_EraseFlashBank}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}
+\doxysubsubsection{\texorpdfstring{Flash\_EraseFlashBank()}{Flash\_EraseFlashBank()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Flash\+\_\+\+Erase\+Flash\+Bank (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{no }\end{DoxyParamCaption})}
+
+
+
+Erase a single flash bank. 
+
+This function erases all code and data regions of flash
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em no} & flash instance no to be erased. For F\+L\+A\+S\+H0 use 0,~\newline
+ for F\+L\+A\+S\+H1 use 1 and so on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Flash A\+PI status code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+a blank check is not performed to ensure flash is successfully erased,~\newline
+ user should use Flash\+\_\+\+Blank\+Check to verify if chip erase was successful 
+
+N\+VR regions are not erased 
+
+Interrupts are not disabled and C\+PU read request of flash over C\+B\+US is wait stated~\newline
+ 
+\end{DoxyNote}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{group__flashapi_ga00b2a19b39b51084eb1d697635ee08e3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__flashapi_ga7fc60948265ff6089e113c5033573acf}\label{group__flashapi_ga7fc60948265ff6089e113c5033573acf}} 
+\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!Flash\_EraseSector@{Flash\_EraseSector}}
+\index{Flash\_EraseSector@{Flash\_EraseSector}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}
+\doxysubsubsection{\texorpdfstring{Flash\_EraseSector()}{Flash\_EraseSector()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Flash\+\_\+\+Erase\+Sector (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr,  }\item[{bool}]{enb\+\_\+endurance }\end{DoxyParamCaption})}
+
+
+
+Erase a sector flash. 
+
+This function perform a sector erase operation on a flash sector memory contents are empty i.\+e containing the value 0x\+F\+F\+F\+F\+F\+F\+FF
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em addr} & first word address of flash \\
+\hline
+\mbox{\texttt{ in}}  & {\em enb\+\_\+endurance} & set to 0 for default flash endurance~\newline
+ set to 1 to enable retry erase iteration for higher endurance of flash \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Flash A\+PI status code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+flash\+\_\+address should be start of sector 
+
+Interrupts are not disabled and C\+PU read request of flash over C\+B\+US is wait stated~\newline
+ 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__flashapi_ga7fc60948265ff6089e113c5033573acf_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__flashapi_ga7958c062e0c51a8be4ae3eedbf8eb391}\label{group__flashapi_ga7958c062e0c51a8be4ae3eedbf8eb391}} 
+\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!Flash\_Initialize@{Flash\_Initialize}}
+\index{Flash\_Initialize@{Flash\_Initialize}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}
+\doxysubsubsection{\texorpdfstring{Flash\_Initialize()}{Flash\_Initialize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Flash\+\_\+\+Initialize (\begin{DoxyParamCaption}\item[{unsigned}]{no,  }\item[{unsigned}]{core\+\_\+clk }\end{DoxyParamCaption})}
+
+
+
+Initialize clock and access to flash. 
+
+This function powers-\/up and enables access to flash region~\newline
+ It also applies correct clock setting based on the core\+\_\+clock provided~\newline
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em no} & flash instance to be initialized~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em core\+\_\+clk} & system clock frequency that is applied to flash~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Flash A\+PI status code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+System clock frequency should not be changed when flash is being programmed~\newline
+ 
+\end{DoxyNote}
+\mbox{\Hypertarget{group__flashapi_ga5fa09d931987d06b4c43a2a46f8622b4}\label{group__flashapi_ga5fa09d931987d06b4c43a2a46f8622b4}} 
+\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!Flash\_ReadBuffer@{Flash\_ReadBuffer}}
+\index{Flash\_ReadBuffer@{Flash\_ReadBuffer}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}
+\doxysubsubsection{\texorpdfstring{Flash\_ReadBuffer()}{Flash\_ReadBuffer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Flash\+\_\+\+Read\+Buffer (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{flash\+\_\+address,  }\item[{uint32\+\_\+t}]{dram\+\_\+address,  }\item[{unsigned}]{word\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Read contents of flash into a static memory buffer. 
+
+This function uses the flash copier to read contents of flash into a memory buffer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash\+\_\+address} & address of first word location in flash~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em dram\+\_\+address} & address of first word location in static memory~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em word\+\_\+length} & total number of words to be read~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Flash A\+PI status code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+flash\+\_\+address and dram\+\_\+address should be word aligned 
+
+Interrupts are not disabled and priority arbitration with C\+PU is done based on system configuration 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{group__flashapi_ga5fa09d931987d06b4c43a2a46f8622b4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__flashapi_ga870bb031834a703c0f2f0b28b3b8d848}\label{group__flashapi_ga870bb031834a703c0f2f0b28b3b8d848}} 
+\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!Flash\_ReadDouble@{Flash\_ReadDouble}}
+\index{Flash\_ReadDouble@{Flash\_ReadDouble}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}
+\doxysubsubsection{\texorpdfstring{Flash\_ReadDouble()}{Flash\_ReadDouble()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Flash\+\_\+\+Read\+Double (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr,  }\item[{uint32\+\_\+t $\ast$}]{word }\end{DoxyParamCaption})}
+
+
+
+Read a 38-\/bit word from flash. 
+
+This function temporarily disables automatic flash E\+CC generation in hardware,~\newline
+ thus allowing the user to read 38-\/bits from a single word address in flash
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em addr} & address to read the 38-\/bit word \\
+\hline
+\mbox{\texttt{ out}}  & {\em word} & 32-\/bit C pointer to store the word which is read from flash,~\newline
+ word\mbox{[}0\mbox{]} \mbox{[}0\+:31\mbox{]} bits consist of first lower 32-\/bits~\newline
+ word\mbox{[}1\mbox{]} \mbox{[}0\+:6\mbox{]} bits consist of the remaining higher 6-\/bits~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Flash A\+PI status code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+addr should be word aligned 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__flashapi_ga870bb031834a703c0f2f0b28b3b8d848_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__flashapi_gaaad4ba09bcebc548441f5a6dc96f4813}\label{group__flashapi_gaaad4ba09bcebc548441f5a6dc96f4813}} 
+\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!Flash\_ReadWord@{Flash\_ReadWord}}
+\index{Flash\_ReadWord@{Flash\_ReadWord}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}
+\doxysubsubsection{\texorpdfstring{Flash\_ReadWord()}{Flash\_ReadWord()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Flash\+\_\+\+Read\+Word (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr,  }\item[{uint32\+\_\+t $\ast$}]{word }\end{DoxyParamCaption})}
+
+
+
+Read a 32-\/bit word from flash. 
+
+This function reads a 32-\/bit word from flash. If E\+CC is enabled (default),~\newline
+ hardware will log/generate interrupt on E\+CC errors
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em addr} & address to read the 38-\/bit word \\
+\hline
+\mbox{\texttt{ out}}  & {\em word} & 32-\/bit C pointer to the word to be stored in flash,~\newline
+ word\mbox{[}0\mbox{]} \mbox{[}0\+:31\mbox{]} bits consist of first lower 32-\/bits~\newline
+ word\mbox{[}1\mbox{]} \mbox{[}0\+:6\mbox{]} bits consist of the remaining higher 6-\/bits~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Flash A\+PI status code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+addr should be word aligned 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__flashapi_gaaad4ba09bcebc548441f5a6dc96f4813_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__flashapi_ga3e5df8ab8e2e411e307f36cc1e8d1994}\label{group__flashapi_ga3e5df8ab8e2e411e307f36cc1e8d1994}} 
+\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!Flash\_WriteBuffer@{Flash\_WriteBuffer}}
+\index{Flash\_WriteBuffer@{Flash\_WriteBuffer}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}
+\doxysubsubsection{\texorpdfstring{Flash\_WriteBuffer()}{Flash\_WriteBuffer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Flash\+\_\+\+Write\+Buffer (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr,  }\item[{uint32\+\_\+t}]{word\+\_\+length,  }\item[{uint32\+\_\+t $\ast$}]{words,  }\item[{bool}]{enb\+\_\+endurance }\end{DoxyParamCaption})}
+
+
+
+Write contents of a static memory buffer to flash. 
+
+This function writes the contents of static memory buffer to flash. A verification of write is performed after write to ensure write was successful
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em addr} & address of first word location in flash~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em word\+\_\+length} & total number of words to be written to flash~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em words} & a 32-\/bit C pointer to the memory location of the buffer to ~\newline
+ be written to flash~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em enb\+\_\+endurance} & set to 0 for default flash endurance~\newline
+ set to 1 to enable two stage programming for higher endurance of data programmed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Flash A\+PI status code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+addr should be word aligned~\newline
+ 
+
+Contents of flash must be erased prior to performing a write~\newline
+ 
+
+Interrupts are disabled during flash sequential programming to ensure that the flash~\newline
+ is not exposed to higher programming voltages 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{group__flashapi_ga3e5df8ab8e2e411e307f36cc1e8d1994_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__flashapi_gab0305beaf50489800b9b16a2464f1254}\label{group__flashapi_gab0305beaf50489800b9b16a2464f1254}} 
+\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!Flash\_WriteDouble@{Flash\_WriteDouble}}
+\index{Flash\_WriteDouble@{Flash\_WriteDouble}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}
+\doxysubsubsection{\texorpdfstring{Flash\_WriteDouble()}{Flash\_WriteDouble()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Flash\+\_\+\+Write\+Double (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr,  }\item[{uint32\+\_\+t $\ast$}]{word,  }\item[{bool}]{enb\+\_\+endurance }\end{DoxyParamCaption})}
+
+
+
+Write a 38-\/bit word to flash. 
+
+This function temporarily disables automatic flash E\+CC generation in hardware, thus~\newline
+ allowing the user to write 38-\/bits to a single word address in flash.~\newline
+ A verification of write is perform after write to ensure the write was successfull
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em addr} & address to program the 38-\/bit word \\
+\hline
+\mbox{\texttt{ in}}  & {\em word} & 32-\/bit C pointer to the word to be stored in flash,~\newline
+ word\mbox{[}0\mbox{]} \mbox{[}0\+:31\mbox{]} bits consist of first lower 32-\/bits~\newline
+ word\mbox{[}1\mbox{]} \mbox{[}0\+:6\mbox{]} bits consist of the remaining higher 6-\/bits~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em enb\+\_\+endurance} & set to 0 for default flash endurance~\newline
+ set to 1 to enable two stage programming for higher endurance of data programmed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Flash A\+PI status code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}}
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+addr should be word aligned 
+
+Interrupts are not disabled and C\+PU read request of flash over C\+B\+US is wait stated~\newline
+ 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{group__flashapi_gab0305beaf50489800b9b16a2464f1254_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__flashapi_ga7c9c4e4353b55bf0237349e2e6dcc612}\label{group__flashapi_ga7c9c4e4353b55bf0237349e2e6dcc612}} 
+\index{Flash in-\/application programming interface@{Flash in-\/application programming interface}!Flash\_WriteWord@{Flash\_WriteWord}}
+\index{Flash\_WriteWord@{Flash\_WriteWord}!Flash in-\/application programming interface@{Flash in-\/application programming interface}}
+\doxysubsubsection{\texorpdfstring{Flash\_WriteWord()}{Flash\_WriteWord()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} Flash\+\_\+\+Write\+Word (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr,  }\item[{uint32\+\_\+t}]{word,  }\item[{bool}]{enb\+\_\+endurance }\end{DoxyParamCaption})}
+
+
+
+Write a word to a flash address. 
+
+This function writes a single word to flash
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em addr} & address of first word location in flash~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em word} & to be written to flash~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em enb\+\_\+endurance} & set to 0 for default flash endurance~\newline
+ set to 1 to enable two stage programming for higher endurance of data programmed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Flash A\+PI status code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+addr should be word aligned~\newline
+ 
+
+Contents of flash must be erased prior to performing a write~\newline
+ 
+
+Interrupts are not disabled and C\+PU read request of flash over C\+B\+US is wait stated~\newline
+ 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{group__flashapi_ga7c9c4e4353b55bf0237349e2e6dcc612_cgraph}
+\end{center}
+\end{figure}

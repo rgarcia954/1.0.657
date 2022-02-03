@@ -1,0 +1,4 @@
+<map id="Sys_Flash_ApplyIFCTRL" name="Sys_Flash_ApplyIFCTRL">
+<area shape="rect" id="node1" title="Apply register value to flash control register." alt="" coords="5,5,172,32"/>
+<area shape="rect" id="node2" href="$group__pollf.html#ga74bcedef9a6bba38e87187da599287c8" title="Read and wait until busy flag is set on the flash interface." alt="" coords="220,5,387,32"/>
+</map>

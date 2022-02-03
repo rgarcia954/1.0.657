@@ -1,0 +1,4 @@
+<map id="Sys_Flash_EraseSectorNONEND" name="Sys_Flash_EraseSectorNONEND">
+<area shape="rect" id="node1" title="Erase a sector of flash without endurance mode." alt="" coords="187,5,405,32"/>
+<area shape="rect" id="node2" href="$group__flashapi.html#ga7fc60948265ff6089e113c5033573acf" title="Erase a sector flash." alt="" coords="5,5,139,32"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Sys_Flash_IF_ApplyRetry" name="Sys_Flash_IF_ApplyRetry">
+<area shape="rect" id="node1" title="Apply flash retry setting to IF_CTRL register." alt="" coords="664,31,837,57"/>
+<area shape="rect" id="node2" href="$flash_8c.html#a73073d1ae746291ea6db65d191f37b74" title=" " alt="" coords="453,31,616,57"/>
+<area shape="rect" id="node3" href="$group__privf.html#gac5bc96b306031fd4fc7528206f5e5e84" title="Erase a sector of flash in endurance mode An increased level of voltage is applied for erase through ..." alt="" coords="201,5,391,32"/>
+<area shape="rect" id="node5" href="$group__privf.html#ga2e5694e91c44d56a19002f5808d4e7ab" title="Erase a sector of flash without endurance mode." alt="" coords="187,56,405,83"/>
+<area shape="rect" id="node4" href="$group__flashapi.html#ga7fc60948265ff6089e113c5033573acf" title="Erase a sector flash." alt="" coords="5,31,139,57"/>
+</map>

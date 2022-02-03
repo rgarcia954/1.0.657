@@ -1,0 +1,5 @@
+<map id="Sys_Flash_WriteDataAccessConfig" name="Sys_Flash_WriteDataAccessConfig">
+<area shape="rect" id="node1" title="Write data access configuration." alt="" coords="5,39,199,80"/>
+<area shape="rect" id="node2" href="$group__accessf.html#ga63d8710b417cb7ff36364efca3fade67" title="Read main access configuration." alt="" coords="247,5,441,47"/>
+<area shape="rect" id="node3" href="$group__accessf.html#ga5e56b43a36f324378abe0d45be851eb2" title="Write main access configuration." alt="" coords="247,71,441,112"/>
+</map>

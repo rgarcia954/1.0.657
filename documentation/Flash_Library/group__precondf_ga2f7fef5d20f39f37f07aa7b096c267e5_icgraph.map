@@ -1,0 +1,30 @@
+<map id="Sys_Flash_ExecutePrecondFlashCommand" name="Sys_Flash_ExecutePrecondFlashCommand">
+<area shape="rect" id="node1" title="Apply precondition before executing any command operation." alt="" coords="1713,328,1900,369"/>
+<area shape="rect" id="node2" href="$group__execcf.html#ga17532839c0b3fb548a2e4e760b7cfcd9" title="Execute a command on the flash interface This function checks if the interface is free before initiat..." alt="" coords="1467,335,1665,362"/>
+<area shape="rect" id="node3" href="$group__execcf.html#gaf53f3d4412b5c52ac9d62578bb4cf4a3" title="End a sequential write operation." alt="" coords="1212,107,1419,134"/>
+<area shape="rect" id="node5" href="$group__privf.html#ga84241b14ebf6525f1f2e9de18673d879" title="Erase all main region of flash." alt="" coords="724,24,881,51"/>
+<area shape="rect" id="node8" href="$flash_8c.html#a73073d1ae746291ea6db65d191f37b74" title=" " alt="" coords="475,462,638,488"/>
+<area shape="rect" id="node9" href="$group__privf.html#gac5bc96b306031fd4fc7528206f5e5e84" title="Erase a sector of flash in endurance mode An increased level of voltage is applied for erase through ..." alt="" coords="201,462,391,488"/>
+<area shape="rect" id="node12" href="$group__privf.html#ga361e836fc88530e6b3a1dad2510a0c62" title="Read a 38&#45;bit word to flash." alt="" coords="722,259,883,286"/>
+<area shape="rect" id="node15" href="$group__privf.html#ga29bf484f2b3bcafb37fe28d9f71aaaf3" title="Read a word to flash." alt="" coords="727,360,879,387"/>
+<area shape="rect" id="node18" href="$group__cmdcondf.html#ga8c309218447e4f91ed214df6dcf236fd" title="Set Recall mode to 1." alt="" coords="1242,563,1389,590"/>
+<area shape="rect" id="node19" href="$group__cmdcondf.html#gad6ff07bb1601049bf645eaf2154e59d9" title="Set VREAD mode to 1." alt="" coords="1234,614,1397,640"/>
+<area shape="rect" id="node20" href="$group__cmdcondf.html#ga07cae6ab1558758482e89ca73b1ffecd" title="Set Recall mode to 0." alt="" coords="1235,158,1396,184"/>
+<area shape="rect" id="node26" href="$group__cmdcondf.html#ga2a569ff0181ed95670ae880e1ddc214f" title="Set VREAD mode to 0." alt="" coords="1227,208,1404,235"/>
+<area shape="rect" id="node27" href="$group__privf.html#gafd503bd363f40278e3cb073100fa244b" title="Write a 38&#45; bit word to flash." alt="" coords="945,310,1164,336"/>
+<area shape="rect" id="node28" href="$group__privf.html#ga1d2ce818d22d7545e684bfb3f9c9777c" title="Write a word to flash." alt="" coords="950,411,1159,438"/>
+<area shape="rect" id="node4" href="$group__precondf.html#gac47ebedd42df85fb0b6e7ae76a1d6147" title="Apply precondition before executing CMD_ERASE_MASS command." alt="" coords="961,58,1148,100"/>
+<area shape="rect" id="node6" href="$group__privf.html#gafdb8d4f2ff75a01dac77a401b298a270" title="Execute a sequential write to flash." alt="" coords="949,124,1160,151"/>
+<area shape="rect" id="node7" href="$group__privf.html#ga74182ec1d79513de3008e504a456df38" title="Perform a sequential write operation." alt="" coords="453,116,660,143"/>
+<area shape="rect" id="node11" href="$group__privf.html#ga2e5694e91c44d56a19002f5808d4e7ab" title="Erase a sector of flash without endurance mode." alt="" coords="187,411,405,438"/>
+<area shape="rect" id="node10" href="$group__flashapi.html#ga7fc60948265ff6089e113c5033573acf" title="Erase a sector flash." alt="" coords="5,436,139,463"/>
+<area shape="rect" id="node13" href="$group__flashapi.html#ga870bb031834a703c0f2f0b28b3b8d848" title="Read a 38&#45;bit word from flash." alt="" coords="491,259,622,286"/>
+<area shape="rect" id="node14" href="$group__privf.html#ga8388670e15b9053056d00ff37d84a04e" title="Write a 38&#45;bit word to a flash instance." alt="" coords="475,310,638,336"/>
+<area shape="rect" id="node16" href="$group__flashapi.html#gaaad4ba09bcebc548441f5a6dc96f4813" title="Read a 32&#45;bit word from flash." alt="" coords="495,360,618,387"/>
+<area shape="rect" id="node17" href="$group__privf.html#ga58aeb5c972b5279ff28d3b5a2f2aec3e" title="Write a word to flash." alt="" coords="480,411,633,438"/>
+<area shape="rect" id="node21" href="$group__precondf.html#gae5ff2b73462baba82572f70a371b6b14" title="Apply precondition before executing CMD_READ command." alt="" coords="961,193,1148,234"/>
+<area shape="rect" id="node22" href="$group__precondf.html#ga98f94e778e93dab3a9fb0c84216bdc99" title="Apply precondition before using the flash copier to read from flash." alt="" coords="709,193,896,234"/>
+<area shape="rect" id="node25" href="$group__privf.html#gad135879979235dd76a213e192023a340" title="Verify contents of flash." alt="" coords="708,142,897,168"/>
+<area shape="rect" id="node23" href="$group__privf.html#gae425fa861d140dd1cc9ed61e0340dd84" title="Verify if flash is empty." alt="" coords="453,208,660,235"/>
+<area shape="rect" id="node24" href="$group__flashapi.html#ga51aa73e01de7e87a03e711e699088c11" title="Check if flash region is blank." alt="" coords="231,208,361,235"/>
+</map>

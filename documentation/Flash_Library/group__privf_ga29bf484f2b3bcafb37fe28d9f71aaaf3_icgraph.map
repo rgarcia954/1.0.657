@@ -1,0 +1,6 @@
+<map id="Sys_Flash_ReadWord" name="Sys_Flash_ReadWord">
+<area shape="rect" id="node1" title="Read a word to flash." alt="" coords="377,31,529,57"/>
+<area shape="rect" id="node2" href="$group__flashapi.html#gaaad4ba09bcebc548441f5a6dc96f4813" title="Read a 32&#45;bit word from flash." alt="" coords="191,5,314,32"/>
+<area shape="rect" id="node3" href="$group__privf.html#ga58aeb5c972b5279ff28d3b5a2f2aec3e" title="Write a word to flash." alt="" coords="176,56,329,83"/>
+<area shape="rect" id="node4" href="$group__flashapi.html#ga7c9c4e4353b55bf0237349e2e6dcc612" title="Write a word to a flash address." alt="" coords="5,56,128,83"/>
+</map>

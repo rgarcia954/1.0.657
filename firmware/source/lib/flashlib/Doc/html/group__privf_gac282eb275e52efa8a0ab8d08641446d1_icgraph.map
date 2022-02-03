@@ -1,0 +1,4 @@
+<map id="Sys_Flash_Copier_Copy" name="Sys_Flash_Copier_Copy">
+<area shape="rect" id="node1" title="Copy contents of flash using flash copier." alt="" coords="177,5,343,32"/>
+<area shape="rect" id="node2" href="$group__flashapi.html#ga5fa09d931987d06b4c43a2a46f8622b4" title="Read contents of flash into a static memory buffer." alt="" coords="5,5,129,32"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Sys_Flash_Copier_VerifyEmpty" name="Sys_Flash_Copier_VerifyEmpty">
+<area shape="rect" id="node1" title="Verify if flash is empty." alt="" coords="453,56,660,83"/>
+<area shape="rect" id="node2" href="$group__flashapi.html#ga51aa73e01de7e87a03e711e699088c11" title="Check if flash region is blank." alt="" coords="231,5,361,32"/>
+<area shape="rect" id="node3" href="$group__privf.html#gac5bc96b306031fd4fc7528206f5e5e84" title="Erase a sector of flash in endurance mode An increased level of voltage is applied for erase through ..." alt="" coords="201,56,391,83"/>
+<area shape="rect" id="node5" href="$group__privf.html#ga2e5694e91c44d56a19002f5808d4e7ab" title="Erase a sector of flash without endurance mode." alt="" coords="187,107,405,133"/>
+<area shape="rect" id="node4" href="$group__flashapi.html#ga7fc60948265ff6089e113c5033573acf" title="Erase a sector flash." alt="" coords="5,81,139,108"/>
+</map>

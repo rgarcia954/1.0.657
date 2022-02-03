@@ -1,0 +1,7 @@
+<map id="Sys_Flash_ExecutePrecondFlashCommand" name="Sys_Flash_ExecutePrecondFlashCommand">
+<area shape="rect" id="node1" title="Apply precondition before executing any command operation." alt="" coords="5,49,192,90"/>
+<area shape="rect" id="node2" href="$group__execcf.html#ga397ed5a44d671094de5266f531fc6d94" title="End ongoing flash command operation if interface is busy or sequential write operation is active &#160;and..." alt="" coords="240,56,457,83"/>
+<area shape="rect" id="node3" href="$group__pollf.html#ga64ac78dd62ce984e320bc6e15d197617" title="Read if busy flag is set on the flash interface." alt="" coords="513,5,683,32"/>
+<area shape="rect" id="node4" href="$group__pollf.html#gab4ec17909836dd4c08c95f1f26242967" title="Read if sequential write operation is in progress." alt="" coords="505,56,691,83"/>
+<area shape="rect" id="node5" href="$group__pollf.html#ga74bcedef9a6bba38e87187da599287c8" title="Read and wait until busy flag is set on the flash interface." alt="" coords="515,107,681,133"/>
+</map>

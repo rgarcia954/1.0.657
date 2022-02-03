@@ -1,0 +1,143 @@
+\hypertarget{group__pollf}{}\doxysection{Poll status}
+\label{group__pollf}\index{Poll status@{Poll status}}
+
+
+Group of commands to poll and or wait for status of flash status.  
+
+
+Collaboration diagram for Poll status\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{group__pollf}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} unsigned \mbox{\hyperlink{group__pollf_gab4ec17909836dd4c08c95f1f26242967}{Sys\+\_\+\+Flash\+\_\+\+I\+F\+\_\+\+Read\+Seq\+Req}} (const F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Read if sequential write operation is in progress. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} unsigned \mbox{\hyperlink{group__pollf_ga64ac78dd62ce984e320bc6e15d197617}{Sys\+\_\+\+Flash\+\_\+\+I\+F\+\_\+\+Read\+Busy}} (const F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Read if busy flag is set on the flash interface. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__pollf_ga74bcedef9a6bba38e87187da599287c8}{Sys\+\_\+\+Flash\+\_\+\+I\+F\+\_\+\+Wait\+Busy}} (const F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Read and wait until busy flag is set on the flash interface. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__pollf_gad76ddfd3c2f099ea1b90cb2d805249cc}{Sys\+\_\+\+Flash\+\_\+\+Copier\+\_\+\+Wait\+Busy}} (const F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Read and wait until flash copier is busy. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} uint32\+\_\+t \mbox{\hyperlink{group__pollf_ga95d3acd21c8bd3c454cfe7cc862bde65}{Sys\+\_\+\+Flash\+\_\+\+Copier\+\_\+\+Read\+Busy}} (const F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Read if flash copier is busy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Group of commands to poll and or wait for status of flash status. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__pollf_ga95d3acd21c8bd3c454cfe7cc862bde65}\label{group__pollf_ga95d3acd21c8bd3c454cfe7cc862bde65}} 
+\index{Poll status@{Poll status}!Sys\_Flash\_Copier\_ReadBusy@{Sys\_Flash\_Copier\_ReadBusy}}
+\index{Sys\_Flash\_Copier\_ReadBusy@{Sys\_Flash\_Copier\_ReadBusy}!Poll status@{Poll status}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_Copier\_ReadBusy()}{Sys\_Flash\_Copier\_ReadBusy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} uint32\+\_\+t Sys\+\_\+\+Flash\+\_\+\+Copier\+\_\+\+Read\+Busy (\begin{DoxyParamCaption}\item[{const F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Read if flash copier is busy. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__pollf_gad76ddfd3c2f099ea1b90cb2d805249cc}\label{group__pollf_gad76ddfd3c2f099ea1b90cb2d805249cc}} 
+\index{Poll status@{Poll status}!Sys\_Flash\_Copier\_WaitBusy@{Sys\_Flash\_Copier\_WaitBusy}}
+\index{Sys\_Flash\_Copier\_WaitBusy@{Sys\_Flash\_Copier\_WaitBusy}!Poll status@{Poll status}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_Copier\_WaitBusy()}{Sys\_Flash\_Copier\_WaitBusy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Copier\+\_\+\+Wait\+Busy (\begin{DoxyParamCaption}\item[{const F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Read and wait until flash copier is busy. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__pollf_ga64ac78dd62ce984e320bc6e15d197617}\label{group__pollf_ga64ac78dd62ce984e320bc6e15d197617}} 
+\index{Poll status@{Poll status}!Sys\_Flash\_IF\_ReadBusy@{Sys\_Flash\_IF\_ReadBusy}}
+\index{Sys\_Flash\_IF\_ReadBusy@{Sys\_Flash\_IF\_ReadBusy}!Poll status@{Poll status}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_IF\_ReadBusy()}{Sys\_Flash\_IF\_ReadBusy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} unsigned Sys\+\_\+\+Flash\+\_\+\+I\+F\+\_\+\+Read\+Busy (\begin{DoxyParamCaption}\item[{const F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Read if busy flag is set on the flash interface. 
+
+\begin{DoxyNote}{Note}
+Before executing any command on the flash interface application should check if the flash interface is not busy~\newline
+ 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__pollf_ga64ac78dd62ce984e320bc6e15d197617_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__pollf_gab4ec17909836dd4c08c95f1f26242967}\label{group__pollf_gab4ec17909836dd4c08c95f1f26242967}} 
+\index{Poll status@{Poll status}!Sys\_Flash\_IF\_ReadSeqReq@{Sys\_Flash\_IF\_ReadSeqReq}}
+\index{Sys\_Flash\_IF\_ReadSeqReq@{Sys\_Flash\_IF\_ReadSeqReq}!Poll status@{Poll status}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_IF\_ReadSeqReq()}{Sys\_Flash\_IF\_ReadSeqReq()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} unsigned Sys\+\_\+\+Flash\+\_\+\+I\+F\+\_\+\+Read\+Seq\+Req (\begin{DoxyParamCaption}\item[{const F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Read if sequential write operation is in progress. 
+
+\begin{DoxyNote}{Note}
+When sequential programming is active the busy flag is set until the sequential write operation is terminated with C\+M\+D\+\_\+\+E\+ND~\newline
+ 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__pollf_gab4ec17909836dd4c08c95f1f26242967_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__pollf_ga74bcedef9a6bba38e87187da599287c8}\label{group__pollf_ga74bcedef9a6bba38e87187da599287c8}} 
+\index{Poll status@{Poll status}!Sys\_Flash\_IF\_WaitBusy@{Sys\_Flash\_IF\_WaitBusy}}
+\index{Sys\_Flash\_IF\_WaitBusy@{Sys\_Flash\_IF\_WaitBusy}!Poll status@{Poll status}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_IF\_WaitBusy()}{Sys\_Flash\_IF\_WaitBusy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+I\+F\+\_\+\+Wait\+Busy (\begin{DoxyParamCaption}\item[{const F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Read and wait until busy flag is set on the flash interface. 
+
+\begin{DoxyNote}{Note}
+Before executing any command on the flash interface application should check if the flash interface is not busy~\newline
+ 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__pollf_ga74bcedef9a6bba38e87187da599287c8_icgraph}
+\end{center}
+\end{figure}

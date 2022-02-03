@@ -1,0 +1,4 @@
+<map id="Flash Mode" name="Flash Mode">
+<area shape="rect" id="node1" title="Group of functions atomically change the state of flash interface VREAD1,RECALL and LOW_POWER bits of..." alt="" coords="188,13,279,38"/>
+<area shape="rect" id="node2" href="$group__privf.html" title="Flash library private function not exposed by the programming interface." alt="" coords="5,5,140,45"/>
+</map>

@@ -1,0 +1,313 @@
+\hypertarget{flash_8c}{}\doxysection{C\+:/\+Repository/swt\+\_\+root/projects/montana/firmware/flashlib/flash.c File Reference}
+\label{flash_8c}\index{C:/Repository/swt\_root/projects/montana/firmware/flashlib/flash.c@{C:/Repository/swt\_root/projects/montana/firmware/flashlib/flash.c}}
+
+
+C file implementing A\+PI functions for flash management through flash interface.  
+
+
+{\ttfamily \#include \char`\"{}flash.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$montana.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{flash_8c_a8368443bfd81e80aaaf87c1b6535173a}{W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+R\+E\+F\+R\+E\+S\+H\+\_\+\+A\+LL}}()
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__privf_ga1d2ce818d22d7545e684bfb3f9c9777c}{Sys\+\_\+\+Flash\+\_\+\+Write\+Word\+Operation}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t word, uint32\+\_\+t cmd\+\_\+prg\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Write a word to flash. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__privf_gafd503bd363f40278e3cb073100fa244b}{Sys\+\_\+\+Flash\+\_\+\+Write\+Double\+Operation}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t $\ast$word, uint32\+\_\+t cmd\+\_\+prg\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Write a 38-\/ bit word to flash. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__privf_ga29bf484f2b3bcafb37fe28d9f71aaaf3}{Sys\+\_\+\+Flash\+\_\+\+Read\+Word}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr)
+\begin{DoxyCompactList}\small\item\em Read a word to flash. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__privf_ga361e836fc88530e6b3a1dad2510a0c62}{Sys\+\_\+\+Flash\+\_\+\+Read\+Double}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t $\ast$word)
+\begin{DoxyCompactList}\small\item\em Read a 38-\/bit word to flash. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__privf_gafdb8d4f2ff75a01dac77a401b298a270}{Sys\+\_\+\+Flash\+\_\+\+Write\+Sequential\+Data}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, const uint32\+\_\+t $\ast$word, unsigned word\+\_\+len, unsigned row\+\_\+len, uint32\+\_\+t cmd\+\_\+prg\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Execute a sequential write to flash. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__privf_ga84241b14ebf6525f1f2e9de18673d879}{Sys\+\_\+\+Flash\+\_\+\+Erase\+Mass}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Erase all main region of flash. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{flash_8c_a73073d1ae746291ea6db65d191f37b74}{Sys\+\_\+\+Flash\+\_\+\+Erase\+Sector}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t retry\+\_\+level)
+\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_gac5bc96b306031fd4fc7528206f5e5e84}{Sys\+\_\+\+Flash\+\_\+\+Erase\+Sector\+E\+ND}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t sector\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Erase a sector of flash in endurance mode An increased level of voltage is applied for erase through retry mechanism~\newline
+ A verification is performed at each stage to check if erase is successful. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_ga2e5694e91c44d56a19002f5808d4e7ab}{Sys\+\_\+\+Flash\+\_\+\+Erase\+Sector\+N\+O\+N\+E\+ND}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t sector\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Erase a sector of flash without endurance mode. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_ga58aeb5c972b5279ff28d3b5a2f2aec3e}{Sys\+\_\+\+Flash\+\_\+\+Write\+Word}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t word, bool enb\+\_\+endurance)
+\begin{DoxyCompactList}\small\item\em Write a word to flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_ga8388670e15b9053056d00ff37d84a04e}{Sys\+\_\+\+Flash\+\_\+\+Write\+Double}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, uint32\+\_\+t $\ast$word, bool enb\+\_\+endurance)
+\begin{DoxyCompactList}\small\item\em Write a 38-\/bit word to a flash instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_ga74182ec1d79513de3008e504a456df38}{Sys\+\_\+\+Flash\+\_\+\+Write\+Word\+Seqential}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, const uint32\+\_\+t $\ast$data\+\_\+words, uint32\+\_\+t data\+\_\+word\+\_\+length, uint32\+\_\+t row\+\_\+word\+\_\+length, bool enb\+\_\+endurance)
+\begin{DoxyCompactList}\small\item\em Perform a sequential write operation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_gad135879979235dd76a213e192023a340}{Sys\+\_\+\+Flash\+\_\+\+Verify\+Data\+Words}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t $\ast$addr, const uint32\+\_\+t $\ast$data\+\_\+words, unsigned data\+\_\+word\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Verify contents of flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_gae425fa861d140dd1cc9ed61e0340dd84}{Sys\+\_\+\+Flash\+\_\+\+Copier\+\_\+\+Verify\+Empty}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t addr, unsigned word\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Verify if flash is empty. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_gac282eb275e52efa8a0ab8d08641446d1}{Sys\+\_\+\+Flash\+\_\+\+Copier\+\_\+\+Copy}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t src\+\_\+addr, uint32\+\_\+t dest\+\_\+addr, uint32\+\_\+t wrd\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Copy contents of flash using flash copier. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__accessf_ga63d8710b417cb7ff36364efca3fade67}{Sys\+\_\+\+Flash\+\_\+\+Read\+Main\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Read main access configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__accessf_ga5e56b43a36f324378abe0d45be851eb2}{Sys\+\_\+\+Flash\+\_\+\+Write\+Main\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t regions)
+\begin{DoxyCompactList}\small\item\em Write main access configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__accessf_ga80b46a97f784c3685c0ab1921be12431}{Sys\+\_\+\+Flash\+\_\+\+Write\+Code\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t regions)
+\begin{DoxyCompactList}\small\item\em Write code access configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__accessf_ga17d84afe198f1014b51a3c16d5d16d2a}{Sys\+\_\+\+Flash\+\_\+\+Write\+Data\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t regions)
+\begin{DoxyCompactList}\small\item\em Write data access configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__accessf_ga61597d974306ccc0c2b120fe2c3afd3d}{Sys\+\_\+\+Flash\+\_\+\+Write\+N\+V\+R\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t regions)
+\begin{DoxyCompactList}\small\item\em Write N\+VR access configuration. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__accessf_ga772637c114defd38408b3c8fa33a4565}{Sys\+\_\+\+Flash\+\_\+\+Read\+Code\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Read code region unlock access configuration. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__accessf_gae48d5e32a1f658250cfb2314c203151f}{Sys\+\_\+\+Flash\+\_\+\+Read\+Data\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Read data region unlock access configuration. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__accessf_gace336d72f1d95ab8b7e5c26e796949fd}{Sys\+\_\+\+Flash\+\_\+\+Read\+N\+V\+R\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Read N\+VR unlock access configuration. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_ga6b599378efa93769079bfa1cd36d436a}{Flash\+\_\+\+Calculate\+Enable\+Regions}} (struct \mbox{\hyperlink{structregion__descriptor}{region\+\_\+descriptor}} $\ast$region, uint32\+\_\+t addr, uint32\+\_\+t words\+\_\+no, uint32\+\_\+t $\ast$mask)
+\begin{DoxyCompactList}\small\item\em Calculate unlock regions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__privf_ga9195bdd1093acd89377107416d89e827}{Flash\+\_\+\+Get\+Addr\+Info}} (uint32\+\_\+t addr, struct \mbox{\hyperlink{structinfo}{info}} $\ast$\mbox{\hyperlink{structinfo}{info}})
+\begin{DoxyCompactList}\small\item\em Get information for the flash address provided. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga7c9c4e4353b55bf0237349e2e6dcc612}{Flash\+\_\+\+Write\+Word}} (uint32\+\_\+t addr, uint32\+\_\+t word, bool enb\+\_\+endurance)
+\begin{DoxyCompactList}\small\item\em Write a word to a flash address. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga3e5df8ab8e2e411e307f36cc1e8d1994}{Flash\+\_\+\+Write\+Buffer}} (uint32\+\_\+t addr, uint32\+\_\+t word\+\_\+length, uint32\+\_\+t $\ast$words, bool enb\+\_\+endurance)
+\begin{DoxyCompactList}\small\item\em Write contents of a static memory buffer to flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga00b2a19b39b51084eb1d697635ee08e3}{Flash\+\_\+\+Erase\+Flash\+Bank}} (uint32\+\_\+t no)
+\begin{DoxyCompactList}\small\item\em Erase a single flash bank. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga7fc60948265ff6089e113c5033573acf}{Flash\+\_\+\+Erase\+Sector}} (uint32\+\_\+t addr, bool enb\+\_\+endurance)
+\begin{DoxyCompactList}\small\item\em Erase a sector flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_gaaad4ba09bcebc548441f5a6dc96f4813}{Flash\+\_\+\+Read\+Word}} (uint32\+\_\+t addr, uint32\+\_\+t $\ast$word)
+\begin{DoxyCompactList}\small\item\em Read a 32-\/bit word from flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga870bb031834a703c0f2f0b28b3b8d848}{Flash\+\_\+\+Read\+Double}} (uint32\+\_\+t addr, uint32\+\_\+t $\ast$word)
+\begin{DoxyCompactList}\small\item\em Read a 38-\/bit word from flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_gab0305beaf50489800b9b16a2464f1254}{Flash\+\_\+\+Write\+Double}} (uint32\+\_\+t addr, uint32\+\_\+t $\ast$word, bool enb\+\_\+endurance)
+\begin{DoxyCompactList}\small\item\em Write a 38-\/bit word to flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_gae2fa05f0b4c82c366cf85a15c444618c}{Flash\+\_\+\+Erase\+Chip}} (void)
+\begin{DoxyCompactList}\small\item\em Erase all data and code flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga51aa73e01de7e87a03e711e699088c11}{Flash\+\_\+\+Blank\+Check}} (uint32\+\_\+t addr, unsigned word\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Check if flash region is blank. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga5fa09d931987d06b4c43a2a46f8622b4}{Flash\+\_\+\+Read\+Buffer}} (uint32\+\_\+t flash\+\_\+address, uint32\+\_\+t dram\+\_\+address, unsigned word\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Read contents of flash into a static memory buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__flashapi_ga5ec21aa8c792373a03892457a0663412}{Flash\+Status\+\_\+t}} \mbox{\hyperlink{group__flashapi_ga7958c062e0c51a8be4ae3eedbf8eb391}{Flash\+\_\+\+Initialize}} (unsigned no, unsigned core\+\_\+clk)
+\begin{DoxyCompactList}\small\item\em Initialize clock and access to flash. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint32\+\_\+t \mbox{\hyperlink{flash_8c_ad11c6410221b95e8ddbbb88867ea64a2}{freq\+\_\+map}} \mbox{[}\mbox{\hyperlink{flash_8h_a26b821fbd1ca414b660c84c4c0f03fe9}{F\+R\+E\+Q\+\_\+\+M\+A\+P\+\_\+\+M\+AX}}\mbox{]}
+\item 
+const struct \mbox{\hyperlink{structregion__attributes}{region\+\_\+attributes}} \mbox{\hyperlink{flash_8c_a5452dad02952e2d2bbc3f8ebc0c064c1}{code\+\_\+region\+\_\+params}}
+\item 
+const struct \mbox{\hyperlink{structregion__attributes}{region\+\_\+attributes}} \mbox{\hyperlink{flash_8c_ab7b8eb5a8b37fa16ecd03af73a131639}{data\+\_\+region\+\_\+params}}
+\item 
+const struct \mbox{\hyperlink{structregion__attributes}{region\+\_\+attributes}} \mbox{\hyperlink{flash_8c_ac601c714a364232d38d6ad77bd209b6e}{nvr\+\_\+region\+\_\+params}}
+\item 
+const struct \mbox{\hyperlink{structregion__descriptor}{region\+\_\+descriptor}} \mbox{\hyperlink{flash_8c_a847301eb6be059110ce58cbeeb80291f}{flash0\+\_\+descriptor}} \mbox{[}\mbox{\hyperlink{flash_8h_af2c29b1c794576072fcce96eb1451d1b}{F\+L\+A\+S\+H\+\_\+0\+\_\+\+D\+E\+S\+C\+R\+\_\+\+N\+UM}}\mbox{]}
+\item 
+const struct \mbox{\hyperlink{structregion__descriptor}{region\+\_\+descriptor}} \mbox{\hyperlink{flash_8c_a2f3600fda11016b216d10df6c87a6e4a}{flash1\+\_\+descriptor}} \mbox{[}\mbox{\hyperlink{flash_8h_ae57ab5e6f1be802a1d5592a6941d6412}{F\+L\+A\+S\+H\+\_\+1\+\_\+\+D\+E\+S\+C\+R\+\_\+\+N\+UM}}\mbox{]}
+\item 
+const struct \mbox{\hyperlink{structinterface}{interface}} \mbox{\hyperlink{flash_8c_ac15edef749ee3ef086124593761b1b70}{ifcs}} \mbox{[}\mbox{\hyperlink{flash_8h_a159b29e3f87efed9e8bd101e60b6fed1}{I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+N\+UM}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+C file implementing A\+PI functions for flash management through flash interface. 
+
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2019 Semiconductor Components Industries, L\+LC (d/b/a onsemi), All Rights Reserved
+
+This code is the property of onsemi and may not be redistributed in any form without prior written permission from onsemi. The terms of use and warranty for this code are covered by contractual agreements between onsemi and the licensee.
+
+This is Reusable Code. 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{flash_8c_a8368443bfd81e80aaaf87c1b6535173a}\label{flash_8c_a8368443bfd81e80aaaf87c1b6535173a}} 
+\index{flash.c@{flash.c}!WATCHDOG\_REFRESH\_ALL@{WATCHDOG\_REFRESH\_ALL}}
+\index{WATCHDOG\_REFRESH\_ALL@{WATCHDOG\_REFRESH\_ALL}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{WATCHDOG\_REFRESH\_ALL}{WATCHDOG\_REFRESH\_ALL}}
+{\footnotesize\ttfamily \#define W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+R\+E\+F\+R\+E\+S\+H\+\_\+\+A\+LL(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{flash_8c_a73073d1ae746291ea6db65d191f37b74}\label{flash_8c_a73073d1ae746291ea6db65d191f37b74}} 
+\index{flash.c@{flash.c}!Sys\_Flash\_EraseSector@{Sys\_Flash\_EraseSector}}
+\index{Sys\_Flash\_EraseSector@{Sys\_Flash\_EraseSector}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_EraseSector()}{Sys\_Flash\_EraseSector()}}
+{\footnotesize\ttfamily void Sys\+\_\+\+Flash\+\_\+\+Erase\+Sector (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{addr,  }\item[{uint32\+\_\+t}]{retry\+\_\+level }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{flash_8c_a73073d1ae746291ea6db65d191f37b74_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{flash_8c_a73073d1ae746291ea6db65d191f37b74_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{flash_8c_a5452dad02952e2d2bbc3f8ebc0c064c1}\label{flash_8c_a5452dad02952e2d2bbc3f8ebc0c064c1}} 
+\index{flash.c@{flash.c}!code\_region\_params@{code\_region\_params}}
+\index{code\_region\_params@{code\_region\_params}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{code\_region\_params}{code\_region\_params}}
+{\footnotesize\ttfamily const struct \mbox{\hyperlink{structregion__attributes}{region\+\_\+attributes}} code\+\_\+region\+\_\+params}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \mbox{\hyperlink{flash_8h_a38b8856cf6b3dba8a85e53f94dd3b93b}{CODE\_ROW\_LEN\_WORDS}},}
+\DoxyCodeLine{    \mbox{\hyperlink{flash_8h_a6b78857fe5aea0087e740aeb7a3a982c}{CODE\_SECTOR\_LEN\_WORDS}},}
+\DoxyCodeLine{    0x16000,}
+\DoxyCodeLine{    4,}
+\DoxyCodeLine{    \&\mbox{\hyperlink{group__accessf_ga772637c114defd38408b3c8fa33a4565}{Sys\_Flash\_ReadCodeAccessConfig}},}
+\DoxyCodeLine{    \&\mbox{\hyperlink{group__accessf_ga80b46a97f784c3685c0ab1921be12431}{Sys\_Flash\_WriteCodeAccessConfig}},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{flash_8c_ab7b8eb5a8b37fa16ecd03af73a131639}\label{flash_8c_ab7b8eb5a8b37fa16ecd03af73a131639}} 
+\index{flash.c@{flash.c}!data\_region\_params@{data\_region\_params}}
+\index{data\_region\_params@{data\_region\_params}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{data\_region\_params}{data\_region\_params}}
+{\footnotesize\ttfamily const struct \mbox{\hyperlink{structregion__attributes}{region\+\_\+attributes}} data\+\_\+region\+\_\+params}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \mbox{\hyperlink{flash_8h_a32d8365f92261c883e4a9eeecf0e6eee}{DATA\_ROW\_LEN\_WORDS}},}
+\DoxyCodeLine{    \mbox{\hyperlink{flash_8h_aae075eb07670227bc38cfab718f072db}{DATA\_SECTOR\_LEN\_WORDS}},}
+\DoxyCodeLine{    0x5000,}
+\DoxyCodeLine{    8,}
+\DoxyCodeLine{    \&\mbox{\hyperlink{group__accessf_gae48d5e32a1f658250cfb2314c203151f}{Sys\_Flash\_ReadDataAccessConfig}},}
+\DoxyCodeLine{    \&\mbox{\hyperlink{group__accessf_ga17d84afe198f1014b51a3c16d5d16d2a}{Sys\_Flash\_WriteDataAccessConfig}},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{flash_8c_a847301eb6be059110ce58cbeeb80291f}\label{flash_8c_a847301eb6be059110ce58cbeeb80291f}} 
+\index{flash.c@{flash.c}!flash0\_descriptor@{flash0\_descriptor}}
+\index{flash0\_descriptor@{flash0\_descriptor}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{flash0\_descriptor}{flash0\_descriptor}}
+{\footnotesize\ttfamily const struct \mbox{\hyperlink{structregion__descriptor}{region\+\_\+descriptor}} flash0\+\_\+descriptor\mbox{[}\mbox{\hyperlink{flash_8h_af2c29b1c794576072fcce96eb1451d1b}{F\+L\+A\+S\+H\+\_\+0\+\_\+\+D\+E\+S\+C\+R\+\_\+\+N\+UM}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        FLASH0\_CODE\_BASE,}
+\DoxyCodeLine{        FLASH0\_CODE\_TOP,}
+\DoxyCodeLine{        \&\mbox{\hyperlink{flash_8c_a5452dad02952e2d2bbc3f8ebc0c064c1}{code\_region\_params}},}
+\DoxyCodeLine{    \},}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        FLASH0\_DATA\_BASE,}
+\DoxyCodeLine{        FLASH0\_DATA\_TOP,}
+\DoxyCodeLine{        \&\mbox{\hyperlink{flash_8c_ab7b8eb5a8b37fa16ecd03af73a131639}{data\_region\_params}},}
+\DoxyCodeLine{    \},}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        FLASH0\_NVR0\_BASE,}
+\DoxyCodeLine{        FLASH0\_NVR7\_TOP,}
+\DoxyCodeLine{        \&\mbox{\hyperlink{flash_8c_ac601c714a364232d38d6ad77bd209b6e}{nvr\_region\_params}},}
+\DoxyCodeLine{    \},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{flash_8c_a2f3600fda11016b216d10df6c87a6e4a}\label{flash_8c_a2f3600fda11016b216d10df6c87a6e4a}} 
+\index{flash.c@{flash.c}!flash1\_descriptor@{flash1\_descriptor}}
+\index{flash1\_descriptor@{flash1\_descriptor}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{flash1\_descriptor}{flash1\_descriptor}}
+{\footnotesize\ttfamily const struct \mbox{\hyperlink{structregion__descriptor}{region\+\_\+descriptor}} flash1\+\_\+descriptor\mbox{[}\mbox{\hyperlink{flash_8h_ae57ab5e6f1be802a1d5592a6941d6412}{F\+L\+A\+S\+H\+\_\+1\+\_\+\+D\+E\+S\+C\+R\+\_\+\+N\+UM}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        FLASH1\_CODE\_BASE,}
+\DoxyCodeLine{        FLASH1\_CODE\_TOP,}
+\DoxyCodeLine{        \&\mbox{\hyperlink{flash_8c_a5452dad02952e2d2bbc3f8ebc0c064c1}{code\_region\_params}},}
+\DoxyCodeLine{    \},}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        FLASH1\_DATA\_BASE,}
+\DoxyCodeLine{        FLASH1\_DATA\_TOP,}
+\DoxyCodeLine{        \&\mbox{\hyperlink{flash_8c_ab7b8eb5a8b37fa16ecd03af73a131639}{data\_region\_params}},}
+\DoxyCodeLine{    \},}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        FLASH1\_NVR0\_BASE,}
+\DoxyCodeLine{        FLASH1\_NVR7\_TOP,}
+\DoxyCodeLine{        \&\mbox{\hyperlink{flash_8c_ac601c714a364232d38d6ad77bd209b6e}{nvr\_region\_params}},}
+\DoxyCodeLine{    \},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{flash_8c_ad11c6410221b95e8ddbbb88867ea64a2}\label{flash_8c_ad11c6410221b95e8ddbbb88867ea64a2}} 
+\index{flash.c@{flash.c}!freq\_map@{freq\_map}}
+\index{freq\_map@{freq\_map}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{freq\_map}{freq\_map}}
+{\footnotesize\ttfamily const uint32\+\_\+t freq\+\_\+map\mbox{[}\mbox{\hyperlink{flash_8h_a26b821fbd1ca414b660c84c4c0f03fe9}{F\+R\+E\+Q\+\_\+\+M\+A\+P\+\_\+\+M\+AX}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    [FLASH\_DELAY\_FOR\_SYSCLK\_3MHZ] = 3000000UL,}
+\DoxyCodeLine{    [FLASH\_DELAY\_FOR\_SYSCLK\_4MHZ] = 4000000UL,}
+\DoxyCodeLine{    [FLASH\_DELAY\_FOR\_SYSCLK\_5MHZ] = 5000000UL,}
+\DoxyCodeLine{    [FLASH\_DELAY\_FOR\_SYSCLK\_8MHZ] = 8000000UL,}
+\DoxyCodeLine{    [FLASH\_DELAY\_FOR\_SYSCLK\_10MHZ] = 10000000UL,}
+\DoxyCodeLine{    [FLASH\_DELAY\_FOR\_SYSCLK\_12MHZ] = 12000000UL,}
+\DoxyCodeLine{    [FLASH\_DELAY\_FOR\_SYSCLK\_16MHZ] = 16000000UL,}
+\DoxyCodeLine{    [FLASH\_DELAY\_FOR\_SYSCLK\_20MHZ] = 20000000UL,}
+\DoxyCodeLine{    [FLASH\_DELAY\_FOR\_SYSCLK\_24MHZ] = 24000000UL,}
+\DoxyCodeLine{    [FLASH\_DELAY\_FOR\_SYSCLK\_48MHZ] = 48000000UL,}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{flash_8c_ac15edef749ee3ef086124593761b1b70}\label{flash_8c_ac15edef749ee3ef086124593761b1b70}} 
+\index{flash.c@{flash.c}!ifcs@{ifcs}}
+\index{ifcs@{ifcs}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{ifcs}{ifcs}}
+{\footnotesize\ttfamily const struct \mbox{\hyperlink{structinterface}{interface}} ifcs\mbox{[}\mbox{\hyperlink{flash_8h_a159b29e3f87efed9e8bd101e60b6fed1}{I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+N\+UM}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        FLASH0,}
+\DoxyCodeLine{        \mbox{\hyperlink{flash_8h_af2c29b1c794576072fcce96eb1451d1b}{FLASH\_0\_DESCR\_NUM}},}
+\DoxyCodeLine{        \mbox{\hyperlink{flash_8c_a847301eb6be059110ce58cbeeb80291f}{flash0\_descriptor}},}
+\DoxyCodeLine{    \},}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        FLASH1,}
+\DoxyCodeLine{        \mbox{\hyperlink{flash_8h_ae57ab5e6f1be802a1d5592a6941d6412}{FLASH\_1\_DESCR\_NUM}},}
+\DoxyCodeLine{        \mbox{\hyperlink{flash_8c_a2f3600fda11016b216d10df6c87a6e4a}{flash1\_descriptor}},}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{flash_8c_ac601c714a364232d38d6ad77bd209b6e}\label{flash_8c_ac601c714a364232d38d6ad77bd209b6e}} 
+\index{flash.c@{flash.c}!nvr\_region\_params@{nvr\_region\_params}}
+\index{nvr\_region\_params@{nvr\_region\_params}!flash.c@{flash.c}}
+\doxysubsubsection{\texorpdfstring{nvr\_region\_params}{nvr\_region\_params}}
+{\footnotesize\ttfamily const struct \mbox{\hyperlink{structregion__attributes}{region\+\_\+attributes}} nvr\+\_\+region\+\_\+params}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \mbox{\hyperlink{flash_8h_ae7f769c7a6d31522ea3ed13d89741b4e}{NVR\_ROW\_LEN\_WORDS}},}
+\DoxyCodeLine{    \mbox{\hyperlink{flash_8h_a70c1080a43bd4b54f5d4f8c2651814f2}{NVR\_SECTOR\_LEN\_WORDS}},}
+\DoxyCodeLine{    256,}
+\DoxyCodeLine{    8,}
+\DoxyCodeLine{    \&\mbox{\hyperlink{group__accessf_gace336d72f1d95ab8b7e5c26e796949fd}{Sys\_Flash\_ReadNVRAccessConfig}},}
+\DoxyCodeLine{    \&\mbox{\hyperlink{group__accessf_ga61597d974306ccc0c2b120fe2c3afd3d}{Sys\_Flash\_WriteNVRAccessConfig}},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

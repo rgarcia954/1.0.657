@@ -1,0 +1,7 @@
+<map id="Sys_Flash_EndOperationWaitIdle" name="Sys_Flash_EndOperationWaitIdle">
+<area shape="rect" id="node1" title="End ongoing flash command operation if interface is busy or sequential write operation is active &#160;and..." alt="" coords="5,31,223,57"/>
+<area shape="rect" id="node2" href="$group__pollf.html#ga74bcedef9a6bba38e87187da599287c8" title="Wait while the busy flag is set on the flash interface." alt="" coords="279,5,445,32"/>
+<area shape="rect" id="node4" href="$group__pollf.html#ga201b9bd727c4423c4c83d831fa87a5db" title="Wait until the interface is requesting new data when the interface is in sequential programming mode." alt="" coords="271,56,453,83"/>
+<area shape="rect" id="node3" href="$group__pollf.html#gaf2a18b8049493dc9087ea63c082a73ea" title="Read if busy flag is set on the flash interface." alt="" coords="509,5,679,32"/>
+<area shape="rect" id="node5" href="$group__pollf.html#ga578ecbd757bfeac48a3d19c3252c2332" title="Read if interface is requesting for new data in sequential programming mode." alt="" coords="501,56,687,83"/>
+</map>

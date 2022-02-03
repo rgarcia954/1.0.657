@@ -1,0 +1,192 @@
+\hypertarget{group__execcf}{}\doxysection{Run Operation}
+\label{group__execcf}\index{Run Operation@{Run Operation}}
+
+
+Execute a command using flash interface.  
+
+
+Collaboration diagram for Run Operation\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{group__execcf}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__execcf_ga397ed5a44d671094de5266f531fc6d94}{Sys\+\_\+\+Flash\+\_\+\+End\+Operation\+Wait\+Idle}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em End ongoing flash command operation if interface is busy or sequential write operation is active~\newline
+ and wait until flash interface is free again. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__execcf_ga2b4f5809901f4fedc700932e73ec09fd}{Sys\+\_\+\+Flash\+\_\+\+I\+F\+\_\+\+Apply\+Retry}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t retry)
+\begin{DoxyCompactList}\small\item\em Apply flash retry setting to I\+F\+\_\+\+C\+T\+RL register. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__execcf_ga17532839c0b3fb548a2e4e760b7cfcd9}{Sys\+\_\+\+Flash\+\_\+\+Execute\+Command}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t cmd)
+\begin{DoxyCompactList}\small\item\em Execute a command on the flash interface This function checks if the interface is free before initiating a flash command by executing Sys\+\_\+\+Flash\+\_\+\+Execute\+Precond\+Flash\+Command~\newline
+ After a command is sent to the interface the function polls and waits for the command to be completed using Sys\+\_\+\+Flash\+\_\+\+I\+F\+\_\+\+Wait\+Busy. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__execcf_ga7c3b5e9595d95faddebafdd06856186f}{Sys\+\_\+\+Flash\+\_\+\+Execute\+Seq\+Command}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t cmd)
+\begin{DoxyCompactList}\small\item\em Execute a sequential command on the flash interface This function does not check if the interface is free nor does it poll for busy bit in the flash interface. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__execcf_gaf53f3d4412b5c52ac9d62578bb4cf4a3}{Sys\+\_\+\+Flash\+\_\+\+End\+Sequential\+Write}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em End a sequential write operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Execute a command using flash interface. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__execcf_ga397ed5a44d671094de5266f531fc6d94}\label{group__execcf_ga397ed5a44d671094de5266f531fc6d94}} 
+\index{Run Operation@{Run Operation}!Sys\_Flash\_EndOperationWaitIdle@{Sys\_Flash\_EndOperationWaitIdle}}
+\index{Sys\_Flash\_EndOperationWaitIdle@{Sys\_Flash\_EndOperationWaitIdle}!Run Operation@{Run Operation}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_EndOperationWaitIdle()}{Sys\_Flash\_EndOperationWaitIdle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+End\+Operation\+Wait\+Idle (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+End ongoing flash command operation if interface is busy or sequential write operation is active~\newline
+ and wait until flash interface is free again. 
+
+\begin{DoxyNote}{Note}
+C\+M\+D\+\_\+\+E\+ND command is sent to the interface if found busy to end any ongoing operation 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__execcf_ga397ed5a44d671094de5266f531fc6d94_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__execcf_ga397ed5a44d671094de5266f531fc6d94_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__execcf_gaf53f3d4412b5c52ac9d62578bb4cf4a3}\label{group__execcf_gaf53f3d4412b5c52ac9d62578bb4cf4a3}} 
+\index{Run Operation@{Run Operation}!Sys\_Flash\_EndSequentialWrite@{Sys\_Flash\_EndSequentialWrite}}
+\index{Sys\_Flash\_EndSequentialWrite@{Sys\_Flash\_EndSequentialWrite}!Run Operation@{Run Operation}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_EndSequentialWrite()}{Sys\_Flash\_EndSequentialWrite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+End\+Sequential\+Write (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+End a sequential write operation. 
+
+\begin{DoxyNote}{Note}
+Sys\+\_\+\+Flash\+\_\+\+Execute\+Command should not be used to send C\+M\+D\+\_\+\+E\+ND as this will cause two C\+M\+D\+\_\+\+E\+ND to be sent to the interface. 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__execcf_gaf53f3d4412b5c52ac9d62578bb4cf4a3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__execcf_gaf53f3d4412b5c52ac9d62578bb4cf4a3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__execcf_ga17532839c0b3fb548a2e4e760b7cfcd9}\label{group__execcf_ga17532839c0b3fb548a2e4e760b7cfcd9}} 
+\index{Run Operation@{Run Operation}!Sys\_Flash\_ExecuteCommand@{Sys\_Flash\_ExecuteCommand}}
+\index{Sys\_Flash\_ExecuteCommand@{Sys\_Flash\_ExecuteCommand}!Run Operation@{Run Operation}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ExecuteCommand()}{Sys\_Flash\_ExecuteCommand()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Execute\+Command (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Execute a command on the flash interface This function checks if the interface is free before initiating a flash command by executing Sys\+\_\+\+Flash\+\_\+\+Execute\+Precond\+Flash\+Command~\newline
+ After a command is sent to the interface the function polls and waits for the command to be completed using Sys\+\_\+\+Flash\+\_\+\+I\+F\+\_\+\+Wait\+Busy. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\mbox{\texttt{ in}}  & {\em cmd} & command to execute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+application should be careful in changing bits on I\+F\+\_\+\+C\+T\+RL register to avoid unnecessary change of flash state 
+
+Changing retry bits does not initiate a command on the flash interface hence this command does not poll the busy bit 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__execcf_ga17532839c0b3fb548a2e4e760b7cfcd9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__execcf_ga17532839c0b3fb548a2e4e760b7cfcd9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__execcf_ga7c3b5e9595d95faddebafdd06856186f}\label{group__execcf_ga7c3b5e9595d95faddebafdd06856186f}} 
+\index{Run Operation@{Run Operation}!Sys\_Flash\_ExecuteSeqCommand@{Sys\_Flash\_ExecuteSeqCommand}}
+\index{Sys\_Flash\_ExecuteSeqCommand@{Sys\_Flash\_ExecuteSeqCommand}!Run Operation@{Run Operation}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ExecuteSeqCommand()}{Sys\_Flash\_ExecuteSeqCommand()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Execute\+Seq\+Command (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Execute a sequential command on the flash interface This function does not check if the interface is free nor does it poll for busy bit in the flash interface. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\mbox{\texttt{ in}}  & {\em cmd} & command to execute \\
+\hline
+\end{DoxyParams}
+Warning\+: Do not wait for busy when issuing a command for sequential operation as busy will not be cleared until the sequential operation is completed by E\+ND commandHere is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__execcf_ga7c3b5e9595d95faddebafdd06856186f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__execcf_ga2b4f5809901f4fedc700932e73ec09fd}\label{group__execcf_ga2b4f5809901f4fedc700932e73ec09fd}} 
+\index{Run Operation@{Run Operation}!Sys\_Flash\_IF\_ApplyRetry@{Sys\_Flash\_IF\_ApplyRetry}}
+\index{Sys\_Flash\_IF\_ApplyRetry@{Sys\_Flash\_IF\_ApplyRetry}!Run Operation@{Run Operation}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_IF\_ApplyRetry()}{Sys\_Flash\_IF\_ApplyRetry()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+I\+F\+\_\+\+Apply\+Retry (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{retry }\end{DoxyParamCaption})}
+
+
+
+Apply flash retry setting to I\+F\+\_\+\+C\+T\+RL register. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\mbox{\texttt{ in}}  & {\em retry} & retry setting to be applied \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+application should be careful in changing bits on I\+F\+\_\+\+C\+T\+RL register to avoid unnecessary change of flash state 
+
+Changing retry bits does not initiate a command on the flash interface hence this command does not poll the busy bit 
+\end{DoxyNote}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__execcf_ga2b4f5809901f4fedc700932e73ec09fd_icgraph}
+\end{center}
+\end{figure}

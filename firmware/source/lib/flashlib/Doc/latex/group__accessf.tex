@@ -1,0 +1,247 @@
+\hypertarget{group__accessf}{}\doxysection{Lock-\/\+Unlock}
+\label{group__accessf}\index{Lock-\/Unlock@{Lock-\/Unlock}}
+
+
+Group of Lock/\+Unlock functions that are populated in info structure.  
+
+
+Collaboration diagram for Lock-\/\+Unlock\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{group__accessf}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group__accessf_ga63d8710b417cb7ff36364efca3fade67}{Sys\+\_\+\+Flash\+\_\+\+Read\+Main\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Read main access configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__accessf_ga5e56b43a36f324378abe0d45be851eb2}{Sys\+\_\+\+Flash\+\_\+\+Write\+Main\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t regions)
+\begin{DoxyCompactList}\small\item\em Write main access configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__accessf_ga80b46a97f784c3685c0ab1921be12431}{Sys\+\_\+\+Flash\+\_\+\+Write\+Code\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t regions)
+\begin{DoxyCompactList}\small\item\em Write code access configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__accessf_ga17d84afe198f1014b51a3c16d5d16d2a}{Sys\+\_\+\+Flash\+\_\+\+Write\+Data\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t regions)
+\begin{DoxyCompactList}\small\item\em Write data access configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__accessf_ga61597d974306ccc0c2b120fe2c3afd3d}{Sys\+\_\+\+Flash\+\_\+\+Write\+N\+V\+R\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash, uint32\+\_\+t regions)
+\begin{DoxyCompactList}\small\item\em Write N\+VR access configuration. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__accessf_ga772637c114defd38408b3c8fa33a4565}{Sys\+\_\+\+Flash\+\_\+\+Read\+Code\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Read code region unlock access configuration. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__accessf_gae48d5e32a1f658250cfb2314c203151f}{Sys\+\_\+\+Flash\+\_\+\+Read\+Data\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Read data region unlock access configuration. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__accessf_gace336d72f1d95ab8b7e5c26e796949fd}{Sys\+\_\+\+Flash\+\_\+\+Read\+N\+V\+R\+Access\+Config}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Read N\+VR unlock access configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Group of Lock/\+Unlock functions that are populated in info structure. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__accessf_ga772637c114defd38408b3c8fa33a4565}\label{group__accessf_ga772637c114defd38408b3c8fa33a4565}} 
+\index{Lock-\/Unlock@{Lock-\/Unlock}!Sys\_Flash\_ReadCodeAccessConfig@{Sys\_Flash\_ReadCodeAccessConfig}}
+\index{Sys\_Flash\_ReadCodeAccessConfig@{Sys\_Flash\_ReadCodeAccessConfig}!Lock-\/Unlock@{Lock-\/Unlock}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ReadCodeAccessConfig()}{Sys\_Flash\_ReadCodeAccessConfig()}}
+{\footnotesize\ttfamily uint32\+\_\+t Sys\+\_\+\+Flash\+\_\+\+Read\+Code\+Access\+Config (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Read code region unlock access configuration. 
+
+This function reads the current regions that are unlocked for the code region of a flash instance
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance to be used~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+32-\/bit value of the Code regions unlocked 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__accessf_gae48d5e32a1f658250cfb2314c203151f}\label{group__accessf_gae48d5e32a1f658250cfb2314c203151f}} 
+\index{Lock-\/Unlock@{Lock-\/Unlock}!Sys\_Flash\_ReadDataAccessConfig@{Sys\_Flash\_ReadDataAccessConfig}}
+\index{Sys\_Flash\_ReadDataAccessConfig@{Sys\_Flash\_ReadDataAccessConfig}!Lock-\/Unlock@{Lock-\/Unlock}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ReadDataAccessConfig()}{Sys\_Flash\_ReadDataAccessConfig()}}
+{\footnotesize\ttfamily uint32\+\_\+t Sys\+\_\+\+Flash\+\_\+\+Read\+Data\+Access\+Config (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Read data region unlock access configuration. 
+
+This function reads the current regions that are unlocked for the Data region of a flash instance
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance to be used~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+32-\/bit value of the Data regions unlocked 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Returned values are shifted right to start from 0 bit location 
+\end{DoxyNote}
+\mbox{\Hypertarget{group__accessf_ga63d8710b417cb7ff36364efca3fade67}\label{group__accessf_ga63d8710b417cb7ff36364efca3fade67}} 
+\index{Lock-\/Unlock@{Lock-\/Unlock}!Sys\_Flash\_ReadMainAccessConfig@{Sys\_Flash\_ReadMainAccessConfig}}
+\index{Sys\_Flash\_ReadMainAccessConfig@{Sys\_Flash\_ReadMainAccessConfig}!Lock-\/Unlock@{Lock-\/Unlock}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ReadMainAccessConfig()}{Sys\_Flash\_ReadMainAccessConfig()}}
+{\footnotesize\ttfamily uint32\+\_\+t Sys\+\_\+\+Flash\+\_\+\+Read\+Main\+Access\+Config (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Read main access configuration. 
+
+Main area comprises of code and data regions
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance to be used~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mask of the regions locked-\/unlocked in the main region~\newline
+ 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__accessf_ga63d8710b417cb7ff36364efca3fade67_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__accessf_gace336d72f1d95ab8b7e5c26e796949fd}\label{group__accessf_gace336d72f1d95ab8b7e5c26e796949fd}} 
+\index{Lock-\/Unlock@{Lock-\/Unlock}!Sys\_Flash\_ReadNVRAccessConfig@{Sys\_Flash\_ReadNVRAccessConfig}}
+\index{Sys\_Flash\_ReadNVRAccessConfig@{Sys\_Flash\_ReadNVRAccessConfig}!Lock-\/Unlock@{Lock-\/Unlock}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_ReadNVRAccessConfig()}{Sys\_Flash\_ReadNVRAccessConfig()}}
+{\footnotesize\ttfamily uint32\+\_\+t Sys\+\_\+\+Flash\+\_\+\+Read\+N\+V\+R\+Access\+Config (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Read N\+VR unlock access configuration. 
+
+This function reads the current regions that are unlocked for the N\+VR region of a flash instance
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance to be used~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+32-\/bit value of the N\+VR regions unlocked 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__accessf_ga80b46a97f784c3685c0ab1921be12431}\label{group__accessf_ga80b46a97f784c3685c0ab1921be12431}} 
+\index{Lock-\/Unlock@{Lock-\/Unlock}!Sys\_Flash\_WriteCodeAccessConfig@{Sys\_Flash\_WriteCodeAccessConfig}}
+\index{Sys\_Flash\_WriteCodeAccessConfig@{Sys\_Flash\_WriteCodeAccessConfig}!Lock-\/Unlock@{Lock-\/Unlock}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_WriteCodeAccessConfig()}{Sys\_Flash\_WriteCodeAccessConfig()}}
+{\footnotesize\ttfamily void Sys\+\_\+\+Flash\+\_\+\+Write\+Code\+Access\+Config (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{regions }\end{DoxyParamCaption})}
+
+
+
+Write code access configuration. 
+
+This function write lock-\/unlock configuration for the code region region of a flash instance
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance to be used~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em regions} & mask of the regions to be unlocked that was calculated earlier using Flash\+\_\+\+Calculate\+Enable\+Regions~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+mask is shifted left to start from the correct location for code region 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__accessf_ga80b46a97f784c3685c0ab1921be12431_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__accessf_ga17d84afe198f1014b51a3c16d5d16d2a}\label{group__accessf_ga17d84afe198f1014b51a3c16d5d16d2a}} 
+\index{Lock-\/Unlock@{Lock-\/Unlock}!Sys\_Flash\_WriteDataAccessConfig@{Sys\_Flash\_WriteDataAccessConfig}}
+\index{Sys\_Flash\_WriteDataAccessConfig@{Sys\_Flash\_WriteDataAccessConfig}!Lock-\/Unlock@{Lock-\/Unlock}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_WriteDataAccessConfig()}{Sys\_Flash\_WriteDataAccessConfig()}}
+{\footnotesize\ttfamily void Sys\+\_\+\+Flash\+\_\+\+Write\+Data\+Access\+Config (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{regions }\end{DoxyParamCaption})}
+
+
+
+Write data access configuration. 
+
+This function write lock-\/unlock configuration for the Data region region of a flash instance
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance to be used~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em regions} & mask of the regions to be unlocked that was calculated earlier using Flash\+\_\+\+Calculate\+Enable\+Regions~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+mask is shifted left to start from the correct location for data region 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__accessf_ga17d84afe198f1014b51a3c16d5d16d2a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__accessf_ga5e56b43a36f324378abe0d45be851eb2}\label{group__accessf_ga5e56b43a36f324378abe0d45be851eb2}} 
+\index{Lock-\/Unlock@{Lock-\/Unlock}!Sys\_Flash\_WriteMainAccessConfig@{Sys\_Flash\_WriteMainAccessConfig}}
+\index{Sys\_Flash\_WriteMainAccessConfig@{Sys\_Flash\_WriteMainAccessConfig}!Lock-\/Unlock@{Lock-\/Unlock}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_WriteMainAccessConfig()}{Sys\_Flash\_WriteMainAccessConfig()}}
+{\footnotesize\ttfamily void Sys\+\_\+\+Flash\+\_\+\+Write\+Main\+Access\+Config (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{regions }\end{DoxyParamCaption})}
+
+
+
+Write main access configuration. 
+
+Main area comprises of code and data regions
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance to be used~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em regions} & mask of the regions to be unlocked in the main region~\newline
+ \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__accessf_ga5e56b43a36f324378abe0d45be851eb2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__accessf_ga61597d974306ccc0c2b120fe2c3afd3d}\label{group__accessf_ga61597d974306ccc0c2b120fe2c3afd3d}} 
+\index{Lock-\/Unlock@{Lock-\/Unlock}!Sys\_Flash\_WriteNVRAccessConfig@{Sys\_Flash\_WriteNVRAccessConfig}}
+\index{Sys\_Flash\_WriteNVRAccessConfig@{Sys\_Flash\_WriteNVRAccessConfig}!Lock-\/Unlock@{Lock-\/Unlock}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_WriteNVRAccessConfig()}{Sys\_Flash\_WriteNVRAccessConfig()}}
+{\footnotesize\ttfamily void Sys\+\_\+\+Flash\+\_\+\+Write\+N\+V\+R\+Access\+Config (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash,  }\item[{uint32\+\_\+t}]{regions }\end{DoxyParamCaption})}
+
+
+
+Write N\+VR access configuration. 
+
+This function write lock-\/unlock configuration for the N\+VR region region of a flash instance
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance to be used~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em regions} & mask of the regions to be unlocked that was calculated earlier using Flash\+\_\+\+Calculate\+Enable\+Regions~\newline
+ \\
+\hline
+\end{DoxyParams}

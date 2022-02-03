@@ -1,0 +1,1 @@
+define({r:0.5,st:'Stem',n:1,t:[0],m:[],u:['../Content/hardware_reference_montana/hwref_Bluetooth_BasebandCtrlIntf.htm'],s:['+','timestamp'],p:[['+',4],['data',3],['or',3],['tx',4]]});

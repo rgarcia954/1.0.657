@@ -1,0 +1,8 @@
+<map id="Flash library private functions" name="Flash library private functions">
+<area shape="rect" id="node1" href="$group__accessf.html" title="Group of Lock/Unlock functions that are populated in info structure." alt="" coords="218,5,313,31"/>
+<area shape="rect" id="node2" href="$group__pollf.html" title="Group of commands to poll and or wait for status of flash status." alt="" coords="223,55,307,80"/>
+<area shape="rect" id="node3" href="$group__execcf.html" title="Execute a command using flash interface." alt="" coords="213,104,318,129"/>
+<area shape="rect" id="node4" href="$group__sanityf.html" title="Group of functions to check sanity of input parameter or hardware interface before executing commands..." alt="" coords="208,153,323,179"/>
+<area shape="rect" id="node5" href="$group__precondf.html" title="Group of functions to apply correct state to the flash interface before performing a specific operati..." alt="" coords="188,203,343,228"/>
+<area shape="rect" id="node6" title="Flash library private functions which are not exposed by the programming interface." alt="" coords="5,97,140,137"/>
+</map>

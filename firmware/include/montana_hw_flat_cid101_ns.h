@@ -1,0 +1,15102 @@
+/**
+ * @file montana_hw_flat.h
+ * @brief A set of non-structured and non-CMSIS compliant definitions for the 
+ * ARM Cortex-M33 accessible hardware registers. This file should included
+ * instead of the regular montana_hw.h to provide register definitions in
+ * assembly files, and other places where the structures, fixed width units,
+ * and input/output defines used by CMSIS are not available.
+ * 
+ * @copyright @parblock
+ * Copyright (c) 2021 Semiconductor Components Industries, LLC (d/b/a
+ * onsemi), All Rights Reserved
+ *
+ * This code is the property of onsemi and may not be redistributed
+ * in any form without prior written permission from onsemi.
+ * The terms of use and warranty for this code are covered by contractual
+ * agreements between onsemi and the licensee.
+ *
+ * This is Reusable Code.
+ * @endparblock
+ */
+
+#ifndef MONTANA_HW_H
+#define MONTANA_HW_H
+
+/* Include the system library register header */
+#include <reg.h>
+
+/* ----------------------------------------------------------------------------
+ * AHB registers
+ * ------------------------------------------------------------------------- */
+
+/* Chip ID number */
+#define AHBREGS_CHIP_ID_NUM_BASE        0x1FFFFFFC
+#define AHBREGS_CHIP_ID_NUM             READONLY_REG32_POINTER(AHBREGS_CHIP_ID_NUM_BASE)
+
+/* AHBREGS_CHIP_ID_NUM bit positions */
+#define AHBREGS_CHIP_ID_NUM_CHIP_FAMILY_POS 24
+#define AHBREGS_CHIP_ID_NUM_CHIP_FAMILY_MASK (0xFF << AHBREGS_CHIP_ID_NUM_CHIP_FAMILY_POS)
+#define AHBREGS_CHIP_ID_NUM_CHIP_VERSION_POS 16
+#define AHBREGS_CHIP_ID_NUM_CHIP_VERSION_MASK (0xFF << AHBREGS_CHIP_ID_NUM_CHIP_VERSION_POS)
+#define AHBREGS_CHIP_ID_NUM_CHIP_MAJOR_REVISION_POS 8
+#define AHBREGS_CHIP_ID_NUM_CHIP_MAJOR_REVISION_MASK (0xFF << AHBREGS_CHIP_ID_NUM_CHIP_MAJOR_REVISION_POS)
+#define AHBREGS_CHIP_ID_NUM_CHIP_MINOR_REVISION_POS 0
+#define AHBREGS_CHIP_ID_NUM_CHIP_MINOR_REVISION_MASK (0xFF << AHBREGS_CHIP_ID_NUM_CHIP_MINOR_REVISION_POS)
+
+/* AHBREGS_CHIP_ID_NUM settings */
+#define CHIP_FAMILY_NUMBER              (0xB << AHBREGS_CHIP_ID_NUM_CHIP_FAMILY_POS)
+
+#define CHIP_VERSION_NUMBER             (0x1 << AHBREGS_CHIP_ID_NUM_CHIP_VERSION_POS)
+
+#define CHIP_MAJOR_REVISION_NUMBER      (0x1 << AHBREGS_CHIP_ID_NUM_CHIP_MAJOR_REVISION_POS)
+
+#define CHIP_MINOR_REVISION_NUMBER      (0x0 << AHBREGS_CHIP_ID_NUM_CHIP_MINOR_REVISION_POS)
+
+/* ----------------------------------------------------------------------------
+ * System Control
+ * ------------------------------------------------------------------------- */
+
+/* WAKEUP Pad Value */
+#define SYSCTRL_WAKEUP_PAD_BASE         0x40020034
+#define SYSCTRL_WAKEUP_PAD              READONLY_REG32_POINTER(SYSCTRL_WAKEUP_PAD_BASE)
+
+/* SYSCTRL_WAKEUP_PAD bit positions */
+#define SYSCTRL_WAKEUP_PAD_WAKEUP_PAD_VALUE_POS 0
+
+/* SYSCTRL_WAKEUP_PAD settings */
+#define WAKEUP_PAD_LOW                  (0x0 << SYSCTRL_WAKEUP_PAD_WAKEUP_PAD_VALUE_POS)
+#define WAKEUP_PAD_HIGH                 (0x1 << SYSCTRL_WAKEUP_PAD_WAKEUP_PAD_VALUE_POS)
+
+/* Activity Counters Control */
+#define SYSCTRL_CNT_CTRL_BASE           0x4002007C
+#define SYSCTRL_CNT_CTRL                REG32_POINTER(SYSCTRL_CNT_CTRL_BASE)
+
+/* SYSCTRL_CNT_CTRL bit positions */
+#define SYSCTRL_CNT_CTRL_CNT_STATUS_POS 3
+#define SYSCTRL_CNT_CTRL_CNT_CLEAR_POS  2
+#define SYSCTRL_CNT_CTRL_CNT_STOP_POS   1
+#define SYSCTRL_CNT_CTRL_CNT_START_POS  0
+
+/* SYSCTRL_CNT_CTRL settings */
+#define CNT_STOPPED                     (0x0 << SYSCTRL_CNT_CTRL_CNT_STATUS_POS)
+#define CNT_RUNNING                     (0x1 << SYSCTRL_CNT_CTRL_CNT_STATUS_POS)
+
+#define CNT_CLEAR                       (0x1 << SYSCTRL_CNT_CTRL_CNT_CLEAR_POS)
+
+#define CNT_STOP                        (0x1 << SYSCTRL_CNT_CTRL_CNT_STOP_POS)
+
+#define CNT_START                       (0x1 << SYSCTRL_CNT_CTRL_CNT_START_POS)
+
+/* System Clock Counter Value */
+#define SYSCTRL_SYSCLK_CNT_BASE         0x40020080
+#define SYSCTRL_SYSCLK_CNT              REG32_POINTER(SYSCTRL_SYSCLK_CNT_BASE)
+
+/* CM33 Activity Counter Value */
+#define SYSCTRL_CM33_CNT_BASE           0x40020084
+#define SYSCTRL_CM33_CNT                REG32_POINTER(SYSCTRL_CM33_CNT_BASE)
+
+/* CBus Activity Counter Value */
+#define SYSCTRL_CBUS_CNT_BASE           0x40020088
+#define SYSCTRL_CBUS_CNT                REG32_POINTER(SYSCTRL_CBUS_CNT_BASE)
+
+/* Flash Read Access Counter Value */
+#define SYSCTRL_FLASH_READ_CNT_BASE     0x4002008C
+#define SYSCTRL_FLASH_READ_CNT          REG32_POINTER(SYSCTRL_FLASH_READ_CNT_BASE)
+
+/* WAKEUP Pad Value */
+#define SYSCTRL_WAKEUP_PAD_NS_BASE      0x40040034
+#define SYSCTRL_WAKEUP_PAD_NS           READONLY_REG32_POINTER(SYSCTRL_WAKEUP_PAD_NS_BASE)
+
+/* Activity Counters Control */
+#define SYSCTRL_CNT_CTRL_NS_BASE        0x4004007C
+#define SYSCTRL_CNT_CTRL_NS             READONLY_REG32_POINTER(SYSCTRL_CNT_CTRL_NS_BASE)
+
+/* System Clock Counter Value */
+#define SYSCTRL_SYSCLK_CNT_NS_BASE      0x40040080
+#define SYSCTRL_SYSCLK_CNT_NS           READONLY_REG32_POINTER(SYSCTRL_SYSCLK_CNT_NS_BASE)
+
+/* CM33 Activity Counter Value */
+#define SYSCTRL_CM33_CNT_NS_BASE        0x40040084
+#define SYSCTRL_CM33_CNT_NS             READONLY_REG32_POINTER(SYSCTRL_CM33_CNT_NS_BASE)
+
+/* CBus Activity Counter Value */
+#define SYSCTRL_CBUS_CNT_NS_BASE        0x40040088
+#define SYSCTRL_CBUS_CNT_NS             READONLY_REG32_POINTER(SYSCTRL_CBUS_CNT_NS_BASE)
+
+/* Flash Read Access Counter Value */
+#define SYSCTRL_FLASH_READ_CNT_NS_BASE  0x4004008C
+#define SYSCTRL_FLASH_READ_CNT_NS       READONLY_REG32_POINTER(SYSCTRL_FLASH_READ_CNT_NS_BASE)
+
+/* ----------------------------------------------------------------------------
+ * Clock Generation
+ * ------------------------------------------------------------------------- */
+
+/* System Clock Configuration Register */
+#define CLK_SYS_CFG_BASE                0x40000100
+#define CLK_SYS_CFG                     REG32_POINTER(CLK_SYS_CFG_BASE)
+
+/* CLK_SYS_CFG bit positions */
+#define CLK_SYS_CFG_SWCLK_PRESCALE_POS  8
+#define CLK_SYS_CFG_SWCLK_PRESCALE_MASK (0xF << CLK_SYS_CFG_SWCLK_PRESCALE_POS)
+#define CLK_SYS_CFG_SYSCLK_SRC_SEL_POS  0
+#define CLK_SYS_CFG_SYSCLK_SRC_SEL_MASK (0x3 << CLK_SYS_CFG_SYSCLK_SRC_SEL_POS)
+
+/* CLK_SYS_CFG settings */
+#define SWCLK_PRESCALE_1                (0x0 << CLK_SYS_CFG_SWCLK_PRESCALE_POS)
+#define SWCLK_PRESCALE_2                (0x1 << CLK_SYS_CFG_SWCLK_PRESCALE_POS)
+#define SWCLK_PRESCALE_4                (0x3 << CLK_SYS_CFG_SWCLK_PRESCALE_POS)
+#define SWCLK_PRESCALE_8                (0x7 << CLK_SYS_CFG_SWCLK_PRESCALE_POS)
+#define SWCLK_PRESCALE_15               (0xE << CLK_SYS_CFG_SWCLK_PRESCALE_POS)
+#define SWCLK_PRESCALE_16               (0xF << CLK_SYS_CFG_SWCLK_PRESCALE_POS)
+
+#define SYSCLK_CLKSRC_RCCLK             (0x0 << CLK_SYS_CFG_SYSCLK_SRC_SEL_POS)
+#define SYSCLK_CLKSRC_STANDBYCLK        (0x1 << CLK_SYS_CFG_SYSCLK_SRC_SEL_POS)
+#define SYSCLK_CLKSRC_RFCLK             (0x2 << CLK_SYS_CFG_SYSCLK_SRC_SEL_POS)
+#define SYSCLK_CLKSRC_SWCLK             (0x3 << CLK_SYS_CFG_SYSCLK_SRC_SEL_POS)
+
+/* Prescale register for SLOWCLK, BBCLK and UARTCLK clocks */
+#define CLK_DIV_CFG0_BASE               0x40000104
+#define CLK_DIV_CFG0                    REG32_POINTER(CLK_DIV_CFG0_BASE)
+
+/* CLK_DIV_CFG0 bit positions */
+#define CLK_DIV_CFG0_UARTCLK_PRESCALE_POS 16
+#define CLK_DIV_CFG0_UARTCLK_PRESCALE_MASK (0x1F << CLK_DIV_CFG0_UARTCLK_PRESCALE_POS)
+#define CLK_DIV_CFG0_BBCLK_PRESCALE_POS 8
+#define CLK_DIV_CFG0_BBCLK_PRESCALE_MASK (0x7 << CLK_DIV_CFG0_BBCLK_PRESCALE_POS)
+#define CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS 0
+#define CLK_DIV_CFG0_SLOWCLK_PRESCALE_MASK (0x3F << CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS)
+
+/* CLK_DIV_CFG0 settings */
+#define UARTCLK_PRESCALE_1              (0x0 << CLK_DIV_CFG0_UARTCLK_PRESCALE_POS)
+#define UARTCLK_PRESCALE_2              (0x1 << CLK_DIV_CFG0_UARTCLK_PRESCALE_POS)
+#define UARTCLK_PRESCALE_31             (0x1E << CLK_DIV_CFG0_UARTCLK_PRESCALE_POS)
+#define UARTCLK_PRESCALE_32             (0x1F << CLK_DIV_CFG0_UARTCLK_PRESCALE_POS)
+
+#define BBCLK_PRESCALE_1                (0x0 << CLK_DIV_CFG0_BBCLK_PRESCALE_POS)
+#define BBCLK_PRESCALE_2                (0x1 << CLK_DIV_CFG0_BBCLK_PRESCALE_POS)
+#define BBCLK_PRESCALE_3                (0x2 << CLK_DIV_CFG0_BBCLK_PRESCALE_POS)
+#define BBCLK_PRESCALE_4                (0x3 << CLK_DIV_CFG0_BBCLK_PRESCALE_POS)
+#define BBCLK_PRESCALE_5                (0x4 << CLK_DIV_CFG0_BBCLK_PRESCALE_POS)
+#define BBCLK_PRESCALE_6                (0x5 << CLK_DIV_CFG0_BBCLK_PRESCALE_POS)
+#define BBCLK_PRESCALE_7                (0x6 << CLK_DIV_CFG0_BBCLK_PRESCALE_POS)
+#define BBCLK_PRESCALE_8                (0x7 << CLK_DIV_CFG0_BBCLK_PRESCALE_POS)
+
+#define SLOWCLK_PRESCALE_1              (0x0 << CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS)
+#define SLOWCLK_PRESCALE_2              (0x1 << CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS)
+#define SLOWCLK_PRESCALE_3              (0x2 << CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS)
+#define SLOWCLK_PRESCALE_4              (0x3 << CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS)
+#define SLOWCLK_PRESCALE_6              (0x5 << CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS)
+#define SLOWCLK_PRESCALE_8              (0x7 << CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS)
+#define SLOWCLK_PRESCALE_10             (0x9 << CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS)
+#define SLOWCLK_PRESCALE_12             (0xB << CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS)
+#define SLOWCLK_PRESCALE_16             (0xF << CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS)
+#define SLOWCLK_PRESCALE_24             (0x17 << CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS)
+#define SLOWCLK_PRESCALE_48             (0x2F << CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS)
+#define SLOWCLK_PRESCALE_63             (0x3E << CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS)
+#define SLOWCLK_PRESCALE_64             (0x3F << CLK_DIV_CFG0_SLOWCLK_PRESCALE_POS)
+
+/* Prescale register for charge pump clock and sensor clock */
+#define CLK_DIV_CFG1_BASE               0x40000108
+#define CLK_DIV_CFG1                    REG32_POINTER(CLK_DIV_CFG1_BASE)
+
+/* CLK_DIV_CFG1 bit positions */
+#define CLK_DIV_CFG1_SENSOR_CLK_DISABLE_POS 19
+#define CLK_DIV_CFG1_SENSOR_CLK_PRESCALE_POS 16
+#define CLK_DIV_CFG1_SENSOR_CLK_PRESCALE_MASK (0x7 << CLK_DIV_CFG1_SENSOR_CLK_PRESCALE_POS)
+#define CLK_DIV_CFG1_CPCLK_DISABLE_POS  15
+#define CLK_DIV_CFG1_CPCLK_PRESCALE_POS 8
+#define CLK_DIV_CFG1_CPCLK_PRESCALE_MASK (0x3F << CLK_DIV_CFG1_CPCLK_PRESCALE_POS)
+#define CLK_DIV_CFG1_DCCLK_DISABLE_POS  7
+#define CLK_DIV_CFG1_DCCLK_PRESCALE_POS 0
+#define CLK_DIV_CFG1_DCCLK_PRESCALE_MASK (0x3F << CLK_DIV_CFG1_DCCLK_PRESCALE_POS)
+
+/* CLK_DIV_CFG1 settings */
+#define SENSOR_CLK_ENABLE               (0x0 << CLK_DIV_CFG1_SENSOR_CLK_DISABLE_POS)
+#define SENSOR_CLK_DISABLE              (0x1 << CLK_DIV_CFG1_SENSOR_CLK_DISABLE_POS)
+
+#define SENSOR_SLOWCLK_DIV1             (0x0 << CLK_DIV_CFG1_SENSOR_CLK_PRESCALE_POS)
+#define SENSOR_SLOWCLK_DIV2             (0x1 << CLK_DIV_CFG1_SENSOR_CLK_PRESCALE_POS)
+#define SENSOR_SLOWCLK_DIV4             (0x2 << CLK_DIV_CFG1_SENSOR_CLK_PRESCALE_POS)
+#define SENSOR_SLOWCLK_DIV8             (0x3 << CLK_DIV_CFG1_SENSOR_CLK_PRESCALE_POS)
+#define SENSOR_SLOWCLK_DIV16            (0x4 << CLK_DIV_CFG1_SENSOR_CLK_PRESCALE_POS)
+#define SENSOR_SLOWCLK_DIV32            (0x5 << CLK_DIV_CFG1_SENSOR_CLK_PRESCALE_POS)
+#define SENSOR_SLOWCLK_DIV64            (0x6 << CLK_DIV_CFG1_SENSOR_CLK_PRESCALE_POS)
+#define SENSOR_SLOWCLK_DIV128           (0x7 << CLK_DIV_CFG1_SENSOR_CLK_PRESCALE_POS)
+
+#define CPCLK_ENABLE                    (0x0 << CLK_DIV_CFG1_CPCLK_DISABLE_POS)
+#define CPCLK_DISABLE                   (0x1 << CLK_DIV_CFG1_CPCLK_DISABLE_POS)
+
+#define CPCLK_PRESCALE_1                (0x0 << CLK_DIV_CFG1_CPCLK_PRESCALE_POS)
+#define CPCLK_PRESCALE_2                (0x1 << CLK_DIV_CFG1_CPCLK_PRESCALE_POS)
+#define CPCLK_PRESCALE_3                (0x2 << CLK_DIV_CFG1_CPCLK_PRESCALE_POS)
+#define CPCLK_PRESCALE_4                (0x3 << CLK_DIV_CFG1_CPCLK_PRESCALE_POS)
+#define CPCLK_PRESCALE_5                (0x4 << CLK_DIV_CFG1_CPCLK_PRESCALE_POS)
+#define CPCLK_PRESCALE_6                (0x5 << CLK_DIV_CFG1_CPCLK_PRESCALE_POS)
+#define CPCLK_PRESCALE_7                (0x6 << CLK_DIV_CFG1_CPCLK_PRESCALE_POS)
+#define CPCLK_PRESCALE_8                (0x7 << CLK_DIV_CFG1_CPCLK_PRESCALE_POS)
+#define CPCLK_PRESCALE_9                (0x8 << CLK_DIV_CFG1_CPCLK_PRESCALE_POS)
+#define CPCLK_PRESCALE_10               (0x9 << CLK_DIV_CFG1_CPCLK_PRESCALE_POS)
+#define CPCLK_PRESCALE_63               (0x3E << CLK_DIV_CFG1_CPCLK_PRESCALE_POS)
+#define CPCLK_PRESCALE_64               (0x3F << CLK_DIV_CFG1_CPCLK_PRESCALE_POS)
+
+#define DCCLK_ENABLE                    (0x0 << CLK_DIV_CFG1_DCCLK_DISABLE_POS)
+#define DCCLK_DISABLE                   (0x1 << CLK_DIV_CFG1_DCCLK_DISABLE_POS)
+
+#define DCCLK_PRESCALE_1                (0x0 << CLK_DIV_CFG1_DCCLK_PRESCALE_POS)
+#define DCCLK_PRESCALE_2                (0x1 << CLK_DIV_CFG1_DCCLK_PRESCALE_POS)
+#define DCCLK_PRESCALE_3                (0x2 << CLK_DIV_CFG1_DCCLK_PRESCALE_POS)
+#define DCCLK_PRESCALE_4                (0x3 << CLK_DIV_CFG1_DCCLK_PRESCALE_POS)
+#define DCCLK_PRESCALE_5                (0x4 << CLK_DIV_CFG1_DCCLK_PRESCALE_POS)
+#define DCCLK_PRESCALE_6                (0x5 << CLK_DIV_CFG1_DCCLK_PRESCALE_POS)
+#define DCCLK_PRESCALE_7                (0x6 << CLK_DIV_CFG1_DCCLK_PRESCALE_POS)
+#define DCCLK_PRESCALE_8                (0x7 << CLK_DIV_CFG1_DCCLK_PRESCALE_POS)
+#define DCCLK_PRESCALE_9                (0x8 << CLK_DIV_CFG1_DCCLK_PRESCALE_POS)
+#define DCCLK_PRESCALE_10               (0x9 << CLK_DIV_CFG1_DCCLK_PRESCALE_POS)
+#define DCCLK_PRESCALE_12               (0xB << CLK_DIV_CFG1_DCCLK_PRESCALE_POS)
+#define DCCLK_PRESCALE_63               (0x3E << CLK_DIV_CFG1_DCCLK_PRESCALE_POS)
+#define DCCLK_PRESCALE_64               (0x3F << CLK_DIV_CFG1_DCCLK_PRESCALE_POS)
+
+/* Prescale register for User clock */
+#define CLK_DIV_CFG2_BASE               0x4000010C
+#define CLK_DIV_CFG2                    REG32_POINTER(CLK_DIV_CFG2_BASE)
+
+/* CLK_DIV_CFG2 bit positions */
+#define CLK_DIV_CFG2_USRCLK_SRC_SEL_POS 16
+#define CLK_DIV_CFG2_USRCLK_PRESCALE_POS 0
+#define CLK_DIV_CFG2_USRCLK_PRESCALE_MASK (0xFFF << CLK_DIV_CFG2_USRCLK_PRESCALE_POS)
+
+/* CLK_DIV_CFG2 settings */
+#define USRCLK_SRC_SYSCLK               (0x0 << CLK_DIV_CFG2_USRCLK_SRC_SEL_POS)
+#define USRCLK_SRC_RFCLK                (0x1 << CLK_DIV_CFG2_USRCLK_SRC_SEL_POS)
+
+#define USRCLK_PRESCALE_1               (0x0 << CLK_DIV_CFG2_USRCLK_PRESCALE_POS)
+#define USRCLK_PRESCALE_2               (0x1 << CLK_DIV_CFG2_USRCLK_PRESCALE_POS)
+#define USRCLK_PRESCALE_3               (0x2 << CLK_DIV_CFG2_USRCLK_PRESCALE_POS)
+#define USRCLK_PRESCALE_4095            (0xFFE << CLK_DIV_CFG2_USRCLK_PRESCALE_POS)
+#define USRCLK_PRESCALE_4096            (0xFFF << CLK_DIV_CFG2_USRCLK_PRESCALE_POS)
+
+/* ----------------------------------------------------------------------------
+ * Reset
+ * ------------------------------------------------------------------------- */
+
+/* Reset status register */
+#define RESET_DIG_STATUS_BASE           0x40000200
+#define RESET_DIG_STATUS                REG32_POINTER(RESET_DIG_STATUS_BASE)
+
+/* RESET_DIG_STATUS bit positions */
+#define RESET_DIG_STATUS_DEU_RESET_FLAG_CLEAR_POS 12
+#define RESET_DIG_STATUS_LOCKUP_RESET_FLAG_CLEAR_POS 11
+#define RESET_DIG_STATUS_WATCHDOG_RESET_FLAG_CLEAR_POS 10
+#define RESET_DIG_STATUS_CM33_SW_RESET_FLAG_CLEAR_POS 9
+#define RESET_DIG_STATUS_ACS_RESET_FLAG_CLEAR_POS 8
+#define RESET_DIG_STATUS_DEU_RESET_FLAG_POS 4
+#define RESET_DIG_STATUS_LOCKUP_FLAG_POS 3
+#define RESET_DIG_STATUS_WATCHDOG_RESET_FLAG_POS 2
+#define RESET_DIG_STATUS_CM33_SW_RESET_FLAG_POS 1
+#define RESET_DIG_STATUS_ACS_RESET_FLAG_POS 0
+
+/* RESET_DIG_STATUS settings */
+#define DEU_RESET_FLAG_CLEAR            (0x1 << RESET_DIG_STATUS_DEU_RESET_FLAG_CLEAR_POS)
+
+#define LOCKUP_FLAG_CLEAR               (0x1 << RESET_DIG_STATUS_LOCKUP_RESET_FLAG_CLEAR_POS)
+
+#define WATCHDOG_RESET_FLAG_CLEAR       (0x1 << RESET_DIG_STATUS_WATCHDOG_RESET_FLAG_CLEAR_POS)
+
+#define CM33_SW_RESET_FLAG_CLEAR        (0x1 << RESET_DIG_STATUS_CM33_SW_RESET_FLAG_CLEAR_POS)
+
+#define ACS_RESET_FLAG_CLEAR            (0x1 << RESET_DIG_STATUS_ACS_RESET_FLAG_CLEAR_POS)
+
+#define DEU_RESET_NOT_SET               (0x0 << RESET_DIG_STATUS_DEU_RESET_FLAG_POS)
+#define DEU_RESET_SET                   (0x1 << RESET_DIG_STATUS_DEU_RESET_FLAG_POS)
+
+#define LOCKUP_NOT_SET                  (0x0 << RESET_DIG_STATUS_LOCKUP_FLAG_POS)
+#define LOCKUP_SET                      (0x1 << RESET_DIG_STATUS_LOCKUP_FLAG_POS)
+
+#define WATCHDOG_RESET_NOT_SET          (0x0 << RESET_DIG_STATUS_WATCHDOG_RESET_FLAG_POS)
+#define WATCHDOG_RESET_SET              (0x1 << RESET_DIG_STATUS_WATCHDOG_RESET_FLAG_POS)
+
+#define CM33_SW_RESET_NOT_SET           (0x0 << RESET_DIG_STATUS_CM33_SW_RESET_FLAG_POS)
+#define CM33_SW_RESET_SET               (0x1 << RESET_DIG_STATUS_CM33_SW_RESET_FLAG_POS)
+
+#define ACS_RESET_NOT_SET               (0x0 << RESET_DIG_STATUS_ACS_RESET_FLAG_POS)
+#define ACS_RESET_SET                   (0x1 << RESET_DIG_STATUS_ACS_RESET_FLAG_POS)
+
+/* ----------------------------------------------------------------------------
+ * Watchdog Timer
+ * ------------------------------------------------------------------------- */
+
+/* Watchdog timer Configuration Register */
+#define WATCHDOG_CFG_BASE               0x40000300
+#define WATCHDOG_CFG                    REG32_POINTER(WATCHDOG_CFG_BASE)
+
+/* WATCHDOG_CFG bit positions */
+#define WATCHDOG_CFG_TIMEOUT_VALUE_POS  0
+#define WATCHDOG_CFG_TIMEOUT_VALUE_MASK (0xF << WATCHDOG_CFG_TIMEOUT_VALUE_POS)
+
+/* WATCHDOG_CFG settings */
+#define WATCHDOG_TIMEOUT_2M048          (0x0 << WATCHDOG_CFG_TIMEOUT_VALUE_POS)
+#define WATCHDOG_TIMEOUT_4M096          (0x1 << WATCHDOG_CFG_TIMEOUT_VALUE_POS)
+#define WATCHDOG_TIMEOUT_8M2            (0x2 << WATCHDOG_CFG_TIMEOUT_VALUE_POS)
+#define WATCHDOG_TIMEOUT_16M4           (0x3 << WATCHDOG_CFG_TIMEOUT_VALUE_POS)
+#define WATCHDOG_TIMEOUT_32M8           (0x4 << WATCHDOG_CFG_TIMEOUT_VALUE_POS)
+#define WATCHDOG_TIMEOUT_65M5           (0x5 << WATCHDOG_CFG_TIMEOUT_VALUE_POS)
+#define WATCHDOG_TIMEOUT_131M1          (0x6 << WATCHDOG_CFG_TIMEOUT_VALUE_POS)
+#define WATCHDOG_TIMEOUT_262M1          (0x7 << WATCHDOG_CFG_TIMEOUT_VALUE_POS)
+#define WATCHDOG_TIMEOUT_524M3          (0x8 << WATCHDOG_CFG_TIMEOUT_VALUE_POS)
+#define WATCHDOG_TIMEOUT_1048M6         (0x9 << WATCHDOG_CFG_TIMEOUT_VALUE_POS)
+#define WATCHDOG_TIMEOUT_2097M1         (0xA << WATCHDOG_CFG_TIMEOUT_VALUE_POS)
+#define WATCHDOG_TIMEOUT_4194M3         (0xB << WATCHDOG_CFG_TIMEOUT_VALUE_POS)
+
+/* Watchdog Refresh Control Register */
+#define WATCHDOG_CTRL_BASE              0x40000304
+#define WATCHDOG_CTRL                   REG32_POINTER(WATCHDOG_CTRL_BASE)
+
+/* WATCHDOG_CTRL settings */
+#define WATCHDOG_REFRESH                (0x2B1E211 << WATCHDOG_CTRL_WATCHDOG_REFRESH_POS)
+
+/* WATCHDOG ID number */
+#define WATCHDOG_ID_NUM_BASE            0x400003FC
+#define WATCHDOG_ID_NUM                 READONLY_REG32_POINTER(WATCHDOG_ID_NUM_BASE)
+
+/* WATCHDOG_ID_NUM bit positions */
+#define WATCHDOG_ID_NUM_WATCHDOG_MAJOR_REVISION_POS 8
+#define WATCHDOG_ID_NUM_WATCHDOG_MAJOR_REVISION_MASK (0xFF << WATCHDOG_ID_NUM_WATCHDOG_MAJOR_REVISION_POS)
+#define WATCHDOG_ID_NUM_WATCHDOG_MINOR_REVISION_POS 0
+#define WATCHDOG_ID_NUM_WATCHDOG_MINOR_REVISION_MASK (0xFF << WATCHDOG_ID_NUM_WATCHDOG_MINOR_REVISION_POS)
+
+/* WATCHDOG_ID_NUM settings */
+#define WATCHDOG_MAJOR_REVISION         (0x1 << WATCHDOG_ID_NUM_WATCHDOG_MAJOR_REVISION_POS)
+
+#define WATCHDOG_MINOR_REVISION         (0x0 << WATCHDOG_ID_NUM_WATCHDOG_MINOR_REVISION_POS)
+
+/* ----------------------------------------------------------------------------
+ * General-Purpose Timers
+ * ------------------------------------------------------------------------- */
+
+/* Timer Configuration 0 Register */
+#define TIMER0_CFG0_BASE                0x40000400
+#define TIMER0_CFG0                     REG32_POINTER(TIMER0_CFG0_BASE)
+
+/* TIMER_CFG0 bit positions */
+#define TIMER_CFG0_PRESCALE_POS         24
+#define TIMER_CFG0_PRESCALE_MASK        (0x7 << TIMER_CFG0_PRESCALE_POS)
+#define TIMER_CFG0_TIMEOUT_VALUE_POS    0
+#define TIMER_CFG0_TIMEOUT_VALUE_MASK   (0xFFFFFF << TIMER_CFG0_TIMEOUT_VALUE_POS)
+
+/* TIMER_CFG0 settings */
+#define TIMER_PRESCALE_1                (0x0 << TIMER_CFG0_PRESCALE_POS)
+#define TIMER_PRESCALE_2                (0x1 << TIMER_CFG0_PRESCALE_POS)
+#define TIMER_PRESCALE_4                (0x2 << TIMER_CFG0_PRESCALE_POS)
+#define TIMER_PRESCALE_8                (0x3 << TIMER_CFG0_PRESCALE_POS)
+#define TIMER_PRESCALE_16               (0x4 << TIMER_CFG0_PRESCALE_POS)
+#define TIMER_PRESCALE_32               (0x5 << TIMER_CFG0_PRESCALE_POS)
+#define TIMER_PRESCALE_64               (0x6 << TIMER_CFG0_PRESCALE_POS)
+#define TIMER_PRESCALE_128              (0x7 << TIMER_CFG0_PRESCALE_POS)
+
+/* Timer Configuration 0 Register */
+#define TIMER1_CFG0_BASE                0x40000500
+#define TIMER1_CFG0                     REG32_POINTER(TIMER1_CFG0_BASE)
+
+/* Timer Configuration 0 Register */
+#define TIMER2_CFG0_BASE                0x40000600
+#define TIMER2_CFG0                     REG32_POINTER(TIMER2_CFG0_BASE)
+
+/* Timer Configuration 0 Register */
+#define TIMER3_CFG0_BASE                0x40000700
+#define TIMER3_CFG0                     REG32_POINTER(TIMER3_CFG0_BASE)
+
+/* Timer Configuration 1 Register */
+#define TIMER0_CFG1_BASE                0x40000404
+#define TIMER0_CFG1                     REG32_POINTER(TIMER0_CFG1_BASE)
+
+/* TIMER_CFG1 bit positions */
+#define TIMER_CFG1_CLK_SRC_POS          12
+#define TIMER_CFG1_MULTI_COUNT_POS      8
+#define TIMER_CFG1_MULTI_COUNT_MASK     (0x7 << TIMER_CFG1_MULTI_COUNT_POS)
+#define TIMER_CFG1_GPIO_INT_SRC_POS     4
+#define TIMER_CFG1_GPIO_INT_SRC_MASK    (0x7 << TIMER_CFG1_GPIO_INT_SRC_POS)
+#define TIMER_CFG1_GPIO_INT_MODE_POS    2
+#define TIMER_CFG1_GPIO_INT_ENABLE_POS  1
+#define TIMER_CFG1_MODE_POS             0
+
+/* TIMER_CFG1 settings */
+#define TIMER_SLOWCLK_DIV32             (0x0 << TIMER_CFG1_CLK_SRC_POS)
+#define TIMER_SLOWCLK_DIV2              (0x1 << TIMER_CFG1_CLK_SRC_POS)
+
+#define TIMER_MULTI_COUNT_1             (0x0 << TIMER_CFG1_MULTI_COUNT_POS)
+#define TIMER_MULTI_COUNT_2             (0x1 << TIMER_CFG1_MULTI_COUNT_POS)
+#define TIMER_MULTI_COUNT_3             (0x2 << TIMER_CFG1_MULTI_COUNT_POS)
+#define TIMER_MULTI_COUNT_4             (0x3 << TIMER_CFG1_MULTI_COUNT_POS)
+#define TIMER_MULTI_COUNT_5             (0x4 << TIMER_CFG1_MULTI_COUNT_POS)
+#define TIMER_MULTI_COUNT_6             (0x5 << TIMER_CFG1_MULTI_COUNT_POS)
+#define TIMER_MULTI_COUNT_7             (0x6 << TIMER_CFG1_MULTI_COUNT_POS)
+#define TIMER_MULTI_COUNT_8             (0x7 << TIMER_CFG1_MULTI_COUNT_POS)
+
+#define TIMER_SRC_GPIO_INT0             (0x0 << TIMER_CFG1_GPIO_INT_SRC_POS)
+#define TIMER_SRC_GPIO_INT1             (0x1 << TIMER_CFG1_GPIO_INT_SRC_POS)
+#define TIMER_SRC_GPIO_INT2             (0x2 << TIMER_CFG1_GPIO_INT_SRC_POS)
+#define TIMER_SRC_GPIO_INT3             (0x3 << TIMER_CFG1_GPIO_INT_SRC_POS)
+
+#define TIMER_GPIO_INT_SINGLE           (0x0 << TIMER_CFG1_GPIO_INT_MODE_POS)
+#define TIMER_GPIO_INT_CONTINUOUS       (0x1 << TIMER_CFG1_GPIO_INT_MODE_POS)
+
+#define TIMER_GPIO_INT_DISABLE          (0x0 << TIMER_CFG1_GPIO_INT_ENABLE_POS)
+#define TIMER_GPIO_INT_ENABLE           (0x1 << TIMER_CFG1_GPIO_INT_ENABLE_POS)
+
+#define TIMER_SHOT_MODE                 (0x0 << TIMER_CFG1_MODE_POS)
+#define TIMER_FREE_RUN                  (0x1 << TIMER_CFG1_MODE_POS)
+
+/* Timer Configuration 1 Register */
+#define TIMER1_CFG1_BASE                0x40000504
+#define TIMER1_CFG1                     REG32_POINTER(TIMER1_CFG1_BASE)
+
+/* Timer Configuration 1 Register */
+#define TIMER2_CFG1_BASE                0x40000604
+#define TIMER2_CFG1                     REG32_POINTER(TIMER2_CFG1_BASE)
+
+/* Timer Configuration 1 Register */
+#define TIMER3_CFG1_BASE                0x40000704
+#define TIMER3_CFG1                     REG32_POINTER(TIMER3_CFG1_BASE)
+
+/* General-Purpose timer Control / Status Register */
+#define TIMER0_CTRL_BASE                0x40000408
+#define TIMER0_CTRL                     REG32_POINTER(TIMER0_CTRL_BASE)
+
+/* TIMER_CTRL bit positions */
+#define TIMER_CTRL_BUSY_POS             8
+#define TIMER_CTRL_START_POS            1
+#define TIMER_CTRL_STOP_POS             0
+
+/* TIMER_CTRL settings */
+#define TIMER_INACTIVE                  (0x0 << TIMER_CTRL_BUSY_POS)
+#define TIMER_ACTIVE                    (0x1 << TIMER_CTRL_BUSY_POS)
+
+#define TIMER_START                     (0x1 << TIMER_CTRL_START_POS)
+
+#define TIMER_STOP                      (0x1 << TIMER_CTRL_STOP_POS)
+
+/* General-Purpose timer Control / Status Register */
+#define TIMER1_CTRL_BASE                0x40000508
+#define TIMER1_CTRL                     REG32_POINTER(TIMER1_CTRL_BASE)
+
+/* General-Purpose timer Control / Status Register */
+#define TIMER2_CTRL_BASE                0x40000608
+#define TIMER2_CTRL                     REG32_POINTER(TIMER2_CTRL_BASE)
+
+/* General-Purpose timer Control / Status Register */
+#define TIMER3_CTRL_BASE                0x40000708
+#define TIMER3_CTRL                     REG32_POINTER(TIMER3_CTRL_BASE)
+
+/* Timer Current Value Register */
+#define TIMER0_VAL_BASE                 0x4000040C
+#define TIMER0_VAL                      READONLY_REG32_POINTER(TIMER0_VAL_BASE)
+
+/* TIMER_VAL bit positions */
+#define TIMER_VAL_MULTI_COUNT_VAL_POS   24
+#define TIMER_VAL_MULTI_COUNT_VAL_MASK  (0x7 << TIMER_VAL_MULTI_COUNT_VAL_POS)
+#define TIMER_VAL_TIMER_VALUE_POS       0
+#define TIMER_VAL_TIMER_VALUE_MASK      (0xFFFFFF << TIMER_VAL_TIMER_VALUE_POS)
+
+/* Timer Current Value Register */
+#define TIMER1_VAL_BASE                 0x4000050C
+#define TIMER1_VAL                      READONLY_REG32_POINTER(TIMER1_VAL_BASE)
+
+/* Timer Current Value Register */
+#define TIMER2_VAL_BASE                 0x4000060C
+#define TIMER2_VAL                      READONLY_REG32_POINTER(TIMER2_VAL_BASE)
+
+/* Timer Current Value Register */
+#define TIMER3_VAL_BASE                 0x4000070C
+#define TIMER3_VAL                      READONLY_REG32_POINTER(TIMER3_VAL_BASE)
+
+/* Timer GPIO Interrupt Captured Value Register */
+#define TIMER0_VAL_CAPTURE_BASE         0x40000410
+#define TIMER0_VAL_CAPTURE              REG32_POINTER(TIMER0_VAL_CAPTURE_BASE)
+
+/* TIMER_VAL_CAPTURE bit positions */
+#define TIMER_VAL_CAPTURE_MULTI_COUNT_VAL_GPIO_POS 24
+#define TIMER_VAL_CAPTURE_MULTI_COUNT_VAL_GPIO_MASK (0x7 << TIMER_VAL_CAPTURE_MULTI_COUNT_VAL_GPIO_POS)
+#define TIMER_VAL_CAPTURE_TIMER_VALUE_GPIO_POS 0
+#define TIMER_VAL_CAPTURE_TIMER_VALUE_GPIO_MASK (0xFFFFFF << TIMER_VAL_CAPTURE_TIMER_VALUE_GPIO_POS)
+
+/* Timer GPIO Interrupt Captured Value Register */
+#define TIMER1_VAL_CAPTURE_BASE         0x40000510
+#define TIMER1_VAL_CAPTURE              REG32_POINTER(TIMER1_VAL_CAPTURE_BASE)
+
+/* Timer GPIO Interrupt Captured Value Register */
+#define TIMER2_VAL_CAPTURE_BASE         0x40000610
+#define TIMER2_VAL_CAPTURE              REG32_POINTER(TIMER2_VAL_CAPTURE_BASE)
+
+/* Timer GPIO Interrupt Captured Value Register */
+#define TIMER3_VAL_CAPTURE_BASE         0x40000710
+#define TIMER3_VAL_CAPTURE              REG32_POINTER(TIMER3_VAL_CAPTURE_BASE)
+
+/* Timer ID number */
+#define TIMER0_ID_NUM_BASE              0x400004FC
+#define TIMER0_ID_NUM                   READONLY_REG32_POINTER(TIMER0_ID_NUM_BASE)
+
+/* TIMER_ID_NUM bit positions */
+#define TIMER_ID_NUM_TIMER_GPIO_CAP_POS 20
+#define TIMER_ID_NUM_TIMER_ID_NUM_POS   16
+#define TIMER_ID_NUM_TIMER_ID_NUM_MASK  (0xF << TIMER_ID_NUM_TIMER_ID_NUM_POS)
+#define TIMER_ID_NUM_TIMER_MAJOR_REVISION_POS 8
+#define TIMER_ID_NUM_TIMER_MAJOR_REVISION_MASK (0xFF << TIMER_ID_NUM_TIMER_MAJOR_REVISION_POS)
+#define TIMER_ID_NUM_TIMER_MINOR_REVISION_POS 0
+#define TIMER_ID_NUM_TIMER_MINOR_REVISION_MASK (0xFF << TIMER_ID_NUM_TIMER_MINOR_REVISION_POS)
+
+/* TIMER_ID_NUM settings */
+#define TIMER_GPIO_CAP_DISABLED         (0x0 << TIMER_ID_NUM_TIMER_GPIO_CAP_POS)
+#define TIMER_GPIO_CAP_ENABLED          (0x1 << TIMER_ID_NUM_TIMER_GPIO_CAP_POS)
+
+#define TIMER_MAJOR_REVISION            (0x1 << TIMER_ID_NUM_TIMER_MAJOR_REVISION_POS)
+
+#define TIMER_MINOR_REVISION            (0x0 << TIMER_ID_NUM_TIMER_MINOR_REVISION_POS)
+
+/* Timer ID number */
+#define TIMER1_ID_NUM_BASE              0x400005FC
+#define TIMER1_ID_NUM                   READONLY_REG32_POINTER(TIMER1_ID_NUM_BASE)
+
+/* Timer ID number */
+#define TIMER2_ID_NUM_BASE              0x400006FC
+#define TIMER2_ID_NUM                   READONLY_REG32_POINTER(TIMER2_ID_NUM_BASE)
+
+/* Timer ID number */
+#define TIMER3_ID_NUM_BASE              0x400007FC
+#define TIMER3_ID_NUM                   READONLY_REG32_POINTER(TIMER3_ID_NUM_BASE)
+
+/* ----------------------------------------------------------------------------
+ * Flash Interface Configuration and Control
+ * ------------------------------------------------------------------------- */
+
+/* Flash Interface Control Register */
+#define FLASH0_IF_CTRL_BASE             0x40000800
+#define FLASH0_IF_CTRL                  REG32_POINTER(FLASH0_IF_CTRL_BASE)
+
+/* FLASH_IF_CTRL bit positions */
+#define FLASH_IF_CTRL_NOT_LOAD_AUTO_POS 16
+#define FLASH_IF_CTRL_VREAD1_MODE_POS   12
+#define FLASH_IF_CTRL_RECALL_POS        10
+#define FLASH_IF_CTRL_RETRY_POS         8
+#define FLASH_IF_CTRL_RETRY_MASK        (0x3 << FLASH_IF_CTRL_RETRY_POS)
+#define FLASH_IF_CTRL_LP_MODE_POS       0
+
+/* FLASH_IF_CTRL settings */
+#define FLASH_LOAD_AUTO_ENABLE          (0x0 << FLASH_IF_CTRL_NOT_LOAD_AUTO_POS)
+#define FLASH_LOAD_AUTO_DISABLE         (0x1 << FLASH_IF_CTRL_NOT_LOAD_AUTO_POS)
+
+#define FLASH_VREAD1_DISABLE            (0x0 << FLASH_IF_CTRL_VREAD1_MODE_POS)
+#define FLASH_VREAD1_ENABLE             (0x1 << FLASH_IF_CTRL_VREAD1_MODE_POS)
+
+#define FLASH_RECALL_DISABLE            (0x0 << FLASH_IF_CTRL_RECALL_POS)
+#define FLASH_RECALL_ENABLE             (0x1 << FLASH_IF_CTRL_RECALL_POS)
+
+#define FLASH_RETRY_1                   (0x0 << FLASH_IF_CTRL_RETRY_POS)
+#define FLASH_RETRY_2                   (0x1 << FLASH_IF_CTRL_RETRY_POS)
+#define FLASH_RETRY_3                   (0x2 << FLASH_IF_CTRL_RETRY_POS)
+#define FLASH_RETRY_4                   (0x3 << FLASH_IF_CTRL_RETRY_POS)
+
+#define FLASH_LOW_POWER_DISABLE         (0x0 << FLASH_IF_CTRL_LP_MODE_POS)
+#define FLASH_LOW_POWER_ENABLE          (0x1 << FLASH_IF_CTRL_LP_MODE_POS)
+
+/* Flash Interface Control Register */
+#define FLASH1_IF_CTRL_BASE             0x40000900
+#define FLASH1_IF_CTRL                  REG32_POINTER(FLASH1_IF_CTRL_BASE)
+
+/* Flash Main Write Unlock Register */
+#define FLASH0_MAIN_WRITE_UNLOCK_BASE   0x40000804
+#define FLASH0_MAIN_WRITE_UNLOCK        REG32_POINTER(FLASH0_MAIN_WRITE_UNLOCK_BASE)
+
+/* FLASH_MAIN_WRITE_UNLOCK settings */
+#define FLASH_MAIN_KEY                  (0xDBC8264E << FLASH_MAIN_WRITE_UNLOCK_UNLOCK_KEY_POS)
+
+/* Flash Main Write Unlock Register */
+#define FLASH1_MAIN_WRITE_UNLOCK_BASE   0x40000904
+#define FLASH1_MAIN_WRITE_UNLOCK        REG32_POINTER(FLASH1_MAIN_WRITE_UNLOCK_BASE)
+
+/* Flash Main Write Control Register */
+#define FLASH0_MAIN_CTRL_BASE           0x40000808
+#define FLASH0_MAIN_CTRL                REG32_POINTER(FLASH0_MAIN_CTRL_BASE)
+
+/* FLASH_MAIN_CTRL bit positions */
+#define FLASH_MAIN_CTRL_DATA_A_35K_TO_40K_W_EN_POS 11
+#define FLASH_MAIN_CTRL_DATA_A_30K_TO_35K_W_EN_POS 10
+#define FLASH_MAIN_CTRL_DATA_A_25K_TO_30K_W_EN_POS 9
+#define FLASH_MAIN_CTRL_DATA_A_20K_TO_25K_W_EN_POS 8
+#define FLASH_MAIN_CTRL_DATA_A_15K_TO_20K_W_EN_POS 7
+#define FLASH_MAIN_CTRL_DATA_A_10K_TO_15K_W_EN_POS 6
+#define FLASH_MAIN_CTRL_DATA_A_5K_TO_10K_W_EN_POS 5
+#define FLASH_MAIN_CTRL_DATA_A_0K_TO_5K_W_EN_POS 4
+#define FLASH_MAIN_CTRL_CODE_A_66K_TO_88K_W_EN_POS 3
+#define FLASH_MAIN_CTRL_CODE_A_44K_TO_66K_W_EN_POS 2
+#define FLASH_MAIN_CTRL_CODE_A_22K_TO_44K_W_EN_POS 1
+#define FLASH_MAIN_CTRL_CODE_A_0K_TO_22K_W_EN_POS 0
+
+/* FLASH_MAIN_CTRL settings */
+#define DATA_A_35K_TO_40K_W_DISABLE     (0x0 << FLASH_MAIN_CTRL_DATA_A_35K_TO_40K_W_EN_POS)
+#define DATA_A_35K_TO_40K_W_ENABLE      (0x1 << FLASH_MAIN_CTRL_DATA_A_35K_TO_40K_W_EN_POS)
+
+#define DATA_A_30K_TO_35K_W_DISABLE     (0x0 << FLASH_MAIN_CTRL_DATA_A_30K_TO_35K_W_EN_POS)
+#define DATA_A_30K_TO_35K_W_ENABLE      (0x1 << FLASH_MAIN_CTRL_DATA_A_30K_TO_35K_W_EN_POS)
+
+#define DATA_A_25K_TO_30K_W_DISABLE     (0x0 << FLASH_MAIN_CTRL_DATA_A_25K_TO_30K_W_EN_POS)
+#define DATA_A_25K_TO_30K_W_ENABLE      (0x1 << FLASH_MAIN_CTRL_DATA_A_25K_TO_30K_W_EN_POS)
+
+#define DATA_A_20K_TO_25K_W_DISABLE     (0x0 << FLASH_MAIN_CTRL_DATA_A_20K_TO_25K_W_EN_POS)
+#define DATA_A_20K_TO_25K_W_ENABLE      (0x1 << FLASH_MAIN_CTRL_DATA_A_20K_TO_25K_W_EN_POS)
+
+#define DATA_A_15K_TO_20K_W_DISABLE     (0x0 << FLASH_MAIN_CTRL_DATA_A_15K_TO_20K_W_EN_POS)
+#define DATA_A_15K_TO_20K_W_ENABLE      (0x1 << FLASH_MAIN_CTRL_DATA_A_15K_TO_20K_W_EN_POS)
+
+#define DATA_A_10K_TO_15K_W_DISABLE     (0x0 << FLASH_MAIN_CTRL_DATA_A_10K_TO_15K_W_EN_POS)
+#define DATA_A_10K_TO_15K_W_ENABLE      (0x1 << FLASH_MAIN_CTRL_DATA_A_10K_TO_15K_W_EN_POS)
+
+#define DATA_A_5K_TO_10K_W_DISABLE      (0x0 << FLASH_MAIN_CTRL_DATA_A_5K_TO_10K_W_EN_POS)
+#define DATA_A_5K_TO_10K_W_ENABLE       (0x1 << FLASH_MAIN_CTRL_DATA_A_5K_TO_10K_W_EN_POS)
+
+#define DATA_A_0K_TO_5K_W_DISABLE       (0x0 << FLASH_MAIN_CTRL_DATA_A_0K_TO_5K_W_EN_POS)
+#define DATA_A_0K_TO_5K_W_ENABLE        (0x1 << FLASH_MAIN_CTRL_DATA_A_0K_TO_5K_W_EN_POS)
+
+#define CODE_A_66K_TO_88K_W_DISABLE     (0x0 << FLASH_MAIN_CTRL_CODE_A_66K_TO_88K_W_EN_POS)
+#define CODE_A_66K_TO_88K_W_ENABLE      (0x1 << FLASH_MAIN_CTRL_CODE_A_66K_TO_88K_W_EN_POS)
+
+#define CODE_A_44K_TO_66K_W_DISABLE     (0x0 << FLASH_MAIN_CTRL_CODE_A_44K_TO_66K_W_EN_POS)
+#define CODE_A_44K_TO_66K_W_ENABLE      (0x1 << FLASH_MAIN_CTRL_CODE_A_44K_TO_66K_W_EN_POS)
+
+#define CODE_A_22K_TO_44K_W_DISABLE     (0x0 << FLASH_MAIN_CTRL_CODE_A_22K_TO_44K_W_EN_POS)
+#define CODE_A_22K_TO_44K_W_ENABLE      (0x1 << FLASH_MAIN_CTRL_CODE_A_22K_TO_44K_W_EN_POS)
+
+#define CODE_A_0K_TO_22K_W_DISABLE      (0x0 << FLASH_MAIN_CTRL_CODE_A_0K_TO_22K_W_EN_POS)
+#define CODE_A_0K_TO_22K_W_ENABLE       (0x1 << FLASH_MAIN_CTRL_CODE_A_0K_TO_22K_W_EN_POS)
+
+/* Flash Main Write Control Register */
+#define FLASH1_MAIN_CTRL_BASE           0x40000908
+#define FLASH1_MAIN_CTRL                REG32_POINTER(FLASH1_MAIN_CTRL_BASE)
+
+/* Flash, Memory and RF Power-Up Delay Configuration */
+#define FLASH0_DELAY_CTRL_BASE          0x4000080C
+#define FLASH0_DELAY_CTRL               REG32_POINTER(FLASH0_DELAY_CTRL_BASE)
+
+/* FLASH_DELAY_CTRL bit positions */
+#define FLASH_DELAY_CTRL_READ_MARGIN_POS 7
+#define FLASH_DELAY_CTRL_SYSCLK_FREQ_POS 0
+#define FLASH_DELAY_CTRL_SYSCLK_FREQ_MASK (0xF << FLASH_DELAY_CTRL_SYSCLK_FREQ_POS)
+
+/* FLASH_DELAY_CTRL settings */
+#define DEFAULT_READ_MARGIN             (0x0 << FLASH_DELAY_CTRL_READ_MARGIN_POS)
+#define FAST_READ_MARGIN                (0x1 << FLASH_DELAY_CTRL_READ_MARGIN_POS)
+
+#define FLASH_DELAY_FOR_SYSCLK_3MHZ     (0x0 << FLASH_DELAY_CTRL_SYSCLK_FREQ_POS)
+#define FLASH_DELAY_FOR_SYSCLK_4MHZ     (0x1 << FLASH_DELAY_CTRL_SYSCLK_FREQ_POS)
+#define FLASH_DELAY_FOR_SYSCLK_5MHZ     (0x2 << FLASH_DELAY_CTRL_SYSCLK_FREQ_POS)
+#define FLASH_DELAY_FOR_SYSCLK_8MHZ     (0x3 << FLASH_DELAY_CTRL_SYSCLK_FREQ_POS)
+#define FLASH_DELAY_FOR_SYSCLK_10MHZ    (0x4 << FLASH_DELAY_CTRL_SYSCLK_FREQ_POS)
+#define FLASH_DELAY_FOR_SYSCLK_12MHZ    (0x5 << FLASH_DELAY_CTRL_SYSCLK_FREQ_POS)
+#define FLASH_DELAY_FOR_SYSCLK_16MHZ    (0x6 << FLASH_DELAY_CTRL_SYSCLK_FREQ_POS)
+#define FLASH_DELAY_FOR_SYSCLK_20MHZ    (0x7 << FLASH_DELAY_CTRL_SYSCLK_FREQ_POS)
+#define FLASH_DELAY_FOR_SYSCLK_24MHZ    (0x8 << FLASH_DELAY_CTRL_SYSCLK_FREQ_POS)
+#define FLASH_DELAY_FOR_SYSCLK_48MHZ    (0x9 << FLASH_DELAY_CTRL_SYSCLK_FREQ_POS)
+
+/* Flash, Memory and RF Power-Up Delay Configuration */
+#define FLASH1_DELAY_CTRL_BASE          0x4000090C
+#define FLASH1_DELAY_CTRL               REG32_POINTER(FLASH1_DELAY_CTRL_BASE)
+
+/* Flash Command Control Register */
+#define FLASH0_CMD_CTRL_BASE            0x40000830
+#define FLASH0_CMD_CTRL                 REG32_POINTER(FLASH0_CMD_CTRL_BASE)
+
+/* FLASH_CMD_CTRL bit positions */
+#define FLASH_CMD_CTRL_CMD_END_POS      5
+#define FLASH_CMD_CTRL_COMMAND_POS      0
+#define FLASH_CMD_CTRL_COMMAND_MASK     (0x1F << FLASH_CMD_CTRL_COMMAND_POS)
+
+/* FLASH_CMD_CTRL settings */
+#define CMD_END                         (0x1 << FLASH_CMD_CTRL_CMD_END_POS)
+
+#define CMD_IDLE                        (0x0 << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_WAKE_UP                     (0x1 << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_LOAD_TRIM                   (0x2 << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_READ                        (0x5 << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_PROGRAM_NOSEQ               (0x6 << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_PROGRAM_SEQ                 (0x7 << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_SECTOR_ERASE                (0x8 << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_MASS_ERASE                  (0x9 << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_SET_LOW_POWER               (0xA << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_UNSET_LOW_POWER             (0xB << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_SET_RECALL                  (0xC << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_UNSET_RECALL                (0xD << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_SET_VREAD1                  (0xE << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_UNSET_VREAD1                (0xF << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_WRITE_USER_RED              (0x10 << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_PRE_PROGRAM_NOSEQ           (0x11 << FLASH_CMD_CTRL_COMMAND_POS)
+#define CMD_PRE_PROGRAM_SEQ             (0x12 << FLASH_CMD_CTRL_COMMAND_POS)
+
+/* Flash Command Control Register */
+#define FLASH1_CMD_CTRL_BASE            0x40000930
+#define FLASH1_CMD_CTRL                 REG32_POINTER(FLASH1_CMD_CTRL_BASE)
+
+/* Flash Interface Status Register */
+#define FLASH0_IF_STATUS_BASE           0x40000834
+#define FLASH0_IF_STATUS                READONLY_REG32_POINTER(FLASH0_IF_STATUS_BASE)
+
+/* FLASH_IF_STATUS bit positions */
+#define FLASH_IF_STATUS_TRIMMED_STATUS_POS 31
+#define FLASH_IF_STATUS_ISOLATE_STATUS_POS 30
+#define FLASH_IF_STATUS_PROG_SEQ_DATA_REQ_POS 29
+#define FLASH_IF_STATUS_BUSY_POS        28
+#define FLASH_IF_STATUS_DATA_RED2_W_UNLOCK_POS 27
+#define FLASH_IF_STATUS_DATA_RED1_W_UNLOCK_POS 26
+#define FLASH_IF_STATUS_CODE_RED2_W_UNLOCK_POS 25
+#define FLASH_IF_STATUS_CODE_RED1_W_UNLOCK_POS 24
+#define FLASH_IF_STATUS_NVR7_W_UNLOCK_POS 22
+#define FLASH_IF_STATUS_NVR6_W_UNLOCK_POS 21
+#define FLASH_IF_STATUS_NVR5_W_UNLOCK_POS 20
+#define FLASH_IF_STATUS_NVR4_W_UNLOCK_POS 19
+#define FLASH_IF_STATUS_NVR3_W_UNLOCK_POS 18
+#define FLASH_IF_STATUS_NVR2_W_UNLOCK_POS 17
+#define FLASH_IF_STATUS_NVR1_W_UNLOCK_POS 16
+#define FLASH_IF_STATUS_NVR0_W_UNLOCK_POS 15
+#define FLASH_IF_STATUS_DATA_A_35K_TO_40K_W_UNLOCK_POS 11
+#define FLASH_IF_STATUS_DATA_A_30K_TO_35K_W_UNLOCK_POS 10
+#define FLASH_IF_STATUS_DATA_A_25K_TO_30K_W_UNLOCK_POS 9
+#define FLASH_IF_STATUS_DATA_A_20K_TO_25K_W_UNLOCK_POS 8
+#define FLASH_IF_STATUS_DATA_A_15K_TO_20K_W_UNLOCK_POS 7
+#define FLASH_IF_STATUS_DATA_A_10K_TO_15K_W_UNLOCK_POS 6
+#define FLASH_IF_STATUS_DATA_A_5K_TO_10K_W_UNLOCK_POS 5
+#define FLASH_IF_STATUS_DATA_A_0K_TO_5K_W_UNLOCK_POS 4
+#define FLASH_IF_STATUS_CODE_A_66K_TO_88K_W_UNLOCK_POS 3
+#define FLASH_IF_STATUS_CODE_A_44K_TO_66K_W_UNLOCK_POS 2
+#define FLASH_IF_STATUS_CODE_A_22K_TO_44K_W_UNLOCK_POS 1
+#define FLASH_IF_STATUS_CODE_A_0K_TO_22K_W_UNLOCK_POS 0
+
+/* FLASH_IF_STATUS settings */
+#define FLASH_UNTRIMMED                 (0x0 << FLASH_IF_STATUS_TRIMMED_STATUS_POS)
+#define FLASH_TRIMMED                   (0x1 << FLASH_IF_STATUS_TRIMMED_STATUS_POS)
+
+#define FLASH_ACCESSIBLE                (0x0 << FLASH_IF_STATUS_ISOLATE_STATUS_POS)
+#define FLASH_ISOLATE                   (0x1 << FLASH_IF_STATUS_ISOLATE_STATUS_POS)
+
+#define FLASH_PROG_SEQ_IDLE             (0x0 << FLASH_IF_STATUS_PROG_SEQ_DATA_REQ_POS)
+#define FLASH_PROG_SEQ_REQ_NEW_DATA     (0x1 << FLASH_IF_STATUS_PROG_SEQ_DATA_REQ_POS)
+
+#define FLASH_IF_IDLE                   (0x0 << FLASH_IF_STATUS_BUSY_POS)
+#define FLASH_IF_BUSY                   (0x1 << FLASH_IF_STATUS_BUSY_POS)
+
+#define FLASH_DATA_RED2_W_LOCKED        (0x0 << FLASH_IF_STATUS_DATA_RED2_W_UNLOCK_POS)
+#define FLASH_DATA_RED2_W_UNLOCKED      (0x1 << FLASH_IF_STATUS_DATA_RED2_W_UNLOCK_POS)
+
+#define FLASH_DATA_RED1_W_LOCKED        (0x0 << FLASH_IF_STATUS_DATA_RED1_W_UNLOCK_POS)
+#define FLASH_DATA_RED1_W_UNLOCKED      (0x1 << FLASH_IF_STATUS_DATA_RED1_W_UNLOCK_POS)
+
+#define FLASH_CODE_RED2_W_LOCKED        (0x0 << FLASH_IF_STATUS_CODE_RED2_W_UNLOCK_POS)
+#define FLASH_CODE_RED2_W_UNLOCKED      (0x1 << FLASH_IF_STATUS_CODE_RED2_W_UNLOCK_POS)
+
+#define FLASH_CODE_RED1_W_LOCKED        (0x0 << FLASH_IF_STATUS_CODE_RED1_W_UNLOCK_POS)
+#define FLASH_CODE_RED1_W_UNLOCKED      (0x1 << FLASH_IF_STATUS_CODE_RED1_W_UNLOCK_POS)
+
+#define FLASH_NVR7_W_LOCKED             (0x0 << FLASH_IF_STATUS_NVR7_W_UNLOCK_POS)
+#define FLASH_NVR7_W_UNLOCKED           (0x1 << FLASH_IF_STATUS_NVR7_W_UNLOCK_POS)
+
+#define FLASH_NVR6_W_LOCKED             (0x0 << FLASH_IF_STATUS_NVR6_W_UNLOCK_POS)
+#define FLASH_NVR6_W_UNLOCKED           (0x1 << FLASH_IF_STATUS_NVR6_W_UNLOCK_POS)
+
+#define FLASH_NVR5_W_LOCKED             (0x0 << FLASH_IF_STATUS_NVR5_W_UNLOCK_POS)
+#define FLASH_NVR5_W_UNLOCKED           (0x1 << FLASH_IF_STATUS_NVR5_W_UNLOCK_POS)
+
+#define FLASH_NVR4_W_LOCKED             (0x0 << FLASH_IF_STATUS_NVR4_W_UNLOCK_POS)
+#define FLASH_NVR4_W_UNLOCKED           (0x1 << FLASH_IF_STATUS_NVR4_W_UNLOCK_POS)
+
+#define FLASH_NVR3_W_LOCKED             (0x0 << FLASH_IF_STATUS_NVR3_W_UNLOCK_POS)
+#define FLASH_NVR3_W_UNLOCKED           (0x1 << FLASH_IF_STATUS_NVR3_W_UNLOCK_POS)
+
+#define FLASH_NVR2_W_LOCKED             (0x0 << FLASH_IF_STATUS_NVR2_W_UNLOCK_POS)
+#define FLASH_NVR2_W_UNLOCKED           (0x1 << FLASH_IF_STATUS_NVR2_W_UNLOCK_POS)
+
+#define FLASH_NVR1_W_LOCKED             (0x0 << FLASH_IF_STATUS_NVR1_W_UNLOCK_POS)
+#define FLASH_NVR1_W_UNLOCKED           (0x1 << FLASH_IF_STATUS_NVR1_W_UNLOCK_POS)
+
+#define FLASH_NVR0_W_LOCKED             (0x0 << FLASH_IF_STATUS_NVR0_W_UNLOCK_POS)
+#define FLASH_NVR0_W_UNLOCKED           (0x1 << FLASH_IF_STATUS_NVR0_W_UNLOCK_POS)
+
+#define DATA_A_35K_TO_40K_W_LOCKED      (0x0 << FLASH_IF_STATUS_DATA_A_35K_TO_40K_W_UNLOCK_POS)
+#define DATA_A_35K_TO_40K_W_UNLOCKED    (0x1 << FLASH_IF_STATUS_DATA_A_35K_TO_40K_W_UNLOCK_POS)
+
+#define DATA_A_30K_TO_35K_W_LOCKED      (0x0 << FLASH_IF_STATUS_DATA_A_30K_TO_35K_W_UNLOCK_POS)
+#define DATA_A_30K_TO_35K_W_UNLOCKED    (0x1 << FLASH_IF_STATUS_DATA_A_30K_TO_35K_W_UNLOCK_POS)
+
+#define DATA_A_25K_TO_30K_W_LOCKED      (0x0 << FLASH_IF_STATUS_DATA_A_25K_TO_30K_W_UNLOCK_POS)
+#define DATA_A_25K_TO_30K_W_UNLOCKED    (0x1 << FLASH_IF_STATUS_DATA_A_25K_TO_30K_W_UNLOCK_POS)
+
+#define DATA_A_20K_TO_25K_W_LOCKED      (0x0 << FLASH_IF_STATUS_DATA_A_20K_TO_25K_W_UNLOCK_POS)
+#define DATA_A_20K_TO_25K_W_UNLOCKED    (0x1 << FLASH_IF_STATUS_DATA_A_20K_TO_25K_W_UNLOCK_POS)
+
+#define DATA_A_15K_TO_20K_W_LOCKED      (0x0 << FLASH_IF_STATUS_DATA_A_15K_TO_20K_W_UNLOCK_POS)
+#define DATA_A_15K_TO_20K_W_UNLOCKED    (0x1 << FLASH_IF_STATUS_DATA_A_15K_TO_20K_W_UNLOCK_POS)
+
+#define DATA_A_10K_TO_15K_W_LOCKED      (0x0 << FLASH_IF_STATUS_DATA_A_10K_TO_15K_W_UNLOCK_POS)
+#define DATA_A_10K_TO_15K_W_UNLOCKED    (0x1 << FLASH_IF_STATUS_DATA_A_10K_TO_15K_W_UNLOCK_POS)
+
+#define DATA_A_5K_TO_10K_W_LOCKED       (0x0 << FLASH_IF_STATUS_DATA_A_5K_TO_10K_W_UNLOCK_POS)
+#define DATA_A_5K_TO_10K_W_UNLOCKED     (0x1 << FLASH_IF_STATUS_DATA_A_5K_TO_10K_W_UNLOCK_POS)
+
+#define DATA_A_0K_TO_5K_W_LOCKED        (0x0 << FLASH_IF_STATUS_DATA_A_0K_TO_5K_W_UNLOCK_POS)
+#define DATA_A_0K_TO_5K_W_UNLOCKED      (0x1 << FLASH_IF_STATUS_DATA_A_0K_TO_5K_W_UNLOCK_POS)
+
+#define CODE_A_66K_TO_88K_W_LOCKED      (0x0 << FLASH_IF_STATUS_CODE_A_66K_TO_88K_W_UNLOCK_POS)
+#define CODE_A_66K_TO_88K_W_UNLOCKED    (0x1 << FLASH_IF_STATUS_CODE_A_66K_TO_88K_W_UNLOCK_POS)
+
+#define CODE_A_44K_TO_66K_W_LOCKED      (0x0 << FLASH_IF_STATUS_CODE_A_44K_TO_66K_W_UNLOCK_POS)
+#define CODE_A_44K_TO_66K_W_UNLOCKED    (0x1 << FLASH_IF_STATUS_CODE_A_44K_TO_66K_W_UNLOCK_POS)
+
+#define CODE_A_22K_TO_44K_W_LOCKED      (0x0 << FLASH_IF_STATUS_CODE_A_22K_TO_44K_W_UNLOCK_POS)
+#define CODE_A_22K_TO_44K_W_UNLOCKED    (0x1 << FLASH_IF_STATUS_CODE_A_22K_TO_44K_W_UNLOCK_POS)
+
+#define CODE_A_0K_TO_22K_W_LOCKED       (0x0 << FLASH_IF_STATUS_CODE_A_0K_TO_22K_W_UNLOCK_POS)
+#define CODE_A_0K_TO_22K_W_UNLOCKED     (0x1 << FLASH_IF_STATUS_CODE_A_0K_TO_22K_W_UNLOCK_POS)
+
+/* Flash Interface Status Register */
+#define FLASH1_IF_STATUS_BASE           0x40000934
+#define FLASH1_IF_STATUS                READONLY_REG32_POINTER(FLASH1_IF_STATUS_BASE)
+
+/* Flash Address Register */
+#define FLASH0_ADDR_BASE                0x40000838
+#define FLASH0_ADDR                     REG32_POINTER(FLASH0_ADDR_BASE)
+
+/* Flash Address Register */
+#define FLASH1_ADDR_BASE                0x40000938
+#define FLASH1_ADDR                     REG32_POINTER(FLASH1_ADDR_BASE)
+
+/* Flash Read/Write Data Register */
+#define FLASH0_DATA_BASE                0x4000083C
+#define FLASH0_DATA                     REG32_POINTER(FLASH0_DATA_BASE)
+
+/* Flash Read/Write Data Register */
+#define FLASH1_DATA_BASE                0x4000093C
+#define FLASH1_DATA                     REG32_POINTER(FLASH1_DATA_BASE)
+
+/* Flash NVR Write Unlock Register */
+#define FLASH0_NVR_WRITE_UNLOCK_BASE    0x40000844
+#define FLASH0_NVR_WRITE_UNLOCK         REG32_POINTER(FLASH0_NVR_WRITE_UNLOCK_BASE)
+
+/* FLASH_NVR_WRITE_UNLOCK settings */
+#define FLASH_NVR_KEY                   (0x71B371F5 << FLASH_NVR_WRITE_UNLOCK_UNLOCK_KEY_POS)
+
+/* Flash NVR Write Unlock Register */
+#define FLASH1_NVR_WRITE_UNLOCK_BASE    0x40000944
+#define FLASH1_NVR_WRITE_UNLOCK         REG32_POINTER(FLASH1_NVR_WRITE_UNLOCK_BASE)
+
+/* Flash NVR Control Register */
+#define FLASH0_NVR_CTRL_BASE            0x40000848
+#define FLASH0_NVR_CTRL                 REG32_POINTER(FLASH0_NVR_CTRL_BASE)
+
+/* FLASH_NVR_CTRL bit positions */
+#define FLASH_NVR_CTRL_NVR7_W_EN_POS    7
+#define FLASH_NVR_CTRL_NVR6_W_EN_POS    6
+#define FLASH_NVR_CTRL_NVR5_W_EN_POS    5
+#define FLASH_NVR_CTRL_NVR4_W_EN_POS    4
+#define FLASH_NVR_CTRL_NVR3_W_EN_POS    3
+#define FLASH_NVR_CTRL_NVR2_W_EN_POS    2
+#define FLASH_NVR_CTRL_NVR1_W_EN_POS    1
+#define FLASH_NVR_CTRL_NVR0_W_EN_POS    0
+
+/* FLASH_NVR_CTRL settings */
+#define NVR7_WRITE_DISABLE              (0x0 << FLASH_NVR_CTRL_NVR7_W_EN_POS)
+#define NVR7_WRITE_ENABLE               (0x1 << FLASH_NVR_CTRL_NVR7_W_EN_POS)
+
+#define NVR6_WRITE_DISABLE              (0x0 << FLASH_NVR_CTRL_NVR6_W_EN_POS)
+#define NVR6_WRITE_ENABLE               (0x1 << FLASH_NVR_CTRL_NVR6_W_EN_POS)
+
+#define NVR5_WRITE_DISABLE              (0x0 << FLASH_NVR_CTRL_NVR5_W_EN_POS)
+#define NVR5_WRITE_ENABLE               (0x1 << FLASH_NVR_CTRL_NVR5_W_EN_POS)
+
+#define NVR4_WRITE_DISABLE              (0x0 << FLASH_NVR_CTRL_NVR4_W_EN_POS)
+#define NVR4_WRITE_ENABLE               (0x1 << FLASH_NVR_CTRL_NVR4_W_EN_POS)
+
+#define NVR3_WRITE_DISABLE              (0x0 << FLASH_NVR_CTRL_NVR3_W_EN_POS)
+#define NVR3_WRITE_ENABLE               (0x1 << FLASH_NVR_CTRL_NVR3_W_EN_POS)
+
+#define NVR2_WRITE_DISABLE              (0x0 << FLASH_NVR_CTRL_NVR2_W_EN_POS)
+#define NVR2_WRITE_ENABLE               (0x1 << FLASH_NVR_CTRL_NVR2_W_EN_POS)
+
+#define NVR1_WRITE_DISABLE              (0x0 << FLASH_NVR_CTRL_NVR1_W_EN_POS)
+#define NVR1_WRITE_ENABLE               (0x1 << FLASH_NVR_CTRL_NVR1_W_EN_POS)
+
+#define NVR0_WRITE_DISABLE              (0x0 << FLASH_NVR_CTRL_NVR0_W_EN_POS)
+#define NVR0_WRITE_ENABLE               (0x1 << FLASH_NVR_CTRL_NVR0_W_EN_POS)
+
+/* Flash NVR Control Register */
+#define FLASH1_NVR_CTRL_BASE            0x40000948
+#define FLASH1_NVR_CTRL                 REG32_POINTER(FLASH1_NVR_CTRL_BASE)
+
+/* Flash Patch Address Register */
+#define FLASH0_PATCH_ADDR_BASE          0x40000864
+#define FLASH0_PATCH_ADDR               REG32_POINTER(FLASH0_PATCH_ADDR_BASE)
+
+/* FLASH_PATCH_ADDR bit positions */
+#define FLASH_PATCH_ADDR_PATCH_NOT_VALID_POS 31
+#define FLASH_PATCH_ADDR_PATCH_ADDR_POS 8
+#define FLASH_PATCH_ADDR_PATCH_ADDR_MASK (0x1FFF << FLASH_PATCH_ADDR_PATCH_ADDR_POS)
+
+/* FLASH_PATCH_ADDR settings */
+#define PATCH_VALID                     (0x0 << FLASH_PATCH_ADDR_PATCH_NOT_VALID_POS)
+#define PATCH_NOT_VALID                 (0x1 << FLASH_PATCH_ADDR_PATCH_NOT_VALID_POS)
+
+/* Flash Patch Address Register */
+#define FLASH1_PATCH_ADDR_BASE          0x40000964
+#define FLASH1_PATCH_ADDR               REG32_POINTER(FLASH1_PATCH_ADDR_BASE)
+
+/* Flash Copier Config Register */
+#define FLASH0_COPY_CFG_BASE            0x4000088C
+#define FLASH0_COPY_CFG                 REG32_POINTER(FLASH0_COPY_CFG_BASE)
+
+/* FLASH_COPY_CFG bit positions */
+#define FLASH_COPY_CFG_COMP_ADDR_STEP_POS 18
+#define FLASH_COPY_CFG_COMP_ADDR_DIR_POS 17
+#define FLASH_COPY_CFG_COMP_MODE_POS    16
+#define FLASH_COPY_CFG_COPY_DEST_POS    9
+#define FLASH_COPY_CFG_COPY_MODE_POS    8
+#define FLASH_COPY_CFG_PRIORITY_POS     1
+#define FLASH_COPY_CFG_MODE_POS         0
+
+/* FLASH_COPY_CFG settings */
+#define COMP_ADDR_STEP_1                (0x0 << FLASH_COPY_CFG_COMP_ADDR_STEP_POS)
+#define COMP_ADDR_STEP_2                (0x1 << FLASH_COPY_CFG_COMP_ADDR_STEP_POS)
+
+#define COMP_ADDR_DOWN                  (0x0 << FLASH_COPY_CFG_COMP_ADDR_DIR_POS)
+#define COMP_ADDR_UP                    (0x1 << FLASH_COPY_CFG_COMP_ADDR_DIR_POS)
+
+#define COMP_MODE_CONSTANT              (0x0 << FLASH_COPY_CFG_COMP_MODE_POS)
+#define COMP_MODE_CHBK                  (0x1 << FLASH_COPY_CFG_COMP_MODE_POS)
+
+#define COPY_TO_MEM                     (0x0 << FLASH_COPY_CFG_COPY_DEST_POS)
+#define COPY_TO_CRC                     (0x1 << FLASH_COPY_CFG_COPY_DEST_POS)
+
+#define COPY_TO_32BIT                   (0x0 << FLASH_COPY_CFG_COPY_MODE_POS)
+
+#define FLASH_CM33_PRIORITY             (0x0 << FLASH_COPY_CFG_PRIORITY_POS)
+#define FLASH_COPY_PRIORITY             (0x1 << FLASH_COPY_CFG_PRIORITY_POS)
+
+#define COPY_MODE                       (0x0 << FLASH_COPY_CFG_MODE_POS)
+#define COMPARATOR_MODE                 (0x1 << FLASH_COPY_CFG_MODE_POS)
+
+/* Flash Copier Config Register */
+#define FLASH1_COPY_CFG_BASE            0x4000098C
+#define FLASH1_COPY_CFG                 REG32_POINTER(FLASH1_COPY_CFG_BASE)
+
+/* Flash Copier Control and Status */
+#define FLASH0_COPY_CTRL_BASE           0x40000898
+#define FLASH0_COPY_CTRL                REG32_POINTER(FLASH0_COPY_CTRL_BASE)
+
+/* FLASH_COPY_CTRL bit positions */
+#define FLASH_COPY_CTRL_ERROR_POS       3
+#define FLASH_COPY_CTRL_STOP_POS        2
+#define FLASH_COPY_CTRL_START_POS       1
+#define FLASH_COPY_CTRL_BUSY_POS        0
+
+/* FLASH_COPY_CTRL settings */
+#define COPY_NO_ERROR                   (0x0 << FLASH_COPY_CTRL_ERROR_POS)
+#define COPY_ERROR                      (0x1 << FLASH_COPY_CTRL_ERROR_POS)
+
+#define COPY_STOP                       (0x1 << FLASH_COPY_CTRL_STOP_POS)
+
+#define COPY_START                      (0x1 << FLASH_COPY_CTRL_START_POS)
+
+#define COPY_IDLE                       (0x0 << FLASH_COPY_CTRL_BUSY_POS)
+#define COPY_BUSY                       (0x1 << FLASH_COPY_CTRL_BUSY_POS)
+
+/* Flash Copier Control and Status */
+#define FLASH1_COPY_CTRL_BASE           0x40000998
+#define FLASH1_COPY_CTRL                REG32_POINTER(FLASH1_COPY_CTRL_BASE)
+
+/* Flash Copier Source Address Pointer */
+#define FLASH0_COPY_SRC_ADDR_PTR_BASE   0x4000089C
+#define FLASH0_COPY_SRC_ADDR_PTR        REG32_POINTER(FLASH0_COPY_SRC_ADDR_PTR_BASE)
+
+/* FLASH_COPY_SRC_ADDR_PTR bit positions */
+#define FLASH_COPY_SRC_ADDR_PTR_COPY_SRC_ADDR_PTR_POS 0
+#define FLASH_COPY_SRC_ADDR_PTR_COPY_SRC_ADDR_PTR_MASK (0x1FFFFF << FLASH_COPY_SRC_ADDR_PTR_COPY_SRC_ADDR_PTR_POS)
+
+/* Flash Copier Source Address Pointer */
+#define FLASH1_COPY_SRC_ADDR_PTR_BASE   0x4000099C
+#define FLASH1_COPY_SRC_ADDR_PTR        REG32_POINTER(FLASH1_COPY_SRC_ADDR_PTR_BASE)
+
+/* Flash Copier Destination Address Pointer */
+#define FLASH0_COPY_DST_ADDR_PTR_BASE   0x400008A0
+#define FLASH0_COPY_DST_ADDR_PTR        REG32_POINTER(FLASH0_COPY_DST_ADDR_PTR_BASE)
+
+/* FLASH_COPY_DST_ADDR_PTR bit positions */
+#define FLASH_COPY_DST_ADDR_PTR_COPY_DST_ADDR_PTR_POS 2
+#define FLASH_COPY_DST_ADDR_PTR_COPY_DST_ADDR_PTR_MASK (0x3FFFFFFF << FLASH_COPY_DST_ADDR_PTR_COPY_DST_ADDR_PTR_POS)
+
+/* Flash Copier Destination Address Pointer */
+#define FLASH1_COPY_DST_ADDR_PTR_BASE   0x400009A0
+#define FLASH1_COPY_DST_ADDR_PTR        REG32_POINTER(FLASH1_COPY_DST_ADDR_PTR_BASE)
+
+/* Flash Copier Word Count */
+#define FLASH0_COPY_WORD_CNT_BASE       0x400008A4
+#define FLASH0_COPY_WORD_CNT            REG32_POINTER(FLASH0_COPY_WORD_CNT_BASE)
+
+/* FLASH_COPY_WORD_CNT bit positions */
+#define FLASH_COPY_WORD_CNT_COPY_WORD_CNT_POS 0
+#define FLASH_COPY_WORD_CNT_COPY_WORD_CNT_MASK (0x1FFFF << FLASH_COPY_WORD_CNT_COPY_WORD_CNT_POS)
+
+/* Flash Copier Word Count */
+#define FLASH1_COPY_WORD_CNT_BASE       0x400009A4
+#define FLASH1_COPY_WORD_CNT            REG32_POINTER(FLASH1_COPY_WORD_CNT_BASE)
+
+/* Flash ECC Control Register */
+#define FLASH0_ECC_CTRL_BASE            0x400008A8
+#define FLASH0_ECC_CTRL                 REG32_POINTER(FLASH0_ECC_CTRL_BASE)
+
+/* FLASH_ECC_CTRL bit positions */
+#define FLASH_ECC_CTRL_ECC_COR_CNT_INT_THRESHOLD_POS 8
+#define FLASH_ECC_CTRL_ECC_COR_CNT_INT_THRESHOLD_MASK (0xFF << FLASH_ECC_CTRL_ECC_COR_CNT_INT_THRESHOLD_POS)
+#define FLASH_ECC_CTRL_COPIER_ECC_CTRL_POS 3
+#define FLASH_ECC_CTRL_CMD_ECC_CTRL_POS 2
+#define FLASH_ECC_CTRL_CBUS_ECC_CTRL_POS 0
+
+/* FLASH_ECC_CTRL settings */
+#define FLASH_ECC_COR_INT_THRESHOLD_DISABLED (0x0 << FLASH_ECC_CTRL_ECC_COR_CNT_INT_THRESHOLD_POS)
+#define FLASH_ECC_COR_INT_THRESHOLD_1   (0x1 << FLASH_ECC_CTRL_ECC_COR_CNT_INT_THRESHOLD_POS)
+#define FLASH_ECC_COR_INT_THRESHOLD_255 (0xFF << FLASH_ECC_CTRL_ECC_COR_CNT_INT_THRESHOLD_POS)
+
+#define FLASH_COPIER_ECC_DISABLE        (0x0 << FLASH_ECC_CTRL_COPIER_ECC_CTRL_POS)
+#define FLASH_COPIER_ECC_ENABLE         (0x1 << FLASH_ECC_CTRL_COPIER_ECC_CTRL_POS)
+
+#define FLASH_CMD_ECC_DISABLE           (0x0 << FLASH_ECC_CTRL_CMD_ECC_CTRL_POS)
+#define FLASH_CMD_ECC_ENABLE            (0x1 << FLASH_ECC_CTRL_CMD_ECC_CTRL_POS)
+
+#define FLASH_CBUS_ECC_DISABLE          (0x0 << FLASH_ECC_CTRL_CBUS_ECC_CTRL_POS)
+#define FLASH_CBUS_ECC_ENABLE           (0x1 << FLASH_ECC_CTRL_CBUS_ECC_CTRL_POS)
+
+/* Flash ECC Control Register */
+#define FLASH1_ECC_CTRL_BASE            0x400009A8
+#define FLASH1_ECC_CTRL                 REG32_POINTER(FLASH1_ECC_CTRL_BASE)
+
+/* Flash ECC Status Register */
+#define FLASH0_ECC_STATUS_BASE          0x400008AC
+#define FLASH0_ECC_STATUS               REG32_POINTER(FLASH0_ECC_STATUS_BASE)
+
+/* FLASH_ECC_STATUS bit positions */
+#define FLASH_ECC_STATUS_ECC_COR_ERROR_CNT_CLEAR_POS 6
+#define FLASH_ECC_STATUS_ECC_UNCOR_ERROR_CNT_CLEAR_POS 5
+#define FLASH_ECC_STATUS_ECC_ERROR_ADDR_CLEAR_POS 4
+#define FLASH_ECC_STATUS_ECC_COR_ERROR_CNT_STATUS_POS 1
+#define FLASH_ECC_STATUS_ECC_UNCOR_ERROR_CNT_STATUS_POS 0
+
+/* FLASH_ECC_STATUS settings */
+#define FLASH_ECC_COR_ERROR_CNT_CLEAR   (0x1 << FLASH_ECC_STATUS_ECC_COR_ERROR_CNT_CLEAR_POS)
+
+#define FLASH_ECC_UNCOR_ERROR_CNT_CLEAR (0x1 << FLASH_ECC_STATUS_ECC_UNCOR_ERROR_CNT_CLEAR_POS)
+
+#define FLASH_ECC_ERROR_ADDR_CLEAR      (0x1 << FLASH_ECC_STATUS_ECC_ERROR_ADDR_CLEAR_POS)
+
+#define FLASH_ECC_NO_CORRECTED_ERROR    (0x0 << FLASH_ECC_STATUS_ECC_COR_ERROR_CNT_STATUS_POS)
+#define FLASH_ECC_CORRECTED_ERROR       (0x1 << FLASH_ECC_STATUS_ECC_COR_ERROR_CNT_STATUS_POS)
+
+#define FLASH_ECC_NO_UNCORRECTED_ERROR  (0x0 << FLASH_ECC_STATUS_ECC_UNCOR_ERROR_CNT_STATUS_POS)
+#define FLASH_ECC_UNCORRECTED_ERROR     (0x1 << FLASH_ECC_STATUS_ECC_UNCOR_ERROR_CNT_STATUS_POS)
+
+/* Flash ECC Status Register */
+#define FLASH1_ECC_STATUS_BASE          0x400009AC
+#define FLASH1_ECC_STATUS               REG32_POINTER(FLASH1_ECC_STATUS_BASE)
+
+/* Flash Address of the Latest Detected Error */
+#define FLASH0_ECC_ERROR_ADDR_BASE      0x400008B0
+#define FLASH0_ECC_ERROR_ADDR           READONLY_REG32_POINTER(FLASH0_ECC_ERROR_ADDR_BASE)
+
+/* FLASH_ECC_ERROR_ADDR bit positions */
+#define FLASH_ECC_ERROR_ADDR_ECC_ERROR_ADDR_POS 2
+#define FLASH_ECC_ERROR_ADDR_ECC_ERROR_ADDR_MASK (0x7FFFF << FLASH_ECC_ERROR_ADDR_ECC_ERROR_ADDR_POS)
+
+/* Flash Address of the Latest Detected Error */
+#define FLASH1_ECC_ERROR_ADDR_BASE      0x400009B0
+#define FLASH1_ECC_ERROR_ADDR           READONLY_REG32_POINTER(FLASH1_ECC_ERROR_ADDR_BASE)
+
+/* Flash ECC Uncorrected Error Counter */
+#define FLASH0_ECC_UNCOR_ERROR_CNT_BASE 0x400008B4
+#define FLASH0_ECC_UNCOR_ERROR_CNT      READONLY_REG32_POINTER(FLASH0_ECC_UNCOR_ERROR_CNT_BASE)
+
+/* FLASH_ECC_UNCOR_ERROR_CNT bit positions */
+#define FLASH_ECC_UNCOR_ERROR_CNT_ECC_UNCOR_ERROR_CNT_POS 0
+#define FLASH_ECC_UNCOR_ERROR_CNT_ECC_UNCOR_ERROR_CNT_MASK (0xFF << FLASH_ECC_UNCOR_ERROR_CNT_ECC_UNCOR_ERROR_CNT_POS)
+
+/* Flash ECC Uncorrected Error Counter */
+#define FLASH1_ECC_UNCOR_ERROR_CNT_BASE 0x400009B4
+#define FLASH1_ECC_UNCOR_ERROR_CNT      READONLY_REG32_POINTER(FLASH1_ECC_UNCOR_ERROR_CNT_BASE)
+
+/* Flash ECC Corrected Error Counter */
+#define FLASH0_ECC_COR_ERROR_CNT_BASE   0x400008B8
+#define FLASH0_ECC_COR_ERROR_CNT        READONLY_REG32_POINTER(FLASH0_ECC_COR_ERROR_CNT_BASE)
+
+/* FLASH_ECC_COR_ERROR_CNT bit positions */
+#define FLASH_ECC_COR_ERROR_CNT_ECC_COR_ERROR_CNT_POS 0
+#define FLASH_ECC_COR_ERROR_CNT_ECC_COR_ERROR_CNT_MASK (0xFF << FLASH_ECC_COR_ERROR_CNT_ECC_COR_ERROR_CNT_POS)
+
+/* Flash ECC Corrected Error Counter */
+#define FLASH1_ECC_COR_ERROR_CNT_BASE   0x400009B8
+#define FLASH1_ECC_COR_ERROR_CNT        READONLY_REG32_POINTER(FLASH1_ECC_COR_ERROR_CNT_BASE)
+
+/* Flash NVM Status (only available when NVR_FOR_CC312 in ID_NUM register is 1) */
+#define FLASH0_NVM_STATUS_BASE          0x400008BC
+#define FLASH0_NVM_STATUS               REG32_POINTER(FLASH0_NVM_STATUS_BASE)
+
+/* FLASH_NVM_STATUS bit positions */
+#define FLASH_NVM_STATUS_CLEAR_NVM_STATUS_POS 16
+#define FLASH_NVM_STATUS_NVM_BIT_FAILURE_POS 8
+#define FLASH_NVM_STATUS_FAILED_NVM_ADDRESS_POS 0
+#define FLASH_NVM_STATUS_FAILED_NVM_ADDRESS_MASK (0x3F << FLASH_NVM_STATUS_FAILED_NVM_ADDRESS_POS)
+
+/* FLASH_NVM_STATUS settings */
+#define CLEAR_NVM_STATUS                (0x1 << FLASH_NVM_STATUS_CLEAR_NVM_STATUS_POS)
+
+#define NVM_OK                          (0x0 << FLASH_NVM_STATUS_NVM_BIT_FAILURE_POS)
+#define NVM_BIT_FAILED                  (0x1 << FLASH_NVM_STATUS_NVM_BIT_FAILURE_POS)
+
+/* Flash NVM Status (only available when NVR_FOR_CC312 in ID_NUM register is 1) */
+#define FLASH1_NVM_STATUS_BASE          0x400009BC
+#define FLASH1_NVM_STATUS               REG32_POINTER(FLASH1_NVM_STATUS_BASE)
+
+/* Flash Interface ID number */
+#define FLASH0_IF_ID_NUM_BASE           0x400008FC
+#define FLASH0_IF_ID_NUM                READONLY_REG32_POINTER(FLASH0_IF_ID_NUM_BASE)
+
+/* FLASH_IF_ID_NUM bit positions */
+#define FLASH_IF_ID_NUM_FLASH_IF_NVR_FOR_CC312_POS 20
+#define FLASH_IF_ID_NUM_FLASH_IF_NUMBER_POS 16
+#define FLASH_IF_ID_NUM_FLASH_IF_NUMBER_MASK (0xF << FLASH_IF_ID_NUM_FLASH_IF_NUMBER_POS)
+#define FLASH_IF_ID_NUM_FLASH_IF_MAJOR_REVISION_POS 8
+#define FLASH_IF_ID_NUM_FLASH_IF_MAJOR_REVISION_MASK (0xFF << FLASH_IF_ID_NUM_FLASH_IF_MAJOR_REVISION_POS)
+#define FLASH_IF_ID_NUM_FLASH_IF_MINOR_REVISION_POS 0
+#define FLASH_IF_ID_NUM_FLASH_IF_MINOR_REVISION_MASK (0xFF << FLASH_IF_ID_NUM_FLASH_IF_MINOR_REVISION_POS)
+
+/* FLASH_IF_ID_NUM settings */
+#define NVR_SECTORS_AVAILABLE           (0x0 << FLASH_IF_ID_NUM_FLASH_IF_NVR_FOR_CC312_POS)
+#define NVR_SECTORS_USED_BY_CRYPTOCELL  (0x1 << FLASH_IF_ID_NUM_FLASH_IF_NVR_FOR_CC312_POS)
+
+#define FLASH_IF_MAJOR_REVISION         (0x1 << FLASH_IF_ID_NUM_FLASH_IF_MAJOR_REVISION_POS)
+
+#define FLASH_IF_MINOR_REVISION         (0x0 << FLASH_IF_ID_NUM_FLASH_IF_MINOR_REVISION_POS)
+
+/* Flash Interface ID number */
+#define FLASH1_IF_ID_NUM_BASE           0x400009FC
+#define FLASH1_IF_ID_NUM                READONLY_REG32_POINTER(FLASH1_IF_ID_NUM_BASE)
+
+/* ----------------------------------------------------------------------------
+ * GPIO Interface and Digital Pad control
+ * ------------------------------------------------------------------------- */
+
+/* Digital IO Configuration */
+#define GPIO_CFG_BASE                   0x40020A00
+#define GPIO_CFG                        REG32_POINTER(GPIO_CFG_BASE)
+
+/* GPIO_CFG bit positions */
+#define GPIO_CFG_DRIVE_POS              12
+#define GPIO_CFG_DRIVE_MASK             (0x3 << GPIO_CFG_DRIVE_POS)
+#define GPIO_CFG_LPF_POS                10
+#define GPIO_CFG_PULL_CTRL_POS          8
+#define GPIO_CFG_PULL_CTRL_MASK         (0x3 << GPIO_CFG_PULL_CTRL_POS)
+#define GPIO_CFG_NS_ACCESS_GPIO_POS     7
+#define GPIO_CFG_IO_MODE_POS            0
+#define GPIO_CFG_IO_MODE_MASK           (0x7F << GPIO_CFG_IO_MODE_POS)
+
+/* GPIO_CFG settings */
+#define GPIO_2X_DRIVE                   (0x0 << GPIO_CFG_DRIVE_POS)
+#define GPIO_3X_DRIVE                   (0x1 << GPIO_CFG_DRIVE_POS)
+#define GPIO_5X_DRIVE                   (0x2 << GPIO_CFG_DRIVE_POS)
+#define GPIO_6X_DRIVE                   (0x3 << GPIO_CFG_DRIVE_POS)
+
+#define GPIO_LPF_DISABLE                (0x0 << GPIO_CFG_LPF_POS)
+#define GPIO_LPF_ENABLE                 (0x1 << GPIO_CFG_LPF_POS)
+
+#define GPIO_NO_PULL                    (0x0 << GPIO_CFG_PULL_CTRL_POS)
+#define GPIO_WEAK_PULL_UP               (0x1 << GPIO_CFG_PULL_CTRL_POS)
+#define GPIO_WEAK_PULL_DOWN             (0x2 << GPIO_CFG_PULL_CTRL_POS)
+#define GPIO_STRONG_PULL_UP             (0x3 << GPIO_CFG_PULL_CTRL_POS)
+
+#define NS_CANNOT_USE_GPIO              (0x0 << GPIO_CFG_NS_ACCESS_GPIO_POS)
+#define NS_CAN_USE_GPIO                 (0x1 << GPIO_CFG_NS_ACCESS_GPIO_POS)
+
+#define GPIO_MODE_DISABLE               (0x0 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_INPUT                 (0x1 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_GPIO_IN               (0x2 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_GPIO_OUT              (0x3 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_SLOWCLK               (0x4 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_SYSCLK                (0x5 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_USRCLK                (0x6 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_SPI0_IO0              (0x7 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_SPI0_IO1              (0x8 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_SPI0_IO2              (0x9 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_SPI0_IO3              (0xA << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_SPI0_CS               (0xB << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_SPI0_CLK              (0xC << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_UART0_TX              (0xD << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_I2C0_SCL              (0xE << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_I2C0_SDA              (0xF << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RFCLK                 (0x10 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RCCLK                 (0x11 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_SWCLK_DIV             (0x12 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_STANDBYCLK            (0x13 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_TX_DATA            (0x14 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_TX_DATA_VALID      (0x15 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_SPI_CSN            (0x16 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_SPI_CLK            (0x17 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_SPI_MOSI           (0x18 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_DBG_0              (0x19 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_DBG_1              (0x1A << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_DBG_2              (0x1B << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_DBG_3              (0x1C << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_DBG_4              (0x1D << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_DBG_5              (0x1E << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_DBG_6              (0x1F << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_DBG_7              (0x20 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_BLE_SYNC           (0x21 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_BLE_IN_PROCESS     (0x22 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_BLE_TX             (0x23 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_BLE_RX             (0x24 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_BLE_PTI_0          (0x25 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_BLE_PTI_1          (0x26 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_BLE_PTI_2          (0x27 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_BLE_PTI_3          (0x28 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_ANT_SW_EN          (0x29 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_ANT_SW_0           (0x2A << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_ANT_SW_1           (0x2B << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_ANT_SW_2           (0x2C << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_ANT_SW_3           (0x2D << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_ANT_SW_4           (0x2E << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_ANT_SW_5           (0x2F << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_ANT_SW_6           (0x30 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_CTE_MODE           (0x31 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_BB_CTE_SAMPLE_P       (0x32 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_SPI_MISO           (0x33 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_GPIO0              (0x34 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_GPIO1              (0x35 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_GPIO2              (0x36 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_GPIO3              (0x37 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_GPIO4              (0x38 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_GPIO5              (0x39 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_GPIO6              (0x3A << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_GPIO7              (0x3B << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_GPIO8              (0x3C << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_GPIO9              (0x3D << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_IQ_DATA_P          (0x3E << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_I_DATA_0           (0x3F << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_I_DATA_1           (0x40 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_I_DATA_2           (0x41 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_I_DATA_3           (0x42 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_I_DATA_4           (0x43 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_I_DATA_5           (0x44 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_I_DATA_6           (0x45 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_I_DATA_7           (0x46 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_Q_DATA_0           (0x47 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_Q_DATA_1           (0x48 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_Q_DATA_2           (0x49 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_Q_DATA_3           (0x4A << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_Q_DATA_4           (0x4B << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_Q_DATA_5           (0x4C << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_Q_DATA_6           (0x4D << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_Q_DATA_7           (0x4E << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_ANT_SW_0           (0x4F << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_ANT_SW_1           (0x50 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_ANT_SW_2           (0x51 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_RF_ANT_SW_3           (0x52 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_TOF_START             (0x53 << GPIO_CFG_IO_MODE_POS)
+#define GPIO_MODE_TOF_STOP              (0x54 << GPIO_CFG_IO_MODE_POS)
+
+/* Digital IOs Input Data State */
+#define GPIO_INPUT_DATA_BASE            0x40020A40
+#define GPIO_INPUT_DATA                 READONLY_REG32_POINTER(GPIO_INPUT_DATA_BASE)
+
+/* GPIO_INPUT_DATA bit positions */
+#define GPIO_INPUT_DATA_DATA_POS        0
+#define GPIO_INPUT_DATA_DATA_MASK       (0xFFFF << GPIO_INPUT_DATA_DATA_POS)
+
+/* GPIO_INPUT_DATA settings */
+#define GPIO0_IN_LOW                    (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO1_IN_LOW                    (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO2_IN_LOW                    (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO3_IN_LOW                    (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO4_IN_LOW                    (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO5_IN_LOW                    (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO6_IN_LOW                    (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO7_IN_LOW                    (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO8_IN_LOW                    (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO9_IN_LOW                    (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO10_IN_LOW                   (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO11_IN_LOW                   (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO12_IN_LOW                   (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO13_IN_LOW                   (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO14_IN_LOW                   (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO15_IN_LOW                   (0x0 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO0_IN_HIGH                   (0x1 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO1_IN_HIGH                   (0x2 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO2_IN_HIGH                   (0x4 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO3_IN_HIGH                   (0x8 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO4_IN_HIGH                   (0x10 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO5_IN_HIGH                   (0x20 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO6_IN_HIGH                   (0x40 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO7_IN_HIGH                   (0x80 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO8_IN_HIGH                   (0x100 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO9_IN_HIGH                   (0x200 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO10_IN_HIGH                  (0x400 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO11_IN_HIGH                  (0x800 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO12_IN_HIGH                  (0x1000 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO13_IN_HIGH                  (0x2000 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO14_IN_HIGH                  (0x4000 << GPIO_INPUT_DATA_DATA_POS)
+#define GPIO15_IN_HIGH                  (0x8000 << GPIO_INPUT_DATA_DATA_POS)
+
+/* GPIO Output Data Register */
+#define GPIO_OUTPUT_DATA_BASE           0x40020A44
+#define GPIO_OUTPUT_DATA                REG32_POINTER(GPIO_OUTPUT_DATA_BASE)
+
+/* GPIO_OUTPUT_DATA bit positions */
+#define GPIO_OUTPUT_DATA_DATA_POS       0
+#define GPIO_OUTPUT_DATA_DATA_MASK      (0xFFFF << GPIO_OUTPUT_DATA_DATA_POS)
+
+/* GPIO_OUTPUT_DATA settings */
+#define GPIO0_OUT_LOW                   (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO1_OUT_LOW                   (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO2_OUT_LOW                   (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO3_OUT_LOW                   (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO4_OUT_LOW                   (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO5_OUT_LOW                   (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO6_OUT_LOW                   (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO7_OUT_LOW                   (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO8_OUT_LOW                   (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO9_OUT_LOW                   (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO10_OUT_LOW                  (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO11_OUT_LOW                  (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO12_OUT_LOW                  (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO13_OUT_LOW                  (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO14_OUT_LOW                  (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO15_OUT_LOW                  (0x0 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO0_OUT_HIGH                  (0x1 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO1_OUT_HIGH                  (0x2 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO2_OUT_HIGH                  (0x4 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO3_OUT_HIGH                  (0x8 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO4_OUT_HIGH                  (0x10 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO5_OUT_HIGH                  (0x20 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO6_OUT_HIGH                  (0x40 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO7_OUT_HIGH                  (0x80 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO8_OUT_HIGH                  (0x100 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO9_OUT_HIGH                  (0x200 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO10_OUT_HIGH                 (0x400 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO11_OUT_HIGH                 (0x800 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO12_OUT_HIGH                 (0x1000 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO13_OUT_HIGH                 (0x2000 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO14_OUT_HIGH                 (0x4000 << GPIO_OUTPUT_DATA_DATA_POS)
+#define GPIO15_OUT_HIGH                 (0x8000 << GPIO_OUTPUT_DATA_DATA_POS)
+
+/* GPIO Output Data Set */
+#define GPIO_OUTPUT_DATA_SET_BASE       0x40020A48
+#define GPIO_OUTPUT_DATA_SET            REG32_POINTER(GPIO_OUTPUT_DATA_SET_BASE)
+
+/* GPIO_OUTPUT_DATA_SET bit positions */
+#define GPIO_OUTPUT_DATA_SET_GPIO_POS   0
+#define GPIO_OUTPUT_DATA_SET_GPIO_MASK  (0xFFFF << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+
+/* GPIO_OUTPUT_DATA_SET settings */
+#define GPIO0_SET                       (0x1 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO1_SET                       (0x2 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO2_SET                       (0x4 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO3_SET                       (0x8 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO4_SET                       (0x10 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO5_SET                       (0x20 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO6_SET                       (0x40 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO7_SET                       (0x80 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO8_SET                       (0x100 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO9_SET                       (0x200 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO10_SET                      (0x400 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO11_SET                      (0x800 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO12_SET                      (0x1000 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO13_SET                      (0x2000 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO14_SET                      (0x4000 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+#define GPIO15_SET                      (0x8000 << GPIO_OUTPUT_DATA_SET_GPIO_POS)
+
+/* GPIO Output Data Clear */
+#define GPIO_OUTPUT_DATA_CLR_BASE       0x40020A4C
+#define GPIO_OUTPUT_DATA_CLR            REG32_POINTER(GPIO_OUTPUT_DATA_CLR_BASE)
+
+/* GPIO_OUTPUT_DATA_CLR bit positions */
+#define GPIO_OUTPUT_DATA_CLR_GPIO_POS   0
+#define GPIO_OUTPUT_DATA_CLR_GPIO_MASK  (0xFFFF << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+
+/* GPIO_OUTPUT_DATA_CLR settings */
+#define GPIO0_CLR                       (0x1 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO1_CLR                       (0x2 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO2_CLR                       (0x4 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO3_CLR                       (0x8 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO4_CLR                       (0x10 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO5_CLR                       (0x20 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO6_CLR                       (0x40 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO7_CLR                       (0x80 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO8_CLR                       (0x100 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO9_CLR                       (0x200 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO10_CLR                      (0x400 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO11_CLR                      (0x800 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO12_CLR                      (0x1000 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO13_CLR                      (0x2000 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO14_CLR                      (0x4000 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+#define GPIO15_CLR                      (0x8000 << GPIO_OUTPUT_DATA_CLR_GPIO_POS)
+
+/* Digital IOs Direction State */
+#define GPIO_DIR_BASE                   0x40020A50
+#define GPIO_DIR                        REG32_POINTER(GPIO_DIR_BASE)
+
+/* GPIO_DIR bit positions */
+#define GPIO_DIR_GPIO_POS               0
+#define GPIO_DIR_GPIO_MASK              (0xFFFF << GPIO_DIR_GPIO_POS)
+#define GPIO_DIR_GPIO_POS               0
+#define GPIO_DIR_GPIO_MASK              (0xFFFF << GPIO_DIR_GPIO_POS)
+
+/* GPIO_DIR settings */
+#define GPIO0_STATUS_IN                 (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO1_STATUS_IN                 (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO2_STATUS_IN                 (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO3_STATUS_IN                 (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO4_STATUS_IN                 (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO5_STATUS_IN                 (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO6_STATUS_IN                 (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO7_STATUS_IN                 (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO8_STATUS_IN                 (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO9_STATUS_IN                 (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO10_STATUS_IN                (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO11_STATUS_IN                (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO12_STATUS_IN                (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO13_STATUS_IN                (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO14_STATUS_IN                (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO15_STATUS_IN                (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO0_STATUS_OUT                (0x1 << GPIO_DIR_GPIO_POS)
+#define GPIO1_STATUS_OUT                (0x2 << GPIO_DIR_GPIO_POS)
+#define GPIO2_STATUS_OUT                (0x4 << GPIO_DIR_GPIO_POS)
+#define GPIO3_STATUS_OUT                (0x8 << GPIO_DIR_GPIO_POS)
+#define GPIO4_STATUS_OUT                (0x10 << GPIO_DIR_GPIO_POS)
+#define GPIO5_STATUS_OUT                (0x20 << GPIO_DIR_GPIO_POS)
+#define GPIO6_STATUS_OUT                (0x40 << GPIO_DIR_GPIO_POS)
+#define GPIO7_STATUS_OUT                (0x80 << GPIO_DIR_GPIO_POS)
+#define GPIO8_STATUS_OUT                (0x100 << GPIO_DIR_GPIO_POS)
+#define GPIO9_STATUS_OUT                (0x200 << GPIO_DIR_GPIO_POS)
+#define GPIO10_STATUS_OUT               (0x400 << GPIO_DIR_GPIO_POS)
+#define GPIO11_STATUS_OUT               (0x800 << GPIO_DIR_GPIO_POS)
+#define GPIO12_STATUS_OUT               (0x1000 << GPIO_DIR_GPIO_POS)
+#define GPIO13_STATUS_OUT               (0x2000 << GPIO_DIR_GPIO_POS)
+#define GPIO14_STATUS_OUT               (0x4000 << GPIO_DIR_GPIO_POS)
+#define GPIO15_STATUS_OUT               (0x8000 << GPIO_DIR_GPIO_POS)
+
+#define GPIO0_DIR_IN                    (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO1_DIR_IN                    (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO2_DIR_IN                    (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO3_DIR_IN                    (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO4_DIR_IN                    (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO5_DIR_IN                    (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO6_DIR_IN                    (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO7_DIR_IN                    (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO8_DIR_IN                    (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO9_DIR_IN                    (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO10_DIR_IN                   (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO11_DIR_IN                   (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO12_DIR_IN                   (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO13_DIR_IN                   (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO14_DIR_IN                   (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO15_DIR_IN                   (0x0 << GPIO_DIR_GPIO_POS)
+#define GPIO0_DIR_OUT                   (0x1 << GPIO_DIR_GPIO_POS)
+#define GPIO1_DIR_OUT                   (0x2 << GPIO_DIR_GPIO_POS)
+#define GPIO2_DIR_OUT                   (0x4 << GPIO_DIR_GPIO_POS)
+#define GPIO3_DIR_OUT                   (0x8 << GPIO_DIR_GPIO_POS)
+#define GPIO4_DIR_OUT                   (0x10 << GPIO_DIR_GPIO_POS)
+#define GPIO5_DIR_OUT                   (0x20 << GPIO_DIR_GPIO_POS)
+#define GPIO6_DIR_OUT                   (0x40 << GPIO_DIR_GPIO_POS)
+#define GPIO7_DIR_OUT                   (0x80 << GPIO_DIR_GPIO_POS)
+#define GPIO8_DIR_OUT                   (0x100 << GPIO_DIR_GPIO_POS)
+#define GPIO9_DIR_OUT                   (0x200 << GPIO_DIR_GPIO_POS)
+#define GPIO10_DIR_OUT                  (0x400 << GPIO_DIR_GPIO_POS)
+#define GPIO11_DIR_OUT                  (0x800 << GPIO_DIR_GPIO_POS)
+#define GPIO12_DIR_OUT                  (0x1000 << GPIO_DIR_GPIO_POS)
+#define GPIO13_DIR_OUT                  (0x2000 << GPIO_DIR_GPIO_POS)
+#define GPIO14_DIR_OUT                  (0x4000 << GPIO_DIR_GPIO_POS)
+#define GPIO15_DIR_OUT                  (0x8000 << GPIO_DIR_GPIO_POS)
+
+/* Digital IOs Mode State */
+#define GPIO_MODE_BASE                  0x40020A54
+#define GPIO_MODE                       READONLY_REG32_POINTER(GPIO_MODE_BASE)
+
+/* GPIO_MODE bit positions */
+#define GPIO_MODE_GPIO_POS              0
+#define GPIO_MODE_GPIO_MASK             (0xFFFF << GPIO_MODE_GPIO_POS)
+
+/* GPIO_MODE settings */
+#define GPIO0_IS_NOT_GPIO_MODE          (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO1_IS_NOT_GPIO_MODE          (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO2_IS_NOT_GPIO_MODE          (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO3_IS_NOT_GPIO_MODE          (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO4_IS_NOT_GPIO_MODE          (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO5_IS_NOT_GPIO_MODE          (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO6_IS_NOT_GPIO_MODE          (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO7_IS_NOT_GPIO_MODE          (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO8_IS_NOT_GPIO_MODE          (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO9_IS_NOT_GPIO_MODE          (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO10_IS_NOT_GPIO_MODE         (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO11_IS_NOT_GPIO_MODE         (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO12_IS_NOT_GPIO_MODE         (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO13_IS_NOT_GPIO_MODE         (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO14_IS_NOT_GPIO_MODE         (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO15_IS_NOT_GPIO_MODE         (0x0 << GPIO_MODE_GPIO_POS)
+#define GPIO0_IS_GPIO_MODE              (0x1 << GPIO_MODE_GPIO_POS)
+#define GPIO1_IS_GPIO_MODE              (0x2 << GPIO_MODE_GPIO_POS)
+#define GPIO2_IS_GPIO_MODE              (0x4 << GPIO_MODE_GPIO_POS)
+#define GPIO3_IS_GPIO_MODE              (0x8 << GPIO_MODE_GPIO_POS)
+#define GPIO4_IS_GPIO_MODE              (0x10 << GPIO_MODE_GPIO_POS)
+#define GPIO5_IS_GPIO_MODE              (0x20 << GPIO_MODE_GPIO_POS)
+#define GPIO6_IS_GPIO_MODE              (0x40 << GPIO_MODE_GPIO_POS)
+#define GPIO7_IS_GPIO_MODE              (0x80 << GPIO_MODE_GPIO_POS)
+#define GPIO8_IS_GPIO_MODE              (0x100 << GPIO_MODE_GPIO_POS)
+#define GPIO9_IS_GPIO_MODE              (0x200 << GPIO_MODE_GPIO_POS)
+#define GPIO10_IS_GPIO_MODE             (0x400 << GPIO_MODE_GPIO_POS)
+#define GPIO11_IS_GPIO_MODE             (0x800 << GPIO_MODE_GPIO_POS)
+#define GPIO12_IS_GPIO_MODE             (0x1000 << GPIO_MODE_GPIO_POS)
+#define GPIO13_IS_GPIO_MODE             (0x2000 << GPIO_MODE_GPIO_POS)
+#define GPIO14_IS_GPIO_MODE             (0x4000 << GPIO_MODE_GPIO_POS)
+#define GPIO15_IS_GPIO_MODE             (0x8000 << GPIO_MODE_GPIO_POS)
+
+/* GPIO Interrupt Configuration */
+#define GPIO_INT_CFG_BASE               0x40020A58
+#define GPIO_INT_CFG                    REG32_POINTER(GPIO_INT_CFG_BASE)
+
+/* GPIO_INT_CFG bit positions */
+#define GPIO_INT_CFG_NS_ACCESS_POS      12
+#define GPIO_INT_CFG_DEBOUNCE_ENABLE_POS 11
+#define GPIO_INT_CFG_EVENT_POS          8
+#define GPIO_INT_CFG_EVENT_MASK         (0x7 << GPIO_INT_CFG_EVENT_POS)
+#define GPIO_INT_CFG_SRC_POS            0
+#define GPIO_INT_CFG_SRC_MASK           (0x1F << GPIO_INT_CFG_SRC_POS)
+
+/* GPIO_INT_CFG settings */
+#define NS_CANNOT_ACCESS_GPIO_INT       (0x0 << GPIO_INT_CFG_NS_ACCESS_POS)
+#define NS_CAN_ACCESS_GPIO_INT          (0x1 << GPIO_INT_CFG_NS_ACCESS_POS)
+
+#define GPIO_DEBOUNCE_DISABLE           (0x0 << GPIO_INT_CFG_DEBOUNCE_ENABLE_POS)
+#define GPIO_DEBOUNCE_ENABLE            (0x1 << GPIO_INT_CFG_DEBOUNCE_ENABLE_POS)
+
+#define GPIO_EVENT_NONE                 (0x0 << GPIO_INT_CFG_EVENT_POS)
+#define GPIO_EVENT_HIGH_LEVEL           (0x1 << GPIO_INT_CFG_EVENT_POS)
+#define GPIO_EVENT_LOW_LEVEL            (0x2 << GPIO_INT_CFG_EVENT_POS)
+#define GPIO_EVENT_RISING_EDGE          (0x3 << GPIO_INT_CFG_EVENT_POS)
+#define GPIO_EVENT_FALLING_EDGE         (0x4 << GPIO_INT_CFG_EVENT_POS)
+#define GPIO_EVENT_TRANSITION           (0x5 << GPIO_INT_CFG_EVENT_POS)
+
+#define GPIO_SRC_GPIO_0                 (0x0 << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_1                 (0x1 << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_2                 (0x2 << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_3                 (0x3 << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_4                 (0x4 << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_5                 (0x5 << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_6                 (0x6 << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_7                 (0x7 << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_8                 (0x8 << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_9                 (0x9 << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_10                (0xA << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_11                (0xB << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_12                (0xC << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_13                (0xD << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_14                (0xE << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_GPIO_15                (0xF << GPIO_INT_CFG_SRC_POS)
+#define GPIO_SRC_WAKEUP                 (0x10 << GPIO_INT_CFG_SRC_POS)
+
+/* GPIO Interrupt Status */
+#define GPIO_INT_STATUS_BASE            0x40020A6C
+#define GPIO_INT_STATUS                 REG32_POINTER(GPIO_INT_STATUS_BASE)
+
+/* GPIO_INT_STATUS bit positions */
+#define GPIO_INT_STATUS_GPIO_INT_STATUS_POS 4
+#define GPIO_INT_STATUS_GPIO_INT_CLEAR_POS 0
+
+/* GPIO_INT_STATUS settings */
+#define GPIO_INT_FALSE                  (0x0 << GPIO_INT_STATUS_GPIO_INT_STATUS_POS)
+#define GPIO_INT_TRUE                   (0x1 << GPIO_INT_STATUS_GPIO_INT_STATUS_POS)
+
+#define GPIO_INT_CLEAR                  (0x1 << GPIO_INT_STATUS_GPIO_INT_CLEAR_POS)
+
+/* Digital IO Configuration */
+#define GPIO_CFG_NS_BASE                0x40040A00
+#define GPIO_CFG_NS                     READONLY_REG32_POINTER(GPIO_CFG_NS_BASE)
+
+/* Digital IOs Input Data State */
+#define GPIO_INPUT_DATA_NS_BASE         0x40040A40
+#define GPIO_INPUT_DATA_NS              READONLY_REG32_POINTER(GPIO_INPUT_DATA_NS_BASE)
+
+/* GPIO Output Data Register */
+#define GPIO_OUTPUT_DATA_NS_BASE        0x40040A44
+#define GPIO_OUTPUT_DATA_NS             READONLY_REG32_POINTER(GPIO_OUTPUT_DATA_NS_BASE)
+
+/* GPIO Output Data Set */
+#define GPIO_OUTPUT_DATA_SET_NS_BASE    0x40040A48
+#define GPIO_OUTPUT_DATA_SET_NS         READONLY_REG32_POINTER(GPIO_OUTPUT_DATA_SET_NS_BASE)
+
+/* GPIO Output Data Clear */
+#define GPIO_OUTPUT_DATA_CLR_NS_BASE    0x40040A4C
+#define GPIO_OUTPUT_DATA_CLR_NS         READONLY_REG32_POINTER(GPIO_OUTPUT_DATA_CLR_NS_BASE)
+
+/* Digital IOs Direction State */
+#define GPIO_DIR_NS_BASE                0x40040A50
+#define GPIO_DIR_NS                     READONLY_REG32_POINTER(GPIO_DIR_NS_BASE)
+
+/* Digital IOs Mode State */
+#define GPIO_MODE_NS_BASE               0x40040A54
+#define GPIO_MODE_NS                    READONLY_REG32_POINTER(GPIO_MODE_NS_BASE)
+
+/* GPIO Interrupt Configuration */
+#define GPIO_INT_CFG_NS_BASE            0x40040A58
+#define GPIO_INT_CFG_NS                 READONLY_REG32_POINTER(GPIO_INT_CFG_NS_BASE)
+
+/* GPIO Interrupt Status */
+#define GPIO_INT_STATUS_NS_BASE         0x40040A6C
+#define GPIO_INT_STATUS_NS              READONLY_REG32_POINTER(GPIO_INT_STATUS_NS_BASE)
+
+/* SPI Interface Input Selection */
+#define GPIO_SRC_SPI_BASE               0x40000B00
+#define GPIO_SRC_SPI                    REG32_POINTER(GPIO_SRC_SPI_BASE)
+
+/* GPIO_SRC_SPI bit positions */
+#define GPIO_SRC_SPI_CS_POS             8
+#define GPIO_SRC_SPI_CS_MASK            (0x1F << GPIO_SRC_SPI_CS_POS)
+#define GPIO_SRC_SPI_CLK_POS            0
+#define GPIO_SRC_SPI_CLK_MASK           (0x1F << GPIO_SRC_SPI_CLK_POS)
+
+/* GPIO_SRC_SPI settings */
+#define SPI_CS_SRC_GPIO_0               (0x0 << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_1               (0x1 << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_2               (0x2 << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_3               (0x3 << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_4               (0x4 << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_5               (0x5 << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_6               (0x6 << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_7               (0x7 << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_8               (0x8 << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_9               (0x9 << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_10              (0xA << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_11              (0xB << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_12              (0xC << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_13              (0xD << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_14              (0xE << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_GPIO_15              (0xF << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_CONST_LOW            (0x10 << GPIO_SRC_SPI_CS_POS)
+#define SPI_CS_SRC_CONST_HIGH           (0x11 << GPIO_SRC_SPI_CS_POS)
+
+#define SPI_CLK_SRC_GPIO_0              (0x0 << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_1              (0x1 << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_2              (0x2 << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_3              (0x3 << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_4              (0x4 << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_5              (0x5 << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_6              (0x6 << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_7              (0x7 << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_8              (0x8 << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_9              (0x9 << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_10             (0xA << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_11             (0xB << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_12             (0xC << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_13             (0xD << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_14             (0xE << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_GPIO_15             (0xF << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_CONST_LOW           (0x10 << GPIO_SRC_SPI_CLK_POS)
+#define SPI_CLK_SRC_CONST_HIGH          (0x11 << GPIO_SRC_SPI_CLK_POS)
+
+/* SPI Interface IO Selection */
+#define GPIO_SRC_SPI_IO_BASE            0x40000B04
+#define GPIO_SRC_SPI_IO                 REG32_POINTER(GPIO_SRC_SPI_IO_BASE)
+
+/* GPIO_SRC_SPI_IO bit positions */
+#define GPIO_SRC_SPI_IO_IO3_POS         24
+#define GPIO_SRC_SPI_IO_IO3_MASK        (0x1F << GPIO_SRC_SPI_IO_IO3_POS)
+#define GPIO_SRC_SPI_IO_IO2_POS         16
+#define GPIO_SRC_SPI_IO_IO2_MASK        (0x1F << GPIO_SRC_SPI_IO_IO2_POS)
+#define GPIO_SRC_SPI_IO_IO1_POS         8
+#define GPIO_SRC_SPI_IO_IO1_MASK        (0x1F << GPIO_SRC_SPI_IO_IO1_POS)
+#define GPIO_SRC_SPI_IO_IO0_POS         0
+#define GPIO_SRC_SPI_IO_IO0_MASK        (0x1F << GPIO_SRC_SPI_IO_IO0_POS)
+
+/* GPIO_SRC_SPI_IO settings */
+#define SPI_IO3_SRC_GPIO_0              (0x0 << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_1              (0x1 << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_2              (0x2 << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_3              (0x3 << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_4              (0x4 << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_5              (0x5 << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_6              (0x6 << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_7              (0x7 << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_8              (0x8 << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_9              (0x9 << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_10             (0xA << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_11             (0xB << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_12             (0xC << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_13             (0xD << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_14             (0xE << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_GPIO_15             (0xF << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_CONST_LOW           (0x10 << GPIO_SRC_SPI_IO_IO3_POS)
+#define SPI_IO3_SRC_CONST_HIGH          (0x11 << GPIO_SRC_SPI_IO_IO3_POS)
+
+#define SPI_IO2_SRC_GPIO_0              (0x0 << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_1              (0x1 << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_2              (0x2 << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_3              (0x3 << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_4              (0x4 << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_5              (0x5 << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_6              (0x6 << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_7              (0x7 << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_8              (0x8 << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_9              (0x9 << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_10             (0xA << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_11             (0xB << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_12             (0xC << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_13             (0xD << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_14             (0xE << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_GPIO_15             (0xF << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_CONST_LOW           (0x10 << GPIO_SRC_SPI_IO_IO2_POS)
+#define SPI_IO2_SRC_CONST_HIGH          (0x11 << GPIO_SRC_SPI_IO_IO2_POS)
+
+#define SPI_IO1_SRC_GPIO_0              (0x0 << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_1              (0x1 << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_2              (0x2 << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_3              (0x3 << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_4              (0x4 << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_5              (0x5 << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_6              (0x6 << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_7              (0x7 << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_8              (0x8 << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_9              (0x9 << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_10             (0xA << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_11             (0xB << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_12             (0xC << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_13             (0xD << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_14             (0xE << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_GPIO_15             (0xF << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_CONST_LOW           (0x10 << GPIO_SRC_SPI_IO_IO1_POS)
+#define SPI_IO1_SRC_CONST_HIGH          (0x11 << GPIO_SRC_SPI_IO_IO1_POS)
+
+#define SPI_IO0_SRC_GPIO_0              (0x0 << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_1              (0x1 << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_2              (0x2 << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_3              (0x3 << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_4              (0x4 << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_5              (0x5 << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_6              (0x6 << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_7              (0x7 << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_8              (0x8 << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_9              (0x9 << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_10             (0xA << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_11             (0xB << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_12             (0xC << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_13             (0xD << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_14             (0xE << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_GPIO_15             (0xF << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_CONST_LOW           (0x10 << GPIO_SRC_SPI_IO_IO0_POS)
+#define SPI_IO0_SRC_CONST_HIGH          (0x11 << GPIO_SRC_SPI_IO_IO0_POS)
+
+/* UART Interface Input Selection */
+#define GPIO_SRC_UART_BASE              0x40000B08
+#define GPIO_SRC_UART                   REG32_POINTER(GPIO_SRC_UART_BASE)
+
+/* GPIO_SRC_UART bit positions */
+#define GPIO_SRC_UART_RX_POS            0
+#define GPIO_SRC_UART_RX_MASK           (0x1F << GPIO_SRC_UART_RX_POS)
+
+/* GPIO_SRC_UART settings */
+#define UART_RX_SRC_GPIO_0              (0x0 << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_1              (0x1 << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_2              (0x2 << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_3              (0x3 << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_4              (0x4 << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_5              (0x5 << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_6              (0x6 << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_7              (0x7 << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_8              (0x8 << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_9              (0x9 << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_10             (0xA << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_11             (0xB << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_12             (0xC << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_13             (0xD << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_14             (0xE << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_GPIO_15             (0xF << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_CONST_LOW           (0x10 << GPIO_SRC_UART_RX_POS)
+#define UART_RX_SRC_CONST_HIGH          (0x11 << GPIO_SRC_UART_RX_POS)
+
+/* I2C Input Selection */
+#define GPIO_SRC_I2C_BASE               0x40000B0C
+#define GPIO_SRC_I2C                    REG32_POINTER(GPIO_SRC_I2C_BASE)
+
+/* GPIO_SRC_I2C bit positions */
+#define GPIO_SRC_I2C_SDA_POS            8
+#define GPIO_SRC_I2C_SDA_MASK           (0x1F << GPIO_SRC_I2C_SDA_POS)
+#define GPIO_SRC_I2C_SCL_POS            0
+#define GPIO_SRC_I2C_SCL_MASK           (0x1F << GPIO_SRC_I2C_SCL_POS)
+
+/* GPIO_SRC_I2C settings */
+#define I2C_SDA_SRC_GPIO_0              (0x0 << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_1              (0x1 << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_2              (0x2 << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_3              (0x3 << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_4              (0x4 << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_5              (0x5 << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_6              (0x6 << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_7              (0x7 << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_8              (0x8 << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_9              (0x9 << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_10             (0xA << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_11             (0xB << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_12             (0xC << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_13             (0xD << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_14             (0xE << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_GPIO_15             (0xF << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_CONST_LOW           (0x10 << GPIO_SRC_I2C_SDA_POS)
+#define I2C_SDA_SRC_CONST_HIGH          (0x11 << GPIO_SRC_I2C_SDA_POS)
+
+#define I2C_SCL_SRC_GPIO_0              (0x0 << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_1              (0x1 << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_2              (0x2 << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_3              (0x3 << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_4              (0x4 << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_5              (0x5 << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_6              (0x6 << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_7              (0x7 << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_8              (0x8 << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_9              (0x9 << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_10             (0xA << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_11             (0xB << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_12             (0xC << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_13             (0xD << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_14             (0xE << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_GPIO_15             (0xF << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_CONST_LOW           (0x10 << GPIO_SRC_I2C_SCL_POS)
+#define I2C_SCL_SRC_CONST_HIGH          (0x11 << GPIO_SRC_I2C_SCL_POS)
+
+/* NMI Input Selection */
+#define GPIO_SRC_NMI_BASE               0x40000B10
+#define GPIO_SRC_NMI                    REG32_POINTER(GPIO_SRC_NMI_BASE)
+
+/* GPIO_SRC_NMI bit positions */
+#define GPIO_SRC_NMI_NMI_POLARITY_POS   5
+#define GPIO_SRC_NMI_NMI_POS            0
+#define GPIO_SRC_NMI_NMI_MASK           (0x1F << GPIO_SRC_NMI_NMI_POS)
+
+/* GPIO_SRC_NMI settings */
+#define NMI_ACTIVE_LOW                  (0x0 << GPIO_SRC_NMI_NMI_POLARITY_POS)
+#define NMI_ACTIVE_HIGH                 (0x1 << GPIO_SRC_NMI_NMI_POLARITY_POS)
+
+#define NMI_SRC_GPIO_0                  (0x0 << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_1                  (0x1 << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_2                  (0x2 << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_3                  (0x3 << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_4                  (0x4 << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_5                  (0x5 << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_6                  (0x6 << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_7                  (0x7 << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_8                  (0x8 << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_9                  (0x9 << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_10                 (0xA << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_11                 (0xB << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_12                 (0xC << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_13                 (0xD << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_14                 (0xE << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_GPIO_15                 (0xF << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_CONST_LOW               (0x10 << GPIO_SRC_NMI_NMI_POS)
+#define NMI_SRC_CONST_HIGH              (0x11 << GPIO_SRC_NMI_NMI_POS)
+
+/* Baseband controller RX data and clock input selection */
+#define GPIO_SRC_BB_RX_BASE             0x40000B14
+#define GPIO_SRC_BB_RX                  REG32_POINTER(GPIO_SRC_BB_RX_BASE)
+
+/* GPIO_SRC_BB_RX bit positions */
+#define GPIO_SRC_BB_RX_SYNC_P_POS       16
+#define GPIO_SRC_BB_RX_SYNC_P_MASK      (0x1F << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define GPIO_SRC_BB_RX_CLK_POS          8
+#define GPIO_SRC_BB_RX_CLK_MASK         (0x1F << GPIO_SRC_BB_RX_CLK_POS)
+#define GPIO_SRC_BB_RX_DATA_POS         0
+#define GPIO_SRC_BB_RX_DATA_MASK        (0x1F << GPIO_SRC_BB_RX_DATA_POS)
+
+/* GPIO_SRC_BB_RX settings */
+#define BB_RX_SYNC_P_SRC_GPIO_0         (0x0 << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_1         (0x1 << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_2         (0x2 << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_3         (0x3 << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_4         (0x4 << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_5         (0x5 << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_6         (0x6 << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_7         (0x7 << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_8         (0x8 << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_9         (0x9 << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_10        (0xA << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_11        (0xB << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_12        (0xC << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_13        (0xD << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_14        (0xE << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_GPIO_15        (0xF << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_CONST_LOW      (0x10 << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_CONST_HIGH     (0x11 << GPIO_SRC_BB_RX_SYNC_P_POS)
+#define BB_RX_SYNC_P_SRC_RF_GPIO2       (0x12 << GPIO_SRC_BB_RX_SYNC_P_POS)
+
+#define BB_RX_CLK_SRC_GPIO_0            (0x0 << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_1            (0x1 << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_2            (0x2 << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_3            (0x3 << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_4            (0x4 << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_5            (0x5 << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_6            (0x6 << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_7            (0x7 << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_8            (0x8 << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_9            (0x9 << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_10           (0xA << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_11           (0xB << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_12           (0xC << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_13           (0xD << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_14           (0xE << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_GPIO_15           (0xF << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_CONST_LOW         (0x10 << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_CONST_HIGH        (0x11 << GPIO_SRC_BB_RX_CLK_POS)
+#define BB_RX_CLK_SRC_RF_GPIO1          (0x12 << GPIO_SRC_BB_RX_CLK_POS)
+
+#define BB_RX_DATA_SRC_GPIO_0           (0x0 << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_1           (0x1 << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_2           (0x2 << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_3           (0x3 << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_4           (0x4 << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_5           (0x5 << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_6           (0x6 << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_7           (0x7 << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_8           (0x8 << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_9           (0x9 << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_10          (0xA << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_11          (0xB << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_12          (0xC << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_13          (0xD << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_14          (0xE << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_GPIO_15          (0xF << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_CONST_LOW        (0x10 << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_CONST_HIGH       (0x11 << GPIO_SRC_BB_RX_DATA_POS)
+#define BB_RX_DATA_SRC_RF_GPIO0         (0x12 << GPIO_SRC_BB_RX_DATA_POS)
+
+/* Baseband controller SPI input selection */
+#define GPIO_SRC_BB_SPI_BASE            0x40000B18
+#define GPIO_SRC_BB_SPI                 REG32_POINTER(GPIO_SRC_BB_SPI_BASE)
+
+/* GPIO_SRC_BB_SPI bit positions */
+#define GPIO_SRC_BB_SPI_MISO_POS        0
+#define GPIO_SRC_BB_SPI_MISO_MASK       (0x1F << GPIO_SRC_BB_SPI_MISO_POS)
+
+/* GPIO_SRC_BB_SPI settings */
+#define BB_SPI_MISO_SRC_GPIO_0          (0x0 << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_1          (0x1 << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_2          (0x2 << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_3          (0x3 << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_4          (0x4 << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_5          (0x5 << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_6          (0x6 << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_7          (0x7 << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_8          (0x8 << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_9          (0x9 << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_10         (0xA << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_11         (0xB << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_12         (0xC << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_13         (0xD << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_14         (0xE << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_GPIO_15         (0xF << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_CONST_LOW       (0x10 << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_CONST_HIGH      (0x11 << GPIO_SRC_BB_SPI_MISO_POS)
+#define BB_SPI_MISO_SRC_RF_SPI_MISO     (0x12 << GPIO_SRC_BB_SPI_MISO_POS)
+
+/* Baseband controller WLAN coexistence input selection */
+#define GPIO_SRC_BB_COEX_BASE           0x40000B1C
+#define GPIO_SRC_BB_COEX                REG32_POINTER(GPIO_SRC_BB_COEX_BASE)
+
+/* GPIO_SRC_BB_COEX bit positions */
+#define GPIO_SRC_BB_COEX_WLAN_RX_POS    8
+#define GPIO_SRC_BB_COEX_WLAN_RX_MASK   (0x1F << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define GPIO_SRC_BB_COEX_WLAN_TX_POS    0
+#define GPIO_SRC_BB_COEX_WLAN_TX_MASK   (0x1F << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+
+/* GPIO_SRC_BB_COEX settings */
+#define BB_WLAN_RX_SRC_GPIO_0           (0x0 << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_1           (0x1 << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_2           (0x2 << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_3           (0x3 << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_4           (0x4 << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_5           (0x5 << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_6           (0x6 << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_7           (0x7 << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_8           (0x8 << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_9           (0x9 << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_10          (0xA << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_11          (0xB << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_12          (0xC << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_13          (0xD << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_14          (0xE << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_GPIO_15          (0xF << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_CONST_LOW        (0x10 << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+#define BB_WLAN_RX_SRC_CONST_HIGH       (0x11 << GPIO_SRC_BB_COEX_WLAN_RX_POS)
+
+#define BB_WLAN_TX_SRC_GPIO_0           (0x0 << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_1           (0x1 << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_2           (0x2 << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_3           (0x3 << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_4           (0x4 << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_5           (0x5 << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_6           (0x6 << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_7           (0x7 << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_8           (0x8 << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_9           (0x9 << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_10          (0xA << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_11          (0xB << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_12          (0xC << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_13          (0xD << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_14          (0xE << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_GPIO_15          (0xF << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_CONST_LOW        (0x10 << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+#define BB_WLAN_TX_SRC_CONST_HIGH       (0x11 << GPIO_SRC_BB_COEX_WLAN_TX_POS)
+
+/* Baseband controller IQ data input selection */
+#define GPIO_SRC_BB_IQ_DATA_BASE        0x40000B20
+#define GPIO_SRC_BB_IQ_DATA             REG32_POINTER(GPIO_SRC_BB_IQ_DATA_BASE)
+
+/* GPIO_SRC_BB_IQ_DATA bit positions */
+#define GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS 24
+#define GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_MASK (0x1F << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS 16
+#define GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_MASK (0x1F << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS 8
+#define GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_MASK (0x1F << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS 0
+#define GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_MASK (0x1F << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+
+/* GPIO_SRC_BB_IQ_DATA settings */
+#define BB_IQ_DATA_3_SRC_GPIO_0         (0x0 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_1         (0x1 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_2         (0x2 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_3         (0x3 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_4         (0x4 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_5         (0x5 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_6         (0x6 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_7         (0x7 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_8         (0x8 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_9         (0x9 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_10        (0xA << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_11        (0xB << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_12        (0xC << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_13        (0xD << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_14        (0xE << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_GPIO_15        (0xF << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_CONST_LOW      (0x10 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_CONST_HIGH     (0x11 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+#define BB_IQ_DATA_3_SRC_RF_IQ_DATA_3   (0x12 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_3_POS)
+
+#define BB_IQ_DATA_2_SRC_GPIO_0         (0x0 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_1         (0x1 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_2         (0x2 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_3         (0x3 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_4         (0x4 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_5         (0x5 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_6         (0x6 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_7         (0x7 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_8         (0x8 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_9         (0x9 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_10        (0xA << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_11        (0xB << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_12        (0xC << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_13        (0xD << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_14        (0xE << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_GPIO_15        (0xF << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_CONST_LOW      (0x10 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_CONST_HIGH     (0x11 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+#define BB_IQ_DATA_2_SRC_RF_IQ_DATA_2   (0x12 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_2_POS)
+
+#define BB_IQ_DATA_1_SRC_GPIO_0         (0x0 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_1         (0x1 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_2         (0x2 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_3         (0x3 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_4         (0x4 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_5         (0x5 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_6         (0x6 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_7         (0x7 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_8         (0x8 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_9         (0x9 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_10        (0xA << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_11        (0xB << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_12        (0xC << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_13        (0xD << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_14        (0xE << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_GPIO_15        (0xF << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_CONST_LOW      (0x10 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_CONST_HIGH     (0x11 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+#define BB_IQ_DATA_1_SRC_RF_IQ_DATA_1   (0x12 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_1_POS)
+
+#define BB_IQ_DATA_0_SRC_GPIO_0         (0x0 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_1         (0x1 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_2         (0x2 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_3         (0x3 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_4         (0x4 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_5         (0x5 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_6         (0x6 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_7         (0x7 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_8         (0x8 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_9         (0x9 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_10        (0xA << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_11        (0xB << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_12        (0xC << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_13        (0xD << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_14        (0xE << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_GPIO_15        (0xF << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_CONST_LOW      (0x10 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_CONST_HIGH     (0x11 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+#define BB_IQ_DATA_0_SRC_RF_IQ_DATA_0   (0x12 << GPIO_SRC_BB_IQ_DATA_IQ_DATA_0_POS)
+
+/* Baseband controller IQ data pulse input selection */
+#define GPIO_SRC_BB_IQ_DATA_P_BASE      0x40000B24
+#define GPIO_SRC_BB_IQ_DATA_P           REG32_POINTER(GPIO_SRC_BB_IQ_DATA_P_BASE)
+
+/* GPIO_SRC_BB_IQ_DATA_P bit positions */
+#define GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS 0
+#define GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_MASK (0x1F << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+
+/* GPIO_SRC_BB_IQ_DATA_P settings */
+#define BB_IQ_DATA_P_SRC_GPIO_0         (0x0 << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_1         (0x1 << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_2         (0x2 << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_3         (0x3 << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_4         (0x4 << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_5         (0x5 << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_6         (0x6 << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_7         (0x7 << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_8         (0x8 << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_9         (0x9 << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_10        (0xA << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_11        (0xB << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_12        (0xC << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_13        (0xD << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_14        (0xE << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_GPIO_15        (0xF << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_CONST_LOW      (0x10 << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_CONST_HIGH     (0x11 << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+#define BB_IQ_DATA_P_SRC_RF_IQ_DATA_P   (0x12 << GPIO_SRC_BB_IQ_DATA_P_IQ_DATA_P_POS)
+
+/* RF front-end SPI input selection */
+#define GPIO_SRC_RF_SPI_BASE            0x40000B28
+#define GPIO_SRC_RF_SPI                 REG32_POINTER(GPIO_SRC_RF_SPI_BASE)
+
+/* GPIO_SRC_RF_SPI bit positions */
+#define GPIO_SRC_RF_SPI_MOSI_POS        16
+#define GPIO_SRC_RF_SPI_MOSI_MASK       (0x1F << GPIO_SRC_RF_SPI_MOSI_POS)
+#define GPIO_SRC_RF_SPI_CSN_POS         8
+#define GPIO_SRC_RF_SPI_CSN_MASK        (0x1F << GPIO_SRC_RF_SPI_CSN_POS)
+#define GPIO_SRC_RF_SPI_CLK_POS         0
+#define GPIO_SRC_RF_SPI_CLK_MASK        (0x1F << GPIO_SRC_RF_SPI_CLK_POS)
+
+/* GPIO_SRC_RF_SPI settings */
+#define RF_SPI_MOSI_SRC_GPIO_0          (0x0 << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_1          (0x1 << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_2          (0x2 << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_3          (0x3 << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_4          (0x4 << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_5          (0x5 << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_6          (0x6 << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_7          (0x7 << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_8          (0x8 << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_9          (0x9 << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_10         (0xA << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_11         (0xB << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_12         (0xC << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_13         (0xD << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_14         (0xE << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_GPIO_15         (0xF << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_CONST_LOW       (0x10 << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_CONST_HIGH      (0x11 << GPIO_SRC_RF_SPI_MOSI_POS)
+#define RF_SPI_MOSI_SRC_BB_SPI_MOSI     (0x12 << GPIO_SRC_RF_SPI_MOSI_POS)
+
+#define RF_SPI_CSN_SRC_GPIO_0           (0x0 << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_1           (0x1 << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_2           (0x2 << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_3           (0x3 << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_4           (0x4 << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_5           (0x5 << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_6           (0x6 << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_7           (0x7 << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_8           (0x8 << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_9           (0x9 << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_10          (0xA << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_11          (0xB << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_12          (0xC << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_13          (0xD << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_14          (0xE << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_GPIO_15          (0xF << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_CONST_LOW        (0x10 << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_CONST_HIGH       (0x11 << GPIO_SRC_RF_SPI_CSN_POS)
+#define RF_SPI_CSN_SRC_BB_SPI_CSN       (0x12 << GPIO_SRC_RF_SPI_CSN_POS)
+
+#define RF_SPI_CLK_SRC_GPIO_0           (0x0 << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_1           (0x1 << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_2           (0x2 << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_3           (0x3 << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_4           (0x4 << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_5           (0x5 << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_6           (0x6 << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_7           (0x7 << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_8           (0x8 << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_9           (0x9 << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_10          (0xA << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_11          (0xB << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_12          (0xC << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_13          (0xD << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_14          (0xE << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_GPIO_15          (0xF << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_CONST_LOW        (0x10 << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_CONST_HIGH       (0x11 << GPIO_SRC_RF_SPI_CLK_POS)
+#define RF_SPI_CLK_SRC_BB_SPI_CLK       (0x12 << GPIO_SRC_RF_SPI_CLK_POS)
+
+/* RF front-end GPIOs 0-3 input selection */
+#define GPIO_SRC_RF_GPIO03_BASE         0x40000B2C
+#define GPIO_SRC_RF_GPIO03              REG32_POINTER(GPIO_SRC_RF_GPIO03_BASE)
+
+/* GPIO_SRC_RF_GPIO03 bit positions */
+#define GPIO_SRC_RF_GPIO03_GPIO3_POS    24
+#define GPIO_SRC_RF_GPIO03_GPIO3_MASK   (0x1F << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define GPIO_SRC_RF_GPIO03_GPIO2_POS    16
+#define GPIO_SRC_RF_GPIO03_GPIO2_MASK   (0x1F << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define GPIO_SRC_RF_GPIO03_GPIO1_POS    8
+#define GPIO_SRC_RF_GPIO03_GPIO1_MASK   (0x1F << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define GPIO_SRC_RF_GPIO03_GPIO0_POS    0
+#define GPIO_SRC_RF_GPIO03_GPIO0_MASK   (0x1F << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+
+/* GPIO_SRC_RF_GPIO03 settings */
+#define RF_GPIO3_SRC_GPIO_0             (0x0 << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_1             (0x1 << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_2             (0x2 << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_3             (0x3 << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_4             (0x4 << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_5             (0x5 << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_6             (0x6 << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_7             (0x7 << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_8             (0x8 << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_9             (0x9 << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_10            (0xA << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_11            (0xB << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_12            (0xC << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_13            (0xD << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_14            (0xE << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_GPIO_15            (0xF << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_CONST_LOW          (0x10 << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_CONST_HIGH         (0x11 << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+#define RF_GPIO3_SRC_BB_TX_DATA         (0x12 << GPIO_SRC_RF_GPIO03_GPIO3_POS)
+
+#define RF_GPIO2_SRC_GPIO_0             (0x0 << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_1             (0x1 << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_2             (0x2 << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_3             (0x3 << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_4             (0x4 << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_5             (0x5 << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_6             (0x6 << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_7             (0x7 << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_8             (0x8 << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_9             (0x9 << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_10            (0xA << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_11            (0xB << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_12            (0xC << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_13            (0xD << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_14            (0xE << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_GPIO_15            (0xF << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_CONST_LOW          (0x10 << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+#define RF_GPIO2_SRC_CONST_HIGH         (0x11 << GPIO_SRC_RF_GPIO03_GPIO2_POS)
+
+#define RF_GPIO1_SRC_GPIO_0             (0x0 << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_1             (0x1 << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_2             (0x2 << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_3             (0x3 << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_4             (0x4 << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_5             (0x5 << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_6             (0x6 << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_7             (0x7 << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_8             (0x8 << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_9             (0x9 << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_10            (0xA << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_11            (0xB << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_12            (0xC << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_13            (0xD << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_14            (0xE << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_GPIO_15            (0xF << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_CONST_LOW          (0x10 << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+#define RF_GPIO1_SRC_CONST_HIGH         (0x11 << GPIO_SRC_RF_GPIO03_GPIO1_POS)
+
+#define RF_GPIO0_SRC_GPIO_0             (0x0 << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_1             (0x1 << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_2             (0x2 << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_3             (0x3 << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_4             (0x4 << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_5             (0x5 << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_6             (0x6 << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_7             (0x7 << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_8             (0x8 << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_9             (0x9 << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_10            (0xA << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_11            (0xB << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_12            (0xC << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_13            (0xD << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_14            (0xE << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_GPIO_15            (0xF << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_CONST_LOW          (0x10 << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+#define RF_GPIO0_SRC_CONST_HIGH         (0x11 << GPIO_SRC_RF_GPIO03_GPIO0_POS)
+
+/* RF front-end GPIOs 4-7 input selection */
+#define GPIO_SRC_RF_GPIO47_BASE         0x40000B30
+#define GPIO_SRC_RF_GPIO47              REG32_POINTER(GPIO_SRC_RF_GPIO47_BASE)
+
+/* GPIO_SRC_RF_GPIO47 bit positions */
+#define GPIO_SRC_RF_GPIO47_GPIO7_POS    24
+#define GPIO_SRC_RF_GPIO47_GPIO7_MASK   (0x1F << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define GPIO_SRC_RF_GPIO47_GPIO6_POS    16
+#define GPIO_SRC_RF_GPIO47_GPIO6_MASK   (0x1F << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define GPIO_SRC_RF_GPIO47_GPIO5_POS    8
+#define GPIO_SRC_RF_GPIO47_GPIO5_MASK   (0x1F << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define GPIO_SRC_RF_GPIO47_GPIO4_POS    0
+#define GPIO_SRC_RF_GPIO47_GPIO4_MASK   (0x1F << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+
+/* GPIO_SRC_RF_GPIO47 settings */
+#define RF_GPIO7_SRC_GPIO_0             (0x0 << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_1             (0x1 << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_2             (0x2 << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_3             (0x3 << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_4             (0x4 << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_5             (0x5 << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_6             (0x6 << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_7             (0x7 << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_8             (0x8 << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_9             (0x9 << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_10            (0xA << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_11            (0xB << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_12            (0xC << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_13            (0xD << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_14            (0xE << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_GPIO_15            (0xF << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_CONST_LOW          (0x10 << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+#define RF_GPIO7_SRC_CONST_HIGH         (0x11 << GPIO_SRC_RF_GPIO47_GPIO7_POS)
+
+#define RF_GPIO6_SRC_GPIO_0             (0x0 << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_1             (0x1 << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_2             (0x2 << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_3             (0x3 << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_4             (0x4 << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_5             (0x5 << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_6             (0x6 << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_7             (0x7 << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_8             (0x8 << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_9             (0x9 << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_10            (0xA << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_11            (0xB << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_12            (0xC << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_13            (0xD << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_14            (0xE << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_GPIO_15            (0xF << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_CONST_LOW          (0x10 << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+#define RF_GPIO6_SRC_CONST_HIGH         (0x11 << GPIO_SRC_RF_GPIO47_GPIO6_POS)
+
+#define RF_GPIO5_SRC_GPIO_0             (0x0 << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_1             (0x1 << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_2             (0x2 << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_3             (0x3 << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_4             (0x4 << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_5             (0x5 << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_6             (0x6 << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_7             (0x7 << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_8             (0x8 << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_9             (0x9 << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_10            (0xA << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_11            (0xB << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_12            (0xC << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_13            (0xD << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_14            (0xE << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_GPIO_15            (0xF << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_CONST_LOW          (0x10 << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+#define RF_GPIO5_SRC_CONST_HIGH         (0x11 << GPIO_SRC_RF_GPIO47_GPIO5_POS)
+
+#define RF_GPIO4_SRC_GPIO_0             (0x0 << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_1             (0x1 << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_2             (0x2 << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_3             (0x3 << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_4             (0x4 << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_5             (0x5 << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_6             (0x6 << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_7             (0x7 << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_8             (0x8 << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_9             (0x9 << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_10            (0xA << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_11            (0xB << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_12            (0xC << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_13            (0xD << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_14            (0xE << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_GPIO_15            (0xF << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_CONST_LOW          (0x10 << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_CONST_HIGH         (0x11 << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+#define RF_GPIO4_SRC_BB_TX_DATA_VALID   (0x12 << GPIO_SRC_RF_GPIO47_GPIO4_POS)
+
+/* RF front-end GPIOs 8-9 input selection */
+#define GPIO_SRC_RF_GPIO89_BASE         0x40000B34
+#define GPIO_SRC_RF_GPIO89              REG32_POINTER(GPIO_SRC_RF_GPIO89_BASE)
+
+/* GPIO_SRC_RF_GPIO89 bit positions */
+#define GPIO_SRC_RF_GPIO89_GPIO9_POS    8
+#define GPIO_SRC_RF_GPIO89_GPIO9_MASK   (0x1F << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define GPIO_SRC_RF_GPIO89_GPIO8_POS    0
+#define GPIO_SRC_RF_GPIO89_GPIO8_MASK   (0x1F << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+
+/* GPIO_SRC_RF_GPIO89 settings */
+#define RF_GPIO9_SRC_GPIO_0             (0x0 << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_1             (0x1 << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_2             (0x2 << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_3             (0x3 << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_4             (0x4 << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_5             (0x5 << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_6             (0x6 << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_7             (0x7 << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_8             (0x8 << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_9             (0x9 << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_10            (0xA << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_11            (0xB << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_12            (0xC << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_13            (0xD << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_14            (0xE << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_GPIO_15            (0xF << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_CONST_LOW          (0x10 << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+#define RF_GPIO9_SRC_CONST_HIGH         (0x11 << GPIO_SRC_RF_GPIO89_GPIO9_POS)
+
+#define RF_GPIO8_SRC_GPIO_0             (0x0 << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_1             (0x1 << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_2             (0x2 << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_3             (0x3 << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_4             (0x4 << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_5             (0x5 << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_6             (0x6 << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_7             (0x7 << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_8             (0x8 << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_9             (0x9 << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_10            (0xA << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_11            (0xB << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_12            (0xC << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_13            (0xD << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_14            (0xE << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_GPIO_15            (0xF << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_CONST_LOW          (0x10 << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+#define RF_GPIO8_SRC_CONST_HIGH         (0x11 << GPIO_SRC_RF_GPIO89_GPIO8_POS)
+
+/* RF front-end CTE input selection */
+#define GPIO_SRC_RF_CTE_BASE            0x40000B38
+#define GPIO_SRC_RF_CTE                 REG32_POINTER(GPIO_SRC_RF_CTE_BASE)
+
+/* GPIO_SRC_RF_CTE bit positions */
+#define GPIO_SRC_RF_CTE_CTE_MODE_POS    8
+#define GPIO_SRC_RF_CTE_CTE_MODE_MASK   (0x1F << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS 0
+#define GPIO_SRC_RF_CTE_CTE_SAMPLE_P_MASK (0x1F << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+
+/* GPIO_SRC_RF_CTE settings */
+#define RF_CTE_MODE_SRC_GPIO_0          (0x0 << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_1          (0x1 << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_2          (0x2 << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_3          (0x3 << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_4          (0x4 << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_5          (0x5 << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_6          (0x6 << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_7          (0x7 << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_8          (0x8 << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_9          (0x9 << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_10         (0xA << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_11         (0xB << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_12         (0xC << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_13         (0xD << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_14         (0xE << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_GPIO_15         (0xF << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_CONST_LOW       (0x10 << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_CONST_HIGH      (0x11 << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+#define RF_CTE_MODE_SRC_BB_CTE_MODE     (0x12 << GPIO_SRC_RF_CTE_CTE_MODE_POS)
+
+#define RF_CTE_SAMPLE_P_SRC_GPIO_0      (0x0 << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_1      (0x1 << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_2      (0x2 << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_3      (0x3 << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_4      (0x4 << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_5      (0x5 << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_6      (0x6 << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_7      (0x7 << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_8      (0x8 << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_9      (0x9 << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_10     (0xA << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_11     (0xB << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_12     (0xC << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_13     (0xD << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_14     (0xE << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_GPIO_15     (0xF << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_CONST_LOW   (0x10 << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_CONST_HIGH  (0x11 << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+#define RF_CTE_SAMPLE_P_SRC_BB_CTE_MODE (0x12 << GPIO_SRC_RF_CTE_CTE_SAMPLE_P_POS)
+
+/* ASCC Interface Input Selection */
+#define GPIO_SRC_ASCC_BASE              0x40000B3C
+#define GPIO_SRC_ASCC                   REG32_POINTER(GPIO_SRC_ASCC_BASE)
+
+/* GPIO_SRC_ASCC bit positions */
+#define GPIO_SRC_ASCC_ASYNC_CLOCK_POS   8
+#define GPIO_SRC_ASCC_ASYNC_CLOCK_MASK  (0x1F << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define GPIO_SRC_ASCC_SYNC_PULSE_POS    0
+#define GPIO_SRC_ASCC_SYNC_PULSE_MASK   (0x1F << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+
+/* GPIO_SRC_ASCC settings */
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_0     (0x0 << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_1     (0x1 << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_2     (0x2 << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_3     (0x3 << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_4     (0x4 << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_5     (0x5 << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_6     (0x6 << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_7     (0x7 << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_8     (0x8 << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_9     (0x9 << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_10    (0xA << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_11    (0xB << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_12    (0xC << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_13    (0xD << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_14    (0xE << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_GPIO_15    (0xF << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_CONST_LOW  (0x10 << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_CONST_HIGH (0x11 << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+#define ASCC_ASYNC_CLOCK_SRC_STANDBYCLK (0x12 << GPIO_SRC_ASCC_ASYNC_CLOCK_POS)
+
+#define ASCC_SYNC_PULSE_SRC_GPIO_0      (0x0 << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_1      (0x1 << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_2      (0x2 << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_3      (0x3 << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_4      (0x4 << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_5      (0x5 << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_6      (0x6 << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_7      (0x7 << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_8      (0x8 << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_9      (0x9 << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_10     (0xA << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_11     (0xB << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_12     (0xC << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_13     (0xD << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_14     (0xE << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_GPIO_15     (0xF << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_CONST_LOW   (0x10 << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+#define ASCC_SYNC_PULSE_SRC_CONST_HIGH  (0x11 << GPIO_SRC_ASCC_SYNC_PULSE_POS)
+
+/* ----------------------------------------------------------------------------
+ * SPI Interface Configuration and Control
+ * ------------------------------------------------------------------------- */
+
+/* SPI Configuration Register */
+#define SPI_CFG_BASE                    0x40000C00
+#define SPI_CFG                         REG32_POINTER(SPI_CFG_BASE)
+
+/* SPI_CFG bit positions */
+#define SPI_CFG_TX_DMA_ENABLE_POS       23
+#define SPI_CFG_RX_DMA_ENABLE_POS       22
+#define SPI_CFG_TX_END_INT_ENABLE_POS   21
+#define SPI_CFG_TX_START_INT_ENABLE_POS 20
+#define SPI_CFG_RX_INT_ENABLE_POS       19
+#define SPI_CFG_CS_RISE_INT_ENABLE_POS  18
+#define SPI_CFG_OVERRUN_INT_ENABLE_POS  17
+#define SPI_CFG_UNDERRUN_INT_ENABLE_POS 16
+#define SPI_CFG_MODE_POS                13
+#define SPI_CFG_MODE_MASK               (0x3 << SPI_CFG_MODE_POS)
+#define SPI_CFG_WORD_SIZE_POS           8
+#define SPI_CFG_WORD_SIZE_MASK          (0x1F << SPI_CFG_WORD_SIZE_POS)
+#define SPI_CFG_PRESCALE_POS            4
+#define SPI_CFG_PRESCALE_MASK           (0xF << SPI_CFG_PRESCALE_POS)
+#define SPI_CFG_CLK_POLARITY_POS        1
+#define SPI_CFG_SLAVE_POS               0
+
+/* SPI_CFG settings */
+#define SPI_TX_DMA_DISABLE              (0x0 << SPI_CFG_TX_DMA_ENABLE_POS)
+#define SPI_TX_DMA_ENABLE               (0x1 << SPI_CFG_TX_DMA_ENABLE_POS)
+
+#define SPI_RX_DMA_DISABLE              (0x0 << SPI_CFG_RX_DMA_ENABLE_POS)
+#define SPI_RX_DMA_ENABLE               (0x1 << SPI_CFG_RX_DMA_ENABLE_POS)
+
+#define SPI_TX_END_INT_DISABLE          (0x0 << SPI_CFG_TX_END_INT_ENABLE_POS)
+#define SPI_TX_END_INT_ENABLE           (0x1 << SPI_CFG_TX_END_INT_ENABLE_POS)
+
+#define SPI_TX_START_INT_DISABLE        (0x0 << SPI_CFG_TX_START_INT_ENABLE_POS)
+#define SPI_TX_START_INT_ENABLE         (0x1 << SPI_CFG_TX_START_INT_ENABLE_POS)
+
+#define SPI_RX_INT_DISABLE              (0x0 << SPI_CFG_RX_INT_ENABLE_POS)
+#define SPI_RX_INT_ENABLE               (0x1 << SPI_CFG_RX_INT_ENABLE_POS)
+
+#define SPI_CS_RISE_INT_DISABLE         (0x0 << SPI_CFG_CS_RISE_INT_ENABLE_POS)
+#define SPI_CS_RISE_INT_ENABLE          (0x1 << SPI_CFG_CS_RISE_INT_ENABLE_POS)
+
+#define SPI_OVERRUN_INT_DISABLE         (0x0 << SPI_CFG_OVERRUN_INT_ENABLE_POS)
+#define SPI_OVERRUN_INT_ENABLE          (0x1 << SPI_CFG_OVERRUN_INT_ENABLE_POS)
+
+#define SPI_UNDERRUN_INT_DISABLE        (0x0 << SPI_CFG_UNDERRUN_INT_ENABLE_POS)
+#define SPI_UNDERRUN_INT_ENABLE         (0x1 << SPI_CFG_UNDERRUN_INT_ENABLE_POS)
+
+#define SPI_MODE_SPI                    (0x0 << SPI_CFG_MODE_POS)
+#define SPI_MODE_DSPI                   (0x1 << SPI_CFG_MODE_POS)
+#define SPI_MODE_QSPI                   (0x2 << SPI_CFG_MODE_POS)
+
+#define SPI_WORD_SIZE_1                 (0x0 << SPI_CFG_WORD_SIZE_POS)
+#define SPI_WORD_SIZE_4                 (0x3 << SPI_CFG_WORD_SIZE_POS)
+#define SPI_WORD_SIZE_8                 (0x7 << SPI_CFG_WORD_SIZE_POS)
+#define SPI_WORD_SIZE_16                (0xF << SPI_CFG_WORD_SIZE_POS)
+#define SPI_WORD_SIZE_24                (0x17 << SPI_CFG_WORD_SIZE_POS)
+#define SPI_WORD_SIZE_32                (0x1F << SPI_CFG_WORD_SIZE_POS)
+
+#define SPI_PRESCALE_2                  (0x0 << SPI_CFG_PRESCALE_POS)
+#define SPI_PRESCALE_4                  (0x1 << SPI_CFG_PRESCALE_POS)
+#define SPI_PRESCALE_8                  (0x2 << SPI_CFG_PRESCALE_POS)
+#define SPI_PRESCALE_16                 (0x3 << SPI_CFG_PRESCALE_POS)
+#define SPI_PRESCALE_32                 (0x4 << SPI_CFG_PRESCALE_POS)
+#define SPI_PRESCALE_64                 (0x5 << SPI_CFG_PRESCALE_POS)
+#define SPI_PRESCALE_128                (0x6 << SPI_CFG_PRESCALE_POS)
+#define SPI_PRESCALE_256                (0x7 << SPI_CFG_PRESCALE_POS)
+#define SPI_PRESCALE_512                (0x8 << SPI_CFG_PRESCALE_POS)
+#define SPI_PRESCALE_1024               (0x9 << SPI_CFG_PRESCALE_POS)
+
+#define SPI_CLK_POLARITY_NORMAL         (0x0 << SPI_CFG_CLK_POLARITY_POS)
+#define SPI_CLK_POLARITY_INVERSE        (0x1 << SPI_CFG_CLK_POLARITY_POS)
+
+#define SPI_SELECT_MASTER               (0x0 << SPI_CFG_SLAVE_POS)
+#define SPI_SELECT_SLAVE                (0x1 << SPI_CFG_SLAVE_POS)
+
+/* SPI Control Register */
+#define SPI_CTRL_BASE                   0x40000C04
+#define SPI_CTRL                        REG32_POINTER(SPI_CTRL_BASE)
+
+/* SPI_CTRL bit positions */
+#define SPI_CTRL_CS_STATUS_POS          19
+#define SPI_CTRL_MODE_STATUS_POS        17
+#define SPI_CTRL_MODE_STATUS_MASK       (0x3 << SPI_CTRL_MODE_STATUS_POS)
+#define SPI_CTRL_ENABLE_STATUS_POS      16
+#define SPI_CTRL_CS_0_POS               9
+#define SPI_CTRL_CS_1_POS               8
+#define SPI_CTRL_MODE_NOP_POS           7
+#define SPI_CTRL_MODE_WRITE_POS         6
+#define SPI_CTRL_MODE_READ_POS          5
+#define SPI_CTRL_MODE_READ_WRITE_POS    4
+#define SPI_CTRL_START_POS              3
+#define SPI_CTRL_RESET_POS              2
+#define SPI_CTRL_DISABLE_POS            1
+#define SPI_CTRL_ENABLE_POS             0
+
+/* SPI_CTRL settings */
+#define SPI_STATUS_CS_0                 (0x0 << SPI_CTRL_CS_STATUS_POS)
+#define SPI_STATUS_CS_1                 (0x1 << SPI_CTRL_CS_STATUS_POS)
+
+#define SPI_STATUS_MODE_NOP             (0x0 << SPI_CTRL_MODE_STATUS_POS)
+#define SPI_STATUS_MODE_WRITE           (0x1 << SPI_CTRL_MODE_STATUS_POS)
+#define SPI_STATUS_MODE_READ            (0x2 << SPI_CTRL_MODE_STATUS_POS)
+#define SPI_STATUS_MODE_READ_WRITE      (0x3 << SPI_CTRL_MODE_STATUS_POS)
+
+#define SPI_STATUS_DISABLED             (0x0 << SPI_CTRL_ENABLE_STATUS_POS)
+#define SPI_STATUS_ENABLED              (0x1 << SPI_CTRL_ENABLE_STATUS_POS)
+
+#define SPI_CS_0                        (0x1 << SPI_CTRL_CS_0_POS)
+
+#define SPI_CS_1                        (0x1 << SPI_CTRL_CS_1_POS)
+
+#define SPI_MODE_NOP                    (0x1 << SPI_CTRL_MODE_NOP_POS)
+
+#define SPI_MODE_WRITE                  (0x1 << SPI_CTRL_MODE_WRITE_POS)
+
+#define SPI_MODE_READ                   (0x1 << SPI_CTRL_MODE_READ_POS)
+
+#define SPI_MODE_READ_WRITE             (0x1 << SPI_CTRL_MODE_READ_WRITE_POS)
+
+#define SPI_START_READ                  (0x1 << SPI_CTRL_START_POS)
+
+#define SPI_RESET                       (0x1 << SPI_CTRL_RESET_POS)
+
+#define SPI_DISABLE                     (0x1 << SPI_CTRL_DISABLE_POS)
+
+#define SPI_ENABLE                      (0x1 << SPI_CTRL_ENABLE_POS)
+
+/* SPI Status Register */
+#define SPI_STATUS_BASE                 0x40000C08
+#define SPI_STATUS                      REG32_POINTER(SPI_STATUS_BASE)
+
+/* SPI_STATUS bit positions */
+#define SPI_STATUS_BUSY_POS             13
+#define SPI_STATUS_TX_REQ_POS           12
+#define SPI_STATUS_RX_REQ_POS           11
+#define SPI_STATUS_CS_RISE_POS          10
+#define SPI_STATUS_OVERRUN_POS          9
+#define SPI_STATUS_UNDERRUN_POS         8
+#define SPI_STATUS_TX_REQ_SET_POS       4
+#define SPI_STATUS_CS_RISE_CLEAR_POS    2
+#define SPI_STATUS_OVERRUN_CLEAR_POS    1
+#define SPI_STATUS_UNDERRUN_CLEAR_POS   0
+
+/* SPI_STATUS settings */
+#define SPI_IDLE                        (0x0 << SPI_STATUS_BUSY_POS)
+#define SPI_BUSY                        (0x1 << SPI_STATUS_BUSY_POS)
+
+#define SPI_TX_NO_REQ                   (0x0 << SPI_STATUS_TX_REQ_POS)
+#define SPI_TX_REQ                      (0x1 << SPI_STATUS_TX_REQ_POS)
+
+#define SPI_RX_NO_REQ                   (0x0 << SPI_STATUS_RX_REQ_POS)
+#define SPI_RX_REQ                      (0x1 << SPI_STATUS_RX_REQ_POS)
+
+#define SPI_CS_RISE_FALSE               (0x0 << SPI_STATUS_CS_RISE_POS)
+#define SPI_CS_RISE_TRUE                (0x1 << SPI_STATUS_CS_RISE_POS)
+
+#define SPI_OVERRUN_FALSE               (0x0 << SPI_STATUS_OVERRUN_POS)
+#define SPI_OVERRUN_TRUE                (0x1 << SPI_STATUS_OVERRUN_POS)
+
+#define SPI_UNDERRUN_FALSE              (0x0 << SPI_STATUS_UNDERRUN_POS)
+#define SPI_UNDERRUN_TRUE               (0x1 << SPI_STATUS_UNDERRUN_POS)
+
+#define SPI_TX_REQ_SET                  (0x1 << SPI_STATUS_TX_REQ_SET_POS)
+
+#define SPI_CS_RISE_CLEAR               (0x1 << SPI_STATUS_CS_RISE_CLEAR_POS)
+
+#define SPI_OVERRUN_CLEAR               (0x1 << SPI_STATUS_OVERRUN_CLEAR_POS)
+
+#define SPI_UNDERRUN_CLEAR              (0x1 << SPI_STATUS_UNDERRUN_CLEAR_POS)
+
+/* SPI Transmit Data Register */
+#define SPI_TX_DATA_BASE                0x40000C0C
+#define SPI_TX_DATA                     REG32_POINTER(SPI_TX_DATA_BASE)
+
+/* SPI Received Data Register */
+#define SPI_RX_DATA_BASE                0x40000C10
+#define SPI_RX_DATA                     READONLY_REG32_POINTER(SPI_RX_DATA_BASE)
+
+/* SPI Received Data No Start Register */
+#define SPI_RX_DATA_NO_START_BASE       0x40000C14
+#define SPI_RX_DATA_NO_START            READONLY_REG32_POINTER(SPI_RX_DATA_NO_START_BASE)
+
+/* SPI Received Data Mirror Register */
+#define SPI_RX_DATA_MIRROR_BASE         0x40000C18
+#define SPI_RX_DATA_MIRROR              READONLY_REG32_POINTER(SPI_RX_DATA_MIRROR_BASE)
+
+/* SPI ID number */
+#define SPI_ID_NUM_BASE                 0x40000CFC
+#define SPI_ID_NUM                      READONLY_REG32_POINTER(SPI_ID_NUM_BASE)
+
+/* SPI_ID_NUM bit positions */
+#define SPI_ID_NUM_SPI_NUMBER_POS       16
+#define SPI_ID_NUM_SPI_NUMBER_MASK      (0xF << SPI_ID_NUM_SPI_NUMBER_POS)
+#define SPI_ID_NUM_SPI_MAJOR_REVISION_POS 8
+#define SPI_ID_NUM_SPI_MAJOR_REVISION_MASK (0xFF << SPI_ID_NUM_SPI_MAJOR_REVISION_POS)
+#define SPI_ID_NUM_SPI_MINOR_REVISION_POS 0
+#define SPI_ID_NUM_SPI_MINOR_REVISION_MASK (0xFF << SPI_ID_NUM_SPI_MINOR_REVISION_POS)
+
+/* SPI_ID_NUM settings */
+#define SPI_MAJOR_REVISION              (0x1 << SPI_ID_NUM_SPI_MAJOR_REVISION_POS)
+
+#define SPI_MINOR_REVISION              (0x0 << SPI_ID_NUM_SPI_MINOR_REVISION_POS)
+
+/* ----------------------------------------------------------------------------
+ * I2C Interface Configuration and Control
+ * ------------------------------------------------------------------------- */
+
+/* Configuration Register */
+#define I2C_CFG_BASE                    0x40000D00
+#define I2C_CFG                         REG32_POINTER(I2C_CFG_BASE)
+
+/* I2C_CFG bit positions */
+#define I2C_CFG_REPEATED_START_INT_ENABLE_POS 30
+#define I2C_CFG_CONNECT_IN_STANDBY_POS  29
+#define I2C_CFG_TX_DMA_ENABLE_POS       28
+#define I2C_CFG_RX_DMA_ENABLE_POS       27
+#define I2C_CFG_TX_INT_ENABLE_POS       26
+#define I2C_CFG_RX_INT_ENABLE_POS       25
+#define I2C_CFG_BUS_ERROR_INT_ENABLE_POS 24
+#define I2C_CFG_OVERRUN_INT_ENABLE_POS  23
+#define I2C_CFG_STOP_INT_ENABLE_POS     22
+#define I2C_CFG_AUTO_ACK_ENABLE_POS     21
+#define I2C_CFG_SLAVE_PRESCALE_POS      16
+#define I2C_CFG_SLAVE_PRESCALE_MASK     (0x1F << I2C_CFG_SLAVE_PRESCALE_POS)
+#define I2C_CFG_MASTER_PRESCALE_POS     8
+#define I2C_CFG_MASTER_PRESCALE_MASK    (0xFF << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_CFG_SLAVE_ADDRESS_POS       1
+#define I2C_CFG_SLAVE_ADDRESS_MASK      (0x7F << I2C_CFG_SLAVE_ADDRESS_POS)
+#define I2C_CFG_SLAVE_POS               0
+
+/* I2C_CFG settings */
+#define I2C_REPEATED_START_INT_DISABLE  (0x0 << I2C_CFG_REPEATED_START_INT_ENABLE_POS)
+#define I2C_REPEATED_START_INT_ENABLE   (0x1 << I2C_CFG_REPEATED_START_INT_ENABLE_POS)
+
+#define I2C_DISCONNECT_IN_STANDBY       (0x0 << I2C_CFG_CONNECT_IN_STANDBY_POS)
+#define I2C_CONNECT_IN_STANDBY          (0x1 << I2C_CFG_CONNECT_IN_STANDBY_POS)
+
+#define I2C_TX_DMA_DISABLE              (0x0 << I2C_CFG_TX_DMA_ENABLE_POS)
+#define I2C_TX_DMA_ENABLE               (0x1 << I2C_CFG_TX_DMA_ENABLE_POS)
+
+#define I2C_RX_DMA_DISABLE              (0x0 << I2C_CFG_RX_DMA_ENABLE_POS)
+#define I2C_RX_DMA_ENABLE               (0x1 << I2C_CFG_RX_DMA_ENABLE_POS)
+
+#define I2C_TX_INT_DISABLE              (0x0 << I2C_CFG_TX_INT_ENABLE_POS)
+#define I2C_TX_INT_ENABLE               (0x1 << I2C_CFG_TX_INT_ENABLE_POS)
+
+#define I2C_RX_INT_DISABLE              (0x0 << I2C_CFG_RX_INT_ENABLE_POS)
+#define I2C_RX_INT_ENABLE               (0x1 << I2C_CFG_RX_INT_ENABLE_POS)
+
+#define I2C_BUS_ERROR_INT_DISABLE       (0x0 << I2C_CFG_BUS_ERROR_INT_ENABLE_POS)
+#define I2C_BUS_ERROR_INT_ENABLE        (0x1 << I2C_CFG_BUS_ERROR_INT_ENABLE_POS)
+
+#define I2C_OVERRUN_INT_DISABLE         (0x0 << I2C_CFG_OVERRUN_INT_ENABLE_POS)
+#define I2C_OVERRUN_INT_ENABLE          (0x1 << I2C_CFG_OVERRUN_INT_ENABLE_POS)
+
+#define I2C_STOP_INT_DISABLE            (0x0 << I2C_CFG_STOP_INT_ENABLE_POS)
+#define I2C_STOP_INT_ENABLE             (0x1 << I2C_CFG_STOP_INT_ENABLE_POS)
+
+#define I2C_AUTO_ACK_DISABLE            (0x0 << I2C_CFG_AUTO_ACK_ENABLE_POS)
+#define I2C_AUTO_ACK_ENABLE             (0x1 << I2C_CFG_AUTO_ACK_ENABLE_POS)
+
+#define I2C_SLAVE_PRESCALE_1            (0x0 << I2C_CFG_SLAVE_PRESCALE_POS)
+#define I2C_SLAVE_PRESCALE_2            (0x1 << I2C_CFG_SLAVE_PRESCALE_POS)
+#define I2C_SLAVE_PRESCALE_3            (0x2 << I2C_CFG_SLAVE_PRESCALE_POS)
+#define I2C_SLAVE_PRESCALE_4            (0x3 << I2C_CFG_SLAVE_PRESCALE_POS)
+#define I2C_SLAVE_PRESCALE_5            (0x4 << I2C_CFG_SLAVE_PRESCALE_POS)
+#define I2C_SLAVE_PRESCALE_6            (0x5 << I2C_CFG_SLAVE_PRESCALE_POS)
+#define I2C_SLAVE_PRESCALE_7            (0x6 << I2C_CFG_SLAVE_PRESCALE_POS)
+#define I2C_SLAVE_PRESCALE_14           (0xD << I2C_CFG_SLAVE_PRESCALE_POS)
+#define I2C_SLAVE_PRESCALE_32           (0x1F << I2C_CFG_SLAVE_PRESCALE_POS)
+
+#define I2C_MASTER_PRESCALE_3           (0x0 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_6           (0x1 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_9           (0x2 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_12          (0x3 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_15          (0x4 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_18          (0x5 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_21          (0x6 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_24          (0x7 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_27          (0x8 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_30          (0x9 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_33          (0xA << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_36          (0xB << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_39          (0xC << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_42          (0xD << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_45          (0xE << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_48          (0xF << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_51          (0x10 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_54          (0x11 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_57          (0x12 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_60          (0x13 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_120         (0x27 << I2C_CFG_MASTER_PRESCALE_POS)
+#define I2C_MASTER_PRESCALE_768         (0xFF << I2C_CFG_MASTER_PRESCALE_POS)
+
+#define I2C_SLAVE_DISABLE               (0x0 << I2C_CFG_SLAVE_POS)
+#define I2C_SLAVE_ENABLE                (0x1 << I2C_CFG_SLAVE_POS)
+
+/* Control Register */
+#define I2C_CTRL_BASE                   0x40000D04
+#define I2C_CTRL                        REG32_POINTER(I2C_CTRL_BASE)
+
+/* I2C_CTRL bit positions */
+#define I2C_CTRL_LAST_DATA_STATUS_POS   9
+#define I2C_CTRL_ENABLE_STATUS_POS      8
+#define I2C_CTRL_LAST_DATA_POS          6
+#define I2C_CTRL_STOP_POS               5
+#define I2C_CTRL_NACK_POS               4
+#define I2C_CTRL_ACK_POS                3
+#define I2C_CTRL_RESET_POS              2
+#define I2C_CTRL_DISABLE_POS            1
+#define I2C_CTRL_ENABLE_POS             0
+
+/* I2C_CTRL settings */
+#define I2C_LAST_DATA_DISABLED          (0x0 << I2C_CTRL_LAST_DATA_STATUS_POS)
+#define I2C_LAST_DATA_ENABLED           (0x1 << I2C_CTRL_LAST_DATA_STATUS_POS)
+
+#define I2C_STATUS_DISABLED             (0x0 << I2C_CTRL_ENABLE_STATUS_POS)
+#define I2C_STATUS_ENABLED              (0x1 << I2C_CTRL_ENABLE_STATUS_POS)
+
+#define I2C_LAST_DATA                   (0x1 << I2C_CTRL_LAST_DATA_POS)
+
+#define I2C_STOP                        (0x1 << I2C_CTRL_STOP_POS)
+
+#define I2C_NACK                        (0x1 << I2C_CTRL_NACK_POS)
+
+#define I2C_ACK                         (0x1 << I2C_CTRL_ACK_POS)
+#define I2C_RESUME                      (0x1 << I2C_CTRL_ACK_POS)
+
+#define I2C_RESET                       (0x1 << I2C_CTRL_RESET_POS)
+
+#define I2C_DISABLE                     (0x1 << I2C_CTRL_DISABLE_POS)
+
+#define I2C_ENABLE                      (0x1 << I2C_CTRL_ENABLE_POS)
+
+/* Master Address and Start Register */
+#define I2C_ADDR_START_BASE             0x40000D08
+#define I2C_ADDR_START                  REG32_POINTER(I2C_ADDR_START_BASE)
+
+/* I2C_ADDR_START bit positions */
+#define I2C_ADDR_START_ADDRESS_POS      1
+#define I2C_ADDR_START_ADDRESS_MASK     (0x7F << I2C_ADDR_START_ADDRESS_POS)
+#define I2C_ADDR_START_READ_WRITE_POS   0
+
+/* I2C_ADDR_START settings */
+#define I2C_START_WRITE                 (0x0 << I2C_ADDR_START_READ_WRITE_POS)
+#define I2C_START_READ                  (0x1 << I2C_ADDR_START_READ_WRITE_POS)
+
+/* Status Register */
+#define I2C_STATUS_BASE                 0x40000D0C
+#define I2C_STATUS                      REG32_POINTER(I2C_STATUS_BASE)
+
+/* I2C_STATUS bit positions */
+#define I2C_STATUS_STOP_OR_REPEATED_START_DETECTED_POS 26
+#define I2C_STATUS_REPEATED_START_DETECTED_POS 25
+#define I2C_STATUS_BUS_ERROR_POS        22
+#define I2C_STATUS_BUSY_POS             21
+#define I2C_STATUS_START_PENDING_POS    20
+#define I2C_STATUS_MASTER_MODE_POS      19
+#define I2C_STATUS_STOP_DETECTED_POS    18
+#define I2C_STATUS_DATA_EVENT_POS       17
+#define I2C_STATUS_TX_REQ_POS           16
+#define I2C_STATUS_RX_REQ_POS           15
+#define I2C_STATUS_CLK_STRETCH_POS      14
+#define I2C_STATUS_LINE_FREE_POS        13
+#define I2C_STATUS_ADDR_DATA_POS        12
+#define I2C_STATUS_READ_WRITE_POS       11
+#define I2C_STATUS_GEN_CALL_POS         10
+#define I2C_STATUS_ACK_POS              9
+#define I2C_STATUS_OVERRUN_POS          8
+#define I2C_STATUS_TX_REQ_SET_POS       4
+#define I2C_STATUS_REPEATED_START_DETECTED_CLEAR_POS 3
+#define I2C_STATUS_STOP_DETECTED_CLEAR_POS 2
+#define I2C_STATUS_BUS_ERROR_CLEAR_POS  1
+#define I2C_STATUS_OVERRUN_CLEAR_POS    0
+
+/* I2C_STATUS settings */
+#define I2C_STOP_NOR_REPEATED_START_DETECTED (0x0 << I2C_STATUS_STOP_OR_REPEATED_START_DETECTED_POS)
+#define I2C_STOP_OR_REPEATED_START_DETECTED (0x1 << I2C_STATUS_STOP_OR_REPEATED_START_DETECTED_POS)
+
+#define I2C_NO_REPEATED_START_DETECTED  (0x0 << I2C_STATUS_REPEATED_START_DETECTED_POS)
+#define I2C_REPEATED_START_DETECTED     (0x1 << I2C_STATUS_REPEATED_START_DETECTED_POS)
+
+#define I2C_NO_BUS_ERROR                (0x0 << I2C_STATUS_BUS_ERROR_POS)
+#define I2C_BUS_ERROR                   (0x1 << I2C_STATUS_BUS_ERROR_POS)
+
+#define I2C_IDLE                        (0x0 << I2C_STATUS_BUSY_POS)
+#define I2C_BUSY                        (0x1 << I2C_STATUS_BUSY_POS)
+
+#define I2C_START_NOT_PENDING           (0x0 << I2C_STATUS_START_PENDING_POS)
+#define I2C_START_PENDING               (0x1 << I2C_STATUS_START_PENDING_POS)
+
+#define I2C_MASTER_INACTIVE             (0x0 << I2C_STATUS_MASTER_MODE_POS)
+#define I2C_MASTER_ACTIVE               (0x1 << I2C_STATUS_MASTER_MODE_POS)
+
+#define I2C_NO_STOP_DETECTED            (0x0 << I2C_STATUS_STOP_DETECTED_POS)
+#define I2C_STOP_DETECTED               (0x1 << I2C_STATUS_STOP_DETECTED_POS)
+
+#define I2C_NON_DATA_EVENT              (0x0 << I2C_STATUS_DATA_EVENT_POS)
+#define I2C_DATA_EVENT                  (0x1 << I2C_STATUS_DATA_EVENT_POS)
+
+#define I2C_TX_NO_REQ                   (0x0 << I2C_STATUS_TX_REQ_POS)
+#define I2C_TX_REQ                      (0x1 << I2C_STATUS_TX_REQ_POS)
+
+#define I2C_RX_NO_REQ                   (0x0 << I2C_STATUS_RX_REQ_POS)
+#define I2C_RX_REQ                      (0x1 << I2C_STATUS_RX_REQ_POS)
+
+#define I2C_CLK_NOT_STRETCHED           (0x0 << I2C_STATUS_CLK_STRETCH_POS)
+#define I2C_CLK_STRETCHED               (0x1 << I2C_STATUS_CLK_STRETCH_POS)
+
+#define I2C_BUS_BUSY                    (0x0 << I2C_STATUS_LINE_FREE_POS)
+#define I2C_BUS_FREE                    (0x1 << I2C_STATUS_LINE_FREE_POS)
+
+#define I2C_DATA_IS_DATA                (0x0 << I2C_STATUS_ADDR_DATA_POS)
+#define I2C_DATA_IS_ADDR                (0x1 << I2C_STATUS_ADDR_DATA_POS)
+
+#define I2C_IS_WRITE                    (0x0 << I2C_STATUS_READ_WRITE_POS)
+#define I2C_IS_READ                     (0x1 << I2C_STATUS_READ_WRITE_POS)
+
+#define I2C_ADDR_OTHER                  (0x0 << I2C_STATUS_GEN_CALL_POS)
+#define I2C_ADDR_GEN_CALL               (0x1 << I2C_STATUS_GEN_CALL_POS)
+
+#define I2C_HAS_ACK                     (0x0 << I2C_STATUS_ACK_POS)
+#define I2C_HAS_NACK                    (0x1 << I2C_STATUS_ACK_POS)
+
+#define I2C_OVERRUN_FALSE               (0x0 << I2C_STATUS_OVERRUN_POS)
+#define I2C_OVERRUN_TRUE                (0x1 << I2C_STATUS_OVERRUN_POS)
+
+#define I2C_TX_REQ_SET                  (0x1 << I2C_STATUS_TX_REQ_SET_POS)
+
+#define I2C_REPEATED_START_DETECTED_CLEAR (0x1 << I2C_STATUS_REPEATED_START_DETECTED_CLEAR_POS)
+
+#define I2C_STOP_DETECTED_CLEAR         (0x1 << I2C_STATUS_STOP_DETECTED_CLEAR_POS)
+
+#define I2C_BUS_ERROR_CLEAR             (0x1 << I2C_STATUS_BUS_ERROR_CLEAR_POS)
+
+#define I2C_OVERRUN_CLEAR               (0x1 << I2C_STATUS_OVERRUN_CLEAR_POS)
+
+/* Transmit Data Register */
+#define I2C_TX_DATA_BASE                0x40000D10
+#define I2C_TX_DATA                     REG32_POINTER(I2C_TX_DATA_BASE)
+
+/* I2C_TX_DATA bit positions */
+#define I2C_TX_DATA_TX_DATA_POS         0
+#define I2C_TX_DATA_TX_DATA_MASK        (0xFF << I2C_TX_DATA_TX_DATA_POS)
+
+/* Receive Data Register */
+#define I2C_RX_DATA_BASE                0x40000D14
+#define I2C_RX_DATA                     READONLY_REG32_POINTER(I2C_RX_DATA_BASE)
+
+/* I2C_RX_DATA bit positions */
+#define I2C_RX_DATA_RX_DATA_POS         0
+#define I2C_RX_DATA_RX_DATA_MASK        (0xFF << I2C_RX_DATA_RX_DATA_POS)
+
+/* Receive Data Mirror Register */
+#define I2C_RX_DATA_MIRROR_BASE         0x40000D18
+#define I2C_RX_DATA_MIRROR              READONLY_REG32_POINTER(I2C_RX_DATA_MIRROR_BASE)
+
+/* I2C ID number */
+#define I2C_ID_NUM_BASE                 0x40000DFC
+#define I2C_ID_NUM                      READONLY_REG32_POINTER(I2C_ID_NUM_BASE)
+
+/* I2C_ID_NUM bit positions */
+#define I2C_ID_NUM_I2C_WATCHDOG_POS     22
+#define I2C_ID_NUM_I2C_DEBUG_POS        21
+#define I2C_ID_NUM_I2C_DMA_POS          20
+#define I2C_ID_NUM_I2C_NUMBER_POS       16
+#define I2C_ID_NUM_I2C_NUMBER_MASK      (0xF << I2C_ID_NUM_I2C_NUMBER_POS)
+#define I2C_ID_NUM_I2C_MAJOR_REVISION_POS 8
+#define I2C_ID_NUM_I2C_MAJOR_REVISION_MASK (0xFF << I2C_ID_NUM_I2C_MAJOR_REVISION_POS)
+#define I2C_ID_NUM_I2C_MINOR_REVISION_POS 0
+#define I2C_ID_NUM_I2C_MINOR_REVISION_MASK (0xFF << I2C_ID_NUM_I2C_MINOR_REVISION_POS)
+
+/* I2C_ID_NUM settings */
+#define I2C_WATCHDOG_DISABLED           (0x0 << I2C_ID_NUM_I2C_WATCHDOG_POS)
+#define I2C_WATCHDOG_ENABLED            (0x1 << I2C_ID_NUM_I2C_WATCHDOG_POS)
+
+#define I2C_DEBUG_DISABLED              (0x0 << I2C_ID_NUM_I2C_DEBUG_POS)
+#define I2C_DEBUG_ENABLED               (0x1 << I2C_ID_NUM_I2C_DEBUG_POS)
+
+#define I2C_DMA_DISABLED                (0x0 << I2C_ID_NUM_I2C_DMA_POS)
+#define I2C_DMA_ENABLED                 (0x1 << I2C_ID_NUM_I2C_DMA_POS)
+
+#define I2C_MAJOR_REVISION              (0x1 << I2C_ID_NUM_I2C_MAJOR_REVISION_POS)
+
+#define I2C_MINOR_REVISION              (0x0 << I2C_ID_NUM_I2C_MINOR_REVISION_POS)
+
+/* ----------------------------------------------------------------------------
+ * UART Interface Configuration and Control
+ * ------------------------------------------------------------------------- */
+
+/* UART Configuration Register */
+#define UART_CFG_BASE                   0x40000E00
+#define UART_CFG                        REG32_POINTER(UART_CFG_BASE)
+
+/* UART_CFG bit positions */
+#define UART_CFG_TX_DMA_ENABLE_POS      21
+#define UART_CFG_RX_DMA_ENABLE_POS      20
+#define UART_CFG_TX_END_INT_ENABLE_POS  19
+#define UART_CFG_TX_START_INT_ENABLE_POS 18
+#define UART_CFG_RX_INT_ENABLE_POS      17
+#define UART_CFG_OVERRUN_INT_ENABLE_POS 16
+#define UART_CFG_CNT_STEP_POS           0
+#define UART_CFG_CNT_STEP_MASK          (0xFFFF << UART_CFG_CNT_STEP_POS)
+
+/* UART_CFG settings */
+#define UART_TX_DMA_DISABLE             (0x0 << UART_CFG_TX_DMA_ENABLE_POS)
+#define UART_TX_DMA_ENABLE              (0x1 << UART_CFG_TX_DMA_ENABLE_POS)
+
+#define UART_RX_DMA_DISABLE             (0x0 << UART_CFG_RX_DMA_ENABLE_POS)
+#define UART_RX_DMA_ENABLE              (0x1 << UART_CFG_RX_DMA_ENABLE_POS)
+
+#define UART_TX_END_INT_DISABLE         (0x0 << UART_CFG_TX_END_INT_ENABLE_POS)
+#define UART_TX_END_INT_ENABLE          (0x1 << UART_CFG_TX_END_INT_ENABLE_POS)
+
+#define UART_TX_START_INT_DISABLE       (0x0 << UART_CFG_TX_START_INT_ENABLE_POS)
+#define UART_TX_START_INT_ENABLE        (0x1 << UART_CFG_TX_START_INT_ENABLE_POS)
+
+#define UART_RX_INT_DISABLE             (0x0 << UART_CFG_RX_INT_ENABLE_POS)
+#define UART_RX_INT_ENABLE              (0x1 << UART_CFG_RX_INT_ENABLE_POS)
+
+#define UART_OVERRUN_INT_DISABLE        (0x0 << UART_CFG_OVERRUN_INT_ENABLE_POS)
+#define UART_OVERRUN_INT_ENABLE         (0x1 << UART_CFG_OVERRUN_INT_ENABLE_POS)
+
+#define UART_9600_BAUD                  (0x9D4 << UART_CFG_CNT_STEP_POS)
+#define UART_14400_BAUD                 (0xEBE << UART_CFG_CNT_STEP_POS)
+#define UART_19200_BAUD                 (0x13A8 << UART_CFG_CNT_STEP_POS)
+#define UART_38400_BAUD                 (0x2751 << UART_CFG_CNT_STEP_POS)
+#define UART_57600_BAUD                 (0x3AFA << UART_CFG_CNT_STEP_POS)
+#define UART_115200_BAUD                (0x75F6 << UART_CFG_CNT_STEP_POS)
+#define UART_120000_BAUD                (0x7AE0 << UART_CFG_CNT_STEP_POS)
+#define UART_125000_BAUD                (0x7FFF << UART_CFG_CNT_STEP_POS)
+
+/* UART Control Register */
+#define UART_CTRL_BASE                  0x40000E04
+#define UART_CTRL                       REG32_POINTER(UART_CTRL_BASE)
+
+/* UART_CTRL bit positions */
+#define UART_CTRL_ENABLE_STATUS_POS     8
+#define UART_CTRL_RESET_POS             2
+#define UART_CTRL_DISABLE_POS           1
+#define UART_CTRL_ENABLE_POS            0
+
+/* UART_CTRL settings */
+#define UART_STATUS_DISABLED            (0x0 << UART_CTRL_ENABLE_STATUS_POS)
+#define UART_STATUS_ENABLED             (0x1 << UART_CTRL_ENABLE_STATUS_POS)
+
+#define UART_RESET                      (0x1 << UART_CTRL_RESET_POS)
+
+#define UART_DISABLE                    (0x1 << UART_CTRL_DISABLE_POS)
+
+#define UART_ENABLE                     (0x1 << UART_CTRL_ENABLE_POS)
+
+/* UART Status Register */
+#define UART_STATUS_BASE                0x40000E08
+#define UART_STATUS                     REG32_POINTER(UART_STATUS_BASE)
+
+/* UART_STATUS bit positions */
+#define UART_STATUS_TX_BUSY_POS         12
+#define UART_STATUS_RX_BUSY_POS         11
+#define UART_STATUS_TX_REQ_POS          10
+#define UART_STATUS_RX_REQ_POS          9
+#define UART_STATUS_OVERRUN_POS         8
+#define UART_STATUS_OVERRUN_CLEAR_POS   0
+
+/* UART_STATUS settings */
+#define UART_TX_IDLE                    (0x0 << UART_STATUS_TX_BUSY_POS)
+#define UART_TX_BUSY                    (0x1 << UART_STATUS_TX_BUSY_POS)
+
+#define UART_RX_IDLE                    (0x0 << UART_STATUS_RX_BUSY_POS)
+#define UART_RX_BUSY                    (0x1 << UART_STATUS_RX_BUSY_POS)
+
+#define UART_TX_NO_REQ                  (0x0 << UART_STATUS_TX_REQ_POS)
+#define UART_TX_REQ                     (0x1 << UART_STATUS_TX_REQ_POS)
+
+#define UART_RX_NO_REQ                  (0x0 << UART_STATUS_RX_REQ_POS)
+#define UART_RX_REQ                     (0x1 << UART_STATUS_RX_REQ_POS)
+
+#define UART_OVERRUN_FALSE              (0x0 << UART_STATUS_OVERRUN_POS)
+#define UART_OVERRUN_TRUE               (0x1 << UART_STATUS_OVERRUN_POS)
+
+#define UART_OVERRUN_CLEAR              (0x1 << UART_STATUS_OVERRUN_CLEAR_POS)
+
+/* UART Transmit Data Register */
+#define UART_TX_DATA_BASE               0x40000E0C
+#define UART_TX_DATA                    REG32_POINTER(UART_TX_DATA_BASE)
+
+/* UART_TX_DATA bit positions */
+#define UART_TX_DATA_TX_DATA_POS        0
+#define UART_TX_DATA_TX_DATA_MASK       (0xFF << UART_TX_DATA_TX_DATA_POS)
+
+/* UART Receive Data Register */
+#define UART_RX_DATA_BASE               0x40000E10
+#define UART_RX_DATA                    READONLY_REG32_POINTER(UART_RX_DATA_BASE)
+
+/* UART_RX_DATA bit positions */
+#define UART_RX_DATA_RX_DATA_POS        0
+#define UART_RX_DATA_RX_DATA_MASK       (0xFF << UART_RX_DATA_RX_DATA_POS)
+
+/* UART ID number */
+#define UART_ID_NUM_BASE                0x40000EFC
+#define UART_ID_NUM                     READONLY_REG32_POINTER(UART_ID_NUM_BASE)
+
+/* UART_ID_NUM bit positions */
+#define UART_ID_NUM_UART_NUMBER_POS     16
+#define UART_ID_NUM_UART_NUMBER_MASK    (0xF << UART_ID_NUM_UART_NUMBER_POS)
+#define UART_ID_NUM_UART_MAJOR_REVISION_POS 8
+#define UART_ID_NUM_UART_MAJOR_REVISION_MASK (0xFF << UART_ID_NUM_UART_MAJOR_REVISION_POS)
+#define UART_ID_NUM_UART_MINOR_REVISION_POS 0
+#define UART_ID_NUM_UART_MINOR_REVISION_MASK (0xFF << UART_ID_NUM_UART_MINOR_REVISION_POS)
+
+/* UART_ID_NUM settings */
+#define UART_MAJOR_REVISION             (0x1 << UART_ID_NUM_UART_MAJOR_REVISION_POS)
+
+#define UART_MINOR_REVISION             (0x0 << UART_ID_NUM_UART_MINOR_REVISION_POS)
+
+/* ----------------------------------------------------------------------------
+ * DMA Controller Configuration and Control
+ * ------------------------------------------------------------------------- */
+
+/* DMA Channel Configuration Register */
+#define DMA0_CFG0_BASE                  0x40000F00
+#define DMA0_CFG0                       REG32_POINTER(DMA0_CFG0_BASE)
+
+/* DMA_CFG0 bit positions */
+#define DMA_CFG0_COMPLETE_INT_ENABLE_POS 31
+#define DMA_CFG0_CNT_INT_ENABLE_POS     30
+#define DMA_CFG0_DEST_ADDR_LSB_TOGGLE_POS 29
+#define DMA_CFG0_SRC_ADDR_LSB_TOGGLE_POS 28
+#define DMA_CFG0_DEST_ADDR_STEP_POS     24
+#define DMA_CFG0_DEST_ADDR_STEP_MASK    (0xF << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_CFG0_SRC_ADDR_STEP_POS      20
+#define DMA_CFG0_SRC_ADDR_STEP_MASK     (0xF << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_CFG0_SRC_DEST_WORD_SIZE_POS 14
+#define DMA_CFG0_SRC_DEST_WORD_SIZE_MASK (0x3F << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define DMA_CFG0_DEST_SELECT_POS        10
+#define DMA_CFG0_DEST_SELECT_MASK       (0xF << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_CFG0_SRC_SELECT_POS         5
+#define DMA_CFG0_SRC_SELECT_MASK        (0xF << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_CFG0_CHANNEL_PRIORITY_POS   2
+#define DMA_CFG0_CHANNEL_PRIORITY_MASK  (0x3 << DMA_CFG0_CHANNEL_PRIORITY_POS)
+#define DMA_CFG0_SRC_DEST_TRANS_LENGTH_SEL_POS 1
+#define DMA_CFG0_BYTE_ORDER_POS         0
+
+/* DMA_CFG0 settings */
+#define DMA_COMPLETE_INT_DISABLE        (0x0 << DMA_CFG0_COMPLETE_INT_ENABLE_POS)
+#define DMA_COMPLETE_INT_ENABLE         (0x1 << DMA_CFG0_COMPLETE_INT_ENABLE_POS)
+
+#define DMA_CNT_INT_DISABLE             (0x0 << DMA_CFG0_CNT_INT_ENABLE_POS)
+#define DMA_CNT_INT_ENABLE              (0x1 << DMA_CFG0_CNT_INT_ENABLE_POS)
+
+#define DMA_DEST_ADDR_LSB_TOGGLE_DISABLE (0x0 << DMA_CFG0_DEST_ADDR_LSB_TOGGLE_POS)
+#define DMA_DEST_ADDR_LSB_TOGGLE_ENABLE (0x1 << DMA_CFG0_DEST_ADDR_LSB_TOGGLE_POS)
+
+#define DMA_SRC_ADDR_LSB_TOGGLE_DISABLE (0x0 << DMA_CFG0_SRC_ADDR_LSB_TOGGLE_POS)
+#define DMA_SRC_ADDR_LSB_TOGGLE_ENABLE  (0x1 << DMA_CFG0_SRC_ADDR_LSB_TOGGLE_POS)
+
+#define DMA_DEST_ADDR_STATIC            (0x0 << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_INCR_1            (0x1 << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_INCR_2            (0x2 << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_INCR_3            (0x3 << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_INCR_4            (0x4 << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_INCR_5            (0x5 << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_INCR_6            (0x6 << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_INCR_7            (0x7 << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_DECR_8            (0x8 << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_DECR_7            (0x9 << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_DECR_6            (0xA << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_DECR_5            (0xB << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_DECR_4            (0xC << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_DECR_3            (0xD << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_DECR_2            (0xE << DMA_CFG0_DEST_ADDR_STEP_POS)
+#define DMA_DEST_ADDR_DECR_1            (0xF << DMA_CFG0_DEST_ADDR_STEP_POS)
+
+#define DMA_SRC_ADDR_STATIC             (0x0 << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_INCR_1             (0x1 << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_INCR_2             (0x2 << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_INCR_3             (0x3 << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_INCR_4             (0x4 << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_INCR_5             (0x5 << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_INCR_6             (0x6 << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_INCR_7             (0x7 << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_DECR_8             (0x8 << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_DECR_7             (0x9 << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_DECR_6             (0xA << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_DECR_5             (0xB << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_DECR_4             (0xC << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_DECR_3             (0xD << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_DECR_2             (0xE << DMA_CFG0_SRC_ADDR_STEP_POS)
+#define DMA_SRC_ADDR_DECR_1             (0xF << DMA_CFG0_SRC_ADDR_STEP_POS)
+
+#define WORD_SIZE_32BITS_TO_32BITS      (0x0 << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_32BITS_TO_4BITS       (0x1 << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_32BITS_TO_8BITS       (0x2 << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_32BITS_TO_16BITS      (0x4 << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_4BITS_TO_32BITS       (0x8 << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_4BITS_TO_4BITS        (0x9 << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_4BITS_TO_8BITS        (0xA << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_4BITS_TO_16BITS       (0xC << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_8BITS_TO_32BITS       (0x10 << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_8BITS_TO_4BITS        (0x11 << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_8BITS_TO_8BITS        (0x12 << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_8BITS_TO_16BITS       (0x14 << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_16BITS_TO_32BITS      (0x20 << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_16BITS_TO_4BITS       (0x21 << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_16BITS_TO_8BITS       (0x22 << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+#define WORD_SIZE_16BITS_TO_16BITS      (0x24 << DMA_CFG0_SRC_DEST_WORD_SIZE_POS)
+
+#define DMA_DEST_ALWAYS_ON              (0x0 << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_SPI0                   (0x1 << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_UART0                  (0x2 << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_I2C0                   (0x3 << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_TOF                    (0x4 << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_NOT_USED_5             (0x5 << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_NOT_USED_6             (0x6 << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_NOT_USED_7             (0x7 << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_NOT_USED_8             (0x8 << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_NOT_USED_9             (0x9 << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_NOT_USED_10            (0xA << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_NOT_USED_11            (0xB << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_NOT_USED_12            (0xC << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_NOT_USED_13            (0xD << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_NOT_USED_14            (0xE << DMA_CFG0_DEST_SELECT_POS)
+#define DMA_DEST_NOT_USED_15            (0xF << DMA_CFG0_DEST_SELECT_POS)
+
+#define DMA_SRC_ALWAYS_ON               (0x0 << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_SPI0                    (0x1 << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_UART0                   (0x2 << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_I2C0                    (0x3 << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_TOF                     (0x4 << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_NOT_USED_5              (0x5 << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_NOT_USED_6              (0x6 << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_NOT_USED_7              (0x7 << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_NOT_USED_8              (0x8 << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_NOT_USED_9              (0x9 << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_NOT_USED_10             (0xA << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_NOT_USED_11             (0xB << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_NOT_USED_12             (0xC << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_NOT_USED_13             (0xD << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_NOT_USED_14             (0xE << DMA_CFG0_SRC_SELECT_POS)
+#define DMA_SRC_NOT_USED_15             (0xF << DMA_CFG0_SRC_SELECT_POS)
+
+#define DMA_PRIORITY_0                  (0x0 << DMA_CFG0_CHANNEL_PRIORITY_POS)
+#define DMA_PRIORITY_1                  (0x1 << DMA_CFG0_CHANNEL_PRIORITY_POS)
+#define DMA_PRIORITY_2                  (0x2 << DMA_CFG0_CHANNEL_PRIORITY_POS)
+#define DMA_PRIORITY_3                  (0x3 << DMA_CFG0_CHANNEL_PRIORITY_POS)
+
+#define DEST_TRANS_LENGTH_SEL           (0x0 << DMA_CFG0_SRC_DEST_TRANS_LENGTH_SEL_POS)
+#define SRC_TRANS_LENGTH_SEL            (0x1 << DMA_CFG0_SRC_DEST_TRANS_LENGTH_SEL_POS)
+
+#define DMA_LITTLE_ENDIAN               (0x0 << DMA_CFG0_BYTE_ORDER_POS)
+#define DMA_BIG_ENDIAN                  (0x1 << DMA_CFG0_BYTE_ORDER_POS)
+
+/* DMA Channel Configuration Register */
+#define DMA1_CFG0_BASE                  0x40001000
+#define DMA1_CFG0                       REG32_POINTER(DMA1_CFG0_BASE)
+
+/* DMA Channel Configuration Register */
+#define DMA2_CFG0_BASE                  0x40001100
+#define DMA2_CFG0                       REG32_POINTER(DMA2_CFG0_BASE)
+
+/* DMA Channel Configuration Register */
+#define DMA3_CFG0_BASE                  0x40001200
+#define DMA3_CFG0                       REG32_POINTER(DMA3_CFG0_BASE)
+
+/* DMA Channel Transfer Configuration Register */
+#define DMA0_CFG1_BASE                  0x40000F04
+#define DMA0_CFG1                       REG32_POINTER(DMA0_CFG1_BASE)
+
+/* DMA_CFG1 bit positions */
+#define DMA_CFG1_INT_TRANSFER_LENGTH_POS 16
+#define DMA_CFG1_INT_TRANSFER_LENGTH_MASK (0xFFFF << DMA_CFG1_INT_TRANSFER_LENGTH_POS)
+#define DMA_CFG1_TRANSFER_LENGTH_POS    0
+#define DMA_CFG1_TRANSFER_LENGTH_MASK   (0xFFFF << DMA_CFG1_TRANSFER_LENGTH_POS)
+
+/* DMA Channel Transfer Configuration Register */
+#define DMA1_CFG1_BASE                  0x40001004
+#define DMA1_CFG1                       REG32_POINTER(DMA1_CFG1_BASE)
+
+/* DMA Channel Transfer Configuration Register */
+#define DMA2_CFG1_BASE                  0x40001104
+#define DMA2_CFG1                       REG32_POINTER(DMA2_CFG1_BASE)
+
+/* DMA Channel Transfer Configuration Register */
+#define DMA3_CFG1_BASE                  0x40001204
+#define DMA3_CFG1                       REG32_POINTER(DMA3_CFG1_BASE)
+
+/* DMA Channel Control */
+#define DMA0_CTRL_BASE                  0x40000F08
+#define DMA0_CTRL                       REG32_POINTER(DMA0_CTRL_BASE)
+
+/* DMA_CTRL bit positions */
+#define DMA_CTRL_INT_CNT_TRIGGER_ENABLE_POS 13
+#define DMA_CTRL_TRIGGER_SOURCE_POS     8
+#define DMA_CTRL_TRIGGER_SOURCE_MASK    (0x1F << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_CTRL_INT_CNT_ADDR_WRAP_ENABLE_POS 6
+#define DMA_CTRL_CLEAR_BUFFER_WHEN_WRAPPING_POS 5
+#define DMA_CTRL_BUFFER_CLEAR_POS       4
+#define DMA_CTRL_CNTS_CLEAR_POS         3
+#define DMA_CTRL_MODE_ENABLE_POS        0
+#define DMA_CTRL_MODE_ENABLE_MASK       (0x7 << DMA_CTRL_MODE_ENABLE_POS)
+
+/* DMA_CTRL settings */
+#define DMA_INT_CNT_TRIGGER_DISABLE     (0x0 << DMA_CTRL_INT_CNT_TRIGGER_ENABLE_POS)
+#define DMA_INT_CNT_TRIGGER_ENABLE      (0x1 << DMA_CTRL_INT_CNT_TRIGGER_ENABLE_POS)
+
+#define DMA_CH0_COMPLETED               (0x0 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_CH1_COMPLETED               (0x1 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_CH2_COMPLETED               (0x2 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_CH3_COMPLETED               (0x3 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_4          (0x4 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_5          (0x5 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_6          (0x6 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_7          (0x7 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_8          (0x8 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_9          (0x9 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_10         (0xA << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_11         (0xB << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_12         (0xC << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_13         (0xD << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_14         (0xE << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_15         (0xF << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_16         (0x10 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_17         (0x11 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_18         (0x12 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_19         (0x13 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_20         (0x14 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_21         (0x15 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_22         (0x16 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_23         (0x17 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_24         (0x18 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_25         (0x19 << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_26         (0x1A << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_27         (0x1B << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_28         (0x1C << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_29         (0x1D << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_30         (0x1E << DMA_CTRL_TRIGGER_SOURCE_POS)
+#define DMA_TRIGGER_NOT_USED_31         (0x1F << DMA_CTRL_TRIGGER_SOURCE_POS)
+
+#define DMA_INT_CNT_ADDR_WRAP_DISABLE   (0x0 << DMA_CTRL_INT_CNT_ADDR_WRAP_ENABLE_POS)
+#define DMA_INT_CNT_ADDR_WRAP_ENABLE    (0x1 << DMA_CTRL_INT_CNT_ADDR_WRAP_ENABLE_POS)
+
+#define DMA_KEEP_BUFFER_WHEN_WRAPPING   (0x0 << DMA_CTRL_CLEAR_BUFFER_WHEN_WRAPPING_POS)
+#define DMA_CLEAR_BUFFER_WHEN_WRAPPING  (0x1 << DMA_CTRL_CLEAR_BUFFER_WHEN_WRAPPING_POS)
+
+#define DMA_CLEAR_BUFFER                (0x1 << DMA_CTRL_BUFFER_CLEAR_POS)
+
+#define DMA_CLEAR_CNTS                  (0x1 << DMA_CTRL_CNTS_CLEAR_POS)
+
+#define DMA_DISABLE                     (0x0 << DMA_CTRL_MODE_ENABLE_POS)
+#define DMA_ENABLE                      (0x1 << DMA_CTRL_MODE_ENABLE_POS)
+#define DMA_ENABLE_WRAP                 (0x2 << DMA_CTRL_MODE_ENABLE_POS)
+#define DMA_ENABLE_WRAP_RESTART         (0x3 << DMA_CTRL_MODE_ENABLE_POS)
+#define DMA_TRIGGER                     (0x4 << DMA_CTRL_MODE_ENABLE_POS)
+#define DMA_TRIGGER_WRAP                (0x5 << DMA_CTRL_MODE_ENABLE_POS)
+#define DMA_TRIGGER_WRAP_RESTART        (0x6 << DMA_CTRL_MODE_ENABLE_POS)
+#define DMA_TRIGGER_WRAP_TRIGGER_RESTART (0x7 << DMA_CTRL_MODE_ENABLE_POS)
+
+/* DMA Channel Control */
+#define DMA1_CTRL_BASE                  0x40001008
+#define DMA1_CTRL                       REG32_POINTER(DMA1_CTRL_BASE)
+
+/* DMA Channel Control */
+#define DMA2_CTRL_BASE                  0x40001108
+#define DMA2_CTRL                       REG32_POINTER(DMA2_CTRL_BASE)
+
+/* DMA Channel Control */
+#define DMA3_CTRL_BASE                  0x40001208
+#define DMA3_CTRL                       REG32_POINTER(DMA3_CTRL_BASE)
+
+/* DMA Channel Status */
+#define DMA0_STATUS_BASE                0x40000F0C
+#define DMA0_STATUS                     REG32_POINTER(DMA0_STATUS_BASE)
+
+/* DMA_STATUS bit positions */
+#define DMA_STATUS_ACTIVE_POS           10
+#define DMA_STATUS_CNT_INT_POS          9
+#define DMA_STATUS_COMPLETE_INT_POS     8
+#define DMA_STATUS_CNT_INT_CLEAR_POS    6
+#define DMA_STATUS_COMPLETE_INT_CLEAR_POS 5
+#define DMA_STATUS_SRC_BUFFER_FILL_LVL_WR_POS 4
+#define DMA_STATUS_SRC_BUFFER_FILL_LVL_POS 0
+#define DMA_STATUS_SRC_BUFFER_FILL_LVL_MASK (0xF << DMA_STATUS_SRC_BUFFER_FILL_LVL_POS)
+
+/* DMA_STATUS settings */
+#define DMA_NON_ACTIVE                  (0x0 << DMA_STATUS_ACTIVE_POS)
+#define DMA_ACTIVE                      (0x1 << DMA_STATUS_ACTIVE_POS)
+
+#define DMA_CNT_INT_FALSE               (0x0 << DMA_STATUS_CNT_INT_POS)
+#define DMA_CNT_INT_TRUE                (0x1 << DMA_STATUS_CNT_INT_POS)
+
+#define DMA_COMPLETE_INT_FALSE          (0x0 << DMA_STATUS_COMPLETE_INT_POS)
+#define DMA_COMPLETE_INT_TRUE           (0x1 << DMA_STATUS_COMPLETE_INT_POS)
+
+#define DMA_CNT_INT_CLEAR               (0x1 << DMA_STATUS_CNT_INT_CLEAR_POS)
+
+#define DMA_COMPLETE_INT_CLEAR          (0x1 << DMA_STATUS_COMPLETE_INT_CLEAR_POS)
+
+#define DMA_SRC_BUFFER_FILL_LVL_WR      (0x1 << DMA_STATUS_SRC_BUFFER_FILL_LVL_WR_POS)
+
+/* DMA Channel Status */
+#define DMA1_STATUS_BASE                0x4000100C
+#define DMA1_STATUS                     REG32_POINTER(DMA1_STATUS_BASE)
+
+/* DMA Channel Status */
+#define DMA2_STATUS_BASE                0x4000110C
+#define DMA2_STATUS                     REG32_POINTER(DMA2_STATUS_BASE)
+
+/* DMA Channel Status */
+#define DMA3_STATUS_BASE                0x4000120C
+#define DMA3_STATUS                     REG32_POINTER(DMA3_STATUS_BASE)
+
+/* DMA Channel Source Address */
+#define DMA0_SRC_ADDR_BASE              0x40000F10
+#define DMA0_SRC_ADDR                   REG32_POINTER(DMA0_SRC_ADDR_BASE)
+
+/* DMA Channel Source Address */
+#define DMA1_SRC_ADDR_BASE              0x40001010
+#define DMA1_SRC_ADDR                   REG32_POINTER(DMA1_SRC_ADDR_BASE)
+
+/* DMA Channel Source Address */
+#define DMA2_SRC_ADDR_BASE              0x40001110
+#define DMA2_SRC_ADDR                   REG32_POINTER(DMA2_SRC_ADDR_BASE)
+
+/* DMA Channel Source Address */
+#define DMA3_SRC_ADDR_BASE              0x40001210
+#define DMA3_SRC_ADDR                   REG32_POINTER(DMA3_SRC_ADDR_BASE)
+
+/* DMA Channel Destination Address */
+#define DMA0_DEST_ADDR_BASE             0x40000F14
+#define DMA0_DEST_ADDR                  REG32_POINTER(DMA0_DEST_ADDR_BASE)
+
+/* DMA Channel Destination Address */
+#define DMA1_DEST_ADDR_BASE             0x40001014
+#define DMA1_DEST_ADDR                  REG32_POINTER(DMA1_DEST_ADDR_BASE)
+
+/* DMA Channel Destination Address */
+#define DMA2_DEST_ADDR_BASE             0x40001114
+#define DMA2_DEST_ADDR                  REG32_POINTER(DMA2_DEST_ADDR_BASE)
+
+/* DMA Channel Destination Address */
+#define DMA3_DEST_ADDR_BASE             0x40001214
+#define DMA3_DEST_ADDR                  REG32_POINTER(DMA3_DEST_ADDR_BASE)
+
+/* DMA Channel Counters */
+#define DMA0_CNTS_BASE                  0x40000F18
+#define DMA0_CNTS                       REG32_POINTER(DMA0_CNTS_BASE)
+
+/* DMA_CNTS bit positions */
+#define DMA_CNTS_INT_TRANSFER_WORD_CNT_POS 16
+#define DMA_CNTS_INT_TRANSFER_WORD_CNT_MASK (0xFFFF << DMA_CNTS_INT_TRANSFER_WORD_CNT_POS)
+#define DMA_CNTS_TRANSFER_WORD_CNT_POS  0
+#define DMA_CNTS_TRANSFER_WORD_CNT_MASK (0xFFFF << DMA_CNTS_TRANSFER_WORD_CNT_POS)
+
+/* DMA Channel Counters */
+#define DMA1_CNTS_BASE                  0x40001018
+#define DMA1_CNTS                       REG32_POINTER(DMA1_CNTS_BASE)
+
+/* DMA Channel Counters */
+#define DMA2_CNTS_BASE                  0x40001118
+#define DMA2_CNTS                       REG32_POINTER(DMA2_CNTS_BASE)
+
+/* DMA Channel Counters */
+#define DMA3_CNTS_BASE                  0x40001218
+#define DMA3_CNTS                       REG32_POINTER(DMA3_CNTS_BASE)
+
+/* DMA Channel Source buffered data after packing */
+#define DMA0_SRC_BUFFER_BASE            0x40000F1C
+#define DMA0_SRC_BUFFER                 REG32_POINTER(DMA0_SRC_BUFFER_BASE)
+
+/* DMA Channel Source buffered data after packing */
+#define DMA1_SRC_BUFFER_BASE            0x4000101C
+#define DMA1_SRC_BUFFER                 REG32_POINTER(DMA1_SRC_BUFFER_BASE)
+
+/* DMA Channel Source buffered data after packing */
+#define DMA2_SRC_BUFFER_BASE            0x4000111C
+#define DMA2_SRC_BUFFER                 REG32_POINTER(DMA2_SRC_BUFFER_BASE)
+
+/* DMA Channel Source buffered data after packing */
+#define DMA3_SRC_BUFFER_BASE            0x4000121C
+#define DMA3_SRC_BUFFER                 REG32_POINTER(DMA3_SRC_BUFFER_BASE)
+
+/* DMA ID number */
+#define DMA0_ID_NUM_BASE                0x40000FFC
+#define DMA0_ID_NUM                     READONLY_REG32_POINTER(DMA0_ID_NUM_BASE)
+
+/* DMA_ID_NUM bit positions */
+#define DMA_ID_NUM_DMA_24BIT_WORD_POS   20
+#define DMA_ID_NUM_DMA_NUMBER_POS       16
+#define DMA_ID_NUM_DMA_NUMBER_MASK      (0xF << DMA_ID_NUM_DMA_NUMBER_POS)
+#define DMA_ID_NUM_DMA_MAJOR_REVISION_POS 8
+#define DMA_ID_NUM_DMA_MAJOR_REVISION_MASK (0xFF << DMA_ID_NUM_DMA_MAJOR_REVISION_POS)
+#define DMA_ID_NUM_DMA_MINOR_REVISION_POS 0
+#define DMA_ID_NUM_DMA_MINOR_REVISION_MASK (0xFF << DMA_ID_NUM_DMA_MINOR_REVISION_POS)
+
+/* DMA_ID_NUM settings */
+#define DMA_24BIT_WORD_NOT_SUPPORTED    (0x0 << DMA_ID_NUM_DMA_24BIT_WORD_POS)
+#define DMA_24BIT_WORD_SUPPORTED        (0x1 << DMA_ID_NUM_DMA_24BIT_WORD_POS)
+
+#define DMA_MAJOR_REVISION              (0x1 << DMA_ID_NUM_DMA_MAJOR_REVISION_POS)
+
+#define DMA_MINOR_REVISION              (0x0 << DMA_ID_NUM_DMA_MINOR_REVISION_POS)
+
+/* DMA ID number */
+#define DMA1_ID_NUM_BASE                0x400010FC
+#define DMA1_ID_NUM                     READONLY_REG32_POINTER(DMA1_ID_NUM_BASE)
+
+/* DMA ID number */
+#define DMA2_ID_NUM_BASE                0x400011FC
+#define DMA2_ID_NUM                     READONLY_REG32_POINTER(DMA2_ID_NUM_BASE)
+
+/* DMA ID number */
+#define DMA3_ID_NUM_BASE                0x400012FC
+#define DMA3_ID_NUM                     READONLY_REG32_POINTER(DMA3_ID_NUM_BASE)
+
+/* ----------------------------------------------------------------------------
+ * CRC Generator Control
+ * ------------------------------------------------------------------------- */
+
+/* CRC Generator Configuration Register */
+#define CRC_CFG_BASE                    0x40001300
+#define CRC_CFG                         REG32_POINTER(CRC_CFG_BASE)
+
+/* CRC_CFG bit positions */
+#define CRC_CFG_FINAL_CRC_XOR_POS       4
+#define CRC_CFG_FINAL_CRC_REVERSE_POS   3
+#define CRC_CFG_BIT_ORDER_POS           2
+#define CRC_CFG_CRC_TYPE_POS            1
+#define CRC_CFG_BYTE_ORDER_POS          0
+
+/* CRC_CFG settings */
+#define CRC_FINAL_XOR_STANDARD          (0x0 << CRC_CFG_FINAL_CRC_XOR_POS)
+#define CRC_FINAL_XOR_NON_STANDARD      (0x1 << CRC_CFG_FINAL_CRC_XOR_POS)
+
+#define CRC_FINAL_REVERSE_STANDARD      (0x0 << CRC_CFG_FINAL_CRC_REVERSE_POS)
+#define CRC_FINAL_REVERSE_NON_STANDARD  (0x1 << CRC_CFG_FINAL_CRC_REVERSE_POS)
+
+#define CRC_BIT_ORDER_STANDARD          (0x0 << CRC_CFG_BIT_ORDER_POS)
+#define CRC_BIT_ORDER_NON_STANDARD      (0x1 << CRC_CFG_BIT_ORDER_POS)
+
+#define CRC_CCITT                       (0x0 << CRC_CFG_CRC_TYPE_POS)
+#define CRC_32                          (0x1 << CRC_CFG_CRC_TYPE_POS)
+
+#define CRC_BIG_ENDIAN                  (0x0 << CRC_CFG_BYTE_ORDER_POS)
+#define CRC_LITTLE_ENDIAN               (0x1 << CRC_CFG_BYTE_ORDER_POS)
+
+/* CRC Generator Current Value Register */
+#define CRC_VALUE_BASE                  0x40001304
+#define CRC_VALUE                       REG32_POINTER(CRC_VALUE_BASE)
+
+/* CRC_VALUE settings */
+#define CRC_CCITT_INIT_VALUE            (0xFFFF << CRC_VALUE_CURRENT_CRC_POS)
+#define CRC_32_INIT_VALUE               (0xFFFFFFFF << CRC_VALUE_CURRENT_CRC_POS)
+
+/* CRC Generator - Add 1 Bit */
+#define CRC_ADD_1_BASE                  0x40001308
+#define CRC_ADD_1                       REG32_POINTER(CRC_ADD_1_BASE)
+
+/* CRC Generator - Add 1 Byte */
+#define CRC_ADD_8_BASE                  0x4000130C
+#define CRC_ADD_8                       REG32_POINTER(CRC_ADD_8_BASE)
+
+/* CRC Generator - Add 1 Half-word */
+#define CRC_ADD_16_BASE                 0x40001310
+#define CRC_ADD_16                      REG32_POINTER(CRC_ADD_16_BASE)
+
+/* CRC Generator - Add 3 Bytes */
+#define CRC_ADD_24_BASE                 0x40001314
+#define CRC_ADD_24                      REG32_POINTER(CRC_ADD_24_BASE)
+
+/* CRC Generator - Add 1 Word */
+#define CRC_ADD_32_BASE                 0x40001318
+#define CRC_ADD_32                      REG32_POINTER(CRC_ADD_32_BASE)
+
+/* CRC Generator Final Value */
+#define CRC_FINAL_BASE                  0x4000131C
+#define CRC_FINAL                       READONLY_REG32_POINTER(CRC_FINAL_BASE)
+
+/* CRC ID number */
+#define CRC_ID_NUM_BASE                 0x400013FC
+#define CRC_ID_NUM                      READONLY_REG32_POINTER(CRC_ID_NUM_BASE)
+
+/* CRC_ID_NUM bit positions */
+#define CRC_ID_NUM_CRC_MAJOR_REVISION_POS 8
+#define CRC_ID_NUM_CRC_MAJOR_REVISION_MASK (0xFF << CRC_ID_NUM_CRC_MAJOR_REVISION_POS)
+#define CRC_ID_NUM_CRC_MINOR_REVISION_POS 0
+#define CRC_ID_NUM_CRC_MINOR_REVISION_MASK (0xFF << CRC_ID_NUM_CRC_MINOR_REVISION_POS)
+
+/* CRC_ID_NUM settings */
+#define CRC_MAJOR_REVISION              (0x1 << CRC_ID_NUM_CRC_MAJOR_REVISION_POS)
+
+#define CRC_MINOR_REVISION              (0x0 << CRC_ID_NUM_CRC_MINOR_REVISION_POS)
+
+/* ----------------------------------------------------------------------------
+ * Asynchronous Clock Counter
+ * ------------------------------------------------------------------------- */
+
+/* ASCC Control Register */
+#define ASCC_CTRL_BASE                  0x40001400
+#define ASCC_CTRL                       REG32_POINTER(ASCC_CTRL_BASE)
+
+/* ASCC_CTRL bit positions */
+#define ASCC_CTRL_PHASE_CNT_START_NO_WAIT_POS 8
+#define ASCC_CTRL_PERIOD_CNT_STATUS_POS 7
+#define ASCC_CTRL_PERIOD_CNT_STOP_POS   6
+#define ASCC_CTRL_PERIOD_CNT_START_POS  5
+#define ASCC_CTRL_PHASE_CNT_MISSED_STATUS_POS 4
+#define ASCC_CTRL_PHASE_CNT_STATUS_POS  3
+#define ASCC_CTRL_PHASE_CNT_STOP_POS    2
+#define ASCC_CTRL_PHASE_CNT_START_POS   1
+#define ASCC_CTRL_CNT_RESET_POS         0
+
+/* ASCC_CTRL settings */
+#define PHASE_CNT_START_NO_WAIT         (0x1 << ASCC_CTRL_PHASE_CNT_START_NO_WAIT_POS)
+
+#define PERIOD_CNT_IDLE                 (0x0 << ASCC_CTRL_PERIOD_CNT_STATUS_POS)
+#define PERIOD_CNT_BUSY                 (0x1 << ASCC_CTRL_PERIOD_CNT_STATUS_POS)
+
+#define PERIOD_CNT_STOP                 (0x1 << ASCC_CTRL_PERIOD_CNT_STOP_POS)
+
+#define PERIOD_CNT_START                (0x1 << ASCC_CTRL_PERIOD_CNT_START_POS)
+
+#define PHASE_CNT_NORMAL                (0x0 << ASCC_CTRL_PHASE_CNT_MISSED_STATUS_POS)
+#define PHASE_CNT_MISSED                (0x1 << ASCC_CTRL_PHASE_CNT_MISSED_STATUS_POS)
+
+#define PHASE_CNT_IDLE                  (0x0 << ASCC_CTRL_PHASE_CNT_STATUS_POS)
+#define PHASE_CNT_BUSY                  (0x1 << ASCC_CTRL_PHASE_CNT_STATUS_POS)
+
+#define PHASE_CNT_STOP                  (0x1 << ASCC_CTRL_PHASE_CNT_STOP_POS)
+
+#define PHASE_CNT_START                 (0x1 << ASCC_CTRL_PHASE_CNT_START_POS)
+
+#define CNT_RESET                       (0x1 << ASCC_CTRL_CNT_RESET_POS)
+
+/* ASCC Configuration Register */
+#define ASCC_CFG_BASE                   0x40001404
+#define ASCC_CFG                        REG32_POINTER(ASCC_CFG_BASE)
+
+/* ASCC_CFG bit positions */
+#define ASCC_CFG_PERIODS_CFG_POS        0
+#define ASCC_CFG_PERIODS_CFG_MASK       (0xF << ASCC_CFG_PERIODS_CFG_POS)
+
+/* ASCC_CFG settings */
+#define ASCC_PERIODS_1                  (0x0 << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_2                  (0x1 << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_3                  (0x2 << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_4                  (0x3 << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_5                  (0x4 << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_6                  (0x5 << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_7                  (0x6 << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_8                  (0x7 << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_9                  (0x8 << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_10                 (0x9 << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_11                 (0xA << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_12                 (0xB << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_13                 (0xC << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_14                 (0xD << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_15                 (0xE << ASCC_CFG_PERIODS_CFG_POS)
+#define ASCC_PERIODS_16                 (0xF << ASCC_CFG_PERIODS_CFG_POS)
+
+/* ASCC Counter Register */
+#define ASCC_CNT_BASE                   0x40001408
+#define ASCC_CNT                        READONLY_REG32_POINTER(ASCC_CNT_BASE)
+
+/* ASCC_CNT bit positions */
+#define ASCC_CNT_CNT_POS                0
+#define ASCC_CNT_CNT_MASK               (0xFFF << ASCC_CNT_CNT_POS)
+
+/* ASCC Phase Counter Register */
+#define ASCC_PHASE_CNT_BASE             0x4000140C
+#define ASCC_PHASE_CNT                  REG32_POINTER(ASCC_PHASE_CNT_BASE)
+
+/* ASCC_PHASE_CNT bit positions */
+#define ASCC_PHASE_CNT_PHASE_CNT_POS    0
+#define ASCC_PHASE_CNT_PHASE_CNT_MASK   (0xFFFF << ASCC_PHASE_CNT_PHASE_CNT_POS)
+
+/* ASCC Period Counter Register */
+#define ASCC_PERIOD_CNT_BASE            0x40001410
+#define ASCC_PERIOD_CNT                 REG32_POINTER(ASCC_PERIOD_CNT_BASE)
+
+/* ASCC_PERIOD_CNT bit positions */
+#define ASCC_PERIOD_CNT_PERIOD_CNT_POS  0
+#define ASCC_PERIOD_CNT_PERIOD_CNT_MASK (0xFFFF << ASCC_PERIOD_CNT_PERIOD_CNT_POS)
+
+/* ASCC ID number */
+#define ASCC_ID_NUM_BASE                0x400014FC
+#define ASCC_ID_NUM                     READONLY_REG32_POINTER(ASCC_ID_NUM_BASE)
+
+/* ASCC_ID_NUM bit positions */
+#define ASCC_ID_NUM_ASCC_MAJOR_REVISION_POS 8
+#define ASCC_ID_NUM_ASCC_MAJOR_REVISION_MASK (0xFF << ASCC_ID_NUM_ASCC_MAJOR_REVISION_POS)
+#define ASCC_ID_NUM_ASCC_MINOR_REVISION_POS 0
+#define ASCC_ID_NUM_ASCC_MINOR_REVISION_MASK (0xFF << ASCC_ID_NUM_ASCC_MINOR_REVISION_POS)
+
+/* ASCC_ID_NUM settings */
+#define ASCC_MAJOR_REVISION             (0x1 << ASCC_ID_NUM_ASCC_MAJOR_REVISION_POS)
+
+#define ASCC_MINOR_REVISION             (0x0 << ASCC_ID_NUM_ASCC_MINOR_REVISION_POS)
+
+/* ----------------------------------------------------------------------------
+ * Low-Speed ADC
+ * ------------------------------------------------------------------------- */
+
+/* LSAD conversion result for channel 0 to 7 in trimmer mode */
+#define LSAD_DATA_TRIM_CH_BASE          0x40001500
+#define LSAD_DATA_TRIM_CH               READONLY_REG32_POINTER(LSAD_DATA_TRIM_CH_BASE)
+
+/* LSAD_DATA_TRIM_CH bit positions */
+#define LSAD_DATA_TRIM_CH_DATA_POS      0
+#define LSAD_DATA_TRIM_CH_DATA_MASK     (0x3FFF << LSAD_DATA_TRIM_CH_DATA_POS)
+
+/* LSAD conversion result for channel 0 to 7 in audio mode (signed) */
+#define LSAD_DATA_AUDIO_CH_BASE         0x40001520
+#define LSAD_DATA_AUDIO_CH              READONLY_REG32_POINTER(LSAD_DATA_AUDIO_CH_BASE)
+
+/* LSAD input selection for channel 0 to 7 */
+#define LSAD_INPUT_SEL_BASE             0x40001540
+#define LSAD_INPUT_SEL                  REG32_POINTER(LSAD_INPUT_SEL_BASE)
+
+/* LSAD_INPUT_SEL bit positions */
+#define LSAD_INPUT_SEL_POS_INPUT_SEL_POS 4
+#define LSAD_INPUT_SEL_POS_INPUT_SEL_MASK (0x7 << LSAD_INPUT_SEL_POS_INPUT_SEL_POS)
+#define LSAD_INPUT_SEL_NEG_INPUT_SEL_POS 0
+#define LSAD_INPUT_SEL_NEG_INPUT_SEL_MASK (0x7 << LSAD_INPUT_SEL_NEG_INPUT_SEL_POS)
+
+/* LSAD_INPUT_SEL settings */
+#define LSAD_POS_INPUT_SEL0             (0x0 << LSAD_INPUT_SEL_POS_INPUT_SEL_POS)
+#define LSAD_POS_INPUT_SEL1             (0x1 << LSAD_INPUT_SEL_POS_INPUT_SEL_POS)
+#define LSAD_POS_INPUT_SEL2             (0x2 << LSAD_INPUT_SEL_POS_INPUT_SEL_POS)
+#define LSAD_POS_INPUT_SEL3             (0x3 << LSAD_INPUT_SEL_POS_INPUT_SEL_POS)
+#define LSAD_POS_INPUT_AOUT             (0x4 << LSAD_INPUT_SEL_POS_INPUT_SEL_POS)
+#define LSAD_POS_INPUT_TEMP             (0x5 << LSAD_INPUT_SEL_POS_INPUT_SEL_POS)
+#define LSAD_POS_INPUT_VBAT             (0x6 << LSAD_INPUT_SEL_POS_INPUT_SEL_POS)
+#define LSAD_POS_INPUT_GND              (0x7 << LSAD_INPUT_SEL_POS_INPUT_SEL_POS)
+
+#define LSAD_NEG_INPUT_SEL0             (0x0 << LSAD_INPUT_SEL_NEG_INPUT_SEL_POS)
+#define LSAD_NEG_INPUT_SEL1             (0x1 << LSAD_INPUT_SEL_NEG_INPUT_SEL_POS)
+#define LSAD_NEG_INPUT_SEL2             (0x2 << LSAD_INPUT_SEL_NEG_INPUT_SEL_POS)
+#define LSAD_NEG_INPUT_SEL3             (0x3 << LSAD_INPUT_SEL_NEG_INPUT_SEL_POS)
+#define LSAD_NEG_INPUT_AOUT             (0x4 << LSAD_INPUT_SEL_NEG_INPUT_SEL_POS)
+#define LSAD_NEG_INPUT_TEMP             (0x5 << LSAD_INPUT_SEL_NEG_INPUT_SEL_POS)
+#define LSAD_NEG_INPUT_VBAT             (0x6 << LSAD_INPUT_SEL_NEG_INPUT_SEL_POS)
+#define LSAD_NEG_INPUT_GND              (0x7 << LSAD_INPUT_SEL_NEG_INPUT_SEL_POS)
+
+/* LSAD Configuration Register */
+#define LSAD_CFG_BASE                   0x40001560
+#define LSAD_CFG                        REG32_POINTER(LSAD_CFG_BASE)
+
+/* LSAD_CFG bit positions */
+#define LSAD_CFG_VBAT_DIV2_POS          8
+#define LSAD_CFG_CONTINUOUS_MODE_POS    4
+#define LSAD_CFG_FREQ_POS               0
+#define LSAD_CFG_FREQ_MASK              (0xF << LSAD_CFG_FREQ_POS)
+
+/* LSAD_CFG settings */
+#define VBAT_DIV2_DISABLE               (0x0 << LSAD_CFG_VBAT_DIV2_POS)
+#define VBAT_DIV2_ENABLE                (0x1 << LSAD_CFG_VBAT_DIV2_POS)
+
+#define LSAD_NORMAL                     (0x0 << LSAD_CFG_CONTINUOUS_MODE_POS)
+#define LSAD_CONTINUOUS                 (0x1 << LSAD_CFG_CONTINUOUS_MODE_POS)
+
+#define LSAD_DISABLE                    (0x0 << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_200               (0x1 << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_400               (0x2 << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_640               (0x3 << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_800               (0x4 << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_1600              (0x5 << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_3200              (0x6 << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_6400              (0x7 << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_20H               (0x8 << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_40H               (0x9 << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_80H               (0xA << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_128H              (0xB << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_160H              (0xC << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_320H              (0xD << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_640H              (0xE << LSAD_CFG_FREQ_POS)
+#define LSAD_PRESCALE_1280H             (0xF << LSAD_CFG_FREQ_POS)
+
+/* LSAD conversion result for LSAD GND */
+#define LSAD_OFFSET_BASE                0x40001564
+#define LSAD_OFFSET                     REG32_POINTER(LSAD_OFFSET_BASE)
+
+/* LSAD_OFFSET bit positions */
+#define LSAD_OFFSET_DATA_POS            0
+#define LSAD_OFFSET_DATA_MASK           (0x7FFF << LSAD_OFFSET_DATA_POS)
+
+/* LSAD Interrupt Mask Register */
+#define LSAD_INT_ENABLE_BASE            0x40001568
+#define LSAD_INT_ENABLE                 REG32_POINTER(LSAD_INT_ENABLE_BASE)
+
+/* LSAD_INT_ENABLE bit positions */
+#define LSAD_INT_ENABLE_LSAD_INT_CH_NUM_POS 1
+#define LSAD_INT_ENABLE_LSAD_INT_CH_NUM_MASK (0x7 << LSAD_INT_ENABLE_LSAD_INT_CH_NUM_POS)
+#define LSAD_INT_ENABLE_LSAD_INT_ENABLE_POS 0
+
+/* LSAD_INT_ENABLE settings */
+#define LSAD_INT_CH0                    (0x0 << LSAD_INT_ENABLE_LSAD_INT_CH_NUM_POS)
+#define LSAD_INT_CH1                    (0x1 << LSAD_INT_ENABLE_LSAD_INT_CH_NUM_POS)
+#define LSAD_INT_CH2                    (0x2 << LSAD_INT_ENABLE_LSAD_INT_CH_NUM_POS)
+#define LSAD_INT_CH3                    (0x3 << LSAD_INT_ENABLE_LSAD_INT_CH_NUM_POS)
+#define LSAD_INT_CH4                    (0x4 << LSAD_INT_ENABLE_LSAD_INT_CH_NUM_POS)
+#define LSAD_INT_CH5                    (0x5 << LSAD_INT_ENABLE_LSAD_INT_CH_NUM_POS)
+#define LSAD_INT_CH6                    (0x6 << LSAD_INT_ENABLE_LSAD_INT_CH_NUM_POS)
+#define LSAD_INT_CH7                    (0x7 << LSAD_INT_ENABLE_LSAD_INT_CH_NUM_POS)
+
+#define LSAD_INT_DIS                    (0x0 << LSAD_INT_ENABLE_LSAD_INT_ENABLE_POS)
+#define LSAD_INT_EN                     (0x1 << LSAD_INT_ENABLE_LSAD_INT_ENABLE_POS)
+
+/* Monitoring Configuration Register */
+#define LSAD_MONITOR_CFG_BASE           0x4000156C
+#define LSAD_MONITOR_CFG                REG32_POINTER(LSAD_MONITOR_CFG_BASE)
+
+/* LSAD_MONITOR_CFG bit positions */
+#define LSAD_MONITOR_CFG_ALARM_COUNT_VALUE_POS 16
+#define LSAD_MONITOR_CFG_ALARM_COUNT_VALUE_MASK (0xFF << LSAD_MONITOR_CFG_ALARM_COUNT_VALUE_POS)
+#define LSAD_MONITOR_CFG_MONITOR_THRESHOLD_POS 8
+#define LSAD_MONITOR_CFG_MONITOR_THRESHOLD_MASK (0xFF << LSAD_MONITOR_CFG_MONITOR_THRESHOLD_POS)
+#define LSAD_MONITOR_CFG_MONITOR_SRC_POS 0
+#define LSAD_MONITOR_CFG_MONITOR_SRC_MASK (0x7 << LSAD_MONITOR_CFG_MONITOR_SRC_POS)
+
+/* LSAD_MONITOR_CFG settings */
+#define MONITOR_ALARM_NONE              (0x0 << LSAD_MONITOR_CFG_ALARM_COUNT_VALUE_POS)
+#define MONITOR_ALARM_COUNT1            (0x1 << LSAD_MONITOR_CFG_ALARM_COUNT_VALUE_POS)
+#define MONITOR_ALARM_COUNT255          (0xFF << LSAD_MONITOR_CFG_ALARM_COUNT_VALUE_POS)
+
+#define MONITOR_THRESHOLD_LOW           (0x0 << LSAD_MONITOR_CFG_MONITOR_THRESHOLD_POS)
+#define MONITOR_THRESHOLD_MID           (0xB3 << LSAD_MONITOR_CFG_MONITOR_THRESHOLD_POS)
+#define MONITOR_THRESHOLD_HIGH          (0xFF << LSAD_MONITOR_CFG_MONITOR_THRESHOLD_POS)
+
+#define MONITOR_CH0                     (0x0 << LSAD_MONITOR_CFG_MONITOR_SRC_POS)
+#define MONITOR_CH1                     (0x1 << LSAD_MONITOR_CFG_MONITOR_SRC_POS)
+#define MONITOR_CH2                     (0x2 << LSAD_MONITOR_CFG_MONITOR_SRC_POS)
+#define MONITOR_CH3                     (0x3 << LSAD_MONITOR_CFG_MONITOR_SRC_POS)
+#define MONITOR_CH4                     (0x4 << LSAD_MONITOR_CFG_MONITOR_SRC_POS)
+#define MONITOR_CH5                     (0x5 << LSAD_MONITOR_CFG_MONITOR_SRC_POS)
+#define MONITOR_CH6                     (0x6 << LSAD_MONITOR_CFG_MONITOR_SRC_POS)
+#define MONITOR_CH7                     (0x7 << LSAD_MONITOR_CFG_MONITOR_SRC_POS)
+
+/* Monitoring Status Register */
+#define LSAD_MONITOR_COUNT_VAL_BASE     0x40001570
+#define LSAD_MONITOR_COUNT_VAL          READONLY_REG32_POINTER(LSAD_MONITOR_COUNT_VAL_BASE)
+
+/* LSAD_MONITOR_COUNT_VAL bit positions */
+#define LSAD_MONITOR_COUNT_VAL_MONITOR_COUNT_VALUE_POS 0
+#define LSAD_MONITOR_COUNT_VAL_MONITOR_COUNT_VALUE_MASK (0xFF << LSAD_MONITOR_COUNT_VAL_MONITOR_COUNT_VALUE_POS)
+
+/* LSAD / MONITOR Status Register */
+#define LSAD_MONITOR_STATUS_BASE        0x40001574
+#define LSAD_MONITOR_STATUS             REG32_POINTER(LSAD_MONITOR_STATUS_BASE)
+
+/* LSAD_MONITOR_STATUS bit positions */
+#define LSAD_MONITOR_STATUS_MONITOR_ALARM_CLEAR_POS 12
+#define LSAD_MONITOR_STATUS_LSAD_OVERRUN_CLEAR_POS 9
+#define LSAD_MONITOR_STATUS_LSAD_READY_CLEAR_POS 8
+#define LSAD_MONITOR_STATUS_MONITOR_ALARM_STAT_POS 4
+#define LSAD_MONITOR_STATUS_LSAD_OVERRUN_STAT_POS 1
+#define LSAD_MONITOR_STATUS_LSAD_READY_STAT_POS 0
+
+/* LSAD_MONITOR_STATUS settings */
+#define MONITOR_ALARM_CLEAR             (0x1 << LSAD_MONITOR_STATUS_MONITOR_ALARM_CLEAR_POS)
+
+#define LSAD_OVERRUN_CLEAR              (0x1 << LSAD_MONITOR_STATUS_LSAD_OVERRUN_CLEAR_POS)
+
+#define LSAD_READY_CLEAR                (0x1 << LSAD_MONITOR_STATUS_LSAD_READY_CLEAR_POS)
+
+#define MONITOR_ALARM_FALSE             (0x0 << LSAD_MONITOR_STATUS_MONITOR_ALARM_STAT_POS)
+#define MONITOR_ALARM_TRUE              (0x1 << LSAD_MONITOR_STATUS_MONITOR_ALARM_STAT_POS)
+
+#define LSAD_OVERRUN_FALSE              (0x0 << LSAD_MONITOR_STATUS_LSAD_OVERRUN_STAT_POS)
+#define LSAD_OVERRUN_TRUE               (0x1 << LSAD_MONITOR_STATUS_LSAD_OVERRUN_STAT_POS)
+
+#define LSAD_READY_FALSE                (0x0 << LSAD_MONITOR_STATUS_LSAD_READY_STAT_POS)
+#define LSAD_READY_TRUE                 (0x1 << LSAD_MONITOR_STATUS_LSAD_READY_STAT_POS)
+
+/* LSAD pre-selection for input 0 */
+#define LSAD_PRE_SEL_INPUT_BASE         0x40001578
+#define LSAD_PRE_SEL_INPUT              REG32_POINTER(LSAD_PRE_SEL_INPUT_BASE)
+
+/* LSAD_PRE_SEL_INPUT bit positions */
+#define LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN3_POS 12
+#define LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN3_MASK (0x7 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN3_POS)
+#define LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN2_POS 8
+#define LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN2_MASK (0x7 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN2_POS)
+#define LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN1_POS 4
+#define LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN1_MASK (0x7 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN1_POS)
+#define LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN0_POS 0
+#define LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN0_MASK (0x7 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN0_POS)
+
+/* LSAD_PRE_SEL_INPUT settings */
+#define IN3_PRE_SEL_GPIO1               (0x0 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN3_POS)
+#define IN3_PRE_SEL_GPIO3               (0x1 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN3_POS)
+#define IN3_PRE_SEL_GPIO5               (0x2 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN3_POS)
+#define IN3_PRE_SEL_GPIO7               (0x3 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN3_POS)
+#define IN3_PRE_SEL_GPIO9               (0x4 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN3_POS)
+#define IN3_PRE_SEL_GPIO11              (0x5 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN3_POS)
+#define IN3_PRE_SEL_GPIO13              (0x6 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN3_POS)
+#define IN3_PRE_SEL_GPIO15              (0x7 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN3_POS)
+
+#define IN2_PRE_SEL_GPIO0               (0x0 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN2_POS)
+#define IN2_PRE_SEL_GPIO2               (0x1 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN2_POS)
+#define IN2_PRE_SEL_GPIO4               (0x2 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN2_POS)
+#define IN2_PRE_SEL_GPIO6               (0x3 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN2_POS)
+#define IN2_PRE_SEL_GPIO8               (0x4 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN2_POS)
+#define IN2_PRE_SEL_GPIO10              (0x5 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN2_POS)
+#define IN2_PRE_SEL_GPIO12              (0x6 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN2_POS)
+#define IN2_PRE_SEL_GPIO14              (0x7 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN2_POS)
+
+#define IN1_PRE_SEL_GPIO1               (0x0 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN1_POS)
+#define IN1_PRE_SEL_GPIO3               (0x1 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN1_POS)
+#define IN1_PRE_SEL_GPIO5               (0x2 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN1_POS)
+#define IN1_PRE_SEL_GPIO7               (0x3 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN1_POS)
+#define IN1_PRE_SEL_GPIO9               (0x4 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN1_POS)
+#define IN1_PRE_SEL_GPIO11              (0x5 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN1_POS)
+#define IN1_PRE_SEL_GPIO13              (0x6 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN1_POS)
+#define IN1_PRE_SEL_GPIO15              (0x7 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN1_POS)
+
+#define IN0_PRE_SEL_GPIO0               (0x0 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN0_POS)
+#define IN0_PRE_SEL_GPIO2               (0x1 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN0_POS)
+#define IN0_PRE_SEL_GPIO4               (0x2 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN0_POS)
+#define IN0_PRE_SEL_GPIO6               (0x3 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN0_POS)
+#define IN0_PRE_SEL_GPIO8               (0x4 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN0_POS)
+#define IN0_PRE_SEL_GPIO10              (0x5 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN0_POS)
+#define IN0_PRE_SEL_GPIO12              (0x6 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN0_POS)
+#define IN0_PRE_SEL_GPIO14              (0x7 << LSAD_PRE_SEL_INPUT_LSAD_PRE_SEL_IN0_POS)
+
+/* LSAD duty config */
+#define LSAD_DUTY_BASE                  0x4000157C
+#define LSAD_DUTY                       REG32_POINTER(LSAD_DUTY_BASE)
+
+/* LSAD_DUTY bit positions */
+#define LSAD_DUTY_CH7_DUTY_CFG_POS      14
+#define LSAD_DUTY_CH7_DUTY_CFG_MASK     (0x3 << LSAD_DUTY_CH7_DUTY_CFG_POS)
+#define LSAD_DUTY_CH6_DUTY_CFG_POS      12
+#define LSAD_DUTY_CH6_DUTY_CFG_MASK     (0x3 << LSAD_DUTY_CH6_DUTY_CFG_POS)
+#define LSAD_DUTY_CH5_DUTY_CFG_POS      10
+#define LSAD_DUTY_CH5_DUTY_CFG_MASK     (0x3 << LSAD_DUTY_CH5_DUTY_CFG_POS)
+#define LSAD_DUTY_CH4_DUTY_CFG_POS      8
+#define LSAD_DUTY_CH4_DUTY_CFG_MASK     (0x3 << LSAD_DUTY_CH4_DUTY_CFG_POS)
+#define LSAD_DUTY_CH3_DUTY_CFG_POS      6
+#define LSAD_DUTY_CH3_DUTY_CFG_MASK     (0x3 << LSAD_DUTY_CH3_DUTY_CFG_POS)
+#define LSAD_DUTY_CH2_DUTY_CFG_POS      4
+#define LSAD_DUTY_CH2_DUTY_CFG_MASK     (0x3 << LSAD_DUTY_CH2_DUTY_CFG_POS)
+#define LSAD_DUTY_CH1_DUTY_CFG_POS      2
+#define LSAD_DUTY_CH1_DUTY_CFG_MASK     (0x3 << LSAD_DUTY_CH1_DUTY_CFG_POS)
+#define LSAD_DUTY_CH0_DUTY_CFG_POS      0
+#define LSAD_DUTY_CH0_DUTY_CFG_MASK     (0x3 << LSAD_DUTY_CH0_DUTY_CFG_POS)
+
+/* LSAD_DUTY settings */
+#define INPUT_TO_CH7_PERMANENT          (0x0 << LSAD_DUTY_CH7_DUTY_CFG_POS)
+#define INPUT_TO_CH7_DUTY               (0x1 << LSAD_DUTY_CH7_DUTY_CFG_POS)
+#define INPUT_TO_CH7_RESERVED           (0x2 << LSAD_DUTY_CH7_DUTY_CFG_POS)
+#define INPUT_TO_CH7_PRE_CONV           (0x3 << LSAD_DUTY_CH7_DUTY_CFG_POS)
+
+#define INPUT_TO_CH6_PERMANENT          (0x0 << LSAD_DUTY_CH6_DUTY_CFG_POS)
+#define INPUT_TO_CH6_DUTY               (0x1 << LSAD_DUTY_CH6_DUTY_CFG_POS)
+#define INPUT_TO_CH6_RESERVED           (0x2 << LSAD_DUTY_CH6_DUTY_CFG_POS)
+#define INPUT_TO_CH6_PRE_CONV           (0x3 << LSAD_DUTY_CH6_DUTY_CFG_POS)
+
+#define INPUT_TO_CH5_PERMANENT          (0x0 << LSAD_DUTY_CH5_DUTY_CFG_POS)
+#define INPUT_TO_CH5_DUTY               (0x1 << LSAD_DUTY_CH5_DUTY_CFG_POS)
+#define INPUT_TO_CH5_RESERVED           (0x2 << LSAD_DUTY_CH5_DUTY_CFG_POS)
+#define INPUT_TO_CH5_PRE_CONV           (0x3 << LSAD_DUTY_CH5_DUTY_CFG_POS)
+
+#define INPUT_TO_CH4_PERMANENT          (0x0 << LSAD_DUTY_CH4_DUTY_CFG_POS)
+#define INPUT_TO_CH4_DUTY               (0x1 << LSAD_DUTY_CH4_DUTY_CFG_POS)
+#define INPUT_TO_CH4_RESEREVED          (0x2 << LSAD_DUTY_CH4_DUTY_CFG_POS)
+#define INPUT_TO_CH4_PRE_CONV           (0x3 << LSAD_DUTY_CH4_DUTY_CFG_POS)
+
+#define INPUT_TO_CH3_PERMANENT          (0x0 << LSAD_DUTY_CH3_DUTY_CFG_POS)
+#define INPUT_TO_CH3_DUTY               (0x1 << LSAD_DUTY_CH3_DUTY_CFG_POS)
+#define INPUT_TO_CH3_RESERVED           (0x2 << LSAD_DUTY_CH3_DUTY_CFG_POS)
+#define INPUT_TO_CH3_PRE_CONV           (0x3 << LSAD_DUTY_CH3_DUTY_CFG_POS)
+
+#define INPUT_TO_CH2_PERMANENT          (0x0 << LSAD_DUTY_CH2_DUTY_CFG_POS)
+#define INPUT_TO_CH2_DUTY               (0x1 << LSAD_DUTY_CH2_DUTY_CFG_POS)
+#define INPUT_TO_CH2_RESERVED           (0x2 << LSAD_DUTY_CH2_DUTY_CFG_POS)
+#define INPUT_TO_CH2_PRE_CONV           (0x3 << LSAD_DUTY_CH2_DUTY_CFG_POS)
+
+#define INPUT_TO_CH1_PERMANENT          (0x0 << LSAD_DUTY_CH1_DUTY_CFG_POS)
+#define INPUT_TO_CH1_DUTY               (0x1 << LSAD_DUTY_CH1_DUTY_CFG_POS)
+#define INPUT_TO_CH1_RESERVED           (0x2 << LSAD_DUTY_CH1_DUTY_CFG_POS)
+#define INPUT_TO_CH1_PRE_CONV           (0x3 << LSAD_DUTY_CH1_DUTY_CFG_POS)
+
+#define INPUT_TO_CH0_PERMANENT          (0x0 << LSAD_DUTY_CH0_DUTY_CFG_POS)
+#define INPUT_TO_CH0_DUTY               (0x1 << LSAD_DUTY_CH0_DUTY_CFG_POS)
+#define INPUT_TO_CH0_RESERVED           (0x2 << LSAD_DUTY_CH0_DUTY_CFG_POS)
+#define INPUT_TO_CH0_PRE_CONV           (0x3 << LSAD_DUTY_CH0_DUTY_CFG_POS)
+
+/* LSAD ID Number */
+#define LSAD_ID_NUM_BASE                0x400015FC
+#define LSAD_ID_NUM                     READONLY_REG32_POINTER(LSAD_ID_NUM_BASE)
+
+/* LSAD_ID_NUM bit positions */
+#define LSAD_ID_NUM_MAJOR_REVISION_POS  8
+#define LSAD_ID_NUM_MAJOR_REVISION_MASK (0xFF << LSAD_ID_NUM_MAJOR_REVISION_POS)
+#define LSAD_ID_NUM_MINOR_REVISION_POS  0
+#define LSAD_ID_NUM_MINOR_REVISION_MASK (0xFF << LSAD_ID_NUM_MINOR_REVISION_POS)
+
+/* LSAD_ID_NUM settings */
+#define LSAD_MAJOR_REVISION             (0x1 << LSAD_ID_NUM_MAJOR_REVISION_POS)
+
+#define LSAD_MINOR_REVISION             (0x0 << LSAD_ID_NUM_MINOR_REVISION_POS)
+
+/* ----------------------------------------------------------------------------
+ * Analog Control System
+ * ------------------------------------------------------------------------- */
+
+/* Bandgap Control register */
+#define ACS_BG_CTRL_BASE                0x40001600
+#define ACS_BG_CTRL                     REG32_POINTER(ACS_BG_CTRL_BASE)
+
+/* ACS_BG_CTRL bit positions */
+#define ACS_BG_CTRL_READY_POS           31
+#define ACS_BG_CTRL_SLOPE_ITRIM_POS     24
+#define ACS_BG_CTRL_SLOPE_ITRIM_MASK    (0x1F << ACS_BG_CTRL_SLOPE_ITRIM_POS)
+#define ACS_BG_CTRL_ITRIM_POS           16
+#define ACS_BG_CTRL_ITRIM_MASK          (0x3F << ACS_BG_CTRL_ITRIM_POS)
+#define ACS_BG_CTRL_SLOPE_VTRIM_POS     8
+#define ACS_BG_CTRL_SLOPE_VTRIM_MASK    (0x1F << ACS_BG_CTRL_SLOPE_VTRIM_POS)
+#define ACS_BG_CTRL_VTRIM_POS           0
+#define ACS_BG_CTRL_VTRIM_MASK          (0x3F << ACS_BG_CTRL_VTRIM_POS)
+
+/* ACS_BG_CTRL settings */
+#define BG_NOT_READY                    (0x0 << ACS_BG_CTRL_READY_POS)
+#define BG_READY                        (0x1 << ACS_BG_CTRL_READY_POS)
+
+#define BG_SLOPE_ITRIM_VALUE            (0x17 << ACS_BG_CTRL_SLOPE_ITRIM_POS)
+
+#define BG_ITRIM_0P64UA                 (0x0 << ACS_BG_CTRL_ITRIM_POS)
+#define BG_ITRIM_0P65UA                 (0x1 << ACS_BG_CTRL_ITRIM_POS)
+#define BG_ITRIM_0P99UA                 (0x23 << ACS_BG_CTRL_ITRIM_POS)
+#define BG_ITRIM_1P00UA                 (0x24 << ACS_BG_CTRL_ITRIM_POS)
+#define BG_ITRIM_1P01UA                 (0x25 << ACS_BG_CTRL_ITRIM_POS)
+#define BG_ITRIM_1P26UA                 (0x3E << ACS_BG_CTRL_ITRIM_POS)
+#define BG_ITRIM_1P27UA                 (0x3F << ACS_BG_CTRL_ITRIM_POS)
+
+#define BG_SLOPE_VTRIM_VALUE            (0x1B << ACS_BG_CTRL_SLOPE_VTRIM_POS)
+
+#define BG_VTRIM_0P590V                 (0x0 << ACS_BG_CTRL_VTRIM_POS)
+#define BG_VTRIM_0P595V                 (0x1 << ACS_BG_CTRL_VTRIM_POS)
+#define BG_VTRIM_0P745V                 (0x1B << ACS_BG_CTRL_VTRIM_POS)
+#define BG_VTRIM_0P750V                 (0x1C << ACS_BG_CTRL_VTRIM_POS)
+#define BG_VTRIM_0P755V                 (0x1D << ACS_BG_CTRL_VTRIM_POS)
+#define BG_VTRIM_0P760V                 (0x1E << ACS_BG_CTRL_VTRIM_POS)
+#define BG_VTRIM_0P765V                 (0x1F << ACS_BG_CTRL_VTRIM_POS)
+#define BG_VTRIM_0P900V                 (0x3E << ACS_BG_CTRL_VTRIM_POS)
+#define BG_VTRIM_0P905V                 (0x3F << ACS_BG_CTRL_VTRIM_POS)
+
+/* DC-DC / LDO Supply Configuration / Control register */
+#define ACS_VCC_CTRL_BASE               0x40001604
+#define ACS_VCC_CTRL                    REG32_POINTER(ACS_VCC_CTRL_BASE)
+
+/* ACS_VCC_CTRL bit positions */
+#define ACS_VCC_CTRL_READY_POS          24
+#define ACS_VCC_CTRL_VTRIM_LIMIT_POS    16
+#define ACS_VCC_CTRL_VTRIM_LIMIT_MASK   (0x3F << ACS_VCC_CTRL_VTRIM_LIMIT_POS)
+#define ACS_VCC_CTRL_ICH_TRIM_POS       12
+#define ACS_VCC_CTRL_ICH_TRIM_MASK      (0xF << ACS_VCC_CTRL_ICH_TRIM_POS)
+#define ACS_VCC_CTRL_CCM_ENABLE_POS     11
+#define ACS_VCC_CTRL_PULSE_CTRL_POS     10
+#define ACS_VCC_CTRL_CHARGE_CTRL_POS    9
+#define ACS_VCC_CTRL_BUCK_ENABLE_POS    8
+#define ACS_VCC_CTRL_VTRIM_POS          0
+#define ACS_VCC_CTRL_VTRIM_MASK         (0x3F << ACS_VCC_CTRL_VTRIM_POS)
+
+/* ACS_VCC_CTRL settings */
+#define VCC_NOT_READY                   (0x0 << ACS_VCC_CTRL_READY_POS)
+#define VCC_READY                       (0x1 << ACS_VCC_CTRL_READY_POS)
+
+#define VCC_TRIM_LIMIT_1P00V            (0x0 << ACS_VCC_CTRL_VTRIM_LIMIT_POS)
+#define VCC_TRIM_LIMIT_1P05V            (0x5 << ACS_VCC_CTRL_VTRIM_LIMIT_POS)
+#define VCC_TRIM_LIMIT_1P10V            (0xA << ACS_VCC_CTRL_VTRIM_LIMIT_POS)
+#define VCC_TRIM_LIMIT_1P15V            (0xF << ACS_VCC_CTRL_VTRIM_LIMIT_POS)
+#define VCC_TRIM_LIMIT_1P20V            (0x14 << ACS_VCC_CTRL_VTRIM_LIMIT_POS)
+#define VCC_TRIM_LIMIT_1P25V            (0x19 << ACS_VCC_CTRL_VTRIM_LIMIT_POS)
+#define VCC_TRIM_LIMIT_1P31V            (0x1F << ACS_VCC_CTRL_VTRIM_LIMIT_POS)
+#define VCC_TRIM_LIMIT_1P35V            (0x23 << ACS_VCC_CTRL_VTRIM_LIMIT_POS)
+#define VCC_TRIM_LIMIT_1P63V            (0x3F << ACS_VCC_CTRL_VTRIM_LIMIT_POS)
+
+#define VCC_ICHTRIM_16MA                (0x0 << ACS_VCC_CTRL_ICH_TRIM_POS)
+#define VCC_ICHTRIM_32MA                (0x1 << ACS_VCC_CTRL_ICH_TRIM_POS)
+#define VCC_ICHTRIM_64MA                (0x3 << ACS_VCC_CTRL_ICH_TRIM_POS)
+#define VCC_ICHTRIM_80MA                (0x4 << ACS_VCC_CTRL_ICH_TRIM_POS)
+#define VCC_ICHTRIM_256MA               (0xF << ACS_VCC_CTRL_ICH_TRIM_POS)
+
+#define VCC_DCM_MODE                    (0x0 << ACS_VCC_CTRL_CCM_ENABLE_POS)
+#define VCC_CCM_MODE                    (0x1 << ACS_VCC_CTRL_CCM_ENABLE_POS)
+
+#define VCC_SINGLE_PULSE                (0x0 << ACS_VCC_CTRL_PULSE_CTRL_POS)
+#define VCC_MULTI_PULSE                 (0x1 << ACS_VCC_CTRL_PULSE_CTRL_POS)
+
+#define VCC_CONSTANT_CHARGE             (0x0 << ACS_VCC_CTRL_CHARGE_CTRL_POS)
+#define VCC_CONSTANT_IMAX               (0x1 << ACS_VCC_CTRL_CHARGE_CTRL_POS)
+
+#define VCC_LDO                         (0x0 << ACS_VCC_CTRL_BUCK_ENABLE_POS)
+#define VCC_BUCK                        (0x1 << ACS_VCC_CTRL_BUCK_ENABLE_POS)
+
+#define VCC_TRIM_1P00V                  (0x0 << ACS_VCC_CTRL_VTRIM_POS)
+#define VCC_TRIM_1P05V                  (0x5 << ACS_VCC_CTRL_VTRIM_POS)
+#define VCC_TRIM_1P10V                  (0xA << ACS_VCC_CTRL_VTRIM_POS)
+#define VCC_TRIM_1P15V                  (0xF << ACS_VCC_CTRL_VTRIM_POS)
+#define VCC_TRIM_1P20V                  (0x14 << ACS_VCC_CTRL_VTRIM_POS)
+#define VCC_TRIM_1P25V                  (0x19 << ACS_VCC_CTRL_VTRIM_POS)
+#define VCC_TRIM_1P31V                  (0x1F << ACS_VCC_CTRL_VTRIM_POS)
+#define VCC_TRIM_1P35V                  (0x23 << ACS_VCC_CTRL_VTRIM_POS)
+#define VCC_TRIM_1P63V                  (0x3F << ACS_VCC_CTRL_VTRIM_POS)
+
+/* Charge Pump control register */
+#define ACS_VDDCP_CTRL_BASE             0x40001608
+#define ACS_VDDCP_CTRL                  REG32_POINTER(ACS_VDDCP_CTRL_BASE)
+
+/* ACS_VDDCP_CTRL bit positions */
+#define ACS_VDDCP_CTRL_READY_POS        24
+#define ACS_VDDCP_CTRL_COMP_ENABLE_POS  13
+#define ACS_VDDCP_CTRL_CPCLK_FREQ_POS   8
+#define ACS_VDDCP_CTRL_CPCLK_FREQ_MASK  (0x7 << ACS_VDDCP_CTRL_CPCLK_FREQ_POS)
+#define ACS_VDDCP_CTRL_VDDA_500OHM_POS  7
+#define ACS_VDDCP_CTRL_PTRIM_POS        0
+#define ACS_VDDCP_CTRL_PTRIM_MASK       (0x3 << ACS_VDDCP_CTRL_PTRIM_POS)
+
+/* ACS_VDDCP_CTRL settings */
+#define VDDCP_NOT_READY                 (0x0 << ACS_VDDCP_CTRL_READY_POS)
+#define VDDCP_READY                     (0x1 << ACS_VDDCP_CTRL_READY_POS)
+
+#define VDDCP_COMP_AUTO                 (0x0 << ACS_VDDCP_CTRL_COMP_ENABLE_POS)
+#define VDDCP_COMP_ENABLED              (0x1 << ACS_VDDCP_CTRL_COMP_ENABLE_POS)
+
+#define VDDCP_CPCLK_32KHZ               (0x0 << ACS_VDDCP_CTRL_CPCLK_FREQ_POS)
+#define VDDCP_CPCLK_16KHZ               (0x1 << ACS_VDDCP_CTRL_CPCLK_FREQ_POS)
+#define VDDCP_CPCLK_8KHZ                (0x2 << ACS_VDDCP_CTRL_CPCLK_FREQ_POS)
+#define VDDCP_CPCLK_4KHZ                (0x3 << ACS_VDDCP_CTRL_CPCLK_FREQ_POS)
+#define VDDCP_CPCLK_2KHZ                (0x4 << ACS_VDDCP_CTRL_CPCLK_FREQ_POS)
+#define VDDCP_CPCLK_1KHZ                (0x5 << ACS_VDDCP_CTRL_CPCLK_FREQ_POS)
+#define VDDCP_CPCLK_0P5KHZ              (0x6 << ACS_VDDCP_CTRL_CPCLK_FREQ_POS)
+#define VDDCP_CPCLK_0P25KHZ             (0x7 << ACS_VDDCP_CTRL_CPCLK_FREQ_POS)
+
+#define VDDCP_R5000                     (0x0 << ACS_VDDCP_CTRL_VDDA_500OHM_POS)
+#define VDDCP_R500                      (0x1 << ACS_VDDCP_CTRL_VDDA_500OHM_POS)
+
+#define VDDCP_PTRIM_4MA                 (0x0 << ACS_VDDCP_CTRL_PTRIM_POS)
+#define VDDCP_PTRIM_8MA                 (0x1 << ACS_VDDCP_CTRL_PTRIM_POS)
+#define VDDCP_PTRIM_12MA                (0x2 << ACS_VDDCP_CTRL_PTRIM_POS)
+#define VDDCP_PTRIM_16MA                (0x3 << ACS_VDDCP_CTRL_PTRIM_POS)
+
+/* Digital Core Voltage Regulator control register */
+#define ACS_VDDC_CTRL_BASE              0x4000160C
+#define ACS_VDDC_CTRL                   REG32_POINTER(ACS_VDDC_CTRL_BASE)
+
+/* ACS_VDDC_CTRL bit positions */
+#define ACS_VDDC_CTRL_READY_POS         24
+#define ACS_VDDC_CTRL_STANDBY_VTRIM_POS 16
+#define ACS_VDDC_CTRL_STANDBY_VTRIM_MASK (0x3F << ACS_VDDC_CTRL_STANDBY_VTRIM_POS)
+#define ACS_VDDC_CTRL_ENABLE_LOW_BIAS_POS 12
+#define ACS_VDDC_CTRL_SLEEP_CLAMP_POS   8
+#define ACS_VDDC_CTRL_VTRIM_POS         0
+#define ACS_VDDC_CTRL_VTRIM_MASK        (0x3F << ACS_VDDC_CTRL_VTRIM_POS)
+
+/* ACS_VDDC_CTRL settings */
+#define VDDC_NOT_READY                  (0x0 << ACS_VDDC_CTRL_READY_POS)
+#define VDDC_READY                      (0x1 << ACS_VDDC_CTRL_READY_POS)
+
+#define VDDC_STANDBY_TRIM_0P75V         (0x0 << ACS_VDDC_CTRL_STANDBY_VTRIM_POS)
+#define VDDC_STANDBY_TRIM_0P76V         (0x1 << ACS_VDDC_CTRL_STANDBY_VTRIM_POS)
+#define VDDC_STANDBY_TRIM_1P20V         (0x2D << ACS_VDDC_CTRL_STANDBY_VTRIM_POS)
+#define VDDC_STANDBY_TRIM_1P32V         (0x39 << ACS_VDDC_CTRL_STANDBY_VTRIM_POS)
+#define VDDC_STANDBY_TRIM_1P38V         (0x3F << ACS_VDDC_CTRL_STANDBY_VTRIM_POS)
+
+#define VDDC_NOMINAL_BIAS               (0x0 << ACS_VDDC_CTRL_ENABLE_LOW_BIAS_POS)
+#define VDDC_LOW_BIAS                   (0x1 << ACS_VDDC_CTRL_ENABLE_LOW_BIAS_POS)
+
+#define VDDC_SLEEP_HIZ                  (0x0 << ACS_VDDC_CTRL_SLEEP_CLAMP_POS)
+#define VDDC_SLEEP_GND                  (0x1 << ACS_VDDC_CTRL_SLEEP_CLAMP_POS)
+
+#define VDDC_TRIM_0P75V                 (0x0 << ACS_VDDC_CTRL_VTRIM_POS)
+#define VDDC_TRIM_0P76V                 (0x1 << ACS_VDDC_CTRL_VTRIM_POS)
+#define VDDC_TRIM_1P00V                 (0x19 << ACS_VDDC_CTRL_VTRIM_POS)
+#define VDDC_TRIM_1P08V                 (0x21 << ACS_VDDC_CTRL_VTRIM_POS)
+#define VDDC_TRIM_1P10V                 (0x23 << ACS_VDDC_CTRL_VTRIM_POS)
+#define VDDC_TRIM_1P20V                 (0x2D << ACS_VDDC_CTRL_VTRIM_POS)
+#define VDDC_TRIM_1P25V                 (0x32 << ACS_VDDC_CTRL_VTRIM_POS)
+#define VDDC_TRIM_1P32V                 (0x39 << ACS_VDDC_CTRL_VTRIM_POS)
+#define VDDC_TRIM_1P38V                 (0x3F << ACS_VDDC_CTRL_VTRIM_POS)
+
+/* Digital Core Voltage Regulator control register */
+#define ACS_VDDM_CTRL_BASE              0x40001610
+#define ACS_VDDM_CTRL                   REG32_POINTER(ACS_VDDM_CTRL_BASE)
+
+/* ACS_VDDM_CTRL bit positions */
+#define ACS_VDDM_CTRL_READY_POS         24
+#define ACS_VDDM_CTRL_STANDBY_VTRIM_POS 16
+#define ACS_VDDM_CTRL_STANDBY_VTRIM_MASK (0x3F << ACS_VDDM_CTRL_STANDBY_VTRIM_POS)
+#define ACS_VDDM_CTRL_ENABLE_LOW_BIAS_POS 12
+#define ACS_VDDM_CTRL_SLEEP_CLAMP_POS   8
+#define ACS_VDDM_CTRL_VTRIM_POS         0
+#define ACS_VDDM_CTRL_VTRIM_MASK        (0x3F << ACS_VDDM_CTRL_VTRIM_POS)
+
+/* ACS_VDDM_CTRL settings */
+#define VDDM_NOT_READY                  (0x0 << ACS_VDDM_CTRL_READY_POS)
+#define VDDM_READY                      (0x1 << ACS_VDDM_CTRL_READY_POS)
+
+#define VDDM_STANDBY_TRIM_0P75V         (0x0 << ACS_VDDM_CTRL_STANDBY_VTRIM_POS)
+#define VDDM_STANDBY_TRIM_0P76V         (0x1 << ACS_VDDM_CTRL_STANDBY_VTRIM_POS)
+#define VDDM_STANDBY_TRIM_1P20V         (0x2D << ACS_VDDM_CTRL_STANDBY_VTRIM_POS)
+#define VDDM_STANDBY_TRIM_1P32V         (0x39 << ACS_VDDM_CTRL_STANDBY_VTRIM_POS)
+#define VDDM_STANDBY_TRIM_1P38V         (0x3F << ACS_VDDM_CTRL_STANDBY_VTRIM_POS)
+
+#define VDDM_NOMINAL_BIAS               (0x0 << ACS_VDDM_CTRL_ENABLE_LOW_BIAS_POS)
+#define VDDM_LOW_BIAS                   (0x1 << ACS_VDDM_CTRL_ENABLE_LOW_BIAS_POS)
+
+#define VDDM_SLEEP_HIZ                  (0x0 << ACS_VDDM_CTRL_SLEEP_CLAMP_POS)
+#define VDDM_SLEEP_GND                  (0x1 << ACS_VDDM_CTRL_SLEEP_CLAMP_POS)
+
+#define VDDM_TRIM_0P75V                 (0x0 << ACS_VDDM_CTRL_VTRIM_POS)
+#define VDDM_TRIM_0P76V                 (0x1 << ACS_VDDM_CTRL_VTRIM_POS)
+#define VDDM_TRIM_1P00V                 (0x19 << ACS_VDDM_CTRL_VTRIM_POS)
+#define VDDM_TRIM_1P08V                 (0x21 << ACS_VDDM_CTRL_VTRIM_POS)
+#define VDDM_TRIM_1P10V                 (0x23 << ACS_VDDM_CTRL_VTRIM_POS)
+#define VDDM_TRIM_1P15V                 (0x28 << ACS_VDDM_CTRL_VTRIM_POS)
+#define VDDM_TRIM_1P20V                 (0x2D << ACS_VDDM_CTRL_VTRIM_POS)
+#define VDDM_TRIM_1P25V                 (0x32 << ACS_VDDM_CTRL_VTRIM_POS)
+#define VDDM_TRIM_1P32V                 (0x39 << ACS_VDDM_CTRL_VTRIM_POS)
+#define VDDM_TRIM_1P38V                 (0x3F << ACS_VDDM_CTRL_VTRIM_POS)
+
+/* RF Block Regulator Configuration / Control register */
+#define ACS_VDDPA_CTRL_BASE             0x40001614
+#define ACS_VDDPA_CTRL                  REG32_POINTER(ACS_VDDPA_CTRL_BASE)
+
+/* ACS_VDDPA_CTRL bit positions */
+#define ACS_VDDPA_CTRL_INITIAL_VTRIM_POS 16
+#define ACS_VDDPA_CTRL_INITIAL_VTRIM_MASK (0xF << ACS_VDDPA_CTRL_INITIAL_VTRIM_POS)
+#define ACS_VDDPA_CTRL_VDDPA_SW_CTRL_POS 12
+#define ACS_VDDPA_CTRL_ENABLE_ISENSE_POS 9
+#define ACS_VDDPA_CTRL_ENABLE_POS       8
+#define ACS_VDDPA_CTRL_VTRIM_POS        0
+#define ACS_VDDPA_CTRL_VTRIM_MASK       (0x3F << ACS_VDDPA_CTRL_VTRIM_POS)
+
+/* ACS_VDDPA_CTRL settings */
+#define VDDPA_INITIAL_TRIM_1P05V        (0x0 << ACS_VDDPA_CTRL_INITIAL_VTRIM_POS)
+#define VDDPA_INITIAL_TRIM_1P10V        (0x5 << ACS_VDDPA_CTRL_INITIAL_VTRIM_POS)
+#define VDDPA_INITIAL_TRIM_1P20V        (0xF << ACS_VDDPA_CTRL_INITIAL_VTRIM_POS)
+
+#define VDDPA_SW_HIZ                    (0x0 << ACS_VDDPA_CTRL_VDDPA_SW_CTRL_POS)
+#define VDDPA_SW_VDDRF                  (0x1 << ACS_VDDPA_CTRL_VDDPA_SW_CTRL_POS)
+
+#define VDDPA_ISENSE_DISABLE            (0x0 << ACS_VDDPA_CTRL_ENABLE_ISENSE_POS)
+#define VDDPA_ISENSE_ENABLE             (0x1 << ACS_VDDPA_CTRL_ENABLE_ISENSE_POS)
+
+#define VDDPA_DISABLE                   (0x0 << ACS_VDDPA_CTRL_ENABLE_POS)
+#define VDDPA_ENABLE                    (0x1 << ACS_VDDPA_CTRL_ENABLE_POS)
+
+#define VDDPA_TRIM_1P05V                (0x0 << ACS_VDDPA_CTRL_VTRIM_POS)
+#define VDDPA_TRIM_1P06V                (0x1 << ACS_VDDPA_CTRL_VTRIM_POS)
+#define VDDPA_TRIM_1P59V                (0x36 << ACS_VDDPA_CTRL_VTRIM_POS)
+#define VDDPA_TRIM_1P60V                (0x37 << ACS_VDDPA_CTRL_VTRIM_POS)
+#define VDDPA_TRIM_1P61V                (0x38 << ACS_VDDPA_CTRL_VTRIM_POS)
+#define VDDPA_TRIM_1P68V                (0x3F << ACS_VDDPA_CTRL_VTRIM_POS)
+
+/* VDDIF Block Regulator Configuration / Control register */
+#define ACS_VDDIF_CTRL_BASE             0x40001618
+#define ACS_VDDIF_CTRL                  REG32_POINTER(ACS_VDDIF_CTRL_BASE)
+
+/* ACS_VDDIF_CTRL bit positions */
+#define ACS_VDDIF_CTRL_READY_POS        24
+#define ACS_VDDIF_CTRL_SOFT_START_POS   10
+#define ACS_VDDIF_CTRL_ENABLE_LIMITER_POS 9
+#define ACS_VDDIF_CTRL_ENABLE_POS       8
+#define ACS_VDDIF_CTRL_VTRIM_POS        0
+#define ACS_VDDIF_CTRL_VTRIM_MASK       (0x3F << ACS_VDDIF_CTRL_VTRIM_POS)
+
+/* ACS_VDDIF_CTRL settings */
+#define VDDIF_NOT_READY                 (0x0 << ACS_VDDIF_CTRL_READY_POS)
+#define VDDIF_READY                     (0x1 << ACS_VDDIF_CTRL_READY_POS)
+
+#define VDDIF_LIMITER_70MA              (0x0 << ACS_VDDIF_CTRL_SOFT_START_POS)
+#define VDDIF_LIMITER_4MA               (0x1 << ACS_VDDIF_CTRL_SOFT_START_POS)
+
+#define VDDIF_LIMITER_DISABLE           (0x0 << ACS_VDDIF_CTRL_ENABLE_LIMITER_POS)
+#define VDDIF_LIMITER_ENABLE            (0x1 << ACS_VDDIF_CTRL_ENABLE_LIMITER_POS)
+
+#define VDDIF_DISABLE                   (0x0 << ACS_VDDIF_CTRL_ENABLE_POS)
+#define VDDIF_ENABLE                    (0x1 << ACS_VDDIF_CTRL_ENABLE_POS)
+
+#define VDDIF_TRIM_0P750V               (0x0 << ACS_VDDIF_CTRL_VTRIM_POS)
+#define VDDIF_TRIM_0P775V               (0x1 << ACS_VDDIF_CTRL_VTRIM_POS)
+#define VDDIF_TRIM_1P775V               (0x29 << ACS_VDDIF_CTRL_VTRIM_POS)
+#define VDDIF_TRIM_1P800V               (0x2A << ACS_VDDIF_CTRL_VTRIM_POS)
+#define VDDIF_TRIM_1P825V               (0x2B << ACS_VDDIF_CTRL_VTRIM_POS)
+#define VDDIF_TRIM_2P300V               (0x3E << ACS_VDDIF_CTRL_VTRIM_POS)
+#define VDDIF_TRIM_2P325V               (0x3F << ACS_VDDIF_CTRL_VTRIM_POS)
+
+/* RF Regulator control register */
+#define ACS_VDDRF_CTRL_BASE             0x4000161C
+#define ACS_VDDRF_CTRL                  REG32_POINTER(ACS_VDDRF_CTRL_BASE)
+
+/* ACS_VDDRF_CTRL bit positions */
+#define ACS_VDDRF_CTRL_READY_POS        24
+#define ACS_VDDRF_CTRL_CLAMP_POS        12
+#define ACS_VDDRF_CTRL_ENABLE_POS       8
+#define ACS_VDDRF_CTRL_VTRIM_POS        0
+#define ACS_VDDRF_CTRL_VTRIM_MASK       (0x3F << ACS_VDDRF_CTRL_VTRIM_POS)
+
+/* ACS_VDDRF_CTRL settings */
+#define VDDRF_NOT_READY                 (0x0 << ACS_VDDRF_CTRL_READY_POS)
+#define VDDRF_READY                     (0x1 << ACS_VDDRF_CTRL_READY_POS)
+
+#define VDDRF_DISABLE_HIZ               (0x0 << ACS_VDDRF_CTRL_CLAMP_POS)
+#define VDDRF_DISABLE_GND               (0x1 << ACS_VDDRF_CTRL_CLAMP_POS)
+
+#define VDDRF_DISABLE                   (0x0 << ACS_VDDRF_CTRL_ENABLE_POS)
+#define VDDRF_ENABLE                    (0x1 << ACS_VDDRF_CTRL_ENABLE_POS)
+
+#define VDDRF_TRIM_0P75V                (0x0 << ACS_VDDRF_CTRL_VTRIM_POS)
+#define VDDRF_TRIM_0P76V                (0x1 << ACS_VDDRF_CTRL_VTRIM_POS)
+#define VDDRF_TRIM_1P00V                (0x19 << ACS_VDDRF_CTRL_VTRIM_POS)
+#define VDDRF_TRIM_1P08V                (0x21 << ACS_VDDRF_CTRL_VTRIM_POS)
+#define VDDRF_TRIM_1P10V                (0x23 << ACS_VDDRF_CTRL_VTRIM_POS)
+#define VDDRF_TRIM_1P20V                (0x2D << ACS_VDDRF_CTRL_VTRIM_POS)
+#define VDDRF_TRIM_1P32V                (0x39 << ACS_VDDRF_CTRL_VTRIM_POS)
+#define VDDRF_TRIM_1P38V                (0x3F << ACS_VDDRF_CTRL_VTRIM_POS)
+
+/* VDDFLASH Block Regulator Configuration / Control register */
+#define ACS_VDDFLASH_CTRL_BASE          0x40001620
+#define ACS_VDDFLASH_CTRL               REG32_POINTER(ACS_VDDFLASH_CTRL_BASE)
+
+/* ACS_VDDFLASH_CTRL bit positions */
+#define ACS_VDDFLASH_CTRL_READY_POS     24
+#define ACS_VDDFLASH_CTRL_MASK_READY_POS 11
+#define ACS_VDDFLASH_CTRL_SOFT_START_POS 10
+#define ACS_VDDFLASH_CTRL_ENABLE_LIMITER_POS 9
+#define ACS_VDDFLASH_CTRL_ENABLE_POS    8
+#define ACS_VDDFLASH_CTRL_VTRIM_POS     0
+#define ACS_VDDFLASH_CTRL_VTRIM_MASK    (0x3F << ACS_VDDFLASH_CTRL_VTRIM_POS)
+
+/* ACS_VDDFLASH_CTRL settings */
+#define VDDFLASH_NOT_READY              (0x0 << ACS_VDDFLASH_CTRL_READY_POS)
+#define VDDFLASH_READY                  (0x1 << ACS_VDDFLASH_CTRL_READY_POS)
+
+#define VDDFLASH_USE_READY              (0x0 << ACS_VDDFLASH_CTRL_MASK_READY_POS)
+#define VDDFLASH_MASK_READY             (0x1 << ACS_VDDFLASH_CTRL_MASK_READY_POS)
+
+#define VDDFLASH_LIMITER_70MA           (0x0 << ACS_VDDFLASH_CTRL_SOFT_START_POS)
+#define VDDFLASH_LIMITER_4MA            (0x1 << ACS_VDDFLASH_CTRL_SOFT_START_POS)
+
+#define VDDFLASH_LIMITER_DISABLE        (0x0 << ACS_VDDFLASH_CTRL_ENABLE_LIMITER_POS)
+#define VDDFLASH_LIMITER_ENABLE         (0x1 << ACS_VDDFLASH_CTRL_ENABLE_LIMITER_POS)
+
+#define VDDFLASH_DISABLE                (0x0 << ACS_VDDFLASH_CTRL_ENABLE_POS)
+#define VDDFLASH_ENABLE                 (0x1 << ACS_VDDFLASH_CTRL_ENABLE_POS)
+
+#define VDDFLASH_TRIM_0P750V            (0x0 << ACS_VDDFLASH_CTRL_VTRIM_POS)
+#define VDDFLASH_TRIM_0P775V            (0x1 << ACS_VDDFLASH_CTRL_VTRIM_POS)
+#define VDDFLASH_TRIM_1P725V            (0x27 << ACS_VDDFLASH_CTRL_VTRIM_POS)
+#define VDDFLASH_TRIM_1P750V            (0x28 << ACS_VDDFLASH_CTRL_VTRIM_POS)
+#define VDDFLASH_TRIM_1P775V            (0x29 << ACS_VDDFLASH_CTRL_VTRIM_POS)
+#define VDDFLASH_TRIM_2P300V            (0x3E << ACS_VDDFLASH_CTRL_VTRIM_POS)
+#define VDDFLASH_TRIM_2P325V            (0x3F << ACS_VDDFLASH_CTRL_VTRIM_POS)
+
+/* Retention Regulator control register */
+#define ACS_VDDRET_CTRL_BASE            0x40001624
+#define ACS_VDDRET_CTRL                 REG32_POINTER(ACS_VDDRET_CTRL_BASE)
+
+/* ACS_VDDRET_CTRL bit positions */
+#define ACS_VDDRET_CTRL_VDDMRET_VTRIM_POS 17
+#define ACS_VDDRET_CTRL_VDDMRET_VTRIM_MASK (0x3 << ACS_VDDRET_CTRL_VDDMRET_VTRIM_POS)
+#define ACS_VDDRET_CTRL_VDDMRET_ENABLE_POS 16
+#define ACS_VDDRET_CTRL_VDDACS_VTRIM_POS 9
+#define ACS_VDDRET_CTRL_VDDACS_VTRIM_MASK (0x3 << ACS_VDDRET_CTRL_VDDACS_VTRIM_POS)
+#define ACS_VDDRET_CTRL_VDDTRET_ENABLE_POS 8
+#define ACS_VDDRET_CTRL_VDDCRET_VTRIM_POS 1
+#define ACS_VDDRET_CTRL_VDDCRET_VTRIM_MASK (0x3 << ACS_VDDRET_CTRL_VDDCRET_VTRIM_POS)
+#define ACS_VDDRET_CTRL_VDDCRET_ENABLE_POS 0
+
+/* ACS_VDDRET_CTRL settings */
+#define VDDMRET_TRIM_VALUE              (0x3 << ACS_VDDRET_CTRL_VDDMRET_VTRIM_POS)
+
+#define VDDMRET_DISABLE                 (0x0 << ACS_VDDRET_CTRL_VDDMRET_ENABLE_POS)
+#define VDDMRET_ENABLE                  (0x1 << ACS_VDDRET_CTRL_VDDMRET_ENABLE_POS)
+
+#define VDDACS_TRIM_VALUE               (0x3 << ACS_VDDRET_CTRL_VDDACS_VTRIM_POS)
+
+#define VDDTRET_DISABLE                 (0x0 << ACS_VDDRET_CTRL_VDDTRET_ENABLE_POS)
+#define VDDTRET_ENABLE                  (0x1 << ACS_VDDRET_CTRL_VDDTRET_ENABLE_POS)
+
+#define VDDCRET_TRIM_VALUE              (0x3 << ACS_VDDRET_CTRL_VDDCRET_VTRIM_POS)
+
+#define VDDCRET_DISABLE                 (0x0 << ACS_VDDRET_CTRL_VDDCRET_ENABLE_POS)
+#define VDDCRET_ENABLE                  (0x1 << ACS_VDDRET_CTRL_VDDCRET_ENABLE_POS)
+
+/* RC Oscillator control register */
+#define ACS_RCOSC_CTRL_BASE             0x40001628
+#define ACS_RCOSC_CTRL                  REG32_POINTER(ACS_RCOSC_CTRL_BASE)
+
+/* ACS_RCOSC_CTRL bit positions */
+#define ACS_RCOSC_CTRL_RC_FSEL_POS      25
+#define ACS_RCOSC_CTRL_RC_FSEL_MASK     (0x3 << ACS_RCOSC_CTRL_RC_FSEL_POS)
+#define ACS_RCOSC_CTRL_RC_OSC_EN_POS    24
+#define ACS_RCOSC_CTRL_RC_FTRIM_FLAG_POS 23
+#define ACS_RCOSC_CTRL_RC_FTRIM_ADJ_POS 22
+#define ACS_RCOSC_CTRL_RC_FTRIM_POS     16
+#define ACS_RCOSC_CTRL_RC_FTRIM_MASK    (0x3F << ACS_RCOSC_CTRL_RC_FTRIM_POS)
+#define ACS_RCOSC_CTRL_RC32_OSC_EN_POS  8
+#define ACS_RCOSC_CTRL_RC32_TEMP_COMP_EN_POS 7
+#define ACS_RCOSC_CTRL_RC32_FTRIM_ADJ_POS 6
+#define ACS_RCOSC_CTRL_RC32_FTRIM_POS   0
+#define ACS_RCOSC_CTRL_RC32_FTRIM_MASK  (0x3F << ACS_RCOSC_CTRL_RC32_FTRIM_POS)
+
+/* ACS_RCOSC_CTRL settings */
+#define RC_OSC_3MHZ                     (0x0 << ACS_RCOSC_CTRL_RC_FSEL_POS)
+#define RC_OSC_12MHZ                    (0x1 << ACS_RCOSC_CTRL_RC_FSEL_POS)
+#define RC_OSC_24MHZ                    (0x2 << ACS_RCOSC_CTRL_RC_FSEL_POS)
+#define RC_OSC_48MHZ                    (0x3 << ACS_RCOSC_CTRL_RC_FSEL_POS)
+
+#define RC_OSC_AUTO                     (0x0 << ACS_RCOSC_CTRL_RC_OSC_EN_POS)
+#define RC_OSC_ENABLE                   (0x1 << ACS_RCOSC_CTRL_RC_OSC_EN_POS)
+
+#define RC_OSC_UNCALIBRATED             (0x0 << ACS_RCOSC_CTRL_RC_FTRIM_FLAG_POS)
+#define RC_OSC_CALIBRATED               (0x1 << ACS_RCOSC_CTRL_RC_FTRIM_FLAG_POS)
+
+#define RC_OSC_RANGE_NOM                (0x0 << ACS_RCOSC_CTRL_RC_FTRIM_ADJ_POS)
+#define RC_OSC_RANGE_M15                (0x1 << ACS_RCOSC_CTRL_RC_FTRIM_ADJ_POS)
+
+#define RC_OSC_M48                      (0x0 << ACS_RCOSC_CTRL_RC_FTRIM_POS)
+#define RC_OSC_M46P5                    (0x1 << ACS_RCOSC_CTRL_RC_FTRIM_POS)
+#define RC_OSC_NOM                      (0x20 << ACS_RCOSC_CTRL_RC_FTRIM_POS)
+#define RC_OSC_P46P5                    (0x3F << ACS_RCOSC_CTRL_RC_FTRIM_POS)
+
+#define RC32_OSC_DISABLE                (0x0 << ACS_RCOSC_CTRL_RC32_OSC_EN_POS)
+#define RC32_OSC_ENABLE                 (0x1 << ACS_RCOSC_CTRL_RC32_OSC_EN_POS)
+
+#define RC32_TEMP_COMP_DISABLE          (0x0 << ACS_RCOSC_CTRL_RC32_TEMP_COMP_EN_POS)
+#define RC32_TEMP_COMP_ENABLE           (0x1 << ACS_RCOSC_CTRL_RC32_TEMP_COMP_EN_POS)
+
+#define RC32_OSC_RANGE_NOM              (0x0 << ACS_RCOSC_CTRL_RC32_FTRIM_ADJ_POS)
+#define RC32_OSC_RANGE_M25              (0x1 << ACS_RCOSC_CTRL_RC32_FTRIM_ADJ_POS)
+
+#define RC32_OSC_M48                    (0x0 << ACS_RCOSC_CTRL_RC32_FTRIM_POS)
+#define RC32_OSC_M46P5                  (0x1 << ACS_RCOSC_CTRL_RC32_FTRIM_POS)
+#define RC32_OSC_NOM                    (0x20 << ACS_RCOSC_CTRL_RC32_FTRIM_POS)
+#define RC32_OSC_P46P5                  (0x3F << ACS_RCOSC_CTRL_RC32_FTRIM_POS)
+
+/* Xtal 32 kHz configuration register */
+#define ACS_XTAL32K_CTRL_BASE           0x4000162C
+#define ACS_XTAL32K_CTRL                REG32_POINTER(ACS_XTAL32K_CTRL_BASE)
+
+/* ACS_XTAL32K_CTRL bit positions */
+#define ACS_XTAL32K_CTRL_XTAL_N_OK_RESET_POS 26
+#define ACS_XTAL32K_CTRL_XTAL_N_OK_POS  25
+#define ACS_XTAL32K_CTRL_READY_POS      24
+#define ACS_XTAL32K_CTRL_XIN_CAP_BYPASS_EN_POS 18
+#define ACS_XTAL32K_CTRL_EN_AMPL_CTRL_POS 17
+#define ACS_XTAL32K_CTRL_FORCE_READY_POS 16
+#define ACS_XTAL32K_CTRL_CLOAD_TRIM_POS 8
+#define ACS_XTAL32K_CTRL_CLOAD_TRIM_MASK (0x3F << ACS_XTAL32K_CTRL_CLOAD_TRIM_POS)
+#define ACS_XTAL32K_CTRL_ITRIM_POS      4
+#define ACS_XTAL32K_CTRL_ITRIM_MASK     (0xF << ACS_XTAL32K_CTRL_ITRIM_POS)
+#define ACS_XTAL32K_CTRL_IBOOST_POS     1
+#define ACS_XTAL32K_CTRL_ENABLE_POS     0
+
+/* ACS_XTAL32K_CTRL settings */
+#define XTAL32K_NOT_OK_RESET            (0x1 << ACS_XTAL32K_CTRL_XTAL_N_OK_RESET_POS)
+
+#define XTAL_OK                         (0x0 << ACS_XTAL32K_CTRL_XTAL_N_OK_POS)
+#define XTAL_N_OK                       (0x1 << ACS_XTAL32K_CTRL_XTAL_N_OK_POS)
+
+#define XTAL32K_NOT_OK                  (0x0 << ACS_XTAL32K_CTRL_READY_POS)
+#define XTAL32K_OK                      (0x1 << ACS_XTAL32K_CTRL_READY_POS)
+
+#define XTAL32K_XIN_CAP_BYPASS_DISABLE  (0x0 << ACS_XTAL32K_CTRL_XIN_CAP_BYPASS_EN_POS)
+#define XTAL32K_XIN_CAP_BYPASS_ENABLE   (0x1 << ACS_XTAL32K_CTRL_XIN_CAP_BYPASS_EN_POS)
+
+#define XTAL32K_AMPL_CTRL_DISABLE       (0x0 << ACS_XTAL32K_CTRL_EN_AMPL_CTRL_POS)
+#define XTAL32K_AMPL_CTRL_ENABLE        (0x1 << ACS_XTAL32K_CTRL_EN_AMPL_CTRL_POS)
+
+#define XTAL32K_NOT_FORCE_READY         (0x0 << ACS_XTAL32K_CTRL_FORCE_READY_POS)
+#define XTAL32K_FORCE_READY             (0x1 << ACS_XTAL32K_CTRL_FORCE_READY_POS)
+
+#define XTAL32K_CTRIM_0P0PF             (0x0 << ACS_XTAL32K_CTRL_CLOAD_TRIM_POS)
+#define XTAL32K_CTRIM_0P4PF             (0x1 << ACS_XTAL32K_CTRL_CLOAD_TRIM_POS)
+#define XTAL32K_CTRIM_8P8PF             (0x16 << ACS_XTAL32K_CTRL_CLOAD_TRIM_POS)
+#define XTAL32K_CTRIM_25P2PF            (0x3F << ACS_XTAL32K_CTRL_CLOAD_TRIM_POS)
+
+#define XTAL32K_ITRIM_20NA              (0x0 << ACS_XTAL32K_CTRL_ITRIM_POS)
+#define XTAL32K_ITRIM_80NA              (0x3 << ACS_XTAL32K_CTRL_ITRIM_POS)
+#define XTAL32K_ITRIM_160NA             (0x7 << ACS_XTAL32K_CTRL_ITRIM_POS)
+#define XTAL32K_ITRIM_320NA             (0xF << ACS_XTAL32K_CTRL_ITRIM_POS)
+
+#define XTAL32K_IBOOST_DISABLE          (0x0 << ACS_XTAL32K_CTRL_IBOOST_POS)
+#define XTAL32K_IBOOST_ENABLE           (0x1 << ACS_XTAL32K_CTRL_IBOOST_POS)
+
+#define XTAL32K_DISABLE                 (0x0 << ACS_XTAL32K_CTRL_ENABLE_POS)
+#define XTAL32K_ENABLE                  (0x1 << ACS_XTAL32K_CTRL_ENABLE_POS)
+
+/* Baseband timer and standby clock control register */
+#define ACS_BB_TIMER_CTRL_BASE          0x40001630
+#define ACS_BB_TIMER_CTRL               REG32_POINTER(ACS_BB_TIMER_CTRL_BASE)
+
+/* ACS_BB_TIMER_CTRL bit positions */
+#define ACS_BB_TIMER_CTRL_BB_CLK_PRESCALE_POS 8
+#define ACS_BB_TIMER_CTRL_BB_CLK_PRESCALE_MASK (0x3 << ACS_BB_TIMER_CTRL_BB_CLK_PRESCALE_POS)
+#define ACS_BB_TIMER_CTRL_BB_TIMER_NRESET_POS 0
+
+/* ACS_BB_TIMER_CTRL settings */
+#define BB_CLK_PRESCALE_1               (0x0 << ACS_BB_TIMER_CTRL_BB_CLK_PRESCALE_POS)
+#define BB_CLK_PRESCALE_2               (0x1 << ACS_BB_TIMER_CTRL_BB_CLK_PRESCALE_POS)
+#define BB_CLK_PRESCALE_4               (0x2 << ACS_BB_TIMER_CTRL_BB_CLK_PRESCALE_POS)
+#define BB_CLK_PRESCALE_8               (0x3 << ACS_BB_TIMER_CTRL_BB_CLK_PRESCALE_POS)
+
+#define BB_TIMER_RESET                  (0x0 << ACS_BB_TIMER_CTRL_BB_TIMER_NRESET_POS)
+#define BB_TIMER_NRESET                 (0x1 << ACS_BB_TIMER_CTRL_BB_TIMER_NRESET_POS)
+
+/* Clock Detector configuration register */
+#define ACS_CLK_DET_CTRL_BASE           0x40001634
+#define ACS_CLK_DET_CTRL                REG32_POINTER(ACS_CLK_DET_CTRL_BASE)
+
+/* ACS_CLK_DET_CTRL bit positions */
+#define ACS_CLK_DET_CTRL_CLOCK_PRESENT_POS 8
+#define ACS_CLK_DET_CTRL_RESET_IGNORE_POS 1
+#define ACS_CLK_DET_CTRL_ENABLE_POS     0
+
+/* ACS_CLK_DET_CTRL settings */
+#define ACS_CLK_DET_NO_CLOCK            (0x0 << ACS_CLK_DET_CTRL_CLOCK_PRESENT_POS)
+#define ACS_CLK_DET_CLOCK_PRESENT       (0x1 << ACS_CLK_DET_CTRL_CLOCK_PRESENT_POS)
+
+#define ACS_CLK_DET_RESET_DISABLE       (0x1 << ACS_CLK_DET_CTRL_RESET_IGNORE_POS)
+#define ACS_CLK_DET_RESET_ENABLE        (0x0 << ACS_CLK_DET_CTRL_RESET_IGNORE_POS)
+
+#define ACS_CLK_DET_ENABLE              (0x1 << ACS_CLK_DET_CTRL_ENABLE_POS)
+#define ACS_CLK_DET_DISABLE             (0x0 << ACS_CLK_DET_CTRL_ENABLE_POS)
+
+/* RTC Timer Counter Preload */
+#define ACS_RTC_CFG_BASE                0x40001638
+#define ACS_RTC_CFG                     REG32_POINTER(ACS_RTC_CFG_BASE)
+
+/* ACS_RTC_CFG settings */
+#define RTC_CNT_START_0                 (0x0 << ACS_RTC_CFG_START_VALUE_POS)
+#define RTC_CNT_START_1                 (0x1 << ACS_RTC_CFG_START_VALUE_POS)
+#define RTC_CNT_START_32767             (0x7FFF << ACS_RTC_CFG_START_VALUE_POS)
+#define RTC_CNT_START_4294967295        (0xFFFFFFFF << ACS_RTC_CFG_START_VALUE_POS)
+
+/* RTC Timer Counter Current Value */
+#define ACS_RTC_COUNT_BASE              0x4000163C
+#define ACS_RTC_COUNT                   READONLY_REG32_POINTER(ACS_RTC_COUNT_BASE)
+
+/* RTC control Register */
+#define ACS_RTC_CTRL_BASE               0x40001640
+#define ACS_RTC_CTRL                    REG32_POINTER(ACS_RTC_CTRL_BASE)
+
+/* ACS_RTC_CTRL bit positions */
+#define ACS_RTC_CTRL_FORCE_CLOCK_POS    25
+#define ACS_RTC_CTRL_RESET_POS          24
+#define ACS_RTC_CTRL_ALARM_CFG_POS      4
+#define ACS_RTC_CTRL_ALARM_CFG_MASK     (0xF << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define ACS_RTC_CTRL_CLK_SRC_SEL_POS    1
+#define ACS_RTC_CTRL_CLK_SRC_SEL_MASK   (0x7 << ACS_RTC_CTRL_CLK_SRC_SEL_POS)
+#define ACS_RTC_CTRL_ENABLE_POS         0
+
+/* ACS_RTC_CTRL settings */
+#define RTC_FORCE_CLOCK                 (0x1 << ACS_RTC_CTRL_FORCE_CLOCK_POS)
+
+#define RTC_RESET                       (0x1 << ACS_RTC_CTRL_RESET_POS)
+
+#define RTC_ALARM_DISABLE               (0x0 << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_7P8125MS              (0x1 << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_15P625MS              (0x2 << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_31P25MS               (0x3 << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_62P5MS                (0x4 << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_125MS                 (0x5 << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_250MS                 (0x6 << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_500MS                 (0x7 << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_1S                    (0x8 << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_2S                    (0x9 << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_4S                    (0xA << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_8S                    (0xB << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_16S                   (0xC << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_32S                   (0xD << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_64S                   (0xE << ACS_RTC_CTRL_ALARM_CFG_POS)
+#define RTC_ALARM_ZERO                  (0xF << ACS_RTC_CTRL_ALARM_CFG_POS)
+
+#define RTC_CLK_SRC_RC_OSC              (0x0 << ACS_RTC_CTRL_CLK_SRC_SEL_POS)
+#define RTC_CLK_SRC_XTAL32K             (0x1 << ACS_RTC_CTRL_CLK_SRC_SEL_POS)
+#define RTC_CLK_SRC_GPIO0               (0x2 << ACS_RTC_CTRL_CLK_SRC_SEL_POS)
+#define RTC_CLK_SRC_GPIO1               (0x3 << ACS_RTC_CTRL_CLK_SRC_SEL_POS)
+#define RTC_CLK_SRC_GPIO2               (0x4 << ACS_RTC_CTRL_CLK_SRC_SEL_POS)
+#define RTC_CLK_SRC_GPIO3               (0x5 << ACS_RTC_CTRL_CLK_SRC_SEL_POS)
+
+#define RTC_DISABLE                     (0x0 << ACS_RTC_CTRL_ENABLE_POS)
+#define RTC_ENABLE                      (0x1 << ACS_RTC_CTRL_ENABLE_POS)
+
+/* Power Modes control Register */
+#define ACS_PWR_MODES_CTRL_BASE         0x40001644
+#define ACS_PWR_MODES_CTRL              REG32_POINTER(ACS_PWR_MODES_CTRL_BASE)
+
+/* ACS_PWR_MODES_CTRL settings */
+#define PWR_RUN_MODE                    (0x0 << ACS_PWR_MODES_CTRL_POWER_MODE_POS)
+#define PWR_STANDBY_MODE                (0x9B1D79A0 << ACS_PWR_MODES_CTRL_POWER_MODE_POS)
+#define PWR_SLEEP_MODE                  (0xE0045650 << ACS_PWR_MODES_CTRL_POWER_MODE_POS)
+#define PWR_DEEP_SLEEP_MODE             (0x53C02890 << ACS_PWR_MODES_CTRL_POWER_MODE_POS)
+
+/* Wake-Up control / Status Register */
+#define ACS_WAKEUP_CTRL_BASE            0x40001648
+#define ACS_WAKEUP_CTRL                 REG32_POINTER(ACS_WAKEUP_CTRL_BASE)
+
+/* ACS_WAKEUP_CTRL bit positions */
+#define ACS_WAKEUP_CTRL_NFC_FIELD_WAKEUP_POS 27
+#define ACS_WAKEUP_CTRL_THRESHOLD_WAKEUP_POS 26
+#define ACS_WAKEUP_CTRL_FIFO_FULL_WAKEUP_POS 25
+#define ACS_WAKEUP_CTRL_SENSOR_DET_WAKEUP_POS 24
+#define ACS_WAKEUP_CTRL_DCDC_OVERLOAD_WAKEUP_POS 23
+#define ACS_WAKEUP_CTRL_WAKEUP_PAD_WAKEUP_POS 22
+#define ACS_WAKEUP_CTRL_RTC_ALARM_WAKEUP_POS 21
+#define ACS_WAKEUP_CTRL_BB_TIMER_WAKEUP_POS 20
+#define ACS_WAKEUP_CTRL_GPIO3_WAKEUP_POS 19
+#define ACS_WAKEUP_CTRL_GPIO2_WAKEUP_POS 18
+#define ACS_WAKEUP_CTRL_GPIO1_WAKEUP_POS 17
+#define ACS_WAKEUP_CTRL_GPIO0_WAKEUP_POS 16
+#define ACS_WAKEUP_CTRL_NFC_FIELD_WAKEUP_CLEAR_POS 11
+#define ACS_WAKEUP_CTRL_THRESHOLD_WAKEUP_CLEAR_POS 10
+#define ACS_WAKEUP_CTRL_FIFO_FULL_WAKEUP_CLEAR_POS 9
+#define ACS_WAKEUP_CTRL_SENSOR_DET_WAKEUP_CLEAR_POS 8
+#define ACS_WAKEUP_CTRL_DCDC_OVERLOAD_WAKEUP_CLEAR_POS 7
+#define ACS_WAKEUP_CTRL_WAKEUP_PAD_WAKEUP_CLEAR_POS 6
+#define ACS_WAKEUP_CTRL_RTC_ALARM_WAKEUP_CLEAR_POS 5
+#define ACS_WAKEUP_CTRL_BB_TIMER_WAKEUP_CLEAR_POS 4
+#define ACS_WAKEUP_CTRL_GPIO3_WAKEUP_CLEAR_POS 3
+#define ACS_WAKEUP_CTRL_GPIO2_WAKEUP_CLEAR_POS 2
+#define ACS_WAKEUP_CTRL_GPIO1_WAKEUP_CLEAR_POS 1
+#define ACS_WAKEUP_CTRL_GPIO0_WAKEUP_CLEAR_POS 0
+
+/* ACS_WAKEUP_CTRL settings */
+#define WAKEUP_NFC_FIELD_EVENT_NOT_SET  (0x0 << ACS_WAKEUP_CTRL_NFC_FIELD_WAKEUP_POS)
+#define WAKEUP_NFC_FIELD_EVENT_SET      (0x1 << ACS_WAKEUP_CTRL_NFC_FIELD_WAKEUP_POS)
+
+#define WAKEUP_THRESHOLD_EVENT_NOT_SET  (0x0 << ACS_WAKEUP_CTRL_THRESHOLD_WAKEUP_POS)
+#define WAKEUP_THRESHOLD_EVENT_SET      (0x1 << ACS_WAKEUP_CTRL_THRESHOLD_WAKEUP_POS)
+
+#define WAKEUP_FIFO_FULL_EVENT_NOT_SET  (0x0 << ACS_WAKEUP_CTRL_FIFO_FULL_WAKEUP_POS)
+#define WAKEUP_FIFO_FULL_EVENT_SET      (0x1 << ACS_WAKEUP_CTRL_FIFO_FULL_WAKEUP_POS)
+
+#define WAKEUP_SENSOR_DET_EVENT_NOT_SET (0x0 << ACS_WAKEUP_CTRL_SENSOR_DET_WAKEUP_POS)
+#define WAKEUP_SENSOR_DET_EVENT_SET     (0x1 << ACS_WAKEUP_CTRL_SENSOR_DET_WAKEUP_POS)
+
+#define WAKEUP_DCDC_OVERLOAD_EVENT_NOT_SET (0x0 << ACS_WAKEUP_CTRL_DCDC_OVERLOAD_WAKEUP_POS)
+#define WAKEUP_DCDC_OVERLOAD_EVENT_SET  (0x1 << ACS_WAKEUP_CTRL_DCDC_OVERLOAD_WAKEUP_POS)
+
+#define WAKEUP_PAD_EVENT_NOT_SET        (0x0 << ACS_WAKEUP_CTRL_WAKEUP_PAD_WAKEUP_POS)
+#define WAKEUP_PAD_EVENT_SET            (0x1 << ACS_WAKEUP_CTRL_WAKEUP_PAD_WAKEUP_POS)
+
+#define WAKEUP_RTC_ALARM_EVENT_NOT_SET  (0x0 << ACS_WAKEUP_CTRL_RTC_ALARM_WAKEUP_POS)
+#define WAKEUP_RTC_ALARM_EVENT_SET      (0x1 << ACS_WAKEUP_CTRL_RTC_ALARM_WAKEUP_POS)
+
+#define WAKEUP_BB_TIMER_EVENT_NOT_SET   (0x0 << ACS_WAKEUP_CTRL_BB_TIMER_WAKEUP_POS)
+#define WAKEUP_BB_TIMER_EVENT_SET       (0x1 << ACS_WAKEUP_CTRL_BB_TIMER_WAKEUP_POS)
+
+#define WAKEUP_GPIO3_EVENT_NOT_SET      (0x0 << ACS_WAKEUP_CTRL_GPIO3_WAKEUP_POS)
+#define WAKEUP_GPIO3_EVENT_SET          (0x1 << ACS_WAKEUP_CTRL_GPIO3_WAKEUP_POS)
+
+#define WAKEUP_GPIO2_EVENT_NOT_SET      (0x0 << ACS_WAKEUP_CTRL_GPIO2_WAKEUP_POS)
+#define WAKEUP_GPIO2_EVENT_SET          (0x1 << ACS_WAKEUP_CTRL_GPIO2_WAKEUP_POS)
+
+#define WAKEUP_GPIO1_EVENT_NOT_SET      (0x0 << ACS_WAKEUP_CTRL_GPIO1_WAKEUP_POS)
+#define WAKEUP_GPIO1_EVENT_SET          (0x1 << ACS_WAKEUP_CTRL_GPIO1_WAKEUP_POS)
+
+#define WAKEUP_GPIO0_EVENT_NOT_SET      (0x0 << ACS_WAKEUP_CTRL_GPIO0_WAKEUP_POS)
+#define WAKEUP_GPIO0_EVENT_SET          (0x1 << ACS_WAKEUP_CTRL_GPIO0_WAKEUP_POS)
+
+#define WAKEUP_NFC_FIELD_EVENT_CLEAR    (0x1 << ACS_WAKEUP_CTRL_NFC_FIELD_WAKEUP_CLEAR_POS)
+
+#define THRESHOLD_FULL_EVENT_CLEAR      (0x1 << ACS_WAKEUP_CTRL_THRESHOLD_WAKEUP_CLEAR_POS)
+
+#define WAKEUP_FIFO_FULL_EVENT_CLEAR    (0x1 << ACS_WAKEUP_CTRL_FIFO_FULL_WAKEUP_CLEAR_POS)
+
+#define WAKEUP_SENSOR_DET_EVENT_CLEAR   (0x1 << ACS_WAKEUP_CTRL_SENSOR_DET_WAKEUP_CLEAR_POS)
+
+#define WAKEUP_DCDC_OVERLOAD_EVENT_CLEAR (0x1 << ACS_WAKEUP_CTRL_DCDC_OVERLOAD_WAKEUP_CLEAR_POS)
+
+#define WAKEUP_PAD_EVENT_CLEAR          (0x1 << ACS_WAKEUP_CTRL_WAKEUP_PAD_WAKEUP_CLEAR_POS)
+
+#define WAKEUP_RTC_ALARM_EVENT_CLEAR    (0x1 << ACS_WAKEUP_CTRL_RTC_ALARM_WAKEUP_CLEAR_POS)
+
+#define WAKEUP_BB_TIMER_CLEAR           (0x1 << ACS_WAKEUP_CTRL_BB_TIMER_WAKEUP_CLEAR_POS)
+
+#define WAKEUP_GPIO3_EVENT_CLEAR        (0x1 << ACS_WAKEUP_CTRL_GPIO3_WAKEUP_CLEAR_POS)
+
+#define WAKEUP_GPIO2_EVENT_CLEAR        (0x1 << ACS_WAKEUP_CTRL_GPIO2_WAKEUP_CLEAR_POS)
+
+#define WAKEUP_GPIO1_EVENT_CLEAR        (0x1 << ACS_WAKEUP_CTRL_GPIO1_WAKEUP_CLEAR_POS)
+
+#define WAKEUP_GPIO0_EVENT_CLEAR        (0x1 << ACS_WAKEUP_CTRL_GPIO0_WAKEUP_CLEAR_POS)
+
+/* Wakeup configuration */
+#define ACS_WAKEUP_CFG_BASE             0x4000164C
+#define ACS_WAKEUP_CFG                  REG32_POINTER(ACS_WAKEUP_CFG_BASE)
+
+/* ACS_WAKEUP_CFG bit positions */
+#define ACS_WAKEUP_CFG_DELAY_POS        16
+#define ACS_WAKEUP_CFG_DELAY_MASK       (0x7 << ACS_WAKEUP_CFG_DELAY_POS)
+#define ACS_WAKEUP_CFG_USE_HF_OK_POS    14
+#define ACS_WAKEUP_CFG_NFC_LEVEL_POS    12
+#define ACS_WAKEUP_CFG_NFC_LEVEL_MASK   (0x3 << ACS_WAKEUP_CFG_NFC_LEVEL_POS)
+#define ACS_WAKEUP_CFG_NFC_FIELD_EN_POS 11
+#define ACS_WAKEUP_CFG_GP_BIT_POS       10
+#define ACS_WAKEUP_CFG_FIFO_FULL_EN_POS 9
+#define ACS_WAKEUP_CFG_DCDC_OVERLOAD_EN_POS 8
+#define ACS_WAKEUP_CFG_GPIO3_POL_POS    7
+#define ACS_WAKEUP_CFG_GPIO2_POL_POS    6
+#define ACS_WAKEUP_CFG_GPIO1_POL_POS    5
+#define ACS_WAKEUP_CFG_GPIO0_POL_POS    4
+#define ACS_WAKEUP_CFG_GPIO3_EN_POS     3
+#define ACS_WAKEUP_CFG_GPIO2_EN_POS     2
+#define ACS_WAKEUP_CFG_GPIO1_EN_POS     1
+#define ACS_WAKEUP_CFG_GPIO0_EN_POS     0
+
+/* ACS_WAKEUP_CFG settings */
+#define WAKEUP_DELAY_1                  (0x0 << ACS_WAKEUP_CFG_DELAY_POS)
+#define WAKEUP_DELAY_2                  (0x1 << ACS_WAKEUP_CFG_DELAY_POS)
+#define WAKEUP_DELAY_4                  (0x2 << ACS_WAKEUP_CFG_DELAY_POS)
+#define WAKEUP_DELAY_8                  (0x3 << ACS_WAKEUP_CFG_DELAY_POS)
+#define WAKEUP_DELAY_16                 (0x4 << ACS_WAKEUP_CFG_DELAY_POS)
+#define WAKEUP_DELAY_32                 (0x5 << ACS_WAKEUP_CFG_DELAY_POS)
+#define WAKEUP_DELAY_64                 (0x6 << ACS_WAKEUP_CFG_DELAY_POS)
+#define WAKEUP_DELAY_128                (0x7 << ACS_WAKEUP_CFG_DELAY_POS)
+
+#define WAKEUP_NOT_USE_HF_OK            (0x0 << ACS_WAKEUP_CFG_USE_HF_OK_POS)
+#define WAKEUP_USE_HF_OK                (0x1 << ACS_WAKEUP_CFG_USE_HF_OK_POS)
+
+#define NFC_FIELD_0                     (0x0 << ACS_WAKEUP_CFG_NFC_LEVEL_POS)
+#define NFC_FIELD_1                     (0x1 << ACS_WAKEUP_CFG_NFC_LEVEL_POS)
+#define NFC_FIELD_2                     (0x2 << ACS_WAKEUP_CFG_NFC_LEVEL_POS)
+
+#define WAKEUP_NFC_FIELD_DISABLE        (0x0 << ACS_WAKEUP_CFG_NFC_FIELD_EN_POS)
+#define WAKEUP_NFC_FIELD_ENABLE         (0x1 << ACS_WAKEUP_CFG_NFC_FIELD_EN_POS)
+
+#define WAKEUP_FIFO_DISABLE             (0x0 << ACS_WAKEUP_CFG_FIFO_FULL_EN_POS)
+#define WAKEUP_FIFO_ENABLE              (0x1 << ACS_WAKEUP_CFG_FIFO_FULL_EN_POS)
+
+#define WAKEUP_DCDC_OVERLOAD_DISABLE    (0x0 << ACS_WAKEUP_CFG_DCDC_OVERLOAD_EN_POS)
+#define WAKEUP_DCDC_OVERLOAD_ENABLE     (0x1 << ACS_WAKEUP_CFG_DCDC_OVERLOAD_EN_POS)
+
+#define WAKEUP_GPIO3_RISING             (0x0 << ACS_WAKEUP_CFG_GPIO3_POL_POS)
+#define WAKEUP_GPIO3_FALLING            (0x1 << ACS_WAKEUP_CFG_GPIO3_POL_POS)
+
+#define WAKEUP_GPIO2_RISING             (0x0 << ACS_WAKEUP_CFG_GPIO2_POL_POS)
+#define WAKEUP_GPIO2_FALLING            (0x1 << ACS_WAKEUP_CFG_GPIO2_POL_POS)
+
+#define WAKEUP_GPIO1_RISING             (0x0 << ACS_WAKEUP_CFG_GPIO1_POL_POS)
+#define WAKEUP_GPIO1_FALLING            (0x1 << ACS_WAKEUP_CFG_GPIO1_POL_POS)
+
+#define WAKEUP_GPIO0_RISING             (0x0 << ACS_WAKEUP_CFG_GPIO0_POL_POS)
+#define WAKEUP_GPIO0_FALLING            (0x1 << ACS_WAKEUP_CFG_GPIO0_POL_POS)
+
+#define WAKEUP_GPIO3_DISABLE            (0x0 << ACS_WAKEUP_CFG_GPIO3_EN_POS)
+#define WAKEUP_GPIO3_ENABLE             (0x1 << ACS_WAKEUP_CFG_GPIO3_EN_POS)
+
+#define WAKEUP_GPIO2_DISABLE            (0x0 << ACS_WAKEUP_CFG_GPIO2_EN_POS)
+#define WAKEUP_GPIO2_ENABLE             (0x1 << ACS_WAKEUP_CFG_GPIO2_EN_POS)
+
+#define WAKEUP_GPIO1_DISABLE            (0x0 << ACS_WAKEUP_CFG_GPIO1_EN_POS)
+#define WAKEUP_GPIO1_ENABLE             (0x1 << ACS_WAKEUP_CFG_GPIO1_EN_POS)
+
+#define WAKEUP_GPIO0_DISABLE            (0x0 << ACS_WAKEUP_CFG_GPIO0_EN_POS)
+#define WAKEUP_GPIO0_ENABLE             (0x1 << ACS_WAKEUP_CFG_GPIO0_EN_POS)
+
+/* RTC Timer wakeup value and wakeup source */
+#define ACS_WAKEUP_STATE_BASE           0x40001650
+#define ACS_WAKEUP_STATE                READONLY_REG32_POINTER(ACS_WAKEUP_STATE_BASE)
+
+/* ACS_WAKEUP_STATE bit positions */
+#define ACS_WAKEUP_STATE_WAKEUP_SRC_POS 16
+#define ACS_WAKEUP_STATE_WAKEUP_SRC_MASK (0xF << ACS_WAKEUP_STATE_WAKEUP_SRC_POS)
+#define ACS_WAKEUP_STATE_RTC_VALUE_POS  0
+#define ACS_WAKEUP_STATE_RTC_VALUE_MASK (0xFF << ACS_WAKEUP_STATE_RTC_VALUE_POS)
+
+/* ACS_WAKEUP_STATE settings */
+#define WAKEUP_DUE_TO_NFC_FIELD         (0xB << ACS_WAKEUP_STATE_WAKEUP_SRC_POS)
+#define WAKEUP_DUE_TO_THRESHOLD         (0xA << ACS_WAKEUP_STATE_WAKEUP_SRC_POS)
+#define WAKEUP_DUE_TO_FIFO              (0x9 << ACS_WAKEUP_STATE_WAKEUP_SRC_POS)
+#define WAKEUP_DUE_TO_SENSOR_DET        (0x8 << ACS_WAKEUP_STATE_WAKEUP_SRC_POS)
+#define WAKEUP_DUE_TO_DCDC_OVERLOAD     (0x7 << ACS_WAKEUP_STATE_WAKEUP_SRC_POS)
+#define WAKEUP_DUE_TO_WAKEUP_PAD        (0x6 << ACS_WAKEUP_STATE_WAKEUP_SRC_POS)
+#define WAKEUP_DUE_TO_RTC_ALARM         (0x5 << ACS_WAKEUP_STATE_WAKEUP_SRC_POS)
+#define WAKEUP_DUE_TO_BB_TIMER          (0x4 << ACS_WAKEUP_STATE_WAKEUP_SRC_POS)
+#define WAKEUP_DUE_TO_GPIO3             (0x3 << ACS_WAKEUP_STATE_WAKEUP_SRC_POS)
+#define WAKEUP_DUE_TO_GPIO2             (0x2 << ACS_WAKEUP_STATE_WAKEUP_SRC_POS)
+#define WAKEUP_DUE_TO_GPIO1             (0x1 << ACS_WAKEUP_STATE_WAKEUP_SRC_POS)
+#define WAKEUP_DUE_TO_GPIO0             (0x0 << ACS_WAKEUP_STATE_WAKEUP_SRC_POS)
+
+/* Boot configuration */
+#define ACS_BOOT_CFG_BASE               0x40001654
+#define ACS_BOOT_CFG                    REG32_POINTER(ACS_BOOT_CFG_BASE)
+
+/* ACS_BOOT_CFG bit positions */
+#define ACS_BOOT_CFG_PADS_RETENTION_EN_POS 8
+#define ACS_BOOT_CFG_BOOT_ROT_BYPASS_POS 6
+#define ACS_BOOT_CFG_BOOT_PWR_CAL_BYPASS_POS 5
+#define ACS_BOOT_CFG_RC_CLOCK_FSEL_POS  3
+#define ACS_BOOT_CFG_RC_CLOCK_FSEL_MASK (0x3 << ACS_BOOT_CFG_RC_CLOCK_FSEL_POS)
+#define ACS_BOOT_CFG_RC_FTRIM_FLAG_POS  2
+#define ACS_BOOT_CFG_BOOT_SELECT_POS    0
+#define ACS_BOOT_CFG_BOOT_SELECT_MASK   (0x3 << ACS_BOOT_CFG_BOOT_SELECT_POS)
+
+/* ACS_BOOT_CFG settings */
+#define PADS_RETENTION_DISABLE          (0x0 << ACS_BOOT_CFG_PADS_RETENTION_EN_POS)
+#define PADS_RETENTION_ENABLE           (0x1 << ACS_BOOT_CFG_PADS_RETENTION_EN_POS)
+
+#define BOOT_ROT_BYPASS_DISABLE         (0x0 << ACS_BOOT_CFG_BOOT_ROT_BYPASS_POS)
+#define BOOT_ROT_BYPASS_ENABLE          (0x1 << ACS_BOOT_CFG_BOOT_ROT_BYPASS_POS)
+
+#define BOOT_PWR_CAL_BYPASS_DISABLE     (0x0 << ACS_BOOT_CFG_BOOT_PWR_CAL_BYPASS_POS)
+#define BOOT_PWR_CAL_BYPASS_ENABLE      (0x1 << ACS_BOOT_CFG_BOOT_PWR_CAL_BYPASS_POS)
+
+#define RC_OSC_STATUS_3MHZ              (0x0 << ACS_BOOT_CFG_RC_CLOCK_FSEL_POS)
+#define RC_OSC_STATUS_12MHZ             (0x1 << ACS_BOOT_CFG_RC_CLOCK_FSEL_POS)
+#define RC_OSC_STATUS_24MHZ             (0x2 << ACS_BOOT_CFG_RC_CLOCK_FSEL_POS)
+#define RC_OSC_STATUS_48MHZ             (0x3 << ACS_BOOT_CFG_RC_CLOCK_FSEL_POS)
+
+#define RC_OSC_STATUS_UNCALIBRATED      (0x0 << ACS_BOOT_CFG_RC_FTRIM_FLAG_POS)
+#define RC_OSC_STATUS_CALIBRATED        (0x1 << ACS_BOOT_CFG_RC_FTRIM_FLAG_POS)
+
+#define BOOT_FLASH_XTAL_DISABLE         (0x0 << ACS_BOOT_CFG_BOOT_SELECT_POS)
+#define BOOT_CUSTOM                     (0x1 << ACS_BOOT_CFG_BOOT_SELECT_POS)
+#define BOOT_FLASH_XTAL_DEFAULT_TRIM    (0x2 << ACS_BOOT_CFG_BOOT_SELECT_POS)
+#define BOOT_FLASH_XTAL_CUSTOM_TRIM     (0x3 << ACS_BOOT_CFG_BOOT_SELECT_POS)
+
+/* Boot control Register registers */
+#define ACS_BOOT_GP_DATA_BASE           0x40001658
+#define ACS_BOOT_GP_DATA                REG32_POINTER(ACS_BOOT_GP_DATA_BASE)
+
+/* ACS reset source status registers */
+#define ACS_RESET_STATUS_BASE           0x4000165C
+#define ACS_RESET_STATUS                REG32_POINTER(ACS_RESET_STATUS_BASE)
+
+/* ACS_RESET_STATUS bit positions */
+#define ACS_RESET_STATUS_WRONG_STATE_RESET_FLAG_POS 25
+#define ACS_RESET_STATUS_SOC_WDG_RESET_FLAG_POS 24
+#define ACS_RESET_STATUS_TIMEOUT_RESET_FLAG_POS 23
+#define ACS_RESET_STATUS_CLK_DET_RESET_FLAG_POS 22
+#define ACS_RESET_STATUS_VDDFLASH_RESET_FLAG_POS 21
+#define ACS_RESET_STATUS_VDDM_RESET_FLAG_POS 20
+#define ACS_RESET_STATUS_VDDC_RESET_FLAG_POS 19
+#define ACS_RESET_STATUS_BG_VREF_RESET_FLAG_POS 18
+#define ACS_RESET_STATUS_PAD_RESET_FLAG_POS 17
+#define ACS_RESET_STATUS_POR_RESET_FLAG_POS 16
+#define ACS_RESET_STATUS_WRONG_STATE_RESET_FLAG_CLEAR_POS 9
+#define ACS_RESET_STATUS_SOC_WDG_RESET_FLAG_CLEAR_POS 8
+#define ACS_RESET_STATUS_TIMEOUT_RESET_FLAG_CLEAR_POS 7
+#define ACS_RESET_STATUS_CLK_DET_RESET_FLAG_CLEAR_POS 6
+#define ACS_RESET_STATUS_VDDFLASH_RESET_FLAG_CLEAR_POS 5
+#define ACS_RESET_STATUS_VDDM_RESET_FLAG_CLEAR_POS 4
+#define ACS_RESET_STATUS_VDDC_RESET_FLAG_CLEAR_POS 3
+#define ACS_RESET_STATUS_BG_VREF_RESET_FLAG_CLEAR_POS 2
+#define ACS_RESET_STATUS_PAD_RESET_FLAG_CLEAR_POS 1
+#define ACS_RESET_STATUS_POR_RESET_FLAG_CLEAR_POS 0
+
+/* ACS_RESET_STATUS settings */
+#define WRONG_STATE_RESET_FLAG_NOT_SET  (0x0 << ACS_RESET_STATUS_WRONG_STATE_RESET_FLAG_POS)
+#define WRONG_STATE_RESET_FLAG_SET      (0x1 << ACS_RESET_STATUS_WRONG_STATE_RESET_FLAG_POS)
+
+#define SOC_WDG_RESET_FLAG_NOT_SET      (0x0 << ACS_RESET_STATUS_SOC_WDG_RESET_FLAG_POS)
+#define SOC_WDG_RESET_FLAG_SET          (0x1 << ACS_RESET_STATUS_SOC_WDG_RESET_FLAG_POS)
+
+#define TIMEOUT_RESET_FLAG_NOT_SET      (0x0 << ACS_RESET_STATUS_TIMEOUT_RESET_FLAG_POS)
+#define TIMEOUT_RESET_FLAG_SET          (0x1 << ACS_RESET_STATUS_TIMEOUT_RESET_FLAG_POS)
+
+#define CLK_DET_RESET_FLAG_NOT_SET      (0x0 << ACS_RESET_STATUS_CLK_DET_RESET_FLAG_POS)
+#define CLK_DET_RESET_FLAG_SET          (0x1 << ACS_RESET_STATUS_CLK_DET_RESET_FLAG_POS)
+
+#define VDDFLASH_RESET_FLAG_NOT_SET     (0x0 << ACS_RESET_STATUS_VDDFLASH_RESET_FLAG_POS)
+#define VDDFLASH_RESET_FLAG_SET         (0x1 << ACS_RESET_STATUS_VDDFLASH_RESET_FLAG_POS)
+
+#define VDDM_RESET_FLAG_NOT_SET         (0x0 << ACS_RESET_STATUS_VDDM_RESET_FLAG_POS)
+#define VDDM_RESET_FLAG_SET             (0x1 << ACS_RESET_STATUS_VDDM_RESET_FLAG_POS)
+
+#define VDDC_RESET_FLAG_NOT_SET         (0x0 << ACS_RESET_STATUS_VDDC_RESET_FLAG_POS)
+#define VDDC_RESET_FLAG_SET             (0x1 << ACS_RESET_STATUS_VDDC_RESET_FLAG_POS)
+
+#define BG_VREF_RESET_FLAG_NOT_SET      (0x0 << ACS_RESET_STATUS_BG_VREF_RESET_FLAG_POS)
+#define BG_VREF_RESET_FLAG_SET          (0x1 << ACS_RESET_STATUS_BG_VREF_RESET_FLAG_POS)
+
+#define PAD_RESET_FLAG_NOT_SET          (0x0 << ACS_RESET_STATUS_PAD_RESET_FLAG_POS)
+#define PAD_RESET_FLAG_SET              (0x1 << ACS_RESET_STATUS_PAD_RESET_FLAG_POS)
+
+#define POR_RESET_FLAG_NOT_SET          (0x0 << ACS_RESET_STATUS_POR_RESET_FLAG_POS)
+#define POR_RESET_FLAG_SET              (0x1 << ACS_RESET_STATUS_POR_RESET_FLAG_POS)
+
+#define WRONG_STATE_RESET_FLAG_CLEAR    (0x1 << ACS_RESET_STATUS_WRONG_STATE_RESET_FLAG_CLEAR_POS)
+
+#define SOC_WDG_RESET_FLAG_CLEAR        (0x1 << ACS_RESET_STATUS_SOC_WDG_RESET_FLAG_CLEAR_POS)
+
+#define TIMEOUT_RESET_FLAG_CLEAR        (0x1 << ACS_RESET_STATUS_TIMEOUT_RESET_FLAG_CLEAR_POS)
+
+#define CLK_DET_RESET_FLAG_CLEAR        (0x1 << ACS_RESET_STATUS_CLK_DET_RESET_FLAG_CLEAR_POS)
+
+#define VDDFLASH_RESET_FLAG_CLEAR       (0x1 << ACS_RESET_STATUS_VDDFLASH_RESET_FLAG_CLEAR_POS)
+
+#define VDDM_RESET_FLAG_CLEAR           (0x1 << ACS_RESET_STATUS_VDDM_RESET_FLAG_CLEAR_POS)
+
+#define VDDC_RESET_FLAG_CLEAR           (0x1 << ACS_RESET_STATUS_VDDC_RESET_FLAG_CLEAR_POS)
+
+#define BG_VREF_RESET_FLAG_CLEAR        (0x1 << ACS_RESET_STATUS_BG_VREF_RESET_FLAG_CLEAR_POS)
+
+#define PAD_RESET_FLAG_CLEAR            (0x1 << ACS_RESET_STATUS_PAD_RESET_FLAG_CLEAR_POS)
+
+#define POR_RESET_FLAG_CLEAR            (0x1 << ACS_RESET_STATUS_POR_RESET_FLAG_CLEAR_POS)
+
+/* Analog output configuration register */
+#define ACS_AOUT_CTRL_BASE              0x40001660
+#define ACS_AOUT_CTRL                   REG32_POINTER(ACS_AOUT_CTRL_BASE)
+
+/* ACS_AOUT_CTRL bit positions */
+#define ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_STOP_EDGE_POS 21
+#define ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_STOP_SRC_POS 19
+#define ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_STOP_SRC_MASK (0x3 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_STOP_SRC_POS)
+#define ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_START_POS 16
+#define ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_START_MASK (0x7 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_START_POS)
+#define ACS_AOUT_CTRL_AOUT_IOUT_SEL_TO_GPIO_POS 13
+#define ACS_AOUT_CTRL_AOUT_TO_GPIO_POS  8
+#define ACS_AOUT_CTRL_AOUT_TO_GPIO_MASK (0x1F << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define ACS_AOUT_CTRL_TEST_AOUT_POS     0
+#define ACS_AOUT_CTRL_TEST_AOUT_MASK    (0x3F << ACS_AOUT_CTRL_TEST_AOUT_POS)
+
+/* ACS_AOUT_CTRL settings */
+#define GPIO0_RTC_CLK_STOP_RISING       (0x0 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_STOP_EDGE_POS)
+#define GPIO0_RTC_CLK_STOP_FALLING      (0x1 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_STOP_EDGE_POS)
+
+#define GPIO0_RTC_CLK_STOP_GPIO0        (0x0 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_STOP_SRC_POS)
+#define GPIO0_RTC_CLK_STOP_GPIO1        (0x1 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_STOP_SRC_POS)
+#define GPIO0_RTC_CLK_STOP_GPIO2        (0x2 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_STOP_SRC_POS)
+#define GPIO0_RTC_CLK_STOP_GPIO3        (0x3 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_STOP_SRC_POS)
+
+#define GPIO0_RTC_CLK_DISABLE           (0x0 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_START_POS)
+#define GPIO0_RTC_CLK_125MS             (0x1 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_START_POS)
+#define GPIO0_RTC_CLK_250MS             (0x2 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_START_POS)
+#define GPIO0_RTC_CLK_500MS             (0x3 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_START_POS)
+#define GPIO0_RTC_CLK_1S                (0x4 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_START_POS)
+#define GPIO0_RTC_CLK_2S                (0x5 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_START_POS)
+#define GPIO0_RTC_CLK_4S                (0x6 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_START_POS)
+#define GPIO0_RTC_CLK_8S                (0x7 << ACS_AOUT_CTRL_RTC_CLOCK_GPIO0_START_POS)
+
+#define SEL_IOUT_TO_GPIO                (0x0 << ACS_AOUT_CTRL_AOUT_IOUT_SEL_TO_GPIO_POS)
+#define SEL_AOUT_TO_GPIO                (0x1 << ACS_AOUT_CTRL_AOUT_IOUT_SEL_TO_GPIO_POS)
+
+#define AOUT_TO_GPIO_0                  (0x0 << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_1                  (0x1 << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_2                  (0x2 << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_3                  (0x3 << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_4                  (0x4 << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_5                  (0x5 << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_6                  (0x6 << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_7                  (0x7 << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_8                  (0x8 << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_9                  (0x9 << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_10                 (0xA << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_11                 (0xB << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_12                 (0xC << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_13                 (0xD << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_14                 (0xE << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_TO_GPIO_15                 (0xF << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+#define AOUT_NOT_CONNECTED_TO_GPIO      (0x10 << ACS_AOUT_CTRL_AOUT_TO_GPIO_POS)
+
+#define AOUT_VSSA                       (0x0 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VCC                        (0x1 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_IPTAT                      (0x2 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_IVBE                       (0x3 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_IREF_1U                    (0x4 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_IREF_50N                   (0x5 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_IREF_10N                   (0x6 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VREG_BG                    (0x7 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VREF_0P75V                 (0x8 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VREF_0P75V_buf             (0x9 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VREF_0P67V                 (0xA << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_WE_DAC                     (0xB << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_TEMP_SENSOR_VPTAT          (0xC << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_ADC_SENSOR_IRANGE          (0xD << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_LSAD_INTERNAL_VREF         (0xE << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_THERMISTOR_CURRENT         (0xF << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_IREF_1N_OUTPUT             (0x10 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDACS_OUTPUT              (0x11 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_RC_INTENAL_SUPPLY          (0x12 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_RC32_INTENAL_SUPPLY        (0x13 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDA_SW                    (0x14 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDSYN_SW                  (0x15 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDRF_SW                   (0x16 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDT                       (0x17 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDCCAO                    (0x18 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDSENSOR                  (0x19 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDM                       (0x1A << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDC                       (0x1B << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDPA                      (0x1C << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDPA_ISENSE               (0x1D << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_FLASH1_TM0                 (0x1E << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_FLASH0_TM0                 (0x1F << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDCP                      (0x20 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDRF                      (0x21 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDIF                      (0x22 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_VDDFLASH                   (0x23 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_HIZ                        (0x24 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_RC32_IBP_12N_NTC           (0x25 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_SP1                        (0x26 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_SP2                        (0x27 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define AOUT_SP3                        (0x28 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_ADC_PULSE                  (0x29 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_SENSOR_DET                 (0x2A << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_BG_READY                   (0x2B << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_VDDRF_READY                (0x2C << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_VDDC_READY                 (0x2D << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_VDDM_READY                 (0x2E << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_VDDCP_READY                (0x2F << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_VDDIF_READY                (0x30 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_VDDFLASH_READY             (0x31 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_CLK_PRESENT                (0x32 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_XTAL_OK                    (0x33 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_XTAL_CLK                   (0x34 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_RC32_CLK                   (0x35 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_DCDC_ACTIVATED             (0x36 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_DCDC_OVERLOAD              (0x37 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_DCDC_VCC_READY             (0x38 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_NFC_WAKEUP                 (0x39 << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_NFC_FIELD_0                (0x3A << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_NFC_FIELD_1                (0x3B << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_NFC_FIELD_2                (0x3C << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_NFC_FIELD_3                (0x3D << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_SP1                        (0x3E << ACS_AOUT_CTRL_TEST_AOUT_POS)
+#define DOUT_SP2                        (0x3F << ACS_AOUT_CTRL_TEST_AOUT_POS)
+
+/* Just In Case register in the ACS block */
+#define ACS_JIC_READ_BASE               0x40001664
+#define ACS_JIC_READ                    READONLY_REG32_POINTER(ACS_JIC_READ_BASE)
+
+/* ACS_JIC_READ bit positions */
+#define ACS_JIC_READ_BYTE0_RO_POS       0
+#define ACS_JIC_READ_BYTE0_RO_MASK      (0xFF << ACS_JIC_READ_BYTE0_RO_POS)
+
+/* Temperature sensor configuration register */
+#define ACS_TEMP_SENSOR_CFG_BASE        0x40001668
+#define ACS_TEMP_SENSOR_CFG             REG32_POINTER(ACS_TEMP_SENSOR_CFG_BASE)
+
+/* ACS_TEMP_SENSOR_CFG bit positions */
+#define ACS_TEMP_SENSOR_CFG_DUTY_TEMP_SENS_POS 1
+#define ACS_TEMP_SENSOR_CFG_ENABLE_POS  0
+
+/* ACS_TEMP_SENSOR_CFG settings */
+#define LSAD_TEMP_SENS_NORMAL           (0x0 << ACS_TEMP_SENSOR_CFG_DUTY_TEMP_SENS_POS)
+#define LSAD_TEMP_SENS_DUTY             (0x1 << ACS_TEMP_SENSOR_CFG_DUTY_TEMP_SENS_POS)
+
+#define TEMP_SENS_DISABLE               (0x0 << ACS_TEMP_SENSOR_CFG_ENABLE_POS)
+#define TEMP_SENS_ENABLE                (0x1 << ACS_TEMP_SENSOR_CFG_ENABLE_POS)
+
+/* Temperature current configuratio */
+#define ACS_TEMP_CURR_CFG_BASE          0x4000166C
+#define ACS_TEMP_CURR_CFG               REG32_POINTER(ACS_TEMP_CURR_CFG_BASE)
+
+/* ACS_TEMP_CURR_CFG bit positions */
+#define ACS_TEMP_CURR_CFG_CURRENT_VALUE_POS 16
+#define ACS_TEMP_CURR_CFG_CURRENT_VALUE_MASK (0xF << ACS_TEMP_CURR_CFG_CURRENT_VALUE_POS)
+#define ACS_TEMP_CURR_CFG_CURRENT_TRIM_POS 8
+#define ACS_TEMP_CURR_CFG_CURRENT_TRIM_MASK (0x3F << ACS_TEMP_CURR_CFG_CURRENT_TRIM_POS)
+#define ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS 4
+#define ACS_TEMP_CURR_CFG_GPIO_IN_USE_MASK (0xF << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define ACS_TEMP_CURR_CFG_DUTY_CURR_POS 1
+#define ACS_TEMP_CURR_CFG_ENABLE_POS    0
+
+/* ACS_TEMP_CURR_CFG settings */
+#define TEMP_CURR_1UA                   (0x0 << ACS_TEMP_CURR_CFG_CURRENT_VALUE_POS)
+#define TEMP_CURR_10UA                  (0x9 << ACS_TEMP_CURR_CFG_CURRENT_VALUE_POS)
+#define TEMP_CURR_16UA                  (0xF << ACS_TEMP_CURR_CFG_CURRENT_VALUE_POS)
+
+#define TEMP_CURR_TRIM_M32              (0x0 << ACS_TEMP_CURR_CFG_CURRENT_TRIM_POS)
+#define TEMP_CURR_TRIM_0                (0x20 << ACS_TEMP_CURR_CFG_CURRENT_TRIM_POS)
+#define TEMP_CURR_TRIM_P31              (0x3F << ACS_TEMP_CURR_CFG_CURRENT_TRIM_POS)
+
+#define TEMP_CURR_GPIO0                 (0x0 << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO1                 (0x1 << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO2                 (0x2 << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO3                 (0x3 << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO4                 (0x4 << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO5                 (0x5 << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO6                 (0x6 << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO7                 (0x7 << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO8                 (0x8 << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO9                 (0x9 << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO10                (0xA << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO11                (0xB << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO12                (0xC << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO13                (0xD << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO14                (0xE << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+#define TEMP_CURR_GPIO15                (0xF << ACS_TEMP_CURR_CFG_GPIO_IN_USE_POS)
+
+#define LSAD_CURR_NORMAL                (0x0 << ACS_TEMP_CURR_CFG_DUTY_CURR_POS)
+#define LSAD_CURR_DUTY                  (0x1 << ACS_TEMP_CURR_CFG_DUTY_CURR_POS)
+
+#define TEMP_CURR_DISABLE               (0x0 << ACS_TEMP_CURR_CFG_ENABLE_POS)
+#define TEMP_CURR_ENABLE                (0x1 << ACS_TEMP_CURR_CFG_ENABLE_POS)
+
+/* SoC Watchdog Configuration Register */
+#define ACS_SOC_WATCHDOG_CFG_BASE       0x40001670
+#define ACS_SOC_WATCHDOG_CFG            REG32_POINTER(ACS_SOC_WATCHDOG_CFG_BASE)
+
+/* ACS_SOC_WATCHDOG_CFG bit positions */
+#define ACS_SOC_WATCHDOG_CFG_BYPASS_IN_SLEEP_POS 0
+
+/* ACS_SOC_WATCHDOG_CFG settings */
+#define SOC_WATCHDOG_IN_SLEEP           (0x0 << ACS_SOC_WATCHDOG_CFG_BYPASS_IN_SLEEP_POS)
+#define SOC_WATCHDOG_BYPASS_IN_SLEEP    (0x1 << ACS_SOC_WATCHDOG_CFG_BYPASS_IN_SLEEP_POS)
+
+/* SoC Watchdog Refresh Control Register */
+#define ACS_SOC_WATCHDOG_CTRL_BASE      0x40001674
+#define ACS_SOC_WATCHDOG_CTRL           REG32_POINTER(ACS_SOC_WATCHDOG_CTRL_BASE)
+
+/* ACS_SOC_WATCHDOG_CTRL bit positions */
+#define ACS_SOC_WATCHDOG_CTRL_LOAD_COUNTER_POS 17
+#define ACS_SOC_WATCHDOG_CTRL_FORCE_CLOCK_POS 16
+#define ACS_SOC_WATCHDOG_CTRL_SOC_WATCHDOG_REFRESH_POS 0
+#define ACS_SOC_WATCHDOG_CTRL_SOC_WATCHDOG_REFRESH_MASK (0xFFFF << ACS_SOC_WATCHDOG_CTRL_SOC_WATCHDOG_REFRESH_POS)
+
+/* ACS_SOC_WATCHDOG_CTRL settings */
+#define SOC_WATCHDOG_LOAD               (0x1 << ACS_SOC_WATCHDOG_CTRL_LOAD_COUNTER_POS)
+
+#define SOC_WATCHDOG_FORCE_CLOCK        (0x1 << ACS_SOC_WATCHDOG_CTRL_FORCE_CLOCK_POS)
+
+#define SOC_WATCHDOG_REFRESH            (0x2B1 << ACS_SOC_WATCHDOG_CTRL_SOC_WATCHDOG_REFRESH_POS)
+
+/* SoC watchdog Counter Current Value */
+#define ACS_SOC_WATCHDOG_COUNT_BASE     0x40001678
+#define ACS_SOC_WATCHDOG_COUNT          READONLY_REG32_POINTER(ACS_SOC_WATCHDOG_COUNT_BASE)
+
+/* ACS_SOC_WATCHDOG_COUNT bit positions */
+#define ACS_SOC_WATCHDOG_COUNT_VALUE_POS 0
+#define ACS_SOC_WATCHDOG_COUNT_VALUE_MASK (0xFFFFFF << ACS_SOC_WATCHDOG_COUNT_VALUE_POS)
+
+/* Status of debug enable */
+#define ACS_DBG_STATUS_BASE             0x4000167C
+#define ACS_DBG_STATUS                  READONLY_REG32_POINTER(ACS_DBG_STATUS_BASE)
+
+/* ACS_DBG_STATUS bit positions */
+#define ACS_DBG_STATUS_DEBGUG_ENABLE_FLAG_POS 0
+
+/* ACS_DBG_STATUS settings */
+#define DEBUG_DISABLE                   (0x0 << ACS_DBG_STATUS_DEBGUG_ENABLE_FLAG_POS)
+#define DEBUG_ENABLE                    (0x1 << ACS_DBG_STATUS_DEBGUG_ENABLE_FLAG_POS)
+
+/* Value of RTC clock */
+#define ACS_RTC_CLK_STATUS_BASE         0x40001680
+#define ACS_RTC_CLK_STATUS              READONLY_REG32_POINTER(ACS_RTC_CLK_STATUS_BASE)
+
+/* ACS_RTC_CLK_STATUS bit positions */
+#define ACS_RTC_CLK_STATUS_RTC_CLK_VALUE_POS 0
+
+/* JIC RW registers */
+#define ACS_GP_DATA_BASE                0x40001684
+#define ACS_GP_DATA                     REG32_POINTER(ACS_GP_DATA_BASE)
+
+/* Sensor detector configuration register */
+#define ACS_SENSOR_DET_CFG_BASE         0x40001688
+#define ACS_SENSOR_DET_CFG              REG32_POINTER(ACS_SENSOR_DET_CFG_BASE)
+
+/* ACS_SENSOR_DET_CFG bit positions */
+#define ACS_SENSOR_DET_CFG_SENSOR_DETECTED_POS 7
+#define ACS_SENSOR_DET_CFG_SENSOR_DET_RESET_POS 1
+#define ACS_SENSOR_DET_CFG_SENSOR_DET_EN_POS 0
+
+/* ACS_SENSOR_DET_CFG settings */
+#define SENSOR_NOT_DETECTED             (0x0 << ACS_SENSOR_DET_CFG_SENSOR_DETECTED_POS)
+#define SENSOR_DETECTED                 (0x1 << ACS_SENSOR_DET_CFG_SENSOR_DETECTED_POS)
+
+#define SENSOR_DET_RESET                (0x0 << ACS_SENSOR_DET_CFG_SENSOR_DET_RESET_POS)
+#define SENSOR_DET_NOT_RESET            (0x1 << ACS_SENSOR_DET_CFG_SENSOR_DET_RESET_POS)
+
+#define SENSOR_DET_DISABLED             (0x0 << ACS_SENSOR_DET_CFG_SENSOR_DET_EN_POS)
+#define SENSOR_DET_ENABLED              (0x1 << ACS_SENSOR_DET_CFG_SENSOR_DET_EN_POS)
+
+/* Status of NFC Field status */
+#define ACS_NFC_STATUS_BASE             0x4000168C
+#define ACS_NFC_STATUS                  READONLY_REG32_POINTER(ACS_NFC_STATUS_BASE)
+
+/* ACS_NFC_STATUS bit positions */
+#define ACS_NFC_STATUS_HFDET_STATUS_POS 0
+#define ACS_NFC_STATUS_HFDET_STATUS_MASK (0xF << ACS_NFC_STATUS_HFDET_STATUS_POS)
+
+/* ACS Power Control Register */
+#define ACS_PWR_CTRL_BASE               0x40001690
+#define ACS_PWR_CTRL                    REG32_POINTER(ACS_PWR_CTRL_BASE)
+
+/* ACS_PWR_CTRL bit positions */
+#define ACS_PWR_CTRL_SENSOR_PWR_EN_POS  27
+#define ACS_PWR_CTRL_SENSOR_ISOLATE_POS 26
+#define ACS_PWR_CTRL_CCAO_PWR_EN_POS    25
+#define ACS_PWR_CTRL_CCAO_ISOLATE_POS   24
+#define ACS_PWR_CTRL_POWER_KEY_POS      0
+#define ACS_PWR_CTRL_POWER_KEY_MASK     (0xFFFFFF << ACS_PWR_CTRL_POWER_KEY_POS)
+
+/* ACS_PWR_CTRL settings */
+#define ACS_SENSOR_SHUTDOWN             (0x0 << ACS_PWR_CTRL_SENSOR_PWR_EN_POS)
+#define ACS_SENSOR_POWERED              (0x1 << ACS_PWR_CTRL_SENSOR_PWR_EN_POS)
+
+#define ACS_SENSOR_NOT_ISOLATED         (0x0 << ACS_PWR_CTRL_SENSOR_ISOLATE_POS)
+#define ACS_SENSOR_ISOLATED             (0x1 << ACS_PWR_CTRL_SENSOR_ISOLATE_POS)
+
+#define ACS_CCAO_SHUTDOWN               (0x0 << ACS_PWR_CTRL_CCAO_PWR_EN_POS)
+#define ACS_CCAO_POWERED                (0x1 << ACS_PWR_CTRL_CCAO_PWR_EN_POS)
+
+#define ACS_CCAO_NOT_ISOLATE            (0x0 << ACS_PWR_CTRL_CCAO_ISOLATE_POS)
+#define ACS_CCAO_ISOLATE                (0x1 << ACS_PWR_CTRL_CCAO_ISOLATE_POS)
+
+#define ACS_PWR_KEY                     (0x63412B << ACS_PWR_CTRL_POWER_KEY_POS)
+
+/* ----------------------------------------------------------------------------
+ * Sensor domain (Analog Bridge Access)
+ * ------------------------------------------------------------------------- */
+
+/* Sensor ADC configuration register */
+#define SENSOR_IF_CFG_BASE              0x40001700
+#define SENSOR_IF_CFG                   REG32_POINTER(SENSOR_IF_CFG_BASE)
+
+/* SENSOR_IF_CFG bit positions */
+#define SENSOR_IF_CFG_GUARD_EN_POS      21
+#define SENSOR_IF_CFG_SENSOR_AMP_EN_POS 20
+#define SENSOR_IF_CFG_WEDAC_HIGH_POS    14
+#define SENSOR_IF_CFG_WEDAC_HIGH_MASK   (0x3F << SENSOR_IF_CFG_WEDAC_HIGH_POS)
+#define SENSOR_IF_CFG_WEDAC_LOW_POS     8
+#define SENSOR_IF_CFG_WEDAC_LOW_MASK    (0x3F << SENSOR_IF_CFG_WEDAC_LOW_POS)
+#define SENSOR_IF_CFG_ADC_CALIB_EN_POS  6
+#define SENSOR_IF_CFG_IOFFSET_POS       4
+#define SENSOR_IF_CFG_IOFFSET_MASK      (0x3 << SENSOR_IF_CFG_IOFFSET_POS)
+#define SENSOR_IF_CFG_IRANGE_POS        2
+#define SENSOR_IF_CFG_IRANGE_MASK       (0x3 << SENSOR_IF_CFG_IRANGE_POS)
+#define SENSOR_IF_CFG_DISCONNECT_RE_POS 1
+#define SENSOR_IF_CFG_SENSOR_EN_POS     0
+
+/* SENSOR_IF_CFG settings */
+#define SENSOR_GUARD_DISABLED           (0x0 << SENSOR_IF_CFG_GUARD_EN_POS)
+#define SENSOR_GUARD_ENABLED            (0x1 << SENSOR_IF_CFG_GUARD_EN_POS)
+
+#define SENSOR_AMP_DISABLED             (0x0 << SENSOR_IF_CFG_SENSOR_AMP_EN_POS)
+#define SENSOR_AMP_ENABLED              (0x1 << SENSOR_IF_CFG_SENSOR_AMP_EN_POS)
+
+#define SENSOR_WEDAC_HIGH_0000          (0x0 << SENSOR_IF_CFG_WEDAC_HIGH_POS)
+#define SENSOR_WEDAC_HIGH_0016          (0x1 << SENSOR_IF_CFG_WEDAC_HIGH_POS)
+#define SENSOR_WEDAC_HIGH_0032          (0x2 << SENSOR_IF_CFG_WEDAC_HIGH_POS)
+#define SENSOR_WEDAC_HIGH_0496          (0x1F << SENSOR_IF_CFG_WEDAC_HIGH_POS)
+#define SENSOR_WEDAC_HIGH_0504          (0x20 << SENSOR_IF_CFG_WEDAC_HIGH_POS)
+#define SENSOR_WEDAC_HIGH_0600          (0x26 << SENSOR_IF_CFG_WEDAC_HIGH_POS)
+#define SENSOR_WEDAC_HIGH_0616          (0x27 << SENSOR_IF_CFG_WEDAC_HIGH_POS)
+#define SENSOR_WEDAC_HIGH_0984          (0x3E << SENSOR_IF_CFG_WEDAC_HIGH_POS)
+#define SENSOR_WEDAC_HIGH_1000          (0x3F << SENSOR_IF_CFG_WEDAC_HIGH_POS)
+
+#define SENSOR_WEDAC_LOW_0000           (0x0 << SENSOR_IF_CFG_WEDAC_LOW_POS)
+#define SENSOR_WEDAC_LOW_0016           (0x1 << SENSOR_IF_CFG_WEDAC_LOW_POS)
+#define SENSOR_WEDAC_LOW_0032           (0x2 << SENSOR_IF_CFG_WEDAC_LOW_POS)
+#define SENSOR_WEDAC_LOW_0496           (0x1F << SENSOR_IF_CFG_WEDAC_LOW_POS)
+#define SENSOR_WEDAC_LOW_0504           (0x20 << SENSOR_IF_CFG_WEDAC_LOW_POS)
+#define SENSOR_WEDAC_LOW_0600           (0x26 << SENSOR_IF_CFG_WEDAC_LOW_POS)
+#define SENSOR_WEDAC_LOW_0616           (0x27 << SENSOR_IF_CFG_WEDAC_LOW_POS)
+#define SENSOR_WEDAC_LOW_0984           (0x3E << SENSOR_IF_CFG_WEDAC_LOW_POS)
+#define SENSOR_WEDAC_LOW_1000           (0x3F << SENSOR_IF_CFG_WEDAC_LOW_POS)
+
+#define SENSOR_CALIB_DISABLED           (0x0 << SENSOR_IF_CFG_ADC_CALIB_EN_POS)
+#define SENSOR_CALIB_ENABLED            (0x1 << SENSOR_IF_CFG_ADC_CALIB_EN_POS)
+
+#define SENSOR_IOFFSET_0NA              (0x0 << SENSOR_IF_CFG_IOFFSET_POS)
+#define SENSOR_IOFFSET_10NA             (0x1 << SENSOR_IF_CFG_IOFFSET_POS)
+#define SENSOR_IOFFSET_20NA             (0x2 << SENSOR_IF_CFG_IOFFSET_POS)
+#define SENSOR_IOFFSET_40NA             (0x3 << SENSOR_IF_CFG_IOFFSET_POS)
+
+#define SENSOR_IRANGE_50NA              (0x0 << SENSOR_IF_CFG_IRANGE_POS)
+#define SENSOR_IRANGE_80NA              (0x1 << SENSOR_IF_CFG_IRANGE_POS)
+#define SENSOR_IRANGE_170NA             (0x2 << SENSOR_IF_CFG_IRANGE_POS)
+#define SENSOR_IRANGE_240NA             (0x3 << SENSOR_IF_CFG_IRANGE_POS)
+
+#define SENSOR_RE_VSSA                  (0x0 << SENSOR_IF_CFG_DISCONNECT_RE_POS)
+#define SENSOR_RE_HIGHZ                 (0x1 << SENSOR_IF_CFG_DISCONNECT_RE_POS)
+
+#define SENSOR_DISABLED                 (0x0 << SENSOR_IF_CFG_SENSOR_EN_POS)
+#define SENSOR_ENABLED                  (0x1 << SENSOR_IF_CFG_SENSOR_EN_POS)
+
+/* Sensor clock configuration register */
+#define SENSOR_CLK_CFG_BASE             0x40001704
+#define SENSOR_CLK_CFG                  REG32_POINTER(SENSOR_CLK_CFG_BASE)
+
+/* SENSOR_CLK_CFG bit positions */
+#define SENSOR_CLK_CFG_CLK_SEL_POS      0
+
+/* SENSOR_CLK_CFG settings */
+#define SENSOR_CLK_RTC                  (0x0 << SENSOR_CLK_CFG_CLK_SEL_POS)
+#define SENSOR_CLK_SLOWCLK              (0x1 << SENSOR_CLK_CFG_CLK_SEL_POS)
+
+/* Sensor Integration Time Values */
+#define SENSOR_INT_CFG_BASE             0x40001708
+#define SENSOR_INT_CFG                  REG32_POINTER(SENSOR_INT_CFG_BASE)
+
+/* SENSOR_INT_CFG bit positions */
+#define SENSOR_INT_CFG_PULSE_COUNT_INT_POS 20
+#define SENSOR_INT_CFG_PULSE_COUNT_INT_MASK (0x3FF << SENSOR_INT_CFG_PULSE_COUNT_INT_POS)
+#define SENSOR_INT_CFG_PRE_COUNT_INT_POS 0
+#define SENSOR_INT_CFG_PRE_COUNT_INT_MASK (0x7FFFF << SENSOR_INT_CFG_PRE_COUNT_INT_POS)
+
+/* SENSOR_INT_CFG settings */
+#define PULSE_COUNT_INT_0               (0x0 << SENSOR_INT_CFG_PULSE_COUNT_INT_POS)
+#define PULSE_COUNT_INT_1               (0x1 << SENSOR_INT_CFG_PULSE_COUNT_INT_POS)
+#define PULSE_COUNT_INT_2               (0x2 << SENSOR_INT_CFG_PULSE_COUNT_INT_POS)
+#define PULSE_COUNT_INT_3               (0x3 << SENSOR_INT_CFG_PULSE_COUNT_INT_POS)
+#define PULSE_COUNT_INT_255             (0xFF << SENSOR_INT_CFG_PULSE_COUNT_INT_POS)
+#define PULSE_COUNT_INT_1023            (0x3FF << SENSOR_INT_CFG_PULSE_COUNT_INT_POS)
+
+#define PRE_COUNT_INT_0                 (0x0 << SENSOR_INT_CFG_PRE_COUNT_INT_POS)
+#define PRE_COUNT_INT_1                 (0x1 << SENSOR_INT_CFG_PRE_COUNT_INT_POS)
+#define PRE_COUNT_INT_307199            (0x4AFFF << SENSOR_INT_CFG_PRE_COUNT_INT_POS)
+#define PRE_COUNT_INT_307200            (0x4B000 << SENSOR_INT_CFG_PRE_COUNT_INT_POS)
+#define PRE_COUNT_INT_524288            (0x7FFFF << SENSOR_INT_CFG_PRE_COUNT_INT_POS)
+
+/* Sensor Delays Time Values for Low states */
+#define SENSOR_DELAY_L_CFG_BASE         0x4000170C
+#define SENSOR_DELAY_L_CFG              REG32_POINTER(SENSOR_DELAY_L_CFG_BASE)
+
+/* SENSOR_DELAY_L_CFG bit positions */
+#define SENSOR_DELAY_L_CFG_DLY2_WE_L_DIV_EN_POS 26
+#define SENSOR_DELAY_L_CFG_DLY2_WE_L_POS 16
+#define SENSOR_DELAY_L_CFG_DLY2_WE_L_MASK (0x3FF << SENSOR_DELAY_L_CFG_DLY2_WE_L_POS)
+#define SENSOR_DELAY_L_CFG_DLY1_WE_L_DIV_EN_POS 10
+#define SENSOR_DELAY_L_CFG_DLY1_WE_L_POS 0
+#define SENSOR_DELAY_L_CFG_DLY1_WE_L_MASK (0x3FF << SENSOR_DELAY_L_CFG_DLY1_WE_L_POS)
+
+/* SENSOR_DELAY_L_CFG settings */
+#define DLY2_WE_L_DIV_DISABLED          (0x0 << SENSOR_DELAY_L_CFG_DLY2_WE_L_DIV_EN_POS)
+#define DLY2_WE_L_DIV_ENABLED           (0x1 << SENSOR_DELAY_L_CFG_DLY2_WE_L_DIV_EN_POS)
+
+#define DLY2_WE_L_0                     (0x0 << SENSOR_DELAY_L_CFG_DLY2_WE_L_POS)
+#define DLY2_WE_L_1                     (0x1 << SENSOR_DELAY_L_CFG_DLY2_WE_L_POS)
+#define DLY2_WE_L_255                   (0xFF << SENSOR_DELAY_L_CFG_DLY2_WE_L_POS)
+#define DLY2_WE_L_1023                  (0x3FF << SENSOR_DELAY_L_CFG_DLY2_WE_L_POS)
+
+#define DLY1_WE_L_DIV_DISABLED          (0x0 << SENSOR_DELAY_L_CFG_DLY1_WE_L_DIV_EN_POS)
+#define DLY1_WE_L_DIV_ENABLED           (0x1 << SENSOR_DELAY_L_CFG_DLY1_WE_L_DIV_EN_POS)
+
+#define DLY1_WE_L_0                     (0x0 << SENSOR_DELAY_L_CFG_DLY1_WE_L_POS)
+#define DLY1_WE_L_1                     (0x1 << SENSOR_DELAY_L_CFG_DLY1_WE_L_POS)
+#define DLY1_WE_L_255                   (0xFF << SENSOR_DELAY_L_CFG_DLY1_WE_L_POS)
+#define DLY1_WE_L_1023                  (0x3FF << SENSOR_DELAY_L_CFG_DLY1_WE_L_POS)
+
+/* Sensor Delays Time Values for High states */
+#define SENSOR_DELAY_H_CFG_BASE         0x40001710
+#define SENSOR_DELAY_H_CFG              REG32_POINTER(SENSOR_DELAY_H_CFG_BASE)
+
+/* SENSOR_DELAY_H_CFG bit positions */
+#define SENSOR_DELAY_H_CFG_DLY2_WE_H_DIV_EN_POS 26
+#define SENSOR_DELAY_H_CFG_DLY2_WE_H_POS 16
+#define SENSOR_DELAY_H_CFG_DLY2_WE_H_MASK (0x3FF << SENSOR_DELAY_H_CFG_DLY2_WE_H_POS)
+#define SENSOR_DELAY_H_CFG_DLY1_WE_H_DIV_EN_POS 10
+#define SENSOR_DELAY_H_CFG_DLY1_WE_H_POS 0
+#define SENSOR_DELAY_H_CFG_DLY1_WE_H_MASK (0x3FF << SENSOR_DELAY_H_CFG_DLY1_WE_H_POS)
+
+/* SENSOR_DELAY_H_CFG settings */
+#define DLY2_WE_H_DIV_DISABLED          (0x0 << SENSOR_DELAY_H_CFG_DLY2_WE_H_DIV_EN_POS)
+#define DLY2_WE_H_DIV_ENABLED           (0x1 << SENSOR_DELAY_H_CFG_DLY2_WE_H_DIV_EN_POS)
+
+#define DLY2_WE_H_0                     (0x0 << SENSOR_DELAY_H_CFG_DLY2_WE_H_POS)
+#define DLY2_WE_H_1                     (0x1 << SENSOR_DELAY_H_CFG_DLY2_WE_H_POS)
+#define DLY2_WE_H_255                   (0xFF << SENSOR_DELAY_H_CFG_DLY2_WE_H_POS)
+#define DLY2_WE_H_1023                  (0x3FF << SENSOR_DELAY_H_CFG_DLY2_WE_H_POS)
+
+#define DLY1_WE_H_DIV_DISABLED          (0x0 << SENSOR_DELAY_H_CFG_DLY1_WE_H_DIV_EN_POS)
+#define DLY1_WE_H_DIV_ENABLED           (0x1 << SENSOR_DELAY_H_CFG_DLY1_WE_H_DIV_EN_POS)
+
+#define DLY1_WE_H_0                     (0x0 << SENSOR_DELAY_H_CFG_DLY1_WE_H_POS)
+#define DLY1_WE_H_1                     (0x1 << SENSOR_DELAY_H_CFG_DLY1_WE_H_POS)
+#define DLY1_WE_H_255                   (0xFF << SENSOR_DELAY_H_CFG_DLY1_WE_H_POS)
+#define DLY1_WE_H_1023                  (0x3FF << SENSOR_DELAY_H_CFG_DLY1_WE_H_POS)
+
+/* Sensor Idle Time Values */
+#define SENSOR_IDLE_CFG_BASE            0x40001714
+#define SENSOR_IDLE_CFG                 REG32_POINTER(SENSOR_IDLE_CFG_BASE)
+
+/* SENSOR_IDLE_CFG bit positions */
+#define SENSOR_IDLE_CFG_IDLE_TIME_POS   0
+#define SENSOR_IDLE_CFG_IDLE_TIME_MASK  (0x7FFFF << SENSOR_IDLE_CFG_IDLE_TIME_POS)
+
+/* SENSOR_IDLE_CFG settings */
+#define IDLE_TIME_0                     (0x0 << SENSOR_IDLE_CFG_IDLE_TIME_POS)
+#define IDLE_TIME_1                     (0x1 << SENSOR_IDLE_CFG_IDLE_TIME_POS)
+#define IDLE_TIME_307200                (0x4B000 << SENSOR_IDLE_CFG_IDLE_TIME_POS)
+#define IDLE_TIME_524288                (0x7FFFF << SENSOR_IDLE_CFG_IDLE_TIME_POS)
+
+/* Sensor Main Counter Current Value */
+#define SENSOR_MAIN_COUNT_BASE          0x40001718
+#define SENSOR_MAIN_COUNT               READONLY_REG32_POINTER(SENSOR_MAIN_COUNT_BASE)
+
+/* SENSOR_MAIN_COUNT bit positions */
+#define SENSOR_MAIN_COUNT_STATE_POS     24
+#define SENSOR_MAIN_COUNT_STATE_MASK    (0x7 << SENSOR_MAIN_COUNT_STATE_POS)
+#define SENSOR_MAIN_COUNT_VALUE_POS     0
+#define SENSOR_MAIN_COUNT_VALUE_MASK    (0x7FFFF << SENSOR_MAIN_COUNT_VALUE_POS)
+
+/* SENSOR_MAIN_COUNT settings */
+#define DELAY_1_L_STATUS                (0x0 << SENSOR_MAIN_COUNT_STATE_POS)
+#define PRE_COUNT_STATUS                (0x1 << SENSOR_MAIN_COUNT_STATE_POS)
+#define DELAY_2_L_STATUS                (0x2 << SENSOR_MAIN_COUNT_STATE_POS)
+#define DELAY_1_H_STATUS                (0x3 << SENSOR_MAIN_COUNT_STATE_POS)
+#define PULSE_COUNT_STATUS              (0x4 << SENSOR_MAIN_COUNT_STATE_POS)
+#define DELAY_2_H_STATUS                (0x5 << SENSOR_MAIN_COUNT_STATE_POS)
+#define IDLE_STATUS                     (0x6 << SENSOR_MAIN_COUNT_STATE_POS)
+
+/* Sensor Timer Control Register */
+#define SENSOR_TIMER_CTRL_BASE          0x4000171C
+#define SENSOR_TIMER_CTRL               REG32_POINTER(SENSOR_TIMER_CTRL_BASE)
+
+/* SENSOR_TIMER_CTRL bit positions */
+#define SENSOR_TIMER_CTRL_RESET_POS     16
+#define SENSOR_TIMER_CTRL_RE_IDLE_CONNECT_POS 8
+#define SENSOR_TIMER_CTRL_IDLE_EN_POS   7
+#define SENSOR_TIMER_CTRL_DLY2_WE_H_EN_POS 6
+#define SENSOR_TIMER_CTRL_PULSE_COUNT_EN_POS 5
+#define SENSOR_TIMER_CTRL_DLY1_WE_H_EN_POS 4
+#define SENSOR_TIMER_CTRL_DLY2_WE_L_EN_POS 3
+#define SENSOR_TIMER_CTRL_DLY1_WE_L_EN_POS 2
+#define SENSOR_TIMER_CTRL_WAIT_FOR_SLEEP_POS 1
+#define SENSOR_TIMER_CTRL_ENABLE_POS    0
+
+/* SENSOR_TIMER_CTRL settings */
+#define SENSOR_CNT_RESET                (0x1 << SENSOR_TIMER_CTRL_RESET_POS)
+
+#define RE_DISCONNECTED                 (0x0 << SENSOR_TIMER_CTRL_RE_IDLE_CONNECT_POS)
+#define RE_CONNECTED                    (0x1 << SENSOR_TIMER_CTRL_RE_IDLE_CONNECT_POS)
+
+#define IDLE_NOT_USED                   (0x0 << SENSOR_TIMER_CTRL_IDLE_EN_POS)
+#define IDLE_USED                       (0x1 << SENSOR_TIMER_CTRL_IDLE_EN_POS)
+
+#define DLY2_WE_H_NOT_USED              (0x0 << SENSOR_TIMER_CTRL_DLY2_WE_H_EN_POS)
+#define DLY2_WE_H_USED                  (0x1 << SENSOR_TIMER_CTRL_DLY2_WE_H_EN_POS)
+
+#define PULSE_CNT_NOT_USED              (0x0 << SENSOR_TIMER_CTRL_PULSE_COUNT_EN_POS)
+#define PULSE_CNT_USED                  (0x1 << SENSOR_TIMER_CTRL_PULSE_COUNT_EN_POS)
+
+#define DLY1_WE_H_NOT_USED              (0x0 << SENSOR_TIMER_CTRL_DLY1_WE_H_EN_POS)
+#define DLY1_WE_H_USED                  (0x1 << SENSOR_TIMER_CTRL_DLY1_WE_H_EN_POS)
+
+#define DLY2_WE_L_NOT_USED              (0x0 << SENSOR_TIMER_CTRL_DLY2_WE_L_EN_POS)
+#define DLY2_WE_L_USED                  (0x1 << SENSOR_TIMER_CTRL_DLY2_WE_L_EN_POS)
+
+#define DLY1_WE_L_NOT_USED              (0x0 << SENSOR_TIMER_CTRL_DLY1_WE_L_EN_POS)
+#define DLY1_WE_L_USED                  (0x1 << SENSOR_TIMER_CTRL_DLY1_WE_L_EN_POS)
+
+#define WAITSLEEP_DISABLED              (0x0 << SENSOR_TIMER_CTRL_WAIT_FOR_SLEEP_POS)
+#define WAITSLEEP_ENABLED               (0x1 << SENSOR_TIMER_CTRL_WAIT_FOR_SLEEP_POS)
+
+#define SENSOR_TIMER_DISABLED           (0x0 << SENSOR_TIMER_CTRL_ENABLE_POS)
+#define SENSOR_TIMER_ENABLED            (0x1 << SENSOR_TIMER_CTRL_ENABLE_POS)
+
+/* Sensor ADC data FIFO configuration */
+#define SENSOR_FIFO_CFG_BASE            0x40001720
+#define SENSOR_FIFO_CFG                 REG32_POINTER(SENSOR_FIFO_CFG_BASE)
+
+/* SENSOR_FIFO_CFG bit positions */
+#define SENSOR_FIFO_CFG_FIFO_LEVEL_POS  8
+#define SENSOR_FIFO_CFG_FIFO_LEVEL_MASK (0x1F << SENSOR_FIFO_CFG_FIFO_LEVEL_POS)
+#define SENSOR_FIFO_CFG_STORE_EN_POS    4
+#define SENSOR_FIFO_CFG_FIFO_SIZE_POS   0
+#define SENSOR_FIFO_CFG_FIFO_SIZE_MASK  (0xF << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+
+/* SENSOR_FIFO_CFG settings */
+#define SENSOR_FIFO_EMPTY               (0x0 << SENSOR_FIFO_CFG_FIFO_LEVEL_POS)
+#define SENSOR_FIFO_FULL                (0x10 << SENSOR_FIFO_CFG_FIFO_LEVEL_POS)
+
+#define SENSOR_FIFO_STORE_DISABLED      (0x0 << SENSOR_FIFO_CFG_STORE_EN_POS)
+#define SENSOR_FIFO_STORE_ENABLED       (0x1 << SENSOR_FIFO_CFG_STORE_EN_POS)
+
+#define SENSOR_FIFO_SIZE1               (0x0 << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE2               (0x1 << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE3               (0x2 << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE4               (0x3 << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE5               (0x4 << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE6               (0x5 << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE7               (0x6 << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE8               (0x7 << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE9               (0x8 << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE10              (0x9 << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE11              (0xA << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE12              (0xB << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE13              (0xC << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE14              (0xD << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE15              (0xE << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+#define SENSOR_FIFO_SIZE16              (0xF << SENSOR_FIFO_CFG_FIFO_SIZE_POS)
+
+/* Sensor ADC wakeup threshold */
+#define SENSOR_PROCESSING_BASE          0x40001724
+#define SENSOR_PROCESSING               REG32_POINTER(SENSOR_PROCESSING_BASE)
+
+/* SENSOR_PROCESSING bit positions */
+#define SENSOR_PROCESSING_DIFF_MODE_POS 25
+#define SENSOR_PROCESSING_SUM_EN_POS    24
+#define SENSOR_PROCESSING_NBR_SAMPLES_POS 16
+#define SENSOR_PROCESSING_NBR_SAMPLES_MASK (0xFF << SENSOR_PROCESSING_NBR_SAMPLES_POS)
+#define SENSOR_PROCESSING_THRESHOLD_POS 0
+#define SENSOR_PROCESSING_THRESHOLD_MASK (0xFFFF << SENSOR_PROCESSING_THRESHOLD_POS)
+
+/* SENSOR_PROCESSING settings */
+#define SENSOR_DIFF_MODE_DISABLED       (0x0 << SENSOR_PROCESSING_DIFF_MODE_POS)
+#define SENSOR_DIFF_MODE_ENABLED        (0x1 << SENSOR_PROCESSING_DIFF_MODE_POS)
+
+#define SENSOR_SUMMATION_DISABLED       (0x0 << SENSOR_PROCESSING_SUM_EN_POS)
+#define SENSOR_SUMMATION_ENABLED        (0x1 << SENSOR_PROCESSING_SUM_EN_POS)
+
+#define SENSOR_NBR_SAMPLES_1            (0x0 << SENSOR_PROCESSING_NBR_SAMPLES_POS)
+#define SENSOR_NBR_SAMPLES_2            (0x1 << SENSOR_PROCESSING_NBR_SAMPLES_POS)
+#define SENSOR_NBR_SAMPLES_255          (0xFF << SENSOR_PROCESSING_NBR_SAMPLES_POS)
+
+#define SENSOR_THRESHOLD_DISABLED       (0x0 << SENSOR_PROCESSING_THRESHOLD_POS)
+#define SENSOR_THRESHOLD_1              (0x1 << SENSOR_PROCESSING_THRESHOLD_POS)
+#define SENSOR_THRESHOLD_65535          (0xFFFF << SENSOR_PROCESSING_THRESHOLD_POS)
+
+/* Sensor ADC output data FIFO */
+#define SENSOR_ADC_DATA_BASE            0x40001728
+#define SENSOR_ADC_DATA                 READONLY_REG32_POINTER(SENSOR_ADC_DATA_BASE)
+
+/* SENSOR_ADC_DATA bit positions */
+#define SENSOR_ADC_DATA_ADC_DATA_POS    0
+#define SENSOR_ADC_DATA_ADC_DATA_MASK   (0xFFFFFF << SENSOR_ADC_DATA_ADC_DATA_POS)
+
+/* ----------------------------------------------------------------------------
+ * Baseband Controller Interface
+ * ------------------------------------------------------------------------- */
+
+/* Baseband controller control register */
+#define BBIF_CTRL_BASE                  0x40001800
+#define BBIF_CTRL                       REG32_POINTER(BBIF_CTRL_BASE)
+
+/* BBIF_CTRL bit positions */
+#define BBIF_CTRL_CLK_SEL_POS           4
+#define BBIF_CTRL_CLK_SEL_MASK          (0x3F << BBIF_CTRL_CLK_SEL_POS)
+#define BBIF_CTRL_WAKEUP_REQ_POS        1
+#define BBIF_CTRL_CLK_ENABLE_POS        0
+
+/* BBIF_CTRL settings */
+#define BBCLK_DIVIDER_6                 (0x6 << BBIF_CTRL_CLK_SEL_POS)
+#define BBCLK_DIVIDER_8                 (0x8 << BBIF_CTRL_CLK_SEL_POS)
+#define BBCLK_DIVIDER_12                (0xC << BBIF_CTRL_CLK_SEL_POS)
+#define BBCLK_DIVIDER_16                (0x10 << BBIF_CTRL_CLK_SEL_POS)
+#define BBCLK_DIVIDER_24                (0x18 << BBIF_CTRL_CLK_SEL_POS)
+
+#define BB_DEEP_SLEEP                   (0x0 << BBIF_CTRL_WAKEUP_REQ_POS)
+#define BB_WAKEUP                       (0x1 << BBIF_CTRL_WAKEUP_REQ_POS)
+
+#define BB_CLK_DISABLE                  (0x0 << BBIF_CTRL_CLK_ENABLE_POS)
+#define BB_CLK_ENABLE                   (0x1 << BBIF_CTRL_CLK_ENABLE_POS)
+
+/* Baseband controller status register */
+#define BBIF_STATUS_BASE                0x40001804
+#define BBIF_STATUS                     READONLY_REG32_POINTER(BBIF_STATUS_BASE)
+
+/* BBIF_STATUS bit positions */
+#define BBIF_STATUS_LINK_FORMAT_POS     12
+#define BBIF_STATUS_LINK_FORMAT_MASK    (0x1F << BBIF_STATUS_LINK_FORMAT_POS)
+#define BBIF_STATUS_LINK_LABEL_POS      4
+#define BBIF_STATUS_LINK_LABEL_MASK     (0x1F << BBIF_STATUS_LINK_LABEL_POS)
+#define BBIF_STATUS_CLK_STATUS_POS      2
+#define BBIF_STATUS_OSC_EN_POS          1
+#define BBIF_STATUS_RADIO_EN_POS        0
+
+/* BBIF_STATUS settings */
+#define MASTER_CLK                      (0x0 << BBIF_STATUS_CLK_STATUS_POS)
+#define LOW_POWER_CLK                   (0x1 << BBIF_STATUS_CLK_STATUS_POS)
+
+#define OSC_DISABLED                    (0x0 << BBIF_STATUS_OSC_EN_POS)
+#define OSC_ENABLED                     (0x1 << BBIF_STATUS_OSC_EN_POS)
+
+#define RF_DISABLED                     (0x0 << BBIF_STATUS_RADIO_EN_POS)
+#define RF_ENABLED                      (0x1 << BBIF_STATUS_RADIO_EN_POS)
+
+/* Coexistence control register */
+#define BBIF_COEX_CTRL_BASE             0x40001808
+#define BBIF_COEX_CTRL                  REG32_POINTER(BBIF_COEX_CTRL_BASE)
+
+/* BBIF_COEX_CTRL bit positions */
+#define BBIF_COEX_CTRL_TX_POS           1
+#define BBIF_COEX_CTRL_RX_POS           0
+
+/* BBIF_COEX_CTRL settings */
+#define COEX_TX_IDLE                    (0x0 << BBIF_COEX_CTRL_TX_POS)
+#define COEX_TX_BUSY                    (0x1 << BBIF_COEX_CTRL_TX_POS)
+
+#define COEX_RX_IDLE                    (0x0 << BBIF_COEX_CTRL_RX_POS)
+#define COEX_RX_BUSY                    (0x1 << BBIF_COEX_CTRL_RX_POS)
+
+/* Coexistence status register */
+#define BBIF_COEX_STATUS_BASE           0x4000180C
+#define BBIF_COEX_STATUS                READONLY_REG32_POINTER(BBIF_COEX_STATUS_BASE)
+
+/* BBIF_COEX_STATUS bit positions */
+#define BBIF_COEX_STATUS_BLE_PTI_POS    8
+#define BBIF_COEX_STATUS_BLE_PTI_MASK   (0xF << BBIF_COEX_STATUS_BLE_PTI_POS)
+#define BBIF_COEX_STATUS_BLE_SYNC_POS   4
+#define BBIF_COEX_STATUS_EVENT_IN_PROCESS_POS 3
+#define BBIF_COEX_STATUS_BLE_IN_PROCESS_POS 2
+#define BBIF_COEX_STATUS_BLE_TX_POS     1
+#define BBIF_COEX_STATUS_BLE_RX_POS     0
+
+/* BBIF_COEX_STATUS settings */
+#define BLE_PTI_PRIORITY_0              (0x0 << BBIF_COEX_STATUS_BLE_PTI_POS)
+#define BLE_PTI_PRIORITY_15             (0xF << BBIF_COEX_STATUS_BLE_PTI_POS)
+
+#define BLE_SYNC_IDLE                   (0x0 << BBIF_COEX_STATUS_BLE_SYNC_POS)
+#define BLE_SYNC_BUSY                   (0x1 << BBIF_COEX_STATUS_BLE_SYNC_POS)
+
+#define EVENT_IDLE                      (0x0 << BBIF_COEX_STATUS_EVENT_IN_PROCESS_POS)
+#define EVENT_IN_PROCESS                (0x1 << BBIF_COEX_STATUS_EVENT_IN_PROCESS_POS)
+
+#define BLE_IDLE                        (0x0 << BBIF_COEX_STATUS_BLE_IN_PROCESS_POS)
+#define BLE_IN_PROCESS                  (0x1 << BBIF_COEX_STATUS_BLE_IN_PROCESS_POS)
+
+#define BLE_TX_IDLE                     (0x0 << BBIF_COEX_STATUS_BLE_TX_POS)
+#define BLE_TX_BUSY                     (0x1 << BBIF_COEX_STATUS_BLE_TX_POS)
+
+#define BLE_RX_IDLE                     (0x0 << BBIF_COEX_STATUS_BLE_RX_POS)
+#define BLE_RX_BUSY                     (0x1 << BBIF_COEX_STATUS_BLE_RX_POS)
+
+/* Coexistence interrupts configuration register */
+#define BBIF_COEX_INT_CFG_BASE          0x40001810
+#define BBIF_COEX_INT_CFG               REG32_POINTER(BBIF_COEX_INT_CFG_BASE)
+
+/* BBIF_COEX_INT_CFG bit positions */
+#define BBIF_COEX_INT_CFG_EVENT_IN_PROCESS_POS 6
+#define BBIF_COEX_INT_CFG_EVENT_IN_PROCESS_MASK (0x3 << BBIF_COEX_INT_CFG_EVENT_IN_PROCESS_POS)
+#define BBIF_COEX_INT_CFG_BLE_IN_PROCESS_POS 4
+#define BBIF_COEX_INT_CFG_BLE_IN_PROCESS_MASK (0x3 << BBIF_COEX_INT_CFG_BLE_IN_PROCESS_POS)
+#define BBIF_COEX_INT_CFG_BLE_TX_POS    2
+#define BBIF_COEX_INT_CFG_BLE_TX_MASK   (0x3 << BBIF_COEX_INT_CFG_BLE_TX_POS)
+#define BBIF_COEX_INT_CFG_BLE_RX_POS    0
+#define BBIF_COEX_INT_CFG_BLE_RX_MASK   (0x3 << BBIF_COEX_INT_CFG_BLE_RX_POS)
+
+/* BBIF_COEX_INT_CFG settings */
+#define EVENT_IN_PROCESS_NONE           (0x0 << BBIF_COEX_INT_CFG_EVENT_IN_PROCESS_POS)
+#define EVENT_IN_PROCESS_RISING_EDGE    (0x1 << BBIF_COEX_INT_CFG_EVENT_IN_PROCESS_POS)
+#define EVENT_IN_PROCESS_FALLING_EDGE   (0x2 << BBIF_COEX_INT_CFG_EVENT_IN_PROCESS_POS)
+#define EVENT_IN_PROCESS_TRANSITION     (0x3 << BBIF_COEX_INT_CFG_EVENT_IN_PROCESS_POS)
+
+#define BLE_IN_PROCESS_NONE             (0x0 << BBIF_COEX_INT_CFG_BLE_IN_PROCESS_POS)
+#define BLE_IN_PROCESS_RISING_EDGE      (0x1 << BBIF_COEX_INT_CFG_BLE_IN_PROCESS_POS)
+#define BLE_IN_PROCESS_FALLING_EDGE     (0x2 << BBIF_COEX_INT_CFG_BLE_IN_PROCESS_POS)
+#define BLE_IN_PROCESS_TRANSITION       (0x3 << BBIF_COEX_INT_CFG_BLE_IN_PROCESS_POS)
+
+#define BLE_TX_NONE                     (0x0 << BBIF_COEX_INT_CFG_BLE_TX_POS)
+#define BLE_TX_RISING_EDGE              (0x1 << BBIF_COEX_INT_CFG_BLE_TX_POS)
+#define BLE_TX_FALLING_EDGE             (0x2 << BBIF_COEX_INT_CFG_BLE_TX_POS)
+#define BLE_TX_TRANSITION               (0x3 << BBIF_COEX_INT_CFG_BLE_TX_POS)
+
+#define BLE_RX_NONE                     (0x0 << BBIF_COEX_INT_CFG_BLE_RX_POS)
+#define BLE_RX_RISING_EDGE              (0x1 << BBIF_COEX_INT_CFG_BLE_RX_POS)
+#define BLE_RX_FALLING_EDGE             (0x2 << BBIF_COEX_INT_CFG_BLE_RX_POS)
+#define BLE_RX_TRANSITION               (0x3 << BBIF_COEX_INT_CFG_BLE_RX_POS)
+
+/* Coexistence interrupt status register */
+#define BBIF_COEX_INT_STATUS_BASE       0x40001814
+#define BBIF_COEX_INT_STATUS            REG32_POINTER(BBIF_COEX_INT_STATUS_BASE)
+
+/* BBIF_COEX_INT_STATUS bit positions */
+#define BBIF_COEX_INT_STATUS_EVENT_IN_PROCESS_POS 11
+#define BBIF_COEX_INT_STATUS_BLE_IN_PROCESS_POS 10
+#define BBIF_COEX_INT_STATUS_BLE_TX_POS 9
+#define BBIF_COEX_INT_STATUS_BLE_RX_POS 8
+#define BBIF_COEX_INT_STATUS_EVENT_IN_PROCESS_CLEAR_POS 3
+#define BBIF_COEX_INT_STATUS_BLE_IN_PROCESS_CLEAR_POS 2
+#define BBIF_COEX_INT_STATUS_BLE_TX_CLEAR_POS 1
+#define BBIF_COEX_INT_STATUS_BLE_RX_CLEAR_POS 0
+
+/* BBIF_COEX_INT_STATUS settings */
+#define EVENT_IN_PROCESS_NO_INT         (0x0 << BBIF_COEX_INT_STATUS_EVENT_IN_PROCESS_POS)
+#define EVENT_IN_PROCESS_INT            (0x1 << BBIF_COEX_INT_STATUS_EVENT_IN_PROCESS_POS)
+
+#define BLE_IN_PROCESS_NO_INT           (0x0 << BBIF_COEX_INT_STATUS_BLE_IN_PROCESS_POS)
+#define BLE_IN_PROCESS_INT              (0x1 << BBIF_COEX_INT_STATUS_BLE_IN_PROCESS_POS)
+
+#define BLE_TX_NO_INT                   (0x0 << BBIF_COEX_INT_STATUS_BLE_TX_POS)
+#define BLE_TX_INT                      (0x1 << BBIF_COEX_INT_STATUS_BLE_TX_POS)
+
+#define BLE_RX_NO_INT                   (0x0 << BBIF_COEX_INT_STATUS_BLE_RX_POS)
+#define BLE_RX_INT                      (0x1 << BBIF_COEX_INT_STATUS_BLE_RX_POS)
+
+#define EVENT_IN_PROCESS_CLEAR          (0x1 << BBIF_COEX_INT_STATUS_EVENT_IN_PROCESS_CLEAR_POS)
+
+#define BLE_IN_PROCESS_CLEAR            (0x1 << BBIF_COEX_INT_STATUS_BLE_IN_PROCESS_CLEAR_POS)
+
+#define BLE_TX_CLEAR                    (0x1 << BBIF_COEX_INT_STATUS_BLE_TX_CLEAR_POS)
+
+#define BLE_RX_CLEAR                    (0x1 << BBIF_COEX_INT_STATUS_BLE_RX_CLEAR_POS)
+
+/* ----------------------------------------------------------------------------
+ * Baseband Controller
+ * ------------------------------------------------------------------------- */
+
+/* Baseband control register */
+#define BB_RWBBCNTL_BASE                0x40001900
+#define BB_RWBBCNTL                     REG32_POINTER(BB_RWBBCNTL_BASE)
+
+/* BB_RWBBCNTL bit positions */
+#define BB_RWBBCNTL_MASTER_SOFT_RST_POS 31
+#define BB_RWBBCNTL_MASTER_TGSOFT_RST_POS 30
+#define BB_RWBBCNTL_REG_SOFT_RST_POS    29
+#define BB_RWBBCNTL_RADIOCNTL_SOFT_RST_POS 28
+#define BB_RWBBCNTL_SWINT_REQ_POS       27
+#define BB_RWBBCNTL_RFTEST_ABORT_POS    26
+#define BB_RWBBCNTL_ADVERT_ABORT_POS    25
+#define BB_RWBBCNTL_SCAN_ABORT_POS      24
+#define BB_RWBBCNTL_MD_DSB_POS          20
+#define BB_RWBBCNTL_SN_DSB_POS          19
+#define BB_RWBBCNTL_NESN_DSB_POS        18
+#define BB_RWBBCNTL_CRYPT_DSB_POS       17
+#define BB_RWBBCNTL_LRPMAP_DSB_POS      16
+#define BB_RWBBCNTL_LRFEC_DSB_POS       15
+#define BB_RWBBCNTL_WHIT_DSB_POS        14
+#define BB_RWBBCNTL_CRC_DSB_POS         13
+#define BB_RWBBCNTL_HOP_REMAP_DSB_POS   12
+#define BB_RWBBCNTL_RXCTEERR_RETX_EN_POS 11
+#define BB_RWBBCNTL_ANONYMOUS_ADVERT_FILT_EN_POS 10
+#define BB_RWBBCNTL_ADVERTFILT_EN_POS   9
+#define BB_RWBBCNTL_RWBLE_EN_POS        8
+#define BB_RWBBCNTL_RXWINSZDEF_POS      0
+#define BB_RWBBCNTL_RXWINSZDEF_MASK     (0xF << BB_RWBBCNTL_RXWINSZDEF_POS)
+
+/* BB_RWBBCNTL settings */
+#define MASTER_SOFT_RST_0               (0x0 << BB_RWBBCNTL_MASTER_SOFT_RST_POS)
+#define MASTER_SOFT_RST_1               (0x1 << BB_RWBBCNTL_MASTER_SOFT_RST_POS)
+
+#define MASTER_TGSOFT_RST_0             (0x0 << BB_RWBBCNTL_MASTER_TGSOFT_RST_POS)
+#define MASTER_TGSOFT_RST_1             (0x1 << BB_RWBBCNTL_MASTER_TGSOFT_RST_POS)
+
+#define REG_SOFT_RST_0                  (0x0 << BB_RWBBCNTL_REG_SOFT_RST_POS)
+#define REG_SOFT_RST_1                  (0x1 << BB_RWBBCNTL_REG_SOFT_RST_POS)
+
+#define RADIOCNTL_SOFT_RST_0            (0x0 << BB_RWBBCNTL_RADIOCNTL_SOFT_RST_POS)
+#define RADIOCNTL_SOFT_RST_1            (0x1 << BB_RWBBCNTL_RADIOCNTL_SOFT_RST_POS)
+
+#define SWINT_REQ_0                     (0x0 << BB_RWBBCNTL_SWINT_REQ_POS)
+#define SWINT_REQ_1                     (0x1 << BB_RWBBCNTL_SWINT_REQ_POS)
+
+#define RFTEST_ABORT_0                  (0x0 << BB_RWBBCNTL_RFTEST_ABORT_POS)
+#define RFTEST_ABORT_1                  (0x1 << BB_RWBBCNTL_RFTEST_ABORT_POS)
+
+#define ADVERT_ABORT_0                  (0x0 << BB_RWBBCNTL_ADVERT_ABORT_POS)
+#define ADVERT_ABORT_1                  (0x1 << BB_RWBBCNTL_ADVERT_ABORT_POS)
+
+#define SCAN_ABORT_0                    (0x0 << BB_RWBBCNTL_SCAN_ABORT_POS)
+#define SCAN_ABORT_1                    (0x1 << BB_RWBBCNTL_SCAN_ABORT_POS)
+
+#define MD_DSB_0                        (0x0 << BB_RWBBCNTL_MD_DSB_POS)
+#define MD_DSB_1                        (0x1 << BB_RWBBCNTL_MD_DSB_POS)
+
+#define SN_DSB_0                        (0x0 << BB_RWBBCNTL_SN_DSB_POS)
+#define SN_DSB_1                        (0x1 << BB_RWBBCNTL_SN_DSB_POS)
+
+#define NESN_DSB_0                      (0x0 << BB_RWBBCNTL_NESN_DSB_POS)
+#define NESN_DSB_1                      (0x1 << BB_RWBBCNTL_NESN_DSB_POS)
+
+#define CRYPT_DSB_0                     (0x0 << BB_RWBBCNTL_CRYPT_DSB_POS)
+#define CRYPT_DSB_1                     (0x1 << BB_RWBBCNTL_CRYPT_DSB_POS)
+
+#define LRPMAP_DSB_0                    (0x0 << BB_RWBBCNTL_LRPMAP_DSB_POS)
+#define LRPMAP_DSB_1                    (0x1 << BB_RWBBCNTL_LRPMAP_DSB_POS)
+
+#define LRFEC_DSB_0                     (0x0 << BB_RWBBCNTL_LRFEC_DSB_POS)
+#define LRFEC_DSB_1                     (0x1 << BB_RWBBCNTL_LRFEC_DSB_POS)
+
+#define WHIT_DSB_0                      (0x0 << BB_RWBBCNTL_WHIT_DSB_POS)
+#define WHIT_DSB_1                      (0x1 << BB_RWBBCNTL_WHIT_DSB_POS)
+
+#define CRC_DSB_0                       (0x0 << BB_RWBBCNTL_CRC_DSB_POS)
+#define CRC_DSB_1                       (0x1 << BB_RWBBCNTL_CRC_DSB_POS)
+
+#define HOP_REMAP_DSB_0                 (0x0 << BB_RWBBCNTL_HOP_REMAP_DSB_POS)
+#define HOP_REMAP_DSB_1                 (0x1 << BB_RWBBCNTL_HOP_REMAP_DSB_POS)
+
+#define RX_CTE_ERROR_DETECTION_0        (0x0 << BB_RWBBCNTL_RXCTEERR_RETX_EN_POS)
+#define RX_CTE_ERROR_DETECTION_1        (0x1 << BB_RWBBCNTL_RXCTEERR_RETX_EN_POS)
+
+#define ANONYMOUS_ADVERT_FILT_EN_0      (0x0 << BB_RWBBCNTL_ANONYMOUS_ADVERT_FILT_EN_POS)
+#define ANONYMOUS_ADVERT_FILT_EN_1      (0x1 << BB_RWBBCNTL_ANONYMOUS_ADVERT_FILT_EN_POS)
+
+#define ADVERTFILT_EN_0                 (0x0 << BB_RWBBCNTL_ADVERTFILT_EN_POS)
+#define ADVERTFILT_EN_1                 (0x1 << BB_RWBBCNTL_ADVERTFILT_EN_POS)
+
+#define RWBLE_EN_0                      (0x0 << BB_RWBBCNTL_RWBLE_EN_POS)
+#define RWBLE_EN_1                      (0x1 << BB_RWBBCNTL_RWBLE_EN_POS)
+
+#define RXWINSZDEF_0                    (0x0 << BB_RWBBCNTL_RXWINSZDEF_POS)
+
+/* BLE revision register */
+#define BB_VERSION_BASE                 0x40001904
+#define BB_VERSION                      READONLY_REG32_POINTER(BB_VERSION_BASE)
+
+/* BB_VERSION bit positions */
+#define BB_VERSION_TYP_POS              24
+#define BB_VERSION_TYP_MASK             (0xFF << BB_VERSION_TYP_POS)
+#define BB_VERSION_REL_POS              16
+#define BB_VERSION_REL_MASK             (0xFF << BB_VERSION_REL_POS)
+#define BB_VERSION_UPG_POS              8
+#define BB_VERSION_UPG_MASK             (0xFF << BB_VERSION_UPG_POS)
+#define BB_VERSION_BUILD_POS            0
+#define BB_VERSION_BUILD_MASK           (0xFF << BB_VERSION_BUILD_POS)
+
+/* BB_VERSION settings */
+#define TYP_A                           (0xA << BB_VERSION_TYP_POS)
+
+#define REL_0                           (0x0 << BB_VERSION_REL_POS)
+
+#define UPG_0D                          (0xD << BB_VERSION_UPG_POS)
+
+#define BUILD_0                         (0x0 << BB_VERSION_BUILD_POS)
+
+/* Baseband configuration register (compilation options dependant) */
+#define BB_RWBLEBCONF_BASE              0x40001908
+#define BB_RWBLEBCONF                   READONLY_REG32_POINTER(BB_RWBLEBCONF_BASE)
+
+/* BB_RWBLEBCONF bit positions */
+#define BB_RWBLEBCONF_DMMODE_POS        31
+#define BB_RWBLEBCONF_CORRELATOR_POS    28
+#define BB_RWBLEBCONF_USERXLR_POS       27
+#define BB_RWBLEBCONF_USETXLR_POS       26
+#define BB_RWBLEBCONF_USEISO_POS        24
+#define BB_RWBLEBCONF_WLANCOEX_POS      21
+#define BB_RWBLEBCONF_RFIF_POS          16
+#define BB_RWBLEBCONF_RFIF_MASK         (0x1F << BB_RWBLEBCONF_RFIF_POS)
+#define BB_RWBLEBCONF_USEDBG_POS        15
+#define BB_RWBLEBCONF_DECIPHER_POS      14
+#define BB_RWBLEBCONF_CLK_SEL_POS       8
+#define BB_RWBLEBCONF_CLK_SEL_MASK      (0x3F << BB_RWBLEBCONF_CLK_SEL_POS)
+#define BB_RWBLEBCONF_INTMODE_POS       7
+#define BB_RWBLEBCONF_BUSTYPE_POS       6
+#define BB_RWBLEBCONF_ADD_WIDTH_POS     0
+#define BB_RWBLEBCONF_ADD_WIDTH_MASK    (0x1F << BB_RWBLEBCONF_ADD_WIDTH_POS)
+
+/* BB_RWBLEBCONF settings */
+#define DMMODE_0                        (0x0 << BB_RWBLEBCONF_DMMODE_POS)
+#define DMMODE_1                        (0x1 << BB_RWBLEBCONF_DMMODE_POS)
+
+#define CORRELATOR_0                    (0x0 << BB_RWBLEBCONF_CORRELATOR_POS)
+#define CORRELATOR_1                    (0x1 << BB_RWBLEBCONF_CORRELATOR_POS)
+
+#define USERXLR_0                       (0x0 << BB_RWBLEBCONF_USERXLR_POS)
+#define USERXLR_1                       (0x1 << BB_RWBLEBCONF_USERXLR_POS)
+
+#define USETXLR_0                       (0x0 << BB_RWBLEBCONF_USETXLR_POS)
+#define USETXLR_1                       (0x1 << BB_RWBLEBCONF_USETXLR_POS)
+
+#define USEISO_0                        (0x0 << BB_RWBLEBCONF_USEISO_POS)
+#define USEISO_1                        (0x1 << BB_RWBLEBCONF_USEISO_POS)
+
+#define COEX_0                          (0x0 << BB_RWBLEBCONF_WLANCOEX_POS)
+#define COEX_1                          (0x1 << BB_RWBLEBCONF_WLANCOEX_POS)
+
+#define RFIF_RIPPLE                     (0x1 << BB_RWBLEBCONF_RFIF_POS)
+#define RFIF_EXT                        (0x2 << BB_RWBLEBCONF_RFIF_POS)
+#define RFIF_ICYTRX_V1                  (0x4 << BB_RWBLEBCONF_RFIF_POS)
+#define RFIF_ICYTRX_V2                  (0x8 << BB_RWBLEBCONF_RFIF_POS)
+#define RFIF_RESERVED                   (0x10 << BB_RWBLEBCONF_RFIF_POS)
+
+#define USEDBG_0                        (0x0 << BB_RWBLEBCONF_USEDBG_POS)
+#define USEDBG_1                        (0x1 << BB_RWBLEBCONF_USEDBG_POS)
+
+#define DECIPHER_0                      (0x0 << BB_RWBLEBCONF_DECIPHER_POS)
+#define DECIPHER_1                      (0x1 << BB_RWBLEBCONF_DECIPHER_POS)
+
+#define CLK_SEL_8                       (0x8 << BB_RWBLEBCONF_CLK_SEL_POS)
+
+#define INTMODE_0                       (0x0 << BB_RWBLEBCONF_INTMODE_POS)
+#define INTMODE_1                       (0x1 << BB_RWBLEBCONF_INTMODE_POS)
+
+#define BUSTYPE_0                       (0x0 << BB_RWBLEBCONF_BUSTYPE_POS)
+#define BUSTYPE_1                       (0x1 << BB_RWBLEBCONF_BUSTYPE_POS)
+
+#define ADD_WIDTH_14                    (0xE << BB_RWBLEBCONF_ADD_WIDTH_POS)
+
+/* Interrupts control register 0 */
+#define BB_INTCNTL0_BASE                0x4000190C
+#define BB_INTCNTL0                     REG32_POINTER(BB_INTCNTL0_BASE)
+
+/* BB_INTCNTL0 bit positions */
+#define BB_INTCNTL0_ERRORINTMSK_POS     16
+#define BB_INTCNTL0_ISORXINTMSK_POS     6
+#define BB_INTCNTL0_ISOTXINTMSK_POS     5
+#define BB_INTCNTL0_RXINTMSK_POS        4
+#define BB_INTCNTL0_TXINTMSK_POS        3
+#define BB_INTCNTL0_SKIPEVTINTMSK_POS   2
+#define BB_INTCNTL0_ENDEVTINTMSK_POS    1
+#define BB_INTCNTL0_STARTEVTINTMSK_POS  0
+
+/* BB_INTCNTL0 settings */
+#define ERRORINTMSK_0                   (0x0 << BB_INTCNTL0_ERRORINTMSK_POS)
+#define ERRORINTMSK_1                   (0x1 << BB_INTCNTL0_ERRORINTMSK_POS)
+
+#define ISORXINTMSK_0                   (0x0 << BB_INTCNTL0_ISORXINTMSK_POS)
+#define ISORXINTMSK_1                   (0x1 << BB_INTCNTL0_ISORXINTMSK_POS)
+
+#define ISOTXINTMSK_0                   (0x0 << BB_INTCNTL0_ISOTXINTMSK_POS)
+#define ISOTXINTMSK_1                   (0x1 << BB_INTCNTL0_ISOTXINTMSK_POS)
+
+#define RXINTMSK_0                      (0x0 << BB_INTCNTL0_RXINTMSK_POS)
+#define RXINTMSK_1                      (0x1 << BB_INTCNTL0_RXINTMSK_POS)
+
+#define TXINTMSK_0                      (0x0 << BB_INTCNTL0_TXINTMSK_POS)
+#define TXINTMSK_1                      (0x1 << BB_INTCNTL0_TXINTMSK_POS)
+
+#define SKIPEVTINTMSK_0                 (0x0 << BB_INTCNTL0_SKIPEVTINTMSK_POS)
+#define SKIPEVTINTMSK1                  (0x1 << BB_INTCNTL0_SKIPEVTINTMSK_POS)
+
+#define ENDEVTINTMSK_0                  (0x0 << BB_INTCNTL0_ENDEVTINTMSK_POS)
+#define ENDEVTINTMSK_1                  (0x1 << BB_INTCNTL0_ENDEVTINTMSK_POS)
+
+#define STARTEVTINTMSK_0                (0x0 << BB_INTCNTL0_STARTEVTINTMSK_POS)
+#define STARTEVTINTMSK_1                (0x1 << BB_INTCNTL0_STARTEVTINTMSK_POS)
+
+/* Interrupts status register 0 */
+#define BB_INTSTAT0_BASE                0x40001910
+#define BB_INTSTAT0                     READONLY_REG32_POINTER(BB_INTSTAT0_BASE)
+
+/* BB_INTSTAT0 bit positions */
+#define BB_INTSTAT0_ERRORINTSTAT_POS    16
+
+/* BB_INTSTAT0 settings */
+#define ERRORINTSTAT_0                  (0x0 << BB_INTSTAT0_ERRORINTSTAT_POS)
+#define ERRORINTSTAT_1                  (0x1 << BB_INTSTAT0_ERRORINTSTAT_POS)
+
+/* Interrupts raw status register 0 */
+#define BB_INTACK0_BASE                 0x40001914
+#define BB_INTACK0                      REG32_POINTER(BB_INTACK0_BASE)
+
+/* BB_INTACK0 bit positions */
+#define BB_INTACK0_ERRORINTACK_POS      16
+
+/* BB_INTACK0 settings */
+#define ERRORINTACK_0                   (0x0 << BB_INTACK0_ERRORINTACK_POS)
+#define ERRORINTACK_1                   (0x1 << BB_INTACK0_ERRORINTACK_POS)
+
+/* Interrupts control register 1 */
+#define BB_INTCNTL1_BASE                0x40001918
+#define BB_INTCNTL1                     REG32_POINTER(BB_INTCNTL1_BASE)
+
+/* BB_INTCNTL1 bit positions */
+#define BB_INTCNTL1_CLKNINTSRMSK_POS    28
+#define BB_INTCNTL1_CLKNINTSRMSK_MASK   (0x7 << BB_INTCNTL1_CLKNINTSRMSK_POS)
+#define BB_INTCNTL1_CLKNINTSRVAL_POS    24
+#define BB_INTCNTL1_CLKNINTSRVAL_MASK   (0xF << BB_INTCNTL1_CLKNINTSRVAL_POS)
+#define BB_INTCNTL1_FIFOINTMSK_POS      15
+#define BB_INTCNTL1_TIMESTAMPTGT2INTMSK_POS 6
+#define BB_INTCNTL1_TIMESTAMPTGT1INTMSK_POS 5
+#define BB_INTCNTL1_FINETGTIMINTMSK_POS 4
+#define BB_INTCNTL1_SWINTMSK_POS        3
+#define BB_INTCNTL1_CRYPTINTMSK_POS     2
+#define BB_INTCNTL1_SLPINTMSK_POS       1
+#define BB_INTCNTL1_CLKNINTMSK_POS      0
+
+/* BB_INTCNTL1 settings */
+#define CLKNINTSRMSK_0                  (0x0 << BB_INTCNTL1_CLKNINTSRMSK_POS)
+
+#define CLKNINTSRVAL_0                  (0x0 << BB_INTCNTL1_CLKNINTSRVAL_POS)
+
+#define FIFOINTMSK_0                    (0x0 << BB_INTCNTL1_FIFOINTMSK_POS)
+#define FIFOINTMSK_1                    (0x1 << BB_INTCNTL1_FIFOINTMSK_POS)
+
+#define TIMESTAMPTGT2INTMSK_0           (0x0 << BB_INTCNTL1_TIMESTAMPTGT2INTMSK_POS)
+#define TIMESTAMPTGT2INTMSK_1           (0x1 << BB_INTCNTL1_TIMESTAMPTGT2INTMSK_POS)
+
+#define TIMESTAMPTGT1INTMSK_0           (0x0 << BB_INTCNTL1_TIMESTAMPTGT1INTMSK_POS)
+#define TIMESTAMPTGT1INTMSK_1           (0x1 << BB_INTCNTL1_TIMESTAMPTGT1INTMSK_POS)
+
+#define FINETGTIMINTMSK_0               (0x0 << BB_INTCNTL1_FINETGTIMINTMSK_POS)
+#define FINETGTIMINTMSK_1               (0x1 << BB_INTCNTL1_FINETGTIMINTMSK_POS)
+
+#define SWINTMSK_0                      (0x0 << BB_INTCNTL1_SWINTMSK_POS)
+#define SWINTMSK_1                      (0x1 << BB_INTCNTL1_SWINTMSK_POS)
+
+#define CRYPTINTMSK_0                   (0x0 << BB_INTCNTL1_CRYPTINTMSK_POS)
+#define CRYPTINTMSK_1                   (0x1 << BB_INTCNTL1_CRYPTINTMSK_POS)
+
+#define SLPINTMSK_0                     (0x0 << BB_INTCNTL1_SLPINTMSK_POS)
+#define SLPINTMSK_1                     (0x1 << BB_INTCNTL1_SLPINTMSK_POS)
+
+#define CLKNINTMSK_0                    (0x0 << BB_INTCNTL1_CLKNINTMSK_POS)
+#define CLKNINTMSK_1                    (0x1 << BB_INTCNTL1_CLKNINTMSK_POS)
+
+/* Interrupts status register 1 */
+#define BB_INTSTAT1_BASE                0x4000191C
+#define BB_INTSTAT1                     READONLY_REG32_POINTER(BB_INTSTAT1_BASE)
+
+/* BB_INTSTAT1 bit positions */
+#define BB_INTSTAT1_FIFOINTSTAT_POS     15
+#define BB_INTSTAT1_TIMESTAMPTGT2INTSTAT_POS 6
+#define BB_INTSTAT1_TIMESTAMPTGT1INTSTAT_POS 5
+#define BB_INTSTAT1_FINETGTIMINTSTAT_POS 4
+#define BB_INTSTAT1_SWINTSTAT_POS       3
+#define BB_INTSTAT1_CRYPTINTSTAT_POS    2
+#define BB_INTSTAT1_SLPINTSTAT_POS      1
+#define BB_INTSTAT1_CLKNINTSTAT_POS     0
+
+/* BB_INTSTAT1 settings */
+#define FIFOINTSTAT_0                   (0x0 << BB_INTSTAT1_FIFOINTSTAT_POS)
+#define FIFOINTSTAT_1                   (0x1 << BB_INTSTAT1_FIFOINTSTAT_POS)
+
+#define TIMESTAMPTGT2INTSTAT_0          (0x0 << BB_INTSTAT1_TIMESTAMPTGT2INTSTAT_POS)
+#define TIMESTAMPTGT2INTSTAT_1          (0x1 << BB_INTSTAT1_TIMESTAMPTGT2INTSTAT_POS)
+
+#define TIMESTAMPTGT1INTSTAT_0          (0x0 << BB_INTSTAT1_TIMESTAMPTGT1INTSTAT_POS)
+#define TIMESTAMPTGT1INTSTAT_1          (0x1 << BB_INTSTAT1_TIMESTAMPTGT1INTSTAT_POS)
+
+#define FINETGTIMINTSTAT_0              (0x0 << BB_INTSTAT1_FINETGTIMINTSTAT_POS)
+#define FINETGTIMINTSTAT_1              (0x1 << BB_INTSTAT1_FINETGTIMINTSTAT_POS)
+
+#define SWINTSTAT_0                     (0x0 << BB_INTSTAT1_SWINTSTAT_POS)
+#define SWINTSTAT_1                     (0x1 << BB_INTSTAT1_SWINTSTAT_POS)
+
+#define CRYPTINTSTAT_0                  (0x0 << BB_INTSTAT1_CRYPTINTSTAT_POS)
+#define CRYPTINTSTAT_1                  (0x1 << BB_INTSTAT1_CRYPTINTSTAT_POS)
+
+#define SLPINTSTAT_0                    (0x0 << BB_INTSTAT1_SLPINTSTAT_POS)
+#define SLPINTSTAT_1                    (0x1 << BB_INTSTAT1_SLPINTSTAT_POS)
+
+#define CLKNINTSTAT_0                   (0x0 << BB_INTSTAT1_CLKNINTSTAT_POS)
+#define CLKNINTSTAT_1                   (0x1 << BB_INTSTAT1_CLKNINTSTAT_POS)
+
+/* Interrupts acknowledgement register 1 */
+#define BB_INTACK1_BASE                 0x40001920
+#define BB_INTACK1                      REG32_POINTER(BB_INTACK1_BASE)
+
+/* BB_INTACK1 bit positions */
+#define BB_INTACK1_FIFOINTACK_POS       15
+#define BB_INTACK1_TIMESTAMPTGT2INTACK_POS 6
+#define BB_INTACK1_TIMESTAMPTGT1INTACK_POS 5
+#define BB_INTACK1_FINETGTIMINTACK_POS  4
+#define BB_INTACK1_SWINTACK_POS         3
+#define BB_INTACK1_CRYPTINTACK_POS      2
+#define BB_INTACK1_SLPINTACK_POS        1
+#define BB_INTACK1_CLKNINTACK_POS       0
+
+/* BB_INTACK1 settings */
+#define FIFOINTACK_0                    (0x0 << BB_INTACK1_FIFOINTACK_POS)
+#define FIFOINTACK_1                    (0x1 << BB_INTACK1_FIFOINTACK_POS)
+
+#define TIMESTAMPTGT2INTACK_0           (0x0 << BB_INTACK1_TIMESTAMPTGT2INTACK_POS)
+#define TIMESTAMPTGT2INTACK_1           (0x1 << BB_INTACK1_TIMESTAMPTGT2INTACK_POS)
+
+#define TIMESTAMPTGT1INTACK_0           (0x0 << BB_INTACK1_TIMESTAMPTGT1INTACK_POS)
+#define TIMESTAMPTGT1INTACK_1           (0x1 << BB_INTACK1_TIMESTAMPTGT1INTACK_POS)
+
+#define FINETGTIMINTACK_0               (0x0 << BB_INTACK1_FINETGTIMINTACK_POS)
+#define FINETGTIMINTACK_1               (0x1 << BB_INTACK1_FINETGTIMINTACK_POS)
+
+#define SWINTACK_0                      (0x0 << BB_INTACK1_SWINTACK_POS)
+#define SWINTACK_1                      (0x1 << BB_INTACK1_SWINTACK_POS)
+
+#define CRYPTINTACK_0                   (0x0 << BB_INTACK1_CRYPTINTACK_POS)
+#define CRYPTINTACK_1                   (0x1 << BB_INTACK1_CRYPTINTACK_POS)
+
+#define SLPINTACK_0                     (0x0 << BB_INTACK1_SLPINTACK_POS)
+#define SLPINTACK_1                     (0x1 << BB_INTACK1_SLPINTACK_POS)
+
+#define CLKNINTACK_0                    (0x0 << BB_INTACK1_CLKNINTACK_POS)
+#define CLKNINTACK_1                    (0x1 << BB_INTACK1_CLKNINTACK_POS)
+
+/* Actif FIFO status register */
+#define BB_ACTFIFOSTAT_BASE             0x40001924
+#define BB_ACTFIFOSTAT                  READONLY_REG32_POINTER(BB_ACTFIFOSTAT_BASE)
+
+/* BB_ACTFIFOSTAT bit positions */
+#define BB_ACTFIFOSTAT_SKIP_ET_IDX_POS  28
+#define BB_ACTFIFOSTAT_SKIP_ET_IDX_MASK (0xF << BB_ACTFIFOSTAT_SKIP_ET_IDX_POS)
+#define BB_ACTFIFOSTAT_CURRENT_ET_IDX_POS 24
+#define BB_ACTFIFOSTAT_CURRENT_ET_IDX_MASK (0xF << BB_ACTFIFOSTAT_CURRENT_ET_IDX_POS)
+#define BB_ACTFIFOSTAT_ACTFLAG_POS      15
+#define BB_ACTFIFOSTAT_ISORXINTSTAT_POS 6
+#define BB_ACTFIFOSTAT_ISOTXINTSTAT_POS 5
+#define BB_ACTFIFOSTAT_RXINTSTAT_POS    4
+#define BB_ACTFIFOSTAT_TXINTSTAT_POS    3
+#define BB_ACTFIFOSTAT_SKIPACTINTSTAT_POS 2
+#define BB_ACTFIFOSTAT_ENDACTINTSTAT_POS 1
+#define BB_ACTFIFOSTAT_STARTACTINTSTAT_POS 0
+
+/* BB_ACTFIFOSTAT settings */
+#define SKIP_ET_IDX_0                   (0x0 << BB_ACTFIFOSTAT_SKIP_ET_IDX_POS)
+
+#define CURRENT_ET_IDX_0                (0x0 << BB_ACTFIFOSTAT_CURRENT_ET_IDX_POS)
+
+#define ACTFLAG_0                       (0x0 << BB_ACTFIFOSTAT_ACTFLAG_POS)
+#define ACTFLAG_1                       (0x1 << BB_ACTFIFOSTAT_ACTFLAG_POS)
+
+#define ISORXINTSTAT_0                  (0x0 << BB_ACTFIFOSTAT_ISORXINTSTAT_POS)
+#define ISORXINTSTAT_1                  (0x1 << BB_ACTFIFOSTAT_ISORXINTSTAT_POS)
+
+#define ISOTXINTSTAT_0                  (0x0 << BB_ACTFIFOSTAT_ISOTXINTSTAT_POS)
+#define ISOTXINTSTAT_1                  (0x1 << BB_ACTFIFOSTAT_ISOTXINTSTAT_POS)
+
+#define RXINTSTAT_0                     (0x0 << BB_ACTFIFOSTAT_RXINTSTAT_POS)
+#define RXINTSTAT_1                     (0x1 << BB_ACTFIFOSTAT_RXINTSTAT_POS)
+
+#define TXINTSTAT_0                     (0x0 << BB_ACTFIFOSTAT_TXINTSTAT_POS)
+#define TXINTSTAT_1                     (0x1 << BB_ACTFIFOSTAT_TXINTSTAT_POS)
+
+#define SKIPACTINTSTAT_0                (0x0 << BB_ACTFIFOSTAT_SKIPACTINTSTAT_POS)
+#define SKIPACTINTSTAT_1                (0x1 << BB_ACTFIFOSTAT_SKIPACTINTSTAT_POS)
+
+#define ENDACTINTSTAT_0                 (0x0 << BB_ACTFIFOSTAT_ENDACTINTSTAT_POS)
+#define ENDACTINTSTAT_1                 (0x1 << BB_ACTFIFOSTAT_ENDACTINTSTAT_POS)
+
+#define STARTACTINTSTAT_0               (0x0 << BB_ACTFIFOSTAT_STARTACTINTSTAT_POS)
+#define STARTACTINTSTAT_1               (0x1 << BB_ACTFIFOSTAT_STARTACTINTSTAT_POS)
+
+/* Rx descriptor pointer register */
+#define BB_CURRENTRXDESCPTR_BASE        0x40001928
+#define BB_CURRENTRXDESCPTR             REG32_POINTER(BB_CURRENTRXDESCPTR_BASE)
+
+/* BB_CURRENTRXDESCPTR bit positions */
+#define BB_CURRENTRXDESCPTR_CURRENTRXDESCPTR_POS 0
+#define BB_CURRENTRXDESCPTR_CURRENTRXDESCPTR_MASK (0x3FFF << BB_CURRENTRXDESCPTR_CURRENTRXDESCPTR_POS)
+
+/* BB_CURRENTRXDESCPTR settings */
+#define CURRENTRXDESCPTR_0              (0x0 << BB_CURRENTRXDESCPTR_CURRENTRXDESCPTR_POS)
+
+/* Rx descriptor pointer register */
+#define BB_ETPR_BASE                    0x4000192C
+#define BB_ETPR                         REG32_POINTER(BB_ETPR_BASE)
+
+/* BB_ETPR bit positions */
+#define BB_ETPR_ETPTR_POS               0
+#define BB_ETPR_ETPTR_MASK              (0x3FFF << BB_ETPR_ETPTR_POS)
+
+/* BB_ETPR settings */
+#define ETPTR_0                         (0x0 << BB_ETPR_ETPTR_POS)
+
+/* Deep sleep control register */
+#define BB_DEEPSLCNTL_BASE              0x40001930
+#define BB_DEEPSLCNTL                   REG32_POINTER(BB_DEEPSLCNTL_BASE)
+
+/* BB_DEEPSLCNTL bit positions */
+#define BB_DEEPSLCNTL_EXTWKUPDSB_POS    31
+#define BB_DEEPSLCNTL_DEEP_SLEEP_STAT_POS 15
+#define BB_DEEPSLCNTL_DEEP_SLEEP_CORR_EN_POS 3
+#define BB_DEEPSLCNTL_DEEP_SLEEP_ON_POS 2
+#define BB_DEEPSLCNTL_RADIO_SLEEP_EN_POS 1
+#define BB_DEEPSLCNTL_OSC_SLEEP_EN_POS  0
+
+/* BB_DEEPSLCNTL settings */
+#define EXTWKUPDSB_0                    (0x0 << BB_DEEPSLCNTL_EXTWKUPDSB_POS)
+#define EXTWKUPDSB_1                    (0x1 << BB_DEEPSLCNTL_EXTWKUPDSB_POS)
+
+#define DEEP_SLEEP_STAT_0               (0x0 << BB_DEEPSLCNTL_DEEP_SLEEP_STAT_POS)
+#define DEEP_SLEEP_STAT_1               (0x1 << BB_DEEPSLCNTL_DEEP_SLEEP_STAT_POS)
+
+#define DEEP_SLEEP_CORR_EN_0            (0x0 << BB_DEEPSLCNTL_DEEP_SLEEP_CORR_EN_POS)
+#define DEEP_SLEEP_CORR_EN_1            (0x1 << BB_DEEPSLCNTL_DEEP_SLEEP_CORR_EN_POS)
+
+#define DEEP_SLEEP_ON_0                 (0x0 << BB_DEEPSLCNTL_DEEP_SLEEP_ON_POS)
+#define DEEP_SLEEP_ON_1                 (0x1 << BB_DEEPSLCNTL_DEEP_SLEEP_ON_POS)
+
+#define RADIO_SLEEP_EN_0                (0x0 << BB_DEEPSLCNTL_RADIO_SLEEP_EN_POS)
+#define RADIO_SLEEP_EN_1                (0x1 << BB_DEEPSLCNTL_RADIO_SLEEP_EN_POS)
+
+#define OSC_SLEEP_EN_0                  (0x0 << BB_DEEPSLCNTL_OSC_SLEEP_EN_POS)
+#define OSC_SLEEP_EN_1                  (0x1 << BB_DEEPSLCNTL_OSC_SLEEP_EN_POS)
+
+/* Deep sleep wakeup register */
+#define BB_DEEPSLWKUP_BASE              0x40001934
+#define BB_DEEPSLWKUP                   REG32_POINTER(BB_DEEPSLWKUP_BASE)
+
+/* BB_DEEPSLWKUP settings */
+#define DEEPSLTIME_0                    (0x0 << BB_DEEPSLWKUP_DEEPSLTIME_POS)
+
+/* Deep sleep status register */
+#define BB_DEEPSLSTAT_BASE              0x40001938
+#define BB_DEEPSLSTAT                   READONLY_REG32_POINTER(BB_DEEPSLSTAT_BASE)
+
+/* BB_DEEPSLSTAT settings */
+#define DEEPSLDUR_0                     (0x0 << BB_DEEPSLSTAT_DEEPSLDUR_POS)
+
+/* Stabilization times */
+#define BB_ENBPRESET_BASE               0x4000193C
+#define BB_ENBPRESET                    REG32_POINTER(BB_ENBPRESET_BASE)
+
+/* BB_ENBPRESET bit positions */
+#define BB_ENBPRESET_TWEXT_POS          21
+#define BB_ENBPRESET_TWEXT_MASK         (0x7FF << BB_ENBPRESET_TWEXT_POS)
+#define BB_ENBPRESET_TWOSC_POS          10
+#define BB_ENBPRESET_TWOSC_MASK         (0x7FF << BB_ENBPRESET_TWOSC_POS)
+#define BB_ENBPRESET_TWRM_POS           0
+#define BB_ENBPRESET_TWRM_MASK          (0x3FF << BB_ENBPRESET_TWRM_POS)
+
+/* BB_ENBPRESET settings */
+#define TWEXT_0                         (0x0 << BB_ENBPRESET_TWEXT_POS)
+
+#define TWOSC_0                         (0x0 << BB_ENBPRESET_TWOSC_POS)
+
+#define TWRM_0                          (0x0 << BB_ENBPRESET_TWRM_POS)
+
+/* Fine timer correction register */
+#define BB_FINECNTCORR_BASE             0x40001940
+#define BB_FINECNTCORR                  REG32_POINTER(BB_FINECNTCORR_BASE)
+
+/* BB_FINECNTCORR bit positions */
+#define BB_FINECNTCORR_FINECNTCORR_POS  0
+#define BB_FINECNTCORR_FINECNTCORR_MASK (0x3FF << BB_FINECNTCORR_FINECNTCORR_POS)
+
+/* BB_FINECNTCORR settings */
+#define FINECNTCORR_0                   (0x0 << BB_FINECNTCORR_FINECNTCORR_POS)
+
+/* Slot clock correction register */
+#define BB_CLKNCNTCORR_BASE             0x40001944
+#define BB_CLKNCNTCORR                  REG32_POINTER(BB_CLKNCNTCORR_BASE)
+
+/* BB_CLKNCNTCORR bit positions */
+#define BB_CLKNCNTCORR_ABS_DELTA_POS    31
+#define BB_CLKNCNTCORR_CLKNCNTCORR_POS  0
+#define BB_CLKNCNTCORR_CLKNCNTCORR_MASK (0xFFFFFFF << BB_CLKNCNTCORR_CLKNCNTCORR_POS)
+
+/* BB_CLKNCNTCORR settings */
+#define ABS_DELTA_0                     (0x0 << BB_CLKNCNTCORR_ABS_DELTA_POS)
+#define ABS_DELTA_1                     (0x1 << BB_CLKNCNTCORR_ABS_DELTA_POS)
+
+#define CLKNCNTCORR_0                   (0x0 << BB_CLKNCNTCORR_CLKNCNTCORR_POS)
+
+/* Diagnostic ports control register */
+#define BB_DIAGCNTL_BASE                0x40001950
+#define BB_DIAGCNTL                     REG32_POINTER(BB_DIAGCNTL_BASE)
+
+/* BB_DIAGCNTL bit positions */
+#define BB_DIAGCNTL_DIAG3_EN_POS        31
+#define BB_DIAGCNTL_DIAG3_POS           24
+#define BB_DIAGCNTL_DIAG3_MASK          (0x7F << BB_DIAGCNTL_DIAG3_POS)
+#define BB_DIAGCNTL_DIAG2_EN_POS        23
+#define BB_DIAGCNTL_DIAG2_POS           16
+#define BB_DIAGCNTL_DIAG2_MASK          (0x7F << BB_DIAGCNTL_DIAG2_POS)
+#define BB_DIAGCNTL_DIAG1_EN_POS        15
+#define BB_DIAGCNTL_DIAG1_POS           8
+#define BB_DIAGCNTL_DIAG1_MASK          (0x7F << BB_DIAGCNTL_DIAG1_POS)
+#define BB_DIAGCNTL_DIAG0_EN_POS        7
+#define BB_DIAGCNTL_DIAG0_POS           0
+#define BB_DIAGCNTL_DIAG0_MASK          (0x7F << BB_DIAGCNTL_DIAG0_POS)
+
+/* BB_DIAGCNTL settings */
+#define DIAG3_EN_0                      (0x0 << BB_DIAGCNTL_DIAG3_EN_POS)
+#define DIAG3_EN_1                      (0x1 << BB_DIAGCNTL_DIAG3_EN_POS)
+
+#define DIAG3_0                         (0x0 << BB_DIAGCNTL_DIAG3_POS)
+
+#define DIAG2_EN_0                      (0x0 << BB_DIAGCNTL_DIAG2_EN_POS)
+#define DIAG2_EN_1                      (0x1 << BB_DIAGCNTL_DIAG2_EN_POS)
+
+#define DIAG2_0                         (0x0 << BB_DIAGCNTL_DIAG2_POS)
+
+#define DIAG1_EN_0                      (0x0 << BB_DIAGCNTL_DIAG1_EN_POS)
+#define DIAG1_EN_1                      (0x1 << BB_DIAGCNTL_DIAG1_EN_POS)
+
+#define DIAG1_0                         (0x0 << BB_DIAGCNTL_DIAG1_POS)
+
+#define DIAG0_EN_0                      (0x0 << BB_DIAGCNTL_DIAG0_EN_POS)
+#define DIAG0_EN_1                      (0x1 << BB_DIAGCNTL_DIAG0_EN_POS)
+
+#define DIAG0_0                         (0x0 << BB_DIAGCNTL_DIAG0_POS)
+
+/* Diagnostic ports status register */
+#define BB_DIAGSTAT_BASE                0x40001954
+#define BB_DIAGSTAT                     READONLY_REG32_POINTER(BB_DIAGSTAT_BASE)
+
+/* BB_DIAGSTAT bit positions */
+#define BB_DIAGSTAT_DIAG3STAT_POS       24
+#define BB_DIAGSTAT_DIAG3STAT_MASK      (0xFF << BB_DIAGSTAT_DIAG3STAT_POS)
+#define BB_DIAGSTAT_DIAG2STAT_POS       16
+#define BB_DIAGSTAT_DIAG2STAT_MASK      (0xFF << BB_DIAGSTAT_DIAG2STAT_POS)
+#define BB_DIAGSTAT_DIAG1STAT_POS       8
+#define BB_DIAGSTAT_DIAG1STAT_MASK      (0xFF << BB_DIAGSTAT_DIAG1STAT_POS)
+#define BB_DIAGSTAT_DIAG0STAT_POS       0
+#define BB_DIAGSTAT_DIAG0STAT_MASK      (0xFF << BB_DIAGSTAT_DIAG0STAT_POS)
+
+/* BB_DIAGSTAT settings */
+#define DIAG3STAT_0                     (0x0 << BB_DIAGSTAT_DIAG3STAT_POS)
+
+#define DIAG2STAT_0                     (0x0 << BB_DIAGSTAT_DIAG2STAT_POS)
+
+#define DIAG1STAT_0                     (0x0 << BB_DIAGSTAT_DIAG1STAT_POS)
+
+#define DIAG0STAT_0                     (0x0 << BB_DIAGSTAT_DIAG0STAT_POS)
+
+/* Diagnostic ports upper limit */
+#define BB_DEBUGADDMAX_BASE             0x40001958
+#define BB_DEBUGADDMAX                  REG32_POINTER(BB_DEBUGADDMAX_BASE)
+
+/* BB_DEBUGADDMAX bit positions */
+#define BB_DEBUGADDMAX_REG_ADDMAX_POS   16
+#define BB_DEBUGADDMAX_REG_ADDMAX_MASK  (0xFFFF << BB_DEBUGADDMAX_REG_ADDMAX_POS)
+#define BB_DEBUGADDMAX_EM_ADDMAX_POS    0
+#define BB_DEBUGADDMAX_EM_ADDMAX_MASK   (0xFFFF << BB_DEBUGADDMAX_EM_ADDMAX_POS)
+
+/* BB_DEBUGADDMAX settings */
+#define REG_ADDMAX_0                    (0x0 << BB_DEBUGADDMAX_REG_ADDMAX_POS)
+
+#define EM_ADDMAX_0                     (0x0 << BB_DEBUGADDMAX_EM_ADDMAX_POS)
+
+/* Diagnostic ports lower limit */
+#define BB_DEBUGADDMIN_BASE             0x4000195C
+#define BB_DEBUGADDMIN                  REG32_POINTER(BB_DEBUGADDMIN_BASE)
+
+/* BB_DEBUGADDMIN bit positions */
+#define BB_DEBUGADDMIN_REG_ADDMIN_POS   16
+#define BB_DEBUGADDMIN_REG_ADDMIN_MASK  (0xFFFF << BB_DEBUGADDMIN_REG_ADDMIN_POS)
+#define BB_DEBUGADDMIN_EM_ADDMIN_POS    0
+#define BB_DEBUGADDMIN_EM_ADDMIN_MASK   (0xFFFF << BB_DEBUGADDMIN_EM_ADDMIN_POS)
+
+/* BB_DEBUGADDMIN settings */
+#define REG_ADDMIN_0                    (0x0 << BB_DEBUGADDMIN_REG_ADDMIN_POS)
+
+#define EM_ADDMIN_0                     (0x0 << BB_DEBUGADDMIN_EM_ADDMIN_POS)
+
+/* Diagnostic ports errors register */
+#define BB_ERRORTYPESTAT_BASE           0x40001960
+#define BB_ERRORTYPESTAT                READONLY_REG32_POINTER(BB_ERRORTYPESTAT_BASE)
+
+/* BB_ERRORTYPESTAT bit positions */
+#define BB_ERRORTYPESTAT_DFCNTL_EMACC_ERROR_POS 22
+#define BB_ERRORTYPESTAT_FIFOINTOVF_POS 21
+#define BB_ERRORTYPESTAT_PHY_ERROR_POS  20
+#define BB_ERRORTYPESTAT_TXAEHEADER_PTR_ERROR_POS 19
+#define BB_ERRORTYPESTAT_TMAFS_ERROR_POS 18
+#define BB_ERRORTYPESTAT_RAL_UNDERRUN_POS 17
+#define BB_ERRORTYPESTAT_RAL_ERROR_POS  16
+#define BB_ERRORTYPESTAT_RXDATA_PTR_ERROR_POS 15
+#define BB_ERRORTYPESTAT_TXDATA_PTR_ERROR_POS 14
+#define BB_ERRORTYPESTAT_RXDESC_EMPTY_ERROR_POS 13
+#define BB_ERRORTYPESTAT_TXDESC_EMPTY_ERROR_POS 12
+#define BB_ERRORTYPESTAT_CSFORMAT_ERROR_POS 11
+#define BB_ERRORTYPESTAT_LLCHMAP_ERROR_POS 10
+#define BB_ERRORTYPESTAT_ADV_UNDERRUN_POS 9
+#define BB_ERRORTYPESTAT_IFS_UNDERRUN_POS 8
+#define BB_ERRORTYPESTAT_LIST_ERROR_POS 7
+#define BB_ERRORTYPESTAT_EVT_CNTL_APFM_ERROR_POS 6
+#define BB_ERRORTYPESTAT_ACT_SCHDL_APFM_ERROR_POS 5
+#define BB_ERRORTYPESTAT_ACT_SCHDL_ENTRY_ERROR_POS 4
+#define BB_ERRORTYPESTAT_RADIO_EMACC_ERROR_POS 3
+#define BB_ERRORTYPESTAT_PKTCNTL_EMACC_ERROR_POS 2
+#define BB_ERRORTYPESTAT_RXCRYPT_ERROR_POS 1
+#define BB_ERRORTYPESTAT_TXCRYPT_ERROR_POS 0
+
+/* BB_ERRORTYPESTAT settings */
+#define DFCNTL_EMACC_ERROR_0            (0x0 << BB_ERRORTYPESTAT_DFCNTL_EMACC_ERROR_POS)
+#define DFCNTL_EMACC_ERROR_1            (0x1 << BB_ERRORTYPESTAT_DFCNTL_EMACC_ERROR_POS)
+
+#define FIFOINTOVF_0                    (0x0 << BB_ERRORTYPESTAT_FIFOINTOVF_POS)
+#define FIFOINTOVF_1                    (0x1 << BB_ERRORTYPESTAT_FIFOINTOVF_POS)
+
+#define PHY_ERROR_0                     (0x0 << BB_ERRORTYPESTAT_PHY_ERROR_POS)
+#define PHY_ERROR_1                     (0x1 << BB_ERRORTYPESTAT_PHY_ERROR_POS)
+
+#define TXAEHEADER_PTR_ERROR_0          (0x0 << BB_ERRORTYPESTAT_TXAEHEADER_PTR_ERROR_POS)
+#define TXAEHEADER_PTR_ERROR_1          (0x1 << BB_ERRORTYPESTAT_TXAEHEADER_PTR_ERROR_POS)
+
+#define TMAFS_ERROR_0                   (0x0 << BB_ERRORTYPESTAT_TMAFS_ERROR_POS)
+#define TMAFS_ERROR_1                   (0x1 << BB_ERRORTYPESTAT_TMAFS_ERROR_POS)
+
+#define RAL_UNDERRUN_0                  (0x0 << BB_ERRORTYPESTAT_RAL_UNDERRUN_POS)
+#define RAL_UNDERRUN_1                  (0x1 << BB_ERRORTYPESTAT_RAL_UNDERRUN_POS)
+
+#define RAL_ERROR_0                     (0x0 << BB_ERRORTYPESTAT_RAL_ERROR_POS)
+#define RAL_ERROR_1                     (0x1 << BB_ERRORTYPESTAT_RAL_ERROR_POS)
+
+#define RXDATA_PTR_ERROR_0              (0x0 << BB_ERRORTYPESTAT_RXDATA_PTR_ERROR_POS)
+#define RXDATA_PTR_ERROR_1              (0x1 << BB_ERRORTYPESTAT_RXDATA_PTR_ERROR_POS)
+
+#define TXDATA_PTR_ERROR_0              (0x0 << BB_ERRORTYPESTAT_TXDATA_PTR_ERROR_POS)
+#define TXDATA_PTR_ERROR_1              (0x1 << BB_ERRORTYPESTAT_TXDATA_PTR_ERROR_POS)
+
+#define RXDESC_EMPTY_ERROR_0            (0x0 << BB_ERRORTYPESTAT_RXDESC_EMPTY_ERROR_POS)
+#define RXDESC_EMPTY_ERROR_1            (0x1 << BB_ERRORTYPESTAT_RXDESC_EMPTY_ERROR_POS)
+
+#define TXDESC_EMPTY_ERROR_0            (0x0 << BB_ERRORTYPESTAT_TXDESC_EMPTY_ERROR_POS)
+#define TXDESC_EMPTY_ERROR_1            (0x1 << BB_ERRORTYPESTAT_TXDESC_EMPTY_ERROR_POS)
+
+#define CSFORMAT_ERROR_0                (0x0 << BB_ERRORTYPESTAT_CSFORMAT_ERROR_POS)
+#define CSFORMAT_ERROR_1                (0x1 << BB_ERRORTYPESTAT_CSFORMAT_ERROR_POS)
+
+#define LLCHMAP_ERROR_0                 (0x0 << BB_ERRORTYPESTAT_LLCHMAP_ERROR_POS)
+#define LLCHMAP_ERROR_1                 (0x1 << BB_ERRORTYPESTAT_LLCHMAP_ERROR_POS)
+
+#define ADV_UNDERRUN_0                  (0x0 << BB_ERRORTYPESTAT_ADV_UNDERRUN_POS)
+#define ADV_UNDERRUN_1                  (0x1 << BB_ERRORTYPESTAT_ADV_UNDERRUN_POS)
+
+#define IFS_UNDERRUN_0                  (0x0 << BB_ERRORTYPESTAT_IFS_UNDERRUN_POS)
+#define IFS_UNDERRUN_1                  (0x1 << BB_ERRORTYPESTAT_IFS_UNDERRUN_POS)
+
+#define LIST_ERROR_0                    (0x0 << BB_ERRORTYPESTAT_LIST_ERROR_POS)
+#define LIST_ERROR_1                    (0x1 << BB_ERRORTYPESTAT_LIST_ERROR_POS)
+
+#define EVT_CNTL_APFM_ERROR_0           (0x0 << BB_ERRORTYPESTAT_EVT_CNTL_APFM_ERROR_POS)
+#define EVT_CNTL_APFM_ERROR_1           (0x1 << BB_ERRORTYPESTAT_EVT_CNTL_APFM_ERROR_POS)
+
+#define ACT_SCHDL_APFM_ERROR_0          (0x0 << BB_ERRORTYPESTAT_ACT_SCHDL_APFM_ERROR_POS)
+#define ACT_SCHDL_APFM_ERROR_1          (0x1 << BB_ERRORTYPESTAT_ACT_SCHDL_APFM_ERROR_POS)
+
+#define ACT_SCHDL_ENTRY_ERROR_0         (0x0 << BB_ERRORTYPESTAT_ACT_SCHDL_ENTRY_ERROR_POS)
+#define ACT_SCHDL_ENTRY_ERROR_1         (0x1 << BB_ERRORTYPESTAT_ACT_SCHDL_ENTRY_ERROR_POS)
+
+#define RADIO_EMACC_ERROR_0             (0x0 << BB_ERRORTYPESTAT_RADIO_EMACC_ERROR_POS)
+#define RADIO_EMACC_ERROR_1             (0x1 << BB_ERRORTYPESTAT_RADIO_EMACC_ERROR_POS)
+
+#define PKTCNTL_EMACC_ERROR_0           (0x0 << BB_ERRORTYPESTAT_PKTCNTL_EMACC_ERROR_POS)
+#define PKTCNTL_EMACC_ERROR_1           (0x1 << BB_ERRORTYPESTAT_PKTCNTL_EMACC_ERROR_POS)
+
+#define RXCRYPT_ERROR_0                 (0x0 << BB_ERRORTYPESTAT_RXCRYPT_ERROR_POS)
+#define RXCRYPT_ERROR_1                 (0x1 << BB_ERRORTYPESTAT_RXCRYPT_ERROR_POS)
+
+#define TXCRYPT_ERROR_0                 (0x0 << BB_ERRORTYPESTAT_TXCRYPT_ERROR_POS)
+#define TXCRYPT_ERROR_1                 (0x1 << BB_ERRORTYPESTAT_TXCRYPT_ERROR_POS)
+
+/* Software profiling register */
+#define BB_SWPROFILING_BASE             0x40001964
+#define BB_SWPROFILING                  REG32_POINTER(BB_SWPROFILING_BASE)
+
+/* BB_SWPROFILING settings */
+#define SWPROF_0                        (0x0 << BB_SWPROFILING_SWPROF_POS)
+
+/* Principal control register for the radio interface */
+#define BB_RADIOCNTL0_BASE              0x40001970
+#define BB_RADIOCNTL0                   REG32_POINTER(BB_RADIOCNTL0_BASE)
+
+/* BB_RADIOCNTL0 bit positions */
+#define BB_RADIOCNTL0_SPIPTR_POS        16
+#define BB_RADIOCNTL0_SPIPTR_MASK       (0x3FFF << BB_RADIOCNTL0_SPIPTR_POS)
+#define BB_RADIOCNTL0_SPICFG_POS        7
+#define BB_RADIOCNTL0_SPIFREQ_POS       4
+#define BB_RADIOCNTL0_SPIFREQ_MASK      (0x3 << BB_RADIOCNTL0_SPIFREQ_POS)
+#define BB_RADIOCNTL0_SPICOMP_POS       1
+#define BB_RADIOCNTL0_SPIGO_POS         0
+
+/* BB_RADIOCNTL0 settings */
+#define SPIPTR_0                        (0x0 << BB_RADIOCNTL0_SPIPTR_POS)
+
+#define SPICFG_0                        (0x0 << BB_RADIOCNTL0_SPICFG_POS)
+#define SPICFG_1                        (0x1 << BB_RADIOCNTL0_SPICFG_POS)
+
+#define SPIFREQ_0                       (0x0 << BB_RADIOCNTL0_SPIFREQ_POS)
+#define SPIFREQ_1                       (0x1 << BB_RADIOCNTL0_SPIFREQ_POS)
+#define SPIFREQ_2                       (0x2 << BB_RADIOCNTL0_SPIFREQ_POS)
+#define SPIFREQ_3                       (0x3 << BB_RADIOCNTL0_SPIFREQ_POS)
+
+#define SPICOMP_0                       (0x0 << BB_RADIOCNTL0_SPICOMP_POS)
+#define SPICOMP_1                       (0x1 << BB_RADIOCNTL0_SPICOMP_POS)
+
+#define SPIGO_0                         (0x0 << BB_RADIOCNTL0_SPIGO_POS)
+#define SPIGO_1                         (0x1 << BB_RADIOCNTL0_SPIGO_POS)
+
+/* Second control register for the radio interface */
+#define BB_RADIOCNTL1_BASE              0x40001974
+#define BB_RADIOCNTL1                   REG32_POINTER(BB_RADIOCNTL1_BASE)
+
+/* BB_RADIOCNTL1 bit positions */
+#define BB_RADIOCNTL1_FORCEAGC_EN_POS   31
+#define BB_RADIOCNTL1_FORCEIQ_POS       30
+#define BB_RADIOCNTL1_TXDNSL_POS        29
+#define BB_RADIOCNTL1_RXDNSL_POS        28
+#define BB_RADIOCNTL1_FORCEAGC_LENGTH_POS 16
+#define BB_RADIOCNTL1_FORCEAGC_LENGTH_MASK (0xFFF << BB_RADIOCNTL1_FORCEAGC_LENGTH_POS)
+#define BB_RADIOCNTL1_SYNC_PULSE_MODE_POS 15
+#define BB_RADIOCNTL1_SYNC_PULSE_SRC_POS 14
+#define BB_RADIOCNTL1_DPCORR_EN_POS     13
+#define BB_RADIOCNTL1_JEF_SELECT_POS    12
+#define BB_RADIOCNTL1_XRFSEL_POS        4
+#define BB_RADIOCNTL1_XRFSEL_MASK       (0x3F << BB_RADIOCNTL1_XRFSEL_POS)
+#define BB_RADIOCNTL1_SUBVERSION_POS    0
+#define BB_RADIOCNTL1_SUBVERSION_MASK   (0xF << BB_RADIOCNTL1_SUBVERSION_POS)
+
+/* BB_RADIOCNTL1 settings */
+#define FORCEAGC_EN_0                   (0x0 << BB_RADIOCNTL1_FORCEAGC_EN_POS)
+#define FORCEAGC_EN_1                   (0x1 << BB_RADIOCNTL1_FORCEAGC_EN_POS)
+
+#define FORCEBLEIQ_0                    (0x0 << BB_RADIOCNTL1_FORCEIQ_POS)
+#define FORCEBLEIQ_1                    (0x1 << BB_RADIOCNTL1_FORCEIQ_POS)
+
+#define TXDNSL_0                        (0x0 << BB_RADIOCNTL1_TXDNSL_POS)
+#define TXDNSL_1                        (0x1 << BB_RADIOCNTL1_TXDNSL_POS)
+
+#define RXDNSL_0                        (0x0 << BB_RADIOCNTL1_RXDNSL_POS)
+#define RXDNSL_1                        (0x1 << BB_RADIOCNTL1_RXDNSL_POS)
+
+#define FORCEAGC_LENGTH_0               (0x0 << BB_RADIOCNTL1_FORCEAGC_LENGTH_POS)
+
+#define SYNC_PULSE_MODE_0               (0x0 << BB_RADIOCNTL1_SYNC_PULSE_MODE_POS)
+#define SYNC_PULSE_MODE_1               (0x1 << BB_RADIOCNTL1_SYNC_PULSE_MODE_POS)
+
+#define SYNC_PULSE_SRC_0                (0x0 << BB_RADIOCNTL1_SYNC_PULSE_SRC_POS)
+#define SYNC_PULSE_SRC_1                (0x1 << BB_RADIOCNTL1_SYNC_PULSE_SRC_POS)
+
+#define DPCORR_EN_0                     (0x0 << BB_RADIOCNTL1_DPCORR_EN_POS)
+#define DPCORR_EN_1                     (0x1 << BB_RADIOCNTL1_DPCORR_EN_POS)
+
+#define JEF_SELECT_0                    (0x0 << BB_RADIOCNTL1_JEF_SELECT_POS)
+#define JEF_SELECT_1                    (0x1 << BB_RADIOCNTL1_JEF_SELECT_POS)
+
+#define NONE                            (0x0 << BB_RADIOCNTL1_XRFSEL_POS)
+#define RIPPLE                          (0x1 << BB_RADIOCNTL1_XRFSEL_POS)
+#define EXTERNAL                        (0x2 << BB_RADIOCNTL1_XRFSEL_POS)
+#define ICYTRX_V2                       (0x4 << BB_RADIOCNTL1_XRFSEL_POS)
+#define BTIPT                           (0x5 << BB_RADIOCNTL1_XRFSEL_POS)
+
+#define GCS2_LR                         (0x0 << BB_RADIOCNTL1_SUBVERSION_POS)
+#define GCS3                            (0x1 << BB_RADIOCNTL1_SUBVERSION_POS)
+
+/* Third control register for the radio interface */
+#define BB_RADIOCNTL2_BASE              0x40001978
+#define BB_RADIOCNTL2                   REG32_POINTER(BB_RADIOCNTL2_BASE)
+
+/* BB_RADIOCNTL2 bit positions */
+#define BB_RADIOCNTL2_LRSYNCCOMPMODE_POS 30
+#define BB_RADIOCNTL2_LRSYNCCOMPMODE_MASK (0x3 << BB_RADIOCNTL2_LRSYNCCOMPMODE_POS)
+#define BB_RADIOCNTL2_RXCITERMBYPASS_POS 29
+#define BB_RADIOCNTL2_LRVTBFLUSH_POS    24
+#define BB_RADIOCNTL2_LRVTBFLUSH_MASK   (0x1F << BB_RADIOCNTL2_LRVTBFLUSH_POS)
+#define BB_RADIOCNTL2_PHYMSK_POS        22
+#define BB_RADIOCNTL2_PHYMSK_MASK       (0x3 << BB_RADIOCNTL2_PHYMSK_POS)
+#define BB_RADIOCNTL2_LRSYNCERR_POS     20
+#define BB_RADIOCNTL2_LRSYNCERR_MASK    (0x3 << BB_RADIOCNTL2_LRSYNCERR_POS)
+#define BB_RADIOCNTL2_SYNCERR_POS       16
+#define BB_RADIOCNTL2_SYNCERR_MASK      (0x7 << BB_RADIOCNTL2_SYNCERR_POS)
+#define BB_RADIOCNTL2_FREQTABLE_PTR_POS 0
+#define BB_RADIOCNTL2_FREQTABLE_PTR_MASK (0x3FFF << BB_RADIOCNTL2_FREQTABLE_PTR_POS)
+
+/* BB_RADIOCNTL2 settings */
+#define LRSYNCCOMPMODE_3                (0x3 << BB_RADIOCNTL2_LRSYNCCOMPMODE_POS)
+
+#define RXCITERMBYPASS_0                (0x0 << BB_RADIOCNTL2_RXCITERMBYPASS_POS)
+#define RXCITERMBYPASS_1                (0x1 << BB_RADIOCNTL2_RXCITERMBYPASS_POS)
+
+#define LRVTBFLUSH_8                    (0x8 << BB_RADIOCNTL2_LRVTBFLUSH_POS)
+
+#define PHYMSK_0                        (0x0 << BB_RADIOCNTL2_PHYMSK_POS)
+
+#define LRSYNCERR_0                     (0x0 << BB_RADIOCNTL2_LRSYNCERR_POS)
+
+#define SYNCERR_0                       (0x0 << BB_RADIOCNTL2_SYNCERR_POS)
+
+#define FREQTABLE_PTR_64                (0x40 << BB_RADIOCNTL2_FREQTABLE_PTR_POS)
+
+/* Fourth control register for the radio interface */
+#define BB_RADIOCNTL3_BASE              0x4000197C
+#define BB_RADIOCNTL3                   REG32_POINTER(BB_RADIOCNTL3_BASE)
+
+/* BB_RADIOCNTL3 bit positions */
+#define BB_RADIOCNTL3_RXRATE3CFG_POS    30
+#define BB_RADIOCNTL3_RXRATE3CFG_MASK   (0x3 << BB_RADIOCNTL3_RXRATE3CFG_POS)
+#define BB_RADIOCNTL3_RXRATE2CFG_POS    28
+#define BB_RADIOCNTL3_RXRATE2CFG_MASK   (0x3 << BB_RADIOCNTL3_RXRATE2CFG_POS)
+#define BB_RADIOCNTL3_RXRATE1CFG_POS    26
+#define BB_RADIOCNTL3_RXRATE1CFG_MASK   (0x3 << BB_RADIOCNTL3_RXRATE1CFG_POS)
+#define BB_RADIOCNTL3_RXRATE0CFG_POS    24
+#define BB_RADIOCNTL3_RXRATE0CFG_MASK   (0x3 << BB_RADIOCNTL3_RXRATE0CFG_POS)
+#define BB_RADIOCNTL3_RXSYNC_ROUTING_POS 18
+#define BB_RADIOCNTL3_RXVALID_BEH_POS   16
+#define BB_RADIOCNTL3_RXVALID_BEH_MASK  (0x3 << BB_RADIOCNTL3_RXVALID_BEH_POS)
+#define BB_RADIOCNTL3_TXRATE3CFG_POS    14
+#define BB_RADIOCNTL3_TXRATE3CFG_MASK   (0x3 << BB_RADIOCNTL3_TXRATE3CFG_POS)
+#define BB_RADIOCNTL3_TXRATE2CFG_POS    12
+#define BB_RADIOCNTL3_TXRATE2CFG_MASK   (0x3 << BB_RADIOCNTL3_TXRATE2CFG_POS)
+#define BB_RADIOCNTL3_TXRATE1CFG_POS    10
+#define BB_RADIOCNTL3_TXRATE1CFG_MASK   (0x3 << BB_RADIOCNTL3_TXRATE1CFG_POS)
+#define BB_RADIOCNTL3_TXRATE0CFG_POS    8
+#define BB_RADIOCNTL3_TXRATE0CFG_MASK   (0x3 << BB_RADIOCNTL3_TXRATE0CFG_POS)
+#define BB_RADIOCNTL3_TXVALID_BEH_POS   0
+#define BB_RADIOCNTL3_TXVALID_BEH_MASK  (0x3 << BB_RADIOCNTL3_TXVALID_BEH_POS)
+
+/* BB_RADIOCNTL3 settings */
+#define RXRATE3CFG_3                    (0x3 << BB_RADIOCNTL3_RXRATE3CFG_POS)
+
+#define RXRATE3CFG_2                    (0x2 << BB_RADIOCNTL3_RXRATE2CFG_POS)
+
+#define RXRATE3CFG_1                    (0x1 << BB_RADIOCNTL3_RXRATE1CFG_POS)
+
+#define RXRATE3CFG_0                    (0x0 << BB_RADIOCNTL3_RXRATE0CFG_POS)
+
+#define RXSYNC_ROUTING_0                (0x0 << BB_RADIOCNTL3_RXSYNC_ROUTING_POS)
+#define RXSYNC_ROUTING_1                (0x1 << BB_RADIOCNTL3_RXSYNC_ROUTING_POS)
+
+#define RXVALID_BEH_0                   (0x0 << BB_RADIOCNTL3_RXVALID_BEH_POS)
+#define RXVALID_BEH_1                   (0x1 << BB_RADIOCNTL3_RXVALID_BEH_POS)
+#define RXVALID_BEH_2                   (0x2 << BB_RADIOCNTL3_RXVALID_BEH_POS)
+#define RXVALID_BEH_3                   (0x3 << BB_RADIOCNTL3_RXVALID_BEH_POS)
+
+#define TXRATE3CFG_3                    (0x3 << BB_RADIOCNTL3_TXRATE3CFG_POS)
+
+#define TXRATE3CFG_2                    (0x2 << BB_RADIOCNTL3_TXRATE2CFG_POS)
+
+#define TXRATE3CFG_1                    (0x1 << BB_RADIOCNTL3_TXRATE1CFG_POS)
+
+#define TXRATE3CFG_0                    (0x0 << BB_RADIOCNTL3_TXRATE0CFG_POS)
+
+#define TXVALID_BEH_0                   (0x0 << BB_RADIOCNTL3_TXVALID_BEH_POS)
+#define TXVALID_BEH_1                   (0x1 << BB_RADIOCNTL3_TXVALID_BEH_POS)
+#define TXVALID_BEH_2                   (0x2 << BB_RADIOCNTL3_TXVALID_BEH_POS)
+#define TXVALID_BEH_3                   (0x3 << BB_RADIOCNTL3_TXVALID_BEH_POS)
+
+/* Principal control register for the radio interface power up/down delays */
+#define BB_RADIOPWRUPDN0_BASE           0x40001980
+#define BB_RADIOPWRUPDN0                REG32_POINTER(BB_RADIOPWRUPDN0_BASE)
+
+/* BB_RADIOPWRUPDN0 bit positions */
+#define BB_RADIOPWRUPDN0_SYNC_POSITION0_POS 24
+#define BB_RADIOPWRUPDN0_SYNC_POSITION0_MASK (0xFF << BB_RADIOPWRUPDN0_SYNC_POSITION0_POS)
+#define BB_RADIOPWRUPDN0_RXPWRUP0_POS   16
+#define BB_RADIOPWRUPDN0_RXPWRUP0_MASK  (0xFF << BB_RADIOPWRUPDN0_RXPWRUP0_POS)
+#define BB_RADIOPWRUPDN0_TXPWRDN0_POS   8
+#define BB_RADIOPWRUPDN0_TXPWRDN0_MASK  (0x7F << BB_RADIOPWRUPDN0_TXPWRDN0_POS)
+#define BB_RADIOPWRUPDN0_TXPWRUP0_POS   0
+#define BB_RADIOPWRUPDN0_TXPWRUP0_MASK  (0xFF << BB_RADIOPWRUPDN0_TXPWRUP0_POS)
+
+/* BB_RADIOPWRUPDN0 settings */
+#define SYNC_POSITION0_0                (0x0 << BB_RADIOPWRUPDN0_SYNC_POSITION0_POS)
+
+#define RXPWRUP0_0                      (0x0 << BB_RADIOPWRUPDN0_RXPWRUP0_POS)
+
+#define TXPWRDN0_0                      (0x0 << BB_RADIOPWRUPDN0_TXPWRDN0_POS)
+
+#define TXPWRUP0_0                      (0x0 << BB_RADIOPWRUPDN0_TXPWRUP0_POS)
+
+/* Second control register for the radio interface power up/down delays */
+#define BB_RADIOPWRUPDN1_BASE           0x40001984
+#define BB_RADIOPWRUPDN1                REG32_POINTER(BB_RADIOPWRUPDN1_BASE)
+
+/* BB_RADIOPWRUPDN1 bit positions */
+#define BB_RADIOPWRUPDN1_SYNC_POSITION1_POS 24
+#define BB_RADIOPWRUPDN1_SYNC_POSITION1_MASK (0xFF << BB_RADIOPWRUPDN1_SYNC_POSITION1_POS)
+#define BB_RADIOPWRUPDN1_RXPWRUP1_POS   16
+#define BB_RADIOPWRUPDN1_RXPWRUP1_MASK  (0xFF << BB_RADIOPWRUPDN1_RXPWRUP1_POS)
+#define BB_RADIOPWRUPDN1_TXPWRDN1_POS   8
+#define BB_RADIOPWRUPDN1_TXPWRDN1_MASK  (0x7F << BB_RADIOPWRUPDN1_TXPWRDN1_POS)
+#define BB_RADIOPWRUPDN1_TXPWRUP1_POS   0
+#define BB_RADIOPWRUPDN1_TXPWRUP1_MASK  (0xFF << BB_RADIOPWRUPDN1_TXPWRUP1_POS)
+
+/* BB_RADIOPWRUPDN1 settings */
+#define SYNC_POSITION1_0                (0x0 << BB_RADIOPWRUPDN1_SYNC_POSITION1_POS)
+
+#define RXPWRUP1_0                      (0x0 << BB_RADIOPWRUPDN1_RXPWRUP1_POS)
+
+#define TXPWRDN1_0                      (0x0 << BB_RADIOPWRUPDN1_TXPWRDN1_POS)
+
+#define TXPWRUP1_0                      (0x0 << BB_RADIOPWRUPDN1_TXPWRUP1_POS)
+
+/* Third control register for the radio interface power up/down delays (only when LR is instantiated) */
+#define BB_RADIOPWRUPDN2_BASE           0x40001988
+#define BB_RADIOPWRUPDN2                REG32_POINTER(BB_RADIOPWRUPDN2_BASE)
+
+/* BB_RADIOPWRUPDN2 bit positions */
+#define BB_RADIOPWRUPDN2_SYNC_POSITION2_POS 24
+#define BB_RADIOPWRUPDN2_SYNC_POSITION2_MASK (0xFF << BB_RADIOPWRUPDN2_SYNC_POSITION2_POS)
+#define BB_RADIOPWRUPDN2_RXPWRUP2_POS   16
+#define BB_RADIOPWRUPDN2_RXPWRUP2_MASK  (0xFF << BB_RADIOPWRUPDN2_RXPWRUP2_POS)
+#define BB_RADIOPWRUPDN2_TXPWRDN2_POS   8
+#define BB_RADIOPWRUPDN2_TXPWRDN2_MASK  (0x7F << BB_RADIOPWRUPDN2_TXPWRDN2_POS)
+#define BB_RADIOPWRUPDN2_TXPWRUP2_POS   0
+#define BB_RADIOPWRUPDN2_TXPWRUP2_MASK  (0xFF << BB_RADIOPWRUPDN2_TXPWRUP2_POS)
+
+/* BB_RADIOPWRUPDN2 settings */
+#define SYNC_POSITION2_0                (0x0 << BB_RADIOPWRUPDN2_SYNC_POSITION2_POS)
+
+#define RXPWRUP2_0                      (0x0 << BB_RADIOPWRUPDN2_RXPWRUP2_POS)
+
+#define TXPWRDN2_0                      (0x0 << BB_RADIOPWRUPDN2_TXPWRDN2_POS)
+
+#define TXPWRUP2_0                      (0x0 << BB_RADIOPWRUPDN2_TXPWRUP2_POS)
+
+/* Fourth control register for the radio interface power up/down delays (only when LR is instantiated) */
+#define BB_RADIOPWRUPDN3_BASE           0x4000198C
+#define BB_RADIOPWRUPDN3                REG32_POINTER(BB_RADIOPWRUPDN3_BASE)
+
+/* BB_RADIOPWRUPDN3 bit positions */
+#define BB_RADIOPWRUPDN3_TXPWRDN3_POS   8
+#define BB_RADIOPWRUPDN3_TXPWRDN3_MASK  (0x7F << BB_RADIOPWRUPDN3_TXPWRDN3_POS)
+#define BB_RADIOPWRUPDN3_TXPWRUP3_POS   0
+#define BB_RADIOPWRUPDN3_TXPWRUP3_MASK  (0xFF << BB_RADIOPWRUPDN3_TXPWRUP3_POS)
+
+/* BB_RADIOPWRUPDN3 settings */
+#define TXPWRDN3_0                      (0x0 << BB_RADIOPWRUPDN3_TXPWRDN3_POS)
+
+#define TXPWRUP3_0                      (0x0 << BB_RADIOPWRUPDN3_TXPWRUP3_POS)
+
+/* Principal control register for the radio interface timing compensation delays */
+#define BB_RADIOTXRXTIM0_BASE           0x40001990
+#define BB_RADIOTXRXTIM0                REG32_POINTER(BB_RADIOTXRXTIM0_BASE)
+
+/* BB_RADIOTXRXTIM0 bit positions */
+#define BB_RADIOTXRXTIM0_RFRXTMDA0_POS  16
+#define BB_RADIOTXRXTIM0_RFRXTMDA0_MASK (0x7F << BB_RADIOTXRXTIM0_RFRXTMDA0_POS)
+#define BB_RADIOTXRXTIM0_RXPATHDLY0_POS 8
+#define BB_RADIOTXRXTIM0_RXPATHDLY0_MASK (0x7F << BB_RADIOTXRXTIM0_RXPATHDLY0_POS)
+#define BB_RADIOTXRXTIM0_TXPATHDLY0_POS 0
+#define BB_RADIOTXRXTIM0_TXPATHDLY0_MASK (0x7F << BB_RADIOTXRXTIM0_TXPATHDLY0_POS)
+
+/* BB_RADIOTXRXTIM0 settings */
+#define RFRXTMDA0_0                     (0x0 << BB_RADIOTXRXTIM0_RFRXTMDA0_POS)
+
+#define RXPATHDLY0_0                    (0x0 << BB_RADIOTXRXTIM0_RXPATHDLY0_POS)
+
+#define TXPATHDLY0_0                    (0x0 << BB_RADIOTXRXTIM0_TXPATHDLY0_POS)
+
+/* Second control register for the radio interface timing compensation delays */
+#define BB_RADIOTXRXTIM1_BASE           0x40001994
+#define BB_RADIOTXRXTIM1                REG32_POINTER(BB_RADIOTXRXTIM1_BASE)
+
+/* BB_RADIOTXRXTIM1 bit positions */
+#define BB_RADIOTXRXTIM1_RFRXTMDA1_POS  16
+#define BB_RADIOTXRXTIM1_RFRXTMDA1_MASK (0x7F << BB_RADIOTXRXTIM1_RFRXTMDA1_POS)
+#define BB_RADIOTXRXTIM1_RXPATHDLY1_POS 8
+#define BB_RADIOTXRXTIM1_RXPATHDLY1_MASK (0x7F << BB_RADIOTXRXTIM1_RXPATHDLY1_POS)
+#define BB_RADIOTXRXTIM1_TXPATHDLY1_POS 0
+#define BB_RADIOTXRXTIM1_TXPATHDLY1_MASK (0x7F << BB_RADIOTXRXTIM1_TXPATHDLY1_POS)
+
+/* BB_RADIOTXRXTIM1 settings */
+#define RFRXTMDA1_0                     (0x0 << BB_RADIOTXRXTIM1_RFRXTMDA1_POS)
+
+#define RXPATHDLY1_0                    (0x0 << BB_RADIOTXRXTIM1_RXPATHDLY1_POS)
+
+#define TXPATHDLY1_0                    (0x0 << BB_RADIOTXRXTIM1_TXPATHDLY1_POS)
+
+/* Third control register for the radio interface timing compensation delays (only when LR is instantiated) */
+#define BB_RADIOTXRXTIM2_BASE           0x40001998
+#define BB_RADIOTXRXTIM2                REG32_POINTER(BB_RADIOTXRXTIM2_BASE)
+
+/* BB_RADIOTXRXTIM2 bit positions */
+#define BB_RADIOTXRXTIM2_RXFLUSHPATHDLY2_POS 24
+#define BB_RADIOTXRXTIM2_RXFLUSHPATHDLY2_MASK (0xFF << BB_RADIOTXRXTIM2_RXFLUSHPATHDLY2_POS)
+#define BB_RADIOTXRXTIM2_RFRXTMDA2_POS  16
+#define BB_RADIOTXRXTIM2_RFRXTMDA2_MASK (0xFF << BB_RADIOTXRXTIM2_RFRXTMDA2_POS)
+#define BB_RADIOTXRXTIM2_RXPATHDLY2_POS 8
+#define BB_RADIOTXRXTIM2_RXPATHDLY2_MASK (0xFF << BB_RADIOTXRXTIM2_RXPATHDLY2_POS)
+#define BB_RADIOTXRXTIM2_TXPATHDLY2_POS 0
+#define BB_RADIOTXRXTIM2_TXPATHDLY2_MASK (0x7F << BB_RADIOTXRXTIM2_TXPATHDLY2_POS)
+
+/* BB_RADIOTXRXTIM2 settings */
+#define RXFLUSHPATHDLY2_0               (0x0 << BB_RADIOTXRXTIM2_RXFLUSHPATHDLY2_POS)
+
+#define RFRXTMDA2_0                     (0x0 << BB_RADIOTXRXTIM2_RFRXTMDA2_POS)
+
+#define RXPATHDLY2_0                    (0x0 << BB_RADIOTXRXTIM2_RXPATHDLY2_POS)
+
+#define TXPATHDLY2_0                    (0x0 << BB_RADIOTXRXTIM2_TXPATHDLY2_POS)
+
+/* Fourth control register for the radio interface timing compensation delays (only when LR is instantiated) */
+#define BB_RADIOTXRXTIM3_BASE           0x4000199C
+#define BB_RADIOTXRXTIM3                REG32_POINTER(BB_RADIOTXRXTIM3_BASE)
+
+/* BB_RADIOTXRXTIM3 bit positions */
+#define BB_RADIOTXRXTIM3_RXFLUSHPATHDLY3_POS 24
+#define BB_RADIOTXRXTIM3_RXFLUSHPATHDLY3_MASK (0xFF << BB_RADIOTXRXTIM3_RXFLUSHPATHDLY3_POS)
+#define BB_RADIOTXRXTIM3_RFRXTMDA3_POS  16
+#define BB_RADIOTXRXTIM3_RFRXTMDA3_MASK (0x7F << BB_RADIOTXRXTIM3_RFRXTMDA3_POS)
+#define BB_RADIOTXRXTIM3_TXPATHDLY3_POS 0
+#define BB_RADIOTXRXTIM3_TXPATHDLY3_MASK (0x7F << BB_RADIOTXRXTIM3_TXPATHDLY3_POS)
+
+/* BB_RADIOTXRXTIM3 settings */
+#define RXFLUSHPATHDLY3_0               (0x0 << BB_RADIOTXRXTIM3_RXFLUSHPATHDLY3_POS)
+
+#define RFRXTMDA3_0                     (0x0 << BB_RADIOTXRXTIM3_RFRXTMDA3_POS)
+
+#define TXPATHDLY3_0                    (0x0 << BB_RADIOTXRXTIM3_TXPATHDLY3_POS)
+
+/* First control register for the radio interface SPI pointers */
+#define BB_SPIPTRCNTL0_BASE             0x400019A0
+#define BB_SPIPTRCNTL0                  REG32_POINTER(BB_SPIPTRCNTL0_BASE)
+
+/* BB_SPIPTRCNTL0 bit positions */
+#define BB_SPIPTRCNTL0_TXOFFPTR_POS     16
+#define BB_SPIPTRCNTL0_TXOFFPTR_MASK    (0x3FFF << BB_SPIPTRCNTL0_TXOFFPTR_POS)
+#define BB_SPIPTRCNTL0_TXONPTR_POS      0
+#define BB_SPIPTRCNTL0_TXONPTR_MASK     (0x3FFF << BB_SPIPTRCNTL0_TXONPTR_POS)
+
+/* BB_SPIPTRCNTL0 settings */
+#define TXOFFPTR_0                      (0x0 << BB_SPIPTRCNTL0_TXOFFPTR_POS)
+
+#define TXONPTR_0                       (0x0 << BB_SPIPTRCNTL0_TXONPTR_POS)
+
+/* Second control register for the radio interface SPI pointers */
+#define BB_SPIPTRCNTL1_BASE             0x400019A4
+#define BB_SPIPTRCNTL1                  REG32_POINTER(BB_SPIPTRCNTL1_BASE)
+
+/* BB_SPIPTRCNTL1 bit positions */
+#define BB_SPIPTRCNTL1_RXOFFPTR_POS     16
+#define BB_SPIPTRCNTL1_RXOFFPTR_MASK    (0x3FFF << BB_SPIPTRCNTL1_RXOFFPTR_POS)
+#define BB_SPIPTRCNTL1_RXONPTR_POS      0
+#define BB_SPIPTRCNTL1_RXONPTR_MASK     (0x3FFF << BB_SPIPTRCNTL1_RXONPTR_POS)
+
+/* BB_SPIPTRCNTL1 settings */
+#define RXOFFPTR_0                      (0x0 << BB_SPIPTRCNTL1_RXOFFPTR_POS)
+
+#define RXONPTR_0                       (0x0 << BB_SPIPTRCNTL1_RXONPTR_POS)
+
+/* Third control register for the radio interface SPI pointers */
+#define BB_SPIPTRCNTL2_BASE             0x400019A8
+#define BB_SPIPTRCNTL2                  REG32_POINTER(BB_SPIPTRCNTL2_BASE)
+
+/* BB_SPIPTRCNTL2 bit positions */
+#define BB_SPIPTRCNTL2_RXLENGTHPTR_POS  16
+#define BB_SPIPTRCNTL2_RXLENGTHPTR_MASK (0x3FFF << BB_SPIPTRCNTL2_RXLENGTHPTR_POS)
+#define BB_SPIPTRCNTL2_RSSIPTR_POS      0
+#define BB_SPIPTRCNTL2_RSSIPTR_MASK     (0x3FFF << BB_SPIPTRCNTL2_RSSIPTR_POS)
+
+/* BB_SPIPTRCNTL2 settings */
+#define RXLENGTHPTR_0                   (0x0 << BB_SPIPTRCNTL2_RXLENGTHPTR_POS)
+
+#define RSSIPTR_0                       (0x0 << BB_SPIPTRCNTL2_RSSIPTR_POS)
+
+/* Fourth control register for the radio interface SPI pointers */
+#define BB_SPIPTRCNTL3_BASE             0x400019AC
+#define BB_SPIPTRCNTL3                  REG32_POINTER(BB_SPIPTRCNTL3_BASE)
+
+/* BB_SPIPTRCNTL3 bit positions */
+#define BB_SPIPTRCNTL3_RXPKTTYPPTR_POS  0
+#define BB_SPIPTRCNTL3_RXPKTTYPPTR_MASK (0x3FFF << BB_SPIPTRCNTL3_RXPKTTYPPTR_POS)
+
+/* BB_SPIPTRCNTL3 settings */
+#define RXPKTTYPPTR_0                   (0x0 << BB_SPIPTRCNTL3_RXPKTTYPPTR_POS)
+
+/* AES-128 ciphering control register */
+#define BB_AESCNTL_BASE                 0x400019B0
+#define BB_AESCNTL                      REG32_POINTER(BB_AESCNTL_BASE)
+
+/* BB_AESCNTL bit positions */
+#define BB_AESCNTL_AES_MODE_POS         1
+#define BB_AESCNTL_AES_START_POS        0
+
+/* BB_AESCNTL settings */
+#define AES_MODE_0                      (0x0 << BB_AESCNTL_AES_MODE_POS)
+#define AES_MODE_1                      (0x1 << BB_AESCNTL_AES_MODE_POS)
+
+#define AES_START_0                     (0x0 << BB_AESCNTL_AES_START_POS)
+#define AES_START_1                     (0x1 << BB_AESCNTL_AES_START_POS)
+
+/* AES encryption 128-bit key register (bits 31:0) */
+#define BB_AESKEY31_0_BASE              0x400019B4
+#define BB_AESKEY31_0                   REG32_POINTER(BB_AESKEY31_0_BASE)
+
+/* BB_AESKEY31_0 settings */
+#define AESKEY31_0_0                    (0x0 << BB_AESKEY31_0_AESKEY31_0_POS)
+
+/* AES encryption 128-bit key register (bits 63:32) */
+#define BB_AESKEY63_32_BASE             0x400019B8
+#define BB_AESKEY63_32                  REG32_POINTER(BB_AESKEY63_32_BASE)
+
+/* BB_AESKEY63_32 settings */
+#define AESKEY63_32_0                   (0x0 << BB_AESKEY63_32_AESKEY63_32_POS)
+
+/* AES encryption 128-bit key register (bits 95:64) */
+#define BB_AESKEY95_64_BASE             0x400019BC
+#define BB_AESKEY95_64                  REG32_POINTER(BB_AESKEY95_64_BASE)
+
+/* BB_AESKEY95_64 settings */
+#define AESKEY95_64_0                   (0x0 << BB_AESKEY95_64_AESKEY95_64_POS)
+
+/* AES encryption 128-bit key register (bits 127:96) */
+#define BB_AESKEY127_96_BASE            0x400019C0
+#define BB_AESKEY127_96                 REG32_POINTER(BB_AESKEY127_96_BASE)
+
+/* BB_AESKEY127_96 settings */
+#define AESKEY127_96_0                  (0x0 << BB_AESKEY127_96_AESKEY127_96_POS)
+
+/* AES memory zone pointer */
+#define BB_AESPTR_BASE                  0x400019C4
+#define BB_AESPTR                       REG32_POINTER(BB_AESPTR_BASE)
+
+/* BB_AESPTR bit positions */
+#define BB_AESPTR_AESPTR_POS            0
+#define BB_AESPTR_AESPTR_MASK           (0x3FFF << BB_AESPTR_AESPTR_POS)
+
+/* BB_AESPTR settings */
+#define AESPTR_0                        (0x0 << BB_AESPTR_AESPTR_POS)
+
+/* AES-CCM plain MIC value register in Tx */
+#define BB_TXMICVAL_BASE                0x400019C8
+#define BB_TXMICVAL                     READONLY_REG32_POINTER(BB_TXMICVAL_BASE)
+
+/* BB_TXMICVAL settings */
+#define TXMICVAL_0                      (0x0 << BB_TXMICVAL_TXMICVAL_POS)
+
+/* AES-CCM plain MIC value register in Rx */
+#define BB_RXMICVAL_BASE                0x400019CC
+#define BB_RXMICVAL                     READONLY_REG32_POINTER(BB_RXMICVAL_BASE)
+
+/* BB_RXMICVAL settings */
+#define RXMICVAL_0                      (0x0 << BB_RXMICVAL_RXMICVAL_POS)
+
+/* RF testing and regulatory body support register */
+#define BB_RFTESTCNTL_BASE              0x400019D0
+#define BB_RFTESTCNTL                   REG32_POINTER(BB_RFTESTCNTL_BASE)
+
+/* BB_RFTESTCNTL bit positions */
+#define BB_RFTESTCNTL_INFINITERX_POS    31
+#define BB_RFTESTCNTL_RXPKTCNTEN_POS    27
+#define BB_RFTESTCNTL_PERCOUNT_MODE_POS 24
+#define BB_RFTESTCNTL_PERCOUNT_MODE_MASK (0x3 << BB_RFTESTCNTL_PERCOUNT_MODE_POS)
+#define BB_RFTESTCNTL_INFINITETX_POS    15
+#define BB_RFTESTCNTL_TXLENGTHSRC_POS   14
+#define BB_RFTESTCNTL_PRBSTYPE_POS      13
+#define BB_RFTESTCNTL_TXPLDSRC_POS      12
+#define BB_RFTESTCNTL_TXPKTCNTEN_POS    11
+#define BB_RFTESTCNTL_TXLENGTH_POS      0
+#define BB_RFTESTCNTL_TXLENGTH_MASK     (0xFF << BB_RFTESTCNTL_TXLENGTH_POS)
+
+/* BB_RFTESTCNTL settings */
+#define INFINITERX_0                    (0x0 << BB_RFTESTCNTL_INFINITERX_POS)
+#define INFINITERX_1                    (0x1 << BB_RFTESTCNTL_INFINITERX_POS)
+
+#define RXPKTCNTEN_0                    (0x0 << BB_RFTESTCNTL_RXPKTCNTEN_POS)
+
+#define PERCOUNT_MODE_0                 (0x0 << BB_RFTESTCNTL_PERCOUNT_MODE_POS)
+#define PERCOUNT_MODE_1                 (0x1 << BB_RFTESTCNTL_PERCOUNT_MODE_POS)
+#define PERCOUNT_MODE_2                 (0x2 << BB_RFTESTCNTL_PERCOUNT_MODE_POS)
+#define PERCOUNT_MODE_3                 (0x3 << BB_RFTESTCNTL_PERCOUNT_MODE_POS)
+
+#define INFINITETX_0                    (0x0 << BB_RFTESTCNTL_INFINITETX_POS)
+#define INFINITETX_1                    (0x1 << BB_RFTESTCNTL_INFINITETX_POS)
+
+#define TXLENGTHSRC_0                   (0x0 << BB_RFTESTCNTL_TXLENGTHSRC_POS)
+#define TXLENGTHSRC_1                   (0x1 << BB_RFTESTCNTL_TXLENGTHSRC_POS)
+
+#define PRBSTYPE_0                      (0x0 << BB_RFTESTCNTL_PRBSTYPE_POS)
+#define PRBSTYPE_1                      (0x1 << BB_RFTESTCNTL_PRBSTYPE_POS)
+
+#define TXPLDSRC_0                      (0x0 << BB_RFTESTCNTL_TXPLDSRC_POS)
+#define TXPLDSRC_1                      (0x1 << BB_RFTESTCNTL_TXPLDSRC_POS)
+
+#define TXPKTCNTEN_0                    (0x0 << BB_RFTESTCNTL_TXPKTCNTEN_POS)
+#define TXPKTCNTEN_1                    (0x1 << BB_RFTESTCNTL_TXPKTCNTEN_POS)
+
+#define TXLENGTH_0                      (0x0 << BB_RFTESTCNTL_TXLENGTH_POS)
+
+/* Number of transmitted packet during test modes */
+#define BB_RFTESTTXSTAT_BASE            0x400019D4
+#define BB_RFTESTTXSTAT                 READONLY_REG32_POINTER(BB_RFTESTTXSTAT_BASE)
+
+/* BB_RFTESTTXSTAT settings */
+#define TXPKTCNT_0                      (0x0 << BB_RFTESTTXSTAT_TXPKTCNT_POS)
+
+/* Number of correctly received packet during test modes */
+#define BB_RFTESTRXSTAT_BASE            0x400019D8
+#define BB_RFTESTRXSTAT                 READONLY_REG32_POINTER(BB_RFTESTRXSTAT_BASE)
+
+/* BB_RFTESTRXSTAT settings */
+#define RXPKTCNT_0                      (0x0 << BB_RFTESTRXSTAT_RXPKTCNT_POS)
+
+/* Timing generator control register */
+#define BB_TIMGENCNTL_BASE              0x400019E0
+#define BB_TIMGENCNTL                   REG32_POINTER(BB_TIMGENCNTL_BASE)
+
+/* BB_TIMGENCNTL bit positions */
+#define BB_TIMGENCNTL_PREFETCHABORT_TIME_POS 16
+#define BB_TIMGENCNTL_PREFETCHABORT_TIME_MASK (0x3FF << BB_TIMGENCNTL_PREFETCHABORT_TIME_POS)
+#define BB_TIMGENCNTL_PREFETCH_TIME_POS 0
+#define BB_TIMGENCNTL_PREFETCH_TIME_MASK (0x1FF << BB_TIMGENCNTL_PREFETCH_TIME_POS)
+
+/* BB_TIMGENCNTL settings */
+#define PREFETCHABORT_TIME_254          (0x1FE << BB_TIMGENCNTL_PREFETCHABORT_TIME_POS)
+
+#define PREFETCH_TIME_150               (0x96 << BB_TIMGENCNTL_PREFETCH_TIME_POS)
+
+/* Fine timer control register */
+#define BB_FINETIMTGT_BASE              0x400019E4
+#define BB_FINETIMTGT                   REG32_POINTER(BB_FINETIMTGT_BASE)
+
+/* BB_FINETIMTGT bit positions */
+#define BB_FINETIMTGT_FINETARGET_POS    0
+#define BB_FINETIMTGT_FINETARGET_MASK   (0xFFFFFFF << BB_FINETIMTGT_FINETARGET_POS)
+
+/* BB_FINETIMTGT settings */
+#define FINETARGET_0                    (0x0 << BB_FINETIMTGT_FINETARGET_POS)
+
+/* CLKN target value 1 */
+#define BB_CLKNTGT1_BASE                0x400019E8
+#define BB_CLKNTGT1                     REG32_POINTER(BB_CLKNTGT1_BASE)
+
+/* BB_CLKNTGT1 bit positions */
+#define BB_CLKNTGT1_CLKNTGT1_POS        0
+#define BB_CLKNTGT1_CLKNTGT1_MASK       (0xFFFFFFF << BB_CLKNTGT1_CLKNTGT1_POS)
+
+/* BB_CLKNTGT1 settings */
+#define CLKNTGT1_0                      (0x0 << BB_CLKNTGT1_CLKNTGT1_POS)
+
+/* Half microsecond target value 1 */
+#define BB_HMICROSECTGT1_BASE           0x400019EC
+#define BB_HMICROSECTGT1                REG32_POINTER(BB_HMICROSECTGT1_BASE)
+
+/* BB_HMICROSECTGT1 bit positions */
+#define BB_HMICROSECTGT1_HMICROSECTGT1_POS 0
+#define BB_HMICROSECTGT1_HMICROSECTGT1_MASK (0x3FF << BB_HMICROSECTGT1_HMICROSECTGT1_POS)
+
+/* BB_HMICROSECTGT1 settings */
+#define HMICROSECTGT1_0                 (0x0 << BB_HMICROSECTGT1_HMICROSECTGT1_POS)
+
+/* CLKN target value 2 */
+#define BB_CLKNTGT2_BASE                0x400019F0
+#define BB_CLKNTGT2                     REG32_POINTER(BB_CLKNTGT2_BASE)
+
+/* BB_CLKNTGT2 bit positions */
+#define BB_CLKNTGT2_CLKNTGT2_POS        0
+#define BB_CLKNTGT2_CLKNTGT2_MASK       (0xFFFFFFF << BB_CLKNTGT2_CLKNTGT2_POS)
+
+/* BB_CLKNTGT2 settings */
+#define CLKNTGT2_0                      (0x0 << BB_CLKNTGT2_CLKNTGT2_POS)
+
+/* Half microsecond target value 2 */
+#define BB_HMICROSECTGT2_BASE           0x400019F4
+#define BB_HMICROSECTGT2                REG32_POINTER(BB_HMICROSECTGT2_BASE)
+
+/* BB_HMICROSECTGT2 bit positions */
+#define BB_HMICROSECTGT2_HMICROSECTGT2_POS 0
+#define BB_HMICROSECTGT2_HMICROSECTGT2_MASK (0x3FF << BB_HMICROSECTGT2_HMICROSECTGT2_POS)
+
+/* BB_HMICROSECTGT2 settings */
+#define HMICROSECTGT2_0                 (0x0 << BB_HMICROSECTGT2_HMICROSECTGT2_POS)
+
+/* Value of the 312.5us CLKN counter */
+#define BB_SLOTCLK_BASE                 0x400019F8
+#define BB_SLOTCLK                      REG32_POINTER(BB_SLOTCLK_BASE)
+
+/* BB_SLOTCLK bit positions */
+#define BB_SLOTCLK_SAMP_POS             31
+#define BB_SLOTCLK_CLKN_UPD_POS         30
+#define BB_SLOTCLK_SCLK_POS             0
+#define BB_SLOTCLK_SCLK_MASK            (0xFFFFFFF << BB_SLOTCLK_SCLK_POS)
+
+/* BB_SLOTCLK settings */
+#define SAMP_0                          (0x0 << BB_SLOTCLK_SAMP_POS)
+#define SAMP_1                          (0x1 << BB_SLOTCLK_SAMP_POS)
+
+#define CLKN_UPD_0                      (0x0 << BB_SLOTCLK_CLKN_UPD_POS)
+#define CLKN_UPD_1                      (0x1 << BB_SLOTCLK_CLKN_UPD_POS)
+
+#define SCLK_0                          (0x0 << BB_SLOTCLK_SCLK_POS)
+
+/* Value of the current half us fine time reference counter */
+#define BB_FINETIMECNT_BASE             0x400019FC
+#define BB_FINETIMECNT                  REG32_POINTER(BB_FINETIMECNT_BASE)
+
+/* BB_FINETIMECNT bit positions */
+#define BB_FINETIMECNT_FINECNT_POS      0
+#define BB_FINETIMECNT_FINECNT_MASK     (0x3FF << BB_FINETIMECNT_FINECNT_POS)
+
+/* BB_FINETIMECNT settings */
+#define FINECNT_0                       (0x0 << BB_FINETIMECNT_FINECNT_POS)
+
+/* Value of the 312.5us CLKN counter */
+#define BB_ACTSCHCNTL_BASE              0x40001A00
+#define BB_ACTSCHCNTL                   REG32_POINTER(BB_ACTSCHCNTL_BASE)
+
+/* BB_ACTSCHCNTL bit positions */
+#define BB_ACTSCHCNTL_START_ACT_POS     31
+#define BB_ACTSCHCNTL_ENTRY_IDX_POS     0
+#define BB_ACTSCHCNTL_ENTRY_IDX_MASK    (0xF << BB_ACTSCHCNTL_ENTRY_IDX_POS)
+
+/* BB_ACTSCHCNTL settings */
+#define START_ACT_0                     (0x0 << BB_ACTSCHCNTL_START_ACT_POS)
+#define START_ACT_1                     (0x1 << BB_ACTSCHCNTL_START_ACT_POS)
+
+#define ENTRY_IDX_0                     (0x0 << BB_ACTSCHCNTL_ENTRY_IDX_POS)
+
+/* Value of the CLKN counter when ble_start_int is generated */
+#define BB_STARTEVTCLKNTS_BASE          0x40001A04
+#define BB_STARTEVTCLKNTS               REG32_POINTER(BB_STARTEVTCLKNTS_BASE)
+
+/* BB_STARTEVTCLKNTS bit positions */
+#define BB_STARTEVTCLKNTS_STARTEVTCLKNTS_POS 0
+#define BB_STARTEVTCLKNTS_STARTEVTCLKNTS_MASK (0xFFFFFFF << BB_STARTEVTCLKNTS_STARTEVTCLKNTS_POS)
+
+/* BB_STARTEVTCLKNTS settings */
+#define STARTEVTCLKNTS_0                (0x0 << BB_STARTEVTCLKNTS_STARTEVTCLKNTS_POS)
+
+/* Value of the fine counter when ble_start_int is generated */
+#define BB_STARTEVTFINECNTTS_BASE       0x40001A08
+#define BB_STARTEVTFINECNTTS            REG32_POINTER(BB_STARTEVTFINECNTTS_BASE)
+
+/* BB_STARTEVTFINECNTTS bit positions */
+#define BB_STARTEVTFINECNTTS_STARTEVTFINECNTTS_POS 0
+#define BB_STARTEVTFINECNTTS_STARTEVTFINECNTTS_MASK (0x3FF << BB_STARTEVTFINECNTTS_STARTEVTFINECNTTS_POS)
+
+/* BB_STARTEVTFINECNTTS settings */
+#define STARTEVTFINECNTTS_0             (0x0 << BB_STARTEVTFINECNTTS_STARTEVTFINECNTTS_POS)
+
+/* Value of the CLKN counter when ble_end_int is generated */
+#define BB_ENDEVTCLKNTS_BASE            0x40001A0C
+#define BB_ENDEVTCLKNTS                 REG32_POINTER(BB_ENDEVTCLKNTS_BASE)
+
+/* BB_ENDEVTCLKNTS bit positions */
+#define BB_ENDEVTCLKNTS_ENDEVTCLKNTS_POS 0
+#define BB_ENDEVTCLKNTS_ENDEVTCLKNTS_MASK (0xFFFFFFF << BB_ENDEVTCLKNTS_ENDEVTCLKNTS_POS)
+
+/* BB_ENDEVTCLKNTS settings */
+#define ENDEVTCLKNTS_0                  (0x0 << BB_ENDEVTCLKNTS_ENDEVTCLKNTS_POS)
+
+/* Value of the fine counter when ble_end_int is generated */
+#define BB_ENDEVTFINECNTTS_BASE         0x40001A10
+#define BB_ENDEVTFINECNTTS              REG32_POINTER(BB_ENDEVTFINECNTTS_BASE)
+
+/* BB_ENDEVTFINECNTTS bit positions */
+#define BB_ENDEVTFINECNTTS_ENDEVTFINECNTTS_POS 0
+#define BB_ENDEVTFINECNTTS_ENDEVTFINECNTTS_MASK (0x3FF << BB_ENDEVTFINECNTTS_ENDEVTFINECNTTS_POS)
+
+/* BB_ENDEVTFINECNTTS settings */
+#define ENDEVTFINECNTTS_0               (0x0 << BB_ENDEVTFINECNTTS_ENDEVTFINECNTTS_POS)
+
+/* Value of the CLKN counter when ble_skip_int is generated */
+#define BB_SKIPEVTCLKNTS_BASE           0x40001A14
+#define BB_SKIPEVTCLKNTS                REG32_POINTER(BB_SKIPEVTCLKNTS_BASE)
+
+/* BB_SKIPEVTCLKNTS bit positions */
+#define BB_SKIPEVTCLKNTS_SKIPEVTCLKNTS_POS 0
+#define BB_SKIPEVTCLKNTS_SKIPEVTCLKNTS_MASK (0xFFFFFFF << BB_SKIPEVTCLKNTS_SKIPEVTCLKNTS_POS)
+
+/* BB_SKIPEVTCLKNTS settings */
+#define SKIPEVTCLKNTS_0                 (0x0 << BB_SKIPEVTCLKNTS_SKIPEVTCLKNTS_POS)
+
+/* Value of the fine counter when ble_skip_int is generated */
+#define BB_SKIPEVTFINECNTTS_BASE        0x40001A18
+#define BB_SKIPEVTFINECNTTS             REG32_POINTER(BB_SKIPEVTFINECNTTS_BASE)
+
+/* BB_SKIPEVTFINECNTTS bit positions */
+#define BB_SKIPEVTFINECNTTS_SKIPEVTFINECNTTS_POS 0
+#define BB_SKIPEVTFINECNTTS_SKIPEVTFINECNTTS_MASK (0x3FF << BB_SKIPEVTFINECNTTS_SKIPEVTFINECNTTS_POS)
+
+/* BB_SKIPEVTFINECNTTS settings */
+#define SKIPEVTFINECNTTS_0              (0x0 << BB_SKIPEVTFINECNTTS_SKIPEVTFINECNTTS_POS)
+
+/* Delay information register handling advertising event timers */
+#define BB_ADVTIM_BASE                  0x40001A20
+#define BB_ADVTIM                       REG32_POINTER(BB_ADVTIM_BASE)
+
+/* BB_ADVTIM bit positions */
+#define BB_ADVTIM_TX_AUXPTR_THR_POS     24
+#define BB_ADVTIM_TX_AUXPTR_THR_MASK    (0xFF << BB_ADVTIM_TX_AUXPTR_THR_POS)
+#define BB_ADVTIM_RX_AUXPTR_THR_POS     16
+#define BB_ADVTIM_RX_AUXPTR_THR_MASK    (0xFF << BB_ADVTIM_RX_AUXPTR_THR_POS)
+#define BB_ADVTIM_ADVINT_POS            0
+#define BB_ADVTIM_ADVINT_MASK           (0x3FFF << BB_ADVTIM_ADVINT_POS)
+
+/* BB_ADVTIM settings */
+#define TX_AUXPTR_THR_0                 (0x0 << BB_ADVTIM_TX_AUXPTR_THR_POS)
+
+#define RX_AUXPTR_THR_0                 (0x0 << BB_ADVTIM_RX_AUXPTR_THR_POS)
+
+#define ADVINT_0                        (0x0 << BB_ADVTIM_ADVINT_POS)
+
+/* Active scan mode control register */
+#define BB_ACTSCANCNTL_BASE             0x40001A24
+#define BB_ACTSCANCNTL                  READONLY_REG32_POINTER(BB_ACTSCANCNTL_BASE)
+
+/* BB_ACTSCANCNTL bit positions */
+#define BB_ACTSCANCNTL_BACKOFF_POS      16
+#define BB_ACTSCANCNTL_BACKOFF_MASK     (0x1FF << BB_ACTSCANCNTL_BACKOFF_POS)
+#define BB_ACTSCANCNTL_UPPERLIMIT_POS   0
+#define BB_ACTSCANCNTL_UPPERLIMIT_MASK  (0x1FF << BB_ACTSCANCNTL_UPPERLIMIT_POS)
+
+/* BB_ACTSCANCNTL settings */
+#define BACKOFF_1                       (0x1 << BB_ACTSCANCNTL_BACKOFF_POS)
+
+#define UPPERLIMIT_1                    (0x1 << BB_ACTSCANCNTL_UPPERLIMIT_POS)
+
+/* Devices in white list */
+#define BB_WPALCNTL_BASE                0x40001A30
+#define BB_WPALCNTL                     REG32_POINTER(BB_WPALCNTL_BASE)
+
+/* BB_WPALCNTL bit positions */
+#define BB_WPALCNTL_WPALNBDEV_POS       16
+#define BB_WPALCNTL_WPALNBDEV_MASK      (0xFF << BB_WPALCNTL_WPALNBDEV_POS)
+#define BB_WPALCNTL_WPALBASEPTR_POS     0
+#define BB_WPALCNTL_WPALBASEPTR_MASK    (0x3FFF << BB_WPALCNTL_WPALBASEPTR_POS)
+
+/* BB_WPALCNTL settings */
+#define WPALNBDEV_0                     (0x0 << BB_WPALCNTL_WPALNBDEV_POS)
+
+#define WPALBASEPTR_0                   (0x0 << BB_WPALCNTL_WPALBASEPTR_POS)
+
+/* Current pointer in use for the White List */
+#define BB_WPALCURRENPTR_BASE           0x40001A34
+#define BB_WPALCURRENPTR                REG32_POINTER(BB_WPALCURRENPTR_BASE)
+
+/* BB_WPALCURRENPTR bit positions */
+#define BB_WPALCURRENPTR_WPALCURRENPTR_POS 0
+#define BB_WPALCURRENPTR_WPALCURRENPTR_MASK (0x3FFF << BB_WPALCURRENPTR_WPALCURRENPTR_POS)
+
+/* BB_WPALCURRENPTR settings */
+#define WPALCURRENPTR_0                 (0x0 << BB_WPALCURRENPTR_WPALCURRENPTR_POS)
+
+/* RAL and List Search engines timeout delay in us */
+#define BB_SEARCH_TIMEOUT_BASE          0x40001A38
+#define BB_SEARCH_TIMEOUT               REG32_POINTER(BB_SEARCH_TIMEOUT_BASE)
+
+/* BB_SEARCH_TIMEOUT bit positions */
+#define BB_SEARCH_TIMEOUT_SEARCH_TIMEOUT_POS 0
+#define BB_SEARCH_TIMEOUT_SEARCH_TIMEOUT_MASK (0x3F << BB_SEARCH_TIMEOUT_SEARCH_TIMEOUT_POS)
+
+/* BB_SEARCH_TIMEOUT settings */
+#define SEARCH_TIMEOUT_16               (0x10 << BB_SEARCH_TIMEOUT_SEARCH_TIMEOUT_POS)
+
+/* WLAN coexistence control register 0 */
+#define BB_COEXIFCNTL0_BASE             0x40001A40
+#define BB_COEXIFCNTL0                  REG32_POINTER(BB_COEXIFCNTL0_BASE)
+
+/* BB_COEXIFCNTL0 bit positions */
+#define BB_COEXIFCNTL0_MWSSCANFREQMSK_POS 20
+#define BB_COEXIFCNTL0_MWSSCANFREQMSK_MASK (0x3 << BB_COEXIFCNTL0_MWSSCANFREQMSK_POS)
+#define BB_COEXIFCNTL0_WLCRXPRIOMODE_POS 18
+#define BB_COEXIFCNTL0_WLCRXPRIOMODE_MASK (0x3 << BB_COEXIFCNTL0_WLCRXPRIOMODE_POS)
+#define BB_COEXIFCNTL0_WLCTXPRIOMODE_POS 16
+#define BB_COEXIFCNTL0_WLCTXPRIOMODE_MASK (0x3 << BB_COEXIFCNTL0_WLCTXPRIOMODE_POS)
+#define BB_COEXIFCNTL0_MWSTXFREQMSK_POS 14
+#define BB_COEXIFCNTL0_MWSTXFREQMSK_MASK (0x3 << BB_COEXIFCNTL0_MWSTXFREQMSK_POS)
+#define BB_COEXIFCNTL0_MWSRXFREQMSK_POS 12
+#define BB_COEXIFCNTL0_MWSRXFREQMSK_MASK (0x3 << BB_COEXIFCNTL0_MWSRXFREQMSK_POS)
+#define BB_COEXIFCNTL0_MWSTXMSK_POS     10
+#define BB_COEXIFCNTL0_MWSTXMSK_MASK    (0x3 << BB_COEXIFCNTL0_MWSTXMSK_POS)
+#define BB_COEXIFCNTL0_MWSRXMSK_POS     8
+#define BB_COEXIFCNTL0_MWSRXMSK_MASK    (0x3 << BB_COEXIFCNTL0_MWSRXMSK_POS)
+#define BB_COEXIFCNTL0_WLANTXMSK_POS    6
+#define BB_COEXIFCNTL0_WLANTXMSK_MASK   (0x3 << BB_COEXIFCNTL0_WLANTXMSK_POS)
+#define BB_COEXIFCNTL0_WLANRXMSK_POS    4
+#define BB_COEXIFCNTL0_WLANRXMSK_MASK   (0x3 << BB_COEXIFCNTL0_WLANRXMSK_POS)
+#define BB_COEXIFCNTL0_MWSWCI_EN_POS    3
+#define BB_COEXIFCNTL0_MWSCOEX_EN_POS   2
+#define BB_COEXIFCNTL0_SYNCGEN_EN_POS   1
+#define BB_COEXIFCNTL0_WLANCOEX_EN_POS  0
+
+/* BB_COEXIFCNTL0 settings */
+#define MWSSCANFREQMSK_0                (0x0 << BB_COEXIFCNTL0_MWSSCANFREQMSK_POS)
+#define MWSSCANFREQMSK_1                (0x1 << BB_COEXIFCNTL0_MWSSCANFREQMSK_POS)
+#define MWSSCANFREQMSK_2                (0x2 << BB_COEXIFCNTL0_MWSSCANFREQMSK_POS)
+#define MWSSCANFREQMSK_3                (0x3 << BB_COEXIFCNTL0_MWSSCANFREQMSK_POS)
+
+#define WLCRXPRIOMODE_0                 (0x0 << BB_COEXIFCNTL0_WLCRXPRIOMODE_POS)
+#define WLCRXPRIOMODE_1                 (0x1 << BB_COEXIFCNTL0_WLCRXPRIOMODE_POS)
+#define WLCRXPRIOMODE_2                 (0x2 << BB_COEXIFCNTL0_WLCRXPRIOMODE_POS)
+#define WLCRXPRIOMODE_3                 (0x3 << BB_COEXIFCNTL0_WLCRXPRIOMODE_POS)
+
+#define WLCTXPRIOMODE_0                 (0x0 << BB_COEXIFCNTL0_WLCTXPRIOMODE_POS)
+#define WLCTXPRIOMODE_1                 (0x1 << BB_COEXIFCNTL0_WLCTXPRIOMODE_POS)
+#define WLCTXPRIOMODE_2                 (0x2 << BB_COEXIFCNTL0_WLCTXPRIOMODE_POS)
+#define WLCTXPRIOMODE_3                 (0x3 << BB_COEXIFCNTL0_WLCTXPRIOMODE_POS)
+
+#define MWSTXFREQMSK_0                  (0x0 << BB_COEXIFCNTL0_MWSTXFREQMSK_POS)
+#define MWSTXFREQMSK_1                  (0x1 << BB_COEXIFCNTL0_MWSTXFREQMSK_POS)
+#define MWSTXFREQMSK_2                  (0x2 << BB_COEXIFCNTL0_MWSTXFREQMSK_POS)
+#define MWSTXFREQMSK_3                  (0x3 << BB_COEXIFCNTL0_MWSTXFREQMSK_POS)
+
+#define MWSRXFREQMSK_0                  (0x0 << BB_COEXIFCNTL0_MWSRXFREQMSK_POS)
+#define MWSRXFREQMSK_1                  (0x1 << BB_COEXIFCNTL0_MWSRXFREQMSK_POS)
+#define MWSRXFREQMSK_2                  (0x2 << BB_COEXIFCNTL0_MWSRXFREQMSK_POS)
+#define MWSRXFREQMSK_3                  (0x3 << BB_COEXIFCNTL0_MWSRXFREQMSK_POS)
+
+#define MWSTXMSK_0                      (0x0 << BB_COEXIFCNTL0_MWSTXMSK_POS)
+#define MWSTXMSK_1                      (0x1 << BB_COEXIFCNTL0_MWSTXMSK_POS)
+#define MWSTXMSK_2                      (0x2 << BB_COEXIFCNTL0_MWSTXMSK_POS)
+#define MWSTXMSK_3                      (0x3 << BB_COEXIFCNTL0_MWSTXMSK_POS)
+
+#define MWSRXMSK_0                      (0x0 << BB_COEXIFCNTL0_MWSRXMSK_POS)
+#define MWSRXMSK_1                      (0x1 << BB_COEXIFCNTL0_MWSRXMSK_POS)
+#define MWSRXMSK_2                      (0x2 << BB_COEXIFCNTL0_MWSRXMSK_POS)
+#define MWSRXMSK_3                      (0x3 << BB_COEXIFCNTL0_MWSRXMSK_POS)
+
+#define WLANTXMSK_0                     (0x0 << BB_COEXIFCNTL0_WLANTXMSK_POS)
+#define WLANTXMSK_1                     (0x1 << BB_COEXIFCNTL0_WLANTXMSK_POS)
+#define WLANTXMSK_2                     (0x2 << BB_COEXIFCNTL0_WLANTXMSK_POS)
+#define WLANTXMSK_3                     (0x3 << BB_COEXIFCNTL0_WLANTXMSK_POS)
+
+#define WLANRXMSK_0                     (0x0 << BB_COEXIFCNTL0_WLANRXMSK_POS)
+#define WLANRXMSK_1                     (0x1 << BB_COEXIFCNTL0_WLANRXMSK_POS)
+#define WLANRXMSK_2                     (0x2 << BB_COEXIFCNTL0_WLANRXMSK_POS)
+#define WLANRXMSK_3                     (0x3 << BB_COEXIFCNTL0_WLANRXMSK_POS)
+
+#define MWSWCI_EN_0                     (0x0 << BB_COEXIFCNTL0_MWSWCI_EN_POS)
+#define MWSWCI_EN_1                     (0x1 << BB_COEXIFCNTL0_MWSWCI_EN_POS)
+
+#define MWSCOEX_EN_0                    (0x0 << BB_COEXIFCNTL0_MWSCOEX_EN_POS)
+#define MWSCOEX_EN_1                    (0x1 << BB_COEXIFCNTL0_MWSCOEX_EN_POS)
+
+#define SYNCGEN_EN_0                    (0x0 << BB_COEXIFCNTL0_SYNCGEN_EN_POS)
+#define SYNCGEN_EN_1                    (0x1 << BB_COEXIFCNTL0_SYNCGEN_EN_POS)
+
+#define COEX_EN_0                       (0x0 << BB_COEXIFCNTL0_WLANCOEX_EN_POS)
+#define COEX_EN_1                       (0x1 << BB_COEXIFCNTL0_WLANCOEX_EN_POS)
+
+/* WLAN coexistence control register 1 */
+#define BB_COEXIFCNTL1_BASE             0x40001A44
+#define BB_COEXIFCNTL1                  REG32_POINTER(BB_COEXIFCNTL1_BASE)
+
+/* BB_COEXIFCNTL1 bit positions */
+#define BB_COEXIFCNTL1_WLCPRXTHR_POS    24
+#define BB_COEXIFCNTL1_WLCPRXTHR_MASK   (0x1F << BB_COEXIFCNTL1_WLCPRXTHR_POS)
+#define BB_COEXIFCNTL1_WLCPTXTHR_POS    16
+#define BB_COEXIFCNTL1_WLCPTXTHR_MASK   (0x1F << BB_COEXIFCNTL1_WLCPTXTHR_POS)
+#define BB_COEXIFCNTL1_WLCPDURATION_POS 8
+#define BB_COEXIFCNTL1_WLCPDURATION_MASK (0x7F << BB_COEXIFCNTL1_WLCPDURATION_POS)
+#define BB_COEXIFCNTL1_WLCPDELAY_POS    0
+#define BB_COEXIFCNTL1_WLCPDELAY_MASK   (0x7F << BB_COEXIFCNTL1_WLCPDELAY_POS)
+
+/* BB_COEXIFCNTL1 settings */
+#define WLCPRXTHR_0                     (0x0 << BB_COEXIFCNTL1_WLCPRXTHR_POS)
+
+#define WLCPTXTHR_0                     (0x0 << BB_COEXIFCNTL1_WLCPTXTHR_POS)
+
+#define WLCPDURATION_0                  (0x0 << BB_COEXIFCNTL1_WLCPDURATION_POS)
+
+#define WLCPDELAY_0                     (0x0 << BB_COEXIFCNTL1_WLCPDELAY_POS)
+
+/* WLAN coexistence control register 2 */
+#define BB_COEXIFCNTL2_BASE             0x40001A48
+#define BB_COEXIFCNTL2                  REG32_POINTER(BB_COEXIFCNTL2_BASE)
+
+/* BB_COEXIFCNTL2 bit positions */
+#define BB_COEXIFCNTL2_RX_ANT_DELAY_POS 8
+#define BB_COEXIFCNTL2_RX_ANT_DELAY_MASK (0xF << BB_COEXIFCNTL2_RX_ANT_DELAY_POS)
+#define BB_COEXIFCNTL2_TX_ANT_DELAY_POS 0
+#define BB_COEXIFCNTL2_TX_ANT_DELAY_MASK (0xF << BB_COEXIFCNTL2_TX_ANT_DELAY_POS)
+
+/* BB_COEXIFCNTL2 settings */
+#define RX_ANT_DELAY_0                  (0x0 << BB_COEXIFCNTL2_RX_ANT_DELAY_POS)
+
+#define TX_ANT_DELAY_0                  (0x0 << BB_COEXIFCNTL2_TX_ANT_DELAY_POS)
+
+/* Priority control register 0 */
+#define BB_BLEMPRIO0_BASE               0x40001A4C
+#define BB_BLEMPRIO0                    REG32_POINTER(BB_BLEMPRIO0_BASE)
+
+/* BB_BLEMPRIO0 bit positions */
+#define BB_BLEMPRIO0_BLEM7_POS          28
+#define BB_BLEMPRIO0_BLEM7_MASK         (0xF << BB_BLEMPRIO0_BLEM7_POS)
+#define BB_BLEMPRIO0_BLEM6_POS          24
+#define BB_BLEMPRIO0_BLEM6_MASK         (0xF << BB_BLEMPRIO0_BLEM6_POS)
+#define BB_BLEMPRIO0_BLEM5_POS          20
+#define BB_BLEMPRIO0_BLEM5_MASK         (0xF << BB_BLEMPRIO0_BLEM5_POS)
+#define BB_BLEMPRIO0_BLEM4_POS          16
+#define BB_BLEMPRIO0_BLEM4_MASK         (0xF << BB_BLEMPRIO0_BLEM4_POS)
+#define BB_BLEMPRIO0_BLEM3_POS          12
+#define BB_BLEMPRIO0_BLEM3_MASK         (0xF << BB_BLEMPRIO0_BLEM3_POS)
+#define BB_BLEMPRIO0_BLEM2_POS          8
+#define BB_BLEMPRIO0_BLEM2_MASK         (0xF << BB_BLEMPRIO0_BLEM2_POS)
+#define BB_BLEMPRIO0_BLEM1_POS          4
+#define BB_BLEMPRIO0_BLEM1_MASK         (0xF << BB_BLEMPRIO0_BLEM1_POS)
+#define BB_BLEMPRIO0_BLEM0_POS          0
+#define BB_BLEMPRIO0_BLEM0_MASK         (0xF << BB_BLEMPRIO0_BLEM0_POS)
+
+/* BB_BLEMPRIO0 settings */
+#define BLEM7_3                         (0x3 << BB_BLEMPRIO0_BLEM7_POS)
+
+#define BLEM6_4                         (0x4 << BB_BLEMPRIO0_BLEM6_POS)
+
+#define BLEM5_8                         (0x8 << BB_BLEMPRIO0_BLEM5_POS)
+
+#define BLEM4_9                         (0x9 << BB_BLEMPRIO0_BLEM4_POS)
+
+#define BLEM3_10                        (0xA << BB_BLEMPRIO0_BLEM3_POS)
+
+#define BLEM2_13                        (0xD << BB_BLEMPRIO0_BLEM2_POS)
+
+#define BLEM1_14                        (0xE << BB_BLEMPRIO0_BLEM1_POS)
+
+#define BLEM0_15                        (0xF << BB_BLEMPRIO0_BLEM0_POS)
+
+/* Priority control register 1 */
+#define BB_BLEMPRIO1_BASE               0x40001A50
+#define BB_BLEMPRIO1                    REG32_POINTER(BB_BLEMPRIO1_BASE)
+
+/* BB_BLEMPRIO1 bit positions */
+#define BB_BLEMPRIO1_BLEM15_POS         28
+#define BB_BLEMPRIO1_BLEM15_MASK        (0xF << BB_BLEMPRIO1_BLEM15_POS)
+#define BB_BLEMPRIO1_BLEM14_POS         24
+#define BB_BLEMPRIO1_BLEM14_MASK        (0xF << BB_BLEMPRIO1_BLEM14_POS)
+#define BB_BLEMPRIO1_BLEM13_POS         20
+#define BB_BLEMPRIO1_BLEM13_MASK        (0xF << BB_BLEMPRIO1_BLEM13_POS)
+#define BB_BLEMPRIO1_BLEM12_POS         16
+#define BB_BLEMPRIO1_BLEM12_MASK        (0xF << BB_BLEMPRIO1_BLEM12_POS)
+#define BB_BLEMPRIO1_BLEM11_POS         12
+#define BB_BLEMPRIO1_BLEM11_MASK        (0xF << BB_BLEMPRIO1_BLEM11_POS)
+#define BB_BLEMPRIO1_BLEM10_POS         8
+#define BB_BLEMPRIO1_BLEM10_MASK        (0xF << BB_BLEMPRIO1_BLEM10_POS)
+#define BB_BLEMPRIO1_BLEM9_POS          4
+#define BB_BLEMPRIO1_BLEM9_MASK         (0xF << BB_BLEMPRIO1_BLEM9_POS)
+#define BB_BLEMPRIO1_BLEM8_POS          0
+#define BB_BLEMPRIO1_BLEM8_MASK         (0xF << BB_BLEMPRIO1_BLEM8_POS)
+
+/* BB_BLEMPRIO1 settings */
+#define BLEM15_3                        (0x3 << BB_BLEMPRIO1_BLEM15_POS)
+
+#define BLEM14_4                        (0x4 << BB_BLEMPRIO1_BLEM14_POS)
+
+#define BLEM13_8                        (0x8 << BB_BLEMPRIO1_BLEM13_POS)
+
+#define BLEM12_9                        (0x9 << BB_BLEMPRIO1_BLEM12_POS)
+
+#define BLEM11_10                       (0xA << BB_BLEMPRIO1_BLEM11_POS)
+
+#define BLEM10_15                       (0xF << BB_BLEMPRIO1_BLEM10_POS)
+
+#define BLEM9_13                        (0xD << BB_BLEMPRIO1_BLEM9_POS)
+
+#define BLEM8_12                        (0xC << BB_BLEMPRIO1_BLEM8_POS)
+
+/* Priority control register 2 */
+#define BB_BLEMPRIO2_BASE               0x40001A54
+#define BB_BLEMPRIO2                    REG32_POINTER(BB_BLEMPRIO2_BASE)
+
+/* BB_BLEMPRIO2 bit positions */
+#define BB_BLEMPRIO2_BLEMDEFAULT_POS    28
+#define BB_BLEMPRIO2_BLEMDEFAULT_MASK   (0xF << BB_BLEMPRIO2_BLEMDEFAULT_POS)
+#define BB_BLEMPRIO2_BLEM18_POS         8
+#define BB_BLEMPRIO2_BLEM18_MASK        (0xF << BB_BLEMPRIO2_BLEM18_POS)
+#define BB_BLEMPRIO2_BLEM17_POS         4
+#define BB_BLEMPRIO2_BLEM17_MASK        (0xF << BB_BLEMPRIO2_BLEM17_POS)
+#define BB_BLEMPRIO2_BLEM16_POS         0
+#define BB_BLEMPRIO2_BLEM16_MASK        (0xF << BB_BLEMPRIO2_BLEM16_POS)
+
+/* BB_BLEMPRIO2 settings */
+#define BLEMDEFAULT_3                   (0x3 << BB_BLEMPRIO2_BLEMDEFAULT_POS)
+
+#define BLEM18_2                        (0x2 << BB_BLEMPRIO2_BLEM18_POS)
+
+#define BLEM17_7                        (0x7 << BB_BLEMPRIO2_BLEM17_POS)
+
+#define BLEM16_7                        (0x7 << BB_BLEMPRIO2_BLEM16_POS)
+
+/* Control of the Resolving Address List engine */
+#define BB_RALCNTL_BASE                 0x40001A60
+#define BB_RALCNTL                      REG32_POINTER(BB_RALCNTL_BASE)
+
+/* BB_RALCNTL bit positions */
+#define BB_RALCNTL_RALNBDEV_POS         16
+#define BB_RALCNTL_RALNBDEV_MASK        (0xFF << BB_RALCNTL_RALNBDEV_POS)
+#define BB_RALCNTL_RALBASEPTR_POS       0
+#define BB_RALCNTL_RALBASEPTR_MASK      (0x3FFF << BB_RALCNTL_RALBASEPTR_POS)
+
+/* BB_RALCNTL settings */
+#define RALNBDEV_0                      (0x0 << BB_RALCNTL_RALNBDEV_POS)
+
+#define RALBASEPTR_0                    (0x0 << BB_RALCNTL_RALBASEPTR_POS)
+
+/* Current pointer of the RAL structure */
+#define BB_RALCURRENTPTR_BASE           0x40001A64
+#define BB_RALCURRENTPTR                REG32_POINTER(BB_RALCURRENTPTR_BASE)
+
+/* BB_RALCURRENTPTR bit positions */
+#define BB_RALCURRENTPTR_RALCURRENTPTR_POS 0
+#define BB_RALCURRENTPTR_RALCURRENTPTR_MASK (0x3FFF << BB_RALCURRENTPTR_RALCURRENTPTR_POS)
+
+/* BB_RALCURRENTPTR settings */
+#define RALCURRENTPTR_0                 (0x0 << BB_RALCURRENTPTR_RALCURRENTPTR_POS)
+
+/* Register used by the local Resolving Address List engine */
+#define BB_RAL_LOCAL_RND_BASE           0x40001A68
+#define BB_RAL_LOCAL_RND                REG32_POINTER(BB_RAL_LOCAL_RND_BASE)
+
+/* BB_RAL_LOCAL_RND bit positions */
+#define BB_RAL_LOCAL_RND_LRND_INIT_POS  31
+#define BB_RAL_LOCAL_RND_LRND_VAL_POS   0
+#define BB_RAL_LOCAL_RND_LRND_VAL_MASK  (0x3FFFFF << BB_RAL_LOCAL_RND_LRND_VAL_POS)
+
+/* BB_RAL_LOCAL_RND settings */
+#define LRND_INIT_0                     (0x0 << BB_RAL_LOCAL_RND_LRND_INIT_POS)
+
+#define LRND_VAL_4132623                (0x3F0F0F << BB_RAL_LOCAL_RND_LRND_VAL_POS)
+
+/* Register used by the peer Resolving Address List engine */
+#define BB_RAL_PEER_RND_BASE            0x40001A6C
+#define BB_RAL_PEER_RND                 REG32_POINTER(BB_RAL_PEER_RND_BASE)
+
+/* BB_RAL_PEER_RND bit positions */
+#define BB_RAL_PEER_RND_PRND_INIT_POS   31
+#define BB_RAL_PEER_RND_PRND_VAL_POS    0
+#define BB_RAL_PEER_RND_PRND_VAL_MASK   (0x3FFFFF << BB_RAL_PEER_RND_PRND_VAL_POS)
+
+/* BB_RAL_PEER_RND settings */
+#define PRND_INIT_0                     (0x0 << BB_RAL_PEER_RND_PRND_INIT_POS)
+
+#define PRND_VAL_3207408                (0x30F0F0 << BB_RAL_PEER_RND_PRND_VAL_POS)
+
+/* AoA/AOD control register 0 (1us) */
+#define BB_DFCNTL0_1US_BASE             0x40001A70
+#define BB_DFCNTL0_1US                  REG32_POINTER(BB_DFCNTL0_1US_BASE)
+
+/* BB_DFCNTL0_1US bit positions */
+#define BB_DFCNTL0_1US_RXSAMPSTINST0_1US_POS 24
+#define BB_DFCNTL0_1US_RXSAMPSTINST0_1US_MASK (0xFF << BB_DFCNTL0_1US_RXSAMPSTINST0_1US_POS)
+#define BB_DFCNTL0_1US_RXSWSTINST0_1US_POS 16
+#define BB_DFCNTL0_1US_RXSWSTINST0_1US_MASK (0xFF << BB_DFCNTL0_1US_RXSWSTINST0_1US_POS)
+#define BB_DFCNTL0_1US_TXSWSTINST0_1US_POS 0
+#define BB_DFCNTL0_1US_TXSWSTINST0_1US_MASK (0xFF << BB_DFCNTL0_1US_TXSWSTINST0_1US_POS)
+
+/* BB_DFCNTL0_1US settings */
+#define RXSAMPSTINST0_1US_0             (0x0 << BB_DFCNTL0_1US_RXSAMPSTINST0_1US_POS)
+
+#define RXSWSTINST0_1US_0               (0x0 << BB_DFCNTL0_1US_RXSWSTINST0_1US_POS)
+
+#define TXSWSTINST0_1US_0               (0x0 << BB_DFCNTL0_1US_TXSWSTINST0_1US_POS)
+
+/* AoA/AOD control register 0 (2us) */
+#define BB_DFCNTL0_2US_BASE             0x40001A74
+#define BB_DFCNTL0_2US                  REG32_POINTER(BB_DFCNTL0_2US_BASE)
+
+/* BB_DFCNTL0_2US bit positions */
+#define BB_DFCNTL0_2US_RXSAMPSTINST0_2US_POS 24
+#define BB_DFCNTL0_2US_RXSAMPSTINST0_2US_MASK (0xFF << BB_DFCNTL0_2US_RXSAMPSTINST0_2US_POS)
+#define BB_DFCNTL0_2US_RXSWSTINST0_2US_POS 16
+#define BB_DFCNTL0_2US_RXSWSTINST0_2US_MASK (0xFF << BB_DFCNTL0_2US_RXSWSTINST0_2US_POS)
+#define BB_DFCNTL0_2US_TXSWSTINST0_2US_POS 0
+#define BB_DFCNTL0_2US_TXSWSTINST0_2US_MASK (0xFF << BB_DFCNTL0_2US_TXSWSTINST0_2US_POS)
+
+/* BB_DFCNTL0_2US settings */
+#define RXSAMPSTINST0_2US_0             (0x0 << BB_DFCNTL0_2US_RXSAMPSTINST0_2US_POS)
+
+#define RXSWSTINST0_2US_0               (0x0 << BB_DFCNTL0_2US_RXSWSTINST0_2US_POS)
+
+#define TXSWSTINST0_2US_0               (0x0 << BB_DFCNTL0_2US_TXSWSTINST0_2US_POS)
+
+/* AoA/AOD control register 1 (1us) */
+#define BB_DFCNTL1_1US_BASE             0x40001A78
+#define BB_DFCNTL1_1US                  REG32_POINTER(BB_DFCNTL1_1US_BASE)
+
+/* BB_DFCNTL1_1US bit positions */
+#define BB_DFCNTL1_1US_RXSAMPSTINST1_1US_POS 24
+#define BB_DFCNTL1_1US_RXSAMPSTINST1_1US_MASK (0xFF << BB_DFCNTL1_1US_RXSAMPSTINST1_1US_POS)
+#define BB_DFCNTL1_1US_RXSWSTINST1_1US_POS 16
+#define BB_DFCNTL1_1US_RXSWSTINST1_1US_MASK (0xFF << BB_DFCNTL1_1US_RXSWSTINST1_1US_POS)
+#define BB_DFCNTL1_1US_TXSWSTINST1_1US_POS 0
+#define BB_DFCNTL1_1US_TXSWSTINST1_1US_MASK (0xFF << BB_DFCNTL1_1US_TXSWSTINST1_1US_POS)
+
+/* BB_DFCNTL1_1US settings */
+#define RXSAMPSTINST1_1US_0             (0x0 << BB_DFCNTL1_1US_RXSAMPSTINST1_1US_POS)
+
+#define RXSWSTINST1_1US_0               (0x0 << BB_DFCNTL1_1US_RXSWSTINST1_1US_POS)
+
+#define TXSWSTINST1_1US_0               (0x0 << BB_DFCNTL1_1US_TXSWSTINST1_1US_POS)
+
+/* AoA/AOD control register 1 (2us) */
+#define BB_DFCNTL1_2US_BASE             0x40001A7C
+#define BB_DFCNTL1_2US                  REG32_POINTER(BB_DFCNTL1_2US_BASE)
+
+/* BB_DFCNTL1_2US bit positions */
+#define BB_DFCNTL1_2US_RXSAMPSTINST1_2US_POS 24
+#define BB_DFCNTL1_2US_RXSAMPSTINST1_2US_MASK (0xFF << BB_DFCNTL1_2US_RXSAMPSTINST1_2US_POS)
+#define BB_DFCNTL1_2US_RXSWSTINST1_2US_POS 16
+#define BB_DFCNTL1_2US_RXSWSTINST1_2US_MASK (0xFF << BB_DFCNTL1_2US_RXSWSTINST1_2US_POS)
+#define BB_DFCNTL1_2US_TXSWSTINST1_2US_POS 0
+#define BB_DFCNTL1_2US_TXSWSTINST1_2US_MASK (0xFF << BB_DFCNTL1_2US_TXSWSTINST1_2US_POS)
+
+/* BB_DFCNTL1_2US settings */
+#define RXSAMPSTINST1_2US_0             (0x0 << BB_DFCNTL1_2US_RXSAMPSTINST1_2US_POS)
+
+#define RXSWSTINST1_2US_0               (0x0 << BB_DFCNTL1_2US_RXSWSTINST1_2US_POS)
+
+#define TXSWSTINST1_2US_0               (0x0 << BB_DFCNTL1_2US_TXSWSTINST1_2US_POS)
+
+/* Rx CTE descriptor current pointer */
+#define BB_DFCURRENTPTR_BASE            0x40001A80
+#define BB_DFCURRENTPTR                 REG32_POINTER(BB_DFCURRENTPTR_BASE)
+
+/* BB_DFCURRENTPTR bit positions */
+#define BB_DFCURRENTPTR_DFCURRENTPTR_POS 0
+#define BB_DFCURRENTPTR_DFCURRENTPTR_MASK (0x3FFF << BB_DFCURRENTPTR_DFCURRENTPTR_POS)
+
+/* BB_DFCURRENTPTR settings */
+#define DFCURRENTPTR_0                  (0x0 << BB_DFCURRENTPTR_DFCURRENTPTR_POS)
+
+/* AoA/AOD antenna control register */
+#define BB_DFANTCNTL_BASE               0x40001A84
+#define BB_DFANTCNTL                    REG32_POINTER(BB_DFANTCNTL_BASE)
+
+/* BB_DFANTCNTL bit positions */
+#define BB_DFANTCNTL_RXPRIMIDCNTLEN_POS 15
+#define BB_DFANTCNTL_RXPRIMANTID_POS    8
+#define BB_DFANTCNTL_RXPRIMANTID_MASK   (0x7F << BB_DFANTCNTL_RXPRIMANTID_POS)
+#define BB_DFANTCNTL_TXPRIMIDCNTLEN_POS 7
+#define BB_DFANTCNTL_TXPRIMANTID_POS    0
+#define BB_DFANTCNTL_TXPRIMANTID_MASK   (0x7F << BB_DFANTCNTL_TXPRIMANTID_POS)
+
+/* BB_DFANTCNTL settings */
+#define RXPRIMIDCNTLEN_0                (0x0 << BB_DFANTCNTL_RXPRIMIDCNTLEN_POS)
+#define RXPRIMIDCNTLEN_1                (0x1 << BB_DFANTCNTL_RXPRIMIDCNTLEN_POS)
+
+#define RXPRIMANTID_0                   (0x0 << BB_DFANTCNTL_RXPRIMANTID_POS)
+
+#define TXPRIMIDCNTLEN_0                (0x0 << BB_DFANTCNTL_TXPRIMIDCNTLEN_POS)
+#define TXPRIMIDCNTLEN_1                (0x1 << BB_DFANTCNTL_TXPRIMIDCNTLEN_POS)
+
+#define TXPRIMANTID_0                   (0x0 << BB_DFANTCNTL_TXPRIMANTID_POS)
+
+/* AoA/AOD interface control register */
+#define BB_DFIFCNTL_BASE                0x40001A88
+#define BB_DFIFCNTL                     REG32_POINTER(BB_DFIFCNTL_BASE)
+
+/* BB_DFIFCNTL bit positions */
+#define BB_DFIFCNTL_ANTSWITCH_BEH_POS   7
+#define BB_DFIFCNTL_SAMPREQ_BEH_POS     6
+#define BB_DFIFCNTL_SAMPVALID_BEH_POS   4
+#define BB_DFIFCNTL_SAMPVALID_BEH_MASK  (0x3 << BB_DFIFCNTL_SAMPVALID_BEH_POS)
+#define BB_DFIFCNTL_IF_WIDTH_POS        2
+#define BB_DFIFCNTL_IF_WIDTH_MASK       (0x3 << BB_DFIFCNTL_IF_WIDTH_POS)
+#define BB_DFIFCNTL_MSB_LSB_ORDER_POS   1
+#define BB_DFIFCNTL_SYMBOL_ORDER_POS    0
+
+/* BB_DFIFCNTL settings */
+#define ANTSWITCH_BEH_0                 (0x0 << BB_DFIFCNTL_ANTSWITCH_BEH_POS)
+#define ANTSWITCH_BEH_1                 (0x1 << BB_DFIFCNTL_ANTSWITCH_BEH_POS)
+
+#define SAMPREQ_BEH_0                   (0x0 << BB_DFIFCNTL_SAMPREQ_BEH_POS)
+#define SAMPREQ_BEH_1                   (0x1 << BB_DFIFCNTL_SAMPREQ_BEH_POS)
+
+#define SAMPVALID_BEH_0                 (0x0 << BB_DFIFCNTL_SAMPVALID_BEH_POS)
+#define SAMPVALID_BEH_1                 (0x1 << BB_DFIFCNTL_SAMPVALID_BEH_POS)
+#define SAMPVALID_BEH_2                 (0x2 << BB_DFIFCNTL_SAMPVALID_BEH_POS)
+#define SAMPVALID_BEH_3                 (0x3 << BB_DFIFCNTL_SAMPVALID_BEH_POS)
+
+#define IF_WIDTH_0                      (0x0 << BB_DFIFCNTL_IF_WIDTH_POS)
+#define IF_WIDTH_1                      (0x1 << BB_DFIFCNTL_IF_WIDTH_POS)
+#define IF_WIDTH_2                      (0x2 << BB_DFIFCNTL_IF_WIDTH_POS)
+#define IF_WIDTH_3                      (0x3 << BB_DFIFCNTL_IF_WIDTH_POS)
+
+#define MSB_LSB_ORDER_0                 (0x0 << BB_DFIFCNTL_MSB_LSB_ORDER_POS)
+#define MSB_LSB_ORDER_1                 (0x1 << BB_DFIFCNTL_MSB_LSB_ORDER_POS)
+
+#define SYMBOL_ORDER_0                  (0x0 << BB_DFIFCNTL_SYMBOL_ORDER_POS)
+#define SYMBOL_ORDER_1                  (0x1 << BB_DFIFCNTL_SYMBOL_ORDER_POS)
+
+/* ----------------------------------------------------------------------------
+ * Time Of Flight Timer
+ * ------------------------------------------------------------------------- */
+
+/* Time Of Flight Timer Configuration */
+#define TOF_CFG_BASE                    0x40001B00
+#define TOF_CFG                         REG32_POINTER(TOF_CFG_BASE)
+
+/* TOF_CFG bit positions */
+#define TOF_CFG_ERROR_INT_ENABLE_POS    21
+#define TOF_CFG_OVERRUN_INT_ENABLE_POS  20
+#define TOF_CFG_AVG_DATA_INT_ENABLE_POS 19
+#define TOF_CFG_DATA_INT_ENABLE_POS     18
+#define TOF_CFG_AVG_DATA_DMA_ENABLE_POS 17
+#define TOF_CFG_DATA_DMA_ENABLE_POS     16
+#define TOF_CFG_AVG_CFG_POS             12
+#define TOF_CFG_AVG_CFG_MASK            (0x7 << TOF_CFG_AVG_CFG_POS)
+#define TOF_CFG_STOP_SRC_POS            8
+#define TOF_CFG_STOP_SRC_MASK           (0x7 << TOF_CFG_STOP_SRC_POS)
+#define TOF_CFG_START_SRC_POS           4
+#define TOF_CFG_START_SRC_MASK          (0x7 << TOF_CFG_START_SRC_POS)
+#define TOF_CFG_CLK_PRESCALE_POS        0
+#define TOF_CFG_CLK_PRESCALE_MASK       (0x3 << TOF_CFG_CLK_PRESCALE_POS)
+
+/* TOF_CFG settings */
+#define TOF_ERROR_INT_DISABLE           (0x0 << TOF_CFG_ERROR_INT_ENABLE_POS)
+#define TOF_ERROR_INT_ENABLE            (0x1 << TOF_CFG_ERROR_INT_ENABLE_POS)
+
+#define TOF_OVERRUN_INT_DISABLE         (0x0 << TOF_CFG_OVERRUN_INT_ENABLE_POS)
+#define TOF_OVERRUN_INT_ENABLE          (0x1 << TOF_CFG_OVERRUN_INT_ENABLE_POS)
+
+#define TOF_AVG_DATA_INT_DISABLE        (0x0 << TOF_CFG_AVG_DATA_INT_ENABLE_POS)
+#define TOF_AVG_DATA_INT_ENABLE         (0x1 << TOF_CFG_AVG_DATA_INT_ENABLE_POS)
+
+#define TOF_DATA_INT_DISABLE            (0x0 << TOF_CFG_DATA_INT_ENABLE_POS)
+#define TOF_DATA_INT_ENABLE             (0x1 << TOF_CFG_DATA_INT_ENABLE_POS)
+
+#define TOF_AVG_DATA_DMA_DISABLE        (0x0 << TOF_CFG_AVG_DATA_DMA_ENABLE_POS)
+#define TOF_AVG_DATA_DMA_ENABLE         (0x1 << TOF_CFG_AVG_DATA_DMA_ENABLE_POS)
+
+#define TOF_DATA_DMA_DISABLE            (0x0 << TOF_CFG_DATA_DMA_ENABLE_POS)
+#define TOF_DATA_DMA_ENABLE             (0x1 << TOF_CFG_DATA_DMA_ENABLE_POS)
+
+#define TOF_AVG_DATA_1                  (0x0 << TOF_CFG_AVG_CFG_POS)
+#define TOF_AVG_DATA_2                  (0x1 << TOF_CFG_AVG_CFG_POS)
+#define TOF_AVG_DATA_4                  (0x2 << TOF_CFG_AVG_CFG_POS)
+#define TOF_AVG_DATA_8                  (0x3 << TOF_CFG_AVG_CFG_POS)
+#define TOF_AVG_DATA_16                 (0x4 << TOF_CFG_AVG_CFG_POS)
+#define TOF_AVG_DATA_32                 (0x5 << TOF_CFG_AVG_CFG_POS)
+#define TOF_AVG_DATA_64                 (0x6 << TOF_CFG_AVG_CFG_POS)
+#define TOF_AVG_DATA_128                (0x7 << TOF_CFG_AVG_CFG_POS)
+
+#define TOF_STOP_SRC_NONE               (0x0 << TOF_CFG_STOP_SRC_POS)
+#define TOF_STOP_SRC_TX                 (0x1 << TOF_CFG_STOP_SRC_POS)
+#define TOF_STOP_SRC_RX_STOP            (0x2 << TOF_CFG_STOP_SRC_POS)
+#define TOF_STOP_SRC_RX_RECEIVED        (0x3 << TOF_CFG_STOP_SRC_POS)
+#define TOF_STOP_SRC_SYNC               (0x4 << TOF_CFG_STOP_SRC_POS)
+#define TOF_STOP_SRC_TX_FIFO            (0x5 << TOF_CFG_STOP_SRC_POS)
+#define TOF_STOP_SRC_RX_FIFO            (0x6 << TOF_CFG_STOP_SRC_POS)
+
+#define TOF_START_SRC_NONE              (0x0 << TOF_CFG_START_SRC_POS)
+#define TOF_START_SRC_TX                (0x1 << TOF_CFG_START_SRC_POS)
+#define TOF_START_SRC_RX_STOP           (0x2 << TOF_CFG_START_SRC_POS)
+#define TOF_START_SRC_RX_RECEIVED       (0x3 << TOF_CFG_START_SRC_POS)
+#define TOF_START_SRC_SYNC              (0x4 << TOF_CFG_START_SRC_POS)
+#define TOF_START_SRC_TX_FIFO           (0x5 << TOF_CFG_START_SRC_POS)
+#define TOF_START_SRC_RX_FIFO           (0x6 << TOF_CFG_START_SRC_POS)
+
+#define TOF_CLK_PRESCALE_1              (0x0 << TOF_CFG_CLK_PRESCALE_POS)
+#define TOF_CLK_PRESCALE_2              (0x1 << TOF_CFG_CLK_PRESCALE_POS)
+#define TOF_CLK_PRESCALE_3              (0x2 << TOF_CFG_CLK_PRESCALE_POS)
+#define TOF_CLK_PRESCALE_6              (0x3 << TOF_CFG_CLK_PRESCALE_POS)
+
+/* Time Of Flight Timer Control */
+#define TOF_CTRL_BASE                   0x40001B04
+#define TOF_CTRL                        REG32_POINTER(TOF_CTRL_BASE)
+
+/* TOF_CTRL bit positions */
+#define TOF_CTRL_ENABLE_STATUS_POS      8
+#define TOF_CTRL_STOP_POS               4
+#define TOF_CTRL_START_POS              3
+#define TOF_CTRL_RESET_POS              2
+#define TOF_CTRL_DISABLE_POS            1
+#define TOF_CTRL_ENABLE_POS             0
+
+/* TOF_CTRL settings */
+#define TOF_STATUS_DISABLED             (0x0 << TOF_CTRL_ENABLE_STATUS_POS)
+#define TOF_STATUS_ENABLED              (0x1 << TOF_CTRL_ENABLE_STATUS_POS)
+
+#define TOF_STOP                        (0x1 << TOF_CTRL_STOP_POS)
+
+#define TOF_START                       (0x1 << TOF_CTRL_START_POS)
+
+#define TOF_RESET                       (0x1 << TOF_CTRL_RESET_POS)
+
+#define TOF_DISABLE                     (0x1 << TOF_CTRL_DISABLE_POS)
+
+#define TOF_ENABLE                      (0x1 << TOF_CTRL_ENABLE_POS)
+
+/* Time Of Flight Timer Status */
+#define TOF_STATUS_BASE                 0x40001B08
+#define TOF_STATUS                      REG32_POINTER(TOF_STATUS_BASE)
+
+/* TOF_STATUS bit positions */
+#define TOF_STATUS_AVG_DATA_STATUS_POS  16
+#define TOF_STATUS_AVG_DATA_STATUS_MASK (0xFF << TOF_STATUS_AVG_DATA_STATUS_POS)
+#define TOF_STATUS_AVG_DATA_REQ_POS     13
+#define TOF_STATUS_DATA_REQ_POS         12
+#define TOF_STATUS_BUSY_POS             11
+#define TOF_STATUS_ERROR_POS            10
+#define TOF_STATUS_AVG_DATA_OVERRUN_POS 9
+#define TOF_STATUS_DATA_OVERRUN_POS     8
+#define TOF_STATUS_AVG_DATA_CLEAR_POS   5
+#define TOF_STATUS_MAX_DATA_CLEAR_POS   4
+#define TOF_STATUS_MIN_DATA_CLEAR_POS   3
+#define TOF_STATUS_ERROR_CLEAR_POS      2
+#define TOF_STATUS_AVG_DATA_OVERRUN_CLEAR_POS 1
+#define TOF_STATUS_DATA_OVERRUN_CLEAR_POS 0
+
+/* TOF_STATUS settings */
+#define TOF_AVG_DATA_STATUS             (0x0 << TOF_STATUS_AVG_DATA_STATUS_POS)
+
+#define TOF_NO_AVG_DATA_REQ             (0x0 << TOF_STATUS_AVG_DATA_REQ_POS)
+#define TOF_AVG_DATA_REQ                (0x1 << TOF_STATUS_AVG_DATA_REQ_POS)
+
+#define TOF_NO_DATA_REQ                 (0x0 << TOF_STATUS_DATA_REQ_POS)
+#define TOF_DATA_REQ                    (0x1 << TOF_STATUS_DATA_REQ_POS)
+
+#define TOF_IDLE                        (0x0 << TOF_STATUS_BUSY_POS)
+#define TOF_BUSY                        (0x1 << TOF_STATUS_BUSY_POS)
+
+#define TOF_NO_ERROR                    (0x0 << TOF_STATUS_ERROR_POS)
+#define TOF_ERROR                       (0x1 << TOF_STATUS_ERROR_POS)
+
+#define TOF_NO_AVG_DATA_OVERRUN         (0x0 << TOF_STATUS_AVG_DATA_OVERRUN_POS)
+#define TOF_AVG_DATA_OVERRUN            (0x1 << TOF_STATUS_AVG_DATA_OVERRUN_POS)
+
+#define TOF_NO_DATA_OVERRUN             (0x0 << TOF_STATUS_DATA_OVERRUN_POS)
+#define TOF_DATA_OVERRUN                (0x1 << TOF_STATUS_DATA_OVERRUN_POS)
+
+#define TOF_AVG_DATA_CLEAR              (0x1 << TOF_STATUS_AVG_DATA_CLEAR_POS)
+
+#define TOF_MAX_DATA_CLEAR              (0x1 << TOF_STATUS_MAX_DATA_CLEAR_POS)
+
+#define TOF_MIN_DATA_CLEAR              (0x1 << TOF_STATUS_MIN_DATA_CLEAR_POS)
+
+#define TOF_ERROR_CLEAR                 (0x1 << TOF_STATUS_ERROR_CLEAR_POS)
+
+#define TOF_AVG_DATA_OVERRUN_CLEAR      (0x1 << TOF_STATUS_AVG_DATA_OVERRUN_CLEAR_POS)
+
+#define TOF_DATA_OVERRUN_CLEAR          (0x1 << TOF_STATUS_DATA_OVERRUN_CLEAR_POS)
+
+/* Time Of Flight Timer BLE Link Filtering Configuration */
+#define TOF_LINK_CFG_BASE               0x40001B0C
+#define TOF_LINK_CFG                    REG32_POINTER(TOF_LINK_CFG_BASE)
+
+/* TOF_LINK_CFG bit positions */
+#define TOF_LINK_CFG_LINK_FORMAT_POS    12
+#define TOF_LINK_CFG_LINK_FORMAT_MASK   (0x1F << TOF_LINK_CFG_LINK_FORMAT_POS)
+#define TOF_LINK_CFG_LINK_LABEL_POS     4
+#define TOF_LINK_CFG_LINK_LABEL_MASK    (0x1F << TOF_LINK_CFG_LINK_LABEL_POS)
+#define TOF_LINK_CFG_LINK_FILTER_EN_POS 0
+
+/* TOF_LINK_CFG settings */
+#define TOF_LINK_FORMAT                 (0x0 << TOF_LINK_CFG_LINK_FORMAT_POS)
+
+#define TOF_LINK_LABEL                  (0x0 << TOF_LINK_CFG_LINK_LABEL_POS)
+
+#define TOF_LINK_FILTER_DISABLE         (0x0 << TOF_LINK_CFG_LINK_FILTER_EN_POS)
+#define TOF_LINK_FILTER_ENABLE          (0x1 << TOF_LINK_CFG_LINK_FILTER_EN_POS)
+
+/* Time Of Flight Timer Data */
+#define TOF_DATA_BASE                   0x40001B10
+#define TOF_DATA                        READONLY_REG32_POINTER(TOF_DATA_BASE)
+
+/* TOF_DATA bit positions */
+#define TOF_DATA_DATA_POS               0
+#define TOF_DATA_DATA_MASK              (0xFFFFF << TOF_DATA_DATA_POS)
+
+/* Time Of Flight Timer Minimum Data */
+#define TOF_MIN_DATA_BASE               0x40001B14
+#define TOF_MIN_DATA                    READONLY_REG32_POINTER(TOF_MIN_DATA_BASE)
+
+/* TOF_MIN_DATA bit positions */
+#define TOF_MIN_DATA_MIN_DATA_POS       0
+#define TOF_MIN_DATA_MIN_DATA_MASK      (0xFFFFF << TOF_MIN_DATA_MIN_DATA_POS)
+
+/* Time Of Flight Timer Maximum Data */
+#define TOF_MAX_DATA_BASE               0x40001B18
+#define TOF_MAX_DATA                    READONLY_REG32_POINTER(TOF_MAX_DATA_BASE)
+
+/* TOF_MAX_DATA bit positions */
+#define TOF_MAX_DATA_MAX_DATA_POS       0
+#define TOF_MAX_DATA_MAX_DATA_MASK      (0xFFFFF << TOF_MAX_DATA_MAX_DATA_POS)
+
+/* Time Of Flight Timer Average Data */
+#define TOF_AVG_DATA_BASE               0x40001B1C
+#define TOF_AVG_DATA                    READONLY_REG32_POINTER(TOF_AVG_DATA_BASE)
+
+/* TOF_AVG_DATA bit positions */
+#define TOF_AVG_DATA_AVG_DATA_INT_POS   8
+#define TOF_AVG_DATA_AVG_DATA_INT_MASK  (0xFFFFF << TOF_AVG_DATA_AVG_DATA_INT_POS)
+#define TOF_AVG_DATA_AVG_DATA_DEC_POS   0
+#define TOF_AVG_DATA_AVG_DATA_DEC_MASK  (0xFF << TOF_AVG_DATA_AVG_DATA_DEC_POS)
+
+/* Time Of Flight Timer ID Number */
+#define TOF_ID_NUM_BASE                 0x40001BFC
+#define TOF_ID_NUM                      READONLY_REG32_POINTER(TOF_ID_NUM_BASE)
+
+/* TOF_ID_NUM bit positions */
+#define TOF_ID_NUM_TOF_MAJOR_REVISION_POS 8
+#define TOF_ID_NUM_TOF_MAJOR_REVISION_MASK (0xFF << TOF_ID_NUM_TOF_MAJOR_REVISION_POS)
+#define TOF_ID_NUM_TOF_MINOR_REVISION_POS 0
+#define TOF_ID_NUM_TOF_MINOR_REVISION_MASK (0xFF << TOF_ID_NUM_TOF_MINOR_REVISION_POS)
+
+/* TOF_ID_NUM settings */
+#define TOF_MAJOR_REVISION              (0x1 << TOF_ID_NUM_TOF_MAJOR_REVISION_POS)
+
+#define TOF_MINOR_REVISION              (0x0 << TOF_ID_NUM_TOF_MINOR_REVISION_POS)
+
+/* ----------------------------------------------------------------------------
+ * NFC Controller
+ * ------------------------------------------------------------------------- */
+
+/* TEST Fc COUNTER Register */
+#define NFC_HFCTRL_TEST_FC_CNT_BASE     0x40040000
+#define NFC_HFCTRL_TEST_FC_CNT          REG32_POINTER(NFC_HFCTRL_TEST_FC_CNT_BASE)
+
+/* NFC_HFCTRL_TEST_FC_CNT bit positions */
+#define NFC_HFCTRL_TEST_FC_CNT_FC_CNT_STAT_POS 0
+#define NFC_HFCTRL_TEST_FC_CNT_FC_CNT_STAT_MASK (0xFFF << NFC_HFCTRL_TEST_FC_CNT_FC_CNT_STAT_POS)
+#define NFC_HFCTRL_TEST_FC_CNT_FC_CNT_ENA_POS 16
+#define NFC_HFCTRL_TEST_FC_CNT_FC_CNT_CLR_POS 17
+
+/* NFC_HFCTRL_TEST_FC_CNT settings */
+#define FC_CNT_STATUS_VALUE             (0x0 << NFC_HFCTRL_TEST_FC_CNT_FC_CNT_STAT_POS)
+
+#define FC_CNT_STOP                     (0x0 << NFC_HFCTRL_TEST_FC_CNT_FC_CNT_ENA_POS)
+#define FC_CNT_DECOUNTING               (0x1 << NFC_HFCTRL_TEST_FC_CNT_FC_CNT_ENA_POS)
+
+#define FC_CNT_NOT_CLR                  (0x0 << NFC_HFCTRL_TEST_FC_CNT_FC_CNT_CLR_POS)
+#define FC_CNT_CLR                      (0x1 << NFC_HFCTRL_TEST_FC_CNT_FC_CNT_CLR_POS)
+
+/* TEST SDA COUNTER Register */
+#define NFC_HFCTRL_TEST_SDA_CNT_BASE    0x40040004
+#define NFC_HFCTRL_TEST_SDA_CNT         REG32_POINTER(NFC_HFCTRL_TEST_SDA_CNT_BASE)
+
+/* NFC_HFCTRL_TEST_SDA_CNT bit positions */
+#define NFC_HFCTRL_TEST_SDA_CNT_SDA_CNT_STAT_POS 0
+#define NFC_HFCTRL_TEST_SDA_CNT_SDA_CNT_STAT_MASK (0x3FFF << NFC_HFCTRL_TEST_SDA_CNT_SDA_CNT_STAT_POS)
+#define NFC_HFCTRL_TEST_SDA_CNT_SDA_CNT_ENA_POS 16
+#define NFC_HFCTRL_TEST_SDA_CNT_SDA_CNT_CLR_POS 17
+
+/* NFC_HFCTRL_TEST_SDA_CNT settings */
+#define SDA_CNT_STATUS_VALUE            (0x0 << NFC_HFCTRL_TEST_SDA_CNT_SDA_CNT_STAT_POS)
+
+#define SDA_CNT_STOP                    (0x0 << NFC_HFCTRL_TEST_SDA_CNT_SDA_CNT_ENA_POS)
+#define SDA_CNT_COUNTING                (0x1 << NFC_HFCTRL_TEST_SDA_CNT_SDA_CNT_ENA_POS)
+
+#define SDA_CNT_NOT_CLR                 (0x0 << NFC_HFCTRL_TEST_SDA_CNT_SDA_CNT_CLR_POS)
+#define SDA_CNT_CLR                     (0x1 << NFC_HFCTRL_TEST_SDA_CNT_SDA_CNT_CLR_POS)
+
+/* TEST CTRL Register */
+#define NFC_HFCTRL_TEST_CTRL_BASE       0x40040008
+#define NFC_HFCTRL_TEST_CTRL            REG32_POINTER(NFC_HFCTRL_TEST_CTRL_BASE)
+
+/* NFC_HFCTRL_TEST_CTRL bit positions */
+#define NFC_HFCTRL_TEST_CTRL_DEM_ACCESS_POS 0
+#define NFC_HFCTRL_TEST_CTRL_DEM_TYPE_A_ENA_POS 1
+#define NFC_HFCTRL_TEST_CTRL_VOLTAGE_SEL_POS 4
+#define NFC_HFCTRL_TEST_CTRL_VOLTAGE_SEL_MASK (0x3 << NFC_HFCTRL_TEST_CTRL_VOLTAGE_SEL_POS)
+#define NFC_HFCTRL_TEST_CTRL_RETRO_TEST_POS 8
+#define NFC_HFCTRL_TEST_CTRL_RETRO_TEST_MASK (0x3 << NFC_HFCTRL_TEST_CTRL_RETRO_TEST_POS)
+#define NFC_HFCTRL_TEST_CTRL_CLK_EXTR_DIS_POS 12
+#define NFC_HFCTRL_TEST_CTRL_CRC_RAM_POS 16
+#define NFC_HFCTRL_TEST_CTRL_SKIP_ANTICOL_POS 24
+
+/* NFC_HFCTRL_TEST_CTRL settings */
+#define HW_DEM_ACCESS                   (0x0 << NFC_HFCTRL_TEST_CTRL_DEM_ACCESS_POS)
+#define SW_DEM_ACCESS                   (0x1 << NFC_HFCTRL_TEST_CTRL_DEM_ACCESS_POS)
+
+#define DEM_TYPE_A_DISABLED             (0x0 << NFC_HFCTRL_TEST_CTRL_DEM_TYPE_A_ENA_POS)
+#define DEM_TYPE_A_ENABLED              (0x1 << NFC_HFCTRL_TEST_CTRL_DEM_TYPE_A_ENA_POS)
+
+#define SEL_HIGH_Z                      (0x0 << NFC_HFCTRL_TEST_CTRL_VOLTAGE_SEL_POS)
+#define SEL_VDC                         (0x1 << NFC_HFCTRL_TEST_CTRL_VOLTAGE_SEL_POS)
+#define SEL_VDDA                        (0x2 << NFC_HFCTRL_TEST_CTRL_VOLTAGE_SEL_POS)
+
+#define FSM_CTRL_RETRO                  (0x0 << NFC_HFCTRL_TEST_CTRL_RETRO_TEST_POS)
+#define RETRO_SET                       (0x1 << NFC_HFCTRL_TEST_CTRL_RETRO_TEST_POS)
+#define RETRO_AT_FC_DIV_16              (0x2 << NFC_HFCTRL_TEST_CTRL_RETRO_TEST_POS)
+#define RETRO_AT_FC_DIV_8               (0x3 << NFC_HFCTRL_TEST_CTRL_RETRO_TEST_POS)
+
+#define CLK_EXTRACTOR_ENABLED           (0x0 << NFC_HFCTRL_TEST_CTRL_CLK_EXTR_DIS_POS)
+#define CLK_EXTRACTOR_DISABLED          (0x1 << NFC_HFCTRL_TEST_CTRL_CLK_EXTR_DIS_POS)
+
+#define CRC_READ_FROM_RAM               (0x0 << NFC_HFCTRL_TEST_CTRL_CRC_RAM_POS)
+#define CRC_PROCESS                     (0x1 << NFC_HFCTRL_TEST_CTRL_CRC_RAM_POS)
+
+#define ANTICOL_MANAGED                 (0x0 << NFC_HFCTRL_TEST_CTRL_SKIP_ANTICOL_POS)
+#define ANTICOL_SKIPPED                 (0x1 << NFC_HFCTRL_TEST_CTRL_SKIP_ANTICOL_POS)
+
+/* PROTOCOL and COMMUNICATION CONFIG register */
+#define NFC_HFCTRL_PROTOCOL_CFG_BASE    0x4004000C
+#define NFC_HFCTRL_PROTOCOL_CFG         REG32_POINTER(NFC_HFCTRL_PROTOCOL_CFG_BASE)
+
+/* NFC_HFCTRL_PROTOCOL_CFG bit positions */
+#define NFC_HFCTRL_PROTOCOL_CFG_REQA_IGNORE_POS 2
+#define NFC_HFCTRL_PROTOCOL_CFG_TYPEA_L4_ENA_POS 3
+#define NFC_HFCTRL_PROTOCOL_CFG_UID_SIZE_POS 4
+#define NFC_HFCTRL_PROTOCOL_CFG_UID_SIZE_MASK (0x3 << NFC_HFCTRL_PROTOCOL_CFG_UID_SIZE_POS)
+#define NFC_HFCTRL_PROTOCOL_CFG_L4_ERROR_FRAME_IGNORE_POS 6
+#define NFC_HFCTRL_PROTOCOL_CFG_CNTER_WP_VALUE_POS 8
+#define NFC_HFCTRL_PROTOCOL_CFG_CNTER_WP_VALUE_MASK (0xFFFFF << NFC_HFCTRL_PROTOCOL_CFG_CNTER_WP_VALUE_POS)
+
+/* NFC_HFCTRL_PROTOCOL_CFG settings */
+#define BACK_TO_IDLE                    (0x0 << NFC_HFCTRL_PROTOCOL_CFG_REQA_IGNORE_POS)
+#define BACK_TO_HALT                    (0x1 << NFC_HFCTRL_PROTOCOL_CFG_REQA_IGNORE_POS)
+
+#define TYPEA_L4_DISABLED               (0x0 << NFC_HFCTRL_PROTOCOL_CFG_TYPEA_L4_ENA_POS)
+#define TYPEA_L4_ENABLED                (0x1 << NFC_HFCTRL_PROTOCOL_CFG_TYPEA_L4_ENA_POS)
+
+#define UID_SIZE_1                      (0x1 << NFC_HFCTRL_PROTOCOL_CFG_UID_SIZE_POS)
+#define UID_SIZE_2                      (0x2 << NFC_HFCTRL_PROTOCOL_CFG_UID_SIZE_POS)
+#define UID_SIZE_3                      (0x3 << NFC_HFCTRL_PROTOCOL_CFG_UID_SIZE_POS)
+
+#define L4_ERROR_FRAME_REPORT_ALL       (0x0 << NFC_HFCTRL_PROTOCOL_CFG_L4_ERROR_FRAME_IGNORE_POS)
+#define L4_ERROR_FRAME_IGNORE           (0x1 << NFC_HFCTRL_PROTOCOL_CFG_L4_ERROR_FRAME_IGNORE_POS)
+
+#define CNTER_WP_RESET_VALUE            (0x0 << NFC_HFCTRL_PROTOCOL_CFG_CNTER_WP_VALUE_POS)
+
+/* PROTOCOL and COMMUNICATION CTRL Register */
+#define NFC_HFCTRL_PROTOCOL_CTRL_BASE   0x40040010
+#define NFC_HFCTRL_PROTOCOL_CTRL        REG32_POINTER(NFC_HFCTRL_PROTOCOL_CTRL_BASE)
+
+/* NFC_HFCTRL_PROTOCOL_CTRL bit positions */
+#define NFC_HFCTRL_PROTOCOL_CTRL_WAIT_RX_POS 0
+#define NFC_HFCTRL_PROTOCOL_CTRL_LAUNCH_TX_POS 1
+#define NFC_HFCTRL_PROTOCOL_CTRL_BACK_TO_HALT_POS 4
+#define NFC_HFCTRL_PROTOCOL_CTRL_END_OF_TRANSACTION_POS 5
+#define NFC_HFCTRL_PROTOCOL_CTRL_PARITY_DIS_POS 6
+#define NFC_HFCTRL_PROTOCOL_CTRL_CRC_RAM_POS 7
+#define NFC_HFCTRL_PROTOCOL_CTRL_SILENT_TIME_POS 12
+#define NFC_HFCTRL_PROTOCOL_CTRL_SILENT_TIME_MASK (0xF << NFC_HFCTRL_PROTOCOL_CTRL_SILENT_TIME_POS)
+#define NFC_HFCTRL_PROTOCOL_CTRL_TX_RAM_FRAME_SIZE_POS 16
+#define NFC_HFCTRL_PROTOCOL_CTRL_TX_RAM_FRAME_SIZE_MASK (0x7FF << NFC_HFCTRL_PROTOCOL_CTRL_TX_RAM_FRAME_SIZE_POS)
+#define NFC_HFCTRL_PROTOCOL_CTRL_TX_RAM_BIT_SIZE_POS 28
+#define NFC_HFCTRL_PROTOCOL_CTRL_TX_RAM_BIT_SIZE_MASK (0xF << NFC_HFCTRL_PROTOCOL_CTRL_TX_RAM_BIT_SIZE_POS)
+
+/* NFC_HFCTRL_PROTOCOL_CTRL settings */
+#define RETURN_TO_HALT_OR_IDLE          (0x1 << NFC_HFCTRL_PROTOCOL_CTRL_BACK_TO_HALT_POS)
+
+#define END_OF_TRANSACTION              (0x1 << NFC_HFCTRL_PROTOCOL_CTRL_END_OF_TRANSACTION_POS)
+
+#define PARITY_DISABLED                 (0x1 << NFC_HFCTRL_PROTOCOL_CTRL_PARITY_DIS_POS)
+
+#define CRC_RAM_DISABLED                (0x1 << NFC_HFCTRL_PROTOCOL_CTRL_CRC_RAM_POS)
+
+/* SLOT COUNTER STATUS register */
+#define NFC_HFCTRL_COUNTER_STATUS_BASE  0x40040014
+#define NFC_HFCTRL_COUNTER_STATUS       READONLY_REG32_POINTER(NFC_HFCTRL_COUNTER_STATUS_BASE)
+
+/* NFC_HFCTRL_COUNTER_STATUS bit positions */
+#define NFC_HFCTRL_COUNTER_STATUS_CNTER_STATUS_POS 0
+#define NFC_HFCTRL_COUNTER_STATUS_CNTER_STATUS_MASK (0xFFFFF << NFC_HFCTRL_COUNTER_STATUS_CNTER_STATUS_POS)
+
+/* NFC_HFCTRL_COUNTER_STATUS settings */
+#define CNTER_STATUS_VALUE              (0x0 << NFC_HFCTRL_COUNTER_STATUS_CNTER_STATUS_POS)
+
+/* STATUS Register */
+#define NFC_HFCTRL_STATUS_BASE          0x40040018
+#define NFC_HFCTRL_STATUS               READONLY_REG32_POINTER(NFC_HFCTRL_STATUS_BASE)
+
+/* NFC_HFCTRL_STATUS bit positions */
+#define NFC_HFCTRL_STATUS_COM_INFO_POS  0
+#define NFC_HFCTRL_STATUS_COM_INFO_MASK (0x3 << NFC_HFCTRL_STATUS_COM_INFO_POS)
+#define NFC_HFCTRL_STATUS_RAM_ACCESS_POS 2
+#define NFC_HFCTRL_STATUS_END_OF_COM_POS 3
+#define NFC_HFCTRL_STATUS_FRAME_LOGIC_ERR_POS 4
+#define NFC_HFCTRL_STATUS_FRAME_PB_ERR_POS 5
+#define NFC_HFCTRL_STATUS_FRAME_SIZE_ERR_POS 6
+#define NFC_HFCTRL_STATUS_FRAME_CRC_ERR_POS 7
+#define NFC_HFCTRL_STATUS_RAM_OVERF_ERR_POS 8
+#define NFC_HFCTRL_STATUS_CNTER_OVERF_ERR_POS 12
+#define NFC_HFCTRL_STATUS_CNTER_WP_POS  13
+#define NFC_HFCTRL_STATUS_RX_RAM_FRAME_SIZE_POS 16
+#define NFC_HFCTRL_STATUS_RX_RAM_FRAME_SIZE_MASK (0x7FF << NFC_HFCTRL_STATUS_RX_RAM_FRAME_SIZE_POS)
+#define NFC_HFCTRL_STATUS_RX_RAM_BIT_SIZE_POS 28
+#define NFC_HFCTRL_STATUS_RX_RAM_BIT_SIZE_MASK (0xF << NFC_HFCTRL_STATUS_RX_RAM_BIT_SIZE_POS)
+
+/* NFC_HFCTRL_STATUS settings */
+#define IDLE_STATE                      (0x0 << NFC_HFCTRL_STATUS_COM_INFO_POS)
+#define RX_STATE                        (0x1 << NFC_HFCTRL_STATUS_COM_INFO_POS)
+#define TX_STATE                        (0x2 << NFC_HFCTRL_STATUS_COM_INFO_POS)
+#define EXEC_STATE                      (0x3 << NFC_HFCTRL_STATUS_COM_INFO_POS)
+
+#define SW_CAN_T_ACCESS_RAM             (0x0 << NFC_HFCTRL_STATUS_RAM_ACCESS_POS)
+#define SW_COULD_ACCESS_RAM             (0x1 << NFC_HFCTRL_STATUS_RAM_ACCESS_POS)
+
+#define NOT_END_OF_COM                  (0x0 << NFC_HFCTRL_STATUS_END_OF_COM_POS)
+
+#define NO_LOGIC_ERROR                  (0x0 << NFC_HFCTRL_STATUS_FRAME_LOGIC_ERR_POS)
+#define LOGIC_ERROR                     (0x1 << NFC_HFCTRL_STATUS_FRAME_LOGIC_ERR_POS)
+
+#define NO_PARITY_ERROR                 (0x0 << NFC_HFCTRL_STATUS_FRAME_PB_ERR_POS)
+#define PARITY_ERROR                    (0x1 << NFC_HFCTRL_STATUS_FRAME_PB_ERR_POS)
+
+#define NO_FRAME_SIZE_ERROR             (0x0 << NFC_HFCTRL_STATUS_FRAME_SIZE_ERR_POS)
+#define FRAME_SIZE_ERROR                (0x1 << NFC_HFCTRL_STATUS_FRAME_SIZE_ERR_POS)
+
+#define NO_CRC_ERROR                    (0x0 << NFC_HFCTRL_STATUS_FRAME_CRC_ERR_POS)
+#define CRC_ERROR                       (0x1 << NFC_HFCTRL_STATUS_FRAME_CRC_ERR_POS)
+
+#define RAM_FULL                        (0x1 << NFC_HFCTRL_STATUS_RAM_OVERF_ERR_POS)
+
+#define NO_CNT_OVERUN_ERROR             (0x0 << NFC_HFCTRL_STATUS_CNTER_OVERF_ERR_POS)
+#define CNT_OVERRUN_ERROR               (0x1 << NFC_HFCTRL_STATUS_CNTER_OVERF_ERR_POS)
+
+#define NO_CNT_WP_ERROR                 (0x0 << NFC_HFCTRL_STATUS_CNTER_WP_POS)
+#define CNT_WP_ERROR                    (0x1 << NFC_HFCTRL_STATUS_CNTER_WP_POS)
+
+#define RX_RAM_FRAME_SIZE_VALUE         (0x0 << NFC_HFCTRL_STATUS_RX_RAM_FRAME_SIZE_POS)
+
+#define RX_RAM_BIT_SIZE_VALUE           (0x0 << NFC_HFCTRL_STATUS_RX_RAM_BIT_SIZE_POS)
+
+/* ITENA Interrupt enable register */
+#define NFC_HFCTRL_ITENA_BASE           0x4004001C
+#define NFC_HFCTRL_ITENA                REG32_POINTER(NFC_HFCTRL_ITENA_BASE)
+
+/* NFC_HFCTRL_ITENA bit positions */
+#define NFC_HFCTRL_ITENA_END_OF_COM_IT_POS 3
+#define NFC_HFCTRL_ITENA_CNTER_OVERF_IT_POS 12
+#define NFC_HFCTRL_ITENA_CNTER_WP_IT_POS 13
+
+/* NFC_HFCTRL_ITENA settings */
+#define END_OF_COM_INT_DISABLE          (0x0 << NFC_HFCTRL_ITENA_END_OF_COM_IT_POS)
+#define END_OF_COM_INT_ENABLE           (0x1 << NFC_HFCTRL_ITENA_END_OF_COM_IT_POS)
+
+#define CNT_OVERRUN_INT_DISABLE         (0x0 << NFC_HFCTRL_ITENA_CNTER_OVERF_IT_POS)
+#define CNT_OVERRUN_INT_ENABLE          (0x1 << NFC_HFCTRL_ITENA_CNTER_OVERF_IT_POS)
+
+#define CNT_WP_INT_DISABLE              (0x0 << NFC_HFCTRL_ITENA_CNTER_WP_IT_POS)
+#define CNT_WP_INT_ENABLE               (0x1 << NFC_HFCTRL_ITENA_CNTER_WP_IT_POS)
+
+/* ANALOG FRONTEND CONFIG register */
+#define NFC_HFCTRL_ANALOG_CFG_BASE      0x40040020
+#define NFC_HFCTRL_ANALOG_CFG           REG32_POINTER(NFC_HFCTRL_ANALOG_CFG_BASE)
+
+/* NFC_HFCTRL_ANALOG_CFG bit positions */
+#define NFC_HFCTRL_ANALOG_CFG_TR_DEM_A_POS 0
+#define NFC_HFCTRL_ANALOG_CFG_TR_DEM_A_MASK (0x3F << NFC_HFCTRL_ANALOG_CFG_TR_DEM_A_POS)
+#define NFC_HFCTRL_ANALOG_CFG_TR_LOAD_MOD_POS 16
+#define NFC_HFCTRL_ANALOG_CFG_TR_LOAD_MOD_MASK (0xF << NFC_HFCTRL_ANALOG_CFG_TR_LOAD_MOD_POS)
+#define NFC_HFCTRL_ANALOG_CFG_TR_REG_POS 24
+#define NFC_HFCTRL_ANALOG_CFG_TR_REG_MASK (0x7 << NFC_HFCTRL_ANALOG_CFG_TR_REG_POS)
+
+/* NFC_HFCTRL_ANALOG_CFG settings */
+#define TR_DEM_A_RESET_VALUE            (0x25 << NFC_HFCTRL_ANALOG_CFG_TR_DEM_A_POS)
+
+#define TR_LOAD_MOD_RESET_VALUE         (0x7 << NFC_HFCTRL_ANALOG_CFG_TR_LOAD_MOD_POS)
+
+#define TR_REG_RESET_VALUE              (0x4 << NFC_HFCTRL_ANALOG_CFG_TR_REG_POS)
+
+/* DIGITAL FRONTEND CONFIG register */
+#define NFC_HFCTRL_DIGITAL_CFG_BASE     0x40040024
+#define NFC_HFCTRL_DIGITAL_CFG          REG32_POINTER(NFC_HFCTRL_DIGITAL_CFG_BASE)
+
+/* NFC_HFCTRL_DIGITAL_CFG bit positions */
+#define NFC_HFCTRL_DIGITAL_CFG_BIT_RATE_POS 0
+#define NFC_HFCTRL_DIGITAL_CFG_BIT_RATE_MASK (0x3 << NFC_HFCTRL_DIGITAL_CFG_BIT_RATE_POS)
+#define NFC_HFCTRL_DIGITAL_CFG_COD_DIG_TYPE_POS 8
+#define NFC_HFCTRL_DIGITAL_CFG_GLITCH_FILT_DISABLE_POS 16
+#define NFC_HFCTRL_DIGITAL_CFG_REBOUND_FILTER_POS 20
+#define NFC_HFCTRL_DIGITAL_CFG_REBOUND_FILTER_MASK (0xF << NFC_HFCTRL_DIGITAL_CFG_REBOUND_FILTER_POS)
+
+/* NFC_HFCTRL_DIGITAL_CFG settings */
+#define BIT_RATE_FC_DIV_128             (0x0 << NFC_HFCTRL_DIGITAL_CFG_BIT_RATE_POS)
+#define BIT_RATE_FC_DIV_64              (0x1 << NFC_HFCTRL_DIGITAL_CFG_BIT_RATE_POS)
+#define BIT_RATE_FC_DIV_32              (0x2 << NFC_HFCTRL_DIGITAL_CFG_BIT_RATE_POS)
+
+#define MODULATION_OOK_MANCHESTER       (0x0 << NFC_HFCTRL_DIGITAL_CFG_COD_DIG_TYPE_POS)
+#define MODULATION_BPSK_NRZ_L           (0x1 << NFC_HFCTRL_DIGITAL_CFG_COD_DIG_TYPE_POS)
+
+#define GLITCH_FILTER_ENABLE            (0x0 << NFC_HFCTRL_DIGITAL_CFG_GLITCH_FILT_DISABLE_POS)
+#define GLITCH_FILTER_DISABLE           (0x1 << NFC_HFCTRL_DIGITAL_CFG_GLITCH_FILT_DISABLE_POS)
+
+#define REBOUND_FILTER_0                (0x0 << NFC_HFCTRL_DIGITAL_CFG_REBOUND_FILTER_POS)
+
+/* DIGITAL FRONTEND TRIM COUNTER0 register */
+#define NFC_HFCTRL_DIGITAL_CNT0_CFG_BASE 0x40040028
+#define NFC_HFCTRL_DIGITAL_CNT0_CFG     REG32_POINTER(NFC_HFCTRL_DIGITAL_CNT0_CFG_BASE)
+
+/* NFC_HFCTRL_DIGITAL_CNT0_CFG bit positions */
+#define NFC_HFCTRL_DIGITAL_CNT0_CFG_DEC_TH_0_POS 0
+#define NFC_HFCTRL_DIGITAL_CNT0_CFG_DEC_TH_0_MASK (0x3FF << NFC_HFCTRL_DIGITAL_CNT0_CFG_DEC_TH_0_POS)
+#define NFC_HFCTRL_DIGITAL_CNT0_CFG_DEC_TH_1_POS 16
+#define NFC_HFCTRL_DIGITAL_CNT0_CFG_DEC_TH_1_MASK (0x3FF << NFC_HFCTRL_DIGITAL_CNT0_CFG_DEC_TH_1_POS)
+#define NFC_HFCTRL_DIGITAL_CNT0_CFG_DEC_TH_CFG_POS 28
+
+/* NFC_HFCTRL_DIGITAL_CNT0_CFG settings */
+#define DEC_TH_0_RESET_VALUE            (0x18 << NFC_HFCTRL_DIGITAL_CNT0_CFG_DEC_TH_0_POS)
+
+#define DEC_TH_1_RESET_VALUE            (0x78 << NFC_HFCTRL_DIGITAL_CNT0_CFG_DEC_TH_1_POS)
+
+#define DEC_TH_CFG_RESET_VALUE          (0x0 << NFC_HFCTRL_DIGITAL_CNT0_CFG_DEC_TH_CFG_POS)
+
+/* DIGITAL FRONTEND TRIM COUNTER1 register */
+#define NFC_HFCTRL_DIGITAL_CNT1_CFG_BASE 0x4004002C
+#define NFC_HFCTRL_DIGITAL_CNT1_CFG     REG32_POINTER(NFC_HFCTRL_DIGITAL_CNT1_CFG_BASE)
+
+/* NFC_HFCTRL_DIGITAL_CNT1_CFG bit positions */
+#define NFC_HFCTRL_DIGITAL_CNT1_CFG_DEC_TH_2_POS 0
+#define NFC_HFCTRL_DIGITAL_CNT1_CFG_DEC_TH_2_MASK (0x3FF << NFC_HFCTRL_DIGITAL_CNT1_CFG_DEC_TH_2_POS)
+#define NFC_HFCTRL_DIGITAL_CNT1_CFG_DEC_TH_3_POS 16
+#define NFC_HFCTRL_DIGITAL_CNT1_CFG_DEC_TH_3_MASK (0x3FF << NFC_HFCTRL_DIGITAL_CNT1_CFG_DEC_TH_3_POS)
+
+/* NFC_HFCTRL_DIGITAL_CNT1_CFG settings */
+#define DEC_TH_2_RESET_VALUE            (0xB8 << NFC_HFCTRL_DIGITAL_CNT1_CFG_DEC_TH_2_POS)
+
+#define DEC_TH_3_RESET_VALUE            (0xF8 << NFC_HFCTRL_DIGITAL_CNT1_CFG_DEC_TH_3_POS)
+
+/* DIGITAL FRONTEND TRIM COUNTER2 register */
+#define NFC_HFCTRL_DIGITAL_CNT2_CFG_BASE 0x40040030
+#define NFC_HFCTRL_DIGITAL_CNT2_CFG     REG32_POINTER(NFC_HFCTRL_DIGITAL_CNT2_CFG_BASE)
+
+/* NFC_HFCTRL_DIGITAL_CNT2_CFG bit positions */
+#define NFC_HFCTRL_DIGITAL_CNT2_CFG_DEC_TH_4_POS 0
+#define NFC_HFCTRL_DIGITAL_CNT2_CFG_DEC_TH_4_MASK (0x3FF << NFC_HFCTRL_DIGITAL_CNT2_CFG_DEC_TH_4_POS)
+
+/* NFC_HFCTRL_DIGITAL_CNT2_CFG settings */
+#define DEC_TH_4_RESET_VALUE            (0x30F << NFC_HFCTRL_DIGITAL_CNT2_CFG_DEC_TH_4_POS)
+
+/* SLOT TIMER and FDT CONFIG register */
+#define NFC_HFCTRL_FDT_TIMER_CFG_BASE   0x40040034
+#define NFC_HFCTRL_FDT_TIMER_CFG        REG32_POINTER(NFC_HFCTRL_FDT_TIMER_CFG_BASE)
+
+/* NFC_HFCTRL_FDT_TIMER_CFG bit positions */
+#define NFC_HFCTRL_FDT_TIMER_CFG_SLOT_VALUE_POS 0
+#define NFC_HFCTRL_FDT_TIMER_CFG_SLOT_VALUE_MASK (0xFF << NFC_HFCTRL_FDT_TIMER_CFG_SLOT_VALUE_POS)
+#define NFC_HFCTRL_FDT_TIMER_CFG_FDT_LAYER3_POS 8
+#define NFC_HFCTRL_FDT_TIMER_CFG_FDT_LAYER3_MASK (0xF << NFC_HFCTRL_FDT_TIMER_CFG_FDT_LAYER3_POS)
+#define NFC_HFCTRL_FDT_TIMER_CFG_FDT0_VALUE_POS 16
+#define NFC_HFCTRL_FDT_TIMER_CFG_FDT0_VALUE_MASK (0xFF << NFC_HFCTRL_FDT_TIMER_CFG_FDT0_VALUE_POS)
+#define NFC_HFCTRL_FDT_TIMER_CFG_FDT1_VALUE_POS 24
+#define NFC_HFCTRL_FDT_TIMER_CFG_FDT1_VALUE_MASK (0xFF << NFC_HFCTRL_FDT_TIMER_CFG_FDT1_VALUE_POS)
+
+/* NFC_HFCTRL_FDT_TIMER_CFG settings */
+#define SLOT_RESET_VALUE                (0x0 << NFC_HFCTRL_FDT_TIMER_CFG_SLOT_VALUE_POS)
+
+#define FDT_LAYER3_RESET_VALUE          (0x5 << NFC_HFCTRL_FDT_TIMER_CFG_FDT_LAYER3_POS)
+
+#define FDT0_RESET_VALUE                (0x4F << NFC_HFCTRL_FDT_TIMER_CFG_FDT0_VALUE_POS)
+
+#define FDT1_RESET_VALUE                (0x4F << NFC_HFCTRL_FDT_TIMER_CFG_FDT1_VALUE_POS)
+
+/* POWER CONFIG register */
+#define NFC_HFCTRL_POWER_CFG_BASE       0x40040038
+#define NFC_HFCTRL_POWER_CFG            REG32_POINTER(NFC_HFCTRL_POWER_CFG_BASE)
+
+/* NFC_HFCTRL_POWER_CFG bit positions */
+#define NFC_HFCTRL_POWER_CFG_RF_ON_THRESHOLD_POS 0
+#define NFC_HFCTRL_POWER_CFG_RF_ON_THRESHOLD_MASK (0x3 << NFC_HFCTRL_POWER_CFG_RF_ON_THRESHOLD_POS)
+#define NFC_HFCTRL_POWER_CFG_RF_ON_ITENA_POS 2
+#define NFC_HFCTRL_POWER_CFG_RF_OFF_ITENA_POS 3
+#define NFC_HFCTRL_POWER_CFG_HF_RESET_CFG_POS 8
+#define NFC_HFCTRL_POWER_CFG_HF_RESET_ENA_POS 9
+#define NFC_HFCTRL_POWER_CFG_HF_RESET_ITENA_POS 10
+
+/* NFC_HFCTRL_POWER_CFG settings */
+#define RF_ON_THRESHOLD_110             (0x0 << NFC_HFCTRL_POWER_CFG_RF_ON_THRESHOLD_POS)
+#define RF_ON_THRESHOLD_100             (0x1 << NFC_HFCTRL_POWER_CFG_RF_ON_THRESHOLD_POS)
+#define RF_ON_THRESHOLD_000             (0x2 << NFC_HFCTRL_POWER_CFG_RF_ON_THRESHOLD_POS)
+
+#define RF_ON_INTERRUPT_DISABLE         (0x0 << NFC_HFCTRL_POWER_CFG_RF_ON_ITENA_POS)
+#define RF_ON_INTERRUPT_ENABLE          (0x1 << NFC_HFCTRL_POWER_CFG_RF_ON_ITENA_POS)
+
+#define RF_OFF_INTERRUPT_DISABLE        (0x0 << NFC_HFCTRL_POWER_CFG_RF_OFF_ITENA_POS)
+#define RF_OFF_INTERRUPT_ENABLE         (0x1 << NFC_HFCTRL_POWER_CFG_RF_OFF_ITENA_POS)
+
+#define HF_RESET_NOT_TRIGGERED_EACH_RF_ON (0x0 << NFC_HFCTRL_POWER_CFG_HF_RESET_CFG_POS)
+#define HF_RESET_TRIGGERED_EACH_RF_ON   (0x1 << NFC_HFCTRL_POWER_CFG_HF_RESET_CFG_POS)
+
+#define HF_RESET_NOT_TRIGGERED          (0x0 << NFC_HFCTRL_POWER_CFG_HF_RESET_ENA_POS)
+#define HF_RESET_TRIGGERED              (0x1 << NFC_HFCTRL_POWER_CFG_HF_RESET_ENA_POS)
+
+#define HF_RESET_INTERRUPT_DISABLE      (0x0 << NFC_HFCTRL_POWER_CFG_HF_RESET_ITENA_POS)
+#define HF_RESET_INTERRUPT_ENABLE       (0x1 << NFC_HFCTRL_POWER_CFG_HF_RESET_ITENA_POS)
+
+/* POWER STATUS register */
+#define NFC_HFCTRL_POWER_STATUS_BASE    0x4004003C
+#define NFC_HFCTRL_POWER_STATUS         READONLY_REG32_POINTER(NFC_HFCTRL_POWER_STATUS_BASE)
+
+/* NFC_HFCTRL_POWER_STATUS bit positions */
+#define NFC_HFCTRL_POWER_STATUS_HF_DET_LS_POS 0
+#define NFC_HFCTRL_POWER_STATUS_HF_DET_LS_MASK (0x1F << NFC_HFCTRL_POWER_STATUS_HF_DET_LS_POS)
+#define NFC_HFCTRL_POWER_STATUS_RF_ON_POS 8
+#define NFC_HFCTRL_POWER_STATUS_RF_OFF_POS 9
+#define NFC_HFCTRL_POWER_STATUS_HF_RESET_POS 10
+
+/* NFC_HFCTRL_POWER_STATUS settings */
+#define HF_DET_LS_RESET_VALUE           (0x1F << NFC_HFCTRL_POWER_STATUS_HF_DET_LS_POS)
+
+#define RF_ON_EVENT_CLEAR               (0x1 << NFC_HFCTRL_POWER_STATUS_RF_ON_POS)
+
+#define RF_OFF_EVENT_CLEAR              (0x1 << NFC_HFCTRL_POWER_STATUS_RF_OFF_POS)
+
+#define HF_RESET_EVENT_CLEAR            (0x1 << NFC_HFCTRL_POWER_STATUS_HF_RESET_POS)
+
+/* ----------------------------------------------------------------------------
+ * RF Front-End 2.4 GHz
+ * ------------------------------------------------------------------------- */
+
+/* REG00 */
+#define RF0_REG00_BASE                  0x40040800
+#define RF0_REG00                       REG32_POINTER(RF0_REG00_BASE)
+
+/* RF_REG00 bit positions */
+#define RF_REG00_DATAWHITE_BTLE_DW_BTLE_POS 31
+#define RF_REG00_DATAWHITE_BTLE_DW_BTLE_RST_POS 24
+#define RF_REG00_DATAWHITE_BTLE_DW_BTLE_RST_MASK (0x7F << RF_REG00_DATAWHITE_BTLE_DW_BTLE_RST_POS)
+#define RF_REG00_FOURFSK_CODING_EN_FOURFSK_CODING_POS 23
+#define RF_REG00_FOURFSK_CODING_TX_FOURFSK_CODING_POS 20
+#define RF_REG00_FOURFSK_CODING_TX_FOURFSK_CODING_MASK (0x7 << RF_REG00_FOURFSK_CODING_TX_FOURFSK_CODING_POS)
+#define RF_REG00_FOURFSK_CODING_RX_FOURFSK_CODING_POS 16
+#define RF_REG00_FOURFSK_CODING_RX_FOURFSK_CODING_MASK (0x7 << RF_REG00_FOURFSK_CODING_RX_FOURFSK_CODING_POS)
+#define RF_REG00_MODE2_DIFF_CODING_POS  14
+#define RF_REG00_MODE2_PSK_NFSK_POS     13
+#define RF_REG00_MODE2_TESTMODE_POS     8
+#define RF_REG00_MODE2_TESTMODE_MASK    (0x1F << RF_REG00_MODE2_TESTMODE_POS)
+#define RF_REG00_MODE_NOT_TO_IDLE_POS   7
+#define RF_REG00_MODE_EN_FSM_POS        5
+#define RF_REG00_MODE_EN_DESERIALIZER_POS 4
+#define RF_REG00_MODE_EN_SERIALIZER_POS 3
+#define RF_REG00_MODE_TX_NRX_POS        2
+#define RF_REG00_MODE_MODE_POS          0
+#define RF_REG00_MODE_MODE_MASK         (0x3 << RF_REG00_MODE_MODE_POS)
+
+/* RF_REG00 settings */
+#define DATAWHITE_BTLE_DW_BTLE_DISABLE  (0x0 << RF_REG00_DATAWHITE_BTLE_DW_BTLE_POS)
+#define DATAWHITE_BTLE_DW_BTLE_ENABLE   (0x1 << RF_REG00_DATAWHITE_BTLE_DW_BTLE_POS)
+
+#define DATAWHITE_BTLE_DW_BTLE_RST_DEFAULT (0x0 << RF_REG00_DATAWHITE_BTLE_DW_BTLE_RST_POS)
+
+#define FOURFSK_CODING_EN_FOURFSK_CODING_DISABLE (0x0 << RF_REG00_FOURFSK_CODING_EN_FOURFSK_CODING_POS)
+#define FOURFSK_CODING_EN_FOURFSK_CODING_ENABLE (0x1 << RF_REG00_FOURFSK_CODING_EN_FOURFSK_CODING_POS)
+
+#define FOURFSK_CODING_TX_FOURFSK_CODING_DEFAULT (0x0 << RF_REG00_FOURFSK_CODING_TX_FOURFSK_CODING_POS)
+
+#define FOURFSK_CODING_RX_FOURFSK_CODING_DEFAULT (0x0 << RF_REG00_FOURFSK_CODING_RX_FOURFSK_CODING_POS)
+
+#define MODE2_DIFF_CODING_DISABLE       (0x0 << RF_REG00_MODE2_DIFF_CODING_POS)
+#define MODE2_DIFF_CODING_ENABLE        (0x1 << RF_REG00_MODE2_DIFF_CODING_POS)
+
+#define MODE2_PSK_NFSK_FSK              (0x0 << RF_REG00_MODE2_PSK_NFSK_POS)
+#define MODE2_PSK_NFSK_PSK              (0x1 << RF_REG00_MODE2_PSK_NFSK_POS)
+
+#define MODE2_TESTMODE_OFF              (0x0 << RF_REG00_MODE2_TESTMODE_POS)
+#define MODE2_TESTMODE_CEVA             (0x8 << RF_REG00_MODE2_TESTMODE_POS)
+
+#define MODE_NOT_TO_IDLE_DISABLE        (0x0 << RF_REG00_MODE_NOT_TO_IDLE_POS)
+#define MODE_NOT_TO_IDLE_ENABLE         (0x1 << RF_REG00_MODE_NOT_TO_IDLE_POS)
+
+#define MODE_EN_FSM_DISABLE             (0x0 << RF_REG00_MODE_EN_FSM_POS)
+#define MODE_EN_FSM_ENABLE              (0x1 << RF_REG00_MODE_EN_FSM_POS)
+
+#define MODE_EN_DESERIALIZER_DISABLE    (0x0 << RF_REG00_MODE_EN_DESERIALIZER_POS)
+#define MODE_EN_DESERIALIZER_ENABLE     (0x1 << RF_REG00_MODE_EN_DESERIALIZER_POS)
+
+#define MODE_EN_SERIALIZER_DISABLE      (0x0 << RF_REG00_MODE_EN_SERIALIZER_POS)
+#define MODE_EN_SERIALIZER_ENABLE       (0x1 << RF_REG00_MODE_EN_SERIALIZER_POS)
+
+#define MODE_TX_NRX_RX                  (0x0 << RF_REG00_MODE_TX_NRX_POS)
+#define MODE_TX_NRX_TX                  (0x1 << RF_REG00_MODE_TX_NRX_POS)
+
+#define MODE_MODE_0                     (0x0 << RF_REG00_MODE_MODE_POS)
+#define MODE_MODE_1                     (0x1 << RF_REG00_MODE_MODE_POS)
+#define MODE_MODE_2                     (0x2 << RF_REG00_MODE_MODE_POS)
+#define MODE_MODE_3                     (0x3 << RF_REG00_MODE_MODE_POS)
+
+/* REG00 */
+#define RF1_REG00_BASE                  0x40040A00
+#define RF1_REG00                       REG32_POINTER(RF1_REG00_BASE)
+
+/* REG00 */
+#define RF2_REG00_BASE                  0x40040C00
+#define RF2_REG00                       REG32_POINTER(RF2_REG00_BASE)
+
+/* REG00 */
+#define RF3_REG00_BASE                  0x40040E00
+#define RF3_REG00                       REG32_POINTER(RF3_REG00_BASE)
+
+/* REG01 */
+#define RF0_REG01_BASE                  0x40040804
+#define RF0_REG01                       REG32_POINTER(RF0_REG01_BASE)
+
+/* RF_REG01 bit positions */
+#define RF_REG01_TAU_PHASE_RECOV_TAU_PHASE_RECOV_POS 24
+#define RF_REG01_TAU_PHASE_RECOV_TAU_PHASE_RECOV_MASK (0xFF << RF_REG01_TAU_PHASE_RECOV_TAU_PHASE_RECOV_POS)
+#define RF_REG01_TAU_ROUGH_RECOV_TAU_ROUGH_RECOV_POS 16
+#define RF_REG01_TAU_ROUGH_RECOV_TAU_ROUGH_RECOV_MASK (0xFF << RF_REG01_TAU_ROUGH_RECOV_TAU_ROUGH_RECOV_POS)
+#define RF_REG01_CARRIER_RECOVERY_EN_CORRECT_CFREQ_AFC_POS 15
+#define RF_REG01_CARRIER_RECOVERY_CORRECT_CFREQ_IF_NEG_POS 14
+#define RF_REG01_CARRIER_RECOVERY_EN_CORRECT_CFREQ_IF_POS 13
+#define RF_REG01_CARRIER_RECOVERY_AFC_NEG_POS 12
+#define RF_REG01_CARRIER_RECOVERY_STARTER_MODE_POS 11
+#define RF_REG01_CARRIER_RECOVERY_EN_AFC_POS 10
+#define RF_REG01_CARRIER_RECOVERY_EN_FINE_RECOV_POS 9
+#define RF_REG01_CARRIER_RECOVERY_EN_ROUGH_RECOV_POS 8
+#define RF_REG01_MOD_TX_PULSE_NSYM_POS  6
+#define RF_REG01_MOD_TX_EN_INTERP_POS   5
+#define RF_REG01_MOD_TX_CK_TX_M_POS     0
+#define RF_REG01_MOD_TX_CK_TX_M_MASK    (0x1F << RF_REG01_MOD_TX_CK_TX_M_POS)
+
+/* RF_REG01 settings */
+#define TAU_PHASE_RECOV_TAU_PHASE_RECOV_DEFAULT (0x14 << RF_REG01_TAU_PHASE_RECOV_TAU_PHASE_RECOV_POS)
+
+#define TAU_ROUGH_RECOV_TAU_ROUGH_RECOV_DEFAULT (0xB << RF_REG01_TAU_ROUGH_RECOV_TAU_ROUGH_RECOV_POS)
+
+#define CARRIER_RECOVERY_EN_CORRECT_CFREQ_AFC_DISABLE (0x0 << RF_REG01_CARRIER_RECOVERY_EN_CORRECT_CFREQ_AFC_POS)
+#define CARRIER_RECOVERY_EN_CORRECT_CFREQ_AFC_ENABLE (0x1 << RF_REG01_CARRIER_RECOVERY_EN_CORRECT_CFREQ_AFC_POS)
+
+#define CARRIER_RECOVERY_CORRECT_CFREQ_IF_NEG_POS (0x0 << RF_REG01_CARRIER_RECOVERY_CORRECT_CFREQ_IF_NEG_POS)
+#define CARRIER_RECOVERY_CORRECT_CFREQ_IF_NEG_NEG (0x1 << RF_REG01_CARRIER_RECOVERY_CORRECT_CFREQ_IF_NEG_POS)
+
+#define CARRIER_RECOVERY_EN_CORRECT_CFREQ_IF_DISABLE (0x0 << RF_REG01_CARRIER_RECOVERY_EN_CORRECT_CFREQ_IF_POS)
+#define CARRIER_RECOVERY_EN_CORRECT_CFREQ_IF_ENABLE (0x1 << RF_REG01_CARRIER_RECOVERY_EN_CORRECT_CFREQ_IF_POS)
+
+#define CARRIER_RECOVERY_AFC_NEG_POS    (0x0 << RF_REG01_CARRIER_RECOVERY_AFC_NEG_POS)
+#define CARRIER_RECOVERY_AFC_NEG_NEG    (0x1 << RF_REG01_CARRIER_RECOVERY_AFC_NEG_POS)
+
+#define CARRIER_RECOVERY_STARTER_MODE_DISABLE (0x0 << RF_REG01_CARRIER_RECOVERY_STARTER_MODE_POS)
+#define CARRIER_RECOVERY_STARTER_MODE_ENABLE (0x1 << RF_REG01_CARRIER_RECOVERY_STARTER_MODE_POS)
+
+#define CARRIER_RECOVERY_EN_AFC_DISABLE (0x0 << RF_REG01_CARRIER_RECOVERY_EN_AFC_POS)
+#define CARRIER_RECOVERY_EN_AFC_ENABLE  (0x1 << RF_REG01_CARRIER_RECOVERY_EN_AFC_POS)
+
+#define CARRIER_RECOVERY_EN_FINE_RECOV_DISABLE (0x0 << RF_REG01_CARRIER_RECOVERY_EN_FINE_RECOV_POS)
+#define CARRIER_RECOVERY_EN_FINE_RECOV_ENABLE (0x1 << RF_REG01_CARRIER_RECOVERY_EN_FINE_RECOV_POS)
+
+#define CARRIER_RECOVERY_EN_ROUGH_RECOV_DISABLE (0x0 << RF_REG01_CARRIER_RECOVERY_EN_ROUGH_RECOV_POS)
+#define CARRIER_RECOVERY_EN_ROUGH_RECOV_ENABLE (0x1 << RF_REG01_CARRIER_RECOVERY_EN_ROUGH_RECOV_POS)
+
+#define MOD_TX_PULSE_NSYM_EVEN          (0x0 << RF_REG01_MOD_TX_PULSE_NSYM_POS)
+#define MOD_TX_PULSE_NSYM_ODD           (0x1 << RF_REG01_MOD_TX_PULSE_NSYM_POS)
+
+#define MOD_TX_EN_INTERP_DISABLE        (0x0 << RF_REG01_MOD_TX_EN_INTERP_POS)
+#define MOD_TX_EN_INTERP_ENABLE         (0x1 << RF_REG01_MOD_TX_EN_INTERP_POS)
+
+#define MOD_TX_CK_TX_M_DEFAULT          (0x0 << RF_REG01_MOD_TX_CK_TX_M_POS)
+
+/* REG01 */
+#define RF1_REG01_BASE                  0x40040A04
+#define RF1_REG01                       REG32_POINTER(RF1_REG01_BASE)
+
+/* REG01 */
+#define RF2_REG01_BASE                  0x40040C04
+#define RF2_REG01                       REG32_POINTER(RF2_REG01_BASE)
+
+/* REG01 */
+#define RF3_REG01_BASE                  0x40040E04
+#define RF3_REG01                       REG32_POINTER(RF3_REG01_BASE)
+
+/* REG02 */
+#define RF0_REG02_BASE                  0x40040808
+#define RF0_REG02                       REG32_POINTER(RF0_REG02_BASE)
+
+/* RF_REG02 bit positions */
+#define RF_REG02_DATARATE_OFFSET_DR_LIMIT_POS 24
+#define RF_REG02_DATARATE_OFFSET_DR_LIMIT_MASK (0x3 << RF_REG02_DATARATE_OFFSET_DR_LIMIT_POS)
+#define RF_REG02_DATARATE_OFFSET_DATARATE_OFFSET_POS 16
+#define RF_REG02_DATARATE_OFFSET_DATARATE_OFFSET_MASK (0xFF << RF_REG02_DATARATE_OFFSET_DATARATE_OFFSET_POS)
+#define RF_REG02_TAU_DATARATE_RECOV_TAU_DATARATE_RECOV_POS 8
+#define RF_REG02_TAU_DATARATE_RECOV_TAU_DATARATE_RECOV_MASK (0xFF << RF_REG02_TAU_DATARATE_RECOV_TAU_DATARATE_RECOV_POS)
+#define RF_REG02_TAU_CLK_RECOV_TAU_CLK_RECOV_POS 0
+#define RF_REG02_TAU_CLK_RECOV_TAU_CLK_RECOV_MASK (0xFF << RF_REG02_TAU_CLK_RECOV_TAU_CLK_RECOV_POS)
+
+/* RF_REG02 settings */
+#define DATARATE_OFFSET_DR_LIMIT_DEFAULT (0x0 << RF_REG02_DATARATE_OFFSET_DR_LIMIT_POS)
+
+#define DATARATE_OFFSET_DATARATE_OFFSET_DEFAULT (0x0 << RF_REG02_DATARATE_OFFSET_DATARATE_OFFSET_POS)
+
+#define TAU_DATARATE_RECOV_TAU_DATARATE_RECOV_DEFAULT (0x20 << RF_REG02_TAU_DATARATE_RECOV_TAU_DATARATE_RECOV_POS)
+
+#define TAU_CLK_RECOV_TAU_CLK_RECOV_DEFAULT (0x9 << RF_REG02_TAU_CLK_RECOV_TAU_CLK_RECOV_POS)
+
+/* REG02 */
+#define RF1_REG02_BASE                  0x40040A08
+#define RF1_REG02                       REG32_POINTER(RF1_REG02_BASE)
+
+/* REG02 */
+#define RF2_REG02_BASE                  0x40040C08
+#define RF2_REG02                       REG32_POINTER(RF2_REG02_BASE)
+
+/* REG02 */
+#define RF3_REG02_BASE                  0x40040E08
+#define RF3_REG02                       REG32_POINTER(RF3_REG02_BASE)
+
+/* REG03 */
+#define RF0_REG03_BASE                  0x4004080C
+#define RF0_REG03                       REG32_POINTER(RF0_REG03_BASE)
+
+/* RF_REG03 bit positions */
+#define RF_REG03_MAC_CONF_MAC_TIMER_GR_POS 30
+#define RF_REG03_MAC_CONF_MAC_TIMER_GR_MASK (0x3 << RF_REG03_MAC_CONF_MAC_TIMER_GR_POS)
+#define RF_REG03_MAC_CONF_RX_MAC_ACT_POS 29
+#define RF_REG03_MAC_CONF_RX_MAC_TX_NRX_POS 28
+#define RF_REG03_MAC_CONF_RX_MAC_START_NSTOP_POS 27
+#define RF_REG03_MAC_CONF_TX_MAC_ACT_POS 26
+#define RF_REG03_MAC_CONF_TX_MAC_TX_NRX_POS 25
+#define RF_REG03_MAC_CONF_TX_MAC_START_NSTOP_POS 24
+#define RF_REG03_IRQ_CONF_IRQ_HIGH_Z_POS 23
+#define RF_REG03_IRQ_CONF_IRQ_ACTIVE_LOW_POS 22
+#define RF_REG03_IRQ_CONF_IRQS_MASK_POS 16
+#define RF_REG03_IRQ_CONF_IRQS_MASK_MASK (0x3F << RF_REG03_IRQ_CONF_IRQS_MASK_POS)
+#define RF_REG03_FIFO_2_FIFO_THR_TX_POS 13
+#define RF_REG03_FIFO_2_FIFO_THR_TX_MASK (0x7 << RF_REG03_FIFO_2_FIFO_THR_TX_POS)
+#define RF_REG03_FIFO_2_WAIT_TXFIFO_WR_POS 12
+#define RF_REG03_FIFO_2_STOP_ON_RXFF_OVFLW_POS 11
+#define RF_REG03_FIFO_2_STOP_ON_TXFF_UNFLW_POS 10
+#define RF_REG03_FIFO_2_RXFF_FLUSH_ON_START_POS 9
+#define RF_REG03_FIFO_2_TXFF_FLUSH_ON_STOP_POS 8
+#define RF_REG03_FIFO_FIFO_FLUSH_ON_OVFLW_POS 7
+#define RF_REG03_FIFO_FIFO_FLUSH_ON_ADDR_ERR_POS 6
+#define RF_REG03_FIFO_FIFO_FLUSH_ON_PL_ERR_POS 5
+#define RF_REG03_FIFO_FIFO_FLUSH_ON_CRC_ERR_POS 4
+#define RF_REG03_FIFO_RX_FIFO_ACK_POS   3
+#define RF_REG03_FIFO_FIFO_THR_POS      0
+#define RF_REG03_FIFO_FIFO_THR_MASK     (0x7 << RF_REG03_FIFO_FIFO_THR_POS)
+
+/* RF_REG03 settings */
+#define MAC_CONF_MAC_TIMER_GR_DEFAULT   (0x2 << RF_REG03_MAC_CONF_MAC_TIMER_GR_POS)
+
+#define MAC_CONF_RX_MAC_ACT_DISABLE     (0x0 << RF_REG03_MAC_CONF_RX_MAC_ACT_POS)
+#define MAC_CONF_RX_MAC_ACT_ENABLE      (0x1 << RF_REG03_MAC_CONF_RX_MAC_ACT_POS)
+
+#define MAC_CONF_RX_MAC_TX_NRX_DISABLE  (0x0 << RF_REG03_MAC_CONF_RX_MAC_TX_NRX_POS)
+#define MAC_CONF_RX_MAC_TX_NRX_ENABLE   (0x1 << RF_REG03_MAC_CONF_RX_MAC_TX_NRX_POS)
+
+#define MAC_CONF_RX_MAC_START_NSTOP_DISABLE (0x0 << RF_REG03_MAC_CONF_RX_MAC_START_NSTOP_POS)
+#define MAC_CONF_RX_MAC_START_NSTOP_ENABLE (0x1 << RF_REG03_MAC_CONF_RX_MAC_START_NSTOP_POS)
+
+#define MAC_CONF_TX_MAC_ACT_DISABLE     (0x0 << RF_REG03_MAC_CONF_TX_MAC_ACT_POS)
+#define MAC_CONF_TX_MAC_ACT_ENABLE      (0x1 << RF_REG03_MAC_CONF_TX_MAC_ACT_POS)
+
+#define MAC_CONF_TX_MAC_TX_NRX_DISABLE  (0x0 << RF_REG03_MAC_CONF_TX_MAC_TX_NRX_POS)
+#define MAC_CONF_TX_MAC_TX_NRX_ENABLE   (0x1 << RF_REG03_MAC_CONF_TX_MAC_TX_NRX_POS)
+
+#define MAC_CONF_TX_MAC_START_NSTOP_DISABLE (0x0 << RF_REG03_MAC_CONF_TX_MAC_START_NSTOP_POS)
+#define MAC_CONF_TX_MAC_START_NSTOP_ENABLE (0x1 << RF_REG03_MAC_CONF_TX_MAC_START_NSTOP_POS)
+
+#define IRQ_CONF_IRQ_HIGH_Z_DISABLE     (0x0 << RF_REG03_IRQ_CONF_IRQ_HIGH_Z_POS)
+#define IRQ_CONF_IRQ_HIGH_Z_ENABLE      (0x1 << RF_REG03_IRQ_CONF_IRQ_HIGH_Z_POS)
+
+#define IRQ_CONF_IRQ_ACTIVE_LOW_DISABLE (0x0 << RF_REG03_IRQ_CONF_IRQ_ACTIVE_LOW_POS)
+#define IRQ_CONF_IRQ_ACTIVE_LOW_ENABLE  (0x1 << RF_REG03_IRQ_CONF_IRQ_ACTIVE_LOW_POS)
+
+#define IRQ_CONF_IRQS_MASK_DEFAULT      (0x0 << RF_REG03_IRQ_CONF_IRQS_MASK_POS)
+#define IRQ_CONF_IRQS_MASK_TX           (0x1 << RF_REG03_IRQ_CONF_IRQS_MASK_POS)
+#define IRQ_CONF_IRQS_MASK_RX_STOP      (0x2 << RF_REG03_IRQ_CONF_IRQS_MASK_POS)
+#define IRQ_CONF_IRQS_MASK_RECEIVED     (0x4 << RF_REG03_IRQ_CONF_IRQS_MASK_POS)
+#define IRQ_CONF_IRQS_MASK_SYNC         (0x8 << RF_REG03_IRQ_CONF_IRQS_MASK_POS)
+#define IRQ_CONF_IRQS_MASK_TX_FIFO      (0x10 << RF_REG03_IRQ_CONF_IRQS_MASK_POS)
+#define IRQ_CONF_IRQS_MASK_RX_FIFO      (0x20 << RF_REG03_IRQ_CONF_IRQS_MASK_POS)
+
+#define FIFO_2_FIFO_THR_TX_16           (0x0 << RF_REG03_FIFO_2_FIFO_THR_TX_POS)
+#define FIFO_2_FIFO_THR_TX_48           (0x1 << RF_REG03_FIFO_2_FIFO_THR_TX_POS)
+#define FIFO_2_FIFO_THR_TX_80           (0x2 << RF_REG03_FIFO_2_FIFO_THR_TX_POS)
+#define FIFO_2_FIFO_THR_TX_112          (0x3 << RF_REG03_FIFO_2_FIFO_THR_TX_POS)
+#define FIFO_2_FIFO_THR_TX_144          (0x4 << RF_REG03_FIFO_2_FIFO_THR_TX_POS)
+#define FIFO_2_FIFO_THR_TX_176          (0x5 << RF_REG03_FIFO_2_FIFO_THR_TX_POS)
+#define FIFO_2_FIFO_THR_TX_208          (0x6 << RF_REG03_FIFO_2_FIFO_THR_TX_POS)
+#define FIFO_2_FIFO_THR_TX_240          (0x7 << RF_REG03_FIFO_2_FIFO_THR_TX_POS)
+
+#define FIFO_2_WAIT_TXFIFO_WR_DISABLE   (0x0 << RF_REG03_FIFO_2_WAIT_TXFIFO_WR_POS)
+#define FIFO_2_WAIT_TXFIFO_WR_ENABLE    (0x1 << RF_REG03_FIFO_2_WAIT_TXFIFO_WR_POS)
+
+#define FIFO_2_STOP_ON_RXFF_OVFLW_DISABLE (0x0 << RF_REG03_FIFO_2_STOP_ON_RXFF_OVFLW_POS)
+#define FIFO_2_STOP_ON_RXFF_OVFLW_ENABLE (0x1 << RF_REG03_FIFO_2_STOP_ON_RXFF_OVFLW_POS)
+
+#define FIFO_2_STOP_ON_TXFF_UNFLW_DISABLE (0x0 << RF_REG03_FIFO_2_STOP_ON_TXFF_UNFLW_POS)
+#define FIFO_2_STOP_ON_TXFF_UNFLW_ENABLE (0x1 << RF_REG03_FIFO_2_STOP_ON_TXFF_UNFLW_POS)
+
+#define FIFO_2_RXFF_FLUSH_ON_START_DISABLE (0x0 << RF_REG03_FIFO_2_RXFF_FLUSH_ON_START_POS)
+#define FIFO_2_RXFF_FLUSH_ON_START_ENABLE (0x1 << RF_REG03_FIFO_2_RXFF_FLUSH_ON_START_POS)
+
+#define FIFO_2_TXFF_FLUSH_ON_STOP_DISABLE (0x0 << RF_REG03_FIFO_2_TXFF_FLUSH_ON_STOP_POS)
+#define FIFO_2_TXFF_FLUSH_ON_STOP_ENABLE (0x1 << RF_REG03_FIFO_2_TXFF_FLUSH_ON_STOP_POS)
+
+#define FIFO_FIFO_FLUSH_ON_OVFLW_DISABLE (0x0 << RF_REG03_FIFO_FIFO_FLUSH_ON_OVFLW_POS)
+#define FIFO_FIFO_FLUSH_ON_OVFLW_ENABLE (0x1 << RF_REG03_FIFO_FIFO_FLUSH_ON_OVFLW_POS)
+
+#define FIFO_FIFO_FLUSH_ON_ADDR_ERR_DISABLE (0x0 << RF_REG03_FIFO_FIFO_FLUSH_ON_ADDR_ERR_POS)
+#define FIFO_FIFO_FLUSH_ON_ADDR_ERR_ENABLE (0x1 << RF_REG03_FIFO_FIFO_FLUSH_ON_ADDR_ERR_POS)
+
+#define FIFO_FIFO_FLUSH_ON_PL_ERR_DISABLE (0x0 << RF_REG03_FIFO_FIFO_FLUSH_ON_PL_ERR_POS)
+#define FIFO_FIFO_FLUSH_ON_PL_ERR_ENABLE (0x1 << RF_REG03_FIFO_FIFO_FLUSH_ON_PL_ERR_POS)
+
+#define FIFO_FIFO_FLUSH_ON_CRC_ERR_DISABLE (0x0 << RF_REG03_FIFO_FIFO_FLUSH_ON_CRC_ERR_POS)
+#define FIFO_FIFO_FLUSH_ON_CRC_ERR_ENABLE (0x1 << RF_REG03_FIFO_FIFO_FLUSH_ON_CRC_ERR_POS)
+
+#define FIFO_RX_FIFO_ACK_DISABLE        (0x0 << RF_REG03_FIFO_RX_FIFO_ACK_POS)
+#define FIFO_RX_FIFO_ACK_ENABLE         (0x1 << RF_REG03_FIFO_RX_FIFO_ACK_POS)
+
+#define FIFO_FIFO_THR_240               (0x0 << RF_REG03_FIFO_FIFO_THR_POS)
+#define FIFO_FIFO_THR_208               (0x1 << RF_REG03_FIFO_FIFO_THR_POS)
+#define FIFO_FIFO_THR_176               (0x2 << RF_REG03_FIFO_FIFO_THR_POS)
+#define FIFO_FIFO_THR_144               (0x3 << RF_REG03_FIFO_FIFO_THR_POS)
+#define FIFO_FIFO_THR_112               (0x4 << RF_REG03_FIFO_FIFO_THR_POS)
+#define FIFO_FIFO_THR_80                (0x5 << RF_REG03_FIFO_FIFO_THR_POS)
+#define FIFO_FIFO_THR_48                (0x6 << RF_REG03_FIFO_FIFO_THR_POS)
+#define FIFO_FIFO_THR_16                (0x7 << RF_REG03_FIFO_FIFO_THR_POS)
+
+/* REG03 */
+#define RF1_REG03_BASE                  0x40040A0C
+#define RF1_REG03                       REG32_POINTER(RF1_REG03_BASE)
+
+/* REG03 */
+#define RF2_REG03_BASE                  0x40040C0C
+#define RF2_REG03                       REG32_POINTER(RF2_REG03_BASE)
+
+/* REG03 */
+#define RF3_REG03_BASE                  0x40040E0C
+#define RF3_REG03                       REG32_POINTER(RF3_REG03_BASE)
+
+/* PADS_03 */
+#define RF0_PADS_03_BASE                0x40040810
+#define RF0_PADS_03                     REG32_POINTER(RF0_PADS_03_BASE)
+
+/* RF_PADS_03 bit positions */
+#define RF_PADS_03_PAD_CONF_1_PAD_3_CONF_POS 24
+#define RF_PADS_03_PAD_CONF_1_PAD_3_CONF_MASK (0x1F << RF_PADS_03_PAD_CONF_1_PAD_3_CONF_POS)
+#define RF_PADS_03_PAD_CONF_1_PAD_2_CONF_POS 16
+#define RF_PADS_03_PAD_CONF_1_PAD_2_CONF_MASK (0x1F << RF_PADS_03_PAD_CONF_1_PAD_2_CONF_POS)
+#define RF_PADS_03_PAD_CONF_1_PAD_1_CONF_POS 8
+#define RF_PADS_03_PAD_CONF_1_PAD_1_CONF_MASK (0x1F << RF_PADS_03_PAD_CONF_1_PAD_1_CONF_POS)
+#define RF_PADS_03_PAD_CONF_1_PAD_0_CONF_POS 0
+#define RF_PADS_03_PAD_CONF_1_PAD_0_CONF_MASK (0x1F << RF_PADS_03_PAD_CONF_1_PAD_0_CONF_POS)
+
+/* RF_PADS_03 settings */
+#define PAD_CONF_1_PAD_3_OFF            (0x0 << RF_PADS_03_PAD_CONF_1_PAD_3_CONF_POS)
+#define PAD_CONF_1_PAD_3_TEST_MODE      (0xF << RF_PADS_03_PAD_CONF_1_PAD_3_CONF_POS)
+
+#define PAD_CONF_1_PAD_2_OFF            (0x0 << RF_PADS_03_PAD_CONF_1_PAD_2_CONF_POS)
+#define PAD_CONF_1_PAD_2_TEST_MODE      (0xF << RF_PADS_03_PAD_CONF_1_PAD_2_CONF_POS)
+
+#define PAD_CONF_1_PAD_1_OFF            (0x0 << RF_PADS_03_PAD_CONF_1_PAD_1_CONF_POS)
+#define PAD_CONF_1_PAD_1_TEST_MODE      (0xF << RF_PADS_03_PAD_CONF_1_PAD_1_CONF_POS)
+
+#define PAD_CONF_1_PAD_0_OFF            (0x0 << RF_PADS_03_PAD_CONF_1_PAD_0_CONF_POS)
+#define PAD_CONF_1_PAD_0_TEST_MODE      (0xF << RF_PADS_03_PAD_CONF_1_PAD_0_CONF_POS)
+
+/* PADS_03 */
+#define RF1_PADS_03_BASE                0x40040A10
+#define RF1_PADS_03                     REG32_POINTER(RF1_PADS_03_BASE)
+
+/* PADS_03 */
+#define RF2_PADS_03_BASE                0x40040C10
+#define RF2_PADS_03                     REG32_POINTER(RF2_PADS_03_BASE)
+
+/* PADS_03 */
+#define RF3_PADS_03_BASE                0x40040E10
+#define RF3_PADS_03                     REG32_POINTER(RF3_PADS_03_BASE)
+
+/* PADS_47 */
+#define RF0_PADS_47_BASE                0x40040814
+#define RF0_PADS_47                     REG32_POINTER(RF0_PADS_47_BASE)
+
+/* RF_PADS_47 bit positions */
+#define RF_PADS_47_PAD_CONF_2_PAD_7_CONF_POS 24
+#define RF_PADS_47_PAD_CONF_2_PAD_7_CONF_MASK (0x1F << RF_PADS_47_PAD_CONF_2_PAD_7_CONF_POS)
+#define RF_PADS_47_PAD_CONF_2_PAD_6_CONF_POS 16
+#define RF_PADS_47_PAD_CONF_2_PAD_6_CONF_MASK (0x1F << RF_PADS_47_PAD_CONF_2_PAD_6_CONF_POS)
+#define RF_PADS_47_PAD_CONF_2_PAD_5_CONF_POS 8
+#define RF_PADS_47_PAD_CONF_2_PAD_5_CONF_MASK (0x1F << RF_PADS_47_PAD_CONF_2_PAD_5_CONF_POS)
+#define RF_PADS_47_PAD_CONF_2_PAD_4_CONF_POS 0
+#define RF_PADS_47_PAD_CONF_2_PAD_4_CONF_MASK (0x1F << RF_PADS_47_PAD_CONF_2_PAD_4_CONF_POS)
+
+/* RF_PADS_47 settings */
+#define PAD_CONF_2_PAD_7_OFF            (0x0 << RF_PADS_47_PAD_CONF_2_PAD_7_CONF_POS)
+#define PAD_CONF_2_PAD_7_TEST_MODE      (0xF << RF_PADS_47_PAD_CONF_2_PAD_7_CONF_POS)
+
+#define PAD_CONF_2_PAD_6_OFF            (0x0 << RF_PADS_47_PAD_CONF_2_PAD_6_CONF_POS)
+#define PAD_CONF_2_PAD_6_TEST_MODE      (0xF << RF_PADS_47_PAD_CONF_2_PAD_6_CONF_POS)
+
+#define PAD_CONF_2_PAD_5_OFF            (0x0 << RF_PADS_47_PAD_CONF_2_PAD_5_CONF_POS)
+#define PAD_CONF_2_PAD_5_TEST_MODE      (0xF << RF_PADS_47_PAD_CONF_2_PAD_5_CONF_POS)
+
+#define PAD_CONF_2_PAD_4_OFF            (0x0 << RF_PADS_47_PAD_CONF_2_PAD_4_CONF_POS)
+#define PAD_CONF_2_PAD_4_TEST_MODE      (0xF << RF_PADS_47_PAD_CONF_2_PAD_4_CONF_POS)
+
+/* PADS_47 */
+#define RF1_PADS_47_BASE                0x40040A14
+#define RF1_PADS_47                     REG32_POINTER(RF1_PADS_47_BASE)
+
+/* PADS_47 */
+#define RF2_PADS_47_BASE                0x40040C14
+#define RF2_PADS_47                     REG32_POINTER(RF2_PADS_47_BASE)
+
+/* PADS_47 */
+#define RF3_PADS_47_BASE                0x40040E14
+#define RF3_PADS_47                     REG32_POINTER(RF3_PADS_47_BASE)
+
+/* CENTER_FREQ */
+#define RF0_CENTER_FREQ_BASE            0x40040818
+#define RF0_CENTER_FREQ                 REG32_POINTER(RF0_CENTER_FREQ_BASE)
+
+/* RF_CENTER_FREQ bit positions */
+#define RF_CENTER_FREQ_CENTER_FREQ_ADAPT_CFREQ_POS 31
+#define RF_CENTER_FREQ_CENTER_FREQ_RX_DIV_5_N6_POS 30
+#define RF_CENTER_FREQ_CENTER_FREQ_CENTER_FREQUENCY_POS 0
+#define RF_CENTER_FREQ_CENTER_FREQ_CENTER_FREQUENCY_MASK (0x3FFFFFFF << RF_CENTER_FREQ_CENTER_FREQ_CENTER_FREQUENCY_POS)
+
+/* RF_CENTER_FREQ settings */
+#define CENTER_FREQ_ADAPT_CFREQ_DISABLE (0x0 << RF_CENTER_FREQ_CENTER_FREQ_ADAPT_CFREQ_POS)
+#define CENTER_FREQ_ADAPT_CFREQ_ENABLE  (0x1 << RF_CENTER_FREQ_CENTER_FREQ_ADAPT_CFREQ_POS)
+
+#define CENTER_FREQ_RX_DIV_5_N6_DISABLE (0x0 << RF_CENTER_FREQ_CENTER_FREQ_RX_DIV_5_N6_POS)
+#define CENTER_FREQ_RX_DIV_5_N6_ENABLE  (0x1 << RF_CENTER_FREQ_CENTER_FREQ_RX_DIV_5_N6_POS)
+
+#define CENTER_FREQ_CENTER_FREQUENCY_DEFAULT (0x215C71B << RF_CENTER_FREQ_CENTER_FREQ_CENTER_FREQUENCY_POS)
+
+/* CENTER_FREQ */
+#define RF1_CENTER_FREQ_BASE            0x40040A18
+#define RF1_CENTER_FREQ                 REG32_POINTER(RF1_CENTER_FREQ_BASE)
+
+/* CENTER_FREQ */
+#define RF2_CENTER_FREQ_BASE            0x40040C18
+#define RF2_CENTER_FREQ                 REG32_POINTER(RF2_CENTER_FREQ_BASE)
+
+/* CENTER_FREQ */
+#define RF3_CENTER_FREQ_BASE            0x40040E18
+#define RF3_CENTER_FREQ                 REG32_POINTER(RF3_CENTER_FREQ_BASE)
+
+/* PADS_89 */
+#define RF0_PADS_89_BASE                0x4004081C
+#define RF0_PADS_89                     REG32_POINTER(RF0_PADS_89_BASE)
+
+/* RF_PADS_89 bit positions */
+#define RF_PADS_89_TX_MAC_TIMER_TX_MAC_TIMER_POS 24
+#define RF_PADS_89_TX_MAC_TIMER_TX_MAC_TIMER_MASK (0xFF << RF_PADS_89_TX_MAC_TIMER_TX_MAC_TIMER_POS)
+#define RF_PADS_89_RX_MAC_TIMER_RX_MAC_TIMER_POS 16
+#define RF_PADS_89_RX_MAC_TIMER_RX_MAC_TIMER_MASK (0xFF << RF_PADS_89_RX_MAC_TIMER_RX_MAC_TIMER_POS)
+#define RF_PADS_89_PAD_CONF_3_PAD_9_CONF_POS 8
+#define RF_PADS_89_PAD_CONF_3_PAD_9_CONF_MASK (0x1F << RF_PADS_89_PAD_CONF_3_PAD_9_CONF_POS)
+#define RF_PADS_89_PAD_CONF_3_PAD_8_CONF_POS 0
+#define RF_PADS_89_PAD_CONF_3_PAD_8_CONF_MASK (0x1F << RF_PADS_89_PAD_CONF_3_PAD_8_CONF_POS)
+
+/* RF_PADS_89 settings */
+#define TX_MAC_TIMER_TX_MAC_TIMER_DEFAULT (0x82 << RF_PADS_89_TX_MAC_TIMER_TX_MAC_TIMER_POS)
+
+#define RX_MAC_TIMER_RX_MAC_TIMER_DEFAULT (0x23 << RF_PADS_89_RX_MAC_TIMER_RX_MAC_TIMER_POS)
+
+#define PAD_CONF_3_PAD_9_OFF            (0x0 << RF_PADS_89_PAD_CONF_3_PAD_9_CONF_POS)
+#define PAD_CONF_3_PAD_9_TEST_MODE      (0xF << RF_PADS_89_PAD_CONF_3_PAD_9_CONF_POS)
+
+#define PAD_CONF_3_PAD_8_OFF            (0x0 << RF_PADS_89_PAD_CONF_3_PAD_8_CONF_POS)
+#define PAD_CONF_3_PAD_8_TEST_MODE      (0xF << RF_PADS_89_PAD_CONF_3_PAD_8_CONF_POS)
+
+/* PADS_89 */
+#define RF1_PADS_89_BASE                0x40040A1C
+#define RF1_PADS_89                     REG32_POINTER(RF1_PADS_89_BASE)
+
+/* PADS_89 */
+#define RF2_PADS_89_BASE                0x40040C1C
+#define RF2_PADS_89                     REG32_POINTER(RF2_PADS_89_BASE)
+
+/* PADS_89 */
+#define RF3_PADS_89_BASE                0x40040E1C
+#define RF3_PADS_89                     REG32_POINTER(RF3_PADS_89_BASE)
+
+/* REG08 */
+#define RF0_REG08_BASE                  0x40040820
+#define RF0_REG08                       REG32_POINTER(RF0_REG08_BASE)
+
+/* RF_REG08 bit positions */
+#define RF_REG08_MOD_INFO_RX_DIV_CK_RX_POS 30
+#define RF_REG08_MOD_INFO_RX_DIV_CK_RX_MASK (0x3 << RF_REG08_MOD_INFO_RX_DIV_CK_RX_POS)
+#define RF_REG08_MOD_INFO_RX_SYMBOL_2BIT_RX_POS 29
+#define RF_REG08_MOD_INFO_RX_DR_M_RX_POS 24
+#define RF_REG08_MOD_INFO_RX_DR_M_RX_MASK (0x1F << RF_REG08_MOD_INFO_RX_DR_M_RX_POS)
+#define RF_REG08_MOD_INFO_TX_DIV_CK_TX_POS 22
+#define RF_REG08_MOD_INFO_TX_DIV_CK_TX_MASK (0x3 << RF_REG08_MOD_INFO_TX_DIV_CK_TX_POS)
+#define RF_REG08_MOD_INFO_TX_SYMBOL_2BIT_TX_POS 21
+#define RF_REG08_MOD_INFO_TX_DR_M_TX_POS 16
+#define RF_REG08_MOD_INFO_TX_DR_M_TX_MASK (0x1F << RF_REG08_MOD_INFO_TX_DR_M_TX_POS)
+#define RF_REG08_CHANNEL_SWITCH_IQ_POS  14
+#define RF_REG08_CHANNEL_CHANNEL_POS    8
+#define RF_REG08_CHANNEL_CHANNEL_MASK   (0x3F << RF_REG08_CHANNEL_CHANNEL_POS)
+#define RF_REG08_BANK_DATARATE_TX_NRX_POS 3
+#define RF_REG08_BANK_STD_BLE_RATES_POS 2
+#define RF_REG08_BANK_BANK_POS          0
+#define RF_REG08_BANK_BANK_MASK         (0x3 << RF_REG08_BANK_BANK_POS)
+
+/* RF_REG08 settings */
+#define MOD_INFO_RX_DIV_CK_RX_DEFAULT   (0x0 << RF_REG08_MOD_INFO_RX_DIV_CK_RX_POS)
+
+#define MOD_INFO_RX_SYMBOL_2BIT_RX_DISABLE (0x0 << RF_REG08_MOD_INFO_RX_SYMBOL_2BIT_RX_POS)
+#define MOD_INFO_RX_SYMBOL_2BIT_RX_ENABLE (0x1 << RF_REG08_MOD_INFO_RX_SYMBOL_2BIT_RX_POS)
+
+#define MOD_INFO_RX_DR_M_RX_DEFAULT     (0x0 << RF_REG08_MOD_INFO_RX_DR_M_RX_POS)
+
+#define MOD_INFO_TX_DIV_CK_TX_DEFAULT   (0x0 << RF_REG08_MOD_INFO_TX_DIV_CK_TX_POS)
+
+#define MOD_INFO_TX_SYMBOL_2BIT_TX_DISABLE (0x0 << RF_REG08_MOD_INFO_TX_SYMBOL_2BIT_TX_POS)
+#define MOD_INFO_TX_SYMBOL_2BIT_TX_ENABLE (0x1 << RF_REG08_MOD_INFO_TX_SYMBOL_2BIT_TX_POS)
+
+#define MOD_INFO_TX_DR_M_TX_DEFAULT     (0x0 << RF_REG08_MOD_INFO_TX_DR_M_TX_POS)
+
+#define CHANNEL_SWITCH_IQ_DISABLE       (0x0 << RF_REG08_CHANNEL_SWITCH_IQ_POS)
+#define CHANNEL_SWITCH_IQ_ENABLE        (0x1 << RF_REG08_CHANNEL_SWITCH_IQ_POS)
+
+#define CHANNEL_CHANNEL_DEFAULT         (0x0 << RF_REG08_CHANNEL_CHANNEL_POS)
+
+#define BANK_DATARATE_TX_NRX_RX         (0x0 << RF_REG08_BANK_DATARATE_TX_NRX_POS)
+#define BANK_DATARATE_TX_NRX_TX         (0x1 << RF_REG08_BANK_DATARATE_TX_NRX_POS)
+
+#define BANK_STD_BLE_RATES_CUSTOM       (0x0 << RF_REG08_BANK_STD_BLE_RATES_POS)
+#define BANK_STD_BLE_RATES_STANDARD     (0x1 << RF_REG08_BANK_STD_BLE_RATES_POS)
+
+#define BANK_BANK_DEFAULT               (0x0 << RF_REG08_BANK_BANK_POS)
+
+/* REG08 */
+#define RF1_REG08_BASE                  0x40040A20
+#define RF1_REG08                       REG32_POINTER(RF1_REG08_BASE)
+
+/* REG08 */
+#define RF2_REG08_BASE                  0x40040C20
+#define RF2_REG08                       REG32_POINTER(RF2_REG08_BASE)
+
+/* REG08 */
+#define RF3_REG08_BASE                  0x40040E20
+#define RF3_REG08                       REG32_POINTER(RF3_REG08_BASE)
+
+/* CODING */
+#define RF0_CODING_BASE                 0x40040824
+#define RF0_CODING                      REG32_POINTER(RF0_CODING_BASE)
+
+/* RF_CODING bit positions */
+#define RF_CODING_CODING_EN_DATAWHITE_POS 31
+#define RF_CODING_CODING_I_NQ_DELAYED_POS 30
+#define RF_CODING_CODING_OFFSET_POS     29
+#define RF_CODING_CODING_BIT_INVERT_POS 28
+#define RF_CODING_CODING_EVEN_BEFORE_ODD_POS 27
+#define RF_CODING_CODING_EN_802154_L2F_POS 26
+#define RF_CODING_CODING_EN_802154_B2C_POS 25
+#define RF_CODING_CODING_EN_MANCHESTER_POS 24
+#define RF_CODING_CHANNELS_2_EN_CHANNEL_SEL_POS 23
+#define RF_CODING_CHANNELS_2_EN_CHN_BLE_POS 22
+#define RF_CODING_CHANNELS_2_CHANNEL_SPACING_HI_POS 16
+#define RF_CODING_CHANNELS_2_CHANNEL_SPACING_HI_MASK (0xF << RF_CODING_CHANNELS_2_CHANNEL_SPACING_HI_POS)
+#define RF_CODING_CHANNELS_1_CHANNEL_SPACING_LO_POS 0
+#define RF_CODING_CHANNELS_1_CHANNEL_SPACING_LO_MASK (0xFFFF << RF_CODING_CHANNELS_1_CHANNEL_SPACING_LO_POS)
+
+/* RF_CODING settings */
+#define CODING_EN_DATAWHITE_DISABLE     (0x0 << RF_CODING_CODING_EN_DATAWHITE_POS)
+#define CODING_EN_DATAWHITE_ENABLE      (0x1 << RF_CODING_CODING_EN_DATAWHITE_POS)
+
+#define CODING_I_NQ_DELAYED_DISABLE     (0x0 << RF_CODING_CODING_I_NQ_DELAYED_POS)
+#define CODING_I_NQ_DELAYED_ENABLE      (0x1 << RF_CODING_CODING_I_NQ_DELAYED_POS)
+
+#define CODING_OFFSET_DISABLE           (0x0 << RF_CODING_CODING_OFFSET_POS)
+#define CODING_OFFSET_ENABLE            (0x1 << RF_CODING_CODING_OFFSET_POS)
+
+#define CODING_BIT_INVERT_DISABLE       (0x0 << RF_CODING_CODING_BIT_INVERT_POS)
+#define CODING_BIT_INVERT_ENABLE        (0x1 << RF_CODING_CODING_BIT_INVERT_POS)
+
+#define CODING_EVEN_BEFORE_ODD_DISABLE  (0x0 << RF_CODING_CODING_EVEN_BEFORE_ODD_POS)
+#define CODING_EVEN_BEFORE_ODD_ENABLE   (0x1 << RF_CODING_CODING_EVEN_BEFORE_ODD_POS)
+
+#define CODING_EN_802154_L2F_DISABLE    (0x0 << RF_CODING_CODING_EN_802154_L2F_POS)
+#define CODING_EN_802154_L2F_ENABLE     (0x1 << RF_CODING_CODING_EN_802154_L2F_POS)
+
+#define CODING_EN_802154_B2C_DISABLE    (0x0 << RF_CODING_CODING_EN_802154_B2C_POS)
+#define CODING_EN_802154_B2C_ENABLE     (0x1 << RF_CODING_CODING_EN_802154_B2C_POS)
+
+#define CODING_EN_MANCHESTER_DISABLE    (0x0 << RF_CODING_CODING_EN_MANCHESTER_POS)
+#define CODING_EN_MANCHESTER_ENABLE     (0x1 << RF_CODING_CODING_EN_MANCHESTER_POS)
+
+#define CHANNELS_2_EN_CHANNEL_SEL_DISABLE (0x0 << RF_CODING_CHANNELS_2_EN_CHANNEL_SEL_POS)
+#define CHANNELS_2_EN_CHANNEL_SEL_ENABLE (0x1 << RF_CODING_CHANNELS_2_EN_CHANNEL_SEL_POS)
+
+#define CHANNELS_2_EN_CHN_BLE_DISABLE   (0x0 << RF_CODING_CHANNELS_2_EN_CHN_BLE_POS)
+#define CHANNELS_2_EN_CHN_BLE_ENABLE    (0x1 << RF_CODING_CHANNELS_2_EN_CHN_BLE_POS)
+
+#define CHANNELS_2_CHANNEL_SPACING_HI_DEFAULT (0x7 << RF_CODING_CHANNELS_2_CHANNEL_SPACING_HI_POS)
+
+#define CHANNELS_1_CHANNEL_SPACING_LO_DEFAULT (0x1C72 << RF_CODING_CHANNELS_1_CHANNEL_SPACING_LO_POS)
+
+/* CODING */
+#define RF1_CODING_BASE                 0x40040A24
+#define RF1_CODING                      REG32_POINTER(RF1_CODING_BASE)
+
+/* CODING */
+#define RF2_CODING_BASE                 0x40040C24
+#define RF2_CODING                      REG32_POINTER(RF2_CODING_BASE)
+
+/* CODING */
+#define RF3_CODING_BASE                 0x40040E24
+#define RF3_CODING                      REG32_POINTER(RF3_CODING_BASE)
+
+/* PACKET_HANDLING */
+#define RF0_PACKET_HANDLING_BASE        0x40040828
+#define RF0_PACKET_HANDLING             REG32_POINTER(RF0_PACKET_HANDLING_BASE)
+
+/* RF_PACKET_HANDLING bit positions */
+#define RF_PACKET_HANDLING_PREAMBLE_PREAMBLE_POS 24
+#define RF_PACKET_HANDLING_PREAMBLE_PREAMBLE_MASK (0xFF << RF_PACKET_HANDLING_PREAMBLE_PREAMBLE_POS)
+#define RF_PACKET_HANDLING_PACKET_LENGTH_OPTS_EN_PACKET_LEN_FIX_POS 22
+#define RF_PACKET_HANDLING_PACKET_LENGTH_OPTS_PACKET_LEN_CORR_POS 18
+#define RF_PACKET_HANDLING_PACKET_LENGTH_OPTS_PACKET_LEN_CORR_MASK (0xF << RF_PACKET_HANDLING_PACKET_LENGTH_OPTS_PACKET_LEN_CORR_POS)
+#define RF_PACKET_HANDLING_PACKET_LENGTH_OPTS_PACKET_LEN_POS_POS 16
+#define RF_PACKET_HANDLING_PACKET_LENGTH_OPTS_PACKET_LEN_POS_MASK (0x3 << RF_PACKET_HANDLING_PACKET_LENGTH_OPTS_PACKET_LEN_POS_POS)
+#define RF_PACKET_HANDLING_PACKET_LENGTH_PACKET_LEN_POS 8
+#define RF_PACKET_HANDLING_PACKET_LENGTH_PACKET_LEN_MASK (0xFF << RF_PACKET_HANDLING_PACKET_LENGTH_PACKET_LEN_POS)
+#define RF_PACKET_HANDLING_PACKET_HANDLING_LSB_FIRST_POS 7
+#define RF_PACKET_HANDLING_PACKET_HANDLING_EN_CRC_POS 6
+#define RF_PACKET_HANDLING_PACKET_HANDLING_EN_CRC_ON_PKTLEN_POS 5
+#define RF_PACKET_HANDLING_PACKET_HANDLING_EN_PREAMBLE_POS 4
+#define RF_PACKET_HANDLING_PACKET_HANDLING_EN_MULTI_FRAME_POS 3
+#define RF_PACKET_HANDLING_PACKET_HANDLING_ENB_DW_ON_CRC_POS 2
+#define RF_PACKET_HANDLING_PACKET_HANDLING_EN_PATTERN_POS 1
+#define RF_PACKET_HANDLING_PACKET_HANDLING_EN_PACKET_POS 0
+
+/* RF_PACKET_HANDLING settings */
+#define PREAMBLE_PREAMBLE_DEFAULT       (0x55 << RF_PACKET_HANDLING_PREAMBLE_PREAMBLE_POS)
+
+#define PACKET_LENGTH_OPTS_EN_PACKET_LEN_FIX_DISABLE (0x0 << RF_PACKET_HANDLING_PACKET_LENGTH_OPTS_EN_PACKET_LEN_FIX_POS)
+#define PACKET_LENGTH_OPTS_EN_PACKET_LEN_FIX_ENABLE (0x1 << RF_PACKET_HANDLING_PACKET_LENGTH_OPTS_EN_PACKET_LEN_FIX_POS)
+
+#define PACKET_LENGTH_OPTS_PACKET_LEN_CORR_DEFAULT (0x0 << RF_PACKET_HANDLING_PACKET_LENGTH_OPTS_PACKET_LEN_CORR_POS)
+
+#define PACKET_LENGTH_OPTS_PACKET_LEN_POS_DEFAULT (0x1 << RF_PACKET_HANDLING_PACKET_LENGTH_OPTS_PACKET_LEN_POS_POS)
+
+#define PACKET_LENGTH_PACKET_LEN_DEFAULT (0xFF << RF_PACKET_HANDLING_PACKET_LENGTH_PACKET_LEN_POS)
+
+#define PACKET_HANDLING_LSB_FIRST_MSB   (0x0 << RF_PACKET_HANDLING_PACKET_HANDLING_LSB_FIRST_POS)
+#define PACKET_HANDLING_LSB_FIRST_LSB   (0x1 << RF_PACKET_HANDLING_PACKET_HANDLING_LSB_FIRST_POS)
+
+#define PACKET_HANDLING_EN_CRC_DISABLE  (0x0 << RF_PACKET_HANDLING_PACKET_HANDLING_EN_CRC_POS)
+#define PACKET_HANDLING_EN_CRC_ENABLE   (0x1 << RF_PACKET_HANDLING_PACKET_HANDLING_EN_CRC_POS)
+
+#define PACKET_HANDLING_EN_CRC_ON_PKTLEN_DISABLE (0x0 << RF_PACKET_HANDLING_PACKET_HANDLING_EN_CRC_ON_PKTLEN_POS)
+#define PACKET_HANDLING_EN_CRC_ON_PKTLEN_ENABLE (0x1 << RF_PACKET_HANDLING_PACKET_HANDLING_EN_CRC_ON_PKTLEN_POS)
+
+#define PACKET_HANDLING_EN_PREAMBLE_DISABLE (0x0 << RF_PACKET_HANDLING_PACKET_HANDLING_EN_PREAMBLE_POS)
+#define PACKET_HANDLING_EN_PREAMBLE_ENABLE (0x1 << RF_PACKET_HANDLING_PACKET_HANDLING_EN_PREAMBLE_POS)
+
+#define PACKET_HANDLING_EN_MULTI_FRAME_DISABLE (0x0 << RF_PACKET_HANDLING_PACKET_HANDLING_EN_MULTI_FRAME_POS)
+#define PACKET_HANDLING_EN_MULTI_FRAME_ENABLE (0x1 << RF_PACKET_HANDLING_PACKET_HANDLING_EN_MULTI_FRAME_POS)
+
+#define PACKET_HANDLING_ENB_DW_ON_CRC_DISABLE (0x0 << RF_PACKET_HANDLING_PACKET_HANDLING_ENB_DW_ON_CRC_POS)
+#define PACKET_HANDLING_ENB_DW_ON_CRC_ENABLE (0x1 << RF_PACKET_HANDLING_PACKET_HANDLING_ENB_DW_ON_CRC_POS)
+
+#define PACKET_HANDLING_EN_PATTERN_DISABLE (0x0 << RF_PACKET_HANDLING_PACKET_HANDLING_EN_PATTERN_POS)
+#define PACKET_HANDLING_EN_PATTERN_ENABLE (0x1 << RF_PACKET_HANDLING_PACKET_HANDLING_EN_PATTERN_POS)
+
+#define PACKET_HANDLING_EN_PACKET_DISABLE (0x0 << RF_PACKET_HANDLING_PACKET_HANDLING_EN_PACKET_POS)
+#define PACKET_HANDLING_EN_PACKET_ENABLE (0x1 << RF_PACKET_HANDLING_PACKET_HANDLING_EN_PACKET_POS)
+
+/* PACKET_HANDLING */
+#define RF1_PACKET_HANDLING_BASE        0x40040A28
+#define RF1_PACKET_HANDLING             REG32_POINTER(RF1_PACKET_HANDLING_BASE)
+
+/* PACKET_HANDLING */
+#define RF2_PACKET_HANDLING_BASE        0x40040C28
+#define RF2_PACKET_HANDLING             REG32_POINTER(RF2_PACKET_HANDLING_BASE)
+
+/* PACKET_HANDLING */
+#define RF3_PACKET_HANDLING_BASE        0x40040E28
+#define RF3_PACKET_HANDLING             REG32_POINTER(RF3_PACKET_HANDLING_BASE)
+
+/* SYNC_PATTERN */
+#define RF0_SYNC_PATTERN_BASE           0x4004082C
+#define RF0_SYNC_PATTERN                REG32_POINTER(RF0_SYNC_PATTERN_BASE)
+
+/* RF_SYNC_PATTERN settings */
+#define PATTERN_DEFAULT                 (0x8E89BED6 << RF_SYNC_PATTERN_PATTERN_POS)
+
+/* SYNC_PATTERN */
+#define RF1_SYNC_PATTERN_BASE           0x40040A2C
+#define RF1_SYNC_PATTERN                REG32_POINTER(RF1_SYNC_PATTERN_BASE)
+
+/* SYNC_PATTERN */
+#define RF2_SYNC_PATTERN_BASE           0x40040C2C
+#define RF2_SYNC_PATTERN                REG32_POINTER(RF2_SYNC_PATTERN_BASE)
+
+/* SYNC_PATTERN */
+#define RF3_SYNC_PATTERN_BASE           0x40040E2C
+#define RF3_SYNC_PATTERN                REG32_POINTER(RF3_SYNC_PATTERN_BASE)
+
+/* REG0C */
+#define RF0_REG0C_BASE                  0x40040830
+#define RF0_REG0C                       REG32_POINTER(RF0_REG0C_BASE)
+
+/* RF_REG0C bit positions */
+#define RF_REG0C_ADDRESS_ADDRESS_POS    16
+#define RF_REG0C_ADDRESS_ADDRESS_MASK   (0xFFFF << RF_REG0C_ADDRESS_ADDRESS_POS)
+#define RF_REG0C_ADDRESS_CONF_ADDRESS_LEN_POS 11
+#define RF_REG0C_ADDRESS_CONF_EN_ADDRESS_RX_BR_POS 10
+#define RF_REG0C_ADDRESS_CONF_EN_ADDRESS_RX_POS 9
+#define RF_REG0C_ADDRESS_CONF_EN_ADDRESS_TX_POS 8
+#define RF_REG0C_PREAMBLE_LENGTH_PREAMBLE_LEN_POS 0
+#define RF_REG0C_PREAMBLE_LENGTH_PREAMBLE_LEN_MASK (0xFF << RF_REG0C_PREAMBLE_LENGTH_PREAMBLE_LEN_POS)
+
+/* RF_REG0C settings */
+#define ADDRESS_ADDRESS_DEFAULT         (0x0 << RF_REG0C_ADDRESS_ADDRESS_POS)
+
+#define ADDRESS_CONF_ADDRESS_LEN_8      (0x0 << RF_REG0C_ADDRESS_CONF_ADDRESS_LEN_POS)
+#define ADDRESS_CONF_ADDRESS_LEN_16     (0x1 << RF_REG0C_ADDRESS_CONF_ADDRESS_LEN_POS)
+
+#define ADDRESS_CONF_EN_ADDRESS_RX_BR_DISABLE (0x0 << RF_REG0C_ADDRESS_CONF_EN_ADDRESS_RX_BR_POS)
+#define ADDRESS_CONF_EN_ADDRESS_RX_BR_ENABLE (0x1 << RF_REG0C_ADDRESS_CONF_EN_ADDRESS_RX_BR_POS)
+
+#define ADDRESS_CONF_EN_ADDRESS_RX_DISABLE (0x0 << RF_REG0C_ADDRESS_CONF_EN_ADDRESS_RX_POS)
+#define ADDRESS_CONF_EN_ADDRESS_RX_ENABLE (0x1 << RF_REG0C_ADDRESS_CONF_EN_ADDRESS_RX_POS)
+
+#define ADDRESS_CONF_EN_ADDRESS_TX_DISABLE (0x0 << RF_REG0C_ADDRESS_CONF_EN_ADDRESS_TX_POS)
+#define ADDRESS_CONF_EN_ADDRESS_TX_ENABLE (0x1 << RF_REG0C_ADDRESS_CONF_EN_ADDRESS_TX_POS)
+
+#define PREAMBLE_LENGTH_PREAMBLE_LEN_DEFAULT (0x0 << RF_REG0C_PREAMBLE_LENGTH_PREAMBLE_LEN_POS)
+
+/* REG0C */
+#define RF1_REG0C_BASE                  0x40040A30
+#define RF1_REG0C                       REG32_POINTER(RF1_REG0C_BASE)
+
+/* REG0C */
+#define RF2_REG0C_BASE                  0x40040C30
+#define RF2_REG0C                       REG32_POINTER(RF2_REG0C_BASE)
+
+/* REG0C */
+#define RF3_REG0C_BASE                  0x40040E30
+#define RF3_REG0C                       REG32_POINTER(RF3_REG0C_BASE)
+
+/* PACKET_EXTRA */
+#define RF0_PACKET_EXTRA_BASE           0x40040834
+#define RF0_PACKET_EXTRA                REG32_POINTER(RF0_PACKET_EXTRA_BASE)
+
+/* RF_PACKET_EXTRA bit positions */
+#define RF_PACKET_EXTRA_CONV_CODES_CONF_STOP_WORD_LEN_POS 28
+#define RF_PACKET_EXTRA_CONV_CODES_CONF_STOP_WORD_LEN_MASK (0x3 << RF_PACKET_EXTRA_CONV_CODES_CONF_STOP_WORD_LEN_POS)
+#define RF_PACKET_EXTRA_CONV_CODES_CONF_CC_VITERBI_LEN_POS 26
+#define RF_PACKET_EXTRA_CONV_CODES_CONF_CC_VITERBI_LEN_MASK (0x3 << RF_PACKET_EXTRA_CONV_CODES_CONF_CC_VITERBI_LEN_POS)
+#define RF_PACKET_EXTRA_CONV_CODES_CONF_CC_EN_TX_STOP_POS 25
+#define RF_PACKET_EXTRA_CONV_CODES_CONF_EN_CONV_CODE_POS 24
+#define RF_PACKET_EXTRA_PACKET_EXTRA_FIFO_REWIND_POS 22
+#define RF_PACKET_EXTRA_PACKET_EXTRA_BLE_PREAMBLE_POS 21
+#define RF_PACKET_EXTRA_PACKET_EXTRA_PKT_INFO_PRE_NPOST_POS 20
+#define RF_PACKET_EXTRA_PACKET_EXTRA_PATTERN_MAX_ERR_POS 18
+#define RF_PACKET_EXTRA_PACKET_EXTRA_PATTERN_MAX_ERR_MASK (0x3 << RF_PACKET_EXTRA_PACKET_EXTRA_PATTERN_MAX_ERR_POS)
+#define RF_PACKET_EXTRA_PACKET_EXTRA_PATTERN_WORD_LEN_POS 16
+#define RF_PACKET_EXTRA_PACKET_EXTRA_PATTERN_WORD_LEN_MASK (0x3 << RF_PACKET_EXTRA_PACKET_EXTRA_PATTERN_WORD_LEN_POS)
+#define RF_PACKET_EXTRA_ADDRESS_BROADCAST_ADDRESS_BR_POS 0
+#define RF_PACKET_EXTRA_ADDRESS_BROADCAST_ADDRESS_BR_MASK (0xFFFF << RF_PACKET_EXTRA_ADDRESS_BROADCAST_ADDRESS_BR_POS)
+
+/* RF_PACKET_EXTRA settings */
+#define CONV_CODES_CONF_STOP_WORD_LEN_DEFAULT (0x0 << RF_PACKET_EXTRA_CONV_CODES_CONF_STOP_WORD_LEN_POS)
+
+#define CONV_CODES_CONF_CC_VITERBI_LEN_5 (0x0 << RF_PACKET_EXTRA_CONV_CODES_CONF_CC_VITERBI_LEN_POS)
+#define CONV_CODES_CONF_CC_VITERBI_LEN_10 (0x1 << RF_PACKET_EXTRA_CONV_CODES_CONF_CC_VITERBI_LEN_POS)
+#define CONV_CODES_CONF_CC_VITERBI_LEN_20 (0x2 << RF_PACKET_EXTRA_CONV_CODES_CONF_CC_VITERBI_LEN_POS)
+#define CONV_CODES_CONF_CC_VITERBI_LEN_30 (0x3 << RF_PACKET_EXTRA_CONV_CODES_CONF_CC_VITERBI_LEN_POS)
+
+#define CONV_CODES_CONF_CC_EN_TX_STOP_DISABLE (0x0 << RF_PACKET_EXTRA_CONV_CODES_CONF_CC_EN_TX_STOP_POS)
+#define CONV_CODES_CONF_CC_EN_TX_STOP_ENABLE (0x1 << RF_PACKET_EXTRA_CONV_CODES_CONF_CC_EN_TX_STOP_POS)
+
+#define CONV_CODES_CONF_EN_CONV_CODE_DISABLE (0x0 << RF_PACKET_EXTRA_CONV_CODES_CONF_EN_CONV_CODE_POS)
+#define CONV_CODES_CONF_EN_CONV_CODE_ENABLE (0x1 << RF_PACKET_EXTRA_CONV_CODES_CONF_EN_CONV_CODE_POS)
+
+#define PACKET_EXTRA_FIFO_REWIND_DISABLE (0x0 << RF_PACKET_EXTRA_PACKET_EXTRA_FIFO_REWIND_POS)
+#define PACKET_EXTRA_FIFO_REWIND_ENABLE (0x1 << RF_PACKET_EXTRA_PACKET_EXTRA_FIFO_REWIND_POS)
+
+#define PACKET_EXTRA_BLE_PREAMBLE_DISABLE (0x0 << RF_PACKET_EXTRA_PACKET_EXTRA_BLE_PREAMBLE_POS)
+#define PACKET_EXTRA_BLE_PREAMBLE_ENABLE (0x1 << RF_PACKET_EXTRA_PACKET_EXTRA_BLE_PREAMBLE_POS)
+
+#define PACKET_EXTRA_PKT_INFO_PRE_NPOST_SYNC (0x0 << RF_PACKET_EXTRA_PACKET_EXTRA_PKT_INFO_PRE_NPOST_POS)
+#define PACKET_EXTRA_PKT_INFO_PRE_NPOST_END (0x1 << RF_PACKET_EXTRA_PACKET_EXTRA_PKT_INFO_PRE_NPOST_POS)
+
+#define PACKET_EXTRA_PATTERN_MAX_ERR_DEFAULT (0x0 << RF_PACKET_EXTRA_PACKET_EXTRA_PATTERN_MAX_ERR_POS)
+
+#define PACKET_EXTRA_PATTERN_WORD_LEN_8 (0x0 << RF_PACKET_EXTRA_PACKET_EXTRA_PATTERN_WORD_LEN_POS)
+#define PACKET_EXTRA_PATTERN_WORD_LEN_16 (0x1 << RF_PACKET_EXTRA_PACKET_EXTRA_PATTERN_WORD_LEN_POS)
+#define PACKET_EXTRA_PATTERN_WORD_LEN_24 (0x2 << RF_PACKET_EXTRA_PACKET_EXTRA_PATTERN_WORD_LEN_POS)
+#define PACKET_EXTRA_PATTERN_WORD_LEN_32 (0x3 << RF_PACKET_EXTRA_PACKET_EXTRA_PATTERN_WORD_LEN_POS)
+
+#define ADDRESS_BROADCAST_ADDRESS_BR_DEFAULT (0x0 << RF_PACKET_EXTRA_ADDRESS_BROADCAST_ADDRESS_BR_POS)
+
+/* PACKET_EXTRA */
+#define RF1_PACKET_EXTRA_BASE           0x40040A34
+#define RF1_PACKET_EXTRA                REG32_POINTER(RF1_PACKET_EXTRA_BASE)
+
+/* PACKET_EXTRA */
+#define RF2_PACKET_EXTRA_BASE           0x40040C34
+#define RF2_PACKET_EXTRA                REG32_POINTER(RF2_PACKET_EXTRA_BASE)
+
+/* PACKET_EXTRA */
+#define RF3_PACKET_EXTRA_BASE           0x40040E34
+#define RF3_PACKET_EXTRA                REG32_POINTER(RF3_PACKET_EXTRA_BASE)
+
+/* CRC_POLYNOMIAL */
+#define RF0_CRC_POLYNOMIAL_BASE         0x40040838
+#define RF0_CRC_POLYNOMIAL              REG32_POINTER(RF0_CRC_POLYNOMIAL_BASE)
+
+/* RF_CRC_POLYNOMIAL settings */
+#define CRC_POLYNOMIAL_CRC_POLY_DEFAULT (0x80032D << RF_CRC_POLYNOMIAL_CRC_POLYNOMIAL_CRC_POLY_POS)
+
+/* CRC_POLYNOMIAL */
+#define RF1_CRC_POLYNOMIAL_BASE         0x40040A38
+#define RF1_CRC_POLYNOMIAL              REG32_POINTER(RF1_CRC_POLYNOMIAL_BASE)
+
+/* CRC_POLYNOMIAL */
+#define RF2_CRC_POLYNOMIAL_BASE         0x40040C38
+#define RF2_CRC_POLYNOMIAL              REG32_POINTER(RF2_CRC_POLYNOMIAL_BASE)
+
+/* CRC_POLYNOMIAL */
+#define RF3_CRC_POLYNOMIAL_BASE         0x40040E38
+#define RF3_CRC_POLYNOMIAL              REG32_POINTER(RF3_CRC_POLYNOMIAL_BASE)
+
+/* CRC_RST */
+#define RF0_CRC_RST_BASE                0x4004083C
+#define RF0_CRC_RST                     REG32_POINTER(RF0_CRC_RST_BASE)
+
+/* RF_CRC_RST settings */
+#define CRC_RST_CRC_RST_DEFAULT         (0x555555 << RF_CRC_RST_CRC_RST_CRC_RST_POS)
+
+/* CRC_RST */
+#define RF1_CRC_RST_BASE                0x40040A3C
+#define RF1_CRC_RST                     REG32_POINTER(RF1_CRC_RST_BASE)
+
+/* CRC_RST */
+#define RF2_CRC_RST_BASE                0x40040C3C
+#define RF2_CRC_RST                     REG32_POINTER(RF2_CRC_RST_BASE)
+
+/* CRC_RST */
+#define RF3_CRC_RST_BASE                0x40040E3C
+#define RF3_CRC_RST                     REG32_POINTER(RF3_CRC_RST_BASE)
+
+/* REG10 */
+#define RF0_REG10_BASE                  0x40040840
+#define RF0_REG10                       REG32_POINTER(RF0_REG10_BASE)
+
+/* RF_REG10 bit positions */
+#define RF_REG10_CONV_CODES_PUNCT_CC_PUNCT_1_POS 21
+#define RF_REG10_CONV_CODES_PUNCT_CC_PUNCT_1_MASK (0x1F << RF_REG10_CONV_CODES_PUNCT_CC_PUNCT_1_POS)
+#define RF_REG10_CONV_CODES_PUNCT_CC_PUNCT_0_POS 16
+#define RF_REG10_CONV_CODES_PUNCT_CC_PUNCT_0_MASK (0x1F << RF_REG10_CONV_CODES_PUNCT_CC_PUNCT_0_POS)
+#define RF_REG10_FRAC_CONF_TX_FRAC_GAIN_POS 11
+#define RF_REG10_FRAC_CONF_RX_FRAC_GAIN_POS 10
+#define RF_REG10_FRAC_CONF_TX_EN_FRAC_POS 9
+#define RF_REG10_FRAC_CONF_RX_EN_FRAC_POS 8
+#define RF_REG10_CONV_CODES_POLY_CC_POLY_1_POS 4
+#define RF_REG10_CONV_CODES_POLY_CC_POLY_1_MASK (0xF << RF_REG10_CONV_CODES_POLY_CC_POLY_1_POS)
+#define RF_REG10_CONV_CODES_POLY_CC_POLY_0_POS 0
+#define RF_REG10_CONV_CODES_POLY_CC_POLY_0_MASK (0xF << RF_REG10_CONV_CODES_POLY_CC_POLY_0_POS)
+
+/* RF_REG10 settings */
+#define CONV_CODES_PUNCT_CC_PUNCT_1_DEFAULT (0x1 << RF_REG10_CONV_CODES_PUNCT_CC_PUNCT_1_POS)
+
+#define CONV_CODES_PUNCT_CC_PUNCT_0_DEFAULT (0x1 << RF_REG10_CONV_CODES_PUNCT_CC_PUNCT_0_POS)
+
+#define FRAC_CONF_TX_FRAC_GAIN_DISABLE  (0x0 << RF_REG10_FRAC_CONF_TX_FRAC_GAIN_POS)
+#define FRAC_CONF_TX_FRAC_GAIN_ENABLE   (0x1 << RF_REG10_FRAC_CONF_TX_FRAC_GAIN_POS)
+
+#define FRAC_CONF_RX_FRAC_GAIN_DISABLE  (0x0 << RF_REG10_FRAC_CONF_RX_FRAC_GAIN_POS)
+#define FRAC_CONF_RX_FRAC_GAIN_ENABLE   (0x1 << RF_REG10_FRAC_CONF_RX_FRAC_GAIN_POS)
+
+#define FRAC_CONF_TX_EN_FRAC_DISABLE    (0x0 << RF_REG10_FRAC_CONF_TX_EN_FRAC_POS)
+#define FRAC_CONF_TX_EN_FRAC_ENABLE     (0x1 << RF_REG10_FRAC_CONF_TX_EN_FRAC_POS)
+
+#define FRAC_CONF_RX_EN_FRAC_DISABLE    (0x0 << RF_REG10_FRAC_CONF_RX_EN_FRAC_POS)
+#define FRAC_CONF_RX_EN_FRAC_ENABLE     (0x1 << RF_REG10_FRAC_CONF_RX_EN_FRAC_POS)
+
+#define CONV_CODES_POLY_CC_POLY_1_DEFAULT (0xD << RF_REG10_CONV_CODES_POLY_CC_POLY_1_POS)
+
+#define CONV_CODES_POLY_CC_POLY_0_DEFAULT (0xF << RF_REG10_CONV_CODES_POLY_CC_POLY_0_POS)
+
+/* REG10 */
+#define RF1_REG10_BASE                  0x40040A40
+#define RF1_REG10                       REG32_POINTER(RF1_REG10_BASE)
+
+/* REG10 */
+#define RF2_REG10_BASE                  0x40040C40
+#define RF2_REG10                       REG32_POINTER(RF2_REG10_BASE)
+
+/* REG10 */
+#define RF3_REG10_BASE                  0x40040E40
+#define RF3_REG10                       REG32_POINTER(RF3_REG10_BASE)
+
+/* REG11 */
+#define RF0_REG11_BASE                  0x40040844
+#define RF0_REG11                       REG32_POINTER(RF0_REG11_BASE)
+
+/* RF_REG11 bit positions */
+#define RF_REG11_FILTER_GAIN_LIN_FILTER_POS 31
+#define RF_REG11_FILTER_GAIN_LOW_LIN_GAIN_POS 30
+#define RF_REG11_FILTER_GAIN_GAIN_M_POS 27
+#define RF_REG11_FILTER_GAIN_GAIN_M_MASK (0x7 << RF_REG11_FILTER_GAIN_GAIN_M_POS)
+#define RF_REG11_FILTER_GAIN_GAIN_E_POS 24
+#define RF_REG11_FILTER_GAIN_GAIN_E_MASK (0x7 << RF_REG11_FILTER_GAIN_GAIN_E_POS)
+#define RF_REG11_TX_MULT_TX_MULT_EXP_POS 20
+#define RF_REG11_TX_MULT_TX_MULT_EXP_MASK (0xF << RF_REG11_TX_MULT_TX_MULT_EXP_POS)
+#define RF_REG11_TX_MULT_TX_MULT_MAN_POS 16
+#define RF_REG11_TX_MULT_TX_MULT_MAN_MASK (0xF << RF_REG11_TX_MULT_TX_MULT_MAN_POS)
+#define RF_REG11_TX_FRAC_CONF_TX_FRAC_DEN_POS 12
+#define RF_REG11_TX_FRAC_CONF_TX_FRAC_DEN_MASK (0xF << RF_REG11_TX_FRAC_CONF_TX_FRAC_DEN_POS)
+#define RF_REG11_TX_FRAC_CONF_TX_FRAC_NUM_POS 8
+#define RF_REG11_TX_FRAC_CONF_TX_FRAC_NUM_MASK (0xF << RF_REG11_TX_FRAC_CONF_TX_FRAC_NUM_POS)
+#define RF_REG11_RX_FRAC_CONF_RX_FRAC_DEN_POS 4
+#define RF_REG11_RX_FRAC_CONF_RX_FRAC_DEN_MASK (0xF << RF_REG11_RX_FRAC_CONF_RX_FRAC_DEN_POS)
+#define RF_REG11_RX_FRAC_CONF_RX_FRAC_NUM_POS 0
+#define RF_REG11_RX_FRAC_CONF_RX_FRAC_NUM_MASK (0xF << RF_REG11_RX_FRAC_CONF_RX_FRAC_NUM_POS)
+
+/* RF_REG11 settings */
+#define FILTER_GAIN_LIN_FILTER_DISABLE  (0x0 << RF_REG11_FILTER_GAIN_LIN_FILTER_POS)
+#define FILTER_GAIN_LIN_FILTER_ENABLE   (0x1 << RF_REG11_FILTER_GAIN_LIN_FILTER_POS)
+
+#define FILTER_GAIN_LOW_LIN_GAIN_DISABLE (0x0 << RF_REG11_FILTER_GAIN_LOW_LIN_GAIN_POS)
+#define FILTER_GAIN_LOW_LIN_GAIN_ENABLE (0x1 << RF_REG11_FILTER_GAIN_LOW_LIN_GAIN_POS)
+
+#define FILTER_GAIN_GAIN_M_DEFAULT      (0x0 << RF_REG11_FILTER_GAIN_GAIN_M_POS)
+
+#define FILTER_GAIN_GAIN_E_DEFAULT      (0x0 << RF_REG11_FILTER_GAIN_GAIN_E_POS)
+
+#define TX_MULT_TX_MULT_EXP_DEFAULT     (0x2 << RF_REG11_TX_MULT_TX_MULT_EXP_POS)
+
+#define TX_MULT_TX_MULT_MAN_DEFAULT     (0x9 << RF_REG11_TX_MULT_TX_MULT_MAN_POS)
+
+#define TX_FRAC_CONF_TX_FRAC_DEN_DEFAULT (0x0 << RF_REG11_TX_FRAC_CONF_TX_FRAC_DEN_POS)
+
+#define TX_FRAC_CONF_TX_FRAC_NUM_DEFAULT (0x0 << RF_REG11_TX_FRAC_CONF_TX_FRAC_NUM_POS)
+
+#define RX_FRAC_CONF_RX_FRAC_DEN_DEFAULT (0x0 << RF_REG11_RX_FRAC_CONF_RX_FRAC_DEN_POS)
+
+#define RX_FRAC_CONF_RX_FRAC_NUM_DEFAULT (0x0 << RF_REG11_RX_FRAC_CONF_RX_FRAC_NUM_POS)
+
+/* REG11 */
+#define RF1_REG11_BASE                  0x40040A44
+#define RF1_REG11                       REG32_POINTER(RF1_REG11_BASE)
+
+/* REG11 */
+#define RF2_REG11_BASE                  0x40040C44
+#define RF2_REG11                       REG32_POINTER(RF2_REG11_BASE)
+
+/* REG11 */
+#define RF3_REG11_BASE                  0x40040E44
+#define RF3_REG11                       REG32_POINTER(RF3_REG11_BASE)
+
+/* TX_PULSE_SHAPE_1 */
+#define RF0_TX_PULSE_SHAPE_1_BASE       0x40040848
+#define RF0_TX_PULSE_SHAPE_1            REG32_POINTER(RF0_TX_PULSE_SHAPE_1_BASE)
+
+/* RF_TX_PULSE_SHAPE_1 bit positions */
+#define RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF4_POS 24
+#define RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF4_MASK (0xFF << RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF4_POS)
+#define RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF3_POS 16
+#define RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF3_MASK (0xFF << RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF3_POS)
+#define RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF2_POS 8
+#define RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF2_MASK (0xFF << RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF2_POS)
+#define RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF1_POS 0
+#define RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF1_MASK (0xFF << RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF1_POS)
+
+/* RF_TX_PULSE_SHAPE_1 settings */
+#define TX_PULSE_SHAPE_1_TX_COEF4_DEFAULT (0x0 << RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF4_POS)
+
+#define TX_PULSE_SHAPE_1_TX_COEF3_DEFAULT (0x0 << RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF3_POS)
+
+#define TX_PULSE_SHAPE_1_TX_COEF2_DEFAULT (0x0 << RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF2_POS)
+
+#define TX_PULSE_SHAPE_1_TX_COEF1_DEFAULT (0x0 << RF_TX_PULSE_SHAPE_1_TX_PULSE_SHAPE_1_TX_COEF1_POS)
+
+/* TX_PULSE_SHAPE_1 */
+#define RF1_TX_PULSE_SHAPE_1_BASE       0x40040A48
+#define RF1_TX_PULSE_SHAPE_1            REG32_POINTER(RF1_TX_PULSE_SHAPE_1_BASE)
+
+/* TX_PULSE_SHAPE_1 */
+#define RF2_TX_PULSE_SHAPE_1_BASE       0x40040C48
+#define RF2_TX_PULSE_SHAPE_1            REG32_POINTER(RF2_TX_PULSE_SHAPE_1_BASE)
+
+/* TX_PULSE_SHAPE_1 */
+#define RF3_TX_PULSE_SHAPE_1_BASE       0x40040E48
+#define RF3_TX_PULSE_SHAPE_1            REG32_POINTER(RF3_TX_PULSE_SHAPE_1_BASE)
+
+/* TX_PULSE_SHAPE_2 */
+#define RF0_TX_PULSE_SHAPE_2_BASE       0x4004084C
+#define RF0_TX_PULSE_SHAPE_2            REG32_POINTER(RF0_TX_PULSE_SHAPE_2_BASE)
+
+/* RF_TX_PULSE_SHAPE_2 bit positions */
+#define RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF8_POS 24
+#define RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF8_MASK (0xFF << RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF8_POS)
+#define RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF7_POS 16
+#define RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF7_MASK (0xFF << RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF7_POS)
+#define RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF6_POS 8
+#define RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF6_MASK (0xFF << RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF6_POS)
+#define RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF5_POS 0
+#define RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF5_MASK (0xFF << RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF5_POS)
+
+/* RF_TX_PULSE_SHAPE_2 settings */
+#define TX_PULSE_SHAPE_2_TX_COEF8_DEFAULT (0x2 << RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF8_POS)
+
+#define TX_PULSE_SHAPE_2_TX_COEF7_DEFAULT (0x1 << RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF7_POS)
+
+#define TX_PULSE_SHAPE_2_TX_COEF6_DEFAULT (0x0 << RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF6_POS)
+
+#define TX_PULSE_SHAPE_2_TX_COEF5_DEFAULT (0x0 << RF_TX_PULSE_SHAPE_2_TX_PULSE_SHAPE_2_TX_COEF5_POS)
+
+/* TX_PULSE_SHAPE_2 */
+#define RF1_TX_PULSE_SHAPE_2_BASE       0x40040A4C
+#define RF1_TX_PULSE_SHAPE_2            REG32_POINTER(RF1_TX_PULSE_SHAPE_2_BASE)
+
+/* TX_PULSE_SHAPE_2 */
+#define RF2_TX_PULSE_SHAPE_2_BASE       0x40040C4C
+#define RF2_TX_PULSE_SHAPE_2            REG32_POINTER(RF2_TX_PULSE_SHAPE_2_BASE)
+
+/* TX_PULSE_SHAPE_2 */
+#define RF3_TX_PULSE_SHAPE_2_BASE       0x40040E4C
+#define RF3_TX_PULSE_SHAPE_2            REG32_POINTER(RF3_TX_PULSE_SHAPE_2_BASE)
+
+/* TX_PULSE_SHAPE_3 */
+#define RF0_TX_PULSE_SHAPE_3_BASE       0x40040850
+#define RF0_TX_PULSE_SHAPE_3            REG32_POINTER(RF0_TX_PULSE_SHAPE_3_BASE)
+
+/* RF_TX_PULSE_SHAPE_3 bit positions */
+#define RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF12_POS 24
+#define RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF12_MASK (0xFF << RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF12_POS)
+#define RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF11_POS 16
+#define RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF11_MASK (0xFF << RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF11_POS)
+#define RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF10_POS 8
+#define RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF10_MASK (0xFF << RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF10_POS)
+#define RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF9_POS 0
+#define RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF9_MASK (0xFF << RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF9_POS)
+
+/* RF_TX_PULSE_SHAPE_3 settings */
+#define TX_PULSE_SHAPE_3_TX_COEF12_DEFAULT (0x36 << RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF12_POS)
+
+#define TX_PULSE_SHAPE_3_TX_COEF11_DEFAULT (0x20 << RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF11_POS)
+
+#define TX_PULSE_SHAPE_3_TX_COEF10_DEFAULT (0x10 << RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF10_POS)
+
+#define TX_PULSE_SHAPE_3_TX_COEF9_DEFAULT (0x7 << RF_TX_PULSE_SHAPE_3_TX_PULSE_SHAPE_3_TX_COEF9_POS)
+
+/* TX_PULSE_SHAPE_3 */
+#define RF1_TX_PULSE_SHAPE_3_BASE       0x40040A50
+#define RF1_TX_PULSE_SHAPE_3            REG32_POINTER(RF1_TX_PULSE_SHAPE_3_BASE)
+
+/* TX_PULSE_SHAPE_3 */
+#define RF2_TX_PULSE_SHAPE_3_BASE       0x40040C50
+#define RF2_TX_PULSE_SHAPE_3            REG32_POINTER(RF2_TX_PULSE_SHAPE_3_BASE)
+
+/* TX_PULSE_SHAPE_3 */
+#define RF3_TX_PULSE_SHAPE_3_BASE       0x40040E50
+#define RF3_TX_PULSE_SHAPE_3            REG32_POINTER(RF3_TX_PULSE_SHAPE_3_BASE)
+
+/* TX_PULSE_SHAPE_4 */
+#define RF0_TX_PULSE_SHAPE_4_BASE       0x40040854
+#define RF0_TX_PULSE_SHAPE_4            REG32_POINTER(RF0_TX_PULSE_SHAPE_4_BASE)
+
+/* RF_TX_PULSE_SHAPE_4 bit positions */
+#define RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF16_POS 24
+#define RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF16_MASK (0xFF << RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF16_POS)
+#define RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF15_POS 16
+#define RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF15_MASK (0xFF << RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF15_POS)
+#define RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF14_POS 8
+#define RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF14_MASK (0xFF << RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF14_POS)
+#define RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF13_POS 0
+#define RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF13_MASK (0xFF << RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF13_POS)
+
+/* RF_TX_PULSE_SHAPE_4 settings */
+#define TX_PULSE_SHAPE_4_TX_COEF16_DEFAULT (0x7D << RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF16_POS)
+
+#define TX_PULSE_SHAPE_4_TX_COEF15_DEFAULT (0x75 << RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF15_POS)
+
+#define TX_PULSE_SHAPE_4_TX_COEF14_DEFAULT (0x66 << RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF14_POS)
+
+#define TX_PULSE_SHAPE_4_TX_COEF13_DEFAULT (0x4F << RF_TX_PULSE_SHAPE_4_TX_PULSE_SHAPE_4_TX_COEF13_POS)
+
+/* TX_PULSE_SHAPE_4 */
+#define RF1_TX_PULSE_SHAPE_4_BASE       0x40040A54
+#define RF1_TX_PULSE_SHAPE_4            REG32_POINTER(RF1_TX_PULSE_SHAPE_4_BASE)
+
+/* TX_PULSE_SHAPE_4 */
+#define RF2_TX_PULSE_SHAPE_4_BASE       0x40040C54
+#define RF2_TX_PULSE_SHAPE_4            REG32_POINTER(RF2_TX_PULSE_SHAPE_4_BASE)
+
+/* TX_PULSE_SHAPE_4 */
+#define RF3_TX_PULSE_SHAPE_4_BASE       0x40040E54
+#define RF3_TX_PULSE_SHAPE_4            REG32_POINTER(RF3_TX_PULSE_SHAPE_4_BASE)
+
+/* FRONTEND */
+#define RF0_FRONTEND_BASE               0x40040858
+#define RF0_FRONTEND                    REG32_POINTER(RF0_FRONTEND_BASE)
+
+/* RF_FRONTEND bit positions */
+#define RF_FRONTEND_RX_IF_DIG_IF_DIG_POS 16
+#define RF_FRONTEND_RX_IF_DIG_IF_DIG_MASK (0x3FF << RF_FRONTEND_RX_IF_DIG_IF_DIG_POS)
+#define RF_FRONTEND_FRONTEND_RESAMPLE_PH_GAIN_POS 11
+#define RF_FRONTEND_FRONTEND_RESAMPLE_PH_GAIN_MASK (0xF << RF_FRONTEND_FRONTEND_RESAMPLE_PH_GAIN_POS)
+#define RF_FRONTEND_FRONTEND_RESAMPLE_RSSI_G2_POS 8
+#define RF_FRONTEND_FRONTEND_RESAMPLE_RSSI_G2_MASK (0x7 << RF_FRONTEND_FRONTEND_RESAMPLE_RSSI_G2_POS)
+#define RF_FRONTEND_FRONTEND_RESAMPLE_RSSI_G1_POS 6
+#define RF_FRONTEND_FRONTEND_RESAMPLE_RSSI_G1_MASK (0x3 << RF_FRONTEND_FRONTEND_RESAMPLE_RSSI_G1_POS)
+#define RF_FRONTEND_FRONTEND_EN_RESAMPLE_RSSI_POS 5
+#define RF_FRONTEND_FRONTEND_EN_RESAMPLE_PHADC_POS 4
+#define RF_FRONTEND_FRONTEND_DIV_PHADC_POS 0
+#define RF_FRONTEND_FRONTEND_DIV_PHADC_MASK (0xF << RF_FRONTEND_FRONTEND_DIV_PHADC_POS)
+
+/* RF_FRONTEND settings */
+#define RX_IF_DIG_IF_DIG_DEFAULT        (0x40 << RF_FRONTEND_RX_IF_DIG_IF_DIG_POS)
+
+#define FRONTEND_RESAMPLE_PH_GAIN_DEFAULT (0x6 << RF_FRONTEND_FRONTEND_RESAMPLE_PH_GAIN_POS)
+
+#define FRONTEND_RESAMPLE_RSSI_G2_DEFAULT (0x0 << RF_FRONTEND_FRONTEND_RESAMPLE_RSSI_G2_POS)
+
+#define FRONTEND_RESAMPLE_RSSI_G1_DEFAULT (0x0 << RF_FRONTEND_FRONTEND_RESAMPLE_RSSI_G1_POS)
+
+#define FRONTEND_EN_RESAMPLE_RSSI_DISABLE (0x0 << RF_FRONTEND_FRONTEND_EN_RESAMPLE_RSSI_POS)
+#define FRONTEND_EN_RESAMPLE_RSSI_ENABLE (0x1 << RF_FRONTEND_FRONTEND_EN_RESAMPLE_RSSI_POS)
+
+#define FRONTEND_EN_RESAMPLE_PHADC_DISABLE (0x0 << RF_FRONTEND_FRONTEND_EN_RESAMPLE_PHADC_POS)
+#define FRONTEND_EN_RESAMPLE_PHADC_ENABLE (0x1 << RF_FRONTEND_FRONTEND_EN_RESAMPLE_PHADC_POS)
+
+#define FRONTEND_DIV_PHADC_DEFAULT      (0x0 << RF_FRONTEND_FRONTEND_DIV_PHADC_POS)
+
+/* FRONTEND */
+#define RF1_FRONTEND_BASE               0x40040A58
+#define RF1_FRONTEND                    REG32_POINTER(RF1_FRONTEND_BASE)
+
+/* FRONTEND */
+#define RF2_FRONTEND_BASE               0x40040C58
+#define RF2_FRONTEND                    REG32_POINTER(RF2_FRONTEND_BASE)
+
+/* FRONTEND */
+#define RF3_FRONTEND_BASE               0x40040E58
+#define RF3_FRONTEND                    REG32_POINTER(RF3_FRONTEND_BASE)
+
+/* RX_PULSE_SHAPE */
+#define RF0_RX_PULSE_SHAPE_BASE         0x4004085C
+#define RF0_RX_PULSE_SHAPE              REG32_POINTER(RF0_RX_PULSE_SHAPE_BASE)
+
+/* RF_RX_PULSE_SHAPE bit positions */
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF8_POS 28
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF8_MASK (0xF << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF8_POS)
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF7_POS 24
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF7_MASK (0xF << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF7_POS)
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF6_POS 20
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF6_MASK (0xF << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF6_POS)
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF5_POS 16
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF5_MASK (0xF << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF5_POS)
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF4_POS 12
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF4_MASK (0xF << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF4_POS)
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF3_POS 8
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF3_MASK (0xF << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF3_POS)
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF2_POS 4
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF2_MASK (0xF << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF2_POS)
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF1_POS 0
+#define RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF1_MASK (0xF << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF1_POS)
+
+/* RF_RX_PULSE_SHAPE settings */
+#define RX_PULSE_SHAPE_RX_COEF8_DEFAULT (0xF << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF8_POS)
+
+#define RX_PULSE_SHAPE_RX_COEF7_DEFAULT (0xE << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF7_POS)
+
+#define RX_PULSE_SHAPE_RX_COEF6_DEFAULT (0xC << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF6_POS)
+
+#define RX_PULSE_SHAPE_RX_COEF5_DEFAULT (0xA << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF5_POS)
+
+#define RX_PULSE_SHAPE_RX_COEF4_DEFAULT (0x7 << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF4_POS)
+
+#define RX_PULSE_SHAPE_RX_COEF3_DEFAULT (0x4 << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF3_POS)
+
+#define RX_PULSE_SHAPE_RX_COEF2_DEFAULT (0x2 << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF2_POS)
+
+#define RX_PULSE_SHAPE_RX_COEF1_DEFAULT (0x1 << RF_RX_PULSE_SHAPE_RX_PULSE_SHAPE_RX_COEF1_POS)
+
+/* RX_PULSE_SHAPE */
+#define RF1_RX_PULSE_SHAPE_BASE         0x40040A5C
+#define RF1_RX_PULSE_SHAPE              REG32_POINTER(RF1_RX_PULSE_SHAPE_BASE)
+
+/* RX_PULSE_SHAPE */
+#define RF2_RX_PULSE_SHAPE_BASE         0x40040C5C
+#define RF2_RX_PULSE_SHAPE              REG32_POINTER(RF2_RX_PULSE_SHAPE_BASE)
+
+/* RX_PULSE_SHAPE */
+#define RF3_RX_PULSE_SHAPE_BASE         0x40040E5C
+#define RF3_RX_PULSE_SHAPE              REG32_POINTER(RF3_RX_PULSE_SHAPE_BASE)
+
+/* REG18 */
+#define RF0_REG18_BASE                  0x40040860
+#define RF0_REG18                       REG32_POINTER(RF0_REG18_BASE)
+
+/* RF_REG18 bit positions */
+#define RF_REG18_DELAY_LINE_CONF_DL_ISI_THR_POS 25
+#define RF_REG18_DELAY_LINE_CONF_DL_ISI_THR_MASK (0x7 << RF_REG18_DELAY_LINE_CONF_DL_ISI_THR_POS)
+#define RF_REG18_DELAY_LINE_CONF_EN_SYNC_OK_DELAY_LINE_POS 22
+#define RF_REG18_DELAY_LINE_CONF_MAX_ERR_IN_DL_SYNC_POS 20
+#define RF_REG18_DELAY_LINE_CONF_MAX_ERR_IN_DL_SYNC_MASK (0x3 << RF_REG18_DELAY_LINE_CONF_MAX_ERR_IN_DL_SYNC_POS)
+#define RF_REG18_DELAY_LINE_CONF_EN_NOT_CAUSAL_POS 19
+#define RF_REG18_DELAY_LINE_CONF_NC_SEL_OUT_POS 16
+#define RF_REG18_DELAY_LINE_CONF_NC_SEL_OUT_MASK (0x7 << RF_REG18_DELAY_LINE_CONF_NC_SEL_OUT_POS)
+#define RF_REG18_FSK_FCR_AMP_1_FSK_FCR_AMP1_POS 8
+#define RF_REG18_FSK_FCR_AMP_1_FSK_FCR_AMP1_MASK (0xFF << RF_REG18_FSK_FCR_AMP_1_FSK_FCR_AMP1_POS)
+#define RF_REG18_CARRIER_RECOVERY_EXTRA_FREQ_LIMIT_MAN_POS 4
+#define RF_REG18_CARRIER_RECOVERY_EXTRA_FREQ_LIMIT_MAN_MASK (0x7 << RF_REG18_CARRIER_RECOVERY_EXTRA_FREQ_LIMIT_MAN_POS)
+#define RF_REG18_CARRIER_RECOVERY_EXTRA_FREQ_LIMIT_EXP_POS 0
+#define RF_REG18_CARRIER_RECOVERY_EXTRA_FREQ_LIMIT_EXP_MASK (0x7 << RF_REG18_CARRIER_RECOVERY_EXTRA_FREQ_LIMIT_EXP_POS)
+
+/* RF_REG18 settings */
+#define DELAY_LINE_CONF_DL_ISI_THR_DEFAULT (0x1 << RF_REG18_DELAY_LINE_CONF_DL_ISI_THR_POS)
+
+#define DELAY_LINE_CONF_EN_SYNC_OK_DELAY_LINE_DISABLE (0x0 << RF_REG18_DELAY_LINE_CONF_EN_SYNC_OK_DELAY_LINE_POS)
+#define DELAY_LINE_CONF_EN_SYNC_OK_DELAY_LINE_ENABLE (0x1 << RF_REG18_DELAY_LINE_CONF_EN_SYNC_OK_DELAY_LINE_POS)
+
+#define DELAY_LINE_CONF_MAX_ERR_IN_DL_SYNC_DEFAULT (0x0 << RF_REG18_DELAY_LINE_CONF_MAX_ERR_IN_DL_SYNC_POS)
+
+#define DELAY_LINE_CONF_EN_NOT_CAUSAL_DISABLE (0x0 << RF_REG18_DELAY_LINE_CONF_EN_NOT_CAUSAL_POS)
+#define DELAY_LINE_CONF_EN_NOT_CAUSAL_ENABLE (0x1 << RF_REG18_DELAY_LINE_CONF_EN_NOT_CAUSAL_POS)
+
+#define DELAY_LINE_CONF_NC_SEL_OUT_4    (0x0 << RF_REG18_DELAY_LINE_CONF_NC_SEL_OUT_POS)
+#define DELAY_LINE_CONF_NC_SEL_OUT_6    (0x1 << RF_REG18_DELAY_LINE_CONF_NC_SEL_OUT_POS)
+#define DELAY_LINE_CONF_NC_SEL_OUT_8    (0x2 << RF_REG18_DELAY_LINE_CONF_NC_SEL_OUT_POS)
+#define DELAY_LINE_CONF_NC_SEL_OUT_12   (0x3 << RF_REG18_DELAY_LINE_CONF_NC_SEL_OUT_POS)
+#define DELAY_LINE_CONF_NC_SEL_OUT_16   (0x4 << RF_REG18_DELAY_LINE_CONF_NC_SEL_OUT_POS)
+#define DELAY_LINE_CONF_NC_SEL_OUT_24   (0x5 << RF_REG18_DELAY_LINE_CONF_NC_SEL_OUT_POS)
+#define DELAY_LINE_CONF_NC_SEL_OUT_32   (0x6 << RF_REG18_DELAY_LINE_CONF_NC_SEL_OUT_POS)
+#define DELAY_LINE_CONF_NC_SEL_OUT_40   (0x7 << RF_REG18_DELAY_LINE_CONF_NC_SEL_OUT_POS)
+
+#define FSK_FCR_AMP_1_FSK_FCR_AMP1_DEFAULT (0x1B << RF_REG18_FSK_FCR_AMP_1_FSK_FCR_AMP1_POS)
+
+#define CARRIER_RECOVERY_EXTRA_FREQ_LIMIT_MAN_DEFAULT (0x5 << RF_REG18_CARRIER_RECOVERY_EXTRA_FREQ_LIMIT_MAN_POS)
+
+#define CARRIER_RECOVERY_EXTRA_FREQ_LIMIT_EXP_DEFAULT (0x0 << RF_REG18_CARRIER_RECOVERY_EXTRA_FREQ_LIMIT_EXP_POS)
+
+/* REG18 */
+#define RF1_REG18_BASE                  0x40040A60
+#define RF1_REG18                       REG32_POINTER(RF1_REG18_BASE)
+
+/* REG18 */
+#define RF2_REG18_BASE                  0x40040C60
+#define RF2_REG18                       REG32_POINTER(RF2_REG18_BASE)
+
+/* REG18 */
+#define RF3_REG18_BASE                  0x40040E60
+#define RF3_REG18                       REG32_POINTER(RF3_REG18_BASE)
+
+/* REG19 */
+#define RF0_REG19_BASE                  0x40040864
+#define RF0_REG19                       REG32_POINTER(RF0_REG19_BASE)
+
+/* RF_REG19 bit positions */
+#define RF_REG19_RSSI_BANK_EN_RSSI_DITHER_POS 30
+#define RF_REG19_RSSI_BANK_FAST_RSSI_POS 29
+#define RF_REG19_RSSI_BANK_EN_FAST_PRE_SYNC_POS 28
+#define RF_REG19_RSSI_BANK_TAU_RSSI_FILTERING_POS 24
+#define RF_REG19_RSSI_BANK_TAU_RSSI_FILTERING_MASK (0xF << RF_REG19_RSSI_BANK_TAU_RSSI_FILTERING_POS)
+#define RF_REG19_DECISION_USE_VIT_SOFT_POS 20
+#define RF_REG19_DECISION_VITERBI_LEN_POS 18
+#define RF_REG19_DECISION_VITERBI_LEN_MASK (0x3 << RF_REG19_DECISION_VITERBI_LEN_POS)
+#define RF_REG19_DECISION_VITERBI_POW_NLIN_POS 17
+#define RF_REG19_DECISION_EN_VITERBI_GFSK_POS 16
+#define RF_REG19_FSK_FCR_AMP_3_FSK_FCR_AMP3_POS 8
+#define RF_REG19_FSK_FCR_AMP_3_FSK_FCR_AMP3_MASK (0xFF << RF_REG19_FSK_FCR_AMP_3_FSK_FCR_AMP3_POS)
+#define RF_REG19_FSK_FCR_AMP_2_FSK_FCR_AMP2_POS 0
+#define RF_REG19_FSK_FCR_AMP_2_FSK_FCR_AMP2_MASK (0xFF << RF_REG19_FSK_FCR_AMP_2_FSK_FCR_AMP2_POS)
+
+/* RF_REG19 settings */
+#define RSSI_BANK_EN_RRSI_DITHER_DISABLE (0x0 << RF_REG19_RSSI_BANK_EN_RSSI_DITHER_POS)
+#define RSSI_BANK_EN_RRSI_DITHER_ENABLE (0x1 << RF_REG19_RSSI_BANK_EN_RSSI_DITHER_POS)
+
+#define RSSI_BANK_FAST_RSSI_NORMAl      (0x0 << RF_REG19_RSSI_BANK_FAST_RSSI_POS)
+#define RSSI_BANK_FAST_RSSI_FAST        (0x1 << RF_REG19_RSSI_BANK_FAST_RSSI_POS)
+
+#define RSSI_BANK_EN_FAST_PRE_SYNC_DISABLE (0x0 << RF_REG19_RSSI_BANK_EN_FAST_PRE_SYNC_POS)
+#define RSSI_BANK_EN_FAST_PRE_SYNC_ENABLE (0x1 << RF_REG19_RSSI_BANK_EN_FAST_PRE_SYNC_POS)
+
+#define RSSI_BANK_TAU_RSSI_FILTERING_4  (0x0 << RF_REG19_RSSI_BANK_TAU_RSSI_FILTERING_POS)
+#define RSSI_BANK_TAU_RSSI_FILTERING_8  (0x1 << RF_REG19_RSSI_BANK_TAU_RSSI_FILTERING_POS)
+#define RSSI_BANK_TAU_RSSI_FILTERING_16 (0x2 << RF_REG19_RSSI_BANK_TAU_RSSI_FILTERING_POS)
+#define RSSI_BANK_TAU_RSSI_FILTERING_32 (0x3 << RF_REG19_RSSI_BANK_TAU_RSSI_FILTERING_POS)
+#define RSSI_BANK_TAU_RSSI_FILTERING_64 (0x4 << RF_REG19_RSSI_BANK_TAU_RSSI_FILTERING_POS)
+#define RSSI_BANK_TAU_RSSI_FILTERING_128 (0x5 << RF_REG19_RSSI_BANK_TAU_RSSI_FILTERING_POS)
+#define RSSI_BANK_TAU_RSSI_FILTERING_256 (0x6 << RF_REG19_RSSI_BANK_TAU_RSSI_FILTERING_POS)
+#define RSSI_BANK_TAU_RSSI_FILTERING_512 (0x7 << RF_REG19_RSSI_BANK_TAU_RSSI_FILTERING_POS)
+#define RSSI_BANK_TAU_RSSI_FILTERING_1024 (0x8 << RF_REG19_RSSI_BANK_TAU_RSSI_FILTERING_POS)
+
+#define DECISION_USE_VIT_SOFT_DISABLE   (0x0 << RF_REG19_DECISION_USE_VIT_SOFT_POS)
+#define DECISION_USE_VIT_SOFT_ENABLE    (0x1 << RF_REG19_DECISION_USE_VIT_SOFT_POS)
+
+#define DECISION_VITERBI_LEN_1          (0x0 << RF_REG19_DECISION_VITERBI_LEN_POS)
+#define DECISION_VITERBI_LEN_2          (0x1 << RF_REG19_DECISION_VITERBI_LEN_POS)
+#define DECISION_VITERBI_LEN_4          (0x2 << RF_REG19_DECISION_VITERBI_LEN_POS)
+#define DECISION_VITERBI_LEN_8          (0x3 << RF_REG19_DECISION_VITERBI_LEN_POS)
+
+#define DECISION_VITERBI_POW_NLIN_DISABLE (0x0 << RF_REG19_DECISION_VITERBI_POW_NLIN_POS)
+#define DECISION_VITERBI_POW_NLIN_ENABLE (0x1 << RF_REG19_DECISION_VITERBI_POW_NLIN_POS)
+
+#define DECISION_EN_VITERBI_GFSK_DISABLE (0x0 << RF_REG19_DECISION_EN_VITERBI_GFSK_POS)
+#define DECISION_EN_VITERBI_GFSK_ENABLE (0x1 << RF_REG19_DECISION_EN_VITERBI_GFSK_POS)
+
+#define FSK_FCR_AMP_3_FSK_FCR_AMP3_DEFAULT (0x44 << RF_REG19_FSK_FCR_AMP_3_FSK_FCR_AMP3_POS)
+
+#define FSK_FCR_AMP_2_FSK_FCR_AMP2_DEFAULT (0x30 << RF_REG19_FSK_FCR_AMP_2_FSK_FCR_AMP2_POS)
+
+/* REG19 */
+#define RF1_REG19_BASE                  0x40040A64
+#define RF1_REG19                       REG32_POINTER(RF1_REG19_BASE)
+
+/* REG19 */
+#define RF2_REG19_BASE                  0x40040C64
+#define RF2_REG19                       REG32_POINTER(RF2_REG19_BASE)
+
+/* REG19 */
+#define RF3_REG19_BASE                  0x40040E64
+#define RF3_REG19                       REG32_POINTER(RF3_REG19_BASE)
+
+/* REG1A */
+#define RF0_REG1A_BASE                  0x40040868
+#define RF0_REG1A                       REG32_POINTER(RF0_REG1A_BASE)
+
+/* RF_REG1A bit positions */
+#define RF_REG1A_PA_PWR_PA_PWR_POS      24
+#define RF_REG1A_PA_PWR_PA_PWR_MASK     (0x1F << RF_REG1A_PA_PWR_PA_PWR_POS)
+#define RF_REG1A_RSSI_BANK_ALT_USE_RSSI_ALT_POS 22
+#define RF_REG1A_RSSI_BANK_ALT_FAST_RSSI_ALT_POS 21
+#define RF_REG1A_RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_POS 16
+#define RF_REG1A_RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_MASK (0xF << RF_REG1A_RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_POS)
+#define RF_REG1A_CORRECT_CFREQ_IF_CORRECT_CFREQ_IF_POS 0
+#define RF_REG1A_CORRECT_CFREQ_IF_CORRECT_CFREQ_IF_MASK (0xFFFF << RF_REG1A_CORRECT_CFREQ_IF_CORRECT_CFREQ_IF_POS)
+
+/* RF_REG1A settings */
+#define PA_PWR_PA_PWR_DEFAULT           (0xC << RF_REG1A_PA_PWR_PA_PWR_POS)
+
+#define RSSI_BANK_ALT_USE_RSSI_INITIAL  (0x0 << RF_REG1A_RSSI_BANK_ALT_USE_RSSI_ALT_POS)
+#define RSSI_BANK_ALT_USE_RSSI_ALTERNATE (0x1 << RF_REG1A_RSSI_BANK_ALT_USE_RSSI_ALT_POS)
+
+#define RSSI_BANK_ALT_FAST_RSSI_NORMAL  (0x0 << RF_REG1A_RSSI_BANK_ALT_FAST_RSSI_ALT_POS)
+#define RSSI_BANK_ALT_FAST_RSSI_FAST    (0x1 << RF_REG1A_RSSI_BANK_ALT_FAST_RSSI_ALT_POS)
+
+#define RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_4 (0x0 << RF_REG1A_RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_POS)
+#define RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_8 (0x1 << RF_REG1A_RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_POS)
+#define RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_16 (0x2 << RF_REG1A_RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_POS)
+#define RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_32 (0x3 << RF_REG1A_RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_POS)
+#define RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_64 (0x4 << RF_REG1A_RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_POS)
+#define RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_128 (0x5 << RF_REG1A_RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_POS)
+#define RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_256 (0x6 << RF_REG1A_RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_POS)
+#define RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_512 (0x7 << RF_REG1A_RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_POS)
+#define RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_1024 (0x8 << RF_REG1A_RSSI_BANK_ALT_TAU_RSSI_FILTERING_ALT_POS)
+
+#define CORRECT_CFREQ_IF_CORRECT_CFREQ_IF_DEFAULT (0x1555 << RF_REG1A_CORRECT_CFREQ_IF_CORRECT_CFREQ_IF_POS)
+
+/* REG1A */
+#define RF1_REG1A_BASE                  0x40040A68
+#define RF1_REG1A                       REG32_POINTER(RF1_REG1A_BASE)
+
+/* REG1A */
+#define RF2_REG1A_BASE                  0x40040C68
+#define RF2_REG1A                       REG32_POINTER(RF2_REG1A_BASE)
+
+/* REG1A */
+#define RF3_REG1A_BASE                  0x40040E68
+#define RF3_REG1A                       REG32_POINTER(RF3_REG1A_BASE)
+
+/* REG1B */
+#define RF0_REG1B_BASE                  0x4004086C
+#define RF0_REG1B                       REG32_POINTER(RF0_REG1B_BASE)
+
+/* RF_REG1B bit positions */
+#define RF_REG1B_PLL_BANK_EN_LOW_CHP_BIAS_TX_POS 31
+#define RF_REG1B_PLL_BANK_EN_LOW_CHP_BIAS_RX_POS 30
+#define RF_REG1B_PLL_BANK_PLL_FILTER_RES_TRIM_TX_POS 28
+#define RF_REG1B_PLL_BANK_PLL_FILTER_RES_TRIM_TX_MASK (0x3 << RF_REG1B_PLL_BANK_PLL_FILTER_RES_TRIM_TX_POS)
+#define RF_REG1B_PLL_BANK_IQ_PLL_0_TX_POS 24
+#define RF_REG1B_PLL_BANK_IQ_PLL_0_TX_MASK (0xF << RF_REG1B_PLL_BANK_IQ_PLL_0_TX_POS)
+#define RF_REG1B_PLL_BANK_LOW_DR_TX_POS 22
+#define RF_REG1B_PLL_BANK_PLL_FILTER_RES_TRIM_POS 20
+#define RF_REG1B_PLL_BANK_PLL_FILTER_RES_TRIM_MASK (0x3 << RF_REG1B_PLL_BANK_PLL_FILTER_RES_TRIM_POS)
+#define RF_REG1B_PLL_BANK_IQ_PLL_0_RX_POS 16
+#define RF_REG1B_PLL_BANK_IQ_PLL_0_RX_MASK (0xF << RF_REG1B_PLL_BANK_IQ_PLL_0_RX_POS)
+#define RF_REG1B_ANACLK_USE_NEW_ANACK_POS 15
+#define RF_REG1B_ANACLK_DIV_CK_RSSI_POS 12
+#define RF_REG1B_ANACLK_DIV_CK_RSSI_MASK (0x3 << RF_REG1B_ANACLK_DIV_CK_RSSI_POS)
+#define RF_REG1B_ANACLK_DIV_CK_FILT_POS 10
+#define RF_REG1B_ANACLK_DIV_CK_FILT_MASK (0x3 << RF_REG1B_ANACLK_DIV_CK_FILT_POS)
+#define RF_REG1B_ANACLK_DIV_CK_PHADC_POS 8
+#define RF_REG1B_ANACLK_DIV_CK_PHADC_MASK (0x3 << RF_REG1B_ANACLK_DIV_CK_PHADC_POS)
+#define RF_REG1B_ANACLK_DIV_RSSI_POS    4
+#define RF_REG1B_ANACLK_DIV_RSSI_MASK   (0xF << RF_REG1B_ANACLK_DIV_RSSI_POS)
+#define RF_REG1B_ANACLK_DIV_FILT_POS    0
+#define RF_REG1B_ANACLK_DIV_FILT_MASK   (0xF << RF_REG1B_ANACLK_DIV_FILT_POS)
+
+/* RF_REG1B settings */
+#define PLL_BANK_EN_LOW_CHP_BIAS_TX_RESET (0x0 << RF_REG1B_PLL_BANK_EN_LOW_CHP_BIAS_TX_POS)
+#define PLL_BANK_EN_LOW_CHP_BIAS_TX_SET (0x1 << RF_REG1B_PLL_BANK_EN_LOW_CHP_BIAS_TX_POS)
+
+#define PLL_BANK_EN_LOW_CHP_BIAS_RX_RESET (0x0 << RF_REG1B_PLL_BANK_EN_LOW_CHP_BIAS_RX_POS)
+#define PLL_BANK_EN_LOW_CHP_BIAS_RX_SET (0x1 << RF_REG1B_PLL_BANK_EN_LOW_CHP_BIAS_RX_POS)
+
+#define PLL_BANK_PLL_FILTER_RES_TRIM_TX_DEFAULT (0x3 << RF_REG1B_PLL_BANK_PLL_FILTER_RES_TRIM_TX_POS)
+
+#define PLL_BANK_IQ_PLL_0_TX_DEFAULT    (0x4 << RF_REG1B_PLL_BANK_IQ_PLL_0_TX_POS)
+
+#define PLL_BANK_LOW_DR_TX_DISABLE      (0x0 << RF_REG1B_PLL_BANK_LOW_DR_TX_POS)
+#define PLL_BANK_LOW_DR_TX_ENABLE       (0x1 << RF_REG1B_PLL_BANK_LOW_DR_TX_POS)
+
+#define PLL_BANK_PLL_FILTER_RES_TRIM_0  (0x0 << RF_REG1B_PLL_BANK_PLL_FILTER_RES_TRIM_POS)
+#define PLL_BANK_PLL_FILTER_RES_TRIM_1  (0x1 << RF_REG1B_PLL_BANK_PLL_FILTER_RES_TRIM_POS)
+#define PLL_BANK_PLL_FILTER_RES_TRIM_2  (0x2 << RF_REG1B_PLL_BANK_PLL_FILTER_RES_TRIM_POS)
+#define PLL_BANK_PLL_FILTER_RES_TRIM_3  (0x3 << RF_REG1B_PLL_BANK_PLL_FILTER_RES_TRIM_POS)
+
+#define PLL_BANK_IQ_PLL_0_RX_DEFAULT    (0xB << RF_REG1B_PLL_BANK_IQ_PLL_0_RX_POS)
+
+#define ANACLK_USE_NEW_ANACK_DISABLE    (0x0 << RF_REG1B_ANACLK_USE_NEW_ANACK_POS)
+#define ANACLK_USE_NEW_ANACK_ENABLE     (0x1 << RF_REG1B_ANACLK_USE_NEW_ANACK_POS)
+
+#define ANACLK_DIV_CK_RSSI_3            (0x0 << RF_REG1B_ANACLK_DIV_CK_RSSI_POS)
+#define ANACLK_DIV_CK_RSSI_2            (0x1 << RF_REG1B_ANACLK_DIV_CK_RSSI_POS)
+#define ANACLK_DIV_CK_RSSI_1            (0x2 << RF_REG1B_ANACLK_DIV_CK_RSSI_POS)
+
+#define ANACLK_DIV_CK_FILT_3            (0x0 << RF_REG1B_ANACLK_DIV_CK_FILT_POS)
+#define ANACLK_DIV_CK_FILT_2            (0x1 << RF_REG1B_ANACLK_DIV_CK_FILT_POS)
+#define ANACLK_DIV_CK_FILT_1            (0x2 << RF_REG1B_ANACLK_DIV_CK_FILT_POS)
+
+#define ANACLK_DIV_CK_PHADC_3           (0x0 << RF_REG1B_ANACLK_DIV_CK_PHADC_POS)
+#define ANACLK_DIV_CK_PHADC_2           (0x1 << RF_REG1B_ANACLK_DIV_CK_PHADC_POS)
+#define ANACLK_DIV_CK_PHADC_1           (0x2 << RF_REG1B_ANACLK_DIV_CK_PHADC_POS)
+
+#define ANACLK_DIV_RSSI_DEFAULT         (0x1 << RF_REG1B_ANACLK_DIV_RSSI_POS)
+
+#define ANACLK_DIV_FILT_DEFAULT         (0x5 << RF_REG1B_ANACLK_DIV_FILT_POS)
+
+/* REG1B */
+#define RF1_REG1B_BASE                  0x40040A6C
+#define RF1_REG1B                       REG32_POINTER(RF1_REG1B_BASE)
+
+/* REG1B */
+#define RF2_REG1B_BASE                  0x40040C6C
+#define RF2_REG1B                       REG32_POINTER(RF2_REG1B_BASE)
+
+/* REG1B */
+#define RF3_REG1B_BASE                  0x40040E6C
+#define RF3_REG1B                       REG32_POINTER(RF3_REG1B_BASE)
+
+/* RSSI_CTRL */
+#define RF0_RSSI_CTRL_BASE              0x40040870
+#define RF0_RSSI_CTRL                   REG32_POINTER(RF0_RSSI_CTRL_BASE)
+
+/* RF_RSSI_CTRL bit positions */
+#define RF_RSSI_CTRL_RSSI_CTRL_AGC_DECAY_TAU_POS 30
+#define RF_RSSI_CTRL_RSSI_CTRL_AGC_DECAY_TAU_MASK (0x3 << RF_RSSI_CTRL_RSSI_CTRL_AGC_DECAY_TAU_POS)
+#define RF_RSSI_CTRL_RSSI_CTRL_AGC_USE_LNA_POS 29
+#define RF_RSSI_CTRL_RSSI_CTRL_AGC_MODE_POS 28
+#define RF_RSSI_CTRL_RSSI_CTRL_AGC_WAIT_POS 26
+#define RF_RSSI_CTRL_RSSI_CTRL_AGC_WAIT_MASK (0x3 << RF_RSSI_CTRL_RSSI_CTRL_AGC_WAIT_POS)
+#define RF_RSSI_CTRL_RSSI_CTRL_PAYLOAD_BLOCKS_AGC_POS 25
+#define RF_RSSI_CTRL_RSSI_CTRL_BYPASS_AGC_POS 24
+#define RF_RSSI_CTRL_PA_PWR_OFFSET_PA_PWR_OFFSET_POS 16
+#define RF_RSSI_CTRL_PA_PWR_OFFSET_PA_PWR_OFFSET_MASK (0x1F << RF_RSSI_CTRL_PA_PWR_OFFSET_PA_PWR_OFFSET_POS)
+#define RF_RSSI_CTRL_FILTER_BIAS_IQ_FI_BW_POS 8
+#define RF_RSSI_CTRL_FILTER_BIAS_IQ_FI_BW_MASK (0x1F << RF_RSSI_CTRL_FILTER_BIAS_IQ_FI_BW_POS)
+#define RF_RSSI_CTRL_FILTER_BIAS_IQ_FI_FC_POS 0
+#define RF_RSSI_CTRL_FILTER_BIAS_IQ_FI_FC_MASK (0x1F << RF_RSSI_CTRL_FILTER_BIAS_IQ_FI_FC_POS)
+
+/* RF_RSSI_CTRL settings */
+#define RSSI_CTRL_AGC_DECAY_TAU_DEFAULT (0x3 << RF_RSSI_CTRL_RSSI_CTRL_AGC_DECAY_TAU_POS)
+
+#define RSSI_CTRL_AGC_USE_LNA_DISABLE   (0x0 << RF_RSSI_CTRL_RSSI_CTRL_AGC_USE_LNA_POS)
+#define RSSI_CTRL_AGC_USE_LNA_ENABLE    (0x1 << RF_RSSI_CTRL_RSSI_CTRL_AGC_USE_LNA_POS)
+
+#define RSSI_CTRL_AGC_MODE_DISABLE      (0x0 << RF_RSSI_CTRL_RSSI_CTRL_AGC_MODE_POS)
+#define RSSI_CTRL_AGC_MODE_ENABLE       (0x1 << RF_RSSI_CTRL_RSSI_CTRL_AGC_MODE_POS)
+
+#define RSSI_CTRL_AGC_WAIT_0            (0x0 << RF_RSSI_CTRL_RSSI_CTRL_AGC_WAIT_POS)
+#define RSSI_CTRL_AGC_WAIT_1            (0x1 << RF_RSSI_CTRL_RSSI_CTRL_AGC_WAIT_POS)
+#define RSSI_CTRL_AGC_WAIT_2            (0x2 << RF_RSSI_CTRL_RSSI_CTRL_AGC_WAIT_POS)
+#define RSSI_CTRL_AGC_WAIT_3            (0x3 << RF_RSSI_CTRL_RSSI_CTRL_AGC_WAIT_POS)
+
+#define RSSI_CTRL_PAYLOAD_BLOCKS_AGC_DISABLE (0x0 << RF_RSSI_CTRL_RSSI_CTRL_PAYLOAD_BLOCKS_AGC_POS)
+#define RSSI_CTRL_PAYLOAD_BLOCKS_AGC_ENABLE (0x1 << RF_RSSI_CTRL_RSSI_CTRL_PAYLOAD_BLOCKS_AGC_POS)
+
+#define RSSI_CTRL_BYPASS_AGC_DISABLE    (0x0 << RF_RSSI_CTRL_RSSI_CTRL_BYPASS_AGC_POS)
+#define RSSI_CTRL_BYPASS_AGC_ENABLE     (0x1 << RF_RSSI_CTRL_RSSI_CTRL_BYPASS_AGC_POS)
+
+#define PA_PWR_OFFSET_PA_PWR_OFFSET_DEFAULT (0x0 << RF_RSSI_CTRL_PA_PWR_OFFSET_PA_PWR_OFFSET_POS)
+
+#define FILTER_BIAS_IQ_FI_BW_DEFAULT    (0xB << RF_RSSI_CTRL_FILTER_BIAS_IQ_FI_BW_POS)
+
+#define FILTER_BIAS_IQ_FI_FC_DEFAULT    (0x14 << RF_RSSI_CTRL_FILTER_BIAS_IQ_FI_FC_POS)
+
+/* RSSI_CTRL */
+#define RF1_RSSI_CTRL_BASE              0x40040A70
+#define RF1_RSSI_CTRL                   REG32_POINTER(RF1_RSSI_CTRL_BASE)
+
+/* RSSI_CTRL */
+#define RF2_RSSI_CTRL_BASE              0x40040C70
+#define RF2_RSSI_CTRL                   REG32_POINTER(RF2_RSSI_CTRL_BASE)
+
+/* RSSI_CTRL */
+#define RF3_RSSI_CTRL_BASE              0x40040E70
+#define RF3_RSSI_CTRL                   REG32_POINTER(RF3_RSSI_CTRL_BASE)
+
+/* REG1D */
+#define RF0_REG1D_BASE                  0x40040874
+#define RF0_REG1D                       REG32_POINTER(RF0_REG1D_BASE)
+
+/* RF_REG1D bit positions */
+#define RF_REG1D_AGC_PEAK_DET_PEAK_DET_TAU_POS 28
+#define RF_REG1D_AGC_PEAK_DET_PEAK_DET_TAU_MASK (0xF << RF_REG1D_AGC_PEAK_DET_PEAK_DET_TAU_POS)
+#define RF_REG1D_AGC_PEAK_DET_PEAK_DET_THR_LOW_POS 26
+#define RF_REG1D_AGC_PEAK_DET_PEAK_DET_THR_LOW_MASK (0x3 << RF_REG1D_AGC_PEAK_DET_PEAK_DET_THR_LOW_POS)
+#define RF_REG1D_AGC_PEAK_DET_PEAK_DET_THR_HIGH_POS 25
+#define RF_REG1D_AGC_PEAK_DET_EN_AGC_PEAK_POS 24
+#define RF_REG1D_AGC_THR_HIGH_AGC_THR_HIGH_POS 16
+#define RF_REG1D_AGC_THR_HIGH_AGC_THR_HIGH_MASK (0xFF << RF_REG1D_AGC_THR_HIGH_AGC_THR_HIGH_POS)
+#define RF_REG1D_AGC_THR_LOW_AGC_THR_LOW_POS 8
+#define RF_REG1D_AGC_THR_LOW_AGC_THR_LOW_MASK (0xFF << RF_REG1D_AGC_THR_LOW_AGC_THR_LOW_POS)
+#define RF_REG1D_ATT_CTRL_ATT_CTRL_MAX_POS 4
+#define RF_REG1D_ATT_CTRL_ATT_CTRL_MAX_MASK (0xF << RF_REG1D_ATT_CTRL_ATT_CTRL_MAX_POS)
+#define RF_REG1D_ATT_CTRL_SET_RX_ATT_CTRL_POS 0
+#define RF_REG1D_ATT_CTRL_SET_RX_ATT_CTRL_MASK (0xF << RF_REG1D_ATT_CTRL_SET_RX_ATT_CTRL_POS)
+
+/* RF_REG1D settings */
+#define AGC_PEAK_DET_PEAK_DET_TAU_DEFAULT (0x7 << RF_REG1D_AGC_PEAK_DET_PEAK_DET_TAU_POS)
+
+#define AGC_PEAK_DET_PEAK_DET_THR_LOW_DEFAULT (0x0 << RF_REG1D_AGC_PEAK_DET_PEAK_DET_THR_LOW_POS)
+
+#define AGC_PEAK_DET_PEAK_DET_THR_HIGH_0 (0x0 << RF_REG1D_AGC_PEAK_DET_PEAK_DET_THR_HIGH_POS)
+#define AGC_PEAK_DET_PEAK_DET_THR_HIGH_1 (0x1 << RF_REG1D_AGC_PEAK_DET_PEAK_DET_THR_HIGH_POS)
+
+#define AGC_PEAK_DET_EN_AGC_PEAK_DISABLE (0x0 << RF_REG1D_AGC_PEAK_DET_EN_AGC_PEAK_POS)
+#define AGC_PEAK_DET_EN_AGC_PEAK_ENABLE (0x1 << RF_REG1D_AGC_PEAK_DET_EN_AGC_PEAK_POS)
+
+#define AGC_THR_HIGH_AGC_THR_HIGH_DEFAULT (0x69 << RF_REG1D_AGC_THR_HIGH_AGC_THR_HIGH_POS)
+
+#define AGC_THR_LOW_AGC_THR_LOW_DEFAULT (0x40 << RF_REG1D_AGC_THR_LOW_AGC_THR_LOW_POS)
+
+#define ATT_CTRL_ATT_CTRL_MAX_DEFAULT   (0xB << RF_REG1D_ATT_CTRL_ATT_CTRL_MAX_POS)
+
+#define ATT_CTRL_SET_RX_ATT_CTRL_DEFAULT (0x0 << RF_REG1D_ATT_CTRL_SET_RX_ATT_CTRL_POS)
+
+/* REG1D */
+#define RF1_REG1D_BASE                  0x40040A74
+#define RF1_REG1D                       REG32_POINTER(RF1_REG1D_BASE)
+
+/* REG1D */
+#define RF2_REG1D_BASE                  0x40040C74
+#define RF2_REG1D                       REG32_POINTER(RF2_REG1D_BASE)
+
+/* REG1D */
+#define RF3_REG1D_BASE                  0x40040E74
+#define RF3_REG1D                       REG32_POINTER(RF3_REG1D_BASE)
+
+/* AGC_LUT1 */
+#define RF0_AGC_LUT1_BASE               0x40040878
+#define RF0_AGC_LUT1                    REG32_POINTER(RF0_AGC_LUT1_BASE)
+
+/* RF_AGC_LUT1 bit positions */
+#define RF_AGC_LUT1_AGC_LUT_1_AGC_LEVEL_2_LO_POS 22
+#define RF_AGC_LUT1_AGC_LUT_1_AGC_LEVEL_2_LO_MASK (0x3FF << RF_AGC_LUT1_AGC_LUT_1_AGC_LEVEL_2_LO_POS)
+#define RF_AGC_LUT1_AGC_LUT_1_AGC_LEVEL_1_POS 11
+#define RF_AGC_LUT1_AGC_LUT_1_AGC_LEVEL_1_MASK (0x7FF << RF_AGC_LUT1_AGC_LUT_1_AGC_LEVEL_1_POS)
+#define RF_AGC_LUT1_AGC_LUT_1_AGC_LEVEL_0_POS 0
+#define RF_AGC_LUT1_AGC_LUT_1_AGC_LEVEL_0_MASK (0x7FF << RF_AGC_LUT1_AGC_LUT_1_AGC_LEVEL_0_POS)
+
+/* RF_AGC_LUT1 settings */
+#define AGC_LUT_1_AGC_LEVEL_2_LO_DEFAULT (0x280 << RF_AGC_LUT1_AGC_LUT_1_AGC_LEVEL_2_LO_POS)
+
+#define AGC_LUT_1_AGC_LEVEL_1_DEFAULT   (0x80 << RF_AGC_LUT1_AGC_LUT_1_AGC_LEVEL_1_POS)
+
+#define AGC_LUT_1_AGC_LEVEL_0_DEFAULT   (0x0 << RF_AGC_LUT1_AGC_LUT_1_AGC_LEVEL_0_POS)
+
+/* AGC_LUT1 */
+#define RF1_AGC_LUT1_BASE               0x40040A78
+#define RF1_AGC_LUT1                    REG32_POINTER(RF1_AGC_LUT1_BASE)
+
+/* AGC_LUT1 */
+#define RF2_AGC_LUT1_BASE               0x40040C78
+#define RF2_AGC_LUT1                    REG32_POINTER(RF2_AGC_LUT1_BASE)
+
+/* AGC_LUT1 */
+#define RF3_AGC_LUT1_BASE               0x40040E78
+#define RF3_AGC_LUT1                    REG32_POINTER(RF3_AGC_LUT1_BASE)
+
+/* AGC_LUT2 */
+#define RF0_AGC_LUT2_BASE               0x4004087C
+#define RF0_AGC_LUT2                    REG32_POINTER(RF0_AGC_LUT2_BASE)
+
+/* RF_AGC_LUT2 bit positions */
+#define RF_AGC_LUT2_AGC_LUT_2_AGC_LEVEL_5_LO_POS 23
+#define RF_AGC_LUT2_AGC_LUT_2_AGC_LEVEL_5_LO_MASK (0x1FF << RF_AGC_LUT2_AGC_LUT_2_AGC_LEVEL_5_LO_POS)
+#define RF_AGC_LUT2_AGC_LUT_2_AGC_LEVEL_4_POS 12
+#define RF_AGC_LUT2_AGC_LUT_2_AGC_LEVEL_4_MASK (0x7FF << RF_AGC_LUT2_AGC_LUT_2_AGC_LEVEL_4_POS)
+#define RF_AGC_LUT2_AGC_LUT_2_AGC_LEVEL_3_POS 1
+#define RF_AGC_LUT2_AGC_LUT_2_AGC_LEVEL_3_MASK (0x7FF << RF_AGC_LUT2_AGC_LUT_2_AGC_LEVEL_3_POS)
+#define RF_AGC_LUT2_AGC_LUT_2_AGC_LEVEL_2_HI_POS 0
+
+/* RF_AGC_LUT2 settings */
+#define AGC_LUT_2_AGC_LEVEL_5_LO_DEFAULT (0x84 << RF_AGC_LUT2_AGC_LUT_2_AGC_LEVEL_5_LO_POS)
+
+#define AGC_LUT_2_AGC_LEVEL_4_DEFAULT   (0x284 << RF_AGC_LUT2_AGC_LUT_2_AGC_LEVEL_4_POS)
+
+#define AGC_LUT_2_AGC_LEVEL_3_DEFAULT   (0x480 << RF_AGC_LUT2_AGC_LUT_2_AGC_LEVEL_3_POS)
+
+#define AGC_LUT_2_AGC_LEVEL_2_HI_DEFAULT (0x0 << RF_AGC_LUT2_AGC_LUT_2_AGC_LEVEL_2_HI_POS)
+
+/* AGC_LUT2 */
+#define RF1_AGC_LUT2_BASE               0x40040A7C
+#define RF1_AGC_LUT2                    REG32_POINTER(RF1_AGC_LUT2_BASE)
+
+/* AGC_LUT2 */
+#define RF2_AGC_LUT2_BASE               0x40040C7C
+#define RF2_AGC_LUT2                    REG32_POINTER(RF2_AGC_LUT2_BASE)
+
+/* AGC_LUT2 */
+#define RF3_AGC_LUT2_BASE               0x40040E7C
+#define RF3_AGC_LUT2                    REG32_POINTER(RF3_AGC_LUT2_BASE)
+
+/* AGC_LUT3 */
+#define RF0_AGC_LUT3_BASE               0x40040880
+#define RF0_AGC_LUT3                    REG32_POINTER(RF0_AGC_LUT3_BASE)
+
+/* RF_AGC_LUT3 bit positions */
+#define RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_8_LO_POS 24
+#define RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_8_LO_MASK (0xFF << RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_8_LO_POS)
+#define RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_7_POS 13
+#define RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_7_MASK (0x7FF << RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_7_POS)
+#define RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_6_POS 2
+#define RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_6_MASK (0x7FF << RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_6_POS)
+#define RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_5_HI_POS 0
+#define RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_5_HI_MASK (0x3 << RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_5_HI_POS)
+
+/* RF_AGC_LUT3 settings */
+#define AGC_LUT_3_AGC_LEVEL_8_LO_DEFAULT (0x9D << RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_8_LO_POS)
+
+#define AGC_LUT_3_AGC_LEVEL_7_DEFAULT   (0x495 << RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_7_POS)
+
+#define AGC_LUT_3_AGC_LEVEL_6_DEFAULT   (0x485 << RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_6_POS)
+
+#define AGC_LUT_3_AGC_LEVEL_5_HI_DEFAULT (0x2 << RF_AGC_LUT3_AGC_LUT_3_AGC_LEVEL_5_HI_POS)
+
+/* AGC_LUT3 */
+#define RF1_AGC_LUT3_BASE               0x40040A80
+#define RF1_AGC_LUT3                    REG32_POINTER(RF1_AGC_LUT3_BASE)
+
+/* AGC_LUT3 */
+#define RF2_AGC_LUT3_BASE               0x40040C80
+#define RF2_AGC_LUT3                    REG32_POINTER(RF2_AGC_LUT3_BASE)
+
+/* AGC_LUT3 */
+#define RF3_AGC_LUT3_BASE               0x40040E80
+#define RF3_AGC_LUT3                    REG32_POINTER(RF3_AGC_LUT3_BASE)
+
+/* AGC_LUT4 */
+#define RF0_AGC_LUT4_BASE               0x40040884
+#define RF0_AGC_LUT4                    REG32_POINTER(RF0_AGC_LUT4_BASE)
+
+/* RF_AGC_LUT4 bit positions */
+#define RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_11_LO_POS 25
+#define RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_11_LO_MASK (0x7F << RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_11_LO_POS)
+#define RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_10_POS 14
+#define RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_10_MASK (0x7FF << RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_10_POS)
+#define RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_9_POS 3
+#define RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_9_MASK (0x7FF << RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_9_POS)
+#define RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_8_HI_POS 0
+#define RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_8_HI_MASK (0x7 << RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_8_HI_POS)
+
+/* RF_AGC_LUT4 settings */
+#define AGC_LUT_4_AGC_LEVEL_11_LO_DEFAULT (0x7F << RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_11_LO_POS)
+
+#define AGC_LUT_4_AGC_LEVEL_10_DEFAULT  (0x4FF << RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_10_POS)
+
+#define AGC_LUT_4_AGC_LEVEL_9_DEFAULT   (0x49F << RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_9_POS)
+
+#define AGC_LUT_4_AGC_LEVEL_8_HI_DEFAULT (0x4 << RF_AGC_LUT4_AGC_LUT_4_AGC_LEVEL_8_HI_POS)
+
+/* AGC_LUT4 */
+#define RF1_AGC_LUT4_BASE               0x40040A84
+#define RF1_AGC_LUT4                    REG32_POINTER(RF1_AGC_LUT4_BASE)
+
+/* AGC_LUT4 */
+#define RF2_AGC_LUT4_BASE               0x40040C84
+#define RF2_AGC_LUT4                    REG32_POINTER(RF2_AGC_LUT4_BASE)
+
+/* AGC_LUT4 */
+#define RF3_AGC_LUT4_BASE               0x40040E84
+#define RF3_AGC_LUT4                    REG32_POINTER(RF3_AGC_LUT4_BASE)
+
+/* AGC_LUT5 */
+#define RF0_AGC_LUT5_BASE               0x40040888
+#define RF0_AGC_LUT5                    REG32_POINTER(RF0_AGC_LUT5_BASE)
+
+/* RF_AGC_LUT5 bit positions */
+#define RF_AGC_LUT5_IEEE802154_OPTS_CNT_LIM_802154_POS 25
+#define RF_AGC_LUT5_IEEE802154_OPTS_CNT_LIM_802154_MASK (0x3 << RF_AGC_LUT5_IEEE802154_OPTS_CNT_LIM_802154_POS)
+#define RF_AGC_LUT5_IEEE802154_OPTS_CNT_OK_INC_802154_POS 22
+#define RF_AGC_LUT5_IEEE802154_OPTS_CNT_OK_INC_802154_MASK (0x7 << RF_AGC_LUT5_IEEE802154_OPTS_CNT_OK_INC_802154_POS)
+#define RF_AGC_LUT5_IEEE802154_OPTS_USE_OS_802154_POS 21
+#define RF_AGC_LUT5_IEEE802154_OPTS_EN_DW_TEST_POS 20
+#define RF_AGC_LUT5_IEEE802154_OPTS_C2B_THR_POS 16
+#define RF_AGC_LUT5_IEEE802154_OPTS_C2B_THR_MASK (0x7 << RF_AGC_LUT5_IEEE802154_OPTS_C2B_THR_POS)
+#define RF_AGC_LUT5_DATA_STREAMS_BER_CLK_MODE_POS 12
+#define RF_AGC_LUT5_DATA_STREAMS_BER_CLK_MODE_MASK (0x3 << RF_AGC_LUT5_DATA_STREAMS_BER_CLK_MODE_POS)
+#define RF_AGC_LUT5_DATA_STREAMS_RX_DATA_NOT_SAMPLED_POS 10
+#define RF_AGC_LUT5_DATA_STREAMS_PHASE_GREY_POS 9
+#define RF_AGC_LUT5_DATA_STREAMS_TX_IN_CLK_TOGGLE_POS 8
+#define RF_AGC_LUT5_AGC_LUT_5_AGC_LEVEL_11_HI_POS 0
+#define RF_AGC_LUT5_AGC_LUT_5_AGC_LEVEL_11_HI_MASK (0xF << RF_AGC_LUT5_AGC_LUT_5_AGC_LEVEL_11_HI_POS)
+
+/* RF_AGC_LUT5 settings */
+#define IEEE802154_OPTS_CNT_LIM_802154_DEFAULT (0x2 << RF_AGC_LUT5_IEEE802154_OPTS_CNT_LIM_802154_POS)
+
+#define IEEE802154_OPTS_CNT_OK_INC_802154_DEFAULT (0x4 << RF_AGC_LUT5_IEEE802154_OPTS_CNT_OK_INC_802154_POS)
+
+#define IEEE802154_OPTS_USE_OS_802154_DISABLE (0x0 << RF_AGC_LUT5_IEEE802154_OPTS_USE_OS_802154_POS)
+#define IEEE802154_OPTS_USE_OS_802154_ENABLE (0x1 << RF_AGC_LUT5_IEEE802154_OPTS_USE_OS_802154_POS)
+
+#define IEEE802154_OPTS_EN_DW_TEST_DISABLE (0x0 << RF_AGC_LUT5_IEEE802154_OPTS_EN_DW_TEST_POS)
+#define IEEE802154_OPTS_EN_DW_TEST_ENABLE (0x1 << RF_AGC_LUT5_IEEE802154_OPTS_EN_DW_TEST_POS)
+
+#define IEEE802154_OPTS_C2B_THR_DEFAULT (0x4 << RF_AGC_LUT5_IEEE802154_OPTS_C2B_THR_POS)
+
+#define DATA_STREAMS_BER_CLK_MODE_FALLING (0x0 << RF_AGC_LUT5_DATA_STREAMS_BER_CLK_MODE_POS)
+#define DATA_STREAMS_BER_CLK_MODE_RISING (0x1 << RF_AGC_LUT5_DATA_STREAMS_BER_CLK_MODE_POS)
+#define DATA_STREAMS_BER_CLK_MODE_TOGGLE (0x2 << RF_AGC_LUT5_DATA_STREAMS_BER_CLK_MODE_POS)
+#define DATA_STREAMS_BER_CLK_MODE_RECOVERY (0x3 << RF_AGC_LUT5_DATA_STREAMS_BER_CLK_MODE_POS)
+
+#define DATA_STREAMS_RX_DATA_NOT_SAMPLED_DISABLE (0x0 << RF_AGC_LUT5_DATA_STREAMS_RX_DATA_NOT_SAMPLED_POS)
+#define DATA_STREAMS_RX_DATA_NOT_SAMPLED_ENABLE (0x1 << RF_AGC_LUT5_DATA_STREAMS_RX_DATA_NOT_SAMPLED_POS)
+
+#define DATA_STREAMS_PHASE_GREY_DISABLE (0x0 << RF_AGC_LUT5_DATA_STREAMS_PHASE_GREY_POS)
+#define DATA_STREAMS_PHASE_GREY_ENABLE  (0x1 << RF_AGC_LUT5_DATA_STREAMS_PHASE_GREY_POS)
+
+#define DATA_STREAMS_TX_IN_CLK_TOGGLE_DISABLE (0x0 << RF_AGC_LUT5_DATA_STREAMS_TX_IN_CLK_TOGGLE_POS)
+#define DATA_STREAMS_TX_IN_CLK_TOGGLE_ENABLE (0x1 << RF_AGC_LUT5_DATA_STREAMS_TX_IN_CLK_TOGGLE_POS)
+
+#define AGC_LUT_5_AGC_LEVEL_11_HI_DEFAULT (0xE << RF_AGC_LUT5_AGC_LUT_5_AGC_LEVEL_11_HI_POS)
+
+/* AGC_LUT5 */
+#define RF1_AGC_LUT5_BASE               0x40040A88
+#define RF1_AGC_LUT5                    REG32_POINTER(RF1_AGC_LUT5_BASE)
+
+/* AGC_LUT5 */
+#define RF2_AGC_LUT5_BASE               0x40040C88
+#define RF2_AGC_LUT5                    REG32_POINTER(RF2_AGC_LUT5_BASE)
+
+/* AGC_LUT5 */
+#define RF3_AGC_LUT5_BASE               0x40040E88
+#define RF3_AGC_LUT5                    REG32_POINTER(RF3_AGC_LUT5_BASE)
+
+/* AGC_ATT1 */
+#define RF0_AGC_ATT1_BASE               0x4004088C
+#define RF0_AGC_ATT1                    REG32_POINTER(RF0_AGC_ATT1_BASE)
+
+/* RF_AGC_ATT1 bit positions */
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_AB_LO_POS 30
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_AB_LO_MASK (0x3 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_AB_LO_POS)
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_9A_POS 27
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_9A_MASK (0x7 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_9A_POS)
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_89_POS 24
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_89_MASK (0x7 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_89_POS)
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_78_POS 21
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_78_MASK (0x7 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_78_POS)
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_67_POS 18
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_67_MASK (0x7 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_67_POS)
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_56_POS 15
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_56_MASK (0x7 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_56_POS)
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_45_POS 12
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_45_MASK (0x7 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_45_POS)
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_34_POS 9
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_34_MASK (0x7 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_34_POS)
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_23_POS 6
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_23_MASK (0x7 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_23_POS)
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_12_POS 3
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_12_MASK (0x7 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_12_POS)
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_01_POS 0
+#define RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_01_MASK (0x7 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_01_POS)
+
+/* RF_AGC_ATT1 settings */
+#define AGC_ATT_1_AGC_ATT_AB_LO_DEFAULT (0x3 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_AB_LO_POS)
+
+#define AGC_ATT_1_AGC_ATT_9A_DEFAULT    (0x5 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_9A_POS)
+
+#define AGC_ATT_1_AGC_ATT_89_DEFAULT    (0x3 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_89_POS)
+
+#define AGC_ATT_1_AGC_ATT_78_DEFAULT    (0x4 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_78_POS)
+
+#define AGC_ATT_1_AGC_ATT_67_DEFAULT    (0x3 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_67_POS)
+
+#define AGC_ATT_1_AGC_ATT_56_DEFAULT    (0x2 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_56_POS)
+
+#define AGC_ATT_1_AGC_ATT_45_DEFAULT    (0x2 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_45_POS)
+
+#define AGC_ATT_1_AGC_ATT_34_DEFAULT    (0x2 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_34_POS)
+
+#define AGC_ATT_1_AGC_ATT_23_DEFAULT    (0x1 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_23_POS)
+
+#define AGC_ATT_1_AGC_ATT_12_DEFAULT    (0x1 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_12_POS)
+
+#define AGC_ATT_1_AGC_ATT_01_DEFAULT    (0x4 << RF_AGC_ATT1_AGC_ATT_1_AGC_ATT_01_POS)
+
+/* AGC_ATT1 */
+#define RF1_AGC_ATT1_BASE               0x40040A8C
+#define RF1_AGC_ATT1                    REG32_POINTER(RF1_AGC_ATT1_BASE)
+
+/* AGC_ATT1 */
+#define RF2_AGC_ATT1_BASE               0x40040C8C
+#define RF2_AGC_ATT1                    REG32_POINTER(RF2_AGC_ATT1_BASE)
+
+/* AGC_ATT1 */
+#define RF3_AGC_ATT1_BASE               0x40040E8C
+#define RF3_AGC_ATT1                    REG32_POINTER(RF3_AGC_ATT1_BASE)
+
+/* AGC_ATT2 */
+#define RF0_AGC_ATT2_BASE               0x40040890
+#define RF0_AGC_ATT2                    REG32_POINTER(RF0_AGC_ATT2_BASE)
+
+/* RF_AGC_ATT2 bit positions */
+#define RF_AGC_ATT2_TIMINGS_3_T_DLL_POS 28
+#define RF_AGC_ATT2_TIMINGS_3_T_DLL_MASK (0xF << RF_AGC_ATT2_TIMINGS_3_T_DLL_POS)
+#define RF_AGC_ATT2_TIMINGS_3_T_PLL_TX_POS 24
+#define RF_AGC_ATT2_TIMINGS_3_T_PLL_TX_MASK (0xF << RF_AGC_ATT2_TIMINGS_3_T_PLL_TX_POS)
+#define RF_AGC_ATT2_TIMINGS_2_T_SUBBAND_TX_POS 20
+#define RF_AGC_ATT2_TIMINGS_2_T_SUBBAND_TX_MASK (0xF << RF_AGC_ATT2_TIMINGS_2_T_SUBBAND_TX_POS)
+#define RF_AGC_ATT2_TIMINGS_2_T_TX_RF_POS 16
+#define RF_AGC_ATT2_TIMINGS_2_T_TX_RF_MASK (0xF << RF_AGC_ATT2_TIMINGS_2_T_TX_RF_POS)
+#define RF_AGC_ATT2_TIMINGS_1_T_GRANULARITY_TX_POS 12
+#define RF_AGC_ATT2_TIMINGS_1_T_GRANULARITY_TX_MASK (0x7 << RF_AGC_ATT2_TIMINGS_1_T_GRANULARITY_TX_POS)
+#define RF_AGC_ATT2_TIMINGS_1_T_GRANULARITY_RX_POS 8
+#define RF_AGC_ATT2_TIMINGS_1_T_GRANULARITY_RX_MASK (0x7 << RF_AGC_ATT2_TIMINGS_1_T_GRANULARITY_RX_POS)
+#define RF_AGC_ATT2_AGC_ATT_2_AGC_ATT_1DB_POS 1
+#define RF_AGC_ATT2_AGC_ATT_2_AGC_ATT_AB_HI_POS 0
+
+/* RF_AGC_ATT2 settings */
+#define TIMINGS_3_T_DLL_DEFAULT         (0x2 << RF_AGC_ATT2_TIMINGS_3_T_DLL_POS)
+
+#define TIMINGS_3_T_PLL_TX_DEFAULT      (0x2 << RF_AGC_ATT2_TIMINGS_3_T_PLL_TX_POS)
+
+#define TIMINGS_2_T_SUBBAND_TX_DEFAULT  (0xC << RF_AGC_ATT2_TIMINGS_2_T_SUBBAND_TX_POS)
+
+#define TIMINGS_2_T_TX_RF_DEFAULT       (0x1 << RF_AGC_ATT2_TIMINGS_2_T_TX_RF_POS)
+
+#define TIMINGS_1_T_GRANULARITY_TX_DEFAULT (0x3 << RF_AGC_ATT2_TIMINGS_1_T_GRANULARITY_TX_POS)
+
+#define TIMINGS_1_T_GRANULARITY_RX_DEFAULT (0x5 << RF_AGC_ATT2_TIMINGS_1_T_GRANULARITY_RX_POS)
+
+#define AGC_ATT_2_AGC_ATT_1DB_DISABLE   (0x0 << RF_AGC_ATT2_AGC_ATT_2_AGC_ATT_1DB_POS)
+#define AGC_ATT_2_AGC_ATT_1DB_ENABLE    (0x1 << RF_AGC_ATT2_AGC_ATT_2_AGC_ATT_1DB_POS)
+
+#define AGC_ATT_2_AGC_ATT_AB_HI_DISABLE (0x0 << RF_AGC_ATT2_AGC_ATT_2_AGC_ATT_AB_HI_POS)
+#define AGC_ATT_2_AGC_ATT_AB_HI_ENABLE  (0x1 << RF_AGC_ATT2_AGC_ATT_2_AGC_ATT_AB_HI_POS)
+
+/* AGC_ATT2 */
+#define RF1_AGC_ATT2_BASE               0x40040A90
+#define RF1_AGC_ATT2                    REG32_POINTER(RF1_AGC_ATT2_BASE)
+
+/* AGC_ATT2 */
+#define RF2_AGC_ATT2_BASE               0x40040C90
+#define RF2_AGC_ATT2                    REG32_POINTER(RF2_AGC_ATT2_BASE)
+
+/* AGC_ATT2 */
+#define RF3_AGC_ATT2_BASE               0x40040E90
+#define RF3_AGC_ATT2                    REG32_POINTER(RF3_AGC_ATT2_BASE)
+
+/* REG25 */
+#define RF0_REG25_BASE                  0x40040894
+#define RF0_REG25                       REG32_POINTER(RF0_REG25_BASE)
+
+/* RF_REG25 bit positions */
+#define RF_REG25_TIMEOUT_EN_RX_TIMEOUT_POS 31
+#define RF_REG25_TIMEOUT_T_TIMEOUT_GR_POS 28
+#define RF_REG25_TIMEOUT_T_TIMEOUT_GR_MASK (0x7 << RF_REG25_TIMEOUT_T_TIMEOUT_GR_POS)
+#define RF_REG25_TIMEOUT_T_RX_TIMEOUT_POS 24
+#define RF_REG25_TIMEOUT_T_RX_TIMEOUT_MASK (0xF << RF_REG25_TIMEOUT_T_RX_TIMEOUT_POS)
+#define RF_REG25_TIMING_FAST_RX_EN_FAST_RX_TXFILT_POS 21
+#define RF_REG25_TIMING_FAST_RX_EN_FAST_RX_POS 20
+#define RF_REG25_TIMING_FAST_RX_T_RX_FAST_CHP_POS 16
+#define RF_REG25_TIMING_FAST_RX_T_RX_FAST_CHP_MASK (0xF << RF_REG25_TIMING_FAST_RX_T_RX_FAST_CHP_POS)
+#define RF_REG25_TIMINGS_5_T_RX_RF_POS  12
+#define RF_REG25_TIMINGS_5_T_RX_RF_MASK (0xF << RF_REG25_TIMINGS_5_T_RX_RF_POS)
+#define RF_REG25_TIMINGS_5_T_RX_BB_POS  8
+#define RF_REG25_TIMINGS_5_T_RX_BB_MASK (0xF << RF_REG25_TIMINGS_5_T_RX_BB_POS)
+#define RF_REG25_TIMINGS_4_T_SUBBAND_RX_POS 4
+#define RF_REG25_TIMINGS_4_T_SUBBAND_RX_MASK (0xF << RF_REG25_TIMINGS_4_T_SUBBAND_RX_POS)
+#define RF_REG25_TIMINGS_4_T_PLL_RX_POS 0
+#define RF_REG25_TIMINGS_4_T_PLL_RX_MASK (0xF << RF_REG25_TIMINGS_4_T_PLL_RX_POS)
+
+/* RF_REG25 settings */
+#define TIMEOUT_EN_RX_TIMEOUT_DISABLE   (0x0 << RF_REG25_TIMEOUT_EN_RX_TIMEOUT_POS)
+#define TIMEOUT_EN_RX_TIMEOUT_ENABLE    (0x1 << RF_REG25_TIMEOUT_EN_RX_TIMEOUT_POS)
+
+#define TIMEOUT_T_TIMEOUT_GR_DEFAULT    (0x0 << RF_REG25_TIMEOUT_T_TIMEOUT_GR_POS)
+
+#define TIMEOUT_T_RX_TIMEOUT_DEFAULT    (0x0 << RF_REG25_TIMEOUT_T_RX_TIMEOUT_POS)
+
+#define TIMING_FAST_RX_EN_FAST_RX_TXFILT_DISABLE (0x0 << RF_REG25_TIMING_FAST_RX_EN_FAST_RX_TXFILT_POS)
+#define TIMING_FAST_RX_EN_FAST_RX_TXFILT_ENABLE (0x1 << RF_REG25_TIMING_FAST_RX_EN_FAST_RX_TXFILT_POS)
+
+#define TIMING_FAST_RX_EN_FAST_RX_DISABLE (0x0 << RF_REG25_TIMING_FAST_RX_EN_FAST_RX_POS)
+#define TIMING_FAST_RX_EN_FAST_RX_ENABLE (0x1 << RF_REG25_TIMING_FAST_RX_EN_FAST_RX_POS)
+
+#define TIMING_FAST_RX_T_RX_FAST_CHP_DEFAULT (0x0 << RF_REG25_TIMING_FAST_RX_T_RX_FAST_CHP_POS)
+
+#define TIMINGS_5_T_RX_RF_DEFAULT       (0x3 << RF_REG25_TIMINGS_5_T_RX_RF_POS)
+
+#define TIMINGS_5_T_RX_BB_DEFAULT       (0x8 << RF_REG25_TIMINGS_5_T_RX_BB_POS)
+
+#define TIMINGS_4_T_SUBBAND_RX_DEFAULT  (0x5 << RF_REG25_TIMINGS_4_T_SUBBAND_RX_POS)
+
+#define TIMINGS_4_T_PLL_RX_DEFAULT      (0x1 << RF_REG25_TIMINGS_4_T_PLL_RX_POS)
+
+/* REG25 */
+#define RF1_REG25_BASE                  0x40040A94
+#define RF1_REG25                       REG32_POINTER(RF1_REG25_BASE)
+
+/* REG25 */
+#define RF2_REG25_BASE                  0x40040C94
+#define RF2_REG25                       REG32_POINTER(RF2_REG25_BASE)
+
+/* REG25 */
+#define RF3_REG25_BASE                  0x40040E94
+#define RF3_REG25                       REG32_POINTER(RF3_REG25_BASE)
+
+/* BIAS_0_2 */
+#define RF0_BIAS_0_2_BASE               0x40040898
+#define RF0_BIAS_0_2                    REG32_POINTER(RF0_BIAS_0_2_BASE)
+
+/* RF_BIAS_0_2 bit positions */
+#define RF_BIAS_0_2_BIAS_2_IQ_RXTX_6_POS 28
+#define RF_BIAS_0_2_BIAS_2_IQ_RXTX_6_MASK (0xF << RF_BIAS_0_2_BIAS_2_IQ_RXTX_6_POS)
+#define RF_BIAS_0_2_BIAS_2_IQ_RXTX_5_POS 24
+#define RF_BIAS_0_2_BIAS_2_IQ_RXTX_5_MASK (0xF << RF_BIAS_0_2_BIAS_2_IQ_RXTX_5_POS)
+#define RF_BIAS_0_2_BIAS_1_IQ_RXTX_3_POS 20
+#define RF_BIAS_0_2_BIAS_1_IQ_RXTX_3_MASK (0xF << RF_BIAS_0_2_BIAS_1_IQ_RXTX_3_POS)
+#define RF_BIAS_0_2_BIAS_1_IQ_RXTX_2_POS 16
+#define RF_BIAS_0_2_BIAS_1_IQ_RXTX_2_MASK (0xF << RF_BIAS_0_2_BIAS_1_IQ_RXTX_2_POS)
+#define RF_BIAS_0_2_BIAS_0_IQ_RXTX_1_POS 12
+#define RF_BIAS_0_2_BIAS_0_IQ_RXTX_1_MASK (0xF << RF_BIAS_0_2_BIAS_0_IQ_RXTX_1_POS)
+#define RF_BIAS_0_2_BIAS_0_IQ_RXTX_0_POS 8
+#define RF_BIAS_0_2_BIAS_0_IQ_RXTX_0_MASK (0xF << RF_BIAS_0_2_BIAS_0_IQ_RXTX_0_POS)
+#define RF_BIAS_0_2_INTERFACE_CONF_EN_SYNC_IFACE_POS 7
+#define RF_BIAS_0_2_INTERFACE_CONF_APB_WAIT_STATE_POS 4
+#define RF_BIAS_0_2_INTERFACE_CONF_APB_WAIT_STATE_MASK (0x7 << RF_BIAS_0_2_INTERFACE_CONF_APB_WAIT_STATE_POS)
+#define RF_BIAS_0_2_INTERFACE_CONF_SPI_SELECT_POS 0
+#define RF_BIAS_0_2_INTERFACE_CONF_SPI_SELECT_MASK (0x3 << RF_BIAS_0_2_INTERFACE_CONF_SPI_SELECT_POS)
+
+/* RF_BIAS_0_2 settings */
+#define BIAS_2_IQ_RXTX_6_DEFAULT        (0x3 << RF_BIAS_0_2_BIAS_2_IQ_RXTX_6_POS)
+
+#define BIAS_2_IQ_RXTX_5_DEFAULT        (0x8 << RF_BIAS_0_2_BIAS_2_IQ_RXTX_5_POS)
+
+#define BIAS_1_IQ_RXTX_3_DEFAULT        (0x6 << RF_BIAS_0_2_BIAS_1_IQ_RXTX_3_POS)
+
+#define BIAS_1_IQ_RXTX_2_DEFAULT        (0x6 << RF_BIAS_0_2_BIAS_1_IQ_RXTX_2_POS)
+
+#define BIAS_0_IQ_RXTX_1_DEFAULT        (0x7 << RF_BIAS_0_2_BIAS_0_IQ_RXTX_1_POS)
+
+#define BIAS_0_IQ_RXTX_0_DEFAULT        (0x3 << RF_BIAS_0_2_BIAS_0_IQ_RXTX_0_POS)
+
+#define INTERFACE_CONF_EN_SYNC_IFACE_DISABLE (0x0 << RF_BIAS_0_2_INTERFACE_CONF_EN_SYNC_IFACE_POS)
+#define INTERFACE_CONF_EN_SYNC_IFACE_ENABLE (0x1 << RF_BIAS_0_2_INTERFACE_CONF_EN_SYNC_IFACE_POS)
+
+#define INTERFACE_CONF_APB_WAIT_STATE_DEFAULT (0x0 << RF_BIAS_0_2_INTERFACE_CONF_APB_WAIT_STATE_POS)
+
+#define INTERFACE_CONF_SPI_SELECT_LEGACY_SPI (0x0 << RF_BIAS_0_2_INTERFACE_CONF_SPI_SELECT_POS)
+#define INTERFACE_CONF_SPI_SELECT_ADVANCED_SPI (0x1 << RF_BIAS_0_2_INTERFACE_CONF_SPI_SELECT_POS)
+#define INTERFACE_CONF_SPI_SELECT_BLIM4SME_SPI (0x2 << RF_BIAS_0_2_INTERFACE_CONF_SPI_SELECT_POS)
+
+/* BIAS_0_2 */
+#define RF1_BIAS_0_2_BASE               0x40040A98
+#define RF1_BIAS_0_2                    REG32_POINTER(RF1_BIAS_0_2_BASE)
+
+/* BIAS_0_2 */
+#define RF2_BIAS_0_2_BASE               0x40040C98
+#define RF2_BIAS_0_2                    REG32_POINTER(RF2_BIAS_0_2_BASE)
+
+/* BIAS_0_2 */
+#define RF3_BIAS_0_2_BASE               0x40040E98
+#define RF3_BIAS_0_2                    REG32_POINTER(RF3_BIAS_0_2_BASE)
+
+/* BIAS_3_6 */
+#define RF0_BIAS_3_6_BASE               0x4004089C
+#define RF0_BIAS_3_6                    REG32_POINTER(RF0_BIAS_3_6_BASE)
+
+/* RF_BIAS_3_6 bit positions */
+#define RF_BIAS_3_6_BIAS_6_IQ_BB_0_POS  28
+#define RF_BIAS_3_6_BIAS_6_IQ_BB_0_MASK (0xF << RF_BIAS_3_6_BIAS_6_IQ_BB_0_POS)
+#define RF_BIAS_3_6_BIAS_6_IQ_PLL_3_POS 24
+#define RF_BIAS_3_6_BIAS_6_IQ_PLL_3_MASK (0xF << RF_BIAS_3_6_BIAS_6_IQ_PLL_3_POS)
+#define RF_BIAS_3_6_BIAS_5_IQ_PLL_4_RX_POS 20
+#define RF_BIAS_3_6_BIAS_5_IQ_PLL_4_RX_MASK (0xF << RF_BIAS_3_6_BIAS_5_IQ_PLL_4_RX_POS)
+#define RF_BIAS_3_6_BIAS_5_IQ_PLL_4_TX_POS 16
+#define RF_BIAS_3_6_BIAS_5_IQ_PLL_4_TX_MASK (0xF << RF_BIAS_3_6_BIAS_5_IQ_PLL_4_TX_POS)
+#define RF_BIAS_3_6_BIAS_4_IQ_PLL_2_POS 12
+#define RF_BIAS_3_6_BIAS_4_IQ_PLL_2_MASK (0xF << RF_BIAS_3_6_BIAS_4_IQ_PLL_2_POS)
+#define RF_BIAS_3_6_BIAS_4_IQ_PLL_1_POS 8
+#define RF_BIAS_3_6_BIAS_4_IQ_PLL_1_MASK (0xF << RF_BIAS_3_6_BIAS_4_IQ_PLL_1_POS)
+#define RF_BIAS_3_6_BIAS_3_IQ_RXTX_8_POS 4
+#define RF_BIAS_3_6_BIAS_3_IQ_RXTX_8_MASK (0xF << RF_BIAS_3_6_BIAS_3_IQ_RXTX_8_POS)
+#define RF_BIAS_3_6_BIAS_3_IQ_RXTX_7_POS 0
+#define RF_BIAS_3_6_BIAS_3_IQ_RXTX_7_MASK (0xF << RF_BIAS_3_6_BIAS_3_IQ_RXTX_7_POS)
+
+/* RF_BIAS_3_6 settings */
+#define BIAS_6_IQ_BB_0_DEFAULT          (0x7 << RF_BIAS_3_6_BIAS_6_IQ_BB_0_POS)
+
+#define BIAS_6_IQ_PLL_3_DEFAULT         (0x7 << RF_BIAS_3_6_BIAS_6_IQ_PLL_3_POS)
+
+#define BIAS_5_IQ_PLL_4_RX_DEFAULT      (0x8 << RF_BIAS_3_6_BIAS_5_IQ_PLL_4_RX_POS)
+
+#define BIAS_5_IQ_PLL_4_TX_DEFAULT      (0xA << RF_BIAS_3_6_BIAS_5_IQ_PLL_4_TX_POS)
+
+#define BIAS_4_IQ_PLL_2_DEFAULT         (0x7 << RF_BIAS_3_6_BIAS_4_IQ_PLL_2_POS)
+
+#define BIAS_4_IQ_PLL_1_DEFAULT         (0x4 << RF_BIAS_3_6_BIAS_4_IQ_PLL_1_POS)
+
+#define BIAS_3_IQ_RXTX_8_DEFAULT        (0x7 << RF_BIAS_3_6_BIAS_3_IQ_RXTX_8_POS)
+
+#define BIAS_3_IQ_RXTX_7_DEFAULT        (0x7 << RF_BIAS_3_6_BIAS_3_IQ_RXTX_7_POS)
+
+/* BIAS_3_6 */
+#define RF1_BIAS_3_6_BASE               0x40040A9C
+#define RF1_BIAS_3_6                    REG32_POINTER(RF1_BIAS_3_6_BASE)
+
+/* BIAS_3_6 */
+#define RF2_BIAS_3_6_BASE               0x40040C9C
+#define RF2_BIAS_3_6                    REG32_POINTER(RF2_BIAS_3_6_BASE)
+
+/* BIAS_3_6 */
+#define RF3_BIAS_3_6_BASE               0x40040E9C
+#define RF3_BIAS_3_6                    REG32_POINTER(RF3_BIAS_3_6_BASE)
+
+/* BIAS_7_9 */
+#define RF0_BIAS_7_9_BASE               0x400408A0
+#define RF0_BIAS_7_9                    REG32_POINTER(RF0_BIAS_7_9_BASE)
+
+/* RF_BIAS_7_9 bit positions */
+#define RF_BIAS_7_9_BIAS_9_IQ_BB_6_POS  28
+#define RF_BIAS_7_9_BIAS_9_IQ_BB_6_MASK (0xF << RF_BIAS_7_9_BIAS_9_IQ_BB_6_POS)
+#define RF_BIAS_7_9_BIAS_9_IQ_BB_5_POS  24
+#define RF_BIAS_7_9_BIAS_9_IQ_BB_5_MASK (0xF << RF_BIAS_7_9_BIAS_9_IQ_BB_5_POS)
+#define RF_BIAS_7_9_SWCAP_FSM_SB_CAP_RX_POS 20
+#define RF_BIAS_7_9_SWCAP_FSM_SB_CAP_RX_MASK (0xF << RF_BIAS_7_9_SWCAP_FSM_SB_CAP_RX_POS)
+#define RF_BIAS_7_9_SWCAP_FSM_SB_CAP_TX_POS 16
+#define RF_BIAS_7_9_SWCAP_FSM_SB_CAP_TX_MASK (0xF << RF_BIAS_7_9_SWCAP_FSM_SB_CAP_TX_POS)
+#define RF_BIAS_7_9_BIAS_8_IQ_BB_4_POS  12
+#define RF_BIAS_7_9_BIAS_8_IQ_BB_4_MASK (0xF << RF_BIAS_7_9_BIAS_8_IQ_BB_4_POS)
+#define RF_BIAS_7_9_BIAS_8_IQ_BB_3_POS  8
+#define RF_BIAS_7_9_BIAS_8_IQ_BB_3_MASK (0xF << RF_BIAS_7_9_BIAS_8_IQ_BB_3_POS)
+#define RF_BIAS_7_9_BIAS_7_IQ_BB_2_POS  4
+#define RF_BIAS_7_9_BIAS_7_IQ_BB_2_MASK (0xF << RF_BIAS_7_9_BIAS_7_IQ_BB_2_POS)
+#define RF_BIAS_7_9_BIAS_7_IQ_BB_1_POS  0
+#define RF_BIAS_7_9_BIAS_7_IQ_BB_1_MASK (0xF << RF_BIAS_7_9_BIAS_7_IQ_BB_1_POS)
+
+/* RF_BIAS_7_9 settings */
+#define BIAS_9_IQ_BB_6_DEFAULT          (0x9D << RF_BIAS_7_9_BIAS_9_IQ_BB_6_POS)
+
+#define BIAS_9_IQ_BB_5_DEFAULT          (0x5 << RF_BIAS_7_9_BIAS_9_IQ_BB_5_POS)
+
+#define SWCAP_FSM_SB_CAP_RX_DEFAULT     (0x0 << RF_BIAS_7_9_SWCAP_FSM_SB_CAP_RX_POS)
+
+#define SWCAP_FSM_SB_CAP_TX_DEFAULT     (0x0 << RF_BIAS_7_9_SWCAP_FSM_SB_CAP_TX_POS)
+
+#define BIAS_8_IQ_BB_4_DEFAULT          (0x9 << RF_BIAS_7_9_BIAS_8_IQ_BB_4_POS)
+
+#define BIAS_8_IQ_BB_3_DEFAULT          (0xF << RF_BIAS_7_9_BIAS_8_IQ_BB_3_POS)
+
+#define BIAS_7_IQ_BB_2_DEFAULT          (0x6 << RF_BIAS_7_9_BIAS_7_IQ_BB_2_POS)
+
+#define BIAS_7_IQ_BB_1_DEFAULT          (0x6 << RF_BIAS_7_9_BIAS_7_IQ_BB_1_POS)
+
+/* BIAS_7_9 */
+#define RF1_BIAS_7_9_BASE               0x40040AA0
+#define RF1_BIAS_7_9                    REG32_POINTER(RF1_BIAS_7_9_BASE)
+
+/* BIAS_7_9 */
+#define RF2_BIAS_7_9_BASE               0x40040CA0
+#define RF2_BIAS_7_9                    REG32_POINTER(RF2_BIAS_7_9_BASE)
+
+/* BIAS_7_9 */
+#define RF3_BIAS_7_9_BASE               0x40040EA0
+#define RF3_BIAS_7_9                    REG32_POINTER(RF3_BIAS_7_9_BASE)
+
+/* BIAS_10_12 */
+#define RF0_BIAS_10_12_BASE             0x400408A4
+#define RF0_BIAS_10_12                  REG32_POINTER(RF0_BIAS_10_12_BASE)
+
+/* RF_BIAS_10_12 bit positions */
+#define RF_BIAS_10_12_SD_MASH_MASH_DITHER_TYPE_POS 30
+#define RF_BIAS_10_12_SD_MASH_MASH_ENABLE_POS 29
+#define RF_BIAS_10_12_SD_MASH_MASH_DITHER_POS 28
+#define RF_BIAS_10_12_SD_MASH_MASH_ORDER_POS 25
+#define RF_BIAS_10_12_SD_MASH_MASH_ORDER_MASK (0x7 << RF_BIAS_10_12_SD_MASH_MASH_ORDER_POS)
+#define RF_BIAS_10_12_SD_MASH_MASH_RSTB_POS 24
+#define RF_BIAS_10_12_BIAS_12_LNA_AGC_BIAS_3_POS 20
+#define RF_BIAS_10_12_BIAS_12_LNA_AGC_BIAS_3_MASK (0xF << RF_BIAS_10_12_BIAS_12_LNA_AGC_BIAS_3_POS)
+#define RF_BIAS_10_12_BIAS_12_LNA_AGC_BIAS_2_POS 16
+#define RF_BIAS_10_12_BIAS_12_LNA_AGC_BIAS_2_MASK (0xF << RF_BIAS_10_12_BIAS_12_LNA_AGC_BIAS_2_POS)
+#define RF_BIAS_10_12_BIAS_11_LNA_AGC_BIAS_1_POS 12
+#define RF_BIAS_10_12_BIAS_11_LNA_AGC_BIAS_1_MASK (0xF << RF_BIAS_10_12_BIAS_11_LNA_AGC_BIAS_1_POS)
+#define RF_BIAS_10_12_BIAS_11_LNA_AGC_BIAS_0_POS 8
+#define RF_BIAS_10_12_BIAS_11_LNA_AGC_BIAS_0_MASK (0xF << RF_BIAS_10_12_BIAS_11_LNA_AGC_BIAS_0_POS)
+#define RF_BIAS_10_12_BIAS_10_IQ_BB_8_POS 4
+#define RF_BIAS_10_12_BIAS_10_IQ_BB_8_MASK (0xF << RF_BIAS_10_12_BIAS_10_IQ_BB_8_POS)
+#define RF_BIAS_10_12_BIAS_10_IQ_BB_7_POS 0
+#define RF_BIAS_10_12_BIAS_10_IQ_BB_7_MASK (0xF << RF_BIAS_10_12_BIAS_10_IQ_BB_7_POS)
+
+/* RF_BIAS_10_12 settings */
+#define SD_MASH_MASH_DITHER_TYPE_0      (0x0 << RF_BIAS_10_12_SD_MASH_MASH_DITHER_TYPE_POS)
+#define SD_MASH_MASH_DITHER_TYPE_ENABLE (0x1 << RF_BIAS_10_12_SD_MASH_MASH_DITHER_TYPE_POS)
+
+#define SD_MASH_MASH_ENABLE_DISABLE     (0x0 << RF_BIAS_10_12_SD_MASH_MASH_ENABLE_POS)
+#define SD_MASH_MASH_ENABLE_ENABLE      (0x1 << RF_BIAS_10_12_SD_MASH_MASH_ENABLE_POS)
+
+#define SD_MASH_MASH_DITHER_DISABLE     (0x0 << RF_BIAS_10_12_SD_MASH_MASH_DITHER_POS)
+#define SD_MASH_MASH_DITHER_ENABLE      (0x1 << RF_BIAS_10_12_SD_MASH_MASH_DITHER_POS)
+
+#define SD_MASH_MASH_ORDER_DEFAULT      (0x3 << RF_BIAS_10_12_SD_MASH_MASH_ORDER_POS)
+
+#define SD_MASH_MASH_RSTB_RESET         (0x0 << RF_BIAS_10_12_SD_MASH_MASH_RSTB_POS)
+#define SD_MASH_MASH_RSTB_NO_RESET      (0x1 << RF_BIAS_10_12_SD_MASH_MASH_RSTB_POS)
+
+#define BIAS_12_LNA_AGC_BIAS_3_DEFAULT  (0x6 << RF_BIAS_10_12_BIAS_12_LNA_AGC_BIAS_3_POS)
+
+#define BIAS_12_LNA_AGC_BIAS_2_DEFAULT  (0x7 << RF_BIAS_10_12_BIAS_12_LNA_AGC_BIAS_2_POS)
+
+#define BIAS_11_LNA_AGC_BIAS_1_DEFAULT  (0x8 << RF_BIAS_10_12_BIAS_11_LNA_AGC_BIAS_1_POS)
+
+#define BIAS_11_LNA_AGC_BIAS_0_DEFAULT  (0x9 << RF_BIAS_10_12_BIAS_11_LNA_AGC_BIAS_0_POS)
+
+#define BIAS_10_IQ_BB_8_DEFAULT         (0x0 << RF_BIAS_10_12_BIAS_10_IQ_BB_8_POS)
+
+#define BIAS_10_IQ_BB_7_DEFAULT         (0x6 << RF_BIAS_10_12_BIAS_10_IQ_BB_7_POS)
+
+/* BIAS_10_12 */
+#define RF1_BIAS_10_12_BASE             0x40040AA4
+#define RF1_BIAS_10_12                  REG32_POINTER(RF1_BIAS_10_12_BASE)
+
+/* BIAS_10_12 */
+#define RF2_BIAS_10_12_BASE             0x40040CA4
+#define RF2_BIAS_10_12                  REG32_POINTER(RF2_BIAS_10_12_BASE)
+
+/* BIAS_10_12 */
+#define RF3_BIAS_10_12_BASE             0x40040EA4
+#define RF3_BIAS_10_12                  REG32_POINTER(RF3_BIAS_10_12_BASE)
+
+/* REG2A */
+#define RF0_REG2A_BASE                  0x400408A8
+#define RF0_REG2A                       REG32_POINTER(RF0_REG2A_BASE)
+
+/* RF_REG2A bit positions */
+#define RF_REG2A_SD_MASH_MASK_MASH_MASK_POS 24
+#define RF_REG2A_SD_MASH_MASK_MASH_MASK_MASK (0xF << RF_REG2A_SD_MASH_MASK_MASH_MASK_POS)
+#define RF_REG2A_BIAS_EN_2_EN_PTAT_POS  19
+#define RF_REG2A_BIAS_EN_2_EN_BIAS_BB_HI_POS 16
+#define RF_REG2A_BIAS_EN_2_EN_BIAS_BB_HI_MASK (0x7 << RF_REG2A_BIAS_EN_2_EN_BIAS_BB_HI_POS)
+#define RF_REG2A_BIAS_EN_1_EN_BIAS_BB_LO_POS 12
+#define RF_REG2A_BIAS_EN_1_EN_BIAS_BB_LO_MASK (0xF << RF_REG2A_BIAS_EN_1_EN_BIAS_BB_LO_POS)
+#define RF_REG2A_BIAS_EN_1_EN_BIAS_PLL_POS 7
+#define RF_REG2A_BIAS_EN_1_EN_BIAS_PLL_MASK (0x1F << RF_REG2A_BIAS_EN_1_EN_BIAS_PLL_POS)
+#define RF_REG2A_BIAS_EN_1_EN_BIAS_RXTX_POS 0
+#define RF_REG2A_BIAS_EN_1_EN_BIAS_RXTX_MASK (0x7F << RF_REG2A_BIAS_EN_1_EN_BIAS_RXTX_POS)
+
+/* RF_REG2A settings */
+#define SD_MASH_MASK_MASH_MASK_DEFAULT  (0x0 << RF_REG2A_SD_MASH_MASK_MASH_MASK_POS)
+
+#define BIAS_EN_2_EN_PTAT_DISABLE       (0x0 << RF_REG2A_BIAS_EN_2_EN_PTAT_POS)
+#define BIAS_EN_2_EN_PTAT_ENABLE        (0x1 << RF_REG2A_BIAS_EN_2_EN_PTAT_POS)
+
+#define BIAS_EN_2_EN_BIAS_BB_HI_DEFAULT (0x0 << RF_REG2A_BIAS_EN_2_EN_BIAS_BB_HI_POS)
+
+#define BIAS_EN_1_EN_BIAS_BB_LO_DEFAULT (0x0 << RF_REG2A_BIAS_EN_1_EN_BIAS_BB_LO_POS)
+
+#define BIAS_EN_1_EN_BIAS_PLL_DEFAULT   (0x0 << RF_REG2A_BIAS_EN_1_EN_BIAS_PLL_POS)
+
+#define BIAS_EN_1_EN_BIAS_RXTX_DEFAULT  (0x0 << RF_REG2A_BIAS_EN_1_EN_BIAS_RXTX_POS)
+
+/* REG2A */
+#define RF1_REG2A_BASE                  0x40040AA8
+#define RF1_REG2A                       REG32_POINTER(RF1_REG2A_BASE)
+
+/* REG2A */
+#define RF2_REG2A_BASE                  0x40040CA8
+#define RF2_REG2A                       REG32_POINTER(RF2_REG2A_BASE)
+
+/* REG2A */
+#define RF3_REG2A_BASE                  0x40040EA8
+#define RF3_REG2A                       REG32_POINTER(RF3_REG2A_BASE)
+
+/* PLL_CTRL */
+#define RF0_PLL_CTRL_BASE               0x400408AC
+#define RF0_PLL_CTRL                    REG32_POINTER(RF0_PLL_CTRL_BASE)
+
+/* RF_PLL_CTRL bit positions */
+#define RF_PLL_CTRL_PLL_CTRL_DISABLE_CHP_SBS_POS 26
+#define RF_PLL_CTRL_PLL_CTRL_PLL_RX_48MEG_POS 25
+#define RF_PLL_CTRL_PLL_CTRL_SWCAP_TX_SAME_RX_POS 24
+#define RF_PLL_CTRL_PLL_CTRL_SWCAP_FSM_POS 23
+#define RF_PLL_CTRL_PLL_CTRL_DLL_RSTB_POS 22
+#define RF_PLL_CTRL_PLL_CTRL_VCO_SUBBAND_TRIM_POS 18
+#define RF_PLL_CTRL_PLL_CTRL_VCO_SUBBAND_TRIM_MASK (0xF << RF_PLL_CTRL_PLL_CTRL_VCO_SUBBAND_TRIM_POS)
+#define RF_PLL_CTRL_PLL_CTRL_SUB_SEL_OFFS_EN_POS 17
+#define RF_PLL_CTRL_PLL_CTRL_DIV2_CLKVCO_TEST_EN_POS 16
+#define RF_PLL_CTRL_PLL_CTRL_VCODIV_CLK_TEST_EN_POS 15
+#define RF_PLL_CTRL_PLL_CTRL_CHP_DEAD_ZONE_EN_POS 13
+#define RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_TRIM_TX_POS 11
+#define RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_TRIM_TX_MASK (0x3 << RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_TRIM_TX_POS)
+#define RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_TRIM_RX_POS 9
+#define RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_TRIM_RX_MASK (0x3 << RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_TRIM_RX_POS)
+#define RF_PLL_CTRL_PLL_CTRL_HIGH_BW_FILTER_EN_TX_POS 8
+#define RF_PLL_CTRL_PLL_CTRL_HIGH_BW_FILTER_EN_RX_POS 7
+#define RF_PLL_CTRL_PLL_CTRL_FAST_CHP_EN_TX_POS 6
+#define RF_PLL_CTRL_PLL_CTRL_FAST_CHP_EN_RX_POS 5
+#define RF_PLL_CTRL_PLL_CTRL_CHP_MODE_TRIM_POS 3
+#define RF_PLL_CTRL_PLL_CTRL_CHP_MODE_TRIM_MASK (0x3 << RF_PLL_CTRL_PLL_CTRL_CHP_MODE_TRIM_POS)
+#define RF_PLL_CTRL_PLL_CTRL_CHP_CMC_EN_POS 2
+#define RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_EN_TX_POS 1
+#define RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_EN_RX_POS 0
+
+/* RF_PLL_CTRL settings */
+#define PLL_CTRL_2_DISABLE_CHP_SBS_DISABLE (0x0 << RF_PLL_CTRL_PLL_CTRL_DISABLE_CHP_SBS_POS)
+#define PLL_CTRL_2_DISABLE_CHP_SBS_ENABLE (0x1 << RF_PLL_CTRL_PLL_CTRL_DISABLE_CHP_SBS_POS)
+
+#define PLL_CTRL_2_PLL_RX_48MEG_24      (0x0 << RF_PLL_CTRL_PLL_CTRL_PLL_RX_48MEG_POS)
+#define PLL_CTRL_2_PLL_RX_48MEG_48      (0x1 << RF_PLL_CTRL_PLL_CTRL_PLL_RX_48MEG_POS)
+
+#define PLL_CTRL_2_SWCAP_TX_SAME_RX_DISABLE (0x0 << RF_PLL_CTRL_PLL_CTRL_SWCAP_TX_SAME_RX_POS)
+#define PLL_CTRL_2_SWCAP_TX_SAME_RX_ENABLE (0x1 << RF_PLL_CTRL_PLL_CTRL_SWCAP_TX_SAME_RX_POS)
+
+#define PLL_CTRL_2_SWCAP_FSM_DISABLE    (0x0 << RF_PLL_CTRL_PLL_CTRL_SWCAP_FSM_POS)
+#define PLL_CTRL_2_SWCAP_FSM_ENABLE     (0x1 << RF_PLL_CTRL_PLL_CTRL_SWCAP_FSM_POS)
+
+#define PLL_CTRL_2_DLL_RSTB_RESET       (0x0 << RF_PLL_CTRL_PLL_CTRL_DLL_RSTB_POS)
+#define PLL_CTRL_2_DLL_RSTB_NO_RESET    (0x1 << RF_PLL_CTRL_PLL_CTRL_DLL_RSTB_POS)
+
+#define PLL_CTRL_VCO_SUBBAND_TRIM_DEFAULT (0x0 << RF_PLL_CTRL_PLL_CTRL_VCO_SUBBAND_TRIM_POS)
+
+#define PLL_CTRL_1_SUB_SEL_OFFS_EN_DISABLE (0x0 << RF_PLL_CTRL_PLL_CTRL_SUB_SEL_OFFS_EN_POS)
+#define PLL_CTRL_1_SUB_SEL_OFFS_EN_ENABLE (0x1 << RF_PLL_CTRL_PLL_CTRL_SUB_SEL_OFFS_EN_POS)
+
+#define PLL_CTRL_1_DIV2_CLKVCO_TEST_EN_1 (0x0 << RF_PLL_CTRL_PLL_CTRL_DIV2_CLKVCO_TEST_EN_POS)
+#define PLL_CTRL_1_DIV2_CLKVCO_TEST_EN_2 (0x1 << RF_PLL_CTRL_PLL_CTRL_DIV2_CLKVCO_TEST_EN_POS)
+
+#define PLL_CTRL_1_VCODIV_CLK_TEST_EN_DISABLE (0x0 << RF_PLL_CTRL_PLL_CTRL_VCODIV_CLK_TEST_EN_POS)
+#define PLL_CTRL_ENABLE_VCODIV_CLK_TEST_EN_ENABLE (0x1 << RF_PLL_CTRL_PLL_CTRL_VCODIV_CLK_TEST_EN_POS)
+
+#define PLL_CTRL_1_CHP_DEAD_ZONE_EN_DISABLE (0x0 << RF_PLL_CTRL_PLL_CTRL_CHP_DEAD_ZONE_EN_POS)
+#define PLL_CTRL_ENABLE_CHP_DEAD_ZONE_EN_ENABLE (0x1 << RF_PLL_CTRL_PLL_CTRL_CHP_DEAD_ZONE_EN_POS)
+
+#define PLL_CTRL_1_CHP_CURR_OFF_TRIM_TX_15 (0x0 << RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_TRIM_TX_POS)
+#define PLL_CTRL_1_CHP_CURR_OFF_TRIM_TX_22 (0x1 << RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_TRIM_TX_POS)
+#define PLL_CTRL_1_CHP_CURR_OFF_TRIM_TX_30 (0x2 << RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_TRIM_TX_POS)
+#define PLL_CTRL_1_CHP_CURR_OFF_TRIM_TX_60 (0x3 << RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_TRIM_TX_POS)
+
+#define PLL_CTRL_1_CHP_CURR_OFF_TRIM_RX_15 (0x0 << RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_TRIM_RX_POS)
+#define PLL_CTRL_1_CHP_CURR_OFF_TRIM_RX_22 (0x1 << RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_TRIM_RX_POS)
+#define PLL_CTRL_1_CHP_CURR_OFF_TRIM_RX_30 (0x2 << RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_TRIM_RX_POS)
+#define PLL_CTRL_1_CHP_CURR_OFF_TRIM_RX_60 (0x3 << RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_TRIM_RX_POS)
+
+#define PLL_CTRL_HIGH_BW_FILTER_EN_TX_DISABLE (0x0 << RF_PLL_CTRL_PLL_CTRL_HIGH_BW_FILTER_EN_TX_POS)
+#define PLL_CTRL_HIGH_BW_FILTER_EN_TX_ENABLE (0x1 << RF_PLL_CTRL_PLL_CTRL_HIGH_BW_FILTER_EN_TX_POS)
+
+#define PLL_CTRL_HIGH_BW_FILTER_EN_RX_DISABLE (0x0 << RF_PLL_CTRL_PLL_CTRL_HIGH_BW_FILTER_EN_RX_POS)
+#define PLL_CTRL_HIGH_BW_FILTER_EN_RX_ENABLE (0x1 << RF_PLL_CTRL_PLL_CTRL_HIGH_BW_FILTER_EN_RX_POS)
+
+#define PLL_CTRL_FAST_CHP_EN_TX_DISABLE (0x0 << RF_PLL_CTRL_PLL_CTRL_FAST_CHP_EN_TX_POS)
+#define PLL_CTRL_FAST_CHP_EN_TX_ENABLE  (0x1 << RF_PLL_CTRL_PLL_CTRL_FAST_CHP_EN_TX_POS)
+
+#define PLL_CTRL_FAST_CHP_EN_RX_DISABLE (0x0 << RF_PLL_CTRL_PLL_CTRL_FAST_CHP_EN_RX_POS)
+#define PLL_CTRL_FAST_CHP_EN_RX_ENABLE  (0x1 << RF_PLL_CTRL_PLL_CTRL_FAST_CHP_EN_RX_POS)
+
+#define PLL_CTRL_CHP_MODE_TRIM_MIN_FREQ (0x0 << RF_PLL_CTRL_PLL_CTRL_CHP_MODE_TRIM_POS)
+#define PLL_CTRL_CHP_MODE_TRIM_MED_FREQ (0x1 << RF_PLL_CTRL_PLL_CTRL_CHP_MODE_TRIM_POS)
+#define PLL_CTRL_CHP_MODE_TRIM_MAX_FREQ (0x2 << RF_PLL_CTRL_PLL_CTRL_CHP_MODE_TRIM_POS)
+
+#define PLL_CTRL_CHP_CMC_EN_DISABLE     (0x0 << RF_PLL_CTRL_PLL_CTRL_CHP_CMC_EN_POS)
+#define PLL_CTRL_CHP_CMC_EN_ENABLE      (0x1 << RF_PLL_CTRL_PLL_CTRL_CHP_CMC_EN_POS)
+
+#define PLL_CTRL_CHP_CURR_OFF_EN_TX_DISABLE (0x0 << RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_EN_TX_POS)
+#define PLL_CTRL_CHP_CURR_OFF_EN_TX_ENABLE (0x1 << RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_EN_TX_POS)
+
+#define PLL_CTRL_CHP_CURR_OFF_EN_RX_DISABLE (0x0 << RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_EN_RX_POS)
+#define PLL_CTRL_CHP_CURR_OFF_EN_RX_ENABLE (0x1 << RF_PLL_CTRL_PLL_CTRL_CHP_CURR_OFF_EN_RX_POS)
+
+/* PLL_CTRL */
+#define RF1_PLL_CTRL_BASE               0x40040AAC
+#define RF1_PLL_CTRL                    REG32_POINTER(RF1_PLL_CTRL_BASE)
+
+/* PLL_CTRL */
+#define RF2_PLL_CTRL_BASE               0x40040CAC
+#define RF2_PLL_CTRL                    REG32_POINTER(RF2_PLL_CTRL_BASE)
+
+/* PLL_CTRL */
+#define RF3_PLL_CTRL_BASE               0x40040EAC
+#define RF3_PLL_CTRL                    REG32_POINTER(RF3_PLL_CTRL_BASE)
+
+/* DLL_CTRL */
+#define RF0_DLL_CTRL_BASE               0x400408B0
+#define RF0_DLL_CTRL                    REG32_POINTER(RF0_DLL_CTRL_BASE)
+
+/* RF_DLL_CTRL bit positions */
+#define RF_DLL_CTRL_RSSI_TUN_1_RSSI_TUN_GAIN_POS 29
+#define RF_DLL_CTRL_RSSI_TUN_1_RSSI_TUN_GAIN_MASK (0x7 << RF_DLL_CTRL_RSSI_TUN_1_RSSI_TUN_GAIN_POS)
+#define RF_DLL_CTRL_RSSI_TUN_1_RSSI_ODD_OFFSET_POS 24
+#define RF_DLL_CTRL_RSSI_TUN_1_RSSI_ODD_OFFSET_MASK (0x1F << RF_DLL_CTRL_RSSI_TUN_1_RSSI_ODD_OFFSET_POS)
+#define RF_DLL_CTRL_RSSI_TUN_1_RSSI_EVEN_MAX_POS 20
+#define RF_DLL_CTRL_RSSI_TUN_1_RSSI_EVEN_MAX_MASK (0xF << RF_DLL_CTRL_RSSI_TUN_1_RSSI_EVEN_MAX_POS)
+#define RF_DLL_CTRL_RSSI_TUN_1_RSSI_EVEN_MIN_POS 16
+#define RF_DLL_CTRL_RSSI_TUN_1_RSSI_EVEN_MIN_MASK (0xF << RF_DLL_CTRL_RSSI_TUN_1_RSSI_EVEN_MIN_POS)
+#define RF_DLL_CTRL_DLL_CTRL_CK_LAST_SEL_DELAY_POS 12
+#define RF_DLL_CTRL_DLL_CTRL_CK_FIRST_SEL_DELAY_POS 11
+#define RF_DLL_CTRL_DLL_CTRL_CK_EXT_SEL_POS 10
+#define RF_DLL_CTRL_DLL_CTRL_CK_DIG_EN_POS 9
+#define RF_DLL_CTRL_DLL_CTRL_CK_TEST_EN_POS 8
+#define RF_DLL_CTRL_DLL_CTRL_TOO_FAST_ENB_POS 7
+#define RF_DLL_CTRL_DLL_CTRL_LOCKED_DET_EN_POS 6
+#define RF_DLL_CTRL_DLL_CTRL_LOCKED_AUTO_CHECK_EN_POS 5
+#define RF_DLL_CTRL_DLL_CTRL_FAST_ENB_POS 4
+#define RF_DLL_CTRL_DLL_CTRL_CK_SEL_TX_POS 2
+#define RF_DLL_CTRL_DLL_CTRL_CK_SEL_TX_MASK (0x3 << RF_DLL_CTRL_DLL_CTRL_CK_SEL_TX_POS)
+#define RF_DLL_CTRL_DLL_CTRL_CK_SEL_RX_POS 0
+#define RF_DLL_CTRL_DLL_CTRL_CK_SEL_RX_MASK (0x3 << RF_DLL_CTRL_DLL_CTRL_CK_SEL_RX_POS)
+
+/* RF_DLL_CTRL settings */
+#define RSSI_TUN_1_RSSI_TUN_GAIN_DEFAULT (0x1 << RF_DLL_CTRL_RSSI_TUN_1_RSSI_TUN_GAIN_POS)
+
+#define RSSI_TUN_1_RSSI_ODD_OFFSET_DEFAULT (0x4 << RF_DLL_CTRL_RSSI_TUN_1_RSSI_ODD_OFFSET_POS)
+
+#define RSSI_TUN_1_RSSI_EVEN_MAX_DEFAULT (0x1 << RF_DLL_CTRL_RSSI_TUN_1_RSSI_EVEN_MAX_POS)
+
+#define RSSI_TUN_1_RSSI_EVEN_MIN_DEFAULT (0x1 << RF_DLL_CTRL_RSSI_TUN_1_RSSI_EVEN_MIN_POS)
+
+#define DLL_CTRL_CK_LAST_SEL_DELAY_0    (0x0 << RF_DLL_CTRL_DLL_CTRL_CK_LAST_SEL_DELAY_POS)
+#define DLL_CTRL_CK_LAST_SEL_DELAY_1    (0x1 << RF_DLL_CTRL_DLL_CTRL_CK_LAST_SEL_DELAY_POS)
+
+#define DLL_CTRL_CK_FIRST_SEL_DELAY_0   (0x0 << RF_DLL_CTRL_DLL_CTRL_CK_FIRST_SEL_DELAY_POS)
+#define DLL_CTRL_CK_FIRST_SEL_DELAY_1   (0x1 << RF_DLL_CTRL_DLL_CTRL_CK_FIRST_SEL_DELAY_POS)
+
+#define DLL_CTRL_CK_EXT_SEL_XTAL        (0x0 << RF_DLL_CTRL_DLL_CTRL_CK_EXT_SEL_POS)
+#define DLL_CTRL_CK_EXT_SEL_EXT         (0x1 << RF_DLL_CTRL_DLL_CTRL_CK_EXT_SEL_POS)
+
+#define DLL_CTRL_CK_DIG_EN_NOMINAL      (0x0 << RF_DLL_CTRL_DLL_CTRL_CK_DIG_EN_POS)
+#define DLL_CTRL_CK_DIG_EN_ALTERNATE    (0x1 << RF_DLL_CTRL_DLL_CTRL_CK_DIG_EN_POS)
+
+#define DLL_CTRL_CK_TEST_EN_0           (0x0 << RF_DLL_CTRL_DLL_CTRL_CK_TEST_EN_POS)
+#define DLL_CTRL_CK_TEST_EN_ENABLE      (0x1 << RF_DLL_CTRL_DLL_CTRL_CK_TEST_EN_POS)
+
+#define DLL_CTRL_TOO_FAST_ENB_DISABLE   (0x0 << RF_DLL_CTRL_DLL_CTRL_TOO_FAST_ENB_POS)
+#define DLL_CTRL_TOO_FAST_ENB_ENABLE    (0x1 << RF_DLL_CTRL_DLL_CTRL_TOO_FAST_ENB_POS)
+
+#define DLL_CTRL_LOCKED_DET_EN_DISABLE  (0x0 << RF_DLL_CTRL_DLL_CTRL_LOCKED_DET_EN_POS)
+#define DLL_CTRL_LOCKED_DET_EN_ENABLE   (0x1 << RF_DLL_CTRL_DLL_CTRL_LOCKED_DET_EN_POS)
+
+#define DLL_CTRL_LOCKED_AUTO_CHECK_EN_DISABLE (0x0 << RF_DLL_CTRL_DLL_CTRL_LOCKED_AUTO_CHECK_EN_POS)
+#define DLL_CTRL_LOCKED_AUTO_CHECK_EN_ENABLE (0x1 << RF_DLL_CTRL_DLL_CTRL_LOCKED_AUTO_CHECK_EN_POS)
+
+#define DLL_CTRL_FAST_ENB_ENABLE        (0x0 << RF_DLL_CTRL_DLL_CTRL_FAST_ENB_POS)
+#define DLL_CTRL_FAST_ENB_DISABLE       (0x1 << RF_DLL_CTRL_DLL_CTRL_FAST_ENB_POS)
+
+#define DLL_CTRL_CK_SEL_TX_0            (0x0 << RF_DLL_CTRL_DLL_CTRL_CK_SEL_TX_POS)
+#define DLL_CTRL_CK_SEL_TX_1            (0x1 << RF_DLL_CTRL_DLL_CTRL_CK_SEL_TX_POS)
+#define DLL_CTRL_CK_SEL_TX_2            (0x2 << RF_DLL_CTRL_DLL_CTRL_CK_SEL_TX_POS)
+#define DLL_CTRL_CK_SEL_TX_3            (0x3 << RF_DLL_CTRL_DLL_CTRL_CK_SEL_TX_POS)
+
+#define DLL_CTRL_CK_SEL_RX_0            (0x0 << RF_DLL_CTRL_DLL_CTRL_CK_SEL_RX_POS)
+#define DLL_CTRL_CK_SEL_RX_1            (0x1 << RF_DLL_CTRL_DLL_CTRL_CK_SEL_RX_POS)
+#define DLL_CTRL_CK_SEL_RX_2            (0x2 << RF_DLL_CTRL_DLL_CTRL_CK_SEL_RX_POS)
+#define DLL_CTRL_CK_SEL_RX_3            (0x3 << RF_DLL_CTRL_DLL_CTRL_CK_SEL_RX_POS)
+
+/* DLL_CTRL */
+#define RF1_DLL_CTRL_BASE               0x40040AB0
+#define RF1_DLL_CTRL                    REG32_POINTER(RF1_DLL_CTRL_BASE)
+
+/* DLL_CTRL */
+#define RF2_DLL_CTRL_BASE               0x40040CB0
+#define RF2_DLL_CTRL                    REG32_POINTER(RF2_DLL_CTRL_BASE)
+
+/* DLL_CTRL */
+#define RF3_DLL_CTRL_BASE               0x40040EB0
+#define RF3_DLL_CTRL                    REG32_POINTER(RF3_DLL_CTRL_BASE)
+
+/* REG2D */
+#define RF0_REG2D_BASE                  0x400408B4
+#define RF0_REG2D                       REG32_POINTER(RF0_REG2D_BASE)
+
+/* RF_REG2D bit positions */
+#define RF_REG2D_PA_CONF_SW_CN_POS      28
+#define RF_REG2D_PA_CONF_SW_CN_MASK     (0x3 << RF_REG2D_PA_CONF_SW_CN_POS)
+#define RF_REG2D_PA_CONF_TX_SWITCHPA_POS 27
+#define RF_REG2D_PA_CONF_TX_0DBM_POS    26
+#define RF_REG2D_PA_CONF_LIN_RAMP_POS   25
+#define RF_REG2D_PA_CONF_MIN_PA_PWR_POS 24
+#define RF_REG2D_CTRL_RX_SWITCH_LP_POS  23
+#define RF_REG2D_CTRL_RX_USE_PEAK_DETECTOR_POS 22
+#define RF_REG2D_CTRL_RX_START_MIX_ON_CAL_POS 21
+#define RF_REG2D_CTRL_RX_CTRL_RX_POS    16
+#define RF_REG2D_CTRL_RX_CTRL_RX_MASK   (0x1F << RF_REG2D_CTRL_RX_CTRL_RX_POS)
+#define RF_REG2D_CTRL_ADC_PHADC_THERM_OUT_EN_POS 15
+#define RF_REG2D_CTRL_ADC_PHADC_DELLATCH_POS 13
+#define RF_REG2D_CTRL_ADC_PHADC_DELLATCH_MASK (0x3 << RF_REG2D_CTRL_ADC_PHADC_DELLATCH_POS)
+#define RF_REG2D_CTRL_ADC_CTRL_ADC_POS  8
+#define RF_REG2D_CTRL_ADC_CTRL_ADC_MASK (0x1F << RF_REG2D_CTRL_ADC_CTRL_ADC_POS)
+#define RF_REG2D_RSSI_TUN_2_RSSI_TRI_CK_DIV_POS 5
+#define RF_REG2D_RSSI_TUN_2_RSSI_TRI_CK_DIV_MASK (0x3 << RF_REG2D_RSSI_TUN_2_RSSI_TRI_CK_DIV_POS)
+#define RF_REG2D_RSSI_TUN_2_RSSI_ONE_CK_RSSI_PHADC_POS 4
+#define RF_REG2D_RSSI_TUN_2_RSSI_FULL_POS 3
+#define RF_REG2D_RSSI_TUN_2_RSSI_1DB_POS 2
+#define RF_REG2D_RSSI_TUN_2_RSSI_PRE_ATT_POS 0
+#define RF_REG2D_RSSI_TUN_2_RSSI_PRE_ATT_MASK (0x3 << RF_REG2D_RSSI_TUN_2_RSSI_PRE_ATT_POS)
+
+/* RF_REG2D settings */
+#define PA_CONF_SW_CN_DEFAULT           (0x0 << RF_REG2D_PA_CONF_SW_CN_POS)
+
+#define PA_CONF_TX_SWITCHPA_DISABLE     (0x0 << RF_REG2D_PA_CONF_TX_SWITCHPA_POS)
+#define PA_CONF_TX_SWITCHPA_ENABLE      (0x1 << RF_REG2D_PA_CONF_TX_SWITCHPA_POS)
+
+#define PA_CONF_TX_DISABLEDBM_DISABLE   (0x0 << RF_REG2D_PA_CONF_TX_0DBM_POS)
+#define PA_CONF_TX_DISABLEDBM_ENABLE    (0x1 << RF_REG2D_PA_CONF_TX_0DBM_POS)
+
+#define PA_CONF_LIN_RAMP_DISABLE        (0x0 << RF_REG2D_PA_CONF_LIN_RAMP_POS)
+#define PA_CONF_LIN_RAMP_ENABLE         (0x1 << RF_REG2D_PA_CONF_LIN_RAMP_POS)
+
+#define PA_CONF_MIN_PA_PWR_M3           (0x0 << RF_REG2D_PA_CONF_MIN_PA_PWR_POS)
+#define PA_CONF_MIN_PA_PWR_M1           (0x1 << RF_REG2D_PA_CONF_MIN_PA_PWR_POS)
+
+#define CTRL_RX_SWITCH_LP_DISABLE       (0x0 << RF_REG2D_CTRL_RX_SWITCH_LP_POS)
+#define CTRL_RX_SWITCH_LP_ENABLE        (0x1 << RF_REG2D_CTRL_RX_SWITCH_LP_POS)
+
+#define CTRL_RX_USE_PEAK_DETECTOR_DISABLE (0x0 << RF_REG2D_CTRL_RX_USE_PEAK_DETECTOR_POS)
+#define CTRL_RX_USE_PEAK_DETECTOR_ENABLE (0x1 << RF_REG2D_CTRL_RX_USE_PEAK_DETECTOR_POS)
+
+#define CTRL_RX_START_MIX_ON_CAL_DISABLE (0x0 << RF_REG2D_CTRL_RX_START_MIX_ON_CAL_POS)
+#define CTRL_RX_START_MIX_ON_CAL_ENABLE (0x1 << RF_REG2D_CTRL_RX_START_MIX_ON_CAL_POS)
+
+#define CTRL_RX_CTRL_RX_DEFAULT         (0xF << RF_REG2D_CTRL_RX_CTRL_RX_POS)
+
+#define CTRL_ADC_PHADC_THERM_OUT_EN_DISABLE (0x0 << RF_REG2D_CTRL_ADC_PHADC_THERM_OUT_EN_POS)
+#define CTRL_ADC_PHADC_THERM_OUT_EN_ENABLE (0x1 << RF_REG2D_CTRL_ADC_PHADC_THERM_OUT_EN_POS)
+
+#define CTRL_ADC_PHADC_DELLATCH_DEFAULT (0x1 << RF_REG2D_CTRL_ADC_PHADC_DELLATCH_POS)
+
+#define CTRL_ADC_CTRL_ADC_DEFAULT       (0x5 << RF_REG2D_CTRL_ADC_CTRL_ADC_POS)
+
+#define RSSI_TUN_2_RSSI_TRI_CK_DIV_2    (0x0 << RF_REG2D_RSSI_TUN_2_RSSI_TRI_CK_DIV_POS)
+#define RSSI_TUN_2_RSSI_TRI_CK_DIV_4    (0x1 << RF_REG2D_RSSI_TUN_2_RSSI_TRI_CK_DIV_POS)
+#define RSSI_TUN_2_RSSI_TRI_CK_DIV_8    (0x2 << RF_REG2D_RSSI_TUN_2_RSSI_TRI_CK_DIV_POS)
+#define RSSI_TUN_2_RSSI_TRI_CK_DIV_16   (0x3 << RF_REG2D_RSSI_TUN_2_RSSI_TRI_CK_DIV_POS)
+
+#define RSSI_TUN_2_RSSI_ONE_CK_RSSI_PHADC_DISABLE (0x0 << RF_REG2D_RSSI_TUN_2_RSSI_ONE_CK_RSSI_PHADC_POS)
+#define RSSI_TUN_2_RSSI_ONE_CK_RSSI_PHADC_ENABLE (0x1 << RF_REG2D_RSSI_TUN_2_RSSI_ONE_CK_RSSI_PHADC_POS)
+
+#define RSSI_TUN_2_RSSI_FULL_DISABLE    (0x0 << RF_REG2D_RSSI_TUN_2_RSSI_FULL_POS)
+#define RSSI_TUN_2_RSSI_FULL_ENABLE     (0x1 << RF_REG2D_RSSI_TUN_2_RSSI_FULL_POS)
+
+#define RSSI_TUN_2_RSSI_1DB_0P5         (0x0 << RF_REG2D_RSSI_TUN_2_RSSI_1DB_POS)
+#define RSSI_TUN_2_RSSI_1DB_1           (0x1 << RF_REG2D_RSSI_TUN_2_RSSI_1DB_POS)
+
+#define RSSI_TUN_2_RSSI_PRE_ATT_DEFAULT (0x3 << RF_REG2D_RSSI_TUN_2_RSSI_PRE_ATT_POS)
+
+/* REG2D */
+#define RF1_REG2D_BASE                  0x40040AB4
+#define RF1_REG2D                       REG32_POINTER(RF1_REG2D_BASE)
+
+/* REG2D */
+#define RF2_REG2D_BASE                  0x40040CB4
+#define RF2_REG2D                       REG32_POINTER(RF2_REG2D_BASE)
+
+/* REG2D */
+#define RF3_REG2D_BASE                  0x40040EB4
+#define RF3_REG2D                       REG32_POINTER(RF3_REG2D_BASE)
+
+/* REG2E */
+#define RF0_REG2E_BASE                  0x400408B8
+#define RF0_REG2E                       REG32_POINTER(RF0_REG2E_BASE)
+
+/* RF_REG2E bit positions */
+#define RF_REG2E_XTAL_TRIM_XTAL_TRIM_INIT_POS 24
+#define RF_REG2E_XTAL_TRIM_XTAL_TRIM_INIT_MASK (0xFF << RF_REG2E_XTAL_TRIM_XTAL_TRIM_INIT_POS)
+#define RF_REG2E_XTAL_TRIM_XTAL_TRIM_POS 16
+#define RF_REG2E_XTAL_TRIM_XTAL_TRIM_MASK (0xFF << RF_REG2E_XTAL_TRIM_XTAL_TRIM_POS)
+#define RF_REG2E_ENABLES_SEPARATE_PPA_CASC_POS 12
+#define RF_REG2E_ENABLES_EN_RXTX_POS    6
+#define RF_REG2E_ENABLES_EN_RXTX_MASK   (0x3F << RF_REG2E_ENABLES_EN_RXTX_POS)
+#define RF_REG2E_ENABLES_EN_BB_POS      0
+#define RF_REG2E_ENABLES_EN_BB_MASK     (0x3F << RF_REG2E_ENABLES_EN_BB_POS)
+
+/* RF_REG2E settings */
+#define XTAL_TRIM_XTAL_TRIM_INIT_DEFAULT (0x60 << RF_REG2E_XTAL_TRIM_XTAL_TRIM_INIT_POS)
+
+#define XTAL_TRIM_XTAL_TRIM_DEFAULT     (0x60 << RF_REG2E_XTAL_TRIM_XTAL_TRIM_POS)
+
+#define ENABLES_SEPARATE_PPA_CASC_DISABLE (0x0 << RF_REG2E_ENABLES_SEPARATE_PPA_CASC_POS)
+#define ENABLES_SEPARATE_PPA_CASC_ENABLE (0x1 << RF_REG2E_ENABLES_SEPARATE_PPA_CASC_POS)
+
+#define ENABLES_EN_RXTX_0               (0x0 << RF_REG2E_ENABLES_EN_RXTX_POS)
+#define ENABLES_EN_RXTX_1               (0x1 << RF_REG2E_ENABLES_EN_RXTX_POS)
+#define ENABLES_EN_RXTX_2               (0x2 << RF_REG2E_ENABLES_EN_RXTX_POS)
+#define ENABLES_EN_RXTX_3               (0x3 << RF_REG2E_ENABLES_EN_RXTX_POS)
+#define ENABLES_EN_RXTX_4               (0x4 << RF_REG2E_ENABLES_EN_RXTX_POS)
+#define ENABLES_EN_RXTX_5               (0x5 << RF_REG2E_ENABLES_EN_RXTX_POS)
+
+#define ENABLES_EN_BB_0                 (0x0 << RF_REG2E_ENABLES_EN_BB_POS)
+#define ENABLES_EN_BB_1                 (0x1 << RF_REG2E_ENABLES_EN_BB_POS)
+#define ENABLES_EN_BB_2                 (0x2 << RF_REG2E_ENABLES_EN_BB_POS)
+#define ENABLES_EN_BB_3                 (0x3 << RF_REG2E_ENABLES_EN_BB_POS)
+#define ENABLES_EN_BB_4                 (0x4 << RF_REG2E_ENABLES_EN_BB_POS)
+#define ENABLES_EN_BB_5                 (0x5 << RF_REG2E_ENABLES_EN_BB_POS)
+
+/* REG2E */
+#define RF1_REG2E_BASE                  0x40040AB8
+#define RF1_REG2E                       REG32_POINTER(RF1_REG2E_BASE)
+
+/* REG2E */
+#define RF2_REG2E_BASE                  0x40040CB8
+#define RF2_REG2E                       REG32_POINTER(RF2_REG2E_BASE)
+
+/* REG2E */
+#define RF3_REG2E_BASE                  0x40040EB8
+#define RF3_REG2E                       REG32_POINTER(RF3_REG2E_BASE)
+
+/* XTAL_CTRL */
+#define RF0_XTAL_CTRL_BASE              0x400408BC
+#define RF0_XTAL_CTRL                   REG32_POINTER(RF0_XTAL_CTRL_BASE)
+
+/* RF_XTAL_CTRL bit positions */
+#define RF_XTAL_CTRL_XTAL_CTRL_XO_THR_HIGH_POS 28
+#define RF_XTAL_CTRL_XTAL_CTRL_XO_THR_HIGH_MASK (0xF << RF_XTAL_CTRL_XTAL_CTRL_XO_THR_HIGH_POS)
+#define RF_XTAL_CTRL_XTAL_CTRL_XO_THR_LOW_POS 24
+#define RF_XTAL_CTRL_XTAL_CTRL_XO_THR_LOW_MASK (0xF << RF_XTAL_CTRL_XTAL_CTRL_XO_THR_LOW_POS)
+#define RF_XTAL_CTRL_XTAL_CTRL_XO_A_S_CURR_SEL_HIGH_POS 22
+#define RF_XTAL_CTRL_XTAL_CTRL_XO_A_S_CURR_SEL_HIGH_MASK (0x3 << RF_XTAL_CTRL_XTAL_CTRL_XO_A_S_CURR_SEL_HIGH_POS)
+#define RF_XTAL_CTRL_XTAL_CTRL_XO_A_S_CURR_SEL_LOW_POS 20
+#define RF_XTAL_CTRL_XTAL_CTRL_XO_A_S_CURR_SEL_LOW_MASK (0x3 << RF_XTAL_CTRL_XTAL_CTRL_XO_A_S_CURR_SEL_LOW_POS)
+#define RF_XTAL_CTRL_XTAL_CTRL_LOW_CLK_READY_TH_EN_POS 19
+#define RF_XTAL_CTRL_XTAL_CTRL_XTAL_CTRL_BYPASS_POS 18
+#define RF_XTAL_CTRL_XTAL_CTRL_DIG_CLK_IN_SEL_POS 17
+#define RF_XTAL_CTRL_XTAL_CTRL_XO_EN_B_REG_POS 16
+#define RF_XTAL_CTRL_XTAL_CTRL_XTAL_CKDIV_POS 14
+#define RF_XTAL_CTRL_XTAL_CTRL_XTAL_CKDIV_MASK (0x3 << RF_XTAL_CTRL_XTAL_CTRL_XTAL_CKDIV_POS)
+#define RF_XTAL_CTRL_XTAL_CTRL_CLK_OUT_EN_B_POS 13
+#define RF_XTAL_CTRL_XTAL_CTRL_REG_VALUE_SEL_POS 12
+#define RF_XTAL_CTRL_XTAL_CTRL_AFTERSTARTUP_CURR_SEL_POS 10
+#define RF_XTAL_CTRL_XTAL_CTRL_AFTERSTARTUP_CURR_SEL_MASK (0x3 << RF_XTAL_CTRL_XTAL_CTRL_AFTERSTARTUP_CURR_SEL_POS)
+#define RF_XTAL_CTRL_XTAL_CTRL_STARTUP_CURR_SEL_POS 8
+#define RF_XTAL_CTRL_XTAL_CTRL_STARTUP_CURR_SEL_MASK (0x3 << RF_XTAL_CTRL_XTAL_CTRL_STARTUP_CURR_SEL_POS)
+#define RF_XTAL_CTRL_XTAL_CTRL_INV_CLK_DIG_POS 7
+#define RF_XTAL_CTRL_XTAL_CTRL_INV_CLK_PLL_POS 6
+#define RF_XTAL_CTRL_XTAL_CTRL_FORCE_CLK_READY_POS 5
+#define RF_XTAL_CTRL_XTAL_CTRL_CLK_DIG_EN_B_POS 4
+#define RF_XTAL_CTRL_XTAL_CTRL_BUFF_EN_B_POS 3
+#define RF_XTAL_CTRL_XTAL_CTRL_HP_MODE_POS 2
+#define RF_XTAL_CTRL_XTAL_CTRL_LP_MODE_POS 1
+#define RF_XTAL_CTRL_XTAL_CTRL_EXT_CLK_MODE_POS 0
+
+/* RF_XTAL_CTRL settings */
+#define XTAL_CTRL_XO_THR_HIGH_DEFAULT   (0xC << RF_XTAL_CTRL_XTAL_CTRL_XO_THR_HIGH_POS)
+
+#define XTAL_CTRL_XO_THR_LOW_DEFAULT    (0x3 << RF_XTAL_CTRL_XTAL_CTRL_XO_THR_LOW_POS)
+
+#define XTAL_CTRL_XO_A_S_CURR_SEL_HIGH_DEFAULT (0x2 << RF_XTAL_CTRL_XTAL_CTRL_XO_A_S_CURR_SEL_HIGH_POS)
+
+#define XTAL_CTRL_XO_A_S_CURR_SEL_LOW_DEFAULT (0x0 << RF_XTAL_CTRL_XTAL_CTRL_XO_A_S_CURR_SEL_LOW_POS)
+
+#define XTAL_CTRL_LOW_CLK_READY_TH_EN_NOMINAL (0x0 << RF_XTAL_CTRL_XTAL_CTRL_LOW_CLK_READY_TH_EN_POS)
+#define XTAL_CTRL_LOW_CLK_READY_TH_EN_LOW (0x1 << RF_XTAL_CTRL_XTAL_CTRL_LOW_CLK_READY_TH_EN_POS)
+
+#define XTAL_CTRL_XTAL_CTRL_BYPASS_DISABLE (0x0 << RF_XTAL_CTRL_XTAL_CTRL_XTAL_CTRL_BYPASS_POS)
+#define XTAL_CTRL_XTAL_CTRL_BYPASS_ENABLE (0x1 << RF_XTAL_CTRL_XTAL_CTRL_XTAL_CTRL_BYPASS_POS)
+
+#define XTAL_CTRL_DIG_CLK_IN_SEL_XTAL   (0x0 << RF_XTAL_CTRL_XTAL_CTRL_DIG_CLK_IN_SEL_POS)
+#define XTAL_CTRL_DIG_CLK_IN_SEL_CLK_IN (0x1 << RF_XTAL_CTRL_XTAL_CTRL_DIG_CLK_IN_SEL_POS)
+
+#define XTAL_CTRL_ENABLE_OSCILLATOR     (0x0 << RF_XTAL_CTRL_XTAL_CTRL_XO_EN_B_REG_POS)
+#define XTAL_CTRL_DISABLE_OSCILLATOR    (0x1 << RF_XTAL_CTRL_XTAL_CTRL_XO_EN_B_REG_POS)
+
+#define XTAL_CTRL_XTAL_CKDIV_0          (0x0 << RF_XTAL_CTRL_XTAL_CTRL_XTAL_CKDIV_POS)
+#define XTAL_CTRL_XTAL_CKDIV_1          (0x1 << RF_XTAL_CTRL_XTAL_CTRL_XTAL_CKDIV_POS)
+#define XTAL_CTRL_XTAL_CKDIV_2          (0x2 << RF_XTAL_CTRL_XTAL_CTRL_XTAL_CKDIV_POS)
+#define XTAL_CTRL_XTAL_CKDIV_3          (0x3 << RF_XTAL_CTRL_XTAL_CTRL_XTAL_CKDIV_POS)
+
+#define XTAL_CTRL_CLK_OUT_EN_B_ENABLE   (0x0 << RF_XTAL_CTRL_XTAL_CTRL_CLK_OUT_EN_B_POS)
+#define XTAL_CTRL_CLK_OUT_EN_B_DISABLE  (0x1 << RF_XTAL_CTRL_XTAL_CTRL_CLK_OUT_EN_B_POS)
+
+#define XTAL_CTRL_REG_VALUE_SEL_EXTERNAL (0x0 << RF_XTAL_CTRL_XTAL_CTRL_REG_VALUE_SEL_POS)
+#define XTAL_CTRL_REG_VALUE_SEL_INTERNAL (0x1 << RF_XTAL_CTRL_XTAL_CTRL_REG_VALUE_SEL_POS)
+
+#define XTAL_CTRL_AFTERSTARTUP_CURR_SEL_0 (0x0 << RF_XTAL_CTRL_XTAL_CTRL_AFTERSTARTUP_CURR_SEL_POS)
+#define XTAL_CTRL_AFTERSTARTUP_CURR_SEL_1 (0x1 << RF_XTAL_CTRL_XTAL_CTRL_AFTERSTARTUP_CURR_SEL_POS)
+#define XTAL_CTRL_AFTERSTARTUP_CURR_SEL_2 (0x2 << RF_XTAL_CTRL_XTAL_CTRL_AFTERSTARTUP_CURR_SEL_POS)
+#define XTAL_CTRL_AFTERSTARTUP_CURR_SEL_3 (0x3 << RF_XTAL_CTRL_XTAL_CTRL_AFTERSTARTUP_CURR_SEL_POS)
+
+#define XTAL_CTRL_STARTUP_CURR_SEL_0    (0x0 << RF_XTAL_CTRL_XTAL_CTRL_STARTUP_CURR_SEL_POS)
+#define XTAL_CTRL_STARTUP_CURR_SEL_1    (0x1 << RF_XTAL_CTRL_XTAL_CTRL_STARTUP_CURR_SEL_POS)
+#define XTAL_CTRL_STARTUP_CURR_SEL_2    (0x2 << RF_XTAL_CTRL_XTAL_CTRL_STARTUP_CURR_SEL_POS)
+#define XTAL_CTRL_STARTUP_CURR_SEL_3    (0x3 << RF_XTAL_CTRL_XTAL_CTRL_STARTUP_CURR_SEL_POS)
+
+#define XTAL_CTRL_INV_CLK_DIG_DISABLE   (0x0 << RF_XTAL_CTRL_XTAL_CTRL_INV_CLK_DIG_POS)
+#define XTAL_CTRL_INV_CLK_DIG_ENABLE    (0x1 << RF_XTAL_CTRL_XTAL_CTRL_INV_CLK_DIG_POS)
+
+#define XTAL_CTRL_INV_CLK_PLL_DISABLE   (0x0 << RF_XTAL_CTRL_XTAL_CTRL_INV_CLK_PLL_POS)
+#define XTAL_CTRL_INV_CLK_PLL_ENABLE    (0x1 << RF_XTAL_CTRL_XTAL_CTRL_INV_CLK_PLL_POS)
+
+#define XTAL_CTRL_FORCE_CLK_READY_DISABLE (0x0 << RF_XTAL_CTRL_XTAL_CTRL_FORCE_CLK_READY_POS)
+#define XTAL_CTRL_FORCE_CLK_READY_ENABLE (0x1 << RF_XTAL_CTRL_XTAL_CTRL_FORCE_CLK_READY_POS)
+
+#define XTAL_CTRL_CLK_DIG_EN_B_DISABLE  (0x0 << RF_XTAL_CTRL_XTAL_CTRL_CLK_DIG_EN_B_POS)
+#define XTAL_CTRL_CLK_DIG_EN_B_ENABLE   (0x1 << RF_XTAL_CTRL_XTAL_CTRL_CLK_DIG_EN_B_POS)
+
+#define XTAL_CTRL_BUFF_EN_B_DISABLE     (0x0 << RF_XTAL_CTRL_XTAL_CTRL_BUFF_EN_B_POS)
+#define XTAL_CTRL_BUFF_EN_B_ENABLE      (0x1 << RF_XTAL_CTRL_XTAL_CTRL_BUFF_EN_B_POS)
+
+#define XTAL_CTRL_HP_MODE_NOMINAL       (0x0 << RF_XTAL_CTRL_XTAL_CTRL_HP_MODE_POS)
+#define XTAL_CTRL_HP_MODE_HIGH          (0x1 << RF_XTAL_CTRL_XTAL_CTRL_HP_MODE_POS)
+
+#define XTAL_CTRL_LP_MODE_NOMINAL       (0x0 << RF_XTAL_CTRL_XTAL_CTRL_LP_MODE_POS)
+#define XTAL_CTRL_LP_MODE_HIGH          (0x1 << RF_XTAL_CTRL_XTAL_CTRL_LP_MODE_POS)
+
+#define XTAL_CTRL_EXT_CLK_MODE_DISABLE  (0x0 << RF_XTAL_CTRL_XTAL_CTRL_EXT_CLK_MODE_POS)
+#define XTAL_CTRL_EXT_CLK_MODE_ENABLE   (0x1 << RF_XTAL_CTRL_XTAL_CTRL_EXT_CLK_MODE_POS)
+
+/* XTAL_CTRL */
+#define RF1_XTAL_CTRL_BASE              0x40040ABC
+#define RF1_XTAL_CTRL                   REG32_POINTER(RF1_XTAL_CTRL_BASE)
+
+/* XTAL_CTRL */
+#define RF2_XTAL_CTRL_BASE              0x40040CBC
+#define RF2_XTAL_CTRL                   REG32_POINTER(RF2_XTAL_CTRL_BASE)
+
+/* XTAL_CTRL */
+#define RF3_XTAL_CTRL_BASE              0x40040EBC
+#define RF3_XTAL_CTRL                   REG32_POINTER(RF3_XTAL_CTRL_BASE)
+
+/* SUBBAND */
+#define RF0_SUBBAND_BASE                0x400408C0
+#define RF0_SUBBAND                     REG32_POINTER(RF0_SUBBAND_BASE)
+
+/* RF_SUBBAND bit positions */
+#define RF_SUBBAND_SUBBAND_OFFSET_SB_OFFSET_RX_POS 24
+#define RF_SUBBAND_SUBBAND_OFFSET_SB_OFFSET_RX_MASK (0xFF << RF_SUBBAND_SUBBAND_OFFSET_SB_OFFSET_RX_POS)
+#define RF_SUBBAND_SUBBAND_OFFSET_SB_OFFSET_POS 16
+#define RF_SUBBAND_SUBBAND_OFFSET_SB_OFFSET_MASK (0xFF << RF_SUBBAND_SUBBAND_OFFSET_SB_OFFSET_POS)
+#define RF_SUBBAND_SWCAP_LIM_SB_MAX_VAL_POS 12
+#define RF_SUBBAND_SWCAP_LIM_SB_MAX_VAL_MASK (0xF << RF_SUBBAND_SWCAP_LIM_SB_MAX_VAL_POS)
+#define RF_SUBBAND_SWCAP_LIM_SB_MIN_VAL_POS 8
+#define RF_SUBBAND_SWCAP_LIM_SB_MIN_VAL_MASK (0xF << RF_SUBBAND_SWCAP_LIM_SB_MIN_VAL_POS)
+#define RF_SUBBAND_SUBBAND_CONF_SB_FLL_MODE_POS 7
+#define RF_SUBBAND_SUBBAND_CONF_SB_INV_BAND_POS 6
+#define RF_SUBBAND_SUBBAND_CONF_SB_FREQ_CNT_POS 4
+#define RF_SUBBAND_SUBBAND_CONF_SB_FREQ_CNT_MASK (0x3 << RF_SUBBAND_SUBBAND_CONF_SB_FREQ_CNT_POS)
+#define RF_SUBBAND_SUBBAND_CONF_SB_WAIT_T_POS 2
+#define RF_SUBBAND_SUBBAND_CONF_SB_WAIT_T_MASK (0x3 << RF_SUBBAND_SUBBAND_CONF_SB_WAIT_T_POS)
+#define RF_SUBBAND_SUBBAND_CONF_SB_MODE_POS 0
+#define RF_SUBBAND_SUBBAND_CONF_SB_MODE_MASK (0x3 << RF_SUBBAND_SUBBAND_CONF_SB_MODE_POS)
+
+/* RF_SUBBAND settings */
+#define SUBBAND_OFFSET_SB_OFFSET_RX_DEFAULT (0xF1 << RF_SUBBAND_SUBBAND_OFFSET_SB_OFFSET_RX_POS)
+
+#define SUBBAND_OFFSET_SB_OFFSET_DEFAULT (0xD0 << RF_SUBBAND_SUBBAND_OFFSET_SB_OFFSET_POS)
+
+#define SWCAP_LIM_SB_MAX_VAL_DEFAULT    (0xF << RF_SUBBAND_SWCAP_LIM_SB_MAX_VAL_POS)
+
+#define SWCAP_LIM_SB_MIN_VAL_DEFAULT    (0x0 << RF_SUBBAND_SWCAP_LIM_SB_MIN_VAL_POS)
+
+#define SUBBAND_CONF_SB_FLL_MODE_DISABLE (0x0 << RF_SUBBAND_SUBBAND_CONF_SB_FLL_MODE_POS)
+#define SUBBAND_CONF_SB_FLL_MODE_ENABLE (0x1 << RF_SUBBAND_SUBBAND_CONF_SB_FLL_MODE_POS)
+
+#define SUBBAND_CONF_SB_INV_BAND_DISABLE (0x0 << RF_SUBBAND_SUBBAND_CONF_SB_INV_BAND_POS)
+#define SUBBAND_CONF_SB_INV_BAND_ENABLE (0x1 << RF_SUBBAND_SUBBAND_CONF_SB_INV_BAND_POS)
+
+#define SUBBAND_CONF_SB_FREQ_CNT_256    (0x0 << RF_SUBBAND_SUBBAND_CONF_SB_FREQ_CNT_POS)
+#define SUBBAND_CONF_SB_FREQ_CNT_512    (0x1 << RF_SUBBAND_SUBBAND_CONF_SB_FREQ_CNT_POS)
+#define SUBBAND_CONF_SB_FREQ_CNT_1024   (0x2 << RF_SUBBAND_SUBBAND_CONF_SB_FREQ_CNT_POS)
+#define SUBBAND_CONF_SB_FREQ_CNT_4096   (0x3 << RF_SUBBAND_SUBBAND_CONF_SB_FREQ_CNT_POS)
+
+#define SUBBAND_CONF_SB_WAIT_T_8        (0x0 << RF_SUBBAND_SUBBAND_CONF_SB_WAIT_T_POS)
+#define SUBBAND_CONF_SB_WAIT_T_12       (0x1 << RF_SUBBAND_SUBBAND_CONF_SB_WAIT_T_POS)
+#define SUBBAND_CONF_SB_WAIT_T_16       (0x2 << RF_SUBBAND_SUBBAND_CONF_SB_WAIT_T_POS)
+#define SUBBAND_CONF_SB_WAIT_T_24       (0x3 << RF_SUBBAND_SUBBAND_CONF_SB_WAIT_T_POS)
+
+#define SUBBAND_CONF_SB_MODE_0          (0x0 << RF_SUBBAND_SUBBAND_CONF_SB_MODE_POS)
+#define SUBBAND_CONF_SB_MODE_1          (0x1 << RF_SUBBAND_SUBBAND_CONF_SB_MODE_POS)
+#define SUBBAND_CONF_SB_MODE_2          (0x2 << RF_SUBBAND_SUBBAND_CONF_SB_MODE_POS)
+#define SUBBAND_CONF_SB_MODE_3          (0x3 << RF_SUBBAND_SUBBAND_CONF_SB_MODE_POS)
+
+/* SUBBAND */
+#define RF1_SUBBAND_BASE                0x40040AC0
+#define RF1_SUBBAND                     REG32_POINTER(RF1_SUBBAND_BASE)
+
+/* SUBBAND */
+#define RF2_SUBBAND_BASE                0x40040CC0
+#define RF2_SUBBAND                     REG32_POINTER(RF2_SUBBAND_BASE)
+
+/* SUBBAND */
+#define RF3_SUBBAND_BASE                0x40040EC0
+#define RF3_SUBBAND                     REG32_POINTER(RF3_SUBBAND_BASE)
+
+/* REG31 */
+#define RF0_REG31_BASE                  0x400408C4
+#define RF0_REG31                       REG32_POINTER(RF0_REG31_BASE)
+
+/* RF_REG31 bit positions */
+#define RF_REG31_RSSI_DETECT_RSSI_DET_CR_LEN_POS 30
+#define RF_REG31_RSSI_DETECT_RSSI_DET_CR_LEN_MASK (0x3 << RF_REG31_RSSI_DETECT_RSSI_DET_CR_LEN_POS)
+#define RF_REG31_RSSI_DETECT_RSSI_DET_WAIT_POS 28
+#define RF_REG31_RSSI_DETECT_RSSI_DET_WAIT_MASK (0x3 << RF_REG31_RSSI_DETECT_RSSI_DET_WAIT_POS)
+#define RF_REG31_RSSI_DETECT_RSSI_DET_DIFF_LL_POS 26
+#define RF_REG31_RSSI_DETECT_RSSI_DET_DIFF_LL_MASK (0x3 << RF_REG31_RSSI_DETECT_RSSI_DET_DIFF_LL_POS)
+#define RF_REG31_RSSI_DETECT_EN_ABS_RSSI_DETECT_POS 25
+#define RF_REG31_RSSI_DETECT_EN_DIFF_RSSI_DETECT_POS 24
+#define RF_REG31_SUBBAND_CORR_SUBBAND_CORR_EN_POS 23
+#define RF_REG31_SUBBAND_CORR_SUBBAND_CORR_RX_POS 20
+#define RF_REG31_SUBBAND_CORR_SUBBAND_CORR_RX_MASK (0x7 << RF_REG31_SUBBAND_CORR_SUBBAND_CORR_RX_POS)
+#define RF_REG31_SUBBAND_CORR_SUBBAND_CORR_TX_POS 16
+#define RF_REG31_SUBBAND_CORR_SUBBAND_CORR_TX_MASK (0x7 << RF_REG31_SUBBAND_CORR_SUBBAND_CORR_TX_POS)
+#define RF_REG31_TXRX_CONF_INV_CLK_PLL_TX_POS 11
+#define RF_REG31_TXRX_CONF_INV_CLK_DIG_TX_POS 10
+#define RF_REG31_TXRX_CONF_SB_WAIT_T_TX_POS 8
+#define RF_REG31_TXRX_CONF_SB_WAIT_T_TX_MASK (0x3 << RF_REG31_TXRX_CONF_SB_WAIT_T_TX_POS)
+#define RF_REG31_PA_RAMPUP_FULL_PA_RAMPUP_POS 7
+#define RF_REG31_PA_RAMPUP_DEL_PA_RAMPUP_POS 4
+#define RF_REG31_PA_RAMPUP_DEL_PA_RAMPUP_MASK (0x7 << RF_REG31_PA_RAMPUP_DEL_PA_RAMPUP_POS)
+#define RF_REG31_PA_RAMPUP_TAU_PA_RAMPUP_POS 2
+#define RF_REG31_PA_RAMPUP_TAU_PA_RAMPUP_MASK (0x3 << RF_REG31_PA_RAMPUP_TAU_PA_RAMPUP_POS)
+#define RF_REG31_PA_RAMPUP_EN_PA_RAMPDOWN_POS 1
+#define RF_REG31_PA_RAMPUP_EN_PA_RAMPUP_POS 0
+
+/* RF_REG31 settings */
+#define RSSI_DETECT_RSSI_DET_CR_LEN_32  (0x0 << RF_REG31_RSSI_DETECT_RSSI_DET_CR_LEN_POS)
+#define RSSI_DETECT_RSSI_DET_CR_LEN_64  (0x1 << RF_REG31_RSSI_DETECT_RSSI_DET_CR_LEN_POS)
+#define RSSI_DETECT_RSSI_DET_CR_LEN_128 (0x2 << RF_REG31_RSSI_DETECT_RSSI_DET_CR_LEN_POS)
+#define RSSI_DETECT_RSSI_DET_CR_LEN_256 (0x3 << RF_REG31_RSSI_DETECT_RSSI_DET_CR_LEN_POS)
+
+#define RSSI_DETECT_RSSI_DET_WAIT_0     (0x0 << RF_REG31_RSSI_DETECT_RSSI_DET_WAIT_POS)
+#define RSSI_DETECT_RSSI_DET_WAIT_1     (0x1 << RF_REG31_RSSI_DETECT_RSSI_DET_WAIT_POS)
+#define RSSI_DETECT_RSSI_DET_WAIT_2     (0x2 << RF_REG31_RSSI_DETECT_RSSI_DET_WAIT_POS)
+#define RSSI_DETECT_RSSI_DET_WAIT_4     (0x3 << RF_REG31_RSSI_DETECT_RSSI_DET_WAIT_POS)
+
+#define RSSI_DETECT_RSSI_DET_DIFF_LL_1  (0x0 << RF_REG31_RSSI_DETECT_RSSI_DET_DIFF_LL_POS)
+#define RSSI_DETECT_RSSI_DET_DIFF_LL_2  (0x1 << RF_REG31_RSSI_DETECT_RSSI_DET_DIFF_LL_POS)
+#define RSSI_DETECT_RSSI_DET_DIFF_LL_3  (0x2 << RF_REG31_RSSI_DETECT_RSSI_DET_DIFF_LL_POS)
+#define RSSI_DETECT_RSSI_DET_DIFF_LL_4  (0x3 << RF_REG31_RSSI_DETECT_RSSI_DET_DIFF_LL_POS)
+
+#define RSSI_DETECT_EN_ABS_RSSI_DETECT_DISABLE (0x0 << RF_REG31_RSSI_DETECT_EN_ABS_RSSI_DETECT_POS)
+#define RSSI_DETECT_EN_ABS_RSSI_DETECT_ENABLE (0x1 << RF_REG31_RSSI_DETECT_EN_ABS_RSSI_DETECT_POS)
+
+#define RSSI_DETECT_EN_DIFF_RSSI_DETECT_DISABLE (0x0 << RF_REG31_RSSI_DETECT_EN_DIFF_RSSI_DETECT_POS)
+#define RSSI_DETECT_EN_DIFF_RSSI_DETECT_ENABLE (0x1 << RF_REG31_RSSI_DETECT_EN_DIFF_RSSI_DETECT_POS)
+
+#define SUBBAND_CORR_SUBBAND_CORR_EN_DISABLE (0x0 << RF_REG31_SUBBAND_CORR_SUBBAND_CORR_EN_POS)
+#define SUBBAND_CORR_SUBBAND_CORR_EN_ENABLE (0x1 << RF_REG31_SUBBAND_CORR_SUBBAND_CORR_EN_POS)
+
+#define SUBBAND_CORR_SUBBAND_CORR_RX_DEFAULT (0x0 << RF_REG31_SUBBAND_CORR_SUBBAND_CORR_RX_POS)
+
+#define SUBBAND_CORR_SUBBAND_CORR_TX_DEFAULT (0x0 << RF_REG31_SUBBAND_CORR_SUBBAND_CORR_TX_POS)
+
+#define TXRX_CONF_INV_CLK_PLL_TX_DISABLE (0x0 << RF_REG31_TXRX_CONF_INV_CLK_PLL_TX_POS)
+#define TXRX_CONF_INV_CLK_PLL_TX_ENABLE (0x1 << RF_REG31_TXRX_CONF_INV_CLK_PLL_TX_POS)
+
+#define TXRX_CONF_INV_CLK_DIG_TX_DISABLE (0x0 << RF_REG31_TXRX_CONF_INV_CLK_DIG_TX_POS)
+#define TXRX_CONF_INV_CLK_DIG_TX_ENABLE (0x1 << RF_REG31_TXRX_CONF_INV_CLK_DIG_TX_POS)
+
+#define TXRX_CONF_SB_WAIT_T_TX_DEFAULT  (0x0 << RF_REG31_TXRX_CONF_SB_WAIT_T_TX_POS)
+
+#define PA_RAMPUP_FULL_PA_RAMPUP_DISABLE (0x0 << RF_REG31_PA_RAMPUP_FULL_PA_RAMPUP_POS)
+#define PA_RAMPUP_FULL_PA_RAMPUP_ENABLE (0x1 << RF_REG31_PA_RAMPUP_FULL_PA_RAMPUP_POS)
+
+#define PA_RAMPUP_DEL_PA_RAMPUP_DEFAULT (0x4 << RF_REG31_PA_RAMPUP_DEL_PA_RAMPUP_POS)
+
+#define PA_RAMPUP_TAU_PA_RAMPUP_DEFAULT (0x0 << RF_REG31_PA_RAMPUP_TAU_PA_RAMPUP_POS)
+
+#define PA_RAMPUP_EN_PA_RAMPDOWN_DISABLE (0x0 << RF_REG31_PA_RAMPUP_EN_PA_RAMPDOWN_POS)
+#define PA_RAMPUP_EN_PA_RAMPDOWN_ENABLE (0x1 << RF_REG31_PA_RAMPUP_EN_PA_RAMPDOWN_POS)
+
+#define PA_RAMPUP_EN_PA_RAMPUP_DISABLE  (0x0 << RF_REG31_PA_RAMPUP_EN_PA_RAMPUP_POS)
+#define PA_RAMPUP_EN_PA_RAMPUP_ENABLE   (0x1 << RF_REG31_PA_RAMPUP_EN_PA_RAMPUP_POS)
+
+/* REG31 */
+#define RF1_REG31_BASE                  0x40040AC4
+#define RF1_REG31                       REG32_POINTER(RF1_REG31_BASE)
+
+/* REG31 */
+#define RF2_REG31_BASE                  0x40040CC4
+#define RF2_REG31                       REG32_POINTER(RF2_REG31_BASE)
+
+/* REG31 */
+#define RF3_REG31_BASE                  0x40040EC4
+#define RF3_REG31                       REG32_POINTER(RF3_REG31_BASE)
+
+/* DEMOD_CTRL */
+#define RF0_DEMOD_CTRL_BASE             0x400408C8
+#define RF0_DEMOD_CTRL                  REG32_POINTER(RF0_DEMOD_CTRL_BASE)
+
+/* RF_DEMOD_CTRL bit positions */
+#define RF_DEMOD_CTRL_SYNC_WORD_CORR_EN_SYNC_WORD_CORR_POS 31
+#define RF_DEMOD_CTRL_SYNC_WORD_CORR_SYNC_WORD_BIAS_POS 24
+#define RF_DEMOD_CTRL_SYNC_WORD_CORR_SYNC_WORD_BIAS_MASK (0x3F << RF_DEMOD_CTRL_SYNC_WORD_CORR_SYNC_WORD_BIAS_POS)
+#define RF_DEMOD_CTRL_RSSI_DETECT_ABS_THR_RSSI_DET_ABS_THR_POS 16
+#define RF_DEMOD_CTRL_RSSI_DETECT_ABS_THR_RSSI_DET_ABS_THR_MASK (0xFF << RF_DEMOD_CTRL_RSSI_DETECT_ABS_THR_RSSI_DET_ABS_THR_POS)
+#define RF_DEMOD_CTRL_RSSI_DETECT_DIFF_THR_RSSI_DET_DIFF_THR_POS 8
+#define RF_DEMOD_CTRL_RSSI_DETECT_DIFF_THR_RSSI_DET_DIFF_THR_MASK (0xFF << RF_DEMOD_CTRL_RSSI_DETECT_DIFF_THR_RSSI_DET_DIFF_THR_POS)
+#define RF_DEMOD_CTRL_DEMOD_CTRL_DL_SYNC_NO_DATA_POS 7
+#define RF_DEMOD_CTRL_DEMOD_CTRL_EN_DELLINE_SYNC_DET_POS 6
+#define RF_DEMOD_CTRL_DEMOD_CTRL_RSSI_DET_FILT_POS 5
+#define RF_DEMOD_CTRL_DEMOD_CTRL_EN_FAST_CLK_RECOV_POS 4
+#define RF_DEMOD_CTRL_DEMOD_CTRL_EN_MIN_MAX_MF_POS 3
+#define RF_DEMOD_CTRL_DEMOD_CTRL_EN_PRE_SYNC_POS 2
+#define RF_DEMOD_CTRL_DEMOD_CTRL_BLOCK_RSSI_DET_POS 1
+#define RF_DEMOD_CTRL_DEMOD_CTRL_EARLY_FINE_RECOV_POS 0
+
+/* RF_DEMOD_CTRL settings */
+#define SYNC_WORD_CORR_EN_SYNC_WORD_CORR_DISABLE (0x0 << RF_DEMOD_CTRL_SYNC_WORD_CORR_EN_SYNC_WORD_CORR_POS)
+#define SYNC_WORD_CORR_EN_SYNC_WORD_CORR_ENABLE (0x1 << RF_DEMOD_CTRL_SYNC_WORD_CORR_EN_SYNC_WORD_CORR_POS)
+
+#define SYNC_WORD_CORR_SYNC_WORD_BIAS_DEFAULT (0x80 << RF_DEMOD_CTRL_SYNC_WORD_CORR_SYNC_WORD_BIAS_POS)
+
+#define RSSI_DETECT_ABS_THR_RSSI_DET_ABS_THR_DEFAULT (0x0 << RF_DEMOD_CTRL_RSSI_DETECT_ABS_THR_RSSI_DET_ABS_THR_POS)
+
+#define RSSI_DETECT_DIFF_THR_RSSI_DET_DIFF_THR_DEFAULT (0x0 << RF_DEMOD_CTRL_RSSI_DETECT_DIFF_THR_RSSI_DET_DIFF_THR_POS)
+
+#define DEMOD_CTRL_DL_SYNC_NO_DATA_DISABLE (0x0 << RF_DEMOD_CTRL_DEMOD_CTRL_DL_SYNC_NO_DATA_POS)
+#define DEMOD_CTRL_DL_SYNC_NO_DATA_ENABLE (0x1 << RF_DEMOD_CTRL_DEMOD_CTRL_DL_SYNC_NO_DATA_POS)
+
+#define DEMOD_CTRL_EN_DELLINE_SYNC_DET_DISABLE (0x0 << RF_DEMOD_CTRL_DEMOD_CTRL_EN_DELLINE_SYNC_DET_POS)
+#define DEMOD_CTRL_EN_DELLINE_SYNC_DET_ENABLE (0x1 << RF_DEMOD_CTRL_DEMOD_CTRL_EN_DELLINE_SYNC_DET_POS)
+
+#define DEMOD_CTRL_RSSI_DET_FILT_DISABLE (0x0 << RF_DEMOD_CTRL_DEMOD_CTRL_RSSI_DET_FILT_POS)
+#define DEMOD_CTRL_RSSI_DET_FILT_ENABLE (0x1 << RF_DEMOD_CTRL_DEMOD_CTRL_RSSI_DET_FILT_POS)
+
+#define DEMOD_CTRL_EN_FAST_CLK_RECOV_NOMINAL (0x0 << RF_DEMOD_CTRL_DEMOD_CTRL_EN_FAST_CLK_RECOV_POS)
+#define DEMOD_CTRL_EN_FAST_CLK_RECOV_SPEED (0x1 << RF_DEMOD_CTRL_DEMOD_CTRL_EN_FAST_CLK_RECOV_POS)
+
+#define DEMOD_CTRL_EN_MIN_MAX_MF_DISABLE (0x0 << RF_DEMOD_CTRL_DEMOD_CTRL_EN_MIN_MAX_MF_POS)
+#define DEMOD_CTRL_EN_MIN_MAX_MF_ENABLE (0x1 << RF_DEMOD_CTRL_DEMOD_CTRL_EN_MIN_MAX_MF_POS)
+
+#define DEMOD_CTRL_EN_PRE_SYNC_DISABLE  (0x0 << RF_DEMOD_CTRL_DEMOD_CTRL_EN_PRE_SYNC_POS)
+#define DEMOD_CTRL_EN_PRE_SYNC_ENABLE   (0x1 << RF_DEMOD_CTRL_DEMOD_CTRL_EN_PRE_SYNC_POS)
+
+#define DEMOD_CTRL_BLOCK_RSSI_DET_DISABLE (0x0 << RF_DEMOD_CTRL_DEMOD_CTRL_BLOCK_RSSI_DET_POS)
+#define DEMOD_CTRL_BLOCK_RSSI_DET_ENABLE (0x1 << RF_DEMOD_CTRL_DEMOD_CTRL_BLOCK_RSSI_DET_POS)
+
+#define DEMOD_CTRL_EARLY_FINE_RECOV_DISABLE (0x0 << RF_DEMOD_CTRL_DEMOD_CTRL_EARLY_FINE_RECOV_POS)
+#define DEMOD_CTRL_EARLY_FINE_RECOV_ENABLE (0x1 << RF_DEMOD_CTRL_DEMOD_CTRL_EARLY_FINE_RECOV_POS)
+
+/* DEMOD_CTRL */
+#define RF1_DEMOD_CTRL_BASE             0x40040AC8
+#define RF1_DEMOD_CTRL                  REG32_POINTER(RF1_DEMOD_CTRL_BASE)
+
+/* DEMOD_CTRL */
+#define RF2_DEMOD_CTRL_BASE             0x40040CC8
+#define RF2_DEMOD_CTRL                  REG32_POINTER(RF2_DEMOD_CTRL_BASE)
+
+/* DEMOD_CTRL */
+#define RF3_DEMOD_CTRL_BASE             0x40040EC8
+#define RF3_DEMOD_CTRL                  REG32_POINTER(RF3_DEMOD_CTRL_BASE)
+
+/* REG33 */
+#define RF0_REG33_BASE                  0x400408CC
+#define RF0_REG33                       REG32_POINTER(RF0_REG33_BASE)
+
+/* RF_REG33 bit positions */
+#define RF_REG33_CK_DIV_1_6_CK_DIV_1_6_POS 24
+#define RF_REG33_CK_DIV_1_6_CK_DIV_1_6_MASK (0x7 << RF_REG33_CK_DIV_1_6_CK_DIV_1_6_POS)
+#define RF_REG33_SPARES_SPARES_POS      16
+#define RF_REG33_SPARES_SPARES_MASK     (0xFF << RF_REG33_SPARES_SPARES_POS)
+#define RF_REG33_PADS_PE_DS_GPIO_DS_POS 14
+#define RF_REG33_PADS_PE_DS_GPIO_PE_POS 13
+#define RF_REG33_PADS_PE_DS_NRESET_PE_POS 12
+#define RF_REG33_PADS_PE_DS_SPI_MISO_PE_POS 11
+#define RF_REG33_PADS_PE_DS_SPI_MOSI_PE_POS 10
+#define RF_REG33_PADS_PE_DS_SPI_SCLK_PE_POS 9
+#define RF_REG33_PADS_PE_DS_SPI_CS_N_PE_POS 8
+#define RF_REG33_SUBBAND_FLL_SB_FLL_DITHER_POS 6
+#define RF_REG33_SUBBAND_FLL_SB_FLL_DITHER_MASK (0x3 << RF_REG33_SUBBAND_FLL_SB_FLL_DITHER_POS)
+#define RF_REG33_SUBBAND_FLL_SB_FLL_CIC_TAU_POS 4
+#define RF_REG33_SUBBAND_FLL_SB_FLL_CIC_TAU_MASK (0x3 << RF_REG33_SUBBAND_FLL_SB_FLL_CIC_TAU_POS)
+#define RF_REG33_SUBBAND_FLL_SB_FLL_PH_4_N8_POS 3
+#define RF_REG33_SUBBAND_FLL_SB_FLL_WAIT_POS 0
+#define RF_REG33_SUBBAND_FLL_SB_FLL_WAIT_MASK (0x7 << RF_REG33_SUBBAND_FLL_SB_FLL_WAIT_POS)
+
+/* RF_REG33 settings */
+#define CK_DIV_1_6_NO_CLOCK             (0x0 << RF_REG33_CK_DIV_1_6_CK_DIV_1_6_POS)
+#define CK_DIV_1_6_PRESCALE_1           (0x1 << RF_REG33_CK_DIV_1_6_CK_DIV_1_6_POS)
+#define CK_DIV_1_6_PRESCALE_2           (0x2 << RF_REG33_CK_DIV_1_6_CK_DIV_1_6_POS)
+#define CK_DIV_1_6_PRESCALE_3           (0x3 << RF_REG33_CK_DIV_1_6_CK_DIV_1_6_POS)
+#define CK_DIV_1_6_PRESCALE_4           (0x4 << RF_REG33_CK_DIV_1_6_CK_DIV_1_6_POS)
+#define CK_DIV_1_6_PRESCALE_5           (0x5 << RF_REG33_CK_DIV_1_6_CK_DIV_1_6_POS)
+#define CK_DIV_1_6_PRESCALE_6           (0x6 << RF_REG33_CK_DIV_1_6_CK_DIV_1_6_POS)
+#define CK_DIV_1_6_PRESCALE_7           (0x7 << RF_REG33_CK_DIV_1_6_CK_DIV_1_6_POS)
+
+#define PADS_PE_DS_GPIO_DS_DISABLE      (0x0 << RF_REG33_PADS_PE_DS_GPIO_DS_POS)
+#define PADS_PE_DS_GPIO_DS_ENABLE       (0x1 << RF_REG33_PADS_PE_DS_GPIO_DS_POS)
+
+#define PADS_PE_DS_GPIO_PE_DISABLE      (0x0 << RF_REG33_PADS_PE_DS_GPIO_PE_POS)
+#define PADS_PE_DS_GPIO_PE_ENABLE       (0x1 << RF_REG33_PADS_PE_DS_GPIO_PE_POS)
+
+#define PADS_PE_DS_NRESET_PE_DISABLE    (0x0 << RF_REG33_PADS_PE_DS_NRESET_PE_POS)
+#define PADS_PE_DS_NRESET_PE_ENABLE     (0x1 << RF_REG33_PADS_PE_DS_NRESET_PE_POS)
+
+#define PADS_PE_DS_SPI_MISO_PE_DISABLE  (0x0 << RF_REG33_PADS_PE_DS_SPI_MISO_PE_POS)
+#define PADS_PE_DS_SPI_MISO_PE_ENABLE   (0x1 << RF_REG33_PADS_PE_DS_SPI_MISO_PE_POS)
+
+#define PADS_PE_DS_SPI_MOSI_PE_DISABLE  (0x0 << RF_REG33_PADS_PE_DS_SPI_MOSI_PE_POS)
+#define PADS_PE_DS_SPI_MOSI_PE_ENABLE   (0x1 << RF_REG33_PADS_PE_DS_SPI_MOSI_PE_POS)
+
+#define PADS_PE_DS_SPI_SCLK_PE_DISABLE  (0x0 << RF_REG33_PADS_PE_DS_SPI_SCLK_PE_POS)
+#define PADS_PE_DS_SPI_SCLK_PE_ENABLE   (0x1 << RF_REG33_PADS_PE_DS_SPI_SCLK_PE_POS)
+
+#define PADS_PE_DS_SPI_CS_N_PE_DISABLE  (0x0 << RF_REG33_PADS_PE_DS_SPI_CS_N_PE_POS)
+#define PADS_PE_DS_SPI_CS_N_PE_ENABLE   (0x1 << RF_REG33_PADS_PE_DS_SPI_CS_N_PE_POS)
+
+#define SUBBAND_FLL_SB_FLL_DITHER_OFF   (0x0 << RF_REG33_SUBBAND_FLL_SB_FLL_DITHER_POS)
+#define SUBBAND_FLL_SB_FLL_DITHER_PN9   (0x1 << RF_REG33_SUBBAND_FLL_SB_FLL_DITHER_POS)
+#define SUBBAND_FLL_SB_FLL_DITHER_PN10  (0x2 << RF_REG33_SUBBAND_FLL_SB_FLL_DITHER_POS)
+#define SUBBAND_FLL_SB_FLL_DITHER_PN9_PN10 (0x3 << RF_REG33_SUBBAND_FLL_SB_FLL_DITHER_POS)
+
+#define SUBBAND_FLL_SB_FLL_CIC_TAU_16   (0x0 << RF_REG33_SUBBAND_FLL_SB_FLL_CIC_TAU_POS)
+#define SUBBAND_FLL_SB_FLL_CIC_TAU_32   (0x1 << RF_REG33_SUBBAND_FLL_SB_FLL_CIC_TAU_POS)
+#define SUBBAND_FLL_SB_FLL_CIC_TAU_64   (0x2 << RF_REG33_SUBBAND_FLL_SB_FLL_CIC_TAU_POS)
+#define SUBBAND_FLL_SB_FLL_CIC_TAU_128  (0x3 << RF_REG33_SUBBAND_FLL_SB_FLL_CIC_TAU_POS)
+
+#define SUBBAND_FLL_SB_FLL_PH_4_N8_8    (0x0 << RF_REG33_SUBBAND_FLL_SB_FLL_PH_4_N8_POS)
+#define SUBBAND_FLL_SB_FLL_PH_4_N8_4    (0x1 << RF_REG33_SUBBAND_FLL_SB_FLL_PH_4_N8_POS)
+
+#define SUBBAND_FLL_SB_FLL_WAIT_DEFAULT (0x3 << RF_REG33_SUBBAND_FLL_SB_FLL_WAIT_POS)
+
+/* REG33 */
+#define RF1_REG33_BASE                  0x40040ACC
+#define RF1_REG33                       REG32_POINTER(RF1_REG33_BASE)
+
+/* REG33 */
+#define RF2_REG33_BASE                  0x40040CCC
+#define RF2_REG33                       REG32_POINTER(RF2_REG33_BASE)
+
+/* REG33 */
+#define RF3_REG33_BASE                  0x40040ECC
+#define RF3_REG33                       REG32_POINTER(RF3_REG33_BASE)
+
+/* REG34 */
+#define RF0_REG34_BASE                  0x400408D0
+#define RF0_REG34                       REG32_POINTER(RF0_REG34_BASE)
+
+/* RF_REG34 bit positions */
+#define RF_REG34_CLK_RECOVERY_CLK_RECOV_CORR_POS 24
+#define RF_REG34_CLK_RECOVERY_CLK_RECOV_CORR_MASK (0x3F << RF_REG34_CLK_RECOVERY_CLK_RECOV_CORR_POS)
+#define RF_REG34_CLK_RECOVERY_CLK_AB_LIMIT_POS 16
+#define RF_REG34_CLK_RECOVERY_CLK_AB_LIMIT_MASK (0xFF << RF_REG34_CLK_RECOVERY_CLK_AB_LIMIT_POS)
+#define RF_REG34_TX_PRE_DIST_EN_PRE_DIST_POS 15
+#define RF_REG34_TX_PRE_DIST_PRE_DIST_B0_POS 8
+#define RF_REG34_TX_PRE_DIST_PRE_DIST_B0_MASK (0x3F << RF_REG34_TX_PRE_DIST_PRE_DIST_B0_POS)
+#define RF_REG34_TX_PRE_DIST_PRE_DIST_A0_POS 0
+#define RF_REG34_TX_PRE_DIST_PRE_DIST_A0_MASK (0x3F << RF_REG34_TX_PRE_DIST_PRE_DIST_A0_POS)
+
+/* RF_REG34 settings */
+#define CLK_RECOVERY_CLK_RECOV_CORR_DEFAULT (0x4 << RF_REG34_CLK_RECOVERY_CLK_RECOV_CORR_POS)
+
+#define CLK_RECOVERY_CLK_AB_LIMIT_DEFAULT (0x80 << RF_REG34_CLK_RECOVERY_CLK_AB_LIMIT_POS)
+
+#define TX_PRE_DIST_EN_PRE_DIST_DISABLE (0x0 << RF_REG34_TX_PRE_DIST_EN_PRE_DIST_POS)
+#define TX_PRE_DIST_EN_PRE_DIST_ENABLE  (0x1 << RF_REG34_TX_PRE_DIST_EN_PRE_DIST_POS)
+
+#define TX_PRE_DIST_PRE_DIST_B0_DEFAULT (0x2E << RF_REG34_TX_PRE_DIST_PRE_DIST_B0_POS)
+
+#define TX_PRE_DIST_PRE_DIST_A0_DEFAULT (0x2F << RF_REG34_TX_PRE_DIST_PRE_DIST_A0_POS)
+
+/* REG34 */
+#define RF1_REG34_BASE                  0x40040AD0
+#define RF1_REG34                       REG32_POINTER(RF1_REG34_BASE)
+
+/* REG34 */
+#define RF2_REG34_BASE                  0x40040CD0
+#define RF2_REG34                       REG32_POINTER(RF2_REG34_BASE)
+
+/* REG34 */
+#define RF3_REG34_BASE                  0x40040ED0
+#define RF3_REG34                       REG32_POINTER(RF3_REG34_BASE)
+
+/* BLE_LR */
+#define RF0_BLE_LR_BASE                 0x400408D4
+#define RF0_BLE_LR                      REG32_POINTER(RF0_BLE_LR_BASE)
+
+/* RF_BLE_LR bit positions */
+#define RF_BLE_LR_BLR_SYNC_THRESHOLD_BLE_SYNC_THR_POS 24
+#define RF_BLE_LR_BLR_SYNC_THRESHOLD_BLE_SYNC_THR_MASK (0x7F << RF_BLE_LR_BLR_SYNC_THRESHOLD_BLE_SYNC_THR_POS)
+#define RF_BLE_LR_BLR_PREAMBLE_BLE_PRE_THR_POS 16
+#define RF_BLE_LR_BLR_PREAMBLE_BLE_PRE_THR_MASK (0xF << RF_BLE_LR_BLR_PREAMBLE_BLE_PRE_THR_POS)
+#define RF_BLE_LR_BLE_LONG_RANGE_BLR_PUT_RI_FIFO_POS 15
+#define RF_BLE_LR_BLE_LONG_RANGE_BLR500_NO_ROUGH_POS 14
+#define RF_BLE_LR_BLE_LONG_RANGE_BLR_LIN_FILTER_POS 13
+#define RF_BLE_LR_BLE_LONG_RANGE_EN_BLR_FLUSH_POS 12
+#define RF_BLE_LR_BLE_LONG_RANGE_BLR_USE_EXT_LEN_POS 11
+#define RF_BLE_LR_BLE_LONG_RANGE_DISABLE_BLR_TX_POS 10
+#define RF_BLE_LR_BLE_LONG_RANGE_BLR_500_N125_POS 9
+#define RF_BLE_LR_BLE_LONG_RANGE_EN_BLR_POS 8
+#define RF_BLE_LR_HW_TRIGGER_HW_TRIG_GPIO_POS 4
+#define RF_BLE_LR_HW_TRIGGER_HW_TRIG_SUBBAND_POS 3
+#define RF_BLE_LR_HW_TRIGGER_HW_TRIG_TX_NRX_POS 2
+#define RF_BLE_LR_HW_TRIGGER_HW_TRIG_LOW_POS 1
+#define RF_BLE_LR_HW_TRIGGER_HW_TRIG_ACTIVE_POS 0
+
+/* RF_BLE_LR settings */
+#define BLR_SYNC_THRESHOLD_BLE_SYNC_THR_DEFAULT (0x38 << RF_BLE_LR_BLR_SYNC_THRESHOLD_BLE_SYNC_THR_POS)
+
+#define BLR_PREAMBLE_BLE_PRE_THR_DEFAULT (0x1 << RF_BLE_LR_BLR_PREAMBLE_BLE_PRE_THR_POS)
+
+#define BLE_LONG_RANGE_BLR_PUT_RI_FIFO_DISABLE (0x0 << RF_BLE_LR_BLE_LONG_RANGE_BLR_PUT_RI_FIFO_POS)
+#define BLE_LONG_RANGE_BLR_PUT_RI_FIFO_ENABLE (0x1 << RF_BLE_LR_BLE_LONG_RANGE_BLR_PUT_RI_FIFO_POS)
+
+#define BLE_LONG_RANGE_BLR500_NO_ROUGH_NO_STOP (0x0 << RF_BLE_LR_BLE_LONG_RANGE_BLR500_NO_ROUGH_POS)
+#define BLE_LONG_RANGE_BLR500_NO_ROUGH_STOP (0x1 << RF_BLE_LR_BLE_LONG_RANGE_BLR500_NO_ROUGH_POS)
+
+#define BLE_LONG_RANGE_BLR_LIN_FILTER_DISABLE (0x0 << RF_BLE_LR_BLE_LONG_RANGE_BLR_LIN_FILTER_POS)
+#define BLE_LONG_RANGE_BLR_LIN_FILTER_ENABLE (0x1 << RF_BLE_LR_BLE_LONG_RANGE_BLR_LIN_FILTER_POS)
+
+#define BLE_LONG_RANGE_EN_BLR_FLUSH_DISABLE (0x0 << RF_BLE_LR_BLE_LONG_RANGE_EN_BLR_FLUSH_POS)
+#define BLE_LONG_RANGE_EN_BLR_FLUSH_ENABLE (0x1 << RF_BLE_LR_BLE_LONG_RANGE_EN_BLR_FLUSH_POS)
+
+#define BLE_LONG_RANGE_BLR_USE_EXT_LEN_NOT_USED (0x0 << RF_BLE_LR_BLE_LONG_RANGE_BLR_USE_EXT_LEN_POS)
+#define BLE_LONG_RANGE_BLR_USE_EXT_LEN_USED (0x1 << RF_BLE_LR_BLE_LONG_RANGE_BLR_USE_EXT_LEN_POS)
+
+#define BLE_LONG_RANGE_DISABLE_BLR_TX_ENABLE (0x0 << RF_BLE_LR_BLE_LONG_RANGE_DISABLE_BLR_TX_POS)
+#define BLE_LONG_RANGE_DISABLE_BLR_TX_DISABLE (0x1 << RF_BLE_LR_BLE_LONG_RANGE_DISABLE_BLR_TX_POS)
+
+#define BLE_LONG_RANGE_BLR_500_N125_125 (0x0 << RF_BLE_LR_BLE_LONG_RANGE_BLR_500_N125_POS)
+#define BLE_LONG_RANGE_BLR_500_N125_500 (0x1 << RF_BLE_LR_BLE_LONG_RANGE_BLR_500_N125_POS)
+
+#define BLE_LONG_RANGE_EN_BLR_DISABLE   (0x0 << RF_BLE_LR_BLE_LONG_RANGE_EN_BLR_POS)
+#define BLE_LONG_RANGE_EN_BLR_ENABLE    (0x1 << RF_BLE_LR_BLE_LONG_RANGE_EN_BLR_POS)
+
+#define HW_TRIGGER_HW_TRIG_GPIO_TX_ON   (0x0 << RF_BLE_LR_HW_TRIGGER_HW_TRIG_GPIO_POS)
+#define HW_TRIGGER_HW_TRIG_GPIO         (0x1 << RF_BLE_LR_HW_TRIGGER_HW_TRIG_GPIO_POS)
+
+#define HW_TRIGGER_HW_TRIG_SUBBAND_NOT_ACTIVE (0x0 << RF_BLE_LR_HW_TRIGGER_HW_TRIG_SUBBAND_POS)
+#define HW_TRIGGER_HW_TRIG_SUBBAND_ACTIVE (0x1 << RF_BLE_LR_HW_TRIGGER_HW_TRIG_SUBBAND_POS)
+
+#define HW_TRIGGER_HW_TRIG_TX_NRX_RX    (0x0 << RF_BLE_LR_HW_TRIGGER_HW_TRIG_TX_NRX_POS)
+#define HW_TRIGGER_HW_TRIG_TX_NRX_TX    (0x1 << RF_BLE_LR_HW_TRIGGER_HW_TRIG_TX_NRX_POS)
+
+#define HW_TRIGGER_HW_TRIG_LOW_LOW      (0x0 << RF_BLE_LR_HW_TRIGGER_HW_TRIG_LOW_POS)
+#define HW_TRIGGER_HW_TRIG_LOW_HIGH     (0x1 << RF_BLE_LR_HW_TRIGGER_HW_TRIG_LOW_POS)
+
+#define HW_TRIGGER_HW_TRIG_ACTIVE_DISABLE (0x0 << RF_BLE_LR_HW_TRIGGER_HW_TRIG_ACTIVE_POS)
+#define HW_TRIGGER_HW_TRIG_ACTIVE_ENABLE (0x1 << RF_BLE_LR_HW_TRIGGER_HW_TRIG_ACTIVE_POS)
+
+/* BLE_LR */
+#define RF1_BLE_LR_BASE                 0x40040AD4
+#define RF1_BLE_LR                      REG32_POINTER(RF1_BLE_LR_BASE)
+
+/* BLE_LR */
+#define RF2_BLE_LR_BASE                 0x40040CD4
+#define RF2_BLE_LR                      REG32_POINTER(RF2_BLE_LR_BASE)
+
+/* BLE_LR */
+#define RF3_BLE_LR_BASE                 0x40040ED4
+#define RF3_BLE_LR                      REG32_POINTER(RF3_BLE_LR_BASE)
+
+/* REG36 */
+#define RF0_REG36_BASE                  0x400408D8
+#define RF0_REG36                       REG32_POINTER(RF0_REG36_BASE)
+
+/* RF_REG36 bit positions */
+#define RF_REG36_IQ_SPARES_EN_BIAS_SPARE_POS 28
+#define RF_REG36_IQ_SPARES_EN_BIAS_SPARE_MASK (0x7 << RF_REG36_IQ_SPARES_EN_BIAS_SPARE_POS)
+#define RF_REG36_IQ_SPARES_IQ_SPARE_2_POS 24
+#define RF_REG36_IQ_SPARES_IQ_SPARE_2_MASK (0xF << RF_REG36_IQ_SPARES_IQ_SPARE_2_POS)
+#define RF_REG36_IQ_SPARES_IQ_SPARE_1_POS 20
+#define RF_REG36_IQ_SPARES_IQ_SPARE_1_MASK (0xF << RF_REG36_IQ_SPARES_IQ_SPARE_1_POS)
+#define RF_REG36_IQ_SPARES_IQ_SPARE_0_POS 16
+#define RF_REG36_IQ_SPARES_IQ_SPARE_0_MASK (0xF << RF_REG36_IQ_SPARES_IQ_SPARE_0_POS)
+#define RF_REG36_MISC_ISO_VDDA_POS      8
+#define RF_REG36_BLR_DEMAPPER_BLR_USE_EXT_VIT_GFSK_POS 4
+#define RF_REG36_BLR_DEMAPPER_BLR_500_DPHASE_POS 2
+#define RF_REG36_BLR_DEMAPPER_BLR_500_DPHASE_MASK (0x3 << RF_REG36_BLR_DEMAPPER_BLR_500_DPHASE_POS)
+#define RF_REG36_BLR_DEMAPPER_BLR_500_LOW_GAIN_POS 1
+#define RF_REG36_BLR_DEMAPPER_BLR_125_LOW_GAIN_POS 0
+
+/* RF_REG36 settings */
+#define IQ_SPARES_EN_BIAS_SPARE_DEFAULT (0x0 << RF_REG36_IQ_SPARES_EN_BIAS_SPARE_POS)
+
+#define IQ_SPARES_IQ_SPARE_2_DEFAULT    (0x0 << RF_REG36_IQ_SPARES_IQ_SPARE_2_POS)
+
+#define IQ_SPARES_IQ_SPARE_1_DEFAULT    (0x0 << RF_REG36_IQ_SPARES_IQ_SPARE_1_POS)
+
+#define IQ_SPARES_IQ_SPARE_0_DEFAULT    (0x0 << RF_REG36_IQ_SPARES_IQ_SPARE_0_POS)
+
+#define MISC_ISO_VDDA_NOT_ISOLATE       (0x0 << RF_REG36_MISC_ISO_VDDA_POS)
+#define MISC_ISO_VDDA_ISOLATE           (0x1 << RF_REG36_MISC_ISO_VDDA_POS)
+
+#define BLR_DEMAPPER_BLR_USE_EXT_VIT_GFSK_DISABLE (0x0 << RF_REG36_BLR_DEMAPPER_BLR_USE_EXT_VIT_GFSK_POS)
+#define BLR_DEMAPPER_BLR_USE_EXT_VIT_GFSK_ENABLE (0x1 << RF_REG36_BLR_DEMAPPER_BLR_USE_EXT_VIT_GFSK_POS)
+
+#define BLR_DEMAPPER_BLR_500_DPHASE_2   (0x0 << RF_REG36_BLR_DEMAPPER_BLR_500_DPHASE_POS)
+#define BLR_DEMAPPER_BLR_500_DPHASE_4   (0x1 << RF_REG36_BLR_DEMAPPER_BLR_500_DPHASE_POS)
+#define BLR_DEMAPPER_BLR_500_DPHASE_6   (0x2 << RF_REG36_BLR_DEMAPPER_BLR_500_DPHASE_POS)
+#define BLR_DEMAPPER_BLR_500_DPHASE_8   (0x3 << RF_REG36_BLR_DEMAPPER_BLR_500_DPHASE_POS)
+
+#define BLR_DEMAPPER_BLR_500_LOW_GAIN_DISABLE (0x0 << RF_REG36_BLR_DEMAPPER_BLR_500_LOW_GAIN_POS)
+#define BLR_DEMAPPER_BLR_500_LOW_GAIN_ENABLE (0x1 << RF_REG36_BLR_DEMAPPER_BLR_500_LOW_GAIN_POS)
+
+#define BLR_DEMAPPER_BLR_125_LOW_GAIN_DISABLE (0x0 << RF_REG36_BLR_DEMAPPER_BLR_125_LOW_GAIN_POS)
+#define BLR_DEMAPPER_BLR_125_LOW_GAIN_ENABLE (0x1 << RF_REG36_BLR_DEMAPPER_BLR_125_LOW_GAIN_POS)
+
+/* REG36 */
+#define RF1_REG36_BASE                  0x40040AD8
+#define RF1_REG36                       REG32_POINTER(RF1_REG36_BASE)
+
+/* REG36 */
+#define RF2_REG36_BASE                  0x40040CD8
+#define RF2_REG36                       REG32_POINTER(RF2_REG36_BASE)
+
+/* REG36 */
+#define RF3_REG36_BASE                  0x40040ED8
+#define RF3_REG36                       REG32_POINTER(RF3_REG36_BASE)
+
+/* PROT_TIMER */
+#define RF0_PROT_TIMER_BASE             0x400408DC
+#define RF0_PROT_TIMER                  REG32_POINTER(RF0_PROT_TIMER_BASE)
+
+/* RF_PROT_TIMER bit positions */
+#define RF_PROT_TIMER_PROT_TIMER_CONF_EN_PROT_TIMER_POS 31
+#define RF_PROT_TIMER_PROT_TIMER_CONF_PT_T_STP_1_POS 27
+#define RF_PROT_TIMER_PROT_TIMER_CONF_PT_T_STP_1_MASK (0x7 << RF_PROT_TIMER_PROT_TIMER_CONF_PT_T_STP_1_POS)
+#define RF_PROT_TIMER_PROT_TIMER_CONF_PT_T_STP_0_POS 24
+#define RF_PROT_TIMER_PROT_TIMER_CONF_PT_T_STP_0_MASK (0x7 << RF_PROT_TIMER_PROT_TIMER_CONF_PT_T_STP_0_POS)
+#define RF_PROT_TIMER_STAGING_PS_NZ_START_BIT_POS 22
+#define RF_PROT_TIMER_STAGING_PS_NZ_START_POS 21
+#define RF_PROT_TIMER_STAGING_DEL_PA_RAMPDW_POS 20
+#define RF_PROT_TIMER_STAGING_PEAK_DET_TH_SHIFT_POS 19
+#define RF_PROT_TIMER_STAGING_AGC_DERIV_LVL_POS 17
+#define RF_PROT_TIMER_STAGING_AGC_DERIV_LVL_MASK (0x3 << RF_PROT_TIMER_STAGING_AGC_DERIV_LVL_POS)
+#define RF_PROT_TIMER_STAGING_AGC_USE_DERIV_POS 16
+#define RF_PROT_TIMER_BLE_DTM_BLE_DTM_LEN_POS 8
+#define RF_PROT_TIMER_BLE_DTM_BLE_DTM_LEN_MASK (0xFF << RF_PROT_TIMER_BLE_DTM_BLE_DTM_LEN_POS)
+#define RF_PROT_TIMER_BLE_DTM_EN_BLE_DTM_POS 7
+#define RF_PROT_TIMER_BLE_DTM_BLE_DTM_PKT_TYPE_POS 0
+#define RF_PROT_TIMER_BLE_DTM_BLE_DTM_PKT_TYPE_MASK (0xF << RF_PROT_TIMER_BLE_DTM_BLE_DTM_PKT_TYPE_POS)
+
+/* RF_PROT_TIMER settings */
+#define PROT_TIMER_CONF_EN_PROT_TIMER_DISABLE (0x0 << RF_PROT_TIMER_PROT_TIMER_CONF_EN_PROT_TIMER_POS)
+#define PROT_TIMER_CONF_EN_PROT_TIMER_ENABLE (0x1 << RF_PROT_TIMER_PROT_TIMER_CONF_EN_PROT_TIMER_POS)
+
+#define PROT_TIMER_CONF_PT_T_STP_1_DEFAULT (0x0 << RF_PROT_TIMER_PROT_TIMER_CONF_PT_T_STP_1_POS)
+
+#define PROT_TIMER_CONF_PT_T_STP_0_NO_STAMP (0x0 << RF_PROT_TIMER_PROT_TIMER_CONF_PT_T_STP_0_POS)
+#define PROT_TIMER_CONF_PT_T_STP_0_TIMER_TRIGGER (0x1 << RF_PROT_TIMER_PROT_TIMER_CONF_PT_T_STP_0_POS)
+#define PROT_TIMER_CONF_PT_T_STP_0_TRIGGER_TX_STOP (0x4 << RF_PROT_TIMER_PROT_TIMER_CONF_PT_T_STP_0_POS)
+#define PROT_TIMER_CONF_PT_T_STP_0_TRIGGER_RX_SYNC (0x5 << RF_PROT_TIMER_PROT_TIMER_CONF_PT_T_STP_0_POS)
+#define PROT_TIMER_CONF_PT_T_STP_0_TRIGGER_RX_STOP (0x6 << RF_PROT_TIMER_PROT_TIMER_CONF_PT_T_STP_0_POS)
+#define PROT_TIMER_CONF_PT_T_STP_0_TRIGGER_RX_RECEIVED (0x7 << RF_PROT_TIMER_PROT_TIMER_CONF_PT_T_STP_0_POS)
+
+#define STAGING_PS_NZ_START_BIT_0       (0x0 << RF_PROT_TIMER_STAGING_PS_NZ_START_BIT_POS)
+#define STAGING_PS_NZ_START_BIT_1       (0x1 << RF_PROT_TIMER_STAGING_PS_NZ_START_BIT_POS)
+
+#define STAGING_PS_NZ_START_NO_OFFSET   (0x0 << RF_PROT_TIMER_STAGING_PS_NZ_START_POS)
+#define STAGING_PS_NZ_START_OFFSET      (0x1 << RF_PROT_TIMER_STAGING_PS_NZ_START_POS)
+
+#define STAGING_DEL_PA_RAMPDW_NO_DELAY  (0x0 << RF_PROT_TIMER_STAGING_DEL_PA_RAMPDW_POS)
+#define STAGING_DEL_PA_RAMPDW_DELAY     (0x1 << RF_PROT_TIMER_STAGING_DEL_PA_RAMPDW_POS)
+
+#define STAGING_PEAK_DET_TH_SHIFT_NO_SHIFT (0x0 << RF_PROT_TIMER_STAGING_PEAK_DET_TH_SHIFT_POS)
+#define STAGING_PEAK_DET_TH_SHIFT_SHIFT (0x1 << RF_PROT_TIMER_STAGING_PEAK_DET_TH_SHIFT_POS)
+
+#define STAGING_AGC_DERIV_LVL_16        (0x0 << RF_PROT_TIMER_STAGING_AGC_DERIV_LVL_POS)
+#define STAGING_AGC_DERIV_LVL_24        (0x1 << RF_PROT_TIMER_STAGING_AGC_DERIV_LVL_POS)
+#define STAGING_AGC_DERIV_LVL_32        (0x2 << RF_PROT_TIMER_STAGING_AGC_DERIV_LVL_POS)
+#define STAGING_AGC_DERIV_LVL_48        (0x3 << RF_PROT_TIMER_STAGING_AGC_DERIV_LVL_POS)
+
+#define STAGING_AGC_USE_DERIV_NOT_USED  (0x0 << RF_PROT_TIMER_STAGING_AGC_USE_DERIV_POS)
+#define STAGING_AGC_USE_DERIV_USED      (0x1 << RF_PROT_TIMER_STAGING_AGC_USE_DERIV_POS)
+
+#define BLE_DTM_BLE_DTM_LEN_DEFAULT     (0x25 << RF_PROT_TIMER_BLE_DTM_BLE_DTM_LEN_POS)
+
+#define BLE_DTM_EN_BLE_DTM_DISABLE      (0x0 << RF_PROT_TIMER_BLE_DTM_EN_BLE_DTM_POS)
+#define BLE_DTM_EN_BLE_DTM_ENABLE       (0x1 << RF_PROT_TIMER_BLE_DTM_EN_BLE_DTM_POS)
+
+#define BLE_DTM_BLE_DTM_PKT_TYPE_DEFAULT (0x0 << RF_PROT_TIMER_BLE_DTM_BLE_DTM_PKT_TYPE_POS)
+
+/* PROT_TIMER */
+#define RF1_PROT_TIMER_BASE             0x40040ADC
+#define RF1_PROT_TIMER                  REG32_POINTER(RF1_PROT_TIMER_BASE)
+
+/* PROT_TIMER */
+#define RF2_PROT_TIMER_BASE             0x40040CDC
+#define RF2_PROT_TIMER                  REG32_POINTER(RF2_PROT_TIMER_BASE)
+
+/* PROT_TIMER */
+#define RF3_PROT_TIMER_BASE             0x40040EDC
+#define RF3_PROT_TIMER                  REG32_POINTER(RF3_PROT_TIMER_BASE)
+
+/* CTE_OPTS */
+#define RF0_CTE_OPTS_BASE               0x400408E0
+#define RF0_CTE_OPTS                    REG32_POINTER(RF0_CTE_OPTS_BASE)
+
+/* RF_CTE_OPTS bit positions */
+#define RF_CTE_OPTS_CTE_OPTS_RECT_PS_CTE_POS 29
+#define RF_CTE_OPTS_CTE_OPTS_USE_CTE_WO_CP_POS 28
+#define RF_CTE_OPTS_CTE_OPTS_CTE_AMPL_POS 27
+#define RF_CTE_OPTS_CTE_OPTS_DF_AOA_SLOT_TIME_POS 26
+#define RF_CTE_OPTS_CTE_OPTS_CP_INSERT_POS 25
+#define RF_CTE_OPTS_CTE_OPTS_EN_READ_CP_POS 24
+#define RF_CTE_OPTS_CTE_OPTS_CTE_INFO_POS 16
+#define RF_CTE_OPTS_CTE_OPTS_CTE_INFO_MASK (0xFF << RF_CTE_OPTS_CTE_OPTS_CTE_INFO_POS)
+#define RF_CTE_OPTS_ASK_MOD_ASK_MAX_POS 10
+#define RF_CTE_OPTS_ASK_MOD_ASK_MAX_MASK (0x1F << RF_CTE_OPTS_ASK_MOD_ASK_MAX_POS)
+#define RF_CTE_OPTS_ASK_MOD_ASK_MIN_POS 5
+#define RF_CTE_OPTS_ASK_MOD_ASK_MIN_MASK (0x1F << RF_CTE_OPTS_ASK_MOD_ASK_MIN_POS)
+#define RF_CTE_OPTS_ASK_MOD_ASK_CNT_POS 1
+#define RF_CTE_OPTS_ASK_MOD_ASK_CNT_MASK (0xF << RF_CTE_OPTS_ASK_MOD_ASK_CNT_POS)
+#define RF_CTE_OPTS_ASK_MOD_EN_RSSI_ASK_POS 0
+
+/* RF_CTE_OPTS settings */
+#define CTE_OPTS_RECT_PS_CTE_DISABLE    (0x0 << RF_CTE_OPTS_CTE_OPTS_RECT_PS_CTE_POS)
+#define CTE_OPTS_RECT_PS_CTE_ENABLE     (0x1 << RF_CTE_OPTS_CTE_OPTS_RECT_PS_CTE_POS)
+
+#define CTE_OPTS_USE_CTE_WO_CP_DISABLE  (0x0 << RF_CTE_OPTS_CTE_OPTS_USE_CTE_WO_CP_POS)
+#define CTE_OPTS_USE_CTE_WO_CP_ENABLE   (0x1 << RF_CTE_OPTS_CTE_OPTS_USE_CTE_WO_CP_POS)
+
+#define CTE_OPTS_CTE_AMPL_DISABLE       (0x0 << RF_CTE_OPTS_CTE_OPTS_CTE_AMPL_POS)
+#define CTE_OPTS_CTE_AMPL_ENABLE        (0x1 << RF_CTE_OPTS_CTE_OPTS_CTE_AMPL_POS)
+
+#define CTE_OPTS_DF_AOA_SLOT_TIME_1     (0x0 << RF_CTE_OPTS_CTE_OPTS_DF_AOA_SLOT_TIME_POS)
+#define CTE_OPTS_DF_AOA_SLOT_TIME_2     (0x1 << RF_CTE_OPTS_CTE_OPTS_DF_AOA_SLOT_TIME_POS)
+
+#define CTE_OPTS_CP_INSERT_DISABLE      (0x0 << RF_CTE_OPTS_CTE_OPTS_CP_INSERT_POS)
+#define CTE_OPTS_CP_INSERT_ENABLE       (0x1 << RF_CTE_OPTS_CTE_OPTS_CP_INSERT_POS)
+
+#define CTE_OPTS_EN_READ_CP_DISABLE     (0x0 << RF_CTE_OPTS_CTE_OPTS_EN_READ_CP_POS)
+#define CTE_OPTS_EN_READ_CP_ENABLE      (0x1 << RF_CTE_OPTS_CTE_OPTS_EN_READ_CP_POS)
+
+#define CTE_OPTS_CTE_INFO_DEFAULT       (0x0 << RF_CTE_OPTS_CTE_OPTS_CTE_INFO_POS)
+
+#define ASK_MOD_ASK_MAX_DEFAULT         (0xC << RF_CTE_OPTS_ASK_MOD_ASK_MAX_POS)
+
+#define ASK_MOD_ASK_MIN_DEFAULT         (0x0 << RF_CTE_OPTS_ASK_MOD_ASK_MIN_POS)
+
+#define ASK_MOD_ASK_CNT_DEFAULT         (0x7 << RF_CTE_OPTS_ASK_MOD_ASK_CNT_POS)
+
+#define ASK_MOD_EN_RSSI_ASK_DISABLE     (0x0 << RF_CTE_OPTS_ASK_MOD_EN_RSSI_ASK_POS)
+#define ASK_MOD_EN_RSSI_ASK_ENABLE      (0x1 << RF_CTE_OPTS_ASK_MOD_EN_RSSI_ASK_POS)
+
+/* CTE_OPTS */
+#define RF1_CTE_OPTS_BASE               0x40040AE0
+#define RF1_CTE_OPTS                    REG32_POINTER(RF1_CTE_OPTS_BASE)
+
+/* CTE_OPTS */
+#define RF2_CTE_OPTS_BASE               0x40040CE0
+#define RF2_CTE_OPTS                    REG32_POINTER(RF2_CTE_OPTS_BASE)
+
+/* CTE_OPTS */
+#define RF3_CTE_OPTS_BASE               0x40040EE0
+#define RF3_CTE_OPTS                    REG32_POINTER(RF3_CTE_OPTS_BASE)
+
+/* PT_DELTA_0 */
+#define RF0_PT_DELTA_0_BASE             0x400408E4
+#define RF0_PT_DELTA_0                  REG32_POINTER(RF0_PT_DELTA_0_BASE)
+
+/* RF_PT_DELTA_0 bit positions */
+#define RF_PT_DELTA_0_PT_DELTA_TS_0_PT_DELTA_T0_MULT_POS 30
+#define RF_PT_DELTA_0_PT_DELTA_TS_0_PT_DELTA_T0_MULT_MASK (0x3 << RF_PT_DELTA_0_PT_DELTA_TS_0_PT_DELTA_T0_MULT_POS)
+#define RF_PT_DELTA_0_PT_DELTA_TS_0_PT_DELTA_T0_POS 0
+#define RF_PT_DELTA_0_PT_DELTA_TS_0_PT_DELTA_T0_MASK (0xFFFFF << RF_PT_DELTA_0_PT_DELTA_TS_0_PT_DELTA_T0_POS)
+
+/* RF_PT_DELTA_0 settings */
+#define PT_DELTA_TS_0_PT_DELTA_T0_MULT_DEFAULT (0x0 << RF_PT_DELTA_0_PT_DELTA_TS_0_PT_DELTA_T0_MULT_POS)
+
+#define PT_DELTA_TS_0_PT_DELTA_T0_DEFAULT (0x0 << RF_PT_DELTA_0_PT_DELTA_TS_0_PT_DELTA_T0_POS)
+
+/* PT_DELTA_0 */
+#define RF1_PT_DELTA_0_BASE             0x40040AE4
+#define RF1_PT_DELTA_0                  REG32_POINTER(RF1_PT_DELTA_0_BASE)
+
+/* PT_DELTA_0 */
+#define RF2_PT_DELTA_0_BASE             0x40040CE4
+#define RF2_PT_DELTA_0                  REG32_POINTER(RF2_PT_DELTA_0_BASE)
+
+/* PT_DELTA_0 */
+#define RF3_PT_DELTA_0_BASE             0x40040EE4
+#define RF3_PT_DELTA_0                  REG32_POINTER(RF3_PT_DELTA_0_BASE)
+
+/* PT_DELTA_1 */
+#define RF0_PT_DELTA_1_BASE             0x400408E8
+#define RF0_PT_DELTA_1                  REG32_POINTER(RF0_PT_DELTA_1_BASE)
+
+/* RF_PT_DELTA_1 bit positions */
+#define RF_PT_DELTA_1_PT_DELTA_TS_1_PT_DELTA_T1_MULT_POS 30
+#define RF_PT_DELTA_1_PT_DELTA_TS_1_PT_DELTA_T1_MULT_MASK (0x3 << RF_PT_DELTA_1_PT_DELTA_TS_1_PT_DELTA_T1_MULT_POS)
+#define RF_PT_DELTA_1_PT_DELTA_TS_1_PT_DELTA_T1_POS 0
+#define RF_PT_DELTA_1_PT_DELTA_TS_1_PT_DELTA_T1_MASK (0xFFFFF << RF_PT_DELTA_1_PT_DELTA_TS_1_PT_DELTA_T1_POS)
+
+/* RF_PT_DELTA_1 settings */
+#define PT_DELTA_TS_1_PT_DELTA_T1_MULT_DEFAULT (0x0 << RF_PT_DELTA_1_PT_DELTA_TS_1_PT_DELTA_T1_MULT_POS)
+
+#define PT_DELTA_TS_1_PT_DELTA_T1_DEFAULT (0x0 << RF_PT_DELTA_1_PT_DELTA_TS_1_PT_DELTA_T1_POS)
+
+/* PT_DELTA_1 */
+#define RF1_PT_DELTA_1_BASE             0x40040AE8
+#define RF1_PT_DELTA_1                  REG32_POINTER(RF1_PT_DELTA_1_BASE)
+
+/* PT_DELTA_1 */
+#define RF2_PT_DELTA_1_BASE             0x40040CE8
+#define RF2_PT_DELTA_1                  REG32_POINTER(RF2_PT_DELTA_1_BASE)
+
+/* PT_DELTA_1 */
+#define RF3_PT_DELTA_1_BASE             0x40040EE8
+#define RF3_PT_DELTA_1                  REG32_POINTER(RF3_PT_DELTA_1_BASE)
+
+/* CTE_IF */
+#define RF0_CTE_IF_BASE                 0x400408EC
+#define RF0_CTE_IF                      REG32_POINTER(RF0_CTE_IF_BASE)
+
+/* RF_CTE_IF bit positions */
+#define RF_CTE_IF_CTE_CTRL_DELAY_TX_DF_DELAY_TX_POS 16
+#define RF_CTE_IF_CTE_CTRL_DELAY_TX_DF_DELAY_TX_MASK (0x3FF << RF_CTE_IF_CTE_CTRL_DELAY_TX_DF_DELAY_TX_POS)
+#define RF_CTE_IF_ANTENNA_CONF_DF_IND_PATTERN_POS 13
+#define RF_CTE_IF_ANTENNA_CONF_DF_IND_ANTENNA_POS 12
+#define RF_CTE_IF_ANTENNA_CONF_ANT_LUT_M_POS 8
+#define RF_CTE_IF_ANTENNA_CONF_ANT_LUT_M_MASK (0xF << RF_CTE_IF_ANTENNA_CONF_ANT_LUT_M_POS)
+#define RF_CTE_IF_CTE_AUTO_PULL_EXT_IQ_SMP_TYPE_POS 5
+#define RF_CTE_IF_CTE_AUTO_PULL_IQ_MSB_POS 4
+#define RF_CTE_IF_CTE_AUTO_PULL_IQ_DATA_BUS_SIZE_POS 2
+#define RF_CTE_IF_CTE_AUTO_PULL_IQ_DATA_BUS_SIZE_MASK (0x3 << RF_CTE_IF_CTE_AUTO_PULL_IQ_DATA_BUS_SIZE_POS)
+#define RF_CTE_IF_CTE_AUTO_PULL_CTE_QUAL_POS 1
+#define RF_CTE_IF_CTE_AUTO_PULL_EN_CTE_AUTO_PULL_POS 0
+
+/* RF_CTE_IF settings */
+#define CTE_CTRL_DELAY_TX_DF_DELAY_TX_DEFAULT (0x0 << RF_CTE_IF_CTE_CTRL_DELAY_TX_DF_DELAY_TX_POS)
+
+#define ANTENNA_CONF_DF_IND_PATTERN_DISABLE (0x0 << RF_CTE_IF_ANTENNA_CONF_DF_IND_PATTERN_POS)
+#define ANTENNA_CONF_DF_IND_PATTERN_ENABLE (0x1 << RF_CTE_IF_ANTENNA_CONF_DF_IND_PATTERN_POS)
+
+#define ANTENNA_CONF_DF_IND_ANTENNA_DISABLE (0x0 << RF_CTE_IF_ANTENNA_CONF_DF_IND_ANTENNA_POS)
+#define ANTENNA_CONF_DF_IND_ANTENNA_ENABLE (0x1 << RF_CTE_IF_ANTENNA_CONF_DF_IND_ANTENNA_POS)
+
+#define ANTENNA_CONF_ANT_LUT_M_DEFAULT  (0x0 << RF_CTE_IF_ANTENNA_CONF_ANT_LUT_M_POS)
+
+#define CTE_AUTO_PULL_EXT_IQ_SMP_TYPE_PULSE (0x0 << RF_CTE_IF_CTE_AUTO_PULL_EXT_IQ_SMP_TYPE_POS)
+#define CTE_AUTO_PULL_EXT_IQ_SMP_TYPE_TOGGLE (0x1 << RF_CTE_IF_CTE_AUTO_PULL_EXT_IQ_SMP_TYPE_POS)
+
+#define CTE_AUTO_PULL_IQ_MSB_Q          (0x0 << RF_CTE_IF_CTE_AUTO_PULL_IQ_MSB_POS)
+#define CTE_AUTO_PULL_IQ_MSB_I          (0x1 << RF_CTE_IF_CTE_AUTO_PULL_IQ_MSB_POS)
+
+#define CTE_AUTO_PULL_IQ_DATA_BUS_SIZE_4 (0x0 << RF_CTE_IF_CTE_AUTO_PULL_IQ_DATA_BUS_SIZE_POS)
+#define CTE_AUTO_PULL_IQ_DATA_BUS_SIZE_8 (0x1 << RF_CTE_IF_CTE_AUTO_PULL_IQ_DATA_BUS_SIZE_POS)
+#define CTE_AUTO_PULL_IQ_DATA_BUS_SIZE_16 (0x2 << RF_CTE_IF_CTE_AUTO_PULL_IQ_DATA_BUS_SIZE_POS)
+
+#define CTE_AUTO_PULL_CTE_QUAL_TOGGLE   (0x0 << RF_CTE_IF_CTE_AUTO_PULL_CTE_QUAL_POS)
+#define CTE_AUTO_PULL_CTE_QUAL_CLOCK    (0x1 << RF_CTE_IF_CTE_AUTO_PULL_CTE_QUAL_POS)
+
+#define CTE_AUTO_PULL_EN_CTE_AUTO_PULL_DISABLE (0x0 << RF_CTE_IF_CTE_AUTO_PULL_EN_CTE_AUTO_PULL_POS)
+#define CTE_AUTO_PULL_EN_CTE_AUTO_PULL_ENABLE (0x1 << RF_CTE_IF_CTE_AUTO_PULL_EN_CTE_AUTO_PULL_POS)
+
+/* CTE_IF */
+#define RF1_CTE_IF_BASE                 0x40040AEC
+#define RF1_CTE_IF                      REG32_POINTER(RF1_CTE_IF_BASE)
+
+/* CTE_IF */
+#define RF2_CTE_IF_BASE                 0x40040CEC
+#define RF2_CTE_IF                      REG32_POINTER(RF2_CTE_IF_BASE)
+
+/* CTE_IF */
+#define RF3_CTE_IF_BASE                 0x40040EEC
+#define RF3_CTE_IF                      REG32_POINTER(RF3_CTE_IF_BASE)
+
+/* CTE_CTRL */
+#define RF0_CTE_CTRL_BASE               0x400408F0
+#define RF0_CTE_CTRL                    REG32_POINTER(RF0_CTE_CTRL_BASE)
+
+/* RF_CTE_CTRL bit positions */
+#define RF_CTE_CTRL_CTE_CTRL_DELAY_RX_DF_DELAY_SWITCH_RX_POS 16
+#define RF_CTE_CTRL_CTE_CTRL_DELAY_RX_DF_DELAY_SWITCH_RX_MASK (0x3FF << RF_CTE_CTRL_CTE_CTRL_DELAY_RX_DF_DELAY_SWITCH_RX_POS)
+#define RF_CTE_CTRL_CTE_CTRL_DELAY_RX_DF_DELAY_SAMPLE_RX_POS 0
+#define RF_CTE_CTRL_CTE_CTRL_DELAY_RX_DF_DELAY_SAMPLE_RX_MASK (0x3FF << RF_CTE_CTRL_CTE_CTRL_DELAY_RX_DF_DELAY_SAMPLE_RX_POS)
+
+/* RF_CTE_CTRL settings */
+#define CTE_CTRL_DELAY_RX_DF_DELAY_SWITCH_RX_DEFAULT (0x0 << RF_CTE_CTRL_CTE_CTRL_DELAY_RX_DF_DELAY_SWITCH_RX_POS)
+
+#define CTE_CTRL_DELAY_RX_DF_DELAY_SAMPLE_RX_DEFAULT (0x0 << RF_CTE_CTRL_CTE_CTRL_DELAY_RX_DF_DELAY_SAMPLE_RX_POS)
+
+/* CTE_CTRL */
+#define RF1_CTE_CTRL_BASE               0x40040AF0
+#define RF1_CTE_CTRL                    REG32_POINTER(RF1_CTE_CTRL_BASE)
+
+/* CTE_CTRL */
+#define RF2_CTE_CTRL_BASE               0x40040CF0
+#define RF2_CTE_CTRL                    REG32_POINTER(RF2_CTE_CTRL_BASE)
+
+/* CTE_CTRL */
+#define RF3_CTE_CTRL_BASE               0x40040EF0
+#define RF3_CTE_CTRL                    REG32_POINTER(RF3_CTE_CTRL_BASE)
+
+/* AGC_ADVANCED */
+#define RF0_AGC_ADVANCED_BASE           0x400408F4
+#define RF0_AGC_ADVANCED                REG32_POINTER(RF0_AGC_ADVANCED_BASE)
+
+/* RF_AGC_ADVANCED bit positions */
+#define RF_AGC_ADVANCED_AGC_SWITCHES_AGC_SHORTS_LUT_POS 16
+#define RF_AGC_ADVANCED_AGC_SWITCHES_AGC_SHORTS_LUT_MASK (0x7FF << RF_AGC_ADVANCED_AGC_SWITCHES_AGC_SHORTS_LUT_POS)
+#define RF_AGC_ADVANCED_DEBUG_FAKE_IQ_SAMPLES_POS 8
+#define RF_AGC_ADVANCED_AGC_ADVANCED_AGC_TAU_SHORTS_POS 4
+#define RF_AGC_ADVANCED_AGC_ADVANCED_AGC_TAU_SHORTS_MASK (0xF << RF_AGC_ADVANCED_AGC_ADVANCED_AGC_TAU_SHORTS_POS)
+#define RF_AGC_ADVANCED_AGC_ADVANCED_AGC_EN_SHORT_PHADC_POS 3
+#define RF_AGC_ADVANCED_AGC_ADVANCED_AGC_EN_SHORT_IFA_POS 2
+#define RF_AGC_ADVANCED_AGC_ADVANCED_AGC_USE_SHORTS_POS 1
+#define RF_AGC_ADVANCED_AGC_ADVANCED_AGC_FULL_SPEED_POS 0
+
+/* RF_AGC_ADVANCED settings */
+#define AGC_SWITCHES_AGC_SHORTS_LUT_DEFAULT (0x0 << RF_AGC_ADVANCED_AGC_SWITCHES_AGC_SHORTS_LUT_POS)
+
+#define DEBUG_FAKE_IQ_SAMPLES_DISABLE   (0x0 << RF_AGC_ADVANCED_DEBUG_FAKE_IQ_SAMPLES_POS)
+#define DEBUG_FAKE_IQ_SAMPLES_ENABLE    (0x1 << RF_AGC_ADVANCED_DEBUG_FAKE_IQ_SAMPLES_POS)
+
+#define AGC_ADVANCED_AGC_TAU_SHORTS_DEFAULT (0x0 << RF_AGC_ADVANCED_AGC_ADVANCED_AGC_TAU_SHORTS_POS)
+
+#define AGC_ADVANCED_AGC_EN_SHORT_PHADC_DISABLE (0x0 << RF_AGC_ADVANCED_AGC_ADVANCED_AGC_EN_SHORT_PHADC_POS)
+#define AGC_ADVANCED_AGC_EN_SHORT_PHADC_ENABLE (0x1 << RF_AGC_ADVANCED_AGC_ADVANCED_AGC_EN_SHORT_PHADC_POS)
+
+#define AGC_ADVANCED_AGC_EN_SHORT_IFA_DISABLE (0x0 << RF_AGC_ADVANCED_AGC_ADVANCED_AGC_EN_SHORT_IFA_POS)
+#define AGC_ADVANCED_AGC_EN_SHORT_IFA_ENABLE (0x1 << RF_AGC_ADVANCED_AGC_ADVANCED_AGC_EN_SHORT_IFA_POS)
+
+#define AGC_ADVANCED_AGC_USE_SHORTS_DISABLE (0x0 << RF_AGC_ADVANCED_AGC_ADVANCED_AGC_USE_SHORTS_POS)
+#define AGC_ADVANCED_AGC_USE_SHORTS_ENABLE (0x1 << RF_AGC_ADVANCED_AGC_ADVANCED_AGC_USE_SHORTS_POS)
+
+#define AGC_ADVANCED_AGC_FULL_SPEED_DISABLE (0x0 << RF_AGC_ADVANCED_AGC_ADVANCED_AGC_FULL_SPEED_POS)
+#define AGC_ADVANCED_AGC_FULL_SPEED_ENABLE (0x1 << RF_AGC_ADVANCED_AGC_ADVANCED_AGC_FULL_SPEED_POS)
+
+/* AGC_ADVANCED */
+#define RF1_AGC_ADVANCED_BASE           0x40040AF4
+#define RF1_AGC_ADVANCED                REG32_POINTER(RF1_AGC_ADVANCED_BASE)
+
+/* AGC_ADVANCED */
+#define RF2_AGC_ADVANCED_BASE           0x40040CF4
+#define RF2_AGC_ADVANCED                REG32_POINTER(RF2_AGC_ADVANCED_BASE)
+
+/* AGC_ADVANCED */
+#define RF3_AGC_ADVANCED_BASE           0x40040EF4
+#define RF3_AGC_ADVANCED                REG32_POINTER(RF3_AGC_ADVANCED_BASE)
+
+/* REVISION */
+#define RF0_REVISION_BASE               0x400408FF
+#define RF0_REVISION                    READONLY_REG32_POINTER(RF0_REVISION_BASE)
+
+/* RF_REVISION bit positions */
+#define RF_REVISION_CHIP_ID_POS         24
+#define RF_REVISION_CHIP_ID_MASK        (0xFF << RF_REVISION_CHIP_ID_POS)
+
+/* RF_REVISION settings */
+#define CHIP_ID_DEFAULT                 (0x30 << RF_REVISION_CHIP_ID_POS)
+
+/* REVISION */
+#define RF1_REVISION_BASE               0x40040AFF
+#define RF1_REVISION                    READONLY_REG32_POINTER(RF1_REVISION_BASE)
+
+/* REVISION */
+#define RF2_REVISION_BASE               0x40040CFF
+#define RF2_REVISION                    READONLY_REG32_POINTER(RF2_REVISION_BASE)
+
+/* REVISION */
+#define RF3_REVISION_BASE               0x40040EFF
+#define RF3_REVISION                    READONLY_REG32_POINTER(RF3_REVISION_BASE)
+
+/* FSM_CTRL */
+#define RF0_FSM_CTRL_BASE               0x40040900
+#define RF0_FSM_CTRL                    REG32_POINTER(RF0_FSM_CTRL_BASE)
+
+/* RF_FSM_CTRL bit positions */
+#define RF_FSM_CTRL_RXFIFO_STATUS_RX_BIST_POS 25
+#define RF_FSM_CTRL_RXFIFO_STATUS_RX_BIST_MASK (0x7F << RF_FSM_CTRL_RXFIFO_STATUS_RX_BIST_POS)
+#define RF_FSM_CTRL_RXFIFO_STATUS_RX_BIST_ERRORS_POS 30
+#define RF_FSM_CTRL_RXFIFO_STATUS_RX_BIST_ERRORS_MASK (0x3 << RF_FSM_CTRL_RXFIFO_STATUS_RX_BIST_ERRORS_POS)
+#define RF_FSM_CTRL_RXFIFO_STATUS_RX_NEAR_UNDERFLOW_POS 29
+#define RF_FSM_CTRL_RXFIFO_STATUS_RX_NEAR_OVERFLOW_POS 28
+#define RF_FSM_CTRL_RXFIFO_STATUS_RX_UNDERFLOW_POS 27
+#define RF_FSM_CTRL_RXFIFO_STATUS_RX_OVERFLOW_POS 26
+#define RF_FSM_CTRL_RXFIFO_STATUS_RX_FULL_POS 25
+#define RF_FSM_CTRL_RXFIFO_STATUS_FLUSH_POS 24
+#define RF_FSM_CTRL_RXFIFO_STATUS_RX_EMPTY_POS 24
+#define RF_FSM_CTRL_TXFIFO_STATUS_TX_BIST_POS 17
+#define RF_FSM_CTRL_TXFIFO_STATUS_TX_BIST_MASK (0x7F << RF_FSM_CTRL_TXFIFO_STATUS_TX_BIST_POS)
+#define RF_FSM_CTRL_TXFIFO_STATUS_TX_BIST_ERRORS_POS 22
+#define RF_FSM_CTRL_TXFIFO_STATUS_TX_BIST_ERRORS_MASK (0x3 << RF_FSM_CTRL_TXFIFO_STATUS_TX_BIST_ERRORS_POS)
+#define RF_FSM_CTRL_TXFIFO_STATUS_TX_NEAR_UNDERFLOW_POS 21
+#define RF_FSM_CTRL_TXFIFO_STATUS_TX_NEAR_OVERFLOW_POS 20
+#define RF_FSM_CTRL_TXFIFO_STATUS_TX_UNDERFLOW_POS 19
+#define RF_FSM_CTRL_TXFIFO_STATUS_TX_OVERFLOW_POS 18
+#define RF_FSM_CTRL_TXFIFO_STATUS_TX_FULL_POS 17
+#define RF_FSM_CTRL_TXFIFO_STATUS_FLUSH_POS 16
+#define RF_FSM_CTRL_TXFIFO_STATUS_TX_EMPTY_POS 16
+#define RF_FSM_CTRL_FSM_STATUS_TX_NRX_POS 10
+#define RF_FSM_CTRL_FSM_STATUS_STATUS_POS 8
+#define RF_FSM_CTRL_FSM_STATUS_STATUS_MASK (0x3 << RF_FSM_CTRL_FSM_STATUS_STATUS_POS)
+#define RF_FSM_CTRL_FSM_MODE_RESET_POS  3
+#define RF_FSM_CTRL_FSM_MODE_TX_NRX_POS 2
+#define RF_FSM_CTRL_FSM_MODE_RX_MODE_POS 2
+#define RF_FSM_CTRL_FSM_MODE_MODE_POS   0
+#define RF_FSM_CTRL_FSM_MODE_MODE_MASK  (0x3 << RF_FSM_CTRL_FSM_MODE_MODE_POS)
+#define RF_FSM_CTRL_FSM_MODE_TX_MODE_POS 1
+#define RF_FSM_CTRL_FSM_MODE_N_IDLE_POS 0
+
+/* RF_FSM_CTRL settings */
+#define RXFIFO_STATUS_RX_BIST_DEFAULT   (0x0 << RF_FSM_CTRL_RXFIFO_STATUS_RX_BIST_POS)
+
+#define RXFIFO_STATUS_RX_BIST_NO_ERROR  (0x0 << RF_FSM_CTRL_RXFIFO_STATUS_RX_BIST_ERRORS_POS)
+#define RXFIFO_STATUS_RX_BIST_CKBD      (0x1 << RF_FSM_CTRL_RXFIFO_STATUS_RX_BIST_ERRORS_POS)
+#define RXFIFO_STATUS_RX_BIST_ICKBD     (0x2 << RF_FSM_CTRL_RXFIFO_STATUS_RX_BIST_ERRORS_POS)
+#define RXFIFO_STATUS_RX_BIST_DECODER   (0x3 << RF_FSM_CTRL_RXFIFO_STATUS_RX_BIST_ERRORS_POS)
+
+#define RXFIFO_STATUS_RX_NO_NEAR_UNDERFLOW (0x0 << RF_FSM_CTRL_RXFIFO_STATUS_RX_NEAR_UNDERFLOW_POS)
+#define RXFIFO_STATUS_RX_NEAR_UNDERFLOW (0x1 << RF_FSM_CTRL_RXFIFO_STATUS_RX_NEAR_UNDERFLOW_POS)
+
+#define RXFIFO_STATUS_RX_NO_NEAR_OVERFLOW (0x0 << RF_FSM_CTRL_RXFIFO_STATUS_RX_NEAR_OVERFLOW_POS)
+#define RXFIFO_STATUS_RX_NEAR_OVERFLOW  (0x1 << RF_FSM_CTRL_RXFIFO_STATUS_RX_NEAR_OVERFLOW_POS)
+
+#define RXFIFO_STATUS_RX_NO_UNDERFLOW   (0x0 << RF_FSM_CTRL_RXFIFO_STATUS_RX_UNDERFLOW_POS)
+#define RXFIFO_STATUS_RX_UNDERFLOW      (0x1 << RF_FSM_CTRL_RXFIFO_STATUS_RX_UNDERFLOW_POS)
+
+#define RXFIFO_STATUS_RX_NO_OVERFLOW    (0x0 << RF_FSM_CTRL_RXFIFO_STATUS_RX_OVERFLOW_POS)
+#define RXFIFO_STATUS_RX_OVERFLOW       (0x1 << RF_FSM_CTRL_RXFIFO_STATUS_RX_OVERFLOW_POS)
+
+#define RXFIFO_STATUS_RX_NOT_FULL       (0x0 << RF_FSM_CTRL_RXFIFO_STATUS_RX_FULL_POS)
+#define RXFIFO_STATUS_RX_FULL           (0x1 << RF_FSM_CTRL_RXFIFO_STATUS_RX_FULL_POS)
+
+#define RXFIFO_STATUS_NO_FLUSH          (0x0 << RF_FSM_CTRL_RXFIFO_STATUS_FLUSH_POS)
+#define RXFIFO_STATUS_FLUSH             (0x1 << RF_FSM_CTRL_RXFIFO_STATUS_FLUSH_POS)
+
+#define RXFIFO_STATUS_RX_NOT_EMPTY      (0x0 << RF_FSM_CTRL_RXFIFO_STATUS_RX_EMPTY_POS)
+#define RXFIFO_STATUS_RX_EMPTY          (0x1 << RF_FSM_CTRL_RXFIFO_STATUS_RX_EMPTY_POS)
+
+#define TXFIFO_STATUS_TX_BIST_DEFAULT   (0x0 << RF_FSM_CTRL_TXFIFO_STATUS_TX_BIST_POS)
+
+#define TXFIFO_STATUS_TX_BIST_NO_ERROR  (0x0 << RF_FSM_CTRL_TXFIFO_STATUS_TX_BIST_ERRORS_POS)
+#define TXFIFO_STATUS_TX_BIST_CKBD      (0x1 << RF_FSM_CTRL_TXFIFO_STATUS_TX_BIST_ERRORS_POS)
+#define TXFIFO_STATUS_TX_BIST_ICKBD     (0x2 << RF_FSM_CTRL_TXFIFO_STATUS_TX_BIST_ERRORS_POS)
+#define TXFIFO_STATUS_TX_BIST_DECODER   (0x3 << RF_FSM_CTRL_TXFIFO_STATUS_TX_BIST_ERRORS_POS)
+
+#define TXFIFO_STATUS_TX_NO_NEAR_UNDERFLOW (0x0 << RF_FSM_CTRL_TXFIFO_STATUS_TX_NEAR_UNDERFLOW_POS)
+#define TXFIFO_STATUS_TX_NEAR_UNDERFLOW (0x1 << RF_FSM_CTRL_TXFIFO_STATUS_TX_NEAR_UNDERFLOW_POS)
+
+#define TXFIFO_STATUS_TX_NO_NEAR_OVERFLOW (0x0 << RF_FSM_CTRL_TXFIFO_STATUS_TX_NEAR_OVERFLOW_POS)
+#define TXFIFO_STATUS_TX_NEAR_OVERFLOW  (0x1 << RF_FSM_CTRL_TXFIFO_STATUS_TX_NEAR_OVERFLOW_POS)
+
+#define TXFIFO_STATUS_TX_NO_UNDERFLOW   (0x0 << RF_FSM_CTRL_TXFIFO_STATUS_TX_UNDERFLOW_POS)
+#define TXFIFO_STATUS_TX_UNDERFLOW      (0x1 << RF_FSM_CTRL_TXFIFO_STATUS_TX_UNDERFLOW_POS)
+
+#define TXFIFO_STATUS_TX_NO_OVERFLOW    (0x0 << RF_FSM_CTRL_TXFIFO_STATUS_TX_OVERFLOW_POS)
+#define TXFIFO_STATUS_TX_OVERFLOW       (0x1 << RF_FSM_CTRL_TXFIFO_STATUS_TX_OVERFLOW_POS)
+
+#define TXFIFO_STATUS_TX_NOT_FULL       (0x0 << RF_FSM_CTRL_TXFIFO_STATUS_TX_FULL_POS)
+#define TXFIFO_STATUS_TX_FULL           (0x1 << RF_FSM_CTRL_TXFIFO_STATUS_TX_FULL_POS)
+
+#define TXFIFO_STATUS_NO_FLUSH          (0x0 << RF_FSM_CTRL_TXFIFO_STATUS_FLUSH_POS)
+#define TXFIFO_STATUS_FLUSH             (0x1 << RF_FSM_CTRL_TXFIFO_STATUS_FLUSH_POS)
+
+#define TXFIFO_STATUS_TX_NOT_EMPTY      (0x0 << RF_FSM_CTRL_TXFIFO_STATUS_TX_EMPTY_POS)
+#define TXFIFO_STATUS_TX_EMPTY          (0x1 << RF_FSM_CTRL_TXFIFO_STATUS_TX_EMPTY_POS)
+
+#define FSM_STATUS_RX_NTX               (0x0 << RF_FSM_CTRL_FSM_STATUS_TX_NRX_POS)
+#define FSM_STATUS_TX_NRX               (0x1 << RF_FSM_CTRL_FSM_STATUS_TX_NRX_POS)
+
+#define FSM_STATUS_IDLE                 (0x0 << RF_FSM_CTRL_FSM_STATUS_STATUS_POS)
+#define FSM_STATUS_TX                   (0x1 << RF_FSM_CTRL_FSM_STATUS_STATUS_POS)
+#define FSM_STATUS_RX                   (0x2 << RF_FSM_CTRL_FSM_STATUS_STATUS_POS)
+#define FSM_STATUS_SUSPEND              (0x3 << RF_FSM_CTRL_FSM_STATUS_STATUS_POS)
+
+#define FSM_MODE_NOT_RESET              (0x0 << RF_FSM_CTRL_FSM_MODE_RESET_POS)
+#define FSM_MODE_RESET                  (0x1 << RF_FSM_CTRL_FSM_MODE_RESET_POS)
+
+#define FSM_MODE_RX_NTX                 (0x0 << RF_FSM_CTRL_FSM_MODE_TX_NRX_POS)
+#define FSM_MODE_TX_NRX                 (0x1 << RF_FSM_CTRL_FSM_MODE_TX_NRX_POS)
+
+#define FSM_MODE_RX_MODE_OFF            (0x0 << RF_FSM_CTRL_FSM_MODE_RX_MODE_POS)
+#define FSM_MODE_RX_MODE_ON             (0x1 << RF_FSM_CTRL_FSM_MODE_RX_MODE_POS)
+
+#define FSM_MODE_MODE_IDLE              (0x0 << RF_FSM_CTRL_FSM_MODE_MODE_POS)
+#define FSM_MODE_MODE_ACTIVATE          (0x1 << RF_FSM_CTRL_FSM_MODE_MODE_POS)
+#define FSM_MODE_MODE_CAL_PLL           (0x2 << RF_FSM_CTRL_FSM_MODE_MODE_POS)
+#define FSM_MODE_MODE_CAL_PLL_TXRX      (0x3 << RF_FSM_CTRL_FSM_MODE_MODE_POS)
+
+#define FSM_MODE_TX_MODE_OFF            (0x0 << RF_FSM_CTRL_FSM_MODE_TX_MODE_POS)
+#define FSM_MODE_TX_MODE_ON             (0x1 << RF_FSM_CTRL_FSM_MODE_TX_MODE_POS)
+
+#define FSM_MODE_IDLE                   (0x0 << RF_FSM_CTRL_FSM_MODE_N_IDLE_POS)
+#define FSM_MODE_N_IDLE                 (0x1 << RF_FSM_CTRL_FSM_MODE_N_IDLE_POS)
+
+/* FSM_CTRL */
+#define RF1_FSM_CTRL_BASE               0x40040B00
+#define RF1_FSM_CTRL                    REG32_POINTER(RF1_FSM_CTRL_BASE)
+
+/* FSM_CTRL */
+#define RF2_FSM_CTRL_BASE               0x40040D00
+#define RF2_FSM_CTRL                    REG32_POINTER(RF2_FSM_CTRL_BASE)
+
+/* FSM_CTRL */
+#define RF3_FSM_CTRL_BASE               0x40040F00
+#define RF3_FSM_CTRL                    REG32_POINTER(RF3_FSM_CTRL_BASE)
+
+/* IQFIFO_STATUS */
+#define RF0_IQFIFO_STATUS_BASE          0x40040904
+#define RF0_IQFIFO_STATUS               REG32_POINTER(RF0_IQFIFO_STATUS_BASE)
+
+/* RF_IQFIFO_STATUS bit positions */
+#define RF_IQFIFO_STATUS_TXFIFO_COUNT_TX_COUNT_POS 16
+#define RF_IQFIFO_STATUS_TXFIFO_COUNT_TX_COUNT_MASK (0x1FF << RF_IQFIFO_STATUS_TXFIFO_COUNT_TX_COUNT_POS)
+#define RF_IQFIFO_STATUS_IQFIFO_COUNT_IQ_COUNT_POS 8
+#define RF_IQFIFO_STATUS_IQFIFO_COUNT_IQ_COUNT_MASK (0xFF << RF_IQFIFO_STATUS_IQFIFO_COUNT_IQ_COUNT_POS)
+#define RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_BIST_POS 1
+#define RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_BIST_MASK (0x7F << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_BIST_POS)
+#define RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_BIST_ERRORS_POS 6
+#define RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_BIST_ERRORS_MASK (0x3 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_BIST_ERRORS_POS)
+#define RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_NEAR_UNDERFLOW_POS 5
+#define RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_NEAR_OVERFLOW_POS 4
+#define RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_UNDERFLOW_POS 3
+#define RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_OVERFLOW_POS 2
+#define RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_FULL_POS 1
+#define RF_IQFIFO_STATUS_IQFIFO_STATUS_FLUSH_POS 0
+#define RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_EMPTY_POS 0
+
+/* RF_IQFIFO_STATUS settings */
+#define TXFIFO_COUNT_TX_COUNT_DEFAULT   (0x0 << RF_IQFIFO_STATUS_TXFIFO_COUNT_TX_COUNT_POS)
+
+#define IQFIFO_COUNT_IQ_COUNT_DEFAULT   (0x0 << RF_IQFIFO_STATUS_IQFIFO_COUNT_IQ_COUNT_POS)
+
+#define IQFIFO_STATUS_IQ_BIST_DEFAULT   (0x0 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_BIST_POS)
+
+#define IQFIFO_STATUS_IQ_BIST_NO_ERROR  (0x0 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_BIST_ERRORS_POS)
+#define IQFIFO_STATUS_IQ_BIST_CKBD      (0x1 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_BIST_ERRORS_POS)
+#define IQFIFO_STATUS_IQ_BIST_ICKBD     (0x2 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_BIST_ERRORS_POS)
+#define IQFIFO_STATUS_IQ_BIST_DECODER   (0x3 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_BIST_ERRORS_POS)
+
+#define IQFIFO_STATUS_IQ_NO_NEAR_UNDERFLOW (0x0 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_NEAR_UNDERFLOW_POS)
+#define IQFIFO_STATUS_IQ_NEAR_UNDERFLOW (0x1 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_NEAR_UNDERFLOW_POS)
+
+#define IQFIFO_STATUS_IQ_NO_NEAR_OVERFLOW (0x0 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_NEAR_OVERFLOW_POS)
+#define IQFIFO_STATUS_IQ_NEAR_OVERFLOW  (0x1 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_NEAR_OVERFLOW_POS)
+
+#define IQFIFO_STATUS_IQ_NO_UNDERFLOW   (0x0 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_UNDERFLOW_POS)
+#define IQFIFO_STATUS_IQ_UNDERFLOW      (0x1 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_UNDERFLOW_POS)
+
+#define IQFIFO_STATUS_IQ_NO_OVERFLOW    (0x0 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_OVERFLOW_POS)
+#define IQFIFO_STATUS_IQ_OVERFLOW       (0x1 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_OVERFLOW_POS)
+
+#define IQFIFO_STATUS_IQ_NOT_FULL       (0x0 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_FULL_POS)
+#define IQFIFO_STATUS_IQ_FULL           (0x1 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_FULL_POS)
+
+#define IQFIFO_STATUS_NO_FLUSH          (0x0 << RF_IQFIFO_STATUS_IQFIFO_STATUS_FLUSH_POS)
+#define IQFIFO_STATUS_FLUSH             (0x1 << RF_IQFIFO_STATUS_IQFIFO_STATUS_FLUSH_POS)
+
+#define IQFIFO_STATUS_IQ_NOT_EMPTY      (0x0 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_EMPTY_POS)
+#define IQFIFO_STATUS_IQ_EMPTY          (0x1 << RF_IQFIFO_STATUS_IQFIFO_STATUS_IQ_EMPTY_POS)
+
+/* IQFIFO_STATUS */
+#define RF1_IQFIFO_STATUS_BASE          0x40040B04
+#define RF1_IQFIFO_STATUS               REG32_POINTER(RF1_IQFIFO_STATUS_BASE)
+
+/* IQFIFO_STATUS */
+#define RF2_IQFIFO_STATUS_BASE          0x40040D04
+#define RF2_IQFIFO_STATUS               REG32_POINTER(RF2_IQFIFO_STATUS_BASE)
+
+/* IQFIFO_STATUS */
+#define RF3_IQFIFO_STATUS_BASE          0x40040F04
+#define RF3_IQFIFO_STATUS               REG32_POINTER(RF3_IQFIFO_STATUS_BASE)
+
+/* TXFIFO */
+#define RF0_TXFIFO_BASE                 0x40040908
+#define RF0_TXFIFO                      REG32_POINTER(RF0_TXFIFO_BASE)
+
+/* RF_TXFIFO bit positions */
+#define RF_TXFIFO_TXFIFO_TX_DATA_POS    0
+#define RF_TXFIFO_TXFIFO_TX_DATA_MASK   (0xFF << RF_TXFIFO_TXFIFO_TX_DATA_POS)
+
+/* RF_TXFIFO settings */
+#define TXFIFO_TX_DATA_DEFAULT          (0x0 << RF_TXFIFO_TXFIFO_TX_DATA_POS)
+
+/* TXFIFO */
+#define RF1_TXFIFO_BASE                 0x40040B08
+#define RF1_TXFIFO                      REG32_POINTER(RF1_TXFIFO_BASE)
+
+/* TXFIFO */
+#define RF2_TXFIFO_BASE                 0x40040D08
+#define RF2_TXFIFO                      REG32_POINTER(RF2_TXFIFO_BASE)
+
+/* TXFIFO */
+#define RF3_TXFIFO_BASE                 0x40040F08
+#define RF3_TXFIFO                      REG32_POINTER(RF3_TXFIFO_BASE)
+
+/* RXFIFO */
+#define RF0_RXFIFO_BASE                 0x4004090C
+#define RF0_RXFIFO                      READONLY_REG32_POINTER(RF0_RXFIFO_BASE)
+
+/* RF_RXFIFO bit positions */
+#define RF_RXFIFO_RXFIFO_RX_DATA_POS    0
+#define RF_RXFIFO_RXFIFO_RX_DATA_MASK   (0xFF << RF_RXFIFO_RXFIFO_RX_DATA_POS)
+
+/* RF_RXFIFO settings */
+#define RXFIFO_RX_DATA_DEFAULT          (0x0 << RF_RXFIFO_RXFIFO_RX_DATA_POS)
+
+/* RXFIFO */
+#define RF1_RXFIFO_BASE                 0x40040B0C
+#define RF1_RXFIFO                      READONLY_REG32_POINTER(RF1_RXFIFO_BASE)
+
+/* RXFIFO */
+#define RF2_RXFIFO_BASE                 0x40040D0C
+#define RF2_RXFIFO                      READONLY_REG32_POINTER(RF2_RXFIFO_BASE)
+
+/* RXFIFO */
+#define RF3_RXFIFO_BASE                 0x40040F0C
+#define RF3_RXFIFO                      READONLY_REG32_POINTER(RF3_RXFIFO_BASE)
+
+/* IQFIFO */
+#define RF0_IQFIFO_BASE                 0x40040910
+#define RF0_IQFIFO                      READONLY_REG32_POINTER(RF0_IQFIFO_BASE)
+
+/* RF_IQFIFO bit positions */
+#define RF_IQFIFO_IQFIFO_IQ_DATA_POS    0
+#define RF_IQFIFO_IQFIFO_IQ_DATA_MASK   (0xFF << RF_IQFIFO_IQFIFO_IQ_DATA_POS)
+
+/* RF_IQFIFO settings */
+#define IQFIFO_IQ_DATA_DEFAULT          (0x0 << RF_IQFIFO_IQFIFO_IQ_DATA_POS)
+
+/* IQFIFO */
+#define RF1_IQFIFO_BASE                 0x40040B10
+#define RF1_IQFIFO                      READONLY_REG32_POINTER(RF1_IQFIFO_BASE)
+
+/* IQFIFO */
+#define RF2_IQFIFO_BASE                 0x40040D10
+#define RF2_IQFIFO                      READONLY_REG32_POINTER(RF2_IQFIFO_BASE)
+
+/* IQFIFO */
+#define RF3_IQFIFO_BASE                 0x40040F10
+#define RF3_IQFIFO                      READONLY_REG32_POINTER(RF3_IQFIFO_BASE)
+
+/* REG45 */
+#define RF0_REG45_BASE                  0x40040914
+#define RF0_REG45                       READONLY_REG32_POINTER(RF0_REG45_BASE)
+
+/* RF_REG45 bit positions */
+#define RF_REG45_RSSI_AVG_RSSI_AVG_POS  16
+#define RF_REG45_RSSI_AVG_RSSI_AVG_MASK (0x3FF << RF_REG45_RSSI_AVG_RSSI_AVG_POS)
+#define RF_REG45_RXFIFO_COUNT_RX_COUNT_POS 0
+#define RF_REG45_RXFIFO_COUNT_RX_COUNT_MASK (0x1FF << RF_REG45_RXFIFO_COUNT_RX_COUNT_POS)
+
+/* RF_REG45 settings */
+#define RSSI_AVG_RSSI_AVG_DEFAULT       (0x0 << RF_REG45_RSSI_AVG_RSSI_AVG_POS)
+
+#define RXFIFO_COUNT_RX_COUNT_DEFAULT   (0x0 << RF_REG45_RXFIFO_COUNT_RX_COUNT_POS)
+
+/* REG45 */
+#define RF1_REG45_BASE                  0x40040B14
+#define RF1_REG45                       READONLY_REG32_POINTER(RF1_REG45_BASE)
+
+/* REG45 */
+#define RF2_REG45_BASE                  0x40040D14
+#define RF2_REG45                       READONLY_REG32_POINTER(RF2_REG45_BASE)
+
+/* REG45 */
+#define RF3_REG45_BASE                  0x40040F14
+#define RF3_REG45                       READONLY_REG32_POINTER(RF3_REG45_BASE)
+
+/* DESER_STATUS */
+#define RF0_DESER_STATUS_BASE           0x40040918
+#define RF0_DESER_STATUS                READONLY_REG32_POINTER(RF0_DESER_STATUS_BASE)
+
+/* RF_DESER_STATUS bit positions */
+#define RF_DESER_STATUS_DESER_STATUS_SIGNAL_RECEIVING_POS 7
+#define RF_DESER_STATUS_DESER_STATUS_SYNC_DETECTED_POS 6
+#define RF_DESER_STATUS_DESER_STATUS_WAIT_SYNC_POS 5
+#define RF_DESER_STATUS_DESER_STATUS_IS_ADDRESS_BR_POS 4
+#define RF_DESER_STATUS_DESER_STATUS_PKT_LEN_ERR_POS 3
+#define RF_DESER_STATUS_DESER_STATUS_ADDRESS_ERR_POS 2
+#define RF_DESER_STATUS_DESER_STATUS_CRC_ERR_POS 1
+#define RF_DESER_STATUS_DESER_STATUS_DESER_FINISH_POS 0
+
+/* RF_DESER_STATUS settings */
+#define DESER_STATUS_SIGNAL_RECEIVING_DISABLE (0x0 << RF_DESER_STATUS_DESER_STATUS_SIGNAL_RECEIVING_POS)
+#define DESER_STATUS_SIGNAL_RECEIVING_ENABLE (0x1 << RF_DESER_STATUS_DESER_STATUS_SIGNAL_RECEIVING_POS)
+
+#define DESER_STATUS_SYNC_NOT_DETECTED  (0x0 << RF_DESER_STATUS_DESER_STATUS_SYNC_DETECTED_POS)
+#define DESER_STATUS_SYNC_DETECTED      (0x1 << RF_DESER_STATUS_DESER_STATUS_SYNC_DETECTED_POS)
+
+#define DESER_STATUS_WAIT_SYNC_NOT_WAITING (0x0 << RF_DESER_STATUS_DESER_STATUS_WAIT_SYNC_POS)
+#define DESER_STATUS_WAIT_SYNC_WAITING  (0x1 << RF_DESER_STATUS_DESER_STATUS_WAIT_SYNC_POS)
+
+#define DESER_STATUS_IS_ADDRESS_BR_DISABLE (0x0 << RF_DESER_STATUS_DESER_STATUS_IS_ADDRESS_BR_POS)
+#define DESER_STATUS_IS_ADDRESS_BR_ENABLE (0x1 << RF_DESER_STATUS_DESER_STATUS_IS_ADDRESS_BR_POS)
+
+#define DESER_STATUS_PKT_LEN_ERR_NO_ERROR (0x0 << RF_DESER_STATUS_DESER_STATUS_PKT_LEN_ERR_POS)
+#define DESER_STATUS_PKT_LEN_ERR_ERROR  (0x1 << RF_DESER_STATUS_DESER_STATUS_PKT_LEN_ERR_POS)
+
+#define DESER_STATUS_ADDRESS_ERR_NO_ERROR (0x0 << RF_DESER_STATUS_DESER_STATUS_ADDRESS_ERR_POS)
+#define DESER_STATUS_ADDRESS_ERR_ERROR  (0x1 << RF_DESER_STATUS_DESER_STATUS_ADDRESS_ERR_POS)
+
+#define DESER_STATUS_CRC_ERR_NO_ERROR   (0x0 << RF_DESER_STATUS_DESER_STATUS_CRC_ERR_POS)
+#define DESER_STATUS_CRC_ERR_ERROR      (0x1 << RF_DESER_STATUS_DESER_STATUS_CRC_ERR_POS)
+
+#define DESER_STATUS_DESER_FINISH_BUSY  (0x0 << RF_DESER_STATUS_DESER_STATUS_DESER_FINISH_POS)
+#define DESER_STATUS_DESER_FINISH_IDLE  (0x1 << RF_DESER_STATUS_DESER_STATUS_DESER_FINISH_POS)
+
+/* DESER_STATUS */
+#define RF1_DESER_STATUS_BASE           0x40040B18
+#define RF1_DESER_STATUS                READONLY_REG32_POINTER(RF1_DESER_STATUS_BASE)
+
+/* DESER_STATUS */
+#define RF2_DESER_STATUS_BASE           0x40040D18
+#define RF2_DESER_STATUS                READONLY_REG32_POINTER(RF2_DESER_STATUS_BASE)
+
+/* DESER_STATUS */
+#define RF3_DESER_STATUS_BASE           0x40040F18
+#define RF3_DESER_STATUS                READONLY_REG32_POINTER(RF3_DESER_STATUS_BASE)
+
+/* BLE_AEC_CCM */
+#define RF0_BLE_AEC_CCM_BASE            0x4004091C
+#define RF0_BLE_AEC_CCM                 READONLY_REG32_POINTER(RF0_BLE_AEC_CCM_BASE)
+
+/* RF_BLE_AEC_CCM bit positions */
+#define RF_BLE_AEC_CCM_BLE_AES_CCM_BLE_AES_MIC_OK_POS 2
+#define RF_BLE_AEC_CCM_BLE_AES_CCM_BLE_AES_DONE_RX_POS 1
+#define RF_BLE_AEC_CCM_BLE_AES_CCM_BLE_AES_DONE_TX_POS 0
+
+/* RF_BLE_AEC_CCM settings */
+#define BLE_AES_CCM_BLE_AES_MIC_OK_ERROR (0x0 << RF_BLE_AEC_CCM_BLE_AES_CCM_BLE_AES_MIC_OK_POS)
+#define BLE_AES_CCM_BLE_AES_MIC_OK_NO_ERROR (0x1 << RF_BLE_AEC_CCM_BLE_AES_CCM_BLE_AES_MIC_OK_POS)
+
+#define BLE_AES_CCM_BLE_AES_DONE_RX_BUSY (0x0 << RF_BLE_AEC_CCM_BLE_AES_CCM_BLE_AES_DONE_RX_POS)
+#define BLE_AES_CCM_BLE_AES_DONE_RX_IDLE (0x1 << RF_BLE_AEC_CCM_BLE_AES_CCM_BLE_AES_DONE_RX_POS)
+
+#define BLE_AES_CCM_BLE_AES_DONE_TX_BUSY (0x0 << RF_BLE_AEC_CCM_BLE_AES_CCM_BLE_AES_DONE_TX_POS)
+#define BLE_AES_CCM_BLE_AES_DONE_TX_IDLE (0x1 << RF_BLE_AEC_CCM_BLE_AES_CCM_BLE_AES_DONE_TX_POS)
+
+/* BLE_AEC_CCM */
+#define RF1_BLE_AEC_CCM_BASE            0x40040B1C
+#define RF1_BLE_AEC_CCM                 READONLY_REG32_POINTER(RF1_BLE_AEC_CCM_BASE)
+
+/* BLE_AEC_CCM */
+#define RF2_BLE_AEC_CCM_BASE            0x40040D1C
+#define RF2_BLE_AEC_CCM                 READONLY_REG32_POINTER(RF2_BLE_AEC_CCM_BASE)
+
+/* BLE_AEC_CCM */
+#define RF3_BLE_AEC_CCM_BASE            0x40040F1C
+#define RF3_BLE_AEC_CCM                 READONLY_REG32_POINTER(RF3_BLE_AEC_CCM_BASE)
+
+/* IRQ_STATUS */
+#define RF0_IRQ_STATUS_BASE             0x40040920
+#define RF0_IRQ_STATUS                  READONLY_REG32_POINTER(RF0_IRQ_STATUS_BASE)
+
+/* RF_IRQ_STATUS bit positions */
+#define RF_IRQ_STATUS_IRQ_STATUS_FLAG_RXFIFO_POS 5
+#define RF_IRQ_STATUS_IRQ_STATUS_FLAG_TXFIFO_POS 4
+#define RF_IRQ_STATUS_IRQ_STATUS_FLAG_SYNC_POS 3
+#define RF_IRQ_STATUS_IRQ_STATUS_FLAG_RECEIVED_POS 2
+#define RF_IRQ_STATUS_IRQ_STATUS_FLAG_RXSTOP_POS 1
+#define RF_IRQ_STATUS_IRQ_STATUS_FLAG_TX_POS 0
+
+/* RF_IRQ_STATUS settings */
+#define IRQ_STATUS_FLAG_RXFIFO_IDLE     (0x0 << RF_IRQ_STATUS_IRQ_STATUS_FLAG_RXFIFO_POS)
+#define IRQ_STATUS_FLAG_RXFIFO_ACTIVE   (0x1 << RF_IRQ_STATUS_IRQ_STATUS_FLAG_RXFIFO_POS)
+
+#define IRQ_STATUS_FLAG_TXFIFO_IDLE     (0x0 << RF_IRQ_STATUS_IRQ_STATUS_FLAG_TXFIFO_POS)
+#define IRQ_STATUS_FLAG_TXFIFO_ACTIVE   (0x1 << RF_IRQ_STATUS_IRQ_STATUS_FLAG_TXFIFO_POS)
+
+#define IRQ_STATUS_FLAG_SYNC_IDLE       (0x0 << RF_IRQ_STATUS_IRQ_STATUS_FLAG_SYNC_POS)
+#define IRQ_STATUS_FLAG_SYNC_ACTIVE     (0x1 << RF_IRQ_STATUS_IRQ_STATUS_FLAG_SYNC_POS)
+
+#define IRQ_STATUS_FLAG_RECEIVED_IDLE   (0x0 << RF_IRQ_STATUS_IRQ_STATUS_FLAG_RECEIVED_POS)
+#define IRQ_STATUS_FLAG_RECEIVED_ACTIVE (0x1 << RF_IRQ_STATUS_IRQ_STATUS_FLAG_RECEIVED_POS)
+
+#define IRQ_STATUS_FLAG_RXSTOP_IDLE     (0x0 << RF_IRQ_STATUS_IRQ_STATUS_FLAG_RXSTOP_POS)
+#define IRQ_STATUS_FLAG_RXSTOP_ACTIVE   (0x1 << RF_IRQ_STATUS_IRQ_STATUS_FLAG_RXSTOP_POS)
+
+#define IRQ_STATUS_FLAG_TX_IDLE         (0x0 << RF_IRQ_STATUS_IRQ_STATUS_FLAG_TX_POS)
+#define IRQ_STATUS_FLAG_TX_ACTIVE       (0x1 << RF_IRQ_STATUS_IRQ_STATUS_FLAG_TX_POS)
+
+/* IRQ_STATUS */
+#define RF1_IRQ_STATUS_BASE             0x40040B20
+#define RF1_IRQ_STATUS                  READONLY_REG32_POINTER(RF1_IRQ_STATUS_BASE)
+
+/* IRQ_STATUS */
+#define RF2_IRQ_STATUS_BASE             0x40040D20
+#define RF2_IRQ_STATUS                  READONLY_REG32_POINTER(RF2_IRQ_STATUS_BASE)
+
+/* IRQ_STATUS */
+#define RF3_IRQ_STATUS_BASE             0x40040F20
+#define RF3_IRQ_STATUS                  READONLY_REG32_POINTER(RF3_IRQ_STATUS_BASE)
+
+/* RSSI_MIN_MAX */
+#define RF0_RSSI_MIN_MAX_BASE           0x40040924
+#define RF0_RSSI_MIN_MAX                READONLY_REG32_POINTER(RF0_RSSI_MIN_MAX_BASE)
+
+/* RF_RSSI_MIN_MAX bit positions */
+#define RF_RSSI_MIN_MAX_RSSI_MAX_RSSI_MAX_POS 16
+#define RF_RSSI_MIN_MAX_RSSI_MAX_RSSI_MAX_MASK (0x3FF << RF_RSSI_MIN_MAX_RSSI_MAX_RSSI_MAX_POS)
+#define RF_RSSI_MIN_MAX_RSSI_MIN_RSSI_MIN_POS 0
+#define RF_RSSI_MIN_MAX_RSSI_MIN_RSSI_MIN_MASK (0x3FF << RF_RSSI_MIN_MAX_RSSI_MIN_RSSI_MIN_POS)
+
+/* RF_RSSI_MIN_MAX settings */
+#define RSSI_MAX_RSSI_MAX_DEFAULT       (0x0 << RF_RSSI_MIN_MAX_RSSI_MAX_RSSI_MAX_POS)
+
+#define RSSI_MIN_RSSI_MIN_DEFAULT       (0x0 << RF_RSSI_MIN_MAX_RSSI_MIN_RSSI_MIN_POS)
+
+/* RSSI_MIN_MAX */
+#define RF1_RSSI_MIN_MAX_BASE           0x40040B24
+#define RF1_RSSI_MIN_MAX                READONLY_REG32_POINTER(RF1_RSSI_MIN_MAX_BASE)
+
+/* RSSI_MIN_MAX */
+#define RF2_RSSI_MIN_MAX_BASE           0x40040D24
+#define RF2_RSSI_MIN_MAX                READONLY_REG32_POINTER(RF2_RSSI_MIN_MAX_BASE)
+
+/* RSSI_MIN_MAX */
+#define RF3_RSSI_MIN_MAX_BASE           0x40040F24
+#define RF3_RSSI_MIN_MAX                READONLY_REG32_POINTER(RF3_RSSI_MIN_MAX_BASE)
+
+/* REG4A */
+#define RF0_REG4A_BASE                  0x40040928
+#define RF0_REG4A                       READONLY_REG32_POINTER(RF0_REG4A_BASE)
+
+/* RF_REG4A bit positions */
+#define RF_REG4A_RX_ATT_LEVEL_RX_ATT_LEVEL_PKT_LVL_POS 28
+#define RF_REG4A_RX_ATT_LEVEL_RX_ATT_LEVEL_PKT_LVL_MASK (0x7 << RF_REG4A_RX_ATT_LEVEL_RX_ATT_LEVEL_PKT_LVL_POS)
+#define RF_REG4A_RX_ATT_LEVEL_RX_ATT_LEVEL_POS 24
+#define RF_REG4A_RX_ATT_LEVEL_RX_ATT_LEVEL_MASK (0x7 << RF_REG4A_RX_ATT_LEVEL_RX_ATT_LEVEL_POS)
+#define RF_REG4A_DR_ERR_IND_DR_ERR_IND_POS 8
+#define RF_REG4A_DR_ERR_IND_DR_ERR_IND_MASK (0xFF << RF_REG4A_DR_ERR_IND_DR_ERR_IND_POS)
+#define RF_REG4A_RSSI_PKT_RSSI_PKT_POS  0
+#define RF_REG4A_RSSI_PKT_RSSI_PKT_MASK (0xFF << RF_REG4A_RSSI_PKT_RSSI_PKT_POS)
+
+/* RF_REG4A settings */
+#define RX_ATT_LEVEL_RX_ATT_LEVEL_PKT_LVL_DEFAULT (0x0 << RF_REG4A_RX_ATT_LEVEL_RX_ATT_LEVEL_PKT_LVL_POS)
+
+#define RX_ATT_LEVEL_RX_ATT_LEVEL_DEFAULT (0x0 << RF_REG4A_RX_ATT_LEVEL_RX_ATT_LEVEL_POS)
+
+#define DR_ERR_IND_DR_ERR_IND_DEFAULT   (0x0 << RF_REG4A_DR_ERR_IND_DR_ERR_IND_POS)
+
+#define RSSI_PKT_RSSI_PKT_DEFAULT       (0x0 << RF_REG4A_RSSI_PKT_RSSI_PKT_POS)
+
+/* REG4A */
+#define RF1_REG4A_BASE                  0x40040B28
+#define RF1_REG4A                       READONLY_REG32_POINTER(RF1_REG4A_BASE)
+
+/* REG4A */
+#define RF2_REG4A_BASE                  0x40040D28
+#define RF2_REG4A                       READONLY_REG32_POINTER(RF2_REG4A_BASE)
+
+/* REG4A */
+#define RF3_REG4A_BASE                  0x40040F28
+#define RF3_REG4A                       READONLY_REG32_POINTER(RF3_REG4A_BASE)
+
+/* FEI */
+#define RF0_FEI_BASE                    0x4004092C
+#define RF0_FEI                         READONLY_REG32_POINTER(RF0_FEI_BASE)
+
+/* RF_FEI bit positions */
+#define RF_FEI_FEI_PKT_FEI_PKT_POS      16
+#define RF_FEI_FEI_PKT_FEI_PKT_MASK     (0xFFFF << RF_FEI_FEI_PKT_FEI_PKT_POS)
+#define RF_FEI_FEI_FEI_OUT_POS          0
+#define RF_FEI_FEI_FEI_OUT_MASK         (0xFFFF << RF_FEI_FEI_FEI_OUT_POS)
+
+/* RF_FEI settings */
+#define FEI_PKT_FEI_PKT_DEFAULT         (0x0 << RF_FEI_FEI_PKT_FEI_PKT_POS)
+
+#define FEI_FEI_OUT_DEFAULT             (0x0 << RF_FEI_FEI_FEI_OUT_POS)
+
+/* FEI */
+#define RF1_FEI_BASE                    0x40040B2C
+#define RF1_FEI                         READONLY_REG32_POINTER(RF1_FEI_BASE)
+
+/* FEI */
+#define RF2_FEI_BASE                    0x40040D2C
+#define RF2_FEI                         READONLY_REG32_POINTER(RF2_FEI_BASE)
+
+/* FEI */
+#define RF3_FEI_BASE                    0x40040F2C
+#define RF3_FEI                         READONLY_REG32_POINTER(RF3_FEI_BASE)
+
+/* REG4C */
+#define RF0_REG4C_BASE                  0x40040930
+#define RF0_REG4C                       READONLY_REG32_POINTER(RF0_REG4C_BASE)
+
+/* RF_REG4C bit positions */
+#define RF_REG4C_LINK_QUAL_PKT_LINK_QUALITY_PKT_POS 24
+#define RF_REG4C_LINK_QUAL_PKT_LINK_QUALITY_PKT_MASK (0xFF << RF_REG4C_LINK_QUAL_PKT_LINK_QUALITY_PKT_POS)
+#define RF_REG4C_LINK_QUAL_LINK_QUALITY_POS 16
+#define RF_REG4C_LINK_QUAL_LINK_QUALITY_MASK (0xFF << RF_REG4C_LINK_QUAL_LINK_QUALITY_POS)
+#define RF_REG4C_FEI_AFC_FEI_AFC_POS    0
+#define RF_REG4C_FEI_AFC_FEI_AFC_MASK   (0xFFFF << RF_REG4C_FEI_AFC_FEI_AFC_POS)
+
+/* RF_REG4C settings */
+#define LINK_QUAL_PKT_LINK_QUALITY_PKT_DEFAULT (0x0 << RF_REG4C_LINK_QUAL_PKT_LINK_QUALITY_PKT_POS)
+
+#define LINK_QUAL_LINK_QUALITY_DEFAULT  (0x0 << RF_REG4C_LINK_QUAL_LINK_QUALITY_POS)
+
+#define FEI_AFC_FEI_AFC_DEFAULT         (0x0 << RF_REG4C_FEI_AFC_FEI_AFC_POS)
+
+/* REG4C */
+#define RF1_REG4C_BASE                  0x40040B30
+#define RF1_REG4C                       READONLY_REG32_POINTER(RF1_REG4C_BASE)
+
+/* REG4C */
+#define RF2_REG4C_BASE                  0x40040D30
+#define RF2_REG4C                       READONLY_REG32_POINTER(RF2_REG4C_BASE)
+
+/* REG4C */
+#define RF3_REG4C_BASE                  0x40040F30
+#define RF3_REG4C                       READONLY_REG32_POINTER(RF3_REG4C_BASE)
+
+/* ANALOG_INFO */
+#define RF0_ANALOG_INFO_BASE            0x40040934
+#define RF0_ANALOG_INFO                 REG32_POINTER(RF0_ANALOG_INFO_BASE)
+
+/* RF_ANALOG_INFO bit positions */
+#define RF_ANALOG_INFO_BLR_READOUT_BLR_RATE_POS 24
+#define RF_ANALOG_INFO_BLR_READOUT_BLR_RATE_MASK (0x3 << RF_ANALOG_INFO_BLR_READOUT_BLR_RATE_POS)
+#define RF_ANALOG_INFO_PEAK_DET_VAL_PEAK_DET_FILT_POS 20
+#define RF_ANALOG_INFO_PEAK_DET_VAL_PEAK_DET_FILT_MASK (0x7 << RF_ANALOG_INFO_PEAK_DET_VAL_PEAK_DET_FILT_POS)
+#define RF_ANALOG_INFO_PEAK_DET_VAL_PEAK_DET_RAW_POS 16
+#define RF_ANALOG_INFO_PEAK_DET_VAL_PEAK_DET_RAW_MASK (0x7 << RF_ANALOG_INFO_PEAK_DET_VAL_PEAK_DET_RAW_POS)
+#define RF_ANALOG_INFO_ANALOG_INFO_POR_VDDA_POS 15
+#define RF_ANALOG_INFO_ANALOG_INFO_PLL_UNLOCK_POS 14
+#define RF_ANALOG_INFO_ANALOG_INFO_XTAL_FINISH_POS 13
+#define RF_ANALOG_INFO_ANALOG_INFO_DLL_LOCKED_POS 12
+#define RF_ANALOG_INFO_ANALOG_INFO_CLK_DIG_READY_POS 11
+#define RF_ANALOG_INFO_ANALOG_INFO_CLK_PLL_READY_POS 10
+#define RF_ANALOG_INFO_ANALOG_INFO_SUBBAND_POS 8
+#define RF_ANALOG_INFO_ANALOG_INFO_SUBBAND_MASK (0x3 << RF_ANALOG_INFO_ANALOG_INFO_SUBBAND_POS)
+#define RF_ANALOG_INFO_SUBBAND_ERR_SB_FLL_ERR_POS 0
+#define RF_ANALOG_INFO_SUBBAND_ERR_SB_FLL_ERR_MASK (0xFF << RF_ANALOG_INFO_SUBBAND_ERR_SB_FLL_ERR_POS)
+
+/* RF_ANALOG_INFO settings */
+#define BLR_READOUT_BLR_RATE_DEFAULT    (0x0 << RF_ANALOG_INFO_BLR_READOUT_BLR_RATE_POS)
+
+#define PEAK_DET_VAL_PEAK_DET_FILT_DEFAULT (0x0 << RF_ANALOG_INFO_PEAK_DET_VAL_PEAK_DET_FILT_POS)
+
+#define PEAK_DET_VAL_PEAK_DET_RAW_DEFAULT (0x0 << RF_ANALOG_INFO_PEAK_DET_VAL_PEAK_DET_RAW_POS)
+
+#define ANALOG_INFO_POR_VDDA_DISABLE    (0x0 << RF_ANALOG_INFO_ANALOG_INFO_POR_VDDA_POS)
+#define ANALOG_INFO_POR_VDDA_ENABLE     (0x1 << RF_ANALOG_INFO_ANALOG_INFO_POR_VDDA_POS)
+
+#define ANALOG_INFO_PLL_LOCKED          (0x0 << RF_ANALOG_INFO_ANALOG_INFO_PLL_UNLOCK_POS)
+#define ANALOG_INFO_PLL_UNLOCKED        (0x1 << RF_ANALOG_INFO_ANALOG_INFO_PLL_UNLOCK_POS)
+
+#define ANALOG_INFO_XTAL_TRIM_RUNNING   (0x0 << RF_ANALOG_INFO_ANALOG_INFO_XTAL_FINISH_POS)
+#define ANALOG_INFO_XTAL_TRIM_FINISHED  (0x1 << RF_ANALOG_INFO_ANALOG_INFO_XTAL_FINISH_POS)
+
+#define ANALOG_INFO_DLL_UNLOCKED        (0x0 << RF_ANALOG_INFO_ANALOG_INFO_DLL_LOCKED_POS)
+#define ANALOG_INFO_DLL_LOCKED          (0x1 << RF_ANALOG_INFO_ANALOG_INFO_DLL_LOCKED_POS)
+
+#define ANALOG_INFO_CLK_DIG_NOT_READY   (0x0 << RF_ANALOG_INFO_ANALOG_INFO_CLK_DIG_READY_POS)
+#define ANALOG_INFO_CLK_DIG_READY       (0x1 << RF_ANALOG_INFO_ANALOG_INFO_CLK_DIG_READY_POS)
+
+#define ANALOG_INFO_CLK_PLL_NOT_READY   (0x0 << RF_ANALOG_INFO_ANALOG_INFO_CLK_PLL_READY_POS)
+#define ANALOG_INFO_CLK_PLL_READY       (0x1 << RF_ANALOG_INFO_ANALOG_INFO_CLK_PLL_READY_POS)
+
+#define ANALOG_INFO_SUBBAND_DEFAULT     (0x0 << RF_ANALOG_INFO_ANALOG_INFO_SUBBAND_POS)
+
+#define SUBBAND_ERR_SB_FLL_ERR_DEFAULT  (0x0 << RF_ANALOG_INFO_SUBBAND_ERR_SB_FLL_ERR_POS)
+
+/* ANALOG_INFO */
+#define RF1_ANALOG_INFO_BASE            0x40040B34
+#define RF1_ANALOG_INFO                 REG32_POINTER(RF1_ANALOG_INFO_BASE)
+
+/* ANALOG_INFO */
+#define RF2_ANALOG_INFO_BASE            0x40040D34
+#define RF2_ANALOG_INFO                 REG32_POINTER(RF2_ANALOG_INFO_BASE)
+
+/* ANALOG_INFO */
+#define RF3_ANALOG_INFO_BASE            0x40040F34
+#define RF3_ANALOG_INFO                 REG32_POINTER(RF3_ANALOG_INFO_BASE)
+
+/* SAMPLE_RSSI */
+#define RF0_SAMPLE_RSSI_BASE            0x40040938
+#define RF0_SAMPLE_RSSI                 REG32_POINTER(RF0_SAMPLE_RSSI_BASE)
+
+/* RF_SAMPLE_RSSI bit positions */
+#define RF_SAMPLE_RSSI_SAMPLE_RSSI_SAMPLE_RSSI_POS 0
+
+/* RF_SAMPLE_RSSI settings */
+#define SAMPLE_RSSI_SAMPLE_RSSI         (0x0 << RF_SAMPLE_RSSI_SAMPLE_RSSI_SAMPLE_RSSI_POS)
+#define SAMPLE_RSSI_NOT_SAMPLE_RSSI     (0x1 << RF_SAMPLE_RSSI_SAMPLE_RSSI_SAMPLE_RSSI_POS)
+
+/* SAMPLE_RSSI */
+#define RF1_SAMPLE_RSSI_BASE            0x40040B38
+#define RF1_SAMPLE_RSSI                 REG32_POINTER(RF1_SAMPLE_RSSI_BASE)
+
+/* SAMPLE_RSSI */
+#define RF2_SAMPLE_RSSI_BASE            0x40040D38
+#define RF2_SAMPLE_RSSI                 REG32_POINTER(RF2_SAMPLE_RSSI_BASE)
+
+/* SAMPLE_RSSI */
+#define RF3_SAMPLE_RSSI_BASE            0x40040F38
+#define RF3_SAMPLE_RSSI                 REG32_POINTER(RF3_SAMPLE_RSSI_BASE)
+
+/* RSSI_THERM */
+#define RF0_RSSI_THERM_BASE             0x4004093C
+#define RF0_RSSI_THERM                  READONLY_REG32_POINTER(RF0_RSSI_THERM_BASE)
+
+/* RF_RSSI_THERM bit positions */
+#define RF_RSSI_THERM_RSSI_THERM_RSSI_THERM_POS 0
+#define RF_RSSI_THERM_RSSI_THERM_RSSI_THERM_MASK (0x3FFFFFFF << RF_RSSI_THERM_RSSI_THERM_RSSI_THERM_POS)
+
+/* RF_RSSI_THERM settings */
+#define RSSI_THERM_RSSI_THERM_DEFAULT   (0x0 << RF_RSSI_THERM_RSSI_THERM_RSSI_THERM_POS)
+
+/* RSSI_THERM */
+#define RF1_RSSI_THERM_BASE             0x40040B3C
+#define RF1_RSSI_THERM                  READONLY_REG32_POINTER(RF1_RSSI_THERM_BASE)
+
+/* RSSI_THERM */
+#define RF2_RSSI_THERM_BASE             0x40040D3C
+#define RF2_RSSI_THERM                  READONLY_REG32_POINTER(RF2_RSSI_THERM_BASE)
+
+/* RSSI_THERM */
+#define RF3_RSSI_THERM_BASE             0x40040F3C
+#define RF3_RSSI_THERM                  READONLY_REG32_POINTER(RF3_RSSI_THERM_BASE)
+
+/* LUT_ANTENNA_ARRAY_1 */
+#define RF0_LUT_ANTENNA_ARRAY_1_BASE    0x40040980
+#define RF0_LUT_ANTENNA_ARRAY_1         READONLY_REG32_POINTER(RF0_LUT_ANTENNA_ARRAY_1_BASE)
+
+/* RF_LUT_ANTENNA_ARRAY_1 bit positions */
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_7_POS 28
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_7_MASK (0xF << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_7_POS)
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_6_POS 24
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_6_MASK (0xF << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_6_POS)
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_5_POS 20
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_5_MASK (0xF << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_5_POS)
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_4_POS 16
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_4_MASK (0xF << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_4_POS)
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_3_POS 12
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_3_MASK (0xF << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_3_POS)
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_2_POS 8
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_2_MASK (0xF << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_2_POS)
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_1_POS 4
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_1_MASK (0xF << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_1_POS)
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_0_POS 0
+#define RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_0_MASK (0xF << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_0_POS)
+
+/* RF_LUT_ANTENNA_ARRAY_1 settings */
+#define LUT_ANTENNA_ARRAY_1_ANTENNA_7_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_7_POS)
+
+#define LUT_ANTENNA_ARRAY_1_ANTENNA_6_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_6_POS)
+
+#define LUT_ANTENNA_ARRAY_1_ANTENNA_5_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_5_POS)
+
+#define LUT_ANTENNA_ARRAY_1_ANTENNA_4_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_4_POS)
+
+#define LUT_ANTENNA_ARRAY_1_ANTENNA_3_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_3_POS)
+
+#define LUT_ANTENNA_ARRAY_1_ANTENNA_2_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_2_POS)
+
+#define LUT_ANTENNA_ARRAY_1_ANTENNA_1_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_1_POS)
+
+#define LUT_ANTENNA_ARRAY_1_ANTENNA_0_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_1_LUT_ANTENNA_ARRAY_1_ANTENNA_0_POS)
+
+/* LUT_ANTENNA_ARRAY_1 */
+#define RF1_LUT_ANTENNA_ARRAY_1_BASE    0x40040B80
+#define RF1_LUT_ANTENNA_ARRAY_1         READONLY_REG32_POINTER(RF1_LUT_ANTENNA_ARRAY_1_BASE)
+
+/* LUT_ANTENNA_ARRAY_1 */
+#define RF2_LUT_ANTENNA_ARRAY_1_BASE    0x40040D80
+#define RF2_LUT_ANTENNA_ARRAY_1         READONLY_REG32_POINTER(RF2_LUT_ANTENNA_ARRAY_1_BASE)
+
+/* LUT_ANTENNA_ARRAY_1 */
+#define RF3_LUT_ANTENNA_ARRAY_1_BASE    0x40040F80
+#define RF3_LUT_ANTENNA_ARRAY_1         READONLY_REG32_POINTER(RF3_LUT_ANTENNA_ARRAY_1_BASE)
+
+/* LUT_ANTENNA_ARRAY_2 */
+#define RF0_LUT_ANTENNA_ARRAY_2_BASE    0x40040984
+#define RF0_LUT_ANTENNA_ARRAY_2         READONLY_REG32_POINTER(RF0_LUT_ANTENNA_ARRAY_2_BASE)
+
+/* RF_LUT_ANTENNA_ARRAY_2 bit positions */
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_15_POS 28
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_15_MASK (0xF << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_15_POS)
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_14_POS 24
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_14_MASK (0xF << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_14_POS)
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_13_POS 20
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_13_MASK (0xF << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_13_POS)
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_12_POS 16
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_12_MASK (0xF << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_12_POS)
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_11_POS 12
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_11_MASK (0xF << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_11_POS)
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_10_POS 8
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_10_MASK (0xF << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_10_POS)
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_9_POS 4
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_9_MASK (0xF << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_9_POS)
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_8_POS 0
+#define RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_8_MASK (0xF << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_8_POS)
+
+/* RF_LUT_ANTENNA_ARRAY_2 settings */
+#define LUT_ANTENNA_ARRAY_2_ANTENNA_15_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_15_POS)
+
+#define LUT_ANTENNA_ARRAY_2_ANTENNA_14_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_14_POS)
+
+#define LUT_ANTENNA_ARRAY_2_ANTENNA_13_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_13_POS)
+
+#define LUT_ANTENNA_ARRAY_2_ANTENNA_12_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_12_POS)
+
+#define LUT_ANTENNA_ARRAY_2_ANTENNA_11_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_11_POS)
+
+#define LUT_ANTENNA_ARRAY_2_ANTENNA_10_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_10_POS)
+
+#define LUT_ANTENNA_ARRAY_2_ANTENNA_9_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_9_POS)
+
+#define LUT_ANTENNA_ARRAY_2_ANTENNA_8_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_2_LUT_ANTENNA_ARRAY_2_ANTENNA_8_POS)
+
+/* LUT_ANTENNA_ARRAY_2 */
+#define RF1_LUT_ANTENNA_ARRAY_2_BASE    0x40040B84
+#define RF1_LUT_ANTENNA_ARRAY_2         READONLY_REG32_POINTER(RF1_LUT_ANTENNA_ARRAY_2_BASE)
+
+/* LUT_ANTENNA_ARRAY_2 */
+#define RF2_LUT_ANTENNA_ARRAY_2_BASE    0x40040D84
+#define RF2_LUT_ANTENNA_ARRAY_2         READONLY_REG32_POINTER(RF2_LUT_ANTENNA_ARRAY_2_BASE)
+
+/* LUT_ANTENNA_ARRAY_2 */
+#define RF3_LUT_ANTENNA_ARRAY_2_BASE    0x40040F84
+#define RF3_LUT_ANTENNA_ARRAY_2         READONLY_REG32_POINTER(RF3_LUT_ANTENNA_ARRAY_2_BASE)
+
+/* LUT_ANTENNA_ARRAY_3 */
+#define RF0_LUT_ANTENNA_ARRAY_3_BASE    0x40040988
+#define RF0_LUT_ANTENNA_ARRAY_3         READONLY_REG32_POINTER(RF0_LUT_ANTENNA_ARRAY_3_BASE)
+
+/* RF_LUT_ANTENNA_ARRAY_3 bit positions */
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_23_POS 28
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_23_MASK (0xF << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_23_POS)
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_22_POS 24
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_22_MASK (0xF << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_22_POS)
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_21_POS 20
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_21_MASK (0xF << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_21_POS)
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_20_POS 16
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_20_MASK (0xF << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_20_POS)
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_19_POS 12
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_19_MASK (0xF << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_19_POS)
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_18_POS 8
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_18_MASK (0xF << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_18_POS)
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_17_POS 4
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_17_MASK (0xF << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_17_POS)
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_16_POS 0
+#define RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_16_MASK (0xF << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_16_POS)
+
+/* RF_LUT_ANTENNA_ARRAY_3 settings */
+#define LUT_ANTENNA_ARRAY_3_ANTENNA_23_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_23_POS)
+
+#define LUT_ANTENNA_ARRAY_3_ANTENNA_22_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_22_POS)
+
+#define LUT_ANTENNA_ARRAY_3_ANTENNA_21_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_21_POS)
+
+#define LUT_ANTENNA_ARRAY_3_ANTENNA_20_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_20_POS)
+
+#define LUT_ANTENNA_ARRAY_3_ANTENNA_19_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_19_POS)
+
+#define LUT_ANTENNA_ARRAY_3_ANTENNA_18_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_18_POS)
+
+#define LUT_ANTENNA_ARRAY_3_ANTENNA_17_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_17_POS)
+
+#define LUT_ANTENNA_ARRAY_3_ANTENNA_16_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_3_LUT_ANTENNA_ARRAY_3_ANTENNA_16_POS)
+
+/* LUT_ANTENNA_ARRAY_3 */
+#define RF1_LUT_ANTENNA_ARRAY_3_BASE    0x40040B88
+#define RF1_LUT_ANTENNA_ARRAY_3         READONLY_REG32_POINTER(RF1_LUT_ANTENNA_ARRAY_3_BASE)
+
+/* LUT_ANTENNA_ARRAY_3 */
+#define RF2_LUT_ANTENNA_ARRAY_3_BASE    0x40040D88
+#define RF2_LUT_ANTENNA_ARRAY_3         READONLY_REG32_POINTER(RF2_LUT_ANTENNA_ARRAY_3_BASE)
+
+/* LUT_ANTENNA_ARRAY_3 */
+#define RF3_LUT_ANTENNA_ARRAY_3_BASE    0x40040F88
+#define RF3_LUT_ANTENNA_ARRAY_3         READONLY_REG32_POINTER(RF3_LUT_ANTENNA_ARRAY_3_BASE)
+
+/* LUT_ANTENNA_ARRAY_4 */
+#define RF0_LUT_ANTENNA_ARRAY_4_BASE    0x4004098C
+#define RF0_LUT_ANTENNA_ARRAY_4         READONLY_REG32_POINTER(RF0_LUT_ANTENNA_ARRAY_4_BASE)
+
+/* RF_LUT_ANTENNA_ARRAY_4 bit positions */
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_31_POS 28
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_31_MASK (0xF << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_31_POS)
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_30_POS 24
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_30_MASK (0xF << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_30_POS)
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_29_POS 20
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_29_MASK (0xF << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_29_POS)
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_28_POS 16
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_28_MASK (0xF << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_28_POS)
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_27_POS 12
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_27_MASK (0xF << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_27_POS)
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_26_POS 8
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_26_MASK (0xF << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_26_POS)
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_25_POS 4
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_25_MASK (0xF << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_25_POS)
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_24_POS 0
+#define RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_24_MASK (0xF << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_24_POS)
+
+/* RF_LUT_ANTENNA_ARRAY_4 settings */
+#define LUT_ANTENNA_ARRAY_4_ANTENNA_31_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_31_POS)
+
+#define LUT_ANTENNA_ARRAY_4_ANTENNA_30_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_30_POS)
+
+#define LUT_ANTENNA_ARRAY_4_ANTENNA_29_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_29_POS)
+
+#define LUT_ANTENNA_ARRAY_4_ANTENNA_28_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_28_POS)
+
+#define LUT_ANTENNA_ARRAY_4_ANTENNA_27_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_27_POS)
+
+#define LUT_ANTENNA_ARRAY_4_ANTENNA_26_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_26_POS)
+
+#define LUT_ANTENNA_ARRAY_4_ANTENNA_25_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_25_POS)
+
+#define LUT_ANTENNA_ARRAY_4_ANTENNA_24_DEFAULT (0x0 << RF_LUT_ANTENNA_ARRAY_4_LUT_ANTENNA_ARRAY_4_ANTENNA_24_POS)
+
+/* LUT_ANTENNA_ARRAY_4 */
+#define RF1_LUT_ANTENNA_ARRAY_4_BASE    0x40040B8C
+#define RF1_LUT_ANTENNA_ARRAY_4         READONLY_REG32_POINTER(RF1_LUT_ANTENNA_ARRAY_4_BASE)
+
+/* LUT_ANTENNA_ARRAY_4 */
+#define RF2_LUT_ANTENNA_ARRAY_4_BASE    0x40040D8C
+#define RF2_LUT_ANTENNA_ARRAY_4         READONLY_REG32_POINTER(RF2_LUT_ANTENNA_ARRAY_4_BASE)
+
+/* LUT_ANTENNA_ARRAY_4 */
+#define RF3_LUT_ANTENNA_ARRAY_4_BASE    0x40040F8C
+#define RF3_LUT_ANTENNA_ARRAY_4         READONLY_REG32_POINTER(RF3_LUT_ANTENNA_ARRAY_4_BASE)
+
+/* REG50 */
+#define RF0_REG50_BASE                  0x400409C0
+#define RF0_REG50                       REG32_POINTER(RF0_REG50_BASE)
+
+/* RF_REG50 bit positions */
+#define RF_REG50_FEATURES_HAS_BLE_AES_POS 27
+#define RF_REG50_FEATURES_HAS_BLE_DF_AOA_AOD_POS 26
+#define RF_REG50_FEATURES_HAS_BLE_LONG_RANGE_POS 25
+#define RF_REG50_FEATURES_FEATURES_AVAILABLE_POS 24
+#define RF_REG50_BLR_PKT_LEN_BLR_PKT_LEN_POS 16
+#define RF_REG50_BLR_PKT_LEN_BLR_PKT_LEN_MASK (0xFF << RF_REG50_BLR_PKT_LEN_BLR_PKT_LEN_POS)
+#define RF_REG50_PROT_TIMER_PT_CMD_POS  8
+#define RF_REG50_PROT_TIMER_PT_CMD_MASK (0xFF << RF_REG50_PROT_TIMER_PT_CMD_POS)
+#define RF_REG50_COMMANDS_START_SUBBAND_POS 0
+
+/* RF_REG50 settings */
+#define FEATURES_HAS_NOT_BLE_AES        (0x0 << RF_REG50_FEATURES_HAS_BLE_AES_POS)
+#define FEATURES_HAS_BLE_AES            (0x1 << RF_REG50_FEATURES_HAS_BLE_AES_POS)
+
+#define FEATURES_HAS_NOT_BLE_DF_AOA_AOD (0x0 << RF_REG50_FEATURES_HAS_BLE_DF_AOA_AOD_POS)
+#define FEATURES_HAS_BLE_DF_AOA_AOD     (0x1 << RF_REG50_FEATURES_HAS_BLE_DF_AOA_AOD_POS)
+
+#define FEATURES_HAS_NOT_BLE_LONG_RANGE (0x0 << RF_REG50_FEATURES_HAS_BLE_LONG_RANGE_POS)
+#define FEATURES_HAS_BLE_LONG_RANGE     (0x1 << RF_REG50_FEATURES_HAS_BLE_LONG_RANGE_POS)
+
+#define FEATURES_FEATURES_NOT_AVAILABLE (0x0 << RF_REG50_FEATURES_FEATURES_AVAILABLE_POS)
+#define FEATURES_FEATURES_AVAILABLE     (0x1 << RF_REG50_FEATURES_FEATURES_AVAILABLE_POS)
+
+#define BLR_PKT_LEN_BLR_PKT_LEN_DEFAULT (0x0 << RF_REG50_BLR_PKT_LEN_BLR_PKT_LEN_POS)
+
+#define PROT_TIMER_PT_CMD_DEFAULT       (0x0 << RF_REG50_PROT_TIMER_PT_CMD_POS)
+
+#define COMMANDS_START_SUBBAND_IDLE     (0x0 << RF_REG50_COMMANDS_START_SUBBAND_POS)
+#define COMMANDS_START_SUBBAND_START    (0x1 << RF_REG50_COMMANDS_START_SUBBAND_POS)
+
+/* REG50 */
+#define RF1_REG50_BASE                  0x40040BC0
+#define RF1_REG50                       REG32_POINTER(RF1_REG50_BASE)
+
+/* REG50 */
+#define RF2_REG50_BASE                  0x40040DC0
+#define RF2_REG50                       REG32_POINTER(RF2_REG50_BASE)
+
+/* REG50 */
+#define RF3_REG50_BASE                  0x40040FC0
+#define RF3_REG50                       REG32_POINTER(RF3_REG50_BASE)
+
+/* REG51 */
+#define RF0_REG51_BASE                  0x400409E0
+#define RF0_REG51                       REG32_POINTER(RF0_REG51_BASE)
+
+/* RF_REG51 bit positions */
+#define RF_REG51_FSM_MODE_RM_TX_POS     24
+#define RF_REG51_FSM_MODE_RM_TX_MASK    (0xFF << RF_REG51_FSM_MODE_RM_TX_POS)
+#define RF_REG51_PA_PWR_RM_POS          16
+#define RF_REG51_PA_PWR_RM_MASK         (0xFF << RF_REG51_PA_PWR_RM_POS)
+#define RF_REG51_CHANNEL_RM_TX_POS      8
+#define RF_REG51_CHANNEL_RM_TX_MASK     (0xFF << RF_REG51_CHANNEL_RM_TX_POS)
+#define RF_REG51_RATE_TX_POS            0
+#define RF_REG51_RATE_TX_MASK           (0xFF << RF_REG51_RATE_TX_POS)
+
+/* RF_REG51 settings */
+#define FSM_MODE_RM_TX_DEFAULT          (0x0 << RF_REG51_FSM_MODE_RM_TX_POS)
+
+#define PA_PWR_RM_DEFAULT               (0x0 << RF_REG51_PA_PWR_RM_POS)
+
+#define CHANNEL_RM_TX_DEFAULT           (0x0 << RF_REG51_CHANNEL_RM_TX_POS)
+
+#define RATE_TX_DEFAULT                 (0x0 << RF_REG51_RATE_TX_POS)
+
+/* REG51 */
+#define RF1_REG51_BASE                  0x40040BE0
+#define RF1_REG51                       REG32_POINTER(RF1_REG51_BASE)
+
+/* REG51 */
+#define RF2_REG51_BASE                  0x40040DE0
+#define RF2_REG51                       REG32_POINTER(RF2_REG51_BASE)
+
+/* REG51 */
+#define RF3_REG51_BASE                  0x40040FE0
+#define RF3_REG51                       REG32_POINTER(RF3_REG51_BASE)
+
+/* REG52 */
+#define RF0_REG52_BASE                  0x400409E8
+#define RF0_REG52                       REG32_POINTER(RF0_REG52_BASE)
+
+/* RF_REG52 bit positions */
+#define RF_REG52_ACCESS_ADDRESS_POS     24
+#define RF_REG52_ACCESS_ADDRESS_MASK    (0xFF << RF_REG52_ACCESS_ADDRESS_POS)
+#define RF_REG52_FSM_MODE_RM_RX_POS     16
+#define RF_REG52_FSM_MODE_RM_RX_MASK    (0xFF << RF_REG52_FSM_MODE_RM_RX_POS)
+#define RF_REG52_CHANNEL_RM_RX_POS      8
+#define RF_REG52_CHANNEL_RM_RX_MASK     (0xFF << RF_REG52_CHANNEL_RM_RX_POS)
+#define RF_REG52_RATE_RX_POS            0
+#define RF_REG52_RATE_RX_MASK           (0xFF << RF_REG52_RATE_RX_POS)
+
+/* RF_REG52 settings */
+#define ACCESS_ADDRESS_DEFAULT          (0x0 << RF_REG52_ACCESS_ADDRESS_POS)
+
+#define FSM_MODE_RM_RX_DEFAULT          (0x0 << RF_REG52_FSM_MODE_RM_RX_POS)
+
+#define CHANNEL_RM_RX_DEFAULT           (0x0 << RF_REG52_CHANNEL_RM_RX_POS)
+
+#define RATE_RX_DEFAULT                 (0x0 << RF_REG52_RATE_RX_POS)
+
+/* REG52 */
+#define RF1_REG52_BASE                  0x40040BE8
+#define RF1_REG52                       REG32_POINTER(RF1_REG52_BASE)
+
+/* REG52 */
+#define RF2_REG52_BASE                  0x40040DE8
+#define RF2_REG52                       REG32_POINTER(RF2_REG52_BASE)
+
+/* REG52 */
+#define RF3_REG52_BASE                  0x40040FE8
+#define RF3_REG52                       REG32_POINTER(RF3_REG52_BASE)
+
+/* REG53 */
+#define RF0_REG53_BASE                  0x400409F0
+#define RF0_REG53                       REG32_POINTER(RF0_REG53_BASE)
+
+/* RF_REG53 bit positions */
+#define RF_REG53_RSSI_MAX_RM_POS        16
+#define RF_REG53_RSSI_MAX_RM_MASK       (0xFF << RF_REG53_RSSI_MAX_RM_POS)
+#define RF_REG53_RSSI_MIN_RM_POS        8
+#define RF_REG53_RSSI_MIN_RM_MASK       (0xFF << RF_REG53_RSSI_MIN_RM_POS)
+
+/* RF_REG53 settings */
+#define RSSI_MAX_RM_DEFAULT             (0x0 << RF_REG53_RSSI_MAX_RM_POS)
+
+#define RSSI_MIN_RM_DEFAULT             (0x0 << RF_REG53_RSSI_MIN_RM_POS)
+
+/* REG53 */
+#define RF1_REG53_BASE                  0x40040BF0
+#define RF1_REG53                       REG32_POINTER(RF1_REG53_BASE)
+
+/* REG53 */
+#define RF2_REG53_BASE                  0x40040DF0
+#define RF2_REG53                       REG32_POINTER(RF2_REG53_BASE)
+
+/* REG53 */
+#define RF3_REG53_BASE                  0x40040FF0
+#define RF3_REG53                       REG32_POINTER(RF3_REG53_BASE)
+
+/* REG54 */
+#define RF0_REG54_BASE                  0x400409F4
+#define RF0_REG54                       REG32_POINTER(RF0_REG54_BASE)
+
+/* RF_REG54 bit positions */
+#define RF_REG54_BLR_PACKET_LEN_POS     0
+#define RF_REG54_BLR_PACKET_LEN_MASK    (0xFF << RF_REG54_BLR_PACKET_LEN_POS)
+
+/* RF_REG54 settings */
+#define BLR_PACKET_LEN_DEFAULT          (0x0 << RF_REG54_BLR_PACKET_LEN_POS)
+
+/* REG54 */
+#define RF1_REG54_BASE                  0x40040BF4
+#define RF1_REG54                       REG32_POINTER(RF1_REG54_BASE)
+
+/* REG54 */
+#define RF2_REG54_BASE                  0x40040DF4
+#define RF2_REG54                       REG32_POINTER(RF2_REG54_BASE)
+
+/* REG54 */
+#define RF3_REG54_BASE                  0x40040FF4
+#define RF3_REG54                       REG32_POINTER(RF3_REG54_BASE)
+
+/* REG55 */
+#define RF0_REG55_BASE                  0x400409F8
+#define RF0_REG55                       REG32_POINTER(RF0_REG55_BASE)
+
+/* RF_REG55 bit positions */
+#define RF_REG55_ITRX_FEATURES_POS      0
+#define RF_REG55_ITRX_FEATURES_MASK     (0xFF << RF_REG55_ITRX_FEATURES_POS)
+
+/* RF_REG55 settings */
+#define ITRX_FEATURES_DEFAULT           (0x0 << RF_REG55_ITRX_FEATURES_POS)
+
+/* REG55 */
+#define RF1_REG55_BASE                  0x40040BF8
+#define RF1_REG55                       REG32_POINTER(RF1_REG55_BASE)
+
+/* REG55 */
+#define RF2_REG55_BASE                  0x40040DF8
+#define RF2_REG55                       REG32_POINTER(RF2_REG55_BASE)
+
+/* REG55 */
+#define RF3_REG55_BASE                  0x40040FF8
+#define RF3_REG55                       REG32_POINTER(RF3_REG55_BASE)
+
+/* REG56 */
+#define RF0_REG56_BASE                  0x400409FC
+#define RF0_REG56                       REG32_POINTER(RF0_REG56_BASE)
+
+/* RF_REG56 bit positions */
+#define RF_REG56_CHIP_ID_CHIP_ID_POS    24
+#define RF_REG56_CHIP_ID_CHIP_ID_MASK   (0xFF << RF_REG56_CHIP_ID_CHIP_ID_POS)
+#define RF_REG56_MD5_REGS_MD5_REGS_POS  16
+#define RF_REG56_MD5_REGS_MD5_REGS_MASK (0xFF << RF_REG56_MD5_REGS_MD5_REGS_POS)
+#define RF_REG56_SCAN_2_SCAN_2_PASSWORD_POS 8
+#define RF_REG56_SCAN_2_SCAN_2_PASSWORD_MASK (0xFF << RF_REG56_SCAN_2_SCAN_2_PASSWORD_POS)
+#define RF_REG56_SCAN_1_SCAN_1_PASSWORD_POS 0
+#define RF_REG56_SCAN_1_SCAN_1_PASSWORD_MASK (0xFF << RF_REG56_SCAN_1_SCAN_1_PASSWORD_POS)
+
+/* RF_REG56 settings */
+#define CHIP_ID_CHIP_ID_DEFAULT         (0x30 << RF_REG56_CHIP_ID_CHIP_ID_POS)
+
+#define MD5_REGS_MD5_REGS_DEFAULT       (0x0 << RF_REG56_MD5_REGS_MD5_REGS_POS)
+
+#define SCAN_2_SCAN_2_PASSWORD_DEFAULT  (0x0 << RF_REG56_SCAN_2_SCAN_2_PASSWORD_POS)
+
+#define SCAN_1_SCAN_1_PASSWORD_DEFAULT  (0x0 << RF_REG56_SCAN_1_SCAN_1_PASSWORD_POS)
+
+/* REG56 */
+#define RF1_REG56_BASE                  0x40040BFC
+#define RF1_REG56                       REG32_POINTER(RF1_REG56_BASE)
+
+/* REG56 */
+#define RF2_REG56_BASE                  0x40040DFC
+#define RF2_REG56                       REG32_POINTER(RF2_REG56_BASE)
+
+/* REG56 */
+#define RF3_REG56_BASE                  0x40040FFC
+#define RF3_REG56                       REG32_POINTER(RF3_REG56_BASE)
+
+/* ----------------------------------------------------------------------------
+ * Implementation Control Block
+ * ------------------------------------------------------------------------- */
+
+/* Interrupt Controller Type Register */
+/*   Specifies number of interrupt inputs to the system */
+#define ICB_ICTR_BASE                   0xE000E004
+#define ICB_ICTR                        READONLY_REG32_POINTER(ICB_ICTR_BASE)
+
+/* ICB_ICTR bit positions */
+#define ICB_ICTR_INTLINESNUM_POS        0
+#define ICB_ICTR_INTLINESNUM_MASK       (0xF << ICB_ICTR_INTLINESNUM_POS)
+
+/* ICB_ICTR settings */
+#define NVIC_INTLINESNUM_33_64          (0x1 << ICB_ICTR_INTLINESNUM_POS)
+
+/* ----------------------------------------------------------------------------
+ * SysTick Timer
+ * ------------------------------------------------------------------------- */
+
+/* SysTick Control and Status Register */
+/*   Control and status of the SYSTICK timer */
+#define SysTick_CTRL_BASE               0xE000E010
+#define SysTick_CTRL                    REG32_POINTER(SysTick_CTRL_BASE)
+
+/* SysTick_CTRL bit positions */
+#define SysTick_CTRL_COUNTFLAG_POS      16
+#define SysTick_CTRL_CLKSOURCE_POS      2
+#define SysTick_CTRL_TICKINT_POS        1
+#define SysTick_CTRL_ENABLE_POS         0
+
+/* SysTick_CTRL settings */
+#define SYSTICK_COUNTFLAG_NOT_ZERO      (0x0 << SysTick_CTRL_COUNTFLAG_POS)
+#define SYSTICK_COUNTFLAG_ZERO          (0x1 << SysTick_CTRL_COUNTFLAG_POS)
+
+#define SYSTICK_CLKSOURCE_EXTREF_CLK    (0x0 << SysTick_CTRL_CLKSOURCE_POS)
+#define SYSTICK_CLKSOURCE_CORE_CLK      (0x1 << SysTick_CTRL_CLKSOURCE_POS)
+
+#define SYSTICK_TICKINT_DISABLE         (0x0 << SysTick_CTRL_TICKINT_POS)
+#define SYSTICK_TICKINT_ENABLE          (0x1 << SysTick_CTRL_TICKINT_POS)
+
+#define SYSTICK_DISABLE                 (0x0 << SysTick_CTRL_ENABLE_POS)
+#define SYSTICK_ENABLE                  (0x1 << SysTick_CTRL_ENABLE_POS)
+
+/* SysTick Reload Value Register */
+/*   Stores the SYSTICK timer reload value */
+#define SysTick_LOAD_BASE               0xE000E014
+#define SysTick_LOAD                    REG32_POINTER(SysTick_LOAD_BASE)
+
+/* SysTick_LOAD bit positions */
+#define SysTick_LOAD_RELOAD_POS         0
+#define SysTick_LOAD_RELOAD_MASK        (0xFFFFFF << SysTick_LOAD_RELOAD_POS)
+
+/* SysTick Current Value Register */
+/*   Stores the current SYSTICK timer count value */
+#define SysTick_VAL_BASE                0xE000E018
+#define SysTick_VAL                     REG32_POINTER(SysTick_VAL_BASE)
+
+/* SysTick_VAL bit positions */
+#define SysTick_VAL_CURRENT_POS         0
+#define SysTick_VAL_CURRENT_MASK        (0xFFFFFF << SysTick_VAL_CURRENT_POS)
+
+/* SysTick Calibration Register */
+/*   Stores SYSTICK calibration values */
+#define SysTick_CALIB_BASE              0xE000E01C
+#define SysTick_CALIB                   READONLY_REG32_POINTER(SysTick_CALIB_BASE)
+
+/* SysTick_CALIB bit positions */
+#define SysTick_CALIB_NOREF_POS         31
+#define SysTick_CALIB_SKEW_POS          30
+#define SysTick_CALIB_TENMS_POS         0
+#define SysTick_CALIB_TENMS_MASK        (0xFFFFFF << SysTick_CALIB_TENMS_POS)
+
+/* SysTick_CALIB settings */
+#define SYSTICK_NOREF                   (0x1 << SysTick_CALIB_NOREF_POS)
+#define SYSTICK_REF                     (0x0 << SysTick_CALIB_NOREF_POS)
+
+#define SYSTICK_SKEW                    (0x1 << SysTick_CALIB_SKEW_POS)
+#define SYSTICK_NOSKEW                  (0x0 << SysTick_CALIB_SKEW_POS)
+
+/* ----------------------------------------------------------------------------
+ * Nested Vector Interrupt Controller
+ * ------------------------------------------------------------------------- */
+
+/* NVIC External Interrupt Set Enable Register 0 */
+/*   Set enable for external interrupts 0-31 */
+#define NVIC_ISER0_BASE                 0xE000E100
+#define NVIC_ISER0                      REG32_POINTER(NVIC_ISER0_BASE)
+
+/* NVIC_ISER0 bit positions */
+#define NVIC_ISER0_BLE_COEX_IN_PROCESS_POS 31
+#define NVIC_ISER0_BLE_ERROR_POS        30
+#define NVIC_ISER0_BLE_FIFO_POS         29
+#define NVIC_ISER0_BLE_HSLOT_POS        28
+#define NVIC_ISER0_BLE_SLP_POS          27
+#define NVIC_ISER0_BLE_CRYPT_POS        26
+#define NVIC_ISER0_BLE_TIMESTAMP_TGT2_POS 25
+#define NVIC_ISER0_BLE_TIMESTAMP_TGT1_POS 24
+#define NVIC_ISER0_BLE_FINETGT_POS      23
+#define NVIC_ISER0_BLE_SW_POS           22
+#define NVIC_ISER0_UART0_ERROR_POS      21
+#define NVIC_ISER0_UART0_TX_POS         20
+#define NVIC_ISER0_UART0_RX_POS         19
+#define NVIC_ISER0_I2C0_POS             18
+#define NVIC_ISER0_SPI0_COM_POS         17
+#define NVIC_ISER0_SPI0_TX_POS          16
+#define NVIC_ISER0_SPI0_RX_POS          15
+#define NVIC_ISER0_WATCHDOG_POS         14
+#define NVIC_ISER0_GPIO3_POS            13
+#define NVIC_ISER0_GPIO2_POS            12
+#define NVIC_ISER0_GPIO1_POS            11
+#define NVIC_ISER0_GPIO0_POS            10
+#define NVIC_ISER0_ADC_FIFO_POS         9
+#define NVIC_ISER0_NFC_POS              8
+#define NVIC_ISER0_TIMER3_POS           7
+#define NVIC_ISER0_TIMER2_POS           6
+#define NVIC_ISER0_TIMER1_POS           5
+#define NVIC_ISER0_TIMER0_POS           4
+#define NVIC_ISER0_LSAD_BATMON_POS      3
+#define NVIC_ISER0_RTC_CLOCK_POS        2
+#define NVIC_ISER0_RTC_ALARM_POS        1
+#define NVIC_ISER0_WAKEUP_POS           0
+
+/* NVIC_ISER0 settings */
+#define NVIC_BLE_COEX_IN_PROCESS_INT_ENABLE (0x1 << NVIC_ISER0_BLE_COEX_IN_PROCESS_POS)
+
+#define NVIC_BLE_ERROR_INT_ENABLE       (0x1 << NVIC_ISER0_BLE_ERROR_POS)
+
+#define NVIC_BLE_FIFO_INT_ENABLE        (0x1 << NVIC_ISER0_BLE_FIFO_POS)
+
+#define NVIC_BLE_HSLOT_INT_ENABLE       (0x1 << NVIC_ISER0_BLE_HSLOT_POS)
+
+#define NVIC_BLE_SLP_INT_ENABLE         (0x1 << NVIC_ISER0_BLE_SLP_POS)
+
+#define NVIC_BLE_CRYPT_INT_ENABLE       (0x1 << NVIC_ISER0_BLE_CRYPT_POS)
+
+#define NVIC_BLE_TIMESTAMP_TGT2_INT_ENABLE (0x1 << NVIC_ISER0_BLE_TIMESTAMP_TGT2_POS)
+
+#define NVIC_BLE_TIMESTAMP_TGT1_INT_ENABLE (0x1 << NVIC_ISER0_BLE_TIMESTAMP_TGT1_POS)
+
+#define NVIC_BLE_FINETGT_INT_ENABLE     (0x1 << NVIC_ISER0_BLE_FINETGT_POS)
+
+#define NVIC_BLE_SW_INT_ENABLE          (0x1 << NVIC_ISER0_BLE_SW_POS)
+
+#define NVIC_UART0_ERROR_INT_ENABLE     (0x1 << NVIC_ISER0_UART0_ERROR_POS)
+
+#define NVIC_UART0_TX_INT_ENABLE        (0x1 << NVIC_ISER0_UART0_TX_POS)
+
+#define NVIC_UART0_RX_INT_ENABLE        (0x1 << NVIC_ISER0_UART0_RX_POS)
+
+#define NVIC_I2C0_INT_ENABLE            (0x1 << NVIC_ISER0_I2C0_POS)
+
+#define NVIC_SPI0_COM_INT_ENABLE        (0x1 << NVIC_ISER0_SPI0_COM_POS)
+
+#define NVIC_SPI0_TX_INT_ENABLE         (0x1 << NVIC_ISER0_SPI0_TX_POS)
+
+#define NVIC_SPI0_RX_INT_ENABLE         (0x1 << NVIC_ISER0_SPI0_RX_POS)
+
+#define NVIC_WATCHDOG_INT_ENABLE        (0x1 << NVIC_ISER0_WATCHDOG_POS)
+
+#define NVIC_GPIO3_INT_ENABLE           (0x1 << NVIC_ISER0_GPIO3_POS)
+
+#define NVIC_GPIO2_INT_ENABLE           (0x1 << NVIC_ISER0_GPIO2_POS)
+
+#define NVIC_GPIO1_INT_ENABLE           (0x1 << NVIC_ISER0_GPIO1_POS)
+
+#define NVIC_GPIO0_INT_ENABLE           (0x1 << NVIC_ISER0_GPIO0_POS)
+
+#define NVIC_ADC_FIFO_INT_ENABLE        (0x1 << NVIC_ISER0_ADC_FIFO_POS)
+
+#define NVIC_NFC_INT_ENABLE             (0x1 << NVIC_ISER0_NFC_POS)
+
+#define NVIC_TIMER3_INT_ENABLE          (0x1 << NVIC_ISER0_TIMER3_POS)
+
+#define NVIC_TIMER2_INT_ENABLE          (0x1 << NVIC_ISER0_TIMER2_POS)
+
+#define NVIC_TIMER1_INT_ENABLE          (0x1 << NVIC_ISER0_TIMER1_POS)
+
+#define NVIC_TIMER0_INT_ENABLE          (0x1 << NVIC_ISER0_TIMER0_POS)
+
+#define NVIC_LSAD_BATMON_INT_ENABLE     (0x1 << NVIC_ISER0_LSAD_BATMON_POS)
+
+#define NVIC_RTC_CLOCK_INT_ENABLE       (0x1 << NVIC_ISER0_RTC_CLOCK_POS)
+
+#define NVIC_RTC_ALARM_INT_ENABLE       (0x1 << NVIC_ISER0_RTC_ALARM_POS)
+
+#define NVIC_WAKEUP_INT_ENABLE          (0x1 << NVIC_ISER0_WAKEUP_POS)
+
+/* NVIC External Interrupt Set Enable Register 1 */
+/*   Set enable for external interrupts 32-63 */
+#define NVIC_ISER1_BASE                 0xE000E104
+#define NVIC_ISER1                      REG32_POINTER(NVIC_ISER1_BASE)
+
+/* NVIC_ISER1 bit positions */
+#define NVIC_ISER1_ASCC_PERIOD_POS      20
+#define NVIC_ISER1_ASCC_PHASE_POS       19
+#define NVIC_ISER1_CC312_POS            18
+#define NVIC_ISER1_DMA3_POS             17
+#define NVIC_ISER1_DMA2_POS             16
+#define NVIC_ISER1_DMA1_POS             15
+#define NVIC_ISER1_DMA0_POS             14
+#define NVIC_ISER1_FPU_POS              13
+#define NVIC_ISER1_ACCESS_ERROR_POS     12
+#define NVIC_ISER1_FLASH1_ECC_POS       11
+#define NVIC_ISER1_FLASH1_COPY_POS      10
+#define NVIC_ISER1_FLASH0_ECC_POS       9
+#define NVIC_ISER1_FLASH0_COPY_POS      8
+#define NVIC_ISER1_RF_RXFIFO_POS        7
+#define NVIC_ISER1_RF_TXFIFO_POS        6
+#define NVIC_ISER1_RF_SYNC_POS          5
+#define NVIC_ISER1_RF_RECEIVED_POS      4
+#define NVIC_ISER1_RF_RXSTOP_POS        3
+#define NVIC_ISER1_RF_TX_POS            2
+#define NVIC_ISER1_BLE_TOF_POS          1
+#define NVIC_ISER1_BLE_COEX_RX_TX_POS   0
+
+/* NVIC_ISER1 settings */
+#define NVIC_ASCC_PERIOD_INT_ENABLE     (0x1 << NVIC_ISER1_ASCC_PERIOD_POS)
+
+#define NVIC_ASCC_PHASE_INT_ENABLE      (0x1 << NVIC_ISER1_ASCC_PHASE_POS)
+
+#define NVIC_CC312_INT_ENABLE           (0x1 << NVIC_ISER1_CC312_POS)
+
+#define NVIC_DMA3_INT_ENABLE            (0x1 << NVIC_ISER1_DMA3_POS)
+
+#define NVIC_DMA2_INT_ENABLE            (0x1 << NVIC_ISER1_DMA2_POS)
+
+#define NVIC_DMA1_INT_ENABLE            (0x1 << NVIC_ISER1_DMA1_POS)
+
+#define NVIC_DMA0_INT_ENABLE            (0x1 << NVIC_ISER1_DMA0_POS)
+
+#define NVIC_FPU_INT_ENABLE             (0x1 << NVIC_ISER1_FPU_POS)
+
+#define NVIC_ACCESS_ERROR_INT_ENABLE    (0x1 << NVIC_ISER1_ACCESS_ERROR_POS)
+
+#define NVIC_FLASH1_ECC_INT_ENABLE      (0x1 << NVIC_ISER1_FLASH1_ECC_POS)
+
+#define NVIC_FLASH1_COPY_INT_ENABLE     (0x1 << NVIC_ISER1_FLASH1_COPY_POS)
+
+#define NVIC_FLASH0_ECC_INT_ENABLE      (0x1 << NVIC_ISER1_FLASH0_ECC_POS)
+
+#define NVIC_FLASH0_COPY_INT_ENABLE     (0x1 << NVIC_ISER1_FLASH0_COPY_POS)
+
+#define NVIC_RF_RXFIFO_INT_ENABLE       (0x1 << NVIC_ISER1_RF_RXFIFO_POS)
+
+#define NVIC_RF_TXFIFO_INT_ENABLE       (0x1 << NVIC_ISER1_RF_TXFIFO_POS)
+
+#define NVIC_RF_SYNC_INT_ENABLE         (0x1 << NVIC_ISER1_RF_SYNC_POS)
+
+#define NVIC_RF_RECEIVED_INT_ENABLE     (0x1 << NVIC_ISER1_RF_RECEIVED_POS)
+
+#define NVIC_RF_RXSTOP_INT_ENABLE       (0x1 << NVIC_ISER1_RF_RXSTOP_POS)
+
+#define NVIC_RF_TX_INT_ENABLE           (0x1 << NVIC_ISER1_RF_TX_POS)
+
+#define NVIC_BLE_TOF_INT_ENABLE         (0x1 << NVIC_ISER1_BLE_TOF_POS)
+
+#define NVIC_BLE_COEX_RX_TX_INT_ENABLE  (0x1 << NVIC_ISER1_BLE_COEX_RX_TX_POS)
+
+/* NVIC External Interrupt Clear Enable Register 0 */
+/*   Clear enable for external interrupts 0-31 */
+#define NVIC_ICER0_BASE                 0xE000E180
+#define NVIC_ICER0                      REG32_POINTER(NVIC_ICER0_BASE)
+
+/* NVIC_ICER0 bit positions */
+#define NVIC_ICER0_BLE_COEX_IN_PROCESS_POS 31
+#define NVIC_ICER0_BLE_ERROR_POS        30
+#define NVIC_ICER0_BLE_FIFO_POS         29
+#define NVIC_ICER0_BLE_HSLOT_POS        28
+#define NVIC_ICER0_BLE_SLP_POS          27
+#define NVIC_ICER0_BLE_CRYPT_POS        26
+#define NVIC_ICER0_BLE_TIMESTAMP_TGT2_POS 25
+#define NVIC_ICER0_BLE_TIMESTAMP_TGT1_POS 24
+#define NVIC_ICER0_BLE_FINETGT_POS      23
+#define NVIC_ICER0_BLE_SW_POS           22
+#define NVIC_ICER0_UART0_ERROR_POS      21
+#define NVIC_ICER0_UART0_TX_POS         20
+#define NVIC_ICER0_UART0_RX_POS         19
+#define NVIC_ICER0_I2C0_POS             18
+#define NVIC_ICER0_SPI0_COM_POS         17
+#define NVIC_ICER0_SPI0_TX_POS          16
+#define NVIC_ICER0_SPI0_RX_POS          15
+#define NVIC_ICER0_WATCHDOG_POS         14
+#define NVIC_ICER0_GPIO3_POS            13
+#define NVIC_ICER0_GPIO2_POS            12
+#define NVIC_ICER0_GPIO1_POS            11
+#define NVIC_ICER0_GPIO0_POS            10
+#define NVIC_ICER0_ADC_FIFO_POS         9
+#define NVIC_ICER0_NFC_POS              8
+#define NVIC_ICER0_TIMER3_POS           7
+#define NVIC_ICER0_TIMER2_POS           6
+#define NVIC_ICER0_TIMER1_POS           5
+#define NVIC_ICER0_TIMER0_POS           4
+#define NVIC_ICER0_LSAD_BATMON_POS      3
+#define NVIC_ICER0_RTC_CLOCK_POS        2
+#define NVIC_ICER0_RTC_ALARM_POS        1
+#define NVIC_ICER0_WAKEUP_POS           0
+
+/* NVIC_ICER0 settings */
+#define NVIC_BLE_COEX_IN_PROCESS_INT_DISABLE (0x1 << NVIC_ICER0_BLE_COEX_IN_PROCESS_POS)
+
+#define NVIC_BLE_ERROR_INT_DISABLE      (0x1 << NVIC_ICER0_BLE_ERROR_POS)
+
+#define NVIC_BLE_FIFO_INT_DISABLE       (0x1 << NVIC_ICER0_BLE_FIFO_POS)
+
+#define NVIC_BLE_HSLOT_INT_DISABLE      (0x1 << NVIC_ICER0_BLE_HSLOT_POS)
+
+#define NVIC_BLE_SLP_INT_DISABLE        (0x1 << NVIC_ICER0_BLE_SLP_POS)
+
+#define NVIC_BLE_CRYPT_INT_DISABLE      (0x1 << NVIC_ICER0_BLE_CRYPT_POS)
+
+#define NVIC_BLE_TIMESTAMP_TGT2_INT_DISABLE (0x1 << NVIC_ICER0_BLE_TIMESTAMP_TGT2_POS)
+
+#define NVIC_BLE_TIMESTAMP_TGT1_INT_DISABLE (0x1 << NVIC_ICER0_BLE_TIMESTAMP_TGT1_POS)
+
+#define NVIC_BLE_FINETGT_INT_DISABLE    (0x1 << NVIC_ICER0_BLE_FINETGT_POS)
+
+#define NVIC_BLE_SW_INT_DISABLE         (0x1 << NVIC_ICER0_BLE_SW_POS)
+
+#define NVIC_UART0_ERROR_INT_DISABLE    (0x1 << NVIC_ICER0_UART0_ERROR_POS)
+
+#define NVIC_UART0_TX_INT_DISABLE       (0x1 << NVIC_ICER0_UART0_TX_POS)
+
+#define NVIC_UART0_RX_INT_DISABLE       (0x1 << NVIC_ICER0_UART0_RX_POS)
+
+#define NVIC_I2C0_INT_DISABLE           (0x1 << NVIC_ICER0_I2C0_POS)
+
+#define NVIC_SPI0_COM_INT_DISABLE       (0x1 << NVIC_ICER0_SPI0_COM_POS)
+
+#define NVIC_SPI0_TX_INT_DISABLE        (0x1 << NVIC_ICER0_SPI0_TX_POS)
+
+#define NVIC_SPI0_RX_INT_DISABLE        (0x1 << NVIC_ICER0_SPI0_RX_POS)
+
+#define NVIC_WATCHDOG_INT_DISABLE       (0x1 << NVIC_ICER0_WATCHDOG_POS)
+
+#define NVIC_GPIO3_INT_DISABLE          (0x1 << NVIC_ICER0_GPIO3_POS)
+
+#define NVIC_GPIO2_INT_DISABLE          (0x1 << NVIC_ICER0_GPIO2_POS)
+
+#define NVIC_GPIO1_INT_DISABLE          (0x1 << NVIC_ICER0_GPIO1_POS)
+
+#define NVIC_GPIO0_INT_DISABLE          (0x1 << NVIC_ICER0_GPIO0_POS)
+
+#define NVIC_ADC_FIFO_INT_DISABLE       (0x1 << NVIC_ICER0_ADC_FIFO_POS)
+
+#define NVIC_NFC_INT_DISABLE            (0x1 << NVIC_ICER0_NFC_POS)
+
+#define NVIC_TIMER3_INT_DISABLE         (0x1 << NVIC_ICER0_TIMER3_POS)
+
+#define NVIC_TIMER2_INT_DISABLE         (0x1 << NVIC_ICER0_TIMER2_POS)
+
+#define NVIC_TIMER1_INT_DISABLE         (0x1 << NVIC_ICER0_TIMER1_POS)
+
+#define NVIC_TIMER0_INT_DISABLE         (0x1 << NVIC_ICER0_TIMER0_POS)
+
+#define NVIC_LSAD_BATMON_INT_DISABLE    (0x1 << NVIC_ICER0_LSAD_BATMON_POS)
+
+#define NVIC_RTC_CLOCK_INT_DISABLE      (0x1 << NVIC_ICER0_RTC_CLOCK_POS)
+
+#define NVIC_RTC_ALARM_INT_DISABLE      (0x1 << NVIC_ICER0_RTC_ALARM_POS)
+
+#define NVIC_WAKEUP_INT_DISABLE         (0x1 << NVIC_ICER0_WAKEUP_POS)
+
+/* NVIC External Interrupt Clear Enable Register 1 */
+/*   Clear enable for external interrupts 32-63 */
+#define NVIC_ICER1_BASE                 0xE000E184
+#define NVIC_ICER1                      REG32_POINTER(NVIC_ICER1_BASE)
+
+/* NVIC_ICER1 bit positions */
+#define NVIC_ICER1_ASCC_PERIOD_POS      20
+#define NVIC_ICER1_ASCC_PHASE_POS       19
+#define NVIC_ICER1_CC312_POS            18
+#define NVIC_ICER1_DMA3_POS             17
+#define NVIC_ICER1_DMA2_POS             16
+#define NVIC_ICER1_DMA1_POS             15
+#define NVIC_ICER1_DMA0_POS             14
+#define NVIC_ICER1_FPU_POS              13
+#define NVIC_ICER1_ACCESS_ERROR_POS     12
+#define NVIC_ICER1_FLASH1_ECC_POS       11
+#define NVIC_ICER1_FLASH1_COPY_POS      10
+#define NVIC_ICER1_FLASH0_ECC_POS       9
+#define NVIC_ICER1_FLASH0_COPY_POS      8
+#define NVIC_ICER1_RF_RXFIFO_POS        7
+#define NVIC_ICER1_RF_TXFIFO_POS        6
+#define NVIC_ICER1_RF_SYNC_POS          5
+#define NVIC_ICER1_RF_RECEIVED_POS      4
+#define NVIC_ICER1_RF_RXSTOP_POS        3
+#define NVIC_ICER1_RF_TX_POS            2
+#define NVIC_ICER1_BLE_TOF_POS          1
+#define NVIC_ICER1_BLE_COEX_RX_TX_POS   0
+
+/* NVIC_ICER1 settings */
+#define NVIC_ASCC_PERIOD_INT_DISABLE    (0x1 << NVIC_ICER1_ASCC_PERIOD_POS)
+
+#define NVIC_ASCC_PHASE_INT_DISABLE     (0x1 << NVIC_ICER1_ASCC_PHASE_POS)
+
+#define NVIC_CC312_INT_DISABLE          (0x1 << NVIC_ICER1_CC312_POS)
+
+#define NVIC_DMA3_INT_DISABLE           (0x1 << NVIC_ICER1_DMA3_POS)
+
+#define NVIC_DMA2_INT_DISABLE           (0x1 << NVIC_ICER1_DMA2_POS)
+
+#define NVIC_DMA1_INT_DISABLE           (0x1 << NVIC_ICER1_DMA1_POS)
+
+#define NVIC_DMA0_INT_DISABLE           (0x1 << NVIC_ICER1_DMA0_POS)
+
+#define NVIC_FPU_INT_DISABLE            (0x1 << NVIC_ICER1_FPU_POS)
+
+#define NVIC_ACCESS_ERROR_INT_DISABLE   (0x1 << NVIC_ICER1_ACCESS_ERROR_POS)
+
+#define NVIC_FLASH1_ECC_INT_DISABLE     (0x1 << NVIC_ICER1_FLASH1_ECC_POS)
+
+#define NVIC_FLASH1_COPY_INT_DISABLE    (0x1 << NVIC_ICER1_FLASH1_COPY_POS)
+
+#define NVIC_FLASH0_ECC_INT_DISABLE     (0x1 << NVIC_ICER1_FLASH0_ECC_POS)
+
+#define NVIC_FLASH0_COPY_INT_DISABLE    (0x1 << NVIC_ICER1_FLASH0_COPY_POS)
+
+#define NVIC_RF_RXFIFO_INT_DISABLE      (0x1 << NVIC_ICER1_RF_RXFIFO_POS)
+
+#define NVIC_RF_TXFIFO_INT_DISABLE      (0x1 << NVIC_ICER1_RF_TXFIFO_POS)
+
+#define NVIC_RF_SYNC_INT_DISABLE        (0x1 << NVIC_ICER1_RF_SYNC_POS)
+
+#define NVIC_RF_RECEIVED_INT_DISABLE    (0x1 << NVIC_ICER1_RF_RECEIVED_POS)
+
+#define NVIC_RF_RXSTOP_INT_DISABLE      (0x1 << NVIC_ICER1_RF_RXSTOP_POS)
+
+#define NVIC_RF_TX_INT_DISABLE          (0x1 << NVIC_ICER1_RF_TX_POS)
+
+#define NVIC_BLE_TOF_INT_DISABLE        (0x1 << NVIC_ICER1_BLE_TOF_POS)
+
+#define NVIC_BLE_COEX_RX_TX_INT_DISABLE (0x1 << NVIC_ICER1_BLE_COEX_RX_TX_POS)
+
+/* NVIC External Interrupt Set Pending Register 0 */
+/*   Set pending status for external interrupts 0-31 */
+#define NVIC_ISPR0_BASE                 0xE000E200
+#define NVIC_ISPR0                      REG32_POINTER(NVIC_ISPR0_BASE)
+
+/* NVIC_ISPR0 bit positions */
+#define NVIC_ISPR0_BLE_COEX_IN_PROCESS_POS 31
+#define NVIC_ISPR0_BLE_ERROR_POS        30
+#define NVIC_ISPR0_BLE_FIFO_POS         29
+#define NVIC_ISPR0_BLE_HSLOT_POS        28
+#define NVIC_ISPR0_BLE_SLP_POS          27
+#define NVIC_ISPR0_BLE_CRYPT_POS        26
+#define NVIC_ISPR0_BLE_TIMESTAMP_TGT2_POS 25
+#define NVIC_ISPR0_BLE_TIMESTAMP_TGT1_POS 24
+#define NVIC_ISPR0_BLE_FINETGT_POS      23
+#define NVIC_ISPR0_BLE_SW_POS           22
+#define NVIC_ISPR0_UART0_ERROR_POS      21
+#define NVIC_ISPR0_UART0_TX_POS         20
+#define NVIC_ISPR0_UART0_RX_POS         19
+#define NVIC_ISPR0_I2C0_POS             18
+#define NVIC_ISPR0_SPI0_COM_POS         17
+#define NVIC_ISPR0_SPI0_TX_POS          16
+#define NVIC_ISPR0_SPI0_RX_POS          15
+#define NVIC_ISPR0_WATCHDOG_POS         14
+#define NVIC_ISPR0_GPIO3_POS            13
+#define NVIC_ISPR0_GPIO2_POS            12
+#define NVIC_ISPR0_GPIO1_POS            11
+#define NVIC_ISPR0_GPIO0_POS            10
+#define NVIC_ISPR0_ADC_FIFO_POS         9
+#define NVIC_ISPR0_NFC_POS              8
+#define NVIC_ISPR0_TIMER3_POS           7
+#define NVIC_ISPR0_TIMER2_POS           6
+#define NVIC_ISPR0_TIMER1_POS           5
+#define NVIC_ISPR0_TIMER0_POS           4
+#define NVIC_ISPR0_LSAD_BATMON_POS      3
+#define NVIC_ISPR0_RTC_CLOCK_POS        2
+#define NVIC_ISPR0_RTC_ALARM_POS        1
+#define NVIC_ISPR0_WAKEUP_POS           0
+
+/* NVIC_ISPR0 settings */
+#define NVIC_BLE_COEX_IN_PROCESS_INT_SETPEND (0x1 << NVIC_ISPR0_BLE_COEX_IN_PROCESS_POS)
+
+#define NVIC_BLE_ERROR_INT_SETPEND      (0x1 << NVIC_ISPR0_BLE_ERROR_POS)
+
+#define NVIC_BLE_FIFO_INT_SETPEND       (0x1 << NVIC_ISPR0_BLE_FIFO_POS)
+
+#define NVIC_BLE_HSLOT_INT_SETPEND      (0x1 << NVIC_ISPR0_BLE_HSLOT_POS)
+
+#define NVIC_BLE_SLP_INT_SETPEND        (0x1 << NVIC_ISPR0_BLE_SLP_POS)
+
+#define NVIC_BLE_CRYPT_INT_SETPEND      (0x1 << NVIC_ISPR0_BLE_CRYPT_POS)
+
+#define NVIC_BLE_TIMESTAMP_TGT2_INT_SETPEND (0x1 << NVIC_ISPR0_BLE_TIMESTAMP_TGT2_POS)
+
+#define NVIC_BLE_TIMESTAMP_TGT1_INT_SETPEND (0x1 << NVIC_ISPR0_BLE_TIMESTAMP_TGT1_POS)
+
+#define NVIC_BLE_FINETGT_INT_SETPEND    (0x1 << NVIC_ISPR0_BLE_FINETGT_POS)
+
+#define NVIC_BLE_SW_INT_SETPEND         (0x1 << NVIC_ISPR0_BLE_SW_POS)
+
+#define NVIC_UART0_ERROR_INT_SETPEND    (0x1 << NVIC_ISPR0_UART0_ERROR_POS)
+
+#define NVIC_UART0_TX_INT_SETPEND       (0x1 << NVIC_ISPR0_UART0_TX_POS)
+
+#define NVIC_UART0_RX_INT_SETPEND       (0x1 << NVIC_ISPR0_UART0_RX_POS)
+
+#define NVIC_I2C0_INT_SETPEND           (0x1 << NVIC_ISPR0_I2C0_POS)
+
+#define NVIC_SPI0_COM_INT_SETPEND       (0x1 << NVIC_ISPR0_SPI0_COM_POS)
+
+#define NVIC_SPI0_TX_INT_SETPEND        (0x1 << NVIC_ISPR0_SPI0_TX_POS)
+
+#define NVIC_SPI0_RX_INT_SETPEND        (0x1 << NVIC_ISPR0_SPI0_RX_POS)
+
+#define NVIC_WATCHDOG_INT_SETPEND       (0x1 << NVIC_ISPR0_WATCHDOG_POS)
+
+#define NVIC_GPIO3_INT_SETPEND          (0x1 << NVIC_ISPR0_GPIO3_POS)
+
+#define NVIC_GPIO2_INT_SETPEND          (0x1 << NVIC_ISPR0_GPIO2_POS)
+
+#define NVIC_GPIO1_INT_SETPEND          (0x1 << NVIC_ISPR0_GPIO1_POS)
+
+#define NVIC_GPIO0_INT_SETPEND          (0x1 << NVIC_ISPR0_GPIO0_POS)
+
+#define NVIC_ADC_FIFO_INT_SETPEND       (0x1 << NVIC_ISPR0_ADC_FIFO_POS)
+
+#define NVIC_NFC_INT_SETPEND            (0x1 << NVIC_ISPR0_NFC_POS)
+
+#define NVIC_TIMER3_INT_SETPEND         (0x1 << NVIC_ISPR0_TIMER3_POS)
+
+#define NVIC_TIMER2_INT_SETPEND         (0x1 << NVIC_ISPR0_TIMER2_POS)
+
+#define NVIC_TIMER1_INT_SETPEND         (0x1 << NVIC_ISPR0_TIMER1_POS)
+
+#define NVIC_TIMER0_INT_SETPEND         (0x1 << NVIC_ISPR0_TIMER0_POS)
+
+#define NVIC_LSAD_BATMON_INT_SETPEND    (0x1 << NVIC_ISPR0_LSAD_BATMON_POS)
+
+#define NVIC_RTC_CLOCK_INT_SETPEND      (0x1 << NVIC_ISPR0_RTC_CLOCK_POS)
+
+#define NVIC_RTC_ALARM_INT_SETPEND      (0x1 << NVIC_ISPR0_RTC_ALARM_POS)
+
+#define NVIC_WAKEUP_INT_SETPEND         (0x1 << NVIC_ISPR0_WAKEUP_POS)
+
+/* NVIC External Interrupt Set Pending Register 1 */
+/*   Set pending status for external interrupts 32-63 */
+#define NVIC_ISPR1_BASE                 0xE000E204
+#define NVIC_ISPR1                      REG32_POINTER(NVIC_ISPR1_BASE)
+
+/* NVIC_ISPR1 bit positions */
+#define NVIC_ISPR1_ASCC_PERIOD_POS      20
+#define NVIC_ISPR1_ASCC_PHASE_POS       19
+#define NVIC_ISPR1_CC312_POS            18
+#define NVIC_ISPR1_DMA3_POS             17
+#define NVIC_ISPR1_DMA2_POS             16
+#define NVIC_ISPR1_DMA1_POS             15
+#define NVIC_ISPR1_DMA0_POS             14
+#define NVIC_ISPR1_FPU_POS              13
+#define NVIC_ISPR1_ACCESS_ERROR_POS     12
+#define NVIC_ISPR1_FLASH1_ECC_POS       11
+#define NVIC_ISPR1_FLASH1_COPY_POS      10
+#define NVIC_ISPR1_FLASH0_ECC_POS       9
+#define NVIC_ISPR1_FLASH0_COPY_POS      8
+#define NVIC_ISPR1_RF_RXFIFO_POS        7
+#define NVIC_ISPR1_RF_TXFIFO_POS        6
+#define NVIC_ISPR1_RF_SYNC_POS          5
+#define NVIC_ISPR1_RF_RECEIVED_POS      4
+#define NVIC_ISPR1_RF_RXSTOP_POS        3
+#define NVIC_ISPR1_RF_TX_POS            2
+#define NVIC_ISPR1_BLE_TOF_POS          1
+#define NVIC_ISPR1_BLE_COEX_RX_TX_POS   0
+
+/* NVIC_ISPR1 settings */
+#define NVIC_ASCC_PERIOD_INT_SETPEND    (0x1 << NVIC_ISPR1_ASCC_PERIOD_POS)
+
+#define NVIC_ASCC_PHASE_INT_SETPEND     (0x1 << NVIC_ISPR1_ASCC_PHASE_POS)
+
+#define NVIC_CC312_INT_SETPEND          (0x1 << NVIC_ISPR1_CC312_POS)
+
+#define NVIC_DMA3_INT_SETPEND           (0x1 << NVIC_ISPR1_DMA3_POS)
+
+#define NVIC_DMA2_INT_SETPEND           (0x1 << NVIC_ISPR1_DMA2_POS)
+
+#define NVIC_DMA1_INT_SETPEND           (0x1 << NVIC_ISPR1_DMA1_POS)
+
+#define NVIC_DMA0_INT_SETPEND           (0x1 << NVIC_ISPR1_DMA0_POS)
+
+#define NVIC_FPU_INT_SETPEND            (0x1 << NVIC_ISPR1_FPU_POS)
+
+#define NVIC_ACCESS_ERROR_INT_SETPEND   (0x1 << NVIC_ISPR1_ACCESS_ERROR_POS)
+
+#define NVIC_FLASH1_ECC_INT_SETPEND     (0x1 << NVIC_ISPR1_FLASH1_ECC_POS)
+
+#define NVIC_FLASH1_COPY_INT_SETPEND    (0x1 << NVIC_ISPR1_FLASH1_COPY_POS)
+
+#define NVIC_FLASH0_ECC_INT_SETPEND     (0x1 << NVIC_ISPR1_FLASH0_ECC_POS)
+
+#define NVIC_FLASH0_COPY_INT_SETPEND    (0x1 << NVIC_ISPR1_FLASH0_COPY_POS)
+
+#define NVIC_RF_RXFIFO_INT_SETPEND      (0x1 << NVIC_ISPR1_RF_RXFIFO_POS)
+
+#define NVIC_RF_TXFIFO_INT_SETPEND      (0x1 << NVIC_ISPR1_RF_TXFIFO_POS)
+
+#define NVIC_RF_SYNC_INT_SETPEND        (0x1 << NVIC_ISPR1_RF_SYNC_POS)
+
+#define NVIC_RF_RECEIVED_INT_SETPEND    (0x1 << NVIC_ISPR1_RF_RECEIVED_POS)
+
+#define NVIC_RF_RXSTOP_INT_SETPEND      (0x1 << NVIC_ISPR1_RF_RXSTOP_POS)
+
+#define NVIC_RF_TX_INT_SETPEND          (0x1 << NVIC_ISPR1_RF_TX_POS)
+
+#define NVIC_BLE_TOF_INT_SETPEND        (0x1 << NVIC_ISPR1_BLE_TOF_POS)
+
+#define NVIC_BLE_COEX_RX_TX_INT_SETPEND (0x1 << NVIC_ISPR1_BLE_COEX_RX_TX_POS)
+
+/* NVIC External Interrupt Clear Pending Register 0 */
+/*   Clear pending status for external interrupts 0-31 */
+#define NVIC_ICPR0_BASE                 0xE000E280
+#define NVIC_ICPR0                      REG32_POINTER(NVIC_ICPR0_BASE)
+
+/* NVIC_ICPR0 bit positions */
+#define NVIC_ICPR0_BLE_COEX_IN_PROCESS_POS 31
+#define NVIC_ICPR0_BLE_ERROR_POS        30
+#define NVIC_ICPR0_BLE_FIFO_POS         29
+#define NVIC_ICPR0_BLE_HSLOT_POS        28
+#define NVIC_ICPR0_BLE_SLP_POS          27
+#define NVIC_ICPR0_BLE_CRYPT_POS        26
+#define NVIC_ICPR0_BLE_TIMESTAMP_TGT2_POS 25
+#define NVIC_ICPR0_BLE_TIMESTAMP_TGT1_POS 24
+#define NVIC_ICPR0_BLE_FINETGT_POS      23
+#define NVIC_ICPR0_BLE_SW_POS           22
+#define NVIC_ICPR0_UART0_ERROR_POS      21
+#define NVIC_ICPR0_UART0_TX_POS         20
+#define NVIC_ICPR0_UART0_RX_POS         19
+#define NVIC_ICPR0_I2C0_POS             18
+#define NVIC_ICPR0_SPI0_COM_POS         17
+#define NVIC_ICPR0_SPI0_TX_POS          16
+#define NVIC_ICPR0_SPI0_RX_POS          15
+#define NVIC_ICPR0_WATCHDOG_POS         14
+#define NVIC_ICPR0_GPIO3_POS            13
+#define NVIC_ICPR0_GPIO2_POS            12
+#define NVIC_ICPR0_GPIO1_POS            11
+#define NVIC_ICPR0_GPIO0_POS            10
+#define NVIC_ICPR0_ADC_FIFO_POS         9
+#define NVIC_ICPR0_NFC_POS              8
+#define NVIC_ICPR0_TIMER3_POS           7
+#define NVIC_ICPR0_TIMER2_POS           6
+#define NVIC_ICPR0_TIMER1_POS           5
+#define NVIC_ICPR0_TIMER0_POS           4
+#define NVIC_ICPR0_LSAD_BATMON_POS      3
+#define NVIC_ICPR0_RTC_CLOCK_POS        2
+#define NVIC_ICPR0_RTC_ALARM_POS        1
+#define NVIC_ICPR0_WAKEUP_POS           0
+
+/* NVIC_ICPR0 settings */
+#define NVIC_BLE_COEX_IN_PROCESS_INT_CLRPEND (0x1 << NVIC_ICPR0_BLE_COEX_IN_PROCESS_POS)
+
+#define NVIC_BLE_ERROR_INT_CLRPEND      (0x1 << NVIC_ICPR0_BLE_ERROR_POS)
+
+#define NVIC_BLE_FIFO_INT_CLRPEND       (0x1 << NVIC_ICPR0_BLE_FIFO_POS)
+
+#define NVIC_BLE_HSLOT_INT_CLRPEND      (0x1 << NVIC_ICPR0_BLE_HSLOT_POS)
+
+#define NVIC_BLE_SLP_INT_CLRPEND        (0x1 << NVIC_ICPR0_BLE_SLP_POS)
+
+#define NVIC_BLE_CRYPT_INT_CLRPEND      (0x1 << NVIC_ICPR0_BLE_CRYPT_POS)
+
+#define NVIC_BLE_TIMESTAMP_TGT2_INT_CLRPEND (0x1 << NVIC_ICPR0_BLE_TIMESTAMP_TGT2_POS)
+
+#define NVIC_BLE_TIMESTAMP_TGT1_INT_CLRPEND (0x1 << NVIC_ICPR0_BLE_TIMESTAMP_TGT1_POS)
+
+#define NVIC_BLE_FINETGT_INT_CLRPEND    (0x1 << NVIC_ICPR0_BLE_FINETGT_POS)
+
+#define NVIC_BLE_SW_INT_CLRPEND         (0x1 << NVIC_ICPR0_BLE_SW_POS)
+
+#define NVIC_UART0_ERROR_INT_CLRPEND    (0x1 << NVIC_ICPR0_UART0_ERROR_POS)
+
+#define NVIC_UART0_TX_INT_CLRPEND       (0x1 << NVIC_ICPR0_UART0_TX_POS)
+
+#define NVIC_UART0_RX_INT_CLRPEND       (0x1 << NVIC_ICPR0_UART0_RX_POS)
+
+#define NVIC_I2C0_INT_CLRPEND           (0x1 << NVIC_ICPR0_I2C0_POS)
+
+#define NVIC_SPI0_COM_INT_CLRPEND       (0x1 << NVIC_ICPR0_SPI0_COM_POS)
+
+#define NVIC_SPI0_TX_INT_CLRPEND        (0x1 << NVIC_ICPR0_SPI0_TX_POS)
+
+#define NVIC_SPI0_RX_INT_CLRPEND        (0x1 << NVIC_ICPR0_SPI0_RX_POS)
+
+#define NVIC_WATCHDOG_INT_CLRPEND       (0x1 << NVIC_ICPR0_WATCHDOG_POS)
+
+#define NVIC_GPIO3_INT_CLRPEND          (0x1 << NVIC_ICPR0_GPIO3_POS)
+
+#define NVIC_GPIO2_INT_CLRPEND          (0x1 << NVIC_ICPR0_GPIO2_POS)
+
+#define NVIC_GPIO1_INT_CLRPEND          (0x1 << NVIC_ICPR0_GPIO1_POS)
+
+#define NVIC_GPIO0_INT_CLRPEND          (0x1 << NVIC_ICPR0_GPIO0_POS)
+
+#define NVIC_ADC_FIFO_INT_CLRPEND       (0x1 << NVIC_ICPR0_ADC_FIFO_POS)
+
+#define NVIC_NFC_INT_CLRPEND            (0x1 << NVIC_ICPR0_NFC_POS)
+
+#define NVIC_TIMER3_INT_CLRPEND         (0x1 << NVIC_ICPR0_TIMER3_POS)
+
+#define NVIC_TIMER2_INT_CLRPEND         (0x1 << NVIC_ICPR0_TIMER2_POS)
+
+#define NVIC_TIMER1_INT_CLRPEND         (0x1 << NVIC_ICPR0_TIMER1_POS)
+
+#define NVIC_TIMER0_INT_CLRPEND         (0x1 << NVIC_ICPR0_TIMER0_POS)
+
+#define NVIC_LSAD_BATMON_INT_CLRPEND    (0x1 << NVIC_ICPR0_LSAD_BATMON_POS)
+
+#define NVIC_RTC_CLOCK_INT_CLRPEND      (0x1 << NVIC_ICPR0_RTC_CLOCK_POS)
+
+#define NVIC_RTC_ALARM_INT_CLRPEND      (0x1 << NVIC_ICPR0_RTC_ALARM_POS)
+
+#define NVIC_WAKEUP_INT_CLRPEND         (0x1 << NVIC_ICPR0_WAKEUP_POS)
+
+/* NVIC External Interrupt Clear Pending Register 1 */
+/*   Clear pending status for external interrupts 32-63 */
+#define NVIC_ICPR1_BASE                 0xE000E284
+#define NVIC_ICPR1                      REG32_POINTER(NVIC_ICPR1_BASE)
+
+/* NVIC_ICPR1 bit positions */
+#define NVIC_ICPR1_ASCC_PERIOD_POS      20
+#define NVIC_ICPR1_ASCC_PHASE_POS       19
+#define NVIC_ICPR1_CC312_POS            18
+#define NVIC_ICPR1_DMA3_POS             17
+#define NVIC_ICPR1_DMA2_POS             16
+#define NVIC_ICPR1_DMA1_POS             15
+#define NVIC_ICPR1_DMA0_POS             14
+#define NVIC_ICPR1_FPU_POS              13
+#define NVIC_ICPR1_ACCESS_ERROR_POS     12
+#define NVIC_ICPR1_FLASH1_ECC_POS       11
+#define NVIC_ICPR1_FLASH1_COPY_POS      10
+#define NVIC_ICPR1_FLASH0_ECC_POS       9
+#define NVIC_ICPR1_FLASH0_COPY_POS      8
+#define NVIC_ICPR1_RF_RXFIFO_POS        7
+#define NVIC_ICPR1_RF_TXFIFO_POS        6
+#define NVIC_ICPR1_RF_SYNC_POS          5
+#define NVIC_ICPR1_RF_RECEIVED_POS      4
+#define NVIC_ICPR1_RF_RXSTOP_POS        3
+#define NVIC_ICPR1_RF_TX_POS            2
+#define NVIC_ICPR1_BLE_TOF_POS          1
+#define NVIC_ICPR1_BLE_COEX_RX_TX_POS   0
+
+/* NVIC_ICPR1 settings */
+#define NVIC_ASCC_PERIOD_INT_CLRPEND    (0x1 << NVIC_ICPR1_ASCC_PERIOD_POS)
+
+#define NVIC_ASCC_PHASE_INT_CLRPEND     (0x1 << NVIC_ICPR1_ASCC_PHASE_POS)
+
+#define NVIC_CC312_INT_CLRPEND          (0x1 << NVIC_ICPR1_CC312_POS)
+
+#define NVIC_DMA3_INT_CLRPEND           (0x1 << NVIC_ICPR1_DMA3_POS)
+
+#define NVIC_DMA2_INT_CLRPEND           (0x1 << NVIC_ICPR1_DMA2_POS)
+
+#define NVIC_DMA1_INT_CLRPEND           (0x1 << NVIC_ICPR1_DMA1_POS)
+
+#define NVIC_DMA0_INT_CLRPEND           (0x1 << NVIC_ICPR1_DMA0_POS)
+
+#define NVIC_FPU_INT_CLRPEND            (0x1 << NVIC_ICPR1_FPU_POS)
+
+#define NVIC_ACCESS_ERROR_INT_CLRPEND   (0x1 << NVIC_ICPR1_ACCESS_ERROR_POS)
+
+#define NVIC_FLASH1_ECC_INT_CLRPEND     (0x1 << NVIC_ICPR1_FLASH1_ECC_POS)
+
+#define NVIC_FLASH1_COPY_INT_CLRPEND    (0x1 << NVIC_ICPR1_FLASH1_COPY_POS)
+
+#define NVIC_FLASH0_ECC_INT_CLRPEND     (0x1 << NVIC_ICPR1_FLASH0_ECC_POS)
+
+#define NVIC_FLASH0_COPY_INT_CLRPEND    (0x1 << NVIC_ICPR1_FLASH0_COPY_POS)
+
+#define NVIC_RF_RXFIFO_INT_CLRPEND      (0x1 << NVIC_ICPR1_RF_RXFIFO_POS)
+
+#define NVIC_RF_TXFIFO_INT_CLRPEND      (0x1 << NVIC_ICPR1_RF_TXFIFO_POS)
+
+#define NVIC_RF_SYNC_INT_CLRPEND        (0x1 << NVIC_ICPR1_RF_SYNC_POS)
+
+#define NVIC_RF_RECEIVED_INT_CLRPEND    (0x1 << NVIC_ICPR1_RF_RECEIVED_POS)
+
+#define NVIC_RF_RXSTOP_INT_CLRPEND      (0x1 << NVIC_ICPR1_RF_RXSTOP_POS)
+
+#define NVIC_RF_TX_INT_CLRPEND          (0x1 << NVIC_ICPR1_RF_TX_POS)
+
+#define NVIC_BLE_TOF_INT_CLRPEND        (0x1 << NVIC_ICPR1_BLE_TOF_POS)
+
+#define NVIC_BLE_COEX_RX_TX_INT_CLRPEND (0x1 << NVIC_ICPR1_BLE_COEX_RX_TX_POS)
+
+/* NVIC External Interrupt Active Register 0 */
+/*   Active status for external interrupts 0-31 */
+#define NVIC_IABR0_BASE                 0xE000E300
+#define NVIC_IABR0                      READONLY_REG32_POINTER(NVIC_IABR0_BASE)
+
+/* NVIC_IABR0 bit positions */
+#define NVIC_IABR0_BLE_COEX_IN_PROCESS_POS 31
+#define NVIC_IABR0_BLE_ERROR_POS        30
+#define NVIC_IABR0_BLE_FIFO_POS         29
+#define NVIC_IABR0_BLE_HSLOT_POS        28
+#define NVIC_IABR0_BLE_SLP_POS          27
+#define NVIC_IABR0_BLE_CRYPT_POS        26
+#define NVIC_IABR0_BLE_TIMESTAMP_TGT2_POS 25
+#define NVIC_IABR0_BLE_TIMESTAMP_TGT1_POS 24
+#define NVIC_IABR0_BLE_FINETGT_POS      23
+#define NVIC_IABR0_BLE_SW_POS           22
+#define NVIC_IABR0_UART0_ERROR_POS      21
+#define NVIC_IABR0_UART0_TX_POS         20
+#define NVIC_IABR0_UART0_RX_POS         19
+#define NVIC_IABR0_I2C0_POS             18
+#define NVIC_IABR0_SPI0_COM_POS         17
+#define NVIC_IABR0_SPI0_TX_POS          16
+#define NVIC_IABR0_SPI0_RX_POS          15
+#define NVIC_IABR0_WATCHDOG_POS         14
+#define NVIC_IABR0_GPIO3_POS            13
+#define NVIC_IABR0_GPIO2_POS            12
+#define NVIC_IABR0_GPIO1_POS            11
+#define NVIC_IABR0_GPIO0_POS            10
+#define NVIC_IABR0_ADC_FIFO_POS         9
+#define NVIC_IABR0_NFC_POS              8
+#define NVIC_IABR0_TIMER3_POS           7
+#define NVIC_IABR0_TIMER2_POS           6
+#define NVIC_IABR0_TIMER1_POS           5
+#define NVIC_IABR0_TIMER0_POS           4
+#define NVIC_IABR0_LSAD_BATMON_POS      3
+#define NVIC_IABR0_RTC_CLOCK_POS        2
+#define NVIC_IABR0_RTC_ALARM_POS        1
+#define NVIC_IABR0_WAKEUP_POS           0
+
+/* NVIC_IABR0 settings */
+#define NVIC_BLE_COEX_IN_PROCESS_INT_ACTIVE (0x1 << NVIC_IABR0_BLE_COEX_IN_PROCESS_POS)
+
+#define NVIC_BLE_ERROR_INT_ACTIVE       (0x1 << NVIC_IABR0_BLE_ERROR_POS)
+
+#define NVIC_BLE_FIFO_INT_ACTIVE        (0x1 << NVIC_IABR0_BLE_FIFO_POS)
+
+#define NVIC_BLE_HSLOT_INT_ACTIVE       (0x1 << NVIC_IABR0_BLE_HSLOT_POS)
+
+#define NVIC_BLE_SLP_INT_ACTIVE         (0x1 << NVIC_IABR0_BLE_SLP_POS)
+
+#define NVIC_BLE_CRYPT_INT_ACTIVE       (0x1 << NVIC_IABR0_BLE_CRYPT_POS)
+
+#define NVIC_BLE_TIMESTAMP_TGT2_INT_ACTIVE (0x1 << NVIC_IABR0_BLE_TIMESTAMP_TGT2_POS)
+
+#define NVIC_BLE_TIMESTAMP_TGT1_INT_ACTIVE (0x1 << NVIC_IABR0_BLE_TIMESTAMP_TGT1_POS)
+
+#define NVIC_BLE_FINETGT_INT_ACTIVE     (0x1 << NVIC_IABR0_BLE_FINETGT_POS)
+
+#define NVIC_BLE_SW_INT_ACTIVE          (0x1 << NVIC_IABR0_BLE_SW_POS)
+
+#define NVIC_UART0_ERROR_INT_ACTIVE     (0x1 << NVIC_IABR0_UART0_ERROR_POS)
+
+#define NVIC_UART0_TX_INT_ACTIVE        (0x1 << NVIC_IABR0_UART0_TX_POS)
+
+#define NVIC_UART0_RX_INT_ACTIVE        (0x1 << NVIC_IABR0_UART0_RX_POS)
+
+#define NVIC_I2C0_INT_ACTIVE            (0x1 << NVIC_IABR0_I2C0_POS)
+
+#define NVIC_SPI0_COM_INT_ACTIVE        (0x1 << NVIC_IABR0_SPI0_COM_POS)
+
+#define NVIC_SPI0_TX_INT_ACTIVE         (0x1 << NVIC_IABR0_SPI0_TX_POS)
+
+#define NVIC_SPI0_RX_INT_ACTIVE         (0x1 << NVIC_IABR0_SPI0_RX_POS)
+
+#define NVIC_WATCHDOG_INT_ACTIVE        (0x1 << NVIC_IABR0_WATCHDOG_POS)
+
+#define NVIC_GPIO3_INT_ACTIVE           (0x1 << NVIC_IABR0_GPIO3_POS)
+
+#define NVIC_GPIO2_INT_ACTIVE           (0x1 << NVIC_IABR0_GPIO2_POS)
+
+#define NVIC_GPIO1_INT_ACTIVE           (0x1 << NVIC_IABR0_GPIO1_POS)
+
+#define NVIC_GPIO0_INT_ACTIVE           (0x1 << NVIC_IABR0_GPIO0_POS)
+
+#define NVIC_ADC_FIFO_INT_ACTIVE        (0x1 << NVIC_IABR0_ADC_FIFO_POS)
+
+#define NVIC_NFC_INT_ACTIVE             (0x1 << NVIC_IABR0_NFC_POS)
+
+#define NVIC_TIMER3_INT_ACTIVE          (0x1 << NVIC_IABR0_TIMER3_POS)
+
+#define NVIC_TIMER2_INT_ACTIVE          (0x1 << NVIC_IABR0_TIMER2_POS)
+
+#define NVIC_TIMER1_INT_ACTIVE          (0x1 << NVIC_IABR0_TIMER1_POS)
+
+#define NVIC_TIMER0_INT_ACTIVE          (0x1 << NVIC_IABR0_TIMER0_POS)
+
+#define NVIC_LSAD_BATMON_INT_ACTIVE     (0x1 << NVIC_IABR0_LSAD_BATMON_POS)
+
+#define NVIC_RTC_CLOCK_INT_ACTIVE       (0x1 << NVIC_IABR0_RTC_CLOCK_POS)
+
+#define NVIC_RTC_ALARM_INT_ACTIVE       (0x1 << NVIC_IABR0_RTC_ALARM_POS)
+
+#define NVIC_WAKEUP_INT_ACTIVE          (0x1 << NVIC_IABR0_WAKEUP_POS)
+
+/* NVIC External Interrupt Active Register 1 */
+/*   Active status for external interrupts 32-63 */
+#define NVIC_IABR1_BASE                 0xE000E304
+#define NVIC_IABR1                      READONLY_REG32_POINTER(NVIC_IABR1_BASE)
+
+/* NVIC_IABR1 bit positions */
+#define NVIC_IABR1_ASCC_PERIOD_POS      20
+#define NVIC_IABR1_ASCC_PHASE_POS       19
+#define NVIC_IABR1_CC312_POS            18
+#define NVIC_IABR1_DMA3_POS             17
+#define NVIC_IABR1_DMA2_POS             16
+#define NVIC_IABR1_DMA1_POS             15
+#define NVIC_IABR1_DMA0_POS             14
+#define NVIC_IABR1_FPU_POS              13
+#define NVIC_IABR1_ACCESS_ERROR_POS     12
+#define NVIC_IABR1_FLASH1_ECC_POS       11
+#define NVIC_IABR1_FLASH1_COPY_POS      10
+#define NVIC_IABR1_FLASH0_ECC_POS       9
+#define NVIC_IABR1_FLASH0_COPY_POS      8
+#define NVIC_IABR1_RF_RXFIFO_POS        7
+#define NVIC_IABR1_RF_TXFIFO_POS        6
+#define NVIC_IABR1_RF_SYNC_POS          5
+#define NVIC_IABR1_RF_RECEIVED_POS      4
+#define NVIC_IABR1_RF_RXSTOP_POS        3
+#define NVIC_IABR1_RF_TX_POS            2
+#define NVIC_IABR1_BLE_TOF_POS          1
+#define NVIC_IABR1_BLE_COEX_RX_TX_POS   0
+
+/* NVIC_IABR1 settings */
+#define NVIC_ASCC_PERIOD_INT_ACTIVE     (0x1 << NVIC_IABR1_ASCC_PERIOD_POS)
+
+#define NVIC_ASCC_PHASE_INT_ACTIVE      (0x1 << NVIC_IABR1_ASCC_PHASE_POS)
+
+#define NVIC_CC312_INT_ACTIVE           (0x1 << NVIC_IABR1_CC312_POS)
+
+#define NVIC_DMA3_INT_ACTIVE            (0x1 << NVIC_IABR1_DMA3_POS)
+
+#define NVIC_DMA2_INT_ACTIVE            (0x1 << NVIC_IABR1_DMA2_POS)
+
+#define NVIC_DMA1_INT_ACTIVE            (0x1 << NVIC_IABR1_DMA1_POS)
+
+#define NVIC_DMA0_INT_ACTIVE            (0x1 << NVIC_IABR1_DMA0_POS)
+
+#define NVIC_FPU_INT_ACTIVE             (0x1 << NVIC_IABR1_FPU_POS)
+
+#define NVIC_ACCESS_ERROR_INT_ACTIVE    (0x1 << NVIC_IABR1_ACCESS_ERROR_POS)
+
+#define NVIC_FLASH1_ECC_INT_ACTIVE      (0x1 << NVIC_IABR1_FLASH1_ECC_POS)
+
+#define NVIC_FLASH1_COPY_INT_ACTIVE     (0x1 << NVIC_IABR1_FLASH1_COPY_POS)
+
+#define NVIC_FLASH0_ECC_INT_ACTIVE      (0x1 << NVIC_IABR1_FLASH0_ECC_POS)
+
+#define NVIC_FLASH0_COPY_INT_ACTIVE     (0x1 << NVIC_IABR1_FLASH0_COPY_POS)
+
+#define NVIC_RF_RXFIFO_INT_ACTIVE       (0x1 << NVIC_IABR1_RF_RXFIFO_POS)
+
+#define NVIC_RF_TXFIFO_INT_ACTIVE       (0x1 << NVIC_IABR1_RF_TXFIFO_POS)
+
+#define NVIC_RF_SYNC_INT_ACTIVE         (0x1 << NVIC_IABR1_RF_SYNC_POS)
+
+#define NVIC_RF_RECEIVED_INT_ACTIVE     (0x1 << NVIC_IABR1_RF_RECEIVED_POS)
+
+#define NVIC_RF_RXSTOP_INT_ACTIVE       (0x1 << NVIC_IABR1_RF_RXSTOP_POS)
+
+#define NVIC_RF_TX_INT_ACTIVE           (0x1 << NVIC_IABR1_RF_TX_POS)
+
+#define NVIC_BLE_TOF_INT_ACTIVE         (0x1 << NVIC_IABR1_BLE_TOF_POS)
+
+#define NVIC_BLE_COEX_RX_TX_INT_ACTIVE  (0x1 << NVIC_IABR1_BLE_COEX_RX_TX_POS)
+
+/* NVIC External Interrupt Non-secure Register 0 */
+/*   Non-secure attribute  for external interrupts 0-31 */
+#define NVIC_ITNS0_BASE                 0xE000E380
+#define NVIC_ITNS0                      REG32_POINTER(NVIC_ITNS0_BASE)
+
+/* NVIC_ITNS0 bit positions */
+#define NVIC_ITNS0_BLE_COEX_IN_PROCESS_POS 31
+#define NVIC_ITNS0_BLE_ERROR_POS        30
+#define NVIC_ITNS0_BLE_FIFO_POS         29
+#define NVIC_ITNS0_BLE_HSLOT_POS        28
+#define NVIC_ITNS0_BLE_SLP_POS          27
+#define NVIC_ITNS0_BLE_CRYPT_POS        26
+#define NVIC_ITNS0_BLE_TIMESTAMP_TGT2_POS 25
+#define NVIC_ITNS0_BLE_TIMESTAMP_TGT1_POS 24
+#define NVIC_ITNS0_BLE_FINETGT_POS      23
+#define NVIC_ITNS0_BLE_SW_POS           22
+#define NVIC_ITNS0_UART0_ERROR_POS      21
+#define NVIC_ITNS0_UART0_TX_POS         20
+#define NVIC_ITNS0_UART0_RX_POS         19
+#define NVIC_ITNS0_I2C0_POS             18
+#define NVIC_ITNS0_SPI0_COM_POS         17
+#define NVIC_ITNS0_SPI0_TX_POS          16
+#define NVIC_ITNS0_SPI0_RX_POS          15
+#define NVIC_ITNS0_WATCHDOG_POS         14
+#define NVIC_ITNS0_GPIO3_POS            13
+#define NVIC_ITNS0_GPIO2_POS            12
+#define NVIC_ITNS0_GPIO1_POS            11
+#define NVIC_ITNS0_GPIO0_POS            10
+#define NVIC_ITNS0_ADC_FIFO_POS         9
+#define NVIC_ITNS0_NFC_POS              8
+#define NVIC_ITNS0_TIMER3_POS           7
+#define NVIC_ITNS0_TIMER2_POS           6
+#define NVIC_ITNS0_TIMER1_POS           5
+#define NVIC_ITNS0_TIMER0_POS           4
+#define NVIC_ITNS0_LSAD_BATMON_POS      3
+#define NVIC_ITNS0_RTC_CLOCK_POS        2
+#define NVIC_ITNS0_RTC_ALARM_POS        1
+#define NVIC_ITNS0_WAKEUP_POS           0
+
+/* NVIC_ITNS0 settings */
+#define NVIC_BLE_COEX_IN_PROCESS_INT_NON_SECURE (0x1 << NVIC_ITNS0_BLE_COEX_IN_PROCESS_POS)
+
+#define NVIC_BLE_ERROR_INT_NON_SECURE   (0x1 << NVIC_ITNS0_BLE_ERROR_POS)
+
+#define NVIC_BLE_FIFO_INT_NON_SECURE    (0x1 << NVIC_ITNS0_BLE_FIFO_POS)
+
+#define NVIC_BLE_HSLOT_INT_NON_SECURE   (0x1 << NVIC_ITNS0_BLE_HSLOT_POS)
+
+#define NVIC_BLE_SLP_INT_NON_SECURE     (0x1 << NVIC_ITNS0_BLE_SLP_POS)
+
+#define NVIC_BLE_CRYPT_INT_NON_SECURE   (0x1 << NVIC_ITNS0_BLE_CRYPT_POS)
+
+#define NVIC_BLE_TIMESTAMP_TGT2_INT_NON_SECURE (0x1 << NVIC_ITNS0_BLE_TIMESTAMP_TGT2_POS)
+
+#define NVIC_BLE_TIMESTAMP_TGT1_INT_NON_SECURE (0x1 << NVIC_ITNS0_BLE_TIMESTAMP_TGT1_POS)
+
+#define NVIC_BLE_FINETGT_INT_NON_SECURE (0x1 << NVIC_ITNS0_BLE_FINETGT_POS)
+
+#define NVIC_BLE_SW_INT_NON_SECURE      (0x1 << NVIC_ITNS0_BLE_SW_POS)
+
+#define NVIC_UART0_ERROR_INT_NON_SECURE (0x1 << NVIC_ITNS0_UART0_ERROR_POS)
+
+#define NVIC_UART0_TX_INT_NON_SECURE    (0x1 << NVIC_ITNS0_UART0_TX_POS)
+
+#define NVIC_UART0_RX_INT_NON_SECURE    (0x1 << NVIC_ITNS0_UART0_RX_POS)
+
+#define NVIC_I2C0_INT_NON_SECURE        (0x1 << NVIC_ITNS0_I2C0_POS)
+
+#define NVIC_SPI0_COM_INT_NON_SECURE    (0x1 << NVIC_ITNS0_SPI0_COM_POS)
+
+#define NVIC_SPI0_TX_INT_NON_SECURE     (0x1 << NVIC_ITNS0_SPI0_TX_POS)
+
+#define NVIC_SPI0_RX_INT_NON_SECURE     (0x1 << NVIC_ITNS0_SPI0_RX_POS)
+
+#define NVIC_WATCHDOG_INT_NON_SECURE    (0x1 << NVIC_ITNS0_WATCHDOG_POS)
+
+#define NVIC_GPIO3_INT_NON_SECURE       (0x1 << NVIC_ITNS0_GPIO3_POS)
+
+#define NVIC_GPIO2_INT_NON_SECURE       (0x1 << NVIC_ITNS0_GPIO2_POS)
+
+#define NVIC_GPIO1_INT_NON_SECURE       (0x1 << NVIC_ITNS0_GPIO1_POS)
+
+#define NVIC_GPIO0_INT_NON_SECURE       (0x1 << NVIC_ITNS0_GPIO0_POS)
+
+#define NVIC_ADC_FIFO_INT_NON_SECURE    (0x1 << NVIC_ITNS0_ADC_FIFO_POS)
+
+#define NVIC_NFC_INT_NON_SECURE         (0x1 << NVIC_ITNS0_NFC_POS)
+
+#define NVIC_TIMER3_INT_NON_SECURE      (0x1 << NVIC_ITNS0_TIMER3_POS)
+
+#define NVIC_TIMER2_INT_NON_SECURE      (0x1 << NVIC_ITNS0_TIMER2_POS)
+
+#define NVIC_TIMER1_INT_NON_SECURE      (0x1 << NVIC_ITNS0_TIMER1_POS)
+
+#define NVIC_TIMER0_INT_NON_SECURE      (0x1 << NVIC_ITNS0_TIMER0_POS)
+
+#define NVIC_LSAD_BATMON_INT_NON_SECURE (0x1 << NVIC_ITNS0_LSAD_BATMON_POS)
+
+#define NVIC_RTC_CLOCK_INT_NON_SECURE   (0x1 << NVIC_ITNS0_RTC_CLOCK_POS)
+
+#define NVIC_RTC_ALARM_INT_NON_SECURE   (0x1 << NVIC_ITNS0_RTC_ALARM_POS)
+
+#define NVIC_WAKEUP_INT_NON_SECURE      (0x1 << NVIC_ITNS0_WAKEUP_POS)
+
+/* NVIC External Interrupt Non-secure Register 1 */
+/*   Non-secure attribute for external interrupts 32-63 */
+#define NVIC_ITNS1_BASE                 0xE000E384
+#define NVIC_ITNS1                      REG32_POINTER(NVIC_ITNS1_BASE)
+
+/* NVIC_ITNS1 bit positions */
+#define NVIC_ITNS1_ASCC_PERIOD_POS      20
+#define NVIC_ITNS1_ASCC_PHASE_POS       19
+#define NVIC_ITNS1_CC312_POS            18
+#define NVIC_ITNS1_DMA3_POS             17
+#define NVIC_ITNS1_DMA2_POS             16
+#define NVIC_ITNS1_DMA1_POS             15
+#define NVIC_ITNS1_DMA0_POS             14
+#define NVIC_ITNS1_FPU_POS              13
+#define NVIC_ITNS1_ACCESS_ERROR_POS     12
+#define NVIC_ITNS1_FLASH1_ECC_POS       11
+#define NVIC_ITNS1_FLASH1_COPY_POS      10
+#define NVIC_ITNS1_FLASH0_ECC_POS       9
+#define NVIC_ITNS1_FLASH0_COPY_POS      8
+#define NVIC_ITNS1_RF_RXFIFO_POS        7
+#define NVIC_ITNS1_RF_TXFIFO_POS        6
+#define NVIC_ITNS1_RF_SYNC_POS          5
+#define NVIC_ITNS1_RF_RECEIVED_POS      4
+#define NVIC_ITNS1_RF_RXSTOP_POS        3
+#define NVIC_ITNS1_RF_TX_POS            2
+#define NVIC_ITNS1_BLE_TOF_POS          1
+#define NVIC_ITNS1_BLE_COEX_RX_TX_POS   0
+
+/* NVIC_ITNS1 settings */
+#define NVIC_ASCC_PERIOD_INT_NON_SECURE (0x1 << NVIC_ITNS1_ASCC_PERIOD_POS)
+
+#define NVIC_ASCC_PHASE_INT_NON_SECURE  (0x1 << NVIC_ITNS1_ASCC_PHASE_POS)
+
+#define NVIC_CC312_INT_NON_SECURE       (0x1 << NVIC_ITNS1_CC312_POS)
+
+#define NVIC_DMA3_INT_NON_SECURE        (0x1 << NVIC_ITNS1_DMA3_POS)
+
+#define NVIC_DMA2_INT_NON_SECURE        (0x1 << NVIC_ITNS1_DMA2_POS)
+
+#define NVIC_DMA1_INT_NON_SECURE        (0x1 << NVIC_ITNS1_DMA1_POS)
+
+#define NVIC_DMA0_INT_NON_SECURE        (0x1 << NVIC_ITNS1_DMA0_POS)
+
+#define NVIC_FPU_INT_NON_SECURE         (0x1 << NVIC_ITNS1_FPU_POS)
+
+#define NVIC_ACCESS_ERROR_INT_NON_SECURE (0x1 << NVIC_ITNS1_ACCESS_ERROR_POS)
+
+#define NVIC_FLASH1_ECC_INT_NON_SECURE  (0x1 << NVIC_ITNS1_FLASH1_ECC_POS)
+
+#define NVIC_FLASH1_COPY_INT_NON_SECURE (0x1 << NVIC_ITNS1_FLASH1_COPY_POS)
+
+#define NVIC_FLASH0_ECC_INT_NON_SECURE  (0x1 << NVIC_ITNS1_FLASH0_ECC_POS)
+
+#define NVIC_FLASH0_COPY_INT_NON_SECURE (0x1 << NVIC_ITNS1_FLASH0_COPY_POS)
+
+#define NVIC_RF_RXFIFO_INT_NON_SECURE   (0x1 << NVIC_ITNS1_RF_RXFIFO_POS)
+
+#define NVIC_RF_TXFIFO_INT_NON_SECURE   (0x1 << NVIC_ITNS1_RF_TXFIFO_POS)
+
+#define NVIC_RF_SYNC_INT_NON_SECURE     (0x1 << NVIC_ITNS1_RF_SYNC_POS)
+
+#define NVIC_RF_RECEIVED_INT_NON_SECURE (0x1 << NVIC_ITNS1_RF_RECEIVED_POS)
+
+#define NVIC_RF_RXSTOP_INT_NON_SECURE   (0x1 << NVIC_ITNS1_RF_RXSTOP_POS)
+
+#define NVIC_RF_TX_INT_NON_SECURE       (0x1 << NVIC_ITNS1_RF_TX_POS)
+
+#define NVIC_BLE_TOF_INT_NON_SECURE     (0x1 << NVIC_ITNS1_BLE_TOF_POS)
+
+#define NVIC_BLE_COEX_RX_TX_INT_NON_SECURE (0x1 << NVIC_ITNS1_BLE_COEX_RX_TX_POS)
+
+/* NVIC External Interrupt Priority Register 0 */
+/*   Priority level for external interrupts 0-3 */
+#define NVIC_IPR0_BASE                  0xE000E400
+#define NVIC_IPR0                       REG32_POINTER(NVIC_IPR0_BASE)
+
+/* NVIC_IPR0 bit positions */
+#define NVIC_IPR0_LSAD_BATMON_POS       29
+#define NVIC_IPR0_LSAD_BATMON_MASK      (0x7 << NVIC_IPR0_LSAD_BATMON_POS)
+#define NVIC_IPR0_RTC_CLOCK_POS         21
+#define NVIC_IPR0_RTC_CLOCK_MASK        (0x7 << NVIC_IPR0_RTC_CLOCK_POS)
+#define NVIC_IPR0_RTC_ALARM_POS         13
+#define NVIC_IPR0_RTC_ALARM_MASK        (0x7 << NVIC_IPR0_RTC_ALARM_POS)
+#define NVIC_IPR0_WAKEUP_POS            5
+#define NVIC_IPR0_WAKEUP_MASK           (0x7 << NVIC_IPR0_WAKEUP_POS)
+
+/* NVIC External Interrupt Priority Register 1 */
+/*   Priority level for external interrupts 4-7 */
+#define NVIC_IPR1_BASE                  0xE000E404
+#define NVIC_IPR1                       REG32_POINTER(NVIC_IPR1_BASE)
+
+/* NVIC_IPR1 bit positions */
+#define NVIC_IPR1_TIMER3_POS            29
+#define NVIC_IPR1_TIMER3_MASK           (0x7 << NVIC_IPR1_TIMER3_POS)
+#define NVIC_IPR1_TIMER2_POS            21
+#define NVIC_IPR1_TIMER2_MASK           (0x7 << NVIC_IPR1_TIMER2_POS)
+#define NVIC_IPR1_TIMER1_POS            13
+#define NVIC_IPR1_TIMER1_MASK           (0x7 << NVIC_IPR1_TIMER1_POS)
+#define NVIC_IPR1_TIMER0_POS            5
+#define NVIC_IPR1_TIMER0_MASK           (0x7 << NVIC_IPR1_TIMER0_POS)
+
+/* NVIC External Interrupt Priority Register 2 */
+/*   Priority level for external interrupts 8-11 */
+#define NVIC_IPR2_BASE                  0xE000E408
+#define NVIC_IPR2                       REG32_POINTER(NVIC_IPR2_BASE)
+
+/* NVIC_IPR2 bit positions */
+#define NVIC_IPR2_GPIO1_POS             29
+#define NVIC_IPR2_GPIO1_MASK            (0x7 << NVIC_IPR2_GPIO1_POS)
+#define NVIC_IPR2_GPIO0_POS             21
+#define NVIC_IPR2_GPIO0_MASK            (0x7 << NVIC_IPR2_GPIO0_POS)
+#define NVIC_IPR2_ADC_FIFO_POS          13
+#define NVIC_IPR2_ADC_FIFO_MASK         (0x7 << NVIC_IPR2_ADC_FIFO_POS)
+#define NVIC_IPR2_NFC_POS               5
+#define NVIC_IPR2_NFC_MASK              (0x7 << NVIC_IPR2_NFC_POS)
+
+/* NVIC External Interrupt Priority Register 3 */
+/*   Priority level for external interrupts 12-15 */
+#define NVIC_IPR3_BASE                  0xE000E40C
+#define NVIC_IPR3                       REG32_POINTER(NVIC_IPR3_BASE)
+
+/* NVIC_IPR3 bit positions */
+#define NVIC_IPR3_SPI0_RX_POS           29
+#define NVIC_IPR3_SPI0_RX_MASK          (0x7 << NVIC_IPR3_SPI0_RX_POS)
+#define NVIC_IPR3_WATCHDOG_POS          21
+#define NVIC_IPR3_WATCHDOG_MASK         (0x7 << NVIC_IPR3_WATCHDOG_POS)
+#define NVIC_IPR3_GPIO3_POS             13
+#define NVIC_IPR3_GPIO3_MASK            (0x7 << NVIC_IPR3_GPIO3_POS)
+#define NVIC_IPR3_GPIO2_POS             5
+#define NVIC_IPR3_GPIO2_MASK            (0x7 << NVIC_IPR3_GPIO2_POS)
+
+/* NVIC External Interrupt Priority Register 4 */
+/*   Priority level for external interrupts 16-19 */
+#define NVIC_IPR4_BASE                  0xE000E410
+#define NVIC_IPR4                       REG32_POINTER(NVIC_IPR4_BASE)
+
+/* NVIC_IPR4 bit positions */
+#define NVIC_IPR4_UART0_RX_POS          29
+#define NVIC_IPR4_UART0_RX_MASK         (0x7 << NVIC_IPR4_UART0_RX_POS)
+#define NVIC_IPR4_I2C0_POS              21
+#define NVIC_IPR4_I2C0_MASK             (0x7 << NVIC_IPR4_I2C0_POS)
+#define NVIC_IPR4_SPI0_COM_POS          13
+#define NVIC_IPR4_SPI0_COM_MASK         (0x7 << NVIC_IPR4_SPI0_COM_POS)
+#define NVIC_IPR4_SPI0_TX_POS           5
+#define NVIC_IPR4_SPI0_TX_MASK          (0x7 << NVIC_IPR4_SPI0_TX_POS)
+
+/* NVIC External Interrupt Priority Register 5 */
+/*   Priority level for external interrupts 20-23 */
+#define NVIC_IPR5_BASE                  0xE000E414
+#define NVIC_IPR5                       REG32_POINTER(NVIC_IPR5_BASE)
+
+/* NVIC_IPR5 bit positions */
+#define NVIC_IPR5_BLE_FINETGT_POS       29
+#define NVIC_IPR5_BLE_FINETGT_MASK      (0x7 << NVIC_IPR5_BLE_FINETGT_POS)
+#define NVIC_IPR5_BLE_SW_POS            21
+#define NVIC_IPR5_BLE_SW_MASK           (0x7 << NVIC_IPR5_BLE_SW_POS)
+#define NVIC_IPR5_UART0_ERROR_POS       13
+#define NVIC_IPR5_UART0_ERROR_MASK      (0x7 << NVIC_IPR5_UART0_ERROR_POS)
+#define NVIC_IPR5_UART0_TX_POS          5
+#define NVIC_IPR5_UART0_TX_MASK         (0x7 << NVIC_IPR5_UART0_TX_POS)
+
+/* NVIC External Interrupt Priority Register 6 */
+/*   Priority level for external interrupts 24-27 */
+#define NVIC_IPR6_BASE                  0xE000E418
+#define NVIC_IPR6                       REG32_POINTER(NVIC_IPR6_BASE)
+
+/* NVIC_IPR6 bit positions */
+#define NVIC_IPR6_BLE_SLP_POS           29
+#define NVIC_IPR6_BLE_SLP_MASK          (0x7 << NVIC_IPR6_BLE_SLP_POS)
+#define NVIC_IPR6_BLE_CRYPT_POS         21
+#define NVIC_IPR6_BLE_CRYPT_MASK        (0x7 << NVIC_IPR6_BLE_CRYPT_POS)
+#define NVIC_IPR6_BLE_TIMESTAMP_TGT2_POS 13
+#define NVIC_IPR6_BLE_TIMESTAMP_TGT2_MASK (0x7 << NVIC_IPR6_BLE_TIMESTAMP_TGT2_POS)
+#define NVIC_IPR6_BLE_TIMESTAMP_TGT1_POS 5
+#define NVIC_IPR6_BLE_TIMESTAMP_TGT1_MASK (0x7 << NVIC_IPR6_BLE_TIMESTAMP_TGT1_POS)
+
+/* NVIC External Interrupt Priority Register 7 */
+/*   Priority level for external interrupts 28-31 */
+#define NVIC_IPR7_BASE                  0xE000E41C
+#define NVIC_IPR7                       REG32_POINTER(NVIC_IPR7_BASE)
+
+/* NVIC_IPR7 bit positions */
+#define NVIC_IPR7_BLE_COEX_IN_PROCESS_POS 29
+#define NVIC_IPR7_BLE_COEX_IN_PROCESS_MASK (0x7 << NVIC_IPR7_BLE_COEX_IN_PROCESS_POS)
+#define NVIC_IPR7_BLE_ERROR_POS         21
+#define NVIC_IPR7_BLE_ERROR_MASK        (0x7 << NVIC_IPR7_BLE_ERROR_POS)
+#define NVIC_IPR7_BLE_FIFO_POS          13
+#define NVIC_IPR7_BLE_FIFO_MASK         (0x7 << NVIC_IPR7_BLE_FIFO_POS)
+#define NVIC_IPR7_BLE_HSLOT_POS         5
+#define NVIC_IPR7_BLE_HSLOT_MASK        (0x7 << NVIC_IPR7_BLE_HSLOT_POS)
+
+/* NVIC External Interrupt Priority Register 8 */
+/*   Priority level for external interrupts 32-35 */
+#define NVIC_IPR8_BASE                  0xE000E420
+#define NVIC_IPR8                       REG32_POINTER(NVIC_IPR8_BASE)
+
+/* NVIC_IPR8 bit positions */
+#define NVIC_IPR8_RF_RXSTOP_POS         29
+#define NVIC_IPR8_RF_RXSTOP_MASK        (0x7 << NVIC_IPR8_RF_RXSTOP_POS)
+#define NVIC_IPR8_RF_TX_POS             21
+#define NVIC_IPR8_RF_TX_MASK            (0x7 << NVIC_IPR8_RF_TX_POS)
+#define NVIC_IPR8_BLE_TOF_POS           13
+#define NVIC_IPR8_BLE_TOF_MASK          (0x7 << NVIC_IPR8_BLE_TOF_POS)
+#define NVIC_IPR8_BLE_COEX_RX_TX_POS    5
+#define NVIC_IPR8_BLE_COEX_RX_TX_MASK   (0x7 << NVIC_IPR8_BLE_COEX_RX_TX_POS)
+
+/* NVIC External Interrupt Priority Register 9 */
+/*   Priority level for external interrupts 36-39 */
+#define NVIC_IPR9_BASE                  0xE000E424
+#define NVIC_IPR9                       REG32_POINTER(NVIC_IPR9_BASE)
+
+/* NVIC_IPR9 bit positions */
+#define NVIC_IPR9_RF_RXFIFO_POS         29
+#define NVIC_IPR9_RF_RXFIFO_MASK        (0x7 << NVIC_IPR9_RF_RXFIFO_POS)
+#define NVIC_IPR9_RF_TXFIFO_POS         21
+#define NVIC_IPR9_RF_TXFIFO_MASK        (0x7 << NVIC_IPR9_RF_TXFIFO_POS)
+#define NVIC_IPR9_RF_SYNC_POS           13
+#define NVIC_IPR9_RF_SYNC_MASK          (0x7 << NVIC_IPR9_RF_SYNC_POS)
+#define NVIC_IPR9_RF_RECEIVED_POS       5
+#define NVIC_IPR9_RF_RECEIVED_MASK      (0x7 << NVIC_IPR9_RF_RECEIVED_POS)
+
+/* NVIC External Interrupt Priority Register 10 */
+/*   Priority level for external interrupts 40-43 */
+#define NVIC_IPR10_BASE                 0xE000E428
+#define NVIC_IPR10                      REG32_POINTER(NVIC_IPR10_BASE)
+
+/* NVIC_IPR10 bit positions */
+#define NVIC_IPR10_FLASH1_ECC_POS       29
+#define NVIC_IPR10_FLASH1_ECC_MASK      (0x7 << NVIC_IPR10_FLASH1_ECC_POS)
+#define NVIC_IPR10_FLASH1_COPY_POS      21
+#define NVIC_IPR10_FLASH1_COPY_MASK     (0x7 << NVIC_IPR10_FLASH1_COPY_POS)
+#define NVIC_IPR10_FLASH0_ECC_POS       13
+#define NVIC_IPR10_FLASH0_ECC_MASK      (0x7 << NVIC_IPR10_FLASH0_ECC_POS)
+#define NVIC_IPR10_FLASH0_COPY_POS      5
+#define NVIC_IPR10_FLASH0_COPY_MASK     (0x7 << NVIC_IPR10_FLASH0_COPY_POS)
+
+/* NVIC External Interrupt Priority Register 11 */
+/*   Priority level for external interrupts 44-47 */
+#define NVIC_IPR11_BASE                 0xE000E42C
+#define NVIC_IPR11                      REG32_POINTER(NVIC_IPR11_BASE)
+
+/* NVIC_IPR11 bit positions */
+#define NVIC_IPR11_DMA1_POS             29
+#define NVIC_IPR11_DMA1_MASK            (0x7 << NVIC_IPR11_DMA1_POS)
+#define NVIC_IPR11_DMA0_POS             21
+#define NVIC_IPR11_DMA0_MASK            (0x7 << NVIC_IPR11_DMA0_POS)
+#define NVIC_IPR11_FPU_POS              13
+#define NVIC_IPR11_FPU_MASK             (0x7 << NVIC_IPR11_FPU_POS)
+#define NVIC_IPR11_ACCESS_ERROR_POS     5
+#define NVIC_IPR11_ACCESS_ERROR_MASK    (0x7 << NVIC_IPR11_ACCESS_ERROR_POS)
+
+/* NVIC External Interrupt Priority Register 12 */
+/*   Priority level for external interrupts 48-51 */
+#define NVIC_IPR12_BASE                 0xE000E430
+#define NVIC_IPR12                      REG32_POINTER(NVIC_IPR12_BASE)
+
+/* NVIC_IPR12 bit positions */
+#define NVIC_IPR12_ASCC_PHASE_POS       29
+#define NVIC_IPR12_ASCC_PHASE_MASK      (0x7 << NVIC_IPR12_ASCC_PHASE_POS)
+#define NVIC_IPR12_CC312_POS            21
+#define NVIC_IPR12_CC312_MASK           (0x7 << NVIC_IPR12_CC312_POS)
+#define NVIC_IPR12_DMA3_POS             13
+#define NVIC_IPR12_DMA3_MASK            (0x7 << NVIC_IPR12_DMA3_POS)
+#define NVIC_IPR12_DMA2_POS             5
+#define NVIC_IPR12_DMA2_MASK            (0x7 << NVIC_IPR12_DMA2_POS)
+
+/* NVIC External Interrupt Priority Register 13 */
+/*   Priority level for external interrupts 48-51 */
+#define NVIC_IPR13_BASE                 0xE000E434
+#define NVIC_IPR13                      REG32_POINTER(NVIC_IPR13_BASE)
+
+/* NVIC_IPR13 bit positions */
+#define NVIC_IPR13_ASCC_PERIOD_POS      5
+#define NVIC_IPR13_ASCC_PERIOD_MASK     (0x7 << NVIC_IPR13_ASCC_PERIOD_POS)
+
+/* NVIC External Interrupt Set Enable Register 0 */
+/*   Set enable for external interrupts 0-31 */
+#define NVIC_ISER0_NS_BASE              0xE002E100
+#define NVIC_ISER0_NS                   READONLY_REG32_POINTER(NVIC_ISER0_NS_BASE)
+
+/* NVIC External Interrupt Set Enable Register 1 */
+/*   Set enable for external interrupts 32-63 */
+#define NVIC_ISER1_NS_BASE              0xE002E104
+#define NVIC_ISER1_NS                   READONLY_REG32_POINTER(NVIC_ISER1_NS_BASE)
+
+/* NVIC External Interrupt Clear Enable Register 0 */
+/*   Clear enable for external interrupts 0-31 */
+#define NVIC_ICER0_NS_BASE              0xE002E180
+#define NVIC_ICER0_NS                   READONLY_REG32_POINTER(NVIC_ICER0_NS_BASE)
+
+/* NVIC External Interrupt Clear Enable Register 1 */
+/*   Clear enable for external interrupts 32-63 */
+#define NVIC_ICER1_NS_BASE              0xE002E184
+#define NVIC_ICER1_NS                   READONLY_REG32_POINTER(NVIC_ICER1_NS_BASE)
+
+/* NVIC External Interrupt Set Pending Register 0 */
+/*   Set pending status for external interrupts 0-31 */
+#define NVIC_ISPR0_NS_BASE              0xE002E200
+#define NVIC_ISPR0_NS                   READONLY_REG32_POINTER(NVIC_ISPR0_NS_BASE)
+
+/* NVIC External Interrupt Set Pending Register 1 */
+/*   Set pending status for external interrupts 32-63 */
+#define NVIC_ISPR1_NS_BASE              0xE002E204
+#define NVIC_ISPR1_NS                   READONLY_REG32_POINTER(NVIC_ISPR1_NS_BASE)
+
+/* NVIC External Interrupt Clear Pending Register 0 */
+/*   Clear pending status for external interrupts 0-31 */
+#define NVIC_ICPR0_NS_BASE              0xE002E280
+#define NVIC_ICPR0_NS                   READONLY_REG32_POINTER(NVIC_ICPR0_NS_BASE)
+
+/* NVIC External Interrupt Clear Pending Register 1 */
+/*   Clear pending status for external interrupts 32-63 */
+#define NVIC_ICPR1_NS_BASE              0xE002E284
+#define NVIC_ICPR1_NS                   READONLY_REG32_POINTER(NVIC_ICPR1_NS_BASE)
+
+/* NVIC External Interrupt Active Register 0 */
+/*   Active status for external interrupts 0-31 */
+#define NVIC_IABR0_NS_BASE              0xE002E300
+#define NVIC_IABR0_NS                   READONLY_REG32_POINTER(NVIC_IABR0_NS_BASE)
+
+/* NVIC External Interrupt Active Register 1 */
+/*   Active status for external interrupts 32-63 */
+#define NVIC_IABR1_NS_BASE              0xE002E304
+#define NVIC_IABR1_NS                   READONLY_REG32_POINTER(NVIC_IABR1_NS_BASE)
+
+/* NVIC External Interrupt Priority Register 0 */
+/*   Priority level for external interrupts 0-3 */
+#define NVIC_IPR0_NS_BASE               0xE002E400
+#define NVIC_IPR0_NS                    READONLY_REG32_POINTER(NVIC_IPR0_NS_BASE)
+
+/* NVIC External Interrupt Priority Register 1 */
+/*   Priority level for external interrupts 4-7 */
+#define NVIC_IPR1_NS_BASE               0xE002E404
+#define NVIC_IPR1_NS                    READONLY_REG32_POINTER(NVIC_IPR1_NS_BASE)
+
+/* NVIC External Interrupt Priority Register 2 */
+/*   Priority level for external interrupts 8-11 */
+#define NVIC_IPR2_NS_BASE               0xE002E408
+#define NVIC_IPR2_NS                    READONLY_REG32_POINTER(NVIC_IPR2_NS_BASE)
+
+/* NVIC External Interrupt Priority Register 3 */
+/*   Priority level for external interrupts 12-15 */
+#define NVIC_IPR3_NS_BASE               0xE002E40C
+#define NVIC_IPR3_NS                    READONLY_REG32_POINTER(NVIC_IPR3_NS_BASE)
+
+/* NVIC External Interrupt Priority Register 4 */
+/*   Priority level for external interrupts 16-19 */
+#define NVIC_IPR4_NS_BASE               0xE002E410
+#define NVIC_IPR4_NS                    READONLY_REG32_POINTER(NVIC_IPR4_NS_BASE)
+
+/* NVIC External Interrupt Priority Register 5 */
+/*   Priority level for external interrupts 20-23 */
+#define NVIC_IPR5_NS_BASE               0xE002E414
+#define NVIC_IPR5_NS                    READONLY_REG32_POINTER(NVIC_IPR5_NS_BASE)
+
+/* NVIC External Interrupt Priority Register 6 */
+/*   Priority level for external interrupts 24-27 */
+#define NVIC_IPR6_NS_BASE               0xE002E418
+#define NVIC_IPR6_NS                    READONLY_REG32_POINTER(NVIC_IPR6_NS_BASE)
+
+/* NVIC External Interrupt Priority Register 7 */
+/*   Priority level for external interrupts 28-31 */
+#define NVIC_IPR7_NS_BASE               0xE002E41C
+#define NVIC_IPR7_NS                    READONLY_REG32_POINTER(NVIC_IPR7_NS_BASE)
+
+/* NVIC External Interrupt Priority Register 8 */
+/*   Priority level for external interrupts 32-35 */
+#define NVIC_IPR8_NS_BASE               0xE002E420
+#define NVIC_IPR8_NS                    READONLY_REG32_POINTER(NVIC_IPR8_NS_BASE)
+
+/* NVIC External Interrupt Priority Register 9 */
+/*   Priority level for external interrupts 36-39 */
+#define NVIC_IPR9_NS_BASE               0xE002E424
+#define NVIC_IPR9_NS                    READONLY_REG32_POINTER(NVIC_IPR9_NS_BASE)
+
+/* NVIC External Interrupt Priority Register 10 */
+/*   Priority level for external interrupts 40-43 */
+#define NVIC_IPR10_NS_BASE              0xE002E428
+#define NVIC_IPR10_NS                   READONLY_REG32_POINTER(NVIC_IPR10_NS_BASE)
+
+/* NVIC External Interrupt Priority Register 11 */
+/*   Priority level for external interrupts 44-47 */
+#define NVIC_IPR11_NS_BASE              0xE002E42C
+#define NVIC_IPR11_NS                   READONLY_REG32_POINTER(NVIC_IPR11_NS_BASE)
+
+/* NVIC External Interrupt Priority Register 12 */
+/*   Priority level for external interrupts 48-51 */
+#define NVIC_IPR12_NS_BASE              0xE002E430
+#define NVIC_IPR12_NS                   READONLY_REG32_POINTER(NVIC_IPR12_NS_BASE)
+
+/* NVIC External Interrupt Priority Register 13 */
+/*   Priority level for external interrupts 48-51 */
+#define NVIC_IPR13_NS_BASE              0xE002E434
+#define NVIC_IPR13_NS                   READONLY_REG32_POINTER(NVIC_IPR13_NS_BASE)
+
+/* ----------------------------------------------------------------------------
+ * System Control Block
+ * ------------------------------------------------------------------------- */
+
+/* CPU ID Base Register */
+#define SCB_CPUID_BASE                  0xE000ED00
+#define SCB_CPUID                       READONLY_REG32_POINTER(SCB_CPUID_BASE)
+
+/* SCB_CPUID bit positions */
+#define SCB_CPUID_IMPLEMENTER_POS       24
+#define SCB_CPUID_IMPLEMENTER_MASK      (0xFF << SCB_CPUID_IMPLEMENTER_POS)
+#define SCB_CPUID_VARIANT_POS           20
+#define SCB_CPUID_VARIANT_MASK          (0xF << SCB_CPUID_VARIANT_POS)
+#define SCB_CPUID_ARCHITECTURE_POS      16
+#define SCB_CPUID_ARCHITECTURE_MASK     (0xF << SCB_CPUID_ARCHITECTURE_POS)
+#define SCB_CPUID_PARTNO_POS            4
+#define SCB_CPUID_PARTNO_MASK           (0xFFF << SCB_CPUID_PARTNO_POS)
+#define SCB_CPUID_REVISION_POS          0
+#define SCB_CPUID_REVISION_MASK         (0xF << SCB_CPUID_REVISION_POS)
+
+/* Interrupt Control and State Register */
+#define SCB_ICSR_BASE                   0xE000ED04
+#define SCB_ICSR                        REG32_POINTER(SCB_ICSR_BASE)
+
+/* SCB_ICSR bit positions */
+#define SCB_ICSR_PENDNMISET_POS         31
+#define SCB_ICSR_PENDNMICLR_POS         30
+#define SCB_ICSR_PENDSVSET_POS          28
+#define SCB_ICSR_PENDSVCLR_POS          27
+#define SCB_ICSR_PENDSTSET_POS          26
+#define SCB_ICSR_PENDSTCLR_POS          25
+#define SCB_ICSR_STTNS_POS              24
+#define SCB_ICSR_ISRPREEMPT_POS         23
+#define SCB_ICSR_ISRPENDING_POS         22
+#define SCB_ICSR_VECTPENDING_POS        12
+#define SCB_ICSR_VECTPENDING_MASK       (0x1FF << SCB_ICSR_VECTPENDING_POS)
+#define SCB_ICSR_RETTOBASE_POS          11
+#define SCB_ICSR_VECTACTIVE_POS         0
+#define SCB_ICSR_VECTACTIVE_MASK        (0x1FF << SCB_ICSR_VECTACTIVE_POS)
+
+/* SCB_ICSR settings */
+#define NMI_NOT_PENDING                 (0x0 << SCB_ICSR_PENDNMISET_POS)
+#define NMI_SETPEND                     (0x1 << SCB_ICSR_PENDNMISET_POS)
+
+#define CLR_NMI_PENDING_STATUS          (0x1 << SCB_ICSR_PENDNMICLR_POS)
+
+#define PENDSV_SETPEND                  (0x1 << SCB_ICSR_PENDSVSET_POS)
+
+#define PENDSV_CLRPEND                  (0x1 << SCB_ICSR_PENDSVCLR_POS)
+
+#define SYSTICK_SETPEND                 (0x1 << SCB_ICSR_PENDSTSET_POS)
+
+#define SYSTICK_CLRPEND                 (0x1 << SCB_ICSR_PENDSTCLR_POS)
+
+#define SYSTICK_IS_SECURE               (0x0 << SCB_ICSR_STTNS_POS)
+#define SYSTICK_IS_NON_SECURE           (0x1 << SCB_ICSR_STTNS_POS)
+
+/* Vector Table Offset Register */
+#define SCB_VTOR_BASE                   0xE000ED08
+#define SCB_VTOR                        REG32_POINTER(SCB_VTOR_BASE)
+
+/* SCB_VTOR bit positions */
+#define SCB_VTOR_TBLOFF_POS             7
+#define SCB_VTOR_TBLOFF_MASK            (0x1FFFFFF << SCB_VTOR_TBLOFF_POS)
+
+/* Application Interrupt and Reset Control Register */
+#define SCB_AIRCR_BASE                  0xE000ED0C
+#define SCB_AIRCR                       REG32_POINTER(SCB_AIRCR_BASE)
+
+/* SCB_AIRCR bit positions */
+#define SCB_AIRCR_VECTKEY_POS           16
+#define SCB_AIRCR_VECTKEY_MASK          (0xFFFF << SCB_AIRCR_VECTKEY_POS)
+#define SCB_AIRCR_ENDIANESS_POS         15
+#define SCB_AIRCR_PRIS_POS              14
+#define SCB_AIRCR_BFHFNMINS_POS         13
+#define SCB_AIRCR_PRIGROUP_POS          8
+#define SCB_AIRCR_PRIGROUP_MASK         (0x7 << SCB_AIRCR_PRIGROUP_POS)
+#define SCB_AIRCR_SYSRESETREQ_S_POS     3
+#define SCB_AIRCR_SYSRESETREQ_POS       2
+#define SCB_AIRCR_VECTCLRACTIVE_POS     1
+
+/* SCB_AIRCR settings */
+#define NVIC_VECTKEY_UNLOCK             (0x5FA << SCB_AIRCR_VECTKEY_POS)
+#define NVIC_VECTKEY_UNLOCK_READBACK    (0xFA05 << SCB_AIRCR_VECTKEY_POS)
+
+#define NVIC_LITTLE_ENDIAN              (0x0 << SCB_AIRCR_ENDIANESS_POS)
+
+#define IDENTICAL_PRIORITY              (0x0 << SCB_AIRCR_PRIS_POS)
+#define NS_EXCEPTION_ARE_DEPRIORITIZED  (0x1 << SCB_AIRCR_PRIS_POS)
+
+#define BFHFNMI_ARE_SECURE              (0x0 << SCB_AIRCR_BFHFNMINS_POS)
+#define BFHFNMI_ARE_NONSECURE           (0x1 << SCB_AIRCR_BFHFNMINS_POS)
+
+#define NVIC_PRIGROUP_0_7               (0x0 << SCB_AIRCR_PRIGROUP_POS)
+#define NVIC_PRIGROUP_4_0               (0x3 << SCB_AIRCR_PRIGROUP_POS)
+#define NVIC_PRIGROUP_3_1               (0x4 << SCB_AIRCR_PRIGROUP_POS)
+#define NVIC_PRIGROUP_2_2               (0x5 << SCB_AIRCR_PRIGROUP_POS)
+#define NVIC_PRIGROUP_1_3               (0x6 << SCB_AIRCR_PRIGROUP_POS)
+#define NVIC_PRIGROUP_0_4               (0x7 << SCB_AIRCR_PRIGROUP_POS)
+
+#define SYSRESETREQ_FOR_BOTH            (0x0 << SCB_AIRCR_SYSRESETREQ_S_POS)
+#define SYSRESETREQ_FOR_SECURE_ONLY     (0x1 << SCB_AIRCR_SYSRESETREQ_S_POS)
+
+#define NVIC_SYSRESET                   (0x1 << SCB_AIRCR_SYSRESETREQ_POS)
+
+#define NVIC_CLEAR_ACTIVE_VECTORS       (0x1 << SCB_AIRCR_VECTCLRACTIVE_POS)
+
+/* System Control Register */
+#define SCB_SCR_BASE                    0xE000ED10
+#define SCB_SCR                         REG32_POINTER(SCB_SCR_BASE)
+
+/* SCB_SCR bit positions */
+#define SCB_SCR_SEVONPEND_POS           4
+#define SCB_SCR_SLEEPDEEPS_POS          3
+#define SCB_SCR_SLEEPDEEP_POS           2
+#define SCB_SCR_SLEEPONEXIT_POS         1
+
+/* SCB_SCR settings */
+#define SLEEPDEEP_FOR_BOTH              (0x0 << SCB_SCR_SLEEPDEEPS_POS)
+#define SLEEPDEEP_FOR_SECURE_ONLY       (0x1 << SCB_SCR_SLEEPDEEPS_POS)
+
+#define NVIC_SLEEPDEEP_DISABLE          (0x0 << SCB_SCR_SLEEPDEEP_POS)
+#define NVIC_SLEEPDEEP_ENABLE           (0x1 << SCB_SCR_SLEEPDEEP_POS)
+
+#define NVIC_SLEEPONEXIT_DISABLE        (0x0 << SCB_SCR_SLEEPONEXIT_POS)
+#define NVIC_SLEEPONEXIT_ENABLE         (0x1 << SCB_SCR_SLEEPONEXIT_POS)
+
+/* Configuration Control Register */
+#define SCB_CCR_BASE                    0xE000ED14
+#define SCB_CCR                         REG32_POINTER(SCB_CCR_BASE)
+
+/* SCB_CCR bit positions */
+#define SCB_CCR_BP_POS                  18
+#define SCB_CCR_STKOFHFNMIGN_POS        10
+#define SCB_CCR_BFHFNMIGN_POS           8
+#define SCB_CCR_DIV_0_TRP_POS           4
+#define SCB_CCR_UNALIGN_TRP_POS         3
+#define SCB_CCR_USERSETMPEND_POS        1
+#define SCB_CCR_RESERVED_AT_1_POS       0
+
+/* SCB_CCR settings */
+#define BP_DISABLED                     (0x0 << SCB_CCR_BP_POS)
+#define BP_ENABLED                      (0x1 << SCB_CCR_BP_POS)
+
+#define STACK_FAULT_NOT_IGNORED         (0x0 << SCB_CCR_STKOFHFNMIGN_POS)
+#define STACK_FAULT_IGNORED             (0x1 << SCB_CCR_STKOFHFNMIGN_POS)
+
+#define NVIC_BFHFNMIGN_DISABLE          (0x0 << SCB_CCR_BFHFNMIGN_POS)
+#define NVIC_BFHFNMIGN_ENABLE           (0x1 << SCB_CCR_BFHFNMIGN_POS)
+
+#define NVIC_DIV_0_TRP_DISABLE          (0x0 << SCB_CCR_DIV_0_TRP_POS)
+#define NVIC_DIV_0_TRP_ENABLE           (0x1 << SCB_CCR_DIV_0_TRP_POS)
+
+#define NVIC_UNALIGN_TRP_DISABLE        (0x0 << SCB_CCR_UNALIGN_TRP_POS)
+#define NVIC_UNALIGN_TRP_ENABLE         (0x1 << SCB_CCR_UNALIGN_TRP_POS)
+
+#define NVIC_USERSETMPEND_DISABLE       (0x0 << SCB_CCR_USERSETMPEND_POS)
+#define NVIC_USERSETMPEND_ENABLE        (0x1 << SCB_CCR_USERSETMPEND_POS)
+
+/* System Handler Priority Register 1 */
+#define SCB_SHPR1_BASE                  0xE000ED18
+#define SCB_SHPR1                       REG32_POINTER(SCB_SHPR1_BASE)
+
+/* SCB_SHPR1 bit positions */
+#define SCB_SHPR1_NVIC_SECURE_FAULT_PRIORITY_POS 24
+#define SCB_SHPR1_NVIC_SECURE_FAULT_PRIORITY_MASK (0xFF << SCB_SHPR1_NVIC_SECURE_FAULT_PRIORITY_POS)
+#define SCB_SHPR1_NVIC_USAGE_FAULT_PRIORITY_POS 16
+#define SCB_SHPR1_NVIC_USAGE_FAULT_PRIORITY_MASK (0xFF << SCB_SHPR1_NVIC_USAGE_FAULT_PRIORITY_POS)
+#define SCB_SHPR1_NVIC_BUS_FAULT_PRIORITY_POS 8
+#define SCB_SHPR1_NVIC_BUS_FAULT_PRIORITY_MASK (0xFF << SCB_SHPR1_NVIC_BUS_FAULT_PRIORITY_POS)
+#define SCB_SHPR1_NVIC_MEM_FAULT_PRIORITY_POS 0
+#define SCB_SHPR1_NVIC_MEM_FAULT_PRIORITY_MASK (0xFF << SCB_SHPR1_NVIC_MEM_FAULT_PRIORITY_POS)
+
+/* System Handler Priority Register 2 */
+#define SCB_SHPR2_BASE                  0xE000ED1C
+#define SCB_SHPR2                       REG32_POINTER(SCB_SHPR2_BASE)
+
+/* SCB_SHPR2 bit positions */
+#define SCB_SHPR2_NVIC_SVC_PRIORITY_POS 24
+#define SCB_SHPR2_NVIC_SVC_PRIORITY_MASK (0xFF << SCB_SHPR2_NVIC_SVC_PRIORITY_POS)
+
+/* System Handler Priority Register 3 */
+#define SCB_SHPR3_BASE                  0xE000ED20
+#define SCB_SHPR3                       REG32_POINTER(SCB_SHPR3_BASE)
+
+/* SCB_SHPR3 bit positions */
+#define SCB_SHPR3_NVIC_SYSTICK_PRIORITY_POS 24
+#define SCB_SHPR3_NVIC_SYSTICK_PRIORITY_MASK (0xFF << SCB_SHPR3_NVIC_SYSTICK_PRIORITY_POS)
+#define SCB_SHPR3_NVIC_PENDSV_PRIORITY_POS 16
+#define SCB_SHPR3_NVIC_PENDSV_PRIORITY_MASK (0xFF << SCB_SHPR3_NVIC_PENDSV_PRIORITY_POS)
+#define SCB_SHPR3_NVIC_DBGMONITOR_PRIORITY_POS 0
+#define SCB_SHPR3_NVIC_DBGMONITOR_PRIORITY_MASK (0xFF << SCB_SHPR3_NVIC_DBGMONITOR_PRIORITY_POS)
+
+/* System Handler Control and State Register */
+#define SCB_SHCSR_BASE                  0xE000ED24
+#define SCB_SHCSR                       REG32_POINTER(SCB_SHCSR_BASE)
+
+/* SCB_SHCSR bit positions */
+#define SCB_SHCSR_HARDFAULTPENDED_POS   21
+#define SCB_SHCSR_SECUREFAULTPENDED_POS 20
+#define SCB_SHCSR_SECUREFAULTENA_POS    19
+#define SCB_SHCSR_USGFAULTENA_POS       18
+#define SCB_SHCSR_BUSFAULTENA_POS       17
+#define SCB_SHCSR_MEMFAULTENA_POS       16
+#define SCB_SHCSR_SVCALLPENDED_POS      15
+#define SCB_SHCSR_BUSFAULTPENDED_POS    14
+#define SCB_SHCSR_MEMFAULTPENDED_POS    13
+#define SCB_SHCSR_USGFAULTPENDED_POS    12
+#define SCB_SHCSR_SYSTICKACT_POS        11
+#define SCB_SHCSR_PENDSVACT_POS         10
+#define SCB_SHCSR_MONITORACT_POS        8
+#define SCB_SHCSR_SVCALLACT_POS         7
+#define SCB_SHCSR_NMIACT_POS            5
+#define SCB_SHCSR_SFAULTACT_POS         4
+#define SCB_SHCSR_USGFAULTACT_POS       3
+#define SCB_SHCSR_BUSFAULTACT_POS       1
+#define SCB_SHCSR_MEMFAULTACT_POS       0
+
+/* SCB_SHCSR settings */
+#define NVIC_HFAULT_NOT_PENDING         (0x0 << SCB_SHCSR_HARDFAULTPENDED_POS)
+#define NVIC_HFAULT_PENDING             (0x1 << SCB_SHCSR_HARDFAULTPENDED_POS)
+
+#define NVIC_SFAULT_NOT_PENDING         (0x0 << SCB_SHCSR_SECUREFAULTPENDED_POS)
+#define NVIC_SFAULT_PENDING             (0x1 << SCB_SHCSR_SECUREFAULTPENDED_POS)
+
+#define NVIC_SFAULT_DISABLE             (0x0 << SCB_SHCSR_SECUREFAULTENA_POS)
+#define NVIC_SFAULT_ENABLE              (0x1 << SCB_SHCSR_SECUREFAULTENA_POS)
+
+#define NVIC_USGFAULT_DISABLE           (0x0 << SCB_SHCSR_USGFAULTENA_POS)
+#define NVIC_USGFAULT_ENABLE            (0x1 << SCB_SHCSR_USGFAULTENA_POS)
+
+#define NVIC_BUSFAULT_DISABLE           (0x0 << SCB_SHCSR_BUSFAULTENA_POS)
+#define NVIC_BUSFAULT_ENABLE            (0x1 << SCB_SHCSR_BUSFAULTENA_POS)
+
+#define NVIC_MEMFAULT_DISABLE           (0x0 << SCB_SHCSR_MEMFAULTENA_POS)
+#define NVIC_MEMFAULT_ENABLE            (0x1 << SCB_SHCSR_MEMFAULTENA_POS)
+
+#define NVIC_SVCALL_CLRPEND             (0x0 << SCB_SHCSR_SVCALLPENDED_POS)
+#define NVIC_SVCALL_SETPEND             (0x1 << SCB_SHCSR_SVCALLPENDED_POS)
+
+#define NVIC_BUSFAULT_CLRPEND           (0x0 << SCB_SHCSR_BUSFAULTPENDED_POS)
+#define NVIC_BUSFAULT_SETPEND           (0x1 << SCB_SHCSR_BUSFAULTPENDED_POS)
+
+#define NVIC_MEMFAULT_CLRPEND           (0x0 << SCB_SHCSR_MEMFAULTPENDED_POS)
+#define NVIC_MEMFAULT_SETPEND           (0x1 << SCB_SHCSR_MEMFAULTPENDED_POS)
+
+#define NVIC_USGFAULT_CLRPEND           (0x0 << SCB_SHCSR_USGFAULTPENDED_POS)
+#define NVIC_USGFAULT_SETPEND           (0x1 << SCB_SHCSR_USGFAULTPENDED_POS)
+
+#define NVIC_SYSTICK_ACTIVE             (0x1 << SCB_SHCSR_SYSTICKACT_POS)
+
+#define NVIC_PENDSV_ACTIVE              (0x1 << SCB_SHCSR_PENDSVACT_POS)
+
+#define NVIC_MONITOR_ACTIVE             (0x1 << SCB_SHCSR_MONITORACT_POS)
+
+#define NVIC_SVCALL_ACTIVE              (0x1 << SCB_SHCSR_SVCALLACT_POS)
+
+#define NVIC_NMI_ACTIVE                 (0x1 << SCB_SHCSR_NMIACT_POS)
+
+#define NVIC_SFAULT_ACTIVE              (0x1 << SCB_SHCSR_SFAULTACT_POS)
+
+#define NVIC_USGFAULT_ACTIVE            (0x1 << SCB_SHCSR_USGFAULTACT_POS)
+
+#define NVIC_BUSFAULT_ACTIVE            (0x1 << SCB_SHCSR_BUSFAULTACT_POS)
+
+#define NVIC_MEMFAULT_ACTIVE            (0x1 << SCB_SHCSR_MEMFAULTACT_POS)
+
+/* Configurable Fault Status Register */
+#define SCB_CFSR_BASE                   0xE000ED28
+#define SCB_CFSR                        REG32_POINTER(SCB_CFSR_BASE)
+
+/* SCB_CFSR bit positions */
+#define SCB_CFSR_DIVBYZERO_POS          25
+#define SCB_CFSR_UNALIGNED_POS          24
+#define SCB_CFSR_STKOF_POS              20
+#define SCB_CFSR_NOCP_POS               19
+#define SCB_CFSR_INVPC_POS              18
+#define SCB_CFSR_INVSTATE_POS           17
+#define SCB_CFSR_UNDEFINSTR_POS         16
+#define SCB_CFSR_BFARVALID_POS          15
+#define SCB_CFSR_LSPERR_POS             13
+#define SCB_CFSR_STKERR_POS             12
+#define SCB_CFSR_UNSTKERR_POS           11
+#define SCB_CFSR_IMPRECISERR_POS        10
+#define SCB_CFSR_PRECISERR_POS          9
+#define SCB_CFSR_IBUSERR_POS            8
+#define SCB_CFSR_MMARVALID_POS          7
+#define SCB_CFSR_MLSPERR_POS            5
+#define SCB_CFSR_MSTKERR_POS            4
+#define SCB_CFSR_MUNSTKERR_POS          3
+#define SCB_CFSR_DACCVIOL_POS           1
+#define SCB_CFSR_IACCVIOL_POS           0
+
+/* Hard Fault Status Register */
+#define SCB_HFSR_BASE                   0xE000ED2C
+#define SCB_HFSR                        REG32_POINTER(SCB_HFSR_BASE)
+
+/* SCB_HFSR bit positions */
+#define SCB_HFSR_DEBUGEVT_POS           31
+#define SCB_HFSR_FORCED_POS             30
+#define SCB_HFSR_VECTBL_POS             1
+
+/* Debug Fault Status Register */
+#define SCB_DFSR_BASE                   0xE000ED30
+#define SCB_DFSR                        REG32_POINTER(SCB_DFSR_BASE)
+
+/* SCB_DFSR bit positions */
+#define SCB_DFSR_EXTERNAL_POS           4
+#define SCB_DFSR_VCATCH_POS             3
+#define SCB_DFSR_DWTTRAP_POS            2
+#define SCB_DFSR_BKPT_POS               1
+#define SCB_DFSR_HALTED_POS             0
+
+/* Memory Management Fault Address Register */
+#define SCB_MMFAR_BASE                  0xE000ED34
+#define SCB_MMFAR                       READONLY_REG32_POINTER(SCB_MMFAR_BASE)
+
+/* Bus Fault Address Register */
+#define SCB_BFAR_BASE                   0xE000ED38
+#define SCB_BFAR                        READONLY_REG32_POINTER(SCB_BFAR_BASE)
+
+/* Non-Secure Access Control Register */
+#define SCB_NSACR_BASE                  0xE000ED8C
+#define SCB_NSACR                       REG32_POINTER(SCB_NSACR_BASE)
+
+/* SCB_NSACR bit positions */
+#define SCB_NSACR_CP11_POS              11
+#define SCB_NSACR_CP10_POS              10
+
+/* SCB_NSACR settings */
+#define NS_ACCESS_TO_FPE_UF             (0x0 << SCB_NSACR_CP10_POS)
+#define NS_ACCESS_TO_FPE_ALLOW          (0x1 << SCB_NSACR_CP10_POS)
+
+/* ----------------------------------------------------------------------------
+ * Memory Protection Unit
+ * ------------------------------------------------------------------------- */
+
+/* Indicates how many regions the MPU for the selected security state supports */
+#define MPU_TYPE_BASE                   0xE000ED90
+#define MPU_TYPE                        READONLY_REG32_POINTER(MPU_TYPE_BASE)
+
+/* MPU_TYPE bit positions */
+#define MPU_TYPE_NBR_OF_REGION_POS      8
+#define MPU_TYPE_NBR_OF_REGION_MASK     (0xFF << MPU_TYPE_NBR_OF_REGION_POS)
+
+/* MPU control register */
+#define MPU_CTRL_BASE                   0xE000ED94
+#define MPU_CTRL                        REG32_POINTER(MPU_CTRL_BASE)
+
+/* MPU_CTRL bit positions */
+#define MPU_CTRL_PRIVDEFENA_POS         2
+#define MPU_CTRL_HFNMIENA_POS           1
+#define MPU_CTRL_ENABLE_POS             0
+
+/* MPU_CTRL settings */
+#define DEFAULT_MEM_MAP_DISABLED        (0x0 << MPU_CTRL_PRIVDEFENA_POS)
+#define DEFAULT_MEM_MAP_ENABLED         (0x1 << MPU_CTRL_PRIVDEFENA_POS)
+
+#define MPU_DISABLED_FOR_HF_NMI         (0x0 << MPU_CTRL_HFNMIENA_POS)
+#define MPU_ENABLED_FOR_HF_NMI          (0x1 << MPU_CTRL_HFNMIENA_POS)
+
+#define MPU_DISABLED                    (0x0 << MPU_CTRL_ENABLE_POS)
+#define MPU_ENABLED                     (0x1 << MPU_CTRL_ENABLE_POS)
+
+/* MPU Region Number Register */
+#define MPU_RNR_BASE                    0xE000ED98
+#define MPU_RNR                         READONLY_REG32_POINTER(MPU_RNR_BASE)
+
+/* MPU_RNR bit positions */
+#define MPU_RNR_REGION_POS              0
+#define MPU_RNR_REGION_MASK             (0xFF << MPU_RNR_REGION_POS)
+
+/* MPU Region Base Address Register */
+#define MPU_RBAR_BASE                   0xE000ED9C
+#define MPU_RBAR                        REG32_POINTER(MPU_RBAR_BASE)
+
+/* MPU_RBAR bit positions */
+#define MPU_RBAR_BASE_POS               5
+#define MPU_RBAR_BASE_MASK              (0x7FFFFFF << MPU_RBAR_BASE_POS)
+#define MPU_RBAR_SH_POS                 3
+#define MPU_RBAR_SH_MASK                (0x3 << MPU_RBAR_SH_POS)
+#define MPU_RBAR_AP_POS                 1
+#define MPU_RBAR_AP_MASK                (0x3 << MPU_RBAR_AP_POS)
+#define MPU_RBAR_XN_POS                 0
+
+/* MPU_RBAR settings */
+#define NON_SHAREABLE                   (0x0 << MPU_RBAR_SH_POS)
+#define OUTER_SHAREABLE                 (0x2 << MPU_RBAR_SH_POS)
+#define INNER_SHAREABLE                 (0x3 << MPU_RBAR_SH_POS)
+
+#define RW_PRIVILEGED_CODE_ONLY         (0x0 << MPU_RBAR_AP_POS)
+#define RW_PRIVILEGED_LEVEL             (0x1 << MPU_RBAR_AP_POS)
+#define R_PRIVILEGED_CODE_ONLY          (0x2 << MPU_RBAR_AP_POS)
+#define R_PRIVILEGED_LEVEL              (0x3 << MPU_RBAR_AP_POS)
+
+#define EXEC_PERMITED                   (0x0 << MPU_RBAR_XN_POS)
+#define EXEC_NOT_PERMITTED              (0x1 << MPU_RBAR_XN_POS)
+
+/* MPU Region Limit Address Register */
+#define MPU_RLAR_BASE                   0xE000EDA0
+#define MPU_RLAR                        REG32_POINTER(MPU_RLAR_BASE)
+
+/* MPU_RLAR bit positions */
+#define MPU_RLAR_LIMIT_POS              5
+#define MPU_RLAR_LIMIT_MASK             (0x7FFFFFF << MPU_RLAR_LIMIT_POS)
+#define MPU_RLAR_ATTRINDX_POS           1
+#define MPU_RLAR_ATTRINDX_MASK          (0x7 << MPU_RLAR_ATTRINDX_POS)
+#define MPU_RLAR_EN_POS                 0
+
+/* MPU_RLAR settings */
+#define REGION_DISABLED                 (0x0 << MPU_RLAR_EN_POS)
+#define REGION_ENABLED                  (0x1 << MPU_RLAR_EN_POS)
+
+/* MPU Region 1 Base Address Register */
+#define MPU_RBAR1_BASE                  0xE000EDA4
+#define MPU_RBAR1                       REG32_POINTER(MPU_RBAR1_BASE)
+
+/* MPU_RBAR1 bit positions */
+#define MPU_RBAR1_BASE_POS              5
+#define MPU_RBAR1_BASE_MASK             (0x7FFFFFF << MPU_RBAR1_BASE_POS)
+#define MPU_RBAR1_SH_POS                3
+#define MPU_RBAR1_SH_MASK               (0x3 << MPU_RBAR1_SH_POS)
+#define MPU_RBAR1_AP_POS                1
+#define MPU_RBAR1_AP_MASK               (0x3 << MPU_RBAR1_AP_POS)
+#define MPU_RBAR1_XN_POS                0
+
+/* MPU Region 1 Limit Address Register */
+#define MPU_RLAR1_BASE                  0xE000EDA8
+#define MPU_RLAR1                       REG32_POINTER(MPU_RLAR1_BASE)
+
+/* MPU_RLAR1 bit positions */
+#define MPU_RLAR1_LIMIT_POS             5
+#define MPU_RLAR1_LIMIT_MASK            (0x7FFFFFF << MPU_RLAR1_LIMIT_POS)
+#define MPU_RLAR1_ATTRINDX_POS          1
+#define MPU_RLAR1_ATTRINDX_MASK         (0x7 << MPU_RLAR1_ATTRINDX_POS)
+#define MPU_RLAR1_EN_POS                0
+
+/* MPU Region 2 Base Address Register */
+#define MPU_RBAR2_BASE                  0xE000EDAC
+#define MPU_RBAR2                       REG32_POINTER(MPU_RBAR2_BASE)
+
+/* MPU_RBAR2 bit positions */
+#define MPU_RBAR2_BASE_POS              5
+#define MPU_RBAR2_BASE_MASK             (0x7FFFFFF << MPU_RBAR2_BASE_POS)
+#define MPU_RBAR2_SH_POS                3
+#define MPU_RBAR2_SH_MASK               (0x3 << MPU_RBAR2_SH_POS)
+#define MPU_RBAR2_AP_POS                1
+#define MPU_RBAR2_AP_MASK               (0x3 << MPU_RBAR2_AP_POS)
+#define MPU_RBAR2_XN_POS                0
+
+/* MPU Region 2 Limit Address Register */
+#define MPU_RLAR2_BASE                  0xE000EDB0
+#define MPU_RLAR2                       REG32_POINTER(MPU_RLAR2_BASE)
+
+/* MPU_RLAR2 bit positions */
+#define MPU_RLAR2_LIMIT_POS             5
+#define MPU_RLAR2_LIMIT_MASK            (0x7FFFFFF << MPU_RLAR2_LIMIT_POS)
+#define MPU_RLAR2_ATTRINDX_POS          1
+#define MPU_RLAR2_ATTRINDX_MASK         (0x7 << MPU_RLAR2_ATTRINDX_POS)
+#define MPU_RLAR2_EN_POS                0
+
+/* MPU Region 3 Base Address Register */
+#define MPU_RBAR3_BASE                  0xE000EDB4
+#define MPU_RBAR3                       REG32_POINTER(MPU_RBAR3_BASE)
+
+/* MPU_RBAR3 bit positions */
+#define MPU_RBAR3_BASE_POS              5
+#define MPU_RBAR3_BASE_MASK             (0x7FFFFFF << MPU_RBAR3_BASE_POS)
+#define MPU_RBAR3_SH_POS                3
+#define MPU_RBAR3_SH_MASK               (0x3 << MPU_RBAR3_SH_POS)
+#define MPU_RBAR3_AP_POS                1
+#define MPU_RBAR3_AP_MASK               (0x3 << MPU_RBAR3_AP_POS)
+#define MPU_RBAR3_XN_POS                0
+
+/* MPU Region 3 Limit Address Register */
+#define MPU_RLAR3_BASE                  0xE000EDB8
+#define MPU_RLAR3                       REG32_POINTER(MPU_RLAR3_BASE)
+
+/* MPU_RLAR3 bit positions */
+#define MPU_RLAR3_LIMIT_POS             5
+#define MPU_RLAR3_LIMIT_MASK            (0x7FFFFFF << MPU_RLAR3_LIMIT_POS)
+#define MPU_RLAR3_ATTRINDX_POS          1
+#define MPU_RLAR3_ATTRINDX_MASK         (0x7 << MPU_RLAR3_ATTRINDX_POS)
+#define MPU_RLAR3_EN_POS                0
+
+/* MPU Memoryattribute Indirection Register 0 */
+#define MPU_MAIR0_BASE                  0xE000EDC0
+#define MPU_MAIR0                       REG32_POINTER(MPU_MAIR0_BASE)
+
+/* MPU_MAIR0 bit positions */
+#define MPU_MAIR0_REGION3_POS           24
+#define MPU_MAIR0_REGION3_MASK          (0xFF << MPU_MAIR0_REGION3_POS)
+#define MPU_MAIR0_REGION2_POS           16
+#define MPU_MAIR0_REGION2_MASK          (0xFF << MPU_MAIR0_REGION2_POS)
+#define MPU_MAIR0_REGION1_POS           8
+#define MPU_MAIR0_REGION1_MASK          (0xFF << MPU_MAIR0_REGION1_POS)
+#define MPU_MAIR0_REGION0_POS           0
+#define MPU_MAIR0_REGION0_MASK          (0xFF << MPU_MAIR0_REGION0_POS)
+
+/* ----------------------------------------------------------------------------
+ * Security Attribution Unit
+ * ------------------------------------------------------------------------- */
+
+/* SAU Control Register */
+#define SAU_CTRL_BASE                   0xE000EDD0
+#define SAU_CTRL                        REG32_POINTER(SAU_CTRL_BASE)
+
+/* SAU_CTRL bit positions */
+#define SAU_CTRL_ALLNS_POS              1
+#define SAU_CTRL_ENABLE_POS             0
+
+/* SAU_CTRL settings */
+#define MEM_AS_SECURE                   (0x0 << SAU_CTRL_ALLNS_POS)
+#define MEM_AS_NON_SECURE               (0x1 << SAU_CTRL_ALLNS_POS)
+
+#define SAU_DISABLED                    (0x0 << SAU_CTRL_ENABLE_POS)
+#define SAU_ENABLED                     (0x1 << SAU_CTRL_ENABLE_POS)
+
+/* SAU Type Register */
+#define SAU_TYPE_BASE                   0xE000EDD4
+#define SAU_TYPE                        READONLY_REG32_POINTER(SAU_TYPE_BASE)
+
+/* SAU_TYPE bit positions */
+#define SAU_TYPE_NBR_OF_REGION_POS      0
+#define SAU_TYPE_NBR_OF_REGION_MASK     (0xFF << SAU_TYPE_NBR_OF_REGION_POS)
+
+/* SAU_TYPE settings */
+#define FOUR_SAU_REGIONS                (0x4 << SAU_TYPE_NBR_OF_REGION_POS)
+
+/* SAU Region Number Register */
+#define SAU_RNR_BASE                    0xE000EDD8
+#define SAU_RNR                         REG32_POINTER(SAU_RNR_BASE)
+
+/* SAU_RNR bit positions */
+#define SAU_RNR_SEL_REGION_POS          0
+#define SAU_RNR_SEL_REGION_MASK         (0xFF << SAU_RNR_SEL_REGION_POS)
+
+/* SAU Region Base Address Register */
+#define SAU_RBAR_BASE                   0xE000EDDC
+#define SAU_RBAR                        REG32_POINTER(SAU_RBAR_BASE)
+
+/* SAU_RBAR bit positions */
+#define SAU_RBAR_BASE_ADDRESS_POS       5
+#define SAU_RBAR_BASE_ADDRESS_MASK      (0x7FFFFFF << SAU_RBAR_BASE_ADDRESS_POS)
+
+/* SAU Region Limit Address Register */
+#define SAU_RLAR_BASE                   0xE000EDE0
+#define SAU_RLAR                        REG32_POINTER(SAU_RLAR_BASE)
+
+/* SAU_RLAR bit positions */
+#define SAU_RLAR_LIMIT_ADDRESS_POS      5
+#define SAU_RLAR_LIMIT_ADDRESS_MASK     (0x7FFFFFF << SAU_RLAR_LIMIT_ADDRESS_POS)
+
+/* Secure Fault Status Register */
+#define SAU_SFSR_BASE                   0xE000EDE4
+#define SAU_SFSR                        READONLY_REG32_POINTER(SAU_SFSR_BASE)
+
+/* SAU_SFSR bit positions */
+#define SAU_SFSR_LSERR_POS              7
+#define SAU_SFSR_SFARVALID_POS          6
+#define SAU_SFSR_LSPERR_POS             5
+#define SAU_SFSR_INVTRAN_POS            4
+#define SAU_SFSR_AUVIOL_POS             3
+#define SAU_SFSR_INVER_POS              2
+#define SAU_SFSR_INVIS_POS              1
+#define SAU_SFSR_INVEP_POS              0
+
+/* Secure Fault Address Register */
+#define SAU_SFAR_BASE                   0xE000EDE8
+#define SAU_SFAR                        READONLY_REG32_POINTER(SAU_SFAR_BASE)
+
+/* ----------------------------------------------------------------------------
+ * Debug Control Block
+ * ------------------------------------------------------------------------- */
+
+/* Debug Halting Control and Status Register */
+#define DEBUG_DHCSR_BASE                0xE000EDF0
+#define DEBUG_DHCSR                     REG32_POINTER(DEBUG_DHCSR_BASE)
+
+/* DEBUG_DHCSR bit positions */
+#define DEBUG_DHCSR_DBGKEY_POS          16
+#define DEBUG_DHCSR_DBGKEY_MASK         (0xFFFF << DEBUG_DHCSR_DBGKEY_POS)
+#define DEBUG_DHCSR_S_RESART_S_POS      26
+#define DEBUG_DHCSR_S_RESET_ST_POS      25
+#define DEBUG_DHCSR_S_RETIRE_ST_POS     24
+#define DEBUG_DHCSR_S_SDE_POS           20
+#define DEBUG_DHCSR_S_LOCKUP_POS        19
+#define DEBUG_DHCSR_S_SLEEP_POS         18
+#define DEBUG_DHCSR_S_HALT_POS          17
+#define DEBUG_DHCSR_S_REGRDY_POS        16
+#define DEBUG_DHCSR_C_SNAPSTALL_POS     5
+#define DEBUG_DHCSR_C_MASKINTS_POS      3
+#define DEBUG_DHCSR_C_STEP_POS          2
+#define DEBUG_DHCSR_C_HALT_POS          1
+#define DEBUG_DHCSR_C_DEBUGEN_POS       0
+
+/* DEBUG_DHCSR settings */
+#define DEBUG_HALT_KEY                  (0xA05F << DEBUG_DHCSR_DBGKEY_POS)
+
+/* Debug Core Register Selector Register */
+#define DEBUG_DCRSR_BASE                0xE000EDF4
+#define DEBUG_DCRSR                     REG32_POINTER(DEBUG_DCRSR_BASE)
+
+/* DEBUG_DCRSR bit positions */
+#define DEBUG_DCRSR_REGWNR_POS          16
+#define DEBUG_DCRSR_REGSEL_POS          0
+#define DEBUG_DCRSR_REGSEL_MASK         (0x7F << DEBUG_DCRSR_REGSEL_POS)
+
+/* DEBUG_DCRSR settings */
+#define REGWNR_READ                     (0x0 << DEBUG_DCRSR_REGWNR_POS)
+#define REGWNR_WRITE                    (0x1 << DEBUG_DCRSR_REGWNR_POS)
+
+#define REGSEL_R0                       (0x0 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_R1                       (0x1 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_R2                       (0x2 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_R3                       (0x3 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_R4                       (0x4 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_R5                       (0x5 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_R6                       (0x6 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_R7                       (0x7 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_R8                       (0x8 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_R9                       (0x9 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_R10                      (0xA << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_R11                      (0xB << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_R12                      (0xC << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_SP                       (0xD << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_LR                       (0xE << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_DRA                      (0xF << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_XPSR                     (0x10 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_MSP                      (0x11 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_PSP                      (0x12 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_SPECREG                  (0x14 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_MSP_NS                   (0x18 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_PSP_NS                   (0x19 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_MPS_S                    (0x1A << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_PSP_S                    (0x1B << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_MSPLIM_S                 (0x1C << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_PSPLIM_S                 (0x1D << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_MSPLIM_NS                (0x1E << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_PSPLIM_NS                (0x1F << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_FPSCR                    (0x21 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_SPECREG_S                (0x22 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S0                       (0x40 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S1                       (0x41 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S2                       (0x42 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S3                       (0x43 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S4                       (0x44 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S5                       (0x45 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S6                       (0x46 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S7                       (0x47 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S8                       (0x48 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S9                       (0x49 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S10                      (0x4A << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S11                      (0x4B << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S12                      (0x4C << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S13                      (0x4D << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S14                      (0x4E << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S15                      (0x4F << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S16                      (0x50 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S17                      (0x51 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S18                      (0x52 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S19                      (0x53 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S20                      (0x54 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S21                      (0x55 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S22                      (0x56 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S23                      (0x57 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S24                      (0x58 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S25                      (0x59 << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S26                      (0x5A << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S27                      (0x5B << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S28                      (0x5C << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S29                      (0x5D << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S30                      (0x5E << DEBUG_DCRSR_REGSEL_POS)
+#define REGSEL_S31                      (0x5F << DEBUG_DCRSR_REGSEL_POS)
+
+/* Debug Core Register Data Register */
+#define DEBUG_DCRDR_BASE                0xE000EDF8
+#define DEBUG_DCRDR                     REG32_POINTER(DEBUG_DCRDR_BASE)
+
+/* Debug Exception and Monitor Control Register */
+#define DEBUG_DEMCR_BASE                0xE000EDFC
+#define DEBUG_DEMCR                     READONLY_REG32_POINTER(DEBUG_DEMCR_BASE)
+
+/* Debug Authentication Control Regiser */
+#define DEBUG_DAUTHCTRL_BASE            0xE000EE04
+#define DEBUG_DAUTHCTRL                 READONLY_REG32_POINTER(DEBUG_DAUTHCTRL_BASE)
+
+/* DEBUG_DAUTHCTRL bit positions */
+#define DEBUG_DAUTHCTRL_INTSPNIDEN_POS  3
+#define DEBUG_DAUTHCTRL_SPNIDENSEL_POS  2
+#define DEBUG_DAUTHCTRL_INTSPIDEN_POS   1
+#define DEBUG_DAUTHCTRL_SPIDENSEL_POS   0
+
+/* Debug Security Control and Status Register */
+#define DEBUG_DSCSR_BASE                0xE000EE08
+#define DEBUG_DSCSR                     REG32_POINTER(DEBUG_DSCSR_BASE)
+
+/* DEBUG_DSCSR bit positions */
+#define DEBUG_DSCSR_CDSKEY_POS          17
+#define DEBUG_DSCSR_CDS_POS             16
+#define DEBUG_DSCSR_SBRSEL_POS          1
+#define DEBUG_DSCSR_SBRSELEN_POS        0
+
+/* DEBUG_DSCSR settings */
+#define CDS_NOT_IGNORED                 (0x0 << DEBUG_DSCSR_CDSKEY_POS)
+#define CDS_IGNORED                     (0x1 << DEBUG_DSCSR_CDSKEY_POS)
+
+#define PE_IS_IN_NON_SECURE             (0x0 << DEBUG_DSCSR_CDS_POS)
+#define PE_IS_IN_SECURE                 (0x1 << DEBUG_DSCSR_CDS_POS)
+
+/* ----------------------------------------------------------------------------
+ * Software Interrupt Generation
+ * ------------------------------------------------------------------------- */
+
+/* Software Triggered Interrupt Register */
+#define SIG_STIR_BASE                   0xE000EF00
+#define SIG_STIR                        REG32_POINTER(SIG_STIR_BASE)
+
+/* SIG_STIR bit positions */
+#define SIG_STIR_INTID_POS              0
+#define SIG_STIR_INTID_MASK             (0x1FF << SIG_STIR_INTID_POS)
+
+/* ----------------------------------------------------------------------------
+ * Floating-Point Extension
+ * ------------------------------------------------------------------------- */
+
+/* Floating-Point Context Control Register */
+#define FPE_FPCCR_BASE                  0xE000EF34
+#define FPE_FPCCR                       REG32_POINTER(FPE_FPCCR_BASE)
+
+/* FPE_FPCCR bit positions */
+#define FPE_FPCCR_ASPEN_POS             31
+#define FPE_FPCCR_LSPEN_POS             30
+#define FPE_FPCCR_LSPENS_POS            29
+#define FPE_FPCCR_CLRONRET_POS          28
+#define FPE_FPCCR_CLRONRETS_POS         27
+#define FPE_FPCCR_TS_POS                26
+#define FPE_FPCCR_UFRDY_POS             10
+#define FPE_FPCCR_SPLIMVIOL_POS         9
+#define FPE_FPCCR_MONRDY_POS            8
+#define FPE_FPCCR_SFRDY_POS             7
+#define FPE_FPCCR_BRDY_POS              6
+#define FPE_FPCCR_MMRDY_POS             5
+#define FPE_FPCCR_HFRDY_POS             4
+#define FPE_FPCCR_THREAD_POS            3
+#define FPE_FPCCR_S_POS                 2
+#define FPE_FPCCR_USER_POS              1
+#define FPE_FPCCR_LSPACT_POS            0
+
+/* Floating-Point Context Address Register */
+#define FPE_FPCAR_BASE                  0xE000EF38
+#define FPE_FPCAR                       REG32_POINTER(FPE_FPCAR_BASE)
+
+/* FPE_FPCAR bit positions */
+#define FPE_FPCAR_ADDRESS_POS           3
+#define FPE_FPCAR_ADDRESS_MASK          (0x1FFFFFFF << FPE_FPCAR_ADDRESS_POS)
+
+/* Floating-Point Default Status Control Register */
+#define FPE_FPDSCR_BASE                 0xE000EF3C
+#define FPE_FPDSCR                      REG32_POINTER(FPE_FPDSCR_BASE)
+
+/* FPE_FPDSCR bit positions */
+#define FPE_FPDSCR_AHP_POS              26
+#define FPE_FPDSCR_DN_POS               25
+#define FPE_FPDSCR_FZ_POS               24
+#define FPE_FPDSCR_RMODE_POS            22
+#define FPE_FPDSCR_RMODE_MASK           (0x3 << FPE_FPDSCR_RMODE_POS)
+
+/* Media and VFP Feature Register 0 */
+#define FPE_MVFR0_BASE                  0xE000EF40
+#define FPE_MVFR0                       REG32_POINTER(FPE_MVFR0_BASE)
+
+/* FPE_MVFR0 bit positions */
+#define FPE_MVFR0_FPROUND_POS           28
+#define FPE_MVFR0_FPROUND_MASK          (0xF << FPE_MVFR0_FPROUND_POS)
+#define FPE_MVFR0_FPSQRT_POS            20
+#define FPE_MVFR0_FPSQRT_MASK           (0xF << FPE_MVFR0_FPSQRT_POS)
+#define FPE_MVFR0_FPDIVIDE_POS          16
+#define FPE_MVFR0_FPDIVIDE_MASK         (0xF << FPE_MVFR0_FPDIVIDE_POS)
+#define FPE_MVFR0_FPDP_POS              8
+#define FPE_MVFR0_FPDP_MASK             (0xF << FPE_MVFR0_FPDP_POS)
+#define FPE_MVFR0_FPSP_POS              4
+#define FPE_MVFR0_FPSP_MASK             (0xF << FPE_MVFR0_FPSP_POS)
+#define FPE_MVFR0_SIMDREG_POS           0
+#define FPE_MVFR0_SIMDREG_MASK          (0xF << FPE_MVFR0_SIMDREG_POS)
+
+/* Media and VFP Feature Register 1 */
+#define FPE_MVFR1_BASE                  0xE000EF44
+#define FPE_MVFR1                       REG32_POINTER(FPE_MVFR1_BASE)
+
+/* FPE_MVFR1 bit positions */
+#define FPE_MVFR1_FMAC_POS              28
+#define FPE_MVFR1_FMAC_MASK             (0xF << FPE_MVFR1_FMAC_POS)
+#define FPE_MVFR1_FPHP_POS              24
+#define FPE_MVFR1_FPHP_MASK             (0xF << FPE_MVFR1_FPHP_POS)
+#define FPE_MVFR1_FPDNAN_POS            4
+#define FPE_MVFR1_FPDNAN_MASK           (0xF << FPE_MVFR1_FPDNAN_POS)
+#define FPE_MVFR1_FPFTZ_POS             0
+#define FPE_MVFR1_FPFTZ_MASK            (0xF << FPE_MVFR1_FPFTZ_POS)
+
+/* Media and VFP Feature Register 2 */
+#define FPE_MVFR2_BASE                  0xE000EF48
+#define FPE_MVFR2                       REG32_POINTER(FPE_MVFR2_BASE)
+
+/* FPE_MVFR2 bit positions */
+#define FPE_MVFR2_FPMISC_POS            4
+#define FPE_MVFR2_FPMISC_MASK           (0xF << FPE_MVFR2_FPMISC_POS)
+
+
+#endif /* MONTANA_HW_H */

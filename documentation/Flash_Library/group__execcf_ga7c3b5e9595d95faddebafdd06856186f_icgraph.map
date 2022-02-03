@@ -1,0 +1,6 @@
+<map id="Sys_Flash_ExecuteSeqCommand" name="Sys_Flash_ExecuteSeqCommand">
+<area shape="rect" id="node1" title="Execute a sequential command on the flash interface This function does not check if the interface is ..." alt="" coords="692,5,913,32"/>
+<area shape="rect" id="node2" href="$group__privf.html#ga1b49fa96bab9aa77e773a0af083b0e07" title="Execute a sequential write to flash." alt="" coords="433,5,644,32"/>
+<area shape="rect" id="node3" href="$group__privf.html#gaa21b30817c7806bad0a2ecf1becdd9fe" title="Perform a sequential write operation." alt="" coords="179,5,385,32"/>
+<area shape="rect" id="node4" href="$group__flashapi.html#ga3e5df8ab8e2e411e307f36cc1e8d1994" title="Write contents of a static memory buffer to flash." alt="" coords="5,5,131,32"/>
+</map>

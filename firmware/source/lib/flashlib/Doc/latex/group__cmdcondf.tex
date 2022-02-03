@@ -1,0 +1,137 @@
+\hypertarget{group__cmdcondf}{}\doxysection{Flash Mode}
+\label{group__cmdcondf}\index{Flash Mode@{Flash Mode}}
+
+
+Group of functions atomically change the state of flash interface V\+R\+E\+A\+D1,R\+E\+C\+A\+LL and L\+O\+W\+\_\+\+P\+O\+W\+ER bits of the flash interface are mutually exclusive~\newline
+ Hence only one bit will be changed at a time.  
+
+
+Collaboration diagram for Flash Mode\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{group__cmdcondf}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__cmdcondf_ga2a569ff0181ed95670ae880e1ddc214f}{Sys\+\_\+\+Flash\+\_\+\+Unset\+V\+R\+E\+A\+D1}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Set V\+R\+E\+AD mode to 0. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__cmdcondf_gad6ff07bb1601049bf645eaf2154e59d9}{Sys\+\_\+\+Flash\+\_\+\+Set\+V\+R\+E\+A\+D1}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Set V\+R\+E\+AD mode to 1. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__cmdcondf_ga07cae6ab1558758482e89ca73b1ffecd}{Sys\+\_\+\+Flash\+\_\+\+Unset\+Recall}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Set Recall mode to 0. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__cmdcondf_ga8c309218447e4f91ed214df6dcf236fd}{Sys\+\_\+\+Flash\+\_\+\+Set\+Recall}} (F\+L\+A\+S\+H\+\_\+\+Type $\ast$flash)
+\begin{DoxyCompactList}\small\item\em Set Recall mode to 1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Group of functions atomically change the state of flash interface V\+R\+E\+A\+D1,R\+E\+C\+A\+LL and L\+O\+W\+\_\+\+P\+O\+W\+ER bits of the flash interface are mutually exclusive~\newline
+ Hence only one bit will be changed at a time. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__cmdcondf_ga8c309218447e4f91ed214df6dcf236fd}\label{group__cmdcondf_ga8c309218447e4f91ed214df6dcf236fd}} 
+\index{Flash Mode@{Flash Mode}!Sys\_Flash\_SetRecall@{Sys\_Flash\_SetRecall}}
+\index{Sys\_Flash\_SetRecall@{Sys\_Flash\_SetRecall}!Flash Mode@{Flash Mode}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_SetRecall()}{Sys\_Flash\_SetRecall()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Set\+Recall (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Set Recall mode to 1. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__cmdcondf_ga8c309218447e4f91ed214df6dcf236fd_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__cmdcondf_gad6ff07bb1601049bf645eaf2154e59d9}\label{group__cmdcondf_gad6ff07bb1601049bf645eaf2154e59d9}} 
+\index{Flash Mode@{Flash Mode}!Sys\_Flash\_SetVREAD1@{Sys\_Flash\_SetVREAD1}}
+\index{Sys\_Flash\_SetVREAD1@{Sys\_Flash\_SetVREAD1}!Flash Mode@{Flash Mode}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_SetVREAD1()}{Sys\_Flash\_SetVREAD1()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Set\+V\+R\+E\+A\+D1 (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Set V\+R\+E\+AD mode to 1. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__cmdcondf_gad6ff07bb1601049bf645eaf2154e59d9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__cmdcondf_ga07cae6ab1558758482e89ca73b1ffecd}\label{group__cmdcondf_ga07cae6ab1558758482e89ca73b1ffecd}} 
+\index{Flash Mode@{Flash Mode}!Sys\_Flash\_UnsetRecall@{Sys\_Flash\_UnsetRecall}}
+\index{Sys\_Flash\_UnsetRecall@{Sys\_Flash\_UnsetRecall}!Flash Mode@{Flash Mode}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_UnsetRecall()}{Sys\_Flash\_UnsetRecall()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Unset\+Recall (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Set Recall mode to 0. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__cmdcondf_ga07cae6ab1558758482e89ca73b1ffecd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__cmdcondf_ga07cae6ab1558758482e89ca73b1ffecd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{group__cmdcondf_ga2a569ff0181ed95670ae880e1ddc214f}\label{group__cmdcondf_ga2a569ff0181ed95670ae880e1ddc214f}} 
+\index{Flash Mode@{Flash Mode}!Sys\_Flash\_UnsetVREAD1@{Sys\_Flash\_UnsetVREAD1}}
+\index{Sys\_Flash\_UnsetVREAD1@{Sys\_Flash\_UnsetVREAD1}!Flash Mode@{Flash Mode}}
+\doxysubsubsection{\texorpdfstring{Sys\_Flash\_UnsetVREAD1()}{Sys\_Flash\_UnsetVREAD1()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{flash_8h_aba87361bfad2ae52cfe2f40c1a1dbf9c}{\+\_\+\+\_\+\+S\+T\+A\+T\+I\+C\+\_\+\+I\+N\+L\+I\+NE}} void Sys\+\_\+\+Flash\+\_\+\+Unset\+V\+R\+E\+A\+D1 (\begin{DoxyParamCaption}\item[{F\+L\+A\+S\+H\+\_\+\+Type $\ast$}]{flash }\end{DoxyParamCaption})}
+
+
+
+Set V\+R\+E\+AD mode to 0. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em flash} & flash instance being used \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__cmdcondf_ga2a569ff0181ed95670ae880e1ddc214f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__cmdcondf_ga2a569ff0181ed95670ae880e1ddc214f_icgraph}
+\end{center}
+\end{figure}

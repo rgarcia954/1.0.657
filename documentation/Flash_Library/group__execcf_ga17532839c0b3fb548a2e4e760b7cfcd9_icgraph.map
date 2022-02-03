@@ -1,0 +1,28 @@
+<map id="Sys_Flash_ExecuteCommand" name="Sys_Flash_ExecuteCommand">
+<area shape="rect" id="node1" title="Execute a command on the flash interface This function checks if the interface is free before initiat..." alt="" coords="987,224,1185,251"/>
+<area shape="rect" id="node2" href="$group__privf.html#ga84241b14ebf6525f1f2e9de18673d879" title="Erase all code and data regions of flash." alt="" coords="751,12,908,39"/>
+<area shape="rect" id="node5" href="$group__privf.html#ga5b1bb4553858e3bb254fc1cf64faeadb" title="Erase a flash sector." alt="" coords="453,56,672,83"/>
+<area shape="rect" id="node9" href="$group__precondf.html#gae5ff2b73462baba82572f70a371b6b14" title="Apply precondition before executing CMD_READ command." alt="" coords="736,217,923,258"/>
+<area shape="rect" id="node13" href="$group__privf.html#ga361e836fc88530e6b3a1dad2510a0c62" title="Read a 38&#45;bit word to flash." alt="" coords="482,376,643,403"/>
+<area shape="rect" id="node24" href="$group__precondf.html#ga21fc580e17445ecca5467902d72ed930" title="Apply precondition before using flash copier to read flash." alt="" coords="736,146,923,187"/>
+<area shape="rect" id="node25" href="$group__privf.html#ga6b63b810b4c9befc0fa2dd085b40d875" title="Write a 38&#45; bit word to flash." alt="" coords="720,421,939,448"/>
+<area shape="rect" id="node26" href="$group__privf.html#ga64a90481edd41983dcb7f3d9a7f4b8c0" title="Write a word to flash." alt="" coords="725,304,934,331"/>
+<area shape="rect" id="node3" href="$group__flashapi.html#ga00b2a19b39b51084eb1d697635ee08e3" title="Erase a single flash bank." alt="" coords="484,5,641,32"/>
+<area shape="rect" id="node4" href="$group__flashapi.html#gae2fa05f0b4c82c366cf85a15c444618c" title="Erase all data and code flash." alt="" coords="235,5,357,32"/>
+<area shape="rect" id="node6" href="$group__privf.html#ga04cebc2001a4494369f0540225b0d637" title="Erase a sector of flash in endurance mode Four identical voltages is applied for erase through retry ..." alt="" coords="201,56,391,83"/>
+<area shape="rect" id="node8" href="$group__privf.html#ga6d8824b8a4969c5334c9428c6d49135e" title="Erase a sector of flash without endurance mode A verification is performed to check if erase was succ..." alt="" coords="187,107,405,133"/>
+<area shape="rect" id="node7" href="$group__flashapi.html#ga7fc60948265ff6089e113c5033573acf" title="Erase a sector flash." alt="" coords="5,81,139,108"/>
+<area shape="rect" id="node10" href="$group__privf.html#ga8bfe7db7d6b4d66fcc72acd0cba1abdc" title="Verify if flash is empty." alt="" coords="459,107,666,133"/>
+<area shape="rect" id="node12" href="$group__precondf.html#ga98f94e778e93dab3a9fb0c84216bdc99" title="Apply precondition before using the flash copier to read from flash." alt="" coords="469,158,656,199"/>
+<area shape="rect" id="node17" href="$group__privf.html#ga29bf484f2b3bcafb37fe28d9f71aaaf3" title="Read a word to flash." alt="" coords="487,275,639,301"/>
+<area shape="rect" id="node21" href="$group__privf.html#gad4406365736e5fe1db90e4356eb24d67" title="Verify contents of flash." alt="" coords="468,224,657,251"/>
+<area shape="rect" id="node11" href="$group__flashapi.html#ga51aa73e01de7e87a03e711e699088c11" title="Check if flash region is blank." alt="" coords="231,157,361,184"/>
+<area shape="rect" id="node14" href="$group__flashapi.html#ga870bb031834a703c0f2f0b28b3b8d848" title="Read a 38&#45;bit word from flash." alt="" coords="231,376,361,403"/>
+<area shape="rect" id="node15" href="$group__privf.html#ga8388670e15b9053056d00ff37d84a04e" title="Write a 38&#45;bit word to a flash instance." alt="" coords="215,427,377,453"/>
+<area shape="rect" id="node16" href="$group__flashapi.html#gab0305beaf50489800b9b16a2464f1254" title="Write a 38&#45;bit word to flash." alt="" coords="6,427,138,453"/>
+<area shape="rect" id="node18" href="$group__flashapi.html#gaaad4ba09bcebc548441f5a6dc96f4813" title="Read a 32&#45;bit word from flash." alt="" coords="235,275,357,301"/>
+<area shape="rect" id="node19" href="$group__privf.html#ga58aeb5c972b5279ff28d3b5a2f2aec3e" title="Write a word to flash." alt="" coords="219,325,373,352"/>
+<area shape="rect" id="node20" href="$group__flashapi.html#ga7c9c4e4353b55bf0237349e2e6dcc612" title="Write a word to a flash address." alt="" coords="11,325,133,352"/>
+<area shape="rect" id="node22" href="$group__privf.html#gaa21b30817c7806bad0a2ecf1becdd9fe" title="Perform a sequential write operation." alt="" coords="193,224,399,251"/>
+<area shape="rect" id="node23" href="$group__flashapi.html#ga3e5df8ab8e2e411e307f36cc1e8d1994" title="Write contents of a static memory buffer to flash." alt="" coords="9,224,135,251"/>
+</map>

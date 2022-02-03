@@ -1,0 +1,88 @@
+\hypertarget{structregion__attributes}{}\doxysection{region\+\_\+attributes Struct Reference}
+\label{structregion__attributes}\index{region\_attributes@{region\_attributes}}
+
+
+Flash region attributes.  
+
+
+
+
+{\ttfamily \#include $<$flash.\+h$>$}
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned \mbox{\hyperlink{structregion__attributes_a7533372ae7269b4e1807ccb91803990e}{row\+\_\+word\+\_\+len}}
+\item 
+const unsigned \mbox{\hyperlink{structregion__attributes_ab03e2748135b8035102b789123b0ddcf}{sector\+\_\+len}}
+\item 
+const unsigned \mbox{\hyperlink{structregion__attributes_ad008719da385079babc450318fefafad}{bytes\+\_\+per\+\_\+lock\+\_\+region}}
+\item 
+const unsigned \mbox{\hyperlink{structregion__attributes_afd55505ff8a0b8d62079032525a973ab}{total\+\_\+lock\+\_\+regions}}
+\item 
+uint32\+\_\+t($\ast$ \mbox{\hyperlink{structregion__attributes_a8ae5366663c9366e2ecae315c18645f5}{Read\+\_\+lock\+\_\+config}} )(F\+L\+A\+S\+H\+\_\+\+Type $\ast$)
+\item 
+void($\ast$ \mbox{\hyperlink{structregion__attributes_a4cf82da3f217380946277ecb65d6b500}{Write\+\_\+lock\+\_\+config}} )(F\+L\+A\+S\+H\+\_\+\+Type $\ast$, uint32\+\_\+t)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Flash region attributes. 
+
+Each flash bank consists of Code, Data and N\+VR regions~\newline
+ Code region has 512 x 38 Bits/\+Sector, and total size = 88K x 38 Bits~\newline
+ Data region is 64 x 38 Bits/\+Sector, and total size = 40K x 38 Bits~\newline
+ N\+VR region is 64 x 38 Bits/\+Sector, and total size = 64K x 38 Bits~\newline
+ \begin{DoxyNote}{Note}
+N\+VR\mbox{[}0\+:3\mbox{]} is reserved for Cryptocell and cannot be accessed~\newline
+
+\end{DoxyNote}
+Flash programming is done in rows. Each programmable sector on flash can consist of one or multiple rows.
+
+Note\+: On Flash0 N\+VR\mbox{[}3\+:0\mbox{]} \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{flash_8h_a6b78857fe5aea0087e740aeb7a3a982c}{C\+O\+D\+E\+\_\+\+S\+E\+C\+T\+O\+R\+\_\+\+L\+E\+N\+\_\+\+W\+O\+R\+DS}}
+\end{DoxySeeAlso}
+Flash region attributes 
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structregion__attributes_ad008719da385079babc450318fefafad}\label{structregion__attributes_ad008719da385079babc450318fefafad}} 
+\index{region\_attributes@{region\_attributes}!bytes\_per\_lock\_region@{bytes\_per\_lock\_region}}
+\index{bytes\_per\_lock\_region@{bytes\_per\_lock\_region}!region\_attributes@{region\_attributes}}
+\doxysubsubsection{\texorpdfstring{bytes\_per\_lock\_region}{bytes\_per\_lock\_region}}
+{\footnotesize\ttfamily const unsigned bytes\+\_\+per\+\_\+lock\+\_\+region}
+
+Total number of bytes in a single lock region \mbox{\Hypertarget{structregion__attributes_a8ae5366663c9366e2ecae315c18645f5}\label{structregion__attributes_a8ae5366663c9366e2ecae315c18645f5}} 
+\index{region\_attributes@{region\_attributes}!Read\_lock\_config@{Read\_lock\_config}}
+\index{Read\_lock\_config@{Read\_lock\_config}!region\_attributes@{region\_attributes}}
+\doxysubsubsection{\texorpdfstring{Read\_lock\_config}{Read\_lock\_config}}
+{\footnotesize\ttfamily uint32\+\_\+t($\ast$ Read\+\_\+lock\+\_\+config) (F\+L\+A\+S\+H\+\_\+\+Type $\ast$)}
+
+Read current lock configuration \mbox{\Hypertarget{structregion__attributes_a7533372ae7269b4e1807ccb91803990e}\label{structregion__attributes_a7533372ae7269b4e1807ccb91803990e}} 
+\index{region\_attributes@{region\_attributes}!row\_word\_len@{row\_word\_len}}
+\index{row\_word\_len@{row\_word\_len}!region\_attributes@{region\_attributes}}
+\doxysubsubsection{\texorpdfstring{row\_word\_len}{row\_word\_len}}
+{\footnotesize\ttfamily const unsigned row\+\_\+word\+\_\+len}
+
+Number of words in this row \mbox{\Hypertarget{structregion__attributes_ab03e2748135b8035102b789123b0ddcf}\label{structregion__attributes_ab03e2748135b8035102b789123b0ddcf}} 
+\index{region\_attributes@{region\_attributes}!sector\_len@{sector\_len}}
+\index{sector\_len@{sector\_len}!region\_attributes@{region\_attributes}}
+\doxysubsubsection{\texorpdfstring{sector\_len}{sector\_len}}
+{\footnotesize\ttfamily const unsigned sector\+\_\+len}
+
+Size of sector, single unit that can be erased \mbox{\Hypertarget{structregion__attributes_afd55505ff8a0b8d62079032525a973ab}\label{structregion__attributes_afd55505ff8a0b8d62079032525a973ab}} 
+\index{region\_attributes@{region\_attributes}!total\_lock\_regions@{total\_lock\_regions}}
+\index{total\_lock\_regions@{total\_lock\_regions}!region\_attributes@{region\_attributes}}
+\doxysubsubsection{\texorpdfstring{total\_lock\_regions}{total\_lock\_regions}}
+{\footnotesize\ttfamily const unsigned total\+\_\+lock\+\_\+regions}
+
+Total number of lock regions available in a single lock region \mbox{\Hypertarget{structregion__attributes_a4cf82da3f217380946277ecb65d6b500}\label{structregion__attributes_a4cf82da3f217380946277ecb65d6b500}} 
+\index{region\_attributes@{region\_attributes}!Write\_lock\_config@{Write\_lock\_config}}
+\index{Write\_lock\_config@{Write\_lock\_config}!region\_attributes@{region\_attributes}}
+\doxysubsubsection{\texorpdfstring{Write\_lock\_config}{Write\_lock\_config}}
+{\footnotesize\ttfamily void($\ast$ Write\+\_\+lock\+\_\+config) (F\+L\+A\+S\+H\+\_\+\+Type $\ast$, uint32\+\_\+t)}
+
+Read new lock configuration 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Repository/swt\+\_\+root/projects/montana/firmware/flashlib/\mbox{\hyperlink{flash_8h}{flash.\+h}}\end{DoxyCompactItemize}
